@@ -1,0 +1,58 @@
+{% extends "::admin.html.twig" %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script type="text/javascript" src="{{ asset('js/addPage-min.js') }}"></script>
+{% endblock %}
+
+{% block stylesheets %}
+	{{ parent() }}
+	<link rel="stylesheet" href="{{ asset('css/admin.css') }}" type="text/css" />
+	<link rel="stylesheet" href="{{ asset('css/form.css') }}" type="text/css" />
+{% endblock %}
+
+{% block title %}
+    {{ parent() }} - Edit a page
+{% endblock %}
+
+{% block adminBody %}
+    <h1>Admin - Edit a page</h1>
+    
+    <form class="page" action="{{ path('gospelcenterAdmin_pages_edit', {'center': center.ref, 'page': objPage.id}) }}" method="post" {{ form_enctype(form) }}>
+        <nav class="tools">
+    		<input type="submit" class="buttonRounded" />
+    	</nav>
+    	
+    	{{ form_widget(form.ref) }}
+        {{ form_widget(form.title, {'attr': {'placeholder': 'Title'} }) }}
+        {{ form_widget(form.slogan, {'attr': {'placeholder': 'Slogan'} }) }}
+        {{ form_widget(form.template) }}
+        {{ form_widget(form.language) }}
+        <fieldset id="slides">
+            <legend>Slides</legend>
+            {{ form_widget(form.slides) }}
+        </fieldset>
+        {{ form_rest(form) }}
+    </form>
+    
+    
+{% endblock %}
+
+{% block jsTemplating %}
+    {{ parent() }}
+    <script id="slide" type="text/x-handlebars-template">
+        {% for slide in article.slides %}
+            <article id="{{ slide.id }}" class="slide">
+                <div class="arrow">
+                    <div id="up"></div>
+                    <div id="down"></div>
+                </div>
+                <section>
+                    <img src="{{ asset(slide.image.webPath) }}" alt="{{ slide.image.alt }}" />
+                    <h1>{{ slide.title }}</h1>
+                    <p>{{ slide.text }}</p>
+                </section>
+            </article>
+        {% endfor %}
+    </script>
+{% endblock %}

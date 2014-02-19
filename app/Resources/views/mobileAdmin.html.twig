@@ -1,0 +1,15 @@
+{% extends "::mobile.html.twig" %}
+
+{% block stylesheets %}
+    {{parent()}}
+    <link rel="stylesheet" href="{{ asset('css/mobileAdmin.css') }}" type="text/css" />
+{% endblock %}
+
+{% block nav %}
+    <li><a href="{{ path('gospelcenterAdmin_celebrations', {'center': center.ref}) }}" {% if page == 'celebrations' %}class="current"{% endif %}>Celebrations</a></li>
+    <li><a href="{{ path('gospelcenterAdmin_persons', {'center': center.ref}) }}" {% if page == 'people' %}class="current"{% endif %}>People</a></li>
+    <li><a href="{{ path('gospelcenterAdmin_events', {'center': center.ref}) }}" {% if page == 'events' %}class="current"{% endif %}>Events</a></li>
+    <li><a href="">Pages</a></li>
+    <li><a href="{{ path('gospelcenterAdmin_images', {'center': center.ref}) }}" {% if page == 'images' %}class="current"{% endif %}>Images</a></li>
+    <li><a href="{{ path('gospelcenterAdmin_locations', {'center': center.ref}) }}" {% if page == 'locations' %}class="current"{% endif %}>Locations</a></li>
+{% endblock %}

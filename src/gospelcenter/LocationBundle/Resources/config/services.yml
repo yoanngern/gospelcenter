@@ -1,0 +1,7 @@
+parameters:
+#    gospelcenter_location.example.class: gospelcenter\LocationBundle\Example
+
+services:
+#    gospelcenter_location.example:
+#        class: %gospelcenter_location.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]

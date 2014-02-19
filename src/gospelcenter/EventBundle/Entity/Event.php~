@@ -1,0 +1,158 @@
+<?php
+
+namespace gospelcenter\EventBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Event
+ *
+ * @ORM\Table(name="event")
+ * @ORM\Entity(repositoryClass="gospelcenter\EventBundle\Entity\EventRepository")
+ * @ORM\HasLifecycleCallbacks()
+ */
+class Event
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="title", type="string", length=255)
+     */
+    private $title;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="startingDate", type="datetime")
+     */
+    private $startingDate;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="endingDate", type="datetime")
+     */
+    private $endingDate;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="introText", type="text")
+     */
+    private $introText;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="text", type="text")
+     */
+    private $text;
+    
+    /**
+     * @ORM\Column(name="status", type="boolean")
+     */
+    private $status;
+    
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="modifiedDate", type="datetime")
+     */
+    private $modifiedDate;
+    
+    /**
+     * takes place at
+     * 
+     * @ORM\ManyToOne(targetEntity="gospelcenter\LocationBundle\Entity\Location", inversedBy="events")
+     */
+    private $location;
+    
+    /**
+     * is illustrated by
+     * 
+     * @ORM\ManyToOne(targetEntity="gospelcenter\ImageBundle\Entity\Image", inversedBy="eventsPicture", cascade={"persist", "remove"})
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $picture;
+    
+    
+    /**
+     * is covered by
+     * 
+     * @ORM\ManyToOne(targetEntity="gospelcenter\ImageBundle\Entity\Image", inversedBy="eventsCover", cascade={"persist", "remove"})
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $cover;
+    
+    
+    /**
+     * is presented by
+     * 
+     * @ORM\ManyToMany(targetEntity="gospelcenter\CenterBundle\Entity\Center", mappedBy="events")
+     */
+     private $centers;
+     
+    
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->status = true;
+        $this->modifiedDate = new \Datetime();
+        $this->centers = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+    
+    /**
+     * Set picture
+     *
+     * @param \gospelcenter\ImageBundle\Entity\Image $picture
+     * @return Event
+     */
+    public function setPicture(\gospelcenter\ImageBundle\Entity\Image $picture = null)
+    {
+        $this->picture = $picture;
+        
+        if($picture != null) {
+            $title = $this->title . " - Picture";
+            $this->picture->setTitle($title);
+            $this->picture->setType('Event');
+        }
+    
+        return $this;
+    }
+    
+    /**
+     * Set cover
+     *
+     * @param \gospelcenter\ImageBundle\Entity\Image $cover
+     * @return Event
+     */
+    public function setCover(\gospelcenter\ImageBundle\Entity\Image $cover = null)
+    {
+        $this->cover = $cover;
+        
+        if($cover != null) {
+            $title = $this->title . " - Cover";
+            $this->cover->setTitle($title);
+            $this->cover->setType('Event');
+        }
+        
+        return $this;
+    }
+    
+    /*************************************/
+    /**** Getter setter auto generate ****/
+    /*************************************/
+    
+    
+}

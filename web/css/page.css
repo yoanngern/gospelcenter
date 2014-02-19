@@ -1,0 +1,109 @@
+html.js #page > h1 {
+  display: none; }
+html.js #page > h2 {
+  display: none; }
+html.js #page article.slide {
+  display: none; }
+  html.js #page article.slide section {
+    display: none; }
+
+#container {
+  margin: 0px;
+  padding: 0px;
+  height: 100%; }
+  #container #page {
+    padding: 0px;
+    min-height: 650px;
+    background: transparent;
+    width: 100%;
+    overflow-x: hidden; }
+    #container #page div.arrow {
+      width: 30%;
+      position: absolute;
+      z-index: 100;
+      top: 32%;
+      height: 54%;
+      cursor: pointer; }
+      #container #page div.arrow#right {
+        right: 0px; }
+        #container #page div.arrow#right:hover {
+          background: url("../images/right.svg");
+          background-repeat: no-repeat;
+          background-position: right center; }
+      #container #page div.arrow#left {
+        left: 0px; }
+        #container #page div.arrow#left:hover {
+          background: url("../images/left.svg");
+          background-repeat: no-repeat;
+          background-position: left center; }
+    #container #page > h1 {
+      position: absolute;
+      top: 6%;
+      width: 100%;
+      text-align: center;
+      font-size: 2em;
+      margin: 0px;
+      font-weight: 100;
+      font-family: "Radikal-Light", "Radikal", sans-serif; }
+    #container #page.simple > h2 {
+      position: absolute;
+      top: 18%;
+      width: 100%;
+      text-align: center;
+      margin: 0px;
+      font-size: 1.5em;
+      font-family: "Radikal-Light", "Radikal", sans-serif;
+      text-transform: uppercase; }
+    #container #page.simple nav {
+      position: absolute;
+      top: 87%;
+      width: 100%; }
+      #container #page.simple nav ul {
+        text-align: center; }
+        #container #page.simple nav ul li {
+          border: 1px solid #d91a15;
+          margin-left: 5px;
+          margin-right: 5px;
+          border-radius: 6px;
+          display: inline-block;
+          width: 10px;
+          height: 10px;
+          cursor: pointer; }
+          #container #page.simple nav ul li:hover {
+            background: #d91a15; }
+          #container #page.simple nav ul li.current {
+            background: #d91a15; }
+    #container #page.simple article.slide {
+      position: absolute;
+      top: 32%;
+      width: 100%;
+      color: #fdfdfc;
+      height: 54%;
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-position: center; }
+      #container #page.simple article.slide section {
+        margin: 0 auto;
+        width: 40%; }
+        #container #page.simple article.slide section h1 {
+          font-size: 1.6em; }
+        #container #page.simple article.slide section p {
+          font-size: 1.2em; }
+        #container #page.simple article.slide section p.link {
+          text-align: center;
+          margin-top: 20px; }
+          #container #page.simple article.slide section p.link a {
+            color: #fdfdfc;
+            text-align: center;
+            text-decoration: none;
+            border: 1px solid #fdfdfc;
+            cursor: pointer;
+            padding: 6px 25px;
+            -webkit-border-radius: 3px;
+            -moz-border-radius: 3px;
+            -ms-border-radius: 3px;
+            -o-border-radius: 3px;
+            border-radius: 3px; }
+            #container #page.simple article.slide section p.link a:hover {
+              background: #fdfdfc;
+              color: #313131; }

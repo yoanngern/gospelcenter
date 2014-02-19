@@ -1,0 +1,121 @@
+# Pages
+gospelcenterAdminGlobal_home:
+    path:       /
+    defaults:   { _controller: gospelcenterPageBundle:AdminPageGlobal:list }
+
+##########################
+###### Celebrations ######
+##########################
+
+
+
+##########################
+######### People #########
+##########################
+
+
+
+
+##########################
+######### Events #########
+##########################
+
+
+
+
+##########################
+########## Pages #########
+##########################
+
+# Pages
+gospelcenterAdminGlobal_pages:
+    path:       /pages
+    defaults:   { _controller: gospelcenterPageBundle:AdminPageGlobal:list }
+    
+# Add a page
+gospelcenterAdminGlobal_pages_add:
+    path:       /pages/add
+    defaults:   { _controller: gospelcenterPageBundle:AdminPageGlobal:add }
+
+# Edit a page
+gospelcenterAdminGlobal_pages_edit:
+    path:       /pages/edit/{page}
+    defaults:   { _controller: gospelcenterPageBundle:AdminPageGlobal:edit }
+    requirements:
+        page: \d+
+        
+# Slides
+gospelcenterAdminGlobal_slides:
+    path:       /slides
+    defaults:   { _controller: gospelcenterPageBundle:AdminSlideGlobal:list }
+    
+# Add a slide
+gospelcenterAdminGlobal_slides_add:
+    path:       /slides/add
+    defaults:   { _controller: gospelcenterPageBundle:AdminSlideGlobal:add }
+
+# Edit a slide
+gospelcenterAdminGlobal_slides_edit:
+    path:       /slides/edit/{slide}
+    defaults:   { _controller: gospelcenterPageBundle:AdminSlideGlobal:edit }
+    requirements:
+        slide: \d+
+
+##########################
+######### Images #########
+##########################
+
+# Images
+gospelcenterAdminGlobal_images:
+    path:       /images
+    defaults:   { _controller: gospelcenterImageBundle:AdminGlobal:list }
+    
+# All images
+gospelcenterAdminGlobal_images_all:
+    path:       /images/all
+    defaults:   { _controller: gospelcenterImageBundle:AdminGlobal:all }
+
+# Add an image
+gospelcenterAdminGlobal_images_add:
+    path:       /images/add
+    defaults:   { _controller: gospelcenterImageBundle:AdminGlobal:add }
+
+# Edit an image
+gospelcenterAdminGlobal_images_edit:
+    path:       /images/edit/{image}
+    defaults:   { _controller: gospelcenterImageBundle:AdminGlobal:edit }
+    requirements:
+        image: \d+
+        
+# Delete a location
+gospelcenterAdminGlobal_images_delete:
+    path:       /images/delete/{image}
+    defaults:   { _controller: gospelcenterImageBundle:AdminGlobal:delete }
+    requirements:
+        image: \d+
+
+##########################
+####### Locations ########
+##########################
+
+
+
+##########################
+######## Centers #########
+##########################
+
+# Centers
+gospelcenterAdminGlobal_centers:
+    path:       /centers
+    defaults:   { _controller: gospelcenterCenterBundle:AdminCenter:list }
+
+# Add an image
+gospelcenterAdminGlobal_centers_add:
+    path:       /centers/add
+    defaults:   { _controller: gospelcenterCenterBundle:AdminCenter:add }
+
+# Edit an image
+gospelcenterAdminGlobal_centers_edit:
+    path:       /centers/edit/{center}
+    defaults:   { _controller: gospelcenterCenterBundle:AdminCenter:edit }
+

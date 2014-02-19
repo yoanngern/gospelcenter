@@ -1,0 +1,8 @@
+gospelcenterPage_home:
+    path: /
+    defaults: { _controller: gospelcenterPageBundle:Page:home }
+
+gospelcenterPage_default:
+    path: /{page}
+    defaults: { _controller: gospelcenterPageBundle:Page:index }
+    

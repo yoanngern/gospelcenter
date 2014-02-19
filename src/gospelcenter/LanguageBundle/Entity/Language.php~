@@ -1,0 +1,59 @@
+<?php
+
+namespace gospelcenter\LanguageBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Language
+ *
+ * @ORM\Table(name="language")
+ * @ORM\Entity(repositoryClass="gospelcenter\LanguageBundle\Entity\LanguageRepository")
+ */
+class Language
+{
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="id", type="string", length=255)
+     * @ORM\Id
+     */
+    private $ref;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="value", type="string", length=255)
+     */
+    private $value;
+    
+    /**
+     * is spoken by
+     * 
+     * @ORM\ManyToMany(targetEntity="gospelcenter\PeopleBundle\Entity\Person", mappedBy="languages")
+     */
+    private $persons;
+    
+    /**
+     * specifies
+     * 
+     * @ORM\OneToMany(targetEntity="gospelcenter\PageBundle\Entity\Page", mappedBy="languages")
+     * @ORM\JoinColumn(nullable=true)
+     */
+    private $pages;
+    
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->persons = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->pages = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+    
+    /*************************************/
+    /**** Getter setter auto generate ****/
+    /*************************************/
+    
+    
+}

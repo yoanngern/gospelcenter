@@ -1,0 +1,7 @@
+parameters:
+#    gospelcenter_language.example.class: gospelcenter\LanguageBundle\Example
+
+services:
+#    gospelcenter_language.example:
+#        class: %gospelcenter_language.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]

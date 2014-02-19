@@ -1,0 +1,76 @@
+@mixin navUnderline() {
+	ul {
+		
+		margin: 0px;
+		padding: 0px;
+	
+		li {
+			display: inline-block;
+			margin-right: 25px;
+			
+			&:last-child {
+				margin-right: 0px;
+			}
+			
+			a {
+				color: $red;
+				text-decoration: none;
+				padding-bottom: 3px;
+				font-size: 1.1em;
+				
+				&:hover,
+				&.current {
+					border-bottom: 2px solid $red;
+				}
+			}
+		}
+	}
+}
+
+@mixin navRounded() {
+	ul {
+		padding: 0;
+		min-width: 980px;
+		
+		li {
+			display: inline-block;
+			border-top: 1px solid $red;
+			border-bottom: 1px solid $red;
+			border-left: 1px solid $red;
+			border-right: none;
+			margin-left: -5px;
+			
+			&:first-child {
+				@include border-radius (6px 0px 0px 6px);
+				
+				a {
+    				@include border-radius (3px 0px 0px 3px);
+				}
+			}
+			
+			&:last-child {
+				@include border-radius (0px 6px 6px 0px);
+				border-right: 1px solid $red;
+				
+				a {
+    				@include border-radius (0px 3px 3px 0px);
+				}
+			}
+			
+			a {
+				color: $red;
+				text-decoration: none;
+				display: inline-block;
+				min-width: 100px;
+				padding: 7px 10px;
+				text-align: center;
+				
+				&:hover,
+				&.current {
+					@include gradient($red, $redBottom, $redTop);
+					color: $white;
+				}
+			}
+		}
+	}
+}

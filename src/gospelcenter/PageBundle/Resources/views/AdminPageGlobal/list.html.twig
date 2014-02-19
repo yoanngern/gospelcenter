@@ -1,0 +1,36 @@
+{% extends "gospelcenterPageBundle::adminGlobal.html.twig" %}
+
+{% block stylesheets %}
+	{{ parent() }}
+	<link rel="stylesheet" href="{{ asset('css/admin.css') }}" type="text/css" />
+{% endblock %}
+
+{% block title %}
+    {{ parent() }} - Pages
+{% endblock %}
+
+{% block gospelcenterAdminPages_body %}
+    
+    <table class="main">
+        <thead>
+            <tr>
+                <th>Title</th>
+                <th>Ref</th>
+                <th>Language</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for page in pages %}
+                <tr>
+                    <td><a href="{{ path('gospelcenterAdminGlobal_pages_edit', {'page': page.id}) }}">{{ page.title }}</a></td>
+                    <td><a href="{{ path('gospelcenterAdminGlobal_pages_edit', {'page': page.id}) }}">{{ page.ref }}</a></td>
+                    <td><a href="{{ path('gospelcenterAdminGlobal_pages_edit', {'page': page.id}) }}">{{ page.language.value }}</a></td>
+                </tr>
+            {% else %}
+                <tr><td colspan="3">There are no pages.</td></tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    
+    
+{% endblock %}

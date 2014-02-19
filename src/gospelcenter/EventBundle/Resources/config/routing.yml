@@ -1,0 +1,39 @@
+gospelcenterEvents_list:
+    path:       /
+    defaults:   { _controller: gospelcenterEventBundle:Event:list }
+
+gospelcenterEvents_event:
+    path:       /event/{event}
+    defaults:   { _controller: gospelcenterEventBundle:Event:event }
+    requirements:
+        event: \d+
+
+gospelcenterEvents_add:
+    path:       /add
+    defaults:   { _controller: gospelcenterEventBundle:Event:add }
+
+gospelcenterEvents_edit:
+    path:       /edit/{event}
+    defaults:   { _controller: gospelcenterEventBundle:Event:edit }
+    requirements:
+        event: \d+
+
+gospelcenterEvents_delete:
+    path:       /delete/{event}
+    defaults:   { _controller: gospelcenterEventBundle:Event:delete }
+    requirements:
+        event: \d+
+        
+gospelcenterEvents_manage:
+    path:       /manage
+    defaults:   { _controller: gospelcenterEventBundle:Event:manage }
+
+gospelcenterEvents_JSON_MAX:
+    path:       /{nb}.json
+    defaults:   { _controller: gospelcenterEventBundle:Event:json }
+    requirements:
+        nb: \d+
+        
+gospelcenterEvents_JSON:
+    path:       /json
+    defaults:   { _controller: gospelcenterEventBundle:Event:json, nb:0 }

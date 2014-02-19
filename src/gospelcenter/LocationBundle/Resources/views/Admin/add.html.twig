@@ -1,0 +1,35 @@
+{% extends "::admin.html.twig" %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script type="text/javascript" src="{{ asset('js/form-min.js') }}"></script>
+{% endblock %}
+
+{% block stylesheets %}
+	{{ parent() }}
+	<link rel="stylesheet" href="{{ asset('css/admin.css') }}" type="text/css" />
+	<link rel="stylesheet" href="{{ asset('css/form.css') }}" type="text/css" />
+{% endblock %}
+
+{% block title %}
+    {{ parent() }} - Add a location
+{% endblock %}
+
+{% block adminBody %}
+    <h1>Admin - Add a location</h1>
+    
+    <form action="{{ path('gospelcenterAdmin_locations_add', {'center': center.ref}) }}" method="post" {{ form_enctype(form) }}>
+        {{ form_widget(form.name, {'attr': {'data-label': 'Name'} }) }}
+        {{ form_widget(form.address1, {'attr': {'data-label': 'Address line 1'} }) }}
+        {{ form_widget(form.address2, {'attr': {'data-label': 'Address line 2'} }) }}
+        {{ form_widget(form.postalCode, {'attr': {'data-label': 'Postal code'} }) }}
+        {{ form_widget(form.city, {'attr': {'data-label': 'City'} }) }}
+        {{ form_widget(form.country, {'attr': {'data-label': 'Country'} }) }}
+        {{ form_rest(form) }}
+        <nav>
+    		<input type="submit" class="buttonRounded" />
+    	</nav>
+    </form>
+    
+    
+{% endblock %}

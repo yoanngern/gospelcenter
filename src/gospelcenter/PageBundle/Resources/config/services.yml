@@ -1,0 +1,7 @@
+parameters:
+#    gospelcenter_page.example.class: gospelcenter\PageBundle\Example
+
+services:
+#    gospelcenter_page.example:
+#        class: %gospelcenter_page.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]

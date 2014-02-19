@@ -1,0 +1,78 @@
+{% extends "::mobileAdmin.html.twig" %}
+
+{% block stylesheets %}
+	{{ parent() }}
+{% endblock %}
+
+{% block title %}
+    {{ parent() }}
+{% endblock %}
+
+{% block headerLeft%}<a id="back" class="left" href="{{ path('gospelcenterAdmin_persons', {'center': center.ref}) }}"></a>{% endblock %}
+{% block headerCenter %}Add a contact{% endblock %}
+{% block headerRight %}{% endblock %}
+
+{% block body %}
+    
+    <form action="{{ path('gospelcenterAdmin_persons_edit', {'center': center.ref, 'person': person.id}) }}" method="post" {{ form_enctype(form) }}>
+        
+        {{ form_errors(form) }}
+        
+        <fieldset class="block">
+            {{ form_widget(form.title, {'attr': {'placeholder': 'Title'} }) }}
+            {{ form_widget(form.firstname, {'attr': {'placeholder': 'Firstname'} }) }}
+            {{ form_widget(form.lastname, {'attr': {'placeholder': 'Lastname'} }) }}
+        </fieldset>
+        
+        <fieldset class="block">
+            {{ form_widget(form.image.file) }}
+        </fieldset>
+        
+        <fieldset class="block">
+            {{ form_widget(form.privatePhone, {'attr': {'placeholder': 'Private phone'} }) }}
+            {{ form_widget(form.mobilePhone, {'attr': {'placeholder': 'Mobile phone'} }) }}
+        </fieldset>
+        
+        <fieldset class="block">
+            {{ form_widget(form.email, {'attr': {'placeholder': 'Email'} }) }}
+        </fieldset>
+        
+        <fieldset class="block">
+            <fieldset class="line">
+                {{ form_label(form.dateOfBirth, "Birthday") }}
+                {{ form_widget(form.dateOfBirth) }}
+            </fieldset>
+        </fieldset>
+        
+        <fieldset class="block">
+            {{ form_widget(form.languages, {'attr': {'placeholder': 'Select languages'} }) }}
+        </fieldset>
+        
+        <fieldset class="block">
+            {{ form_widget(form.abroad, {'attr': {'data-icon': 'abroad'} }) }}
+            {{ form_widget(form.hasChildren, {'attr': {'data-icon': 'hasChildren'} }) }}
+        </fieldset>
+        
+        <fieldset class="block">
+            {{ form_widget(form.function, {'attr': {'placeholder': 'Function'} }) }}
+        </fieldset>
+        
+        <fieldset class="block">
+            {{ form_widget(form.isSpeaker, {'attr': {'data-icon': 'isSpeaker'} }) }}
+            {{ form_widget(form.isMember, {'attr': {'data-icon': 'isMember'} }) }}
+            {{ form_widget(form.isVisitor, {'attr': {'data-icon': 'isVisitor'} }) }}
+        </fieldset>
+        
+        <fieldset class="block">
+            {{ form_widget(form.notes, {'attr': {'placeholder': 'Notes'} }) }}
+        </fieldset>
+                
+        {{ form_rest(form) }}
+        
+        <section class="tools">
+            <input type="submit" class="buttonRounded" />
+        </section>
+        
+    </form>
+    
+{% endblock %}

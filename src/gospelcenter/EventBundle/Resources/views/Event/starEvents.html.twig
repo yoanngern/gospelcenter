@@ -1,0 +1,7 @@
+{% for event in event_list %}
+    <article>
+        <a href="{{ path('gospelcenterEvents_event', {'event': event.id}) }}">
+            <h1>{{ event.title }}</h1>
+        </a>
+    </article>
+{% endfor %}

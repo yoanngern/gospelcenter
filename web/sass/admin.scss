@@ -1,0 +1,630 @@
+@import 'color';
+@import 'functions';
+@import 'font';
+@import 'size';
+@import 'table';
+@import 'nav';
+
+#container {
+
+    section.tools {
+        display: block;
+        width: 1024px;
+        margin: -60px auto 0px;
+        height: 50px;
+        
+        a {
+            float: right;
+            display: inline-block;
+            height: 30px;
+            color: $red;
+            font-family: $font-bold;
+            text-decoration: none;
+            margin-top: 5px;
+            font-size: 1.5em;
+        }
+    }
+    
+    nav.tools {
+        display: block;
+        width: 960px;
+        margin: -80px auto 30px;
+        height: 50px;
+        
+        input,
+        a {
+            float: right;
+            font-family: $font-regular;
+            font-size: 1em;
+            margin: 10px 0px 10px 10px;
+        }
+    }
+    
+    nav.sorting_nav {
+        display: block;
+        width: 1024px;
+        margin: 30px auto -20px;
+        text-align: right;
+        
+        @include navRounded();
+    }
+    
+    table.main {
+    	max-width: 1024px;
+    	margin: 30px auto 10px;
+    	
+    	tbody tr td &:first-child {
+            padding-left: 5px;
+            font-family: $font-bold;
+        }
+    }
+    
+    form {
+        max-width: 960px;
+    	margin: 30px auto 10px;
+    	
+    	fieldset {
+        	h2 {
+            	font-family: $font-bold;
+            	font-size: 1.2em;
+            	margin-top: 30px;
+            	margin-bottom: 10px;
+        	}
+    	}
+    	
+    	img {
+        	max-width: 960px;
+        	max-height: 30%;
+        	min-height: 150px;
+        	margin: 0 auto;
+        	display: block;
+    	}
+    	
+    	input,
+    	textarea {
+        	display: block;
+        	margin: 10px 0;
+    	}
+    	
+    	fieldset.page {
+        	display: inline-block;
+        	width: 100%;
+    	}
+    	
+    	ul.selectMultiple {
+        	display: block;
+        	background: none;
+    	    border: 1px solid $grayDark;
+    	    @include border-radius (3px);
+    	    max-height: 100px;
+    	    overflow: scroll;
+    	    
+    	    li {
+        	    list-style: none;
+        	    padding: 5px;
+        	    margin: 1px;
+                cursor: pointer;
+        	    
+        	    &:nth-child(even) {
+                    background-color: lighten( $grayLight, 40% );
+                }
+                
+                &.selected {
+                    background: $grayDark;
+                    color: $white;
+                }
+    	    }
+    	}
+    	
+    	div.icon {
+        	height: 40px;
+            width: 40px;
+            cursor: pointer;
+            display: inline-block;
+            margin-left: 10px;
+            margin-right: 10px;
+        	
+        	&#status {
+            	background: url('../images/status_0.svg');
+            	background-size: 100% 100%;
+            	
+            	&.selected {
+                	background: url('../images/status_1.svg');
+                	background-size: 100% 100%;
+            	}
+        	}
+        	
+        	&#best {
+            	background: url('../images/best_0.svg');
+            	background-size: 100% 100%;
+            	
+            	&.selected {
+                	background: url('../images/best_1.svg');
+                	background-size: 100% 100%;
+            	}
+        	}
+        	
+        	&#kids {
+            	background: url('../images/kids_0.svg');
+            	background-size: 100% 100%;
+            	
+            	&.selected {
+                	background: url('../images/kids_1.svg');
+                	background-size: 100% 100%;
+            	}
+        	}
+        	
+        	&#abroad {
+            	background: url('../images/abroad_0.svg');
+            	background-size: 100% 100%;
+            	
+            	&.selected {
+                	background: url('../images/abroad_1.svg');
+                	background-size: 100% 100%;
+            	}
+        	}
+        	
+        	&#hasChildren {
+            	background: url('../images/hasChildren_0.svg');
+            	background-size: 100% 100%;
+            	
+            	&.selected {
+                	background: url('../images/hasChildren_1.svg');
+                	background-size: 100% 100%;
+            	}
+        	}
+        	
+        	&#isSpeaker {
+            	background: url('../images/isSpeaker_0.svg');
+            	background-size: 100% 100%;
+            	
+            	&.selected {
+                	background: url('../images/isSpeaker_1.svg');
+                	background-size: 100% 100%;
+            	}
+        	}
+        	
+        	&#isMember {
+            	background: url('../images/isMember_0.svg');
+            	background-size: 100% 100%;
+            	
+            	&.selected {
+                	background: url('../images/isMember_1.svg');
+                	background-size: 100% 100%;
+            	}
+        	}
+        	
+        	&#isVisitor {
+            	background: url('../images/isVisitor_0.svg');
+            	background-size: 100% 100%;
+            	
+            	&.selected {
+                	background: url('../images/isVisitor_1.svg');
+                	background-size: 100% 100%;
+            	}
+        	}
+        	
+    	}
+
+    	
+    	&.celebration {
+        	
+        	fieldset.page {
+            	margin-top: 40px;
+            	
+            	fieldset.column {
+                	width: 48%;
+                	margin-bottom: 30px;
+                	
+                	&:nth-child(odd) {
+                    	float: left;
+                	}
+                	
+                	&:nth-child(even) {
+                    	float: right;
+                	}
+            	}
+            	
+            	fieldset.full {
+                	width: 100%;
+            	}
+            	
+            	article {
+                	
+                	h1 {
+                    	font-family: $font-bold;
+                	}
+            	}
+        	}
+        	
+        	        	
+        	legend {
+            	font-family: $font-bold;
+        	}
+        	
+        	fieldset > h1 {
+            	font-size: 1.5em;
+            	text-align: center;
+            	font-family: $font-bold;
+            	
+            	input {
+                	display: inline-block;
+                	font-family: $font-bold;
+                	font-size: 0.95em;
+                	padding-top: 0px;
+                	padding-bottom: 0px;
+            	}
+        	}
+        	
+        	time {
+            	
+            	text-align: center;
+            	display: block;
+            	margin-bottom: 30px;
+            	
+            	input {
+                	display: inline-block;
+            	}
+        	}
+        	
+        	h2 {
+            	font-family: $font-bold;
+            	font-size: 1.2em;
+        	}
+        	
+        	#locationSearch,
+        	#speakersSearch {
+            	border: 1px solid $black;
+            	width: 300px;
+            	margin-bottom: 0px;
+            	background: white;
+        	}
+        	
+        	ul.location,
+        	ul.speaker {
+            	width: 311px;
+            	margin-top: -1px;
+            	margin-bottom: 10px;
+            	
+            	li {
+                	list-style: none;
+                	margin: 0px;
+                	border: 1px solid $black;
+                	padding: 5px;
+                	cursor: pointer;
+                	margin-top: -1px;
+            	}
+            	
+            	li:nth-child(even) {
+                    background-color: #ededed;
+                }
+        	}
+        	
+        	article {
+            	
+            	height: 70px;
+            	
+            	span.action {
+                	color: $red;
+                	cursor: pointer;
+                	display: none;
+                	padding-right: 10px;
+            	
+                	&:hover {
+                    	text-decoration: underline;
+                    }
+            	}
+            	
+            	&:hover {
+                	span.action {
+                	    display: inline-block;
+                    }
+            	}
+        	}
+        	
+        	
+    	}
+    	
+    	&.event {
+            
+            overflow: hidden;
+            
+            fieldset.full {
+            	width: 100%;
+        	}
+        	
+        	fieldset.column {
+            	width: 48%;
+            	margin-bottom: 30px;
+            	
+            	&:nth-child(odd) {
+                	float: left;
+            	}
+            	
+            	&:nth-child(even) {
+                	float: right;
+            	}
+        	}
+            
+            h1 {
+                
+                div {
+                    position: relative;
+                    top: 15px;
+                }
+                
+                input {
+                    width: 90%;
+                    margin: 0 auto;
+                    font-size: 1.4em;
+                    font-family: $font-regular;
+                    display: inline-block;
+                    height: 40px;
+                }
+            }
+            
+            h2 {
+                font-family: $font-bold;
+                margin-top: 30px;
+                margin-bottom: 10px;
+            }
+            
+            fieldset.picture,
+            fieldset.cover {
+                
+                h2 {
+                    text-align: center;
+                }
+                
+                #addImage {
+                    margin: 0 auto;
+                }
+            }
+            
+            fieldset.txt {
+                float: left;
+                width: 65%;
+                
+                textarea.intro {
+                    width: 95%;
+                    font-family: $font-bold;
+                }
+                
+                textarea.full {
+                    width: 95%;
+                    
+                }
+            }
+            
+            fieldset.details {
+                float: right;
+                width: 32%;
+            }
+    	}
+    	
+    	&.page {
+        	
+        	select {
+            	display: block;
+            	margin-bottom: 10px;
+        	}
+        	
+        	legend {
+            	font-family: $font-bold;
+            	font-size: 1.4em;
+            	text-align: center;
+            	margin-top: 30px;
+            	margin-bottom: 10px;
+        	}
+        	
+        	#slides {
+            	
+            	article.slide {
+                	display: block;
+                	position: relative;
+                	margin-bottom: 20px;
+                	
+                	&:first-of-type {
+                    	div#up {
+                        	display: none;
+                    	}
+                	}
+                	
+                	&:last-of-type {
+                    	div#down {
+                        	display: none;
+                    	}
+                	}
+                	
+                	div.arrow {
+                    	display: inline-block;
+                    	width: 7%;
+                    	margin-bottom: 20px;
+                    	
+                    	div#up {
+                        	width: 40px;
+                        	height: 40px;
+                        	background: url('../images/up.svg');
+                        	background-size: contain;
+                        	margin-bottom: 20px;
+                        	cursor: pointer;
+                    	}
+                    	
+                    	div#down {
+                        	width: 40px;
+                        	height: 40px;
+                        	background: url('../images/down.svg');
+                        	background-size: contain;
+                        	cursor: pointer;
+                    	}
+                	}
+                	
+                	
+                	
+                	section {
+                    	border: 1px solid $black;
+                    	@include border-radius (6px);
+                    	overflow: hidden;
+                    	padding-right: 10px;
+                    	width: 90%;
+                    	display: inline-block;
+                    	
+                    	img {
+                        	float: left;
+                        	margin-right: 10px;
+                        	width: 200px;
+                        	height: auto;
+                        	min-height: initial;
+                    	}
+                    	
+                    	h1 {
+                        	padding-top: 10px;
+                        	font-family: $font-bold;
+                        	padding-bottom: 5px;
+                    	}
+                    	
+                    	p {
+                        	padding-bottom: 10px;
+                    	}
+                	}
+                	
+            	}
+        	}
+        	
+    	}
+    	
+    	&.image,
+    	&.slide {
+        	
+        	#addImage {
+            	margin: 0 auto 20px;
+        	}
+        	
+    	}
+    	
+    	&.person {
+    	    
+    	    & > fieldset {
+        	    width: 60%;
+        	    float: left;
+        	    
+        	    label {
+            	    display: inline-block;
+            	    width: 19%;
+            	    text-align: right;
+            	    margin: 0px;
+            	    margin-right: 1%;
+        	    }
+        	    
+        	    input,
+        	    textarea {
+            	    display: inline-block;
+            	    background: transparent;
+            	    border: none;
+            	    width: 75%;
+            	    margin: 0px;
+                    margin-bottom: 15px;
+                    font-family: $font-light;
+        	    }
+        	    
+        	    textarea {
+            	    float: right;
+            	    min-height: 200px;
+            	    width: 77%;
+        	    }
+    	    }
+    	    
+    	    fieldset.details {
+        	    
+        	    fieldset.languages {
+            	    margin-left: 21%;
+            	    margin-top: 20px;
+            	    
+            	    label {
+                	    display: block;
+                	    font-family: $font-bold;
+            	    }    
+        	    }
+        	    
+        	    fieldset.checkbox {
+            	    margin-left: 21%;
+            	    margin-top: 20px;
+            	    margin-bottom: 20px;
+                }
+    	    }
+    	    
+    	    fieldset.location {
+        	    
+        	    input {
+            	    margin-left: 21%;
+            	    margin-bottom: 0px;
+            	    
+            	    &:first-of-type {
+                	    margin-left: 0px;
+            	    }
+            	    
+            	    &#gospelcenter_peoplebundle_person_location_postalCode {
+                	    width: 20%;
+            	    }
+            	    
+            	    &#gospelcenter_peoplebundle_person_location_city {
+                	    width: 35%;
+                	    margin-left: 0px;
+            	    }
+            	    
+        	    }
+    	    }
+    	    
+    	    
+    	    fieldset.image {
+        	    float: right;
+        	    width: 39%;
+        	    
+        	    div#addImage {
+            	    display: block;
+                    width: 300px;
+                    border: 2px dashed #878787;
+                    
+                    .iconImg {
+                	    display: block;
+                        margin: 20px auto 10px;
+                        width: 64px;
+                        background-image: url("../images/add_image.svg");
+                        background-size: 100%;
+            	    }
+            	    
+            	    .txt {
+                	    width: 100%;
+            	    }
+        	    }
+    	    }
+    	    
+    	    
+    	    fieldset.header {
+    	        
+    	        padding-left: 12%;
+    	        width: 48%;
+    	        margin-left: 9px;
+    	        
+                input {
+            	    display: inline-block;
+            	    font-family: $font-regular;
+            	    padding: 0px;
+            	    width: 100%;
+            	    
+            	    &.resize {
+                	    width: 25%;
+            	    }
+                }
+    	    }
+    	    
+    	    fieldset.notes {
+        	    margin-top: 30px;
+        	    overflow: auto;
+        	    padding-bottom: 70px;
+    	    }
+    	    
+    	    
+    	}
+    }
+}

@@ -1,0 +1,262 @@
+##########################
+###### Celebrations ######
+##########################
+
+# Celebrations
+gospelcenterAdmin_celebrations:
+    path:       /celebrations
+    defaults:   { _controller: gospelcenterCelebrationBundle:AdminCelebration:list }
+
+# Add a celebration
+gospelcenterAdmin_celebrations_add:
+    path:       /celebrations/add
+    defaults:   { _controller: gospelcenterCelebrationBundle:AdminCelebration:add }
+
+# Edit a celebration
+gospelcenterAdmin_celebrations_edit:
+    path:       /celebrations/edit/{celebration}
+    defaults:   { _controller: gospelcenterCelebrationBundle:AdminCelebration:edit }
+    requirements:
+        celebration: \d+
+
+# Speakers
+gospelcenterAdmin_speakers:
+    path:       /speakers
+    defaults:   { _controller: gospelcenterCelebrationBundle:AdminSpeaker:list }
+
+# All speakers
+gospelcenterAdmin_speakers_all:
+    path:       /speakers/all
+    defaults:   { _controller: gospelcenterCelebrationBundle:AdminSpeaker:all }
+
+# Add a speaker
+gospelcenterAdmin_speakers_add:
+    path:       /speakers/add
+    defaults:   { _controller: gospelcenterCelebrationBundle:AdminSpeaker:add }
+
+# Edit a speaker
+gospelcenterAdmin_speakers_edit:
+    path:       /speakers/edit/{speaker}
+    defaults:   { _controller: gospelcenterCelebrationBundle:AdminSpeaker:edit }
+    requirements:
+        speaker: \d+
+        
+# Speakers in JSON
+gospelcenterAdmin_speakers_json:
+    path:       /celebrations/speakers.json
+    defaults:   { _controller: gospelcenterCelebrationBundle:AdminSpeaker:json }
+
+
+# Speaker in JSON
+gospelcenterAdmin_speakers_singleJSON:
+    path:       /speakers/json/{speaker}
+    defaults:   { _controller: gospelcenterCelebrationBundle:AdminSpeaker:singleJSON }
+
+
+##########################
+######### People #########
+##########################
+
+# Persons
+gospelcenterAdmin_persons:
+    path:       /persons
+    defaults:   { _controller: gospelcenterPeopleBundle:AdminPerson:list }
+    
+# All persons
+gospelcenterAdmin_persons_all:
+    path:       /persons/all
+    defaults:   { _controller: gospelcenterPeopleBundle:AdminPerson:all }
+
+# Add a person
+gospelcenterAdmin_persons_add:
+    path:       /persons/add
+    defaults:   { _controller: gospelcenterPeopleBundle:AdminPerson:add }
+
+# Edit a person
+gospelcenterAdmin_persons_edit:
+    path:       /persons/edit/{person}
+    defaults:   { _controller: gospelcenterPeopleBundle:AdminPerson:edit }
+    requirements:
+        person: \d+
+
+# Member
+gospelcenterAdmin_members:
+    path:       /members
+    defaults:   { _controller: gospelcenterCenterBundle:AdminMember:list }
+
+# Add a member
+gospelcenterAdmin_members_add:
+    path:       /members/add
+    defaults:   { _controller: gospelcenterCenterBundle:AdminMember:add }
+
+# Edit a member
+gospelcenterAdmin_members_edit:
+    path:       /members/edit/{member}
+    defaults:   { _controller: gospelcenterCenterBundle:AdminMember:edit }
+    requirements:
+        member: \d+
+        
+# Visitor
+gospelcenterAdmin_visitors:
+    path:       /visitors
+    defaults:   { _controller: gospelcenterCenterBundle:AdminVisitor:list }
+
+# Add a visitor
+gospelcenterAdmin_visitors_add:
+    path:       /visitors/add
+    defaults:   { _controller: gospelcenterCenterBundle:AdminVisitor:add }
+
+# Edit a visitor
+gospelcenterAdmin_visitors_edit:
+    path:       /visitors/edit/{visitor}
+    defaults:   { _controller: gospelcenterCenterBundle:AdminVisitor:edit }
+    requirements:
+        visitor: \d+
+
+
+
+
+##########################
+######### Events #########
+##########################
+
+# Events
+gospelcenterAdmin_events:
+    path:       /events
+    defaults:   { _controller: gospelcenterEventBundle:Admin:list }
+
+# Add an event
+gospelcenterAdmin_events_add:
+    path:       /events/add
+    defaults:   { _controller: gospelcenterEventBundle:Admin:add }
+
+# Edit an event
+gospelcenterAdmin_events_edit:
+    path:       /events/edit/{event}
+    defaults:   { _controller: gospelcenterEventBundle:Admin:edit }
+    requirements:
+        event: \d+
+
+# Publish an event
+gospelcenterAdmin_events_publish:
+    path:       /events/publish/{event}
+    defaults:   { _controller: gospelcenterEventBundle:Admin:publish }
+    requirements:
+        event: \d+
+
+# Delete an event
+gospelcenterAdmin_events_delete:
+    path:       /events/delete/{event}
+    defaults:   { _controller: gospelcenterEventBundle:Admin:delete }
+    requirements:
+        event: \d+
+
+
+
+
+
+##########################
+########## Pages #########
+##########################
+
+# Pages
+gospelcenterAdmin_pages:
+    path:       /pages
+    defaults:   { _controller: gospelcenterPageBundle:AdminPage:list }
+    
+# Add a page
+gospelcenterAdmin_pages_add:
+    path:       /pages/add
+    defaults:   { _controller: gospelcenterPageBundle:AdminPage:add }
+
+# Edit a page
+gospelcenterAdmin_pages_edit:
+    path:       /pages/edit/{page}
+    defaults:   { _controller: gospelcenterPageBundle:AdminPage:edit }
+    requirements:
+        page: \d+
+        
+# Slides
+gospelcenterAdmin_slides:
+    path:       /slides
+    defaults:   { _controller: gospelcenterPageBundle:AdminSlide:list }
+    
+# Add a slide
+gospelcenterAdmin_slides_add:
+    path:       /slides/add
+    defaults:   { _controller: gospelcenterPageBundle:AdminSlide:add }
+
+# Edit a slide
+gospelcenterAdmin_slides_edit:
+    path:       /slides/edit/{slide}
+    defaults:   { _controller: gospelcenterPageBundle:AdminSlide:edit }
+    requirements:
+        slide: \d+
+
+##########################
+######### Images #########
+##########################
+
+# Images
+gospelcenterAdmin_images:
+    path:       /images
+    defaults:   { _controller: gospelcenterImageBundle:Admin:list }
+    
+# All images
+gospelcenterAdmin_images_all:
+    path:       /images/all
+    defaults:   { _controller: gospelcenterImageBundle:Admin:all }
+
+# Add an image
+gospelcenterAdmin_images_add:
+    path:       /images/add
+    defaults:   { _controller: gospelcenterImageBundle:Admin:add }
+
+# Edit an image
+gospelcenterAdmin_images_edit:
+    path:       /images/edit/{image}
+    defaults:   { _controller: gospelcenterImageBundle:Admin:edit }
+    requirements:
+        image: \d+
+        
+# Delete a location
+gospelcenterAdmin_images_delete:
+    path:       /images/delete/{image}
+    defaults:   { _controller: gospelcenterImageBundle:Admin:delete }
+    requirements:
+        image: \d+
+
+##########################
+####### Locations ########
+##########################
+
+# Locations
+gospelcenterAdmin_locations:
+    path:       /locations
+    defaults:   { _controller: gospelcenterLocationBundle:Admin:list }
+
+# Add a location
+gospelcenterAdmin_locations_add:
+    path:       /locations/add
+    defaults:   { _controller: gospelcenterLocationBundle:Admin:add }
+
+# Edit a location
+gospelcenterAdmin_locations_edit:
+    path:       /locations/edit/{location}
+    defaults:   { _controller: gospelcenterLocationBundle:Admin:edit }
+    requirements:
+        location: \d+
+
+# Delete a location
+gospelcenterAdmin_locations_delete:
+    path:       /locations/delete/{location}
+    defaults:   { _controller: gospelcenterLocationBundle:Admin:delete }
+    requirements:
+        location: \d+
+
+# Location in JSON
+gospelcenterAdmin_locations_singleJSON:
+    path:       /locations/json/{location}
+    defaults:   { _controller: gospelcenterLocationBundle:Admin:singleJSON }
+    requirements:
+        location: \d+

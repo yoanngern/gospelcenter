@@ -1,0 +1,31 @@
+gospelcenterAdminGlobal:
+    resource: "@gospelcenterAdminBundle/Resources/config/routingGlobal.yml"
+    prefix:   /admin
+    host: "gospelcenter.local"
+
+gospelcenterAdmin:
+    resource: "@gospelcenterAdminBundle/Resources/config/routing.yml"
+    prefix:   /admin
+    host: "{center}.gospelcenter.local"
+    requirements:
+        center: lausanne|annecy|montreux|jura
+
+gospelcenterEvents:
+    resource: "@gospelcenterEventBundle/Resources/config/routing.yml"
+    prefix:   /events
+    host: "{center}.gospelcenter.local"
+    requirements:
+        center: lausanne|annecy|montreux|jura
+
+gospelcenterPage:
+    resource: "@gospelcenterPageBundle/Resources/config/routing.yml"
+    prefix:   /
+    host: "{center}.gospelcenter.local"
+    requirements:
+        center: lausanne|annecy|montreux|jura
+        
+gospelcenterPageGlobal:
+    resource: "@gospelcenterPageBundle/Resources/config/routingGlobal.yml"
+    prefix:   /
+    host: "gospelcenter.local"
+    

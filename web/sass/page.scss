@@ -1,0 +1,174 @@
+@import 'color';
+@import 'functions';
+@import 'font';
+@import 'size';
+
+html.js {
+    
+    #page {
+        
+        & > h1 {
+            display: none;
+        }
+        
+        & > h2 {
+            display: none;
+        }
+        
+        article.slide {
+            display: none;
+            
+            section {
+                display: none;
+            }
+        }
+    }
+}
+
+#container {
+    margin: 0px;
+    padding: 0px;
+    height: 100%;
+    
+    
+    #page {
+        padding: 0px;
+        min-height: 650px;
+        background: transparent;
+        width: 100%;
+        overflow-x: hidden;
+        
+        div.arrow {
+            width: 30%;
+            position: absolute;
+            z-index: 100;
+            top: 32%;
+            height: 54%;
+            cursor: pointer;
+            
+            &#right {
+                right: 0px;
+                
+                &:hover {
+                    background: url('../images/right.svg');
+                    background-repeat: no-repeat;
+                    background-position: right center;
+                } 
+            }
+            
+            &#left {
+                left: 0px;
+                
+                &:hover {
+                    background: url('../images/left.svg');
+                    background-repeat: no-repeat;
+                    background-position: left center;
+                }
+            }
+        }
+        
+        & > h1 {
+            position: absolute;
+            top: 6%;
+            width: 100%;
+            text-align: center;
+            font-size: 2em;
+            margin: 0px;
+            
+            font-weight: 100;
+    		font-family: $font-light;
+        }
+        
+        &.simple {
+            
+            & > h2 {
+                position: absolute;
+                top: 18%;
+                width: 100%;
+                text-align: center;
+                margin: 0px;
+                font-size: 1.5em;
+                font-family: $font-light;
+                text-transform: uppercase;
+            }
+            
+            nav {
+                position: absolute;
+                top: 87%;
+                width: 100%;
+                
+                ul {
+                    text-align: center;
+                    
+                    li {
+                        border: 1px solid $red;
+                        margin-left: 5px;
+                        margin-right: 5px;
+                        border-radius: 6px;
+                        display: inline-block;
+                        width: 10px;
+                        height: 10px;
+                        cursor: pointer;
+                        
+                        &:hover {
+                            background: $red;
+                        }
+                        
+                        &.current {
+                            background: $red;
+                        }
+                    }
+                }
+            }
+            
+            article.slide {
+                position: absolute;
+                top: 32%;
+                width: 100%;
+                color: $white;
+                height: 54%;
+                background-repeat: no-repeat;
+                background-size: cover;
+                background-position: center;
+                
+                section {
+                    margin: 0 auto;
+                    width: 40%;
+                    
+                    h1 {
+                        font-size: 1.6em;
+                    }
+                    
+                    p {
+                        font-size: 1.2em;
+                    }
+                    
+                    p.link {
+                        text-align: center;
+                        margin-top: 20px;
+                        
+                        a {
+                            color: $white;
+                            text-align: center;
+                            text-decoration: none;
+                            border: 1px solid $white;
+                            cursor: pointer;
+                            padding: 6px 25px;
+                            @include border-radius (3px);
+                            
+                            &:hover {
+                                background: $white;
+                                color: $grayDark;
+                            }
+                        }
+                    }
+                }
+                
+                
+            }
+        }
+        
+        
+    }
+}
+

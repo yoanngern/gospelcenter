@@ -1,0 +1,85 @@
+@import 'color';
+@import 'functions';
+@import 'font';
+@import 'size';
+
+form {
+    input,
+    textarea {
+        resize: none;
+		white-space: normal;
+		word-wrap: normal;
+		font-family: $font-light;
+		background-color: transparent;
+		@include border-radius (3px);
+		outline: none;
+		border: 1px solid $grayLight;
+		min-height: 25px;
+		padding: 2px 4px 2px 5px;
+		font-size: 1.1em;
+		
+		&.writeOn {
+    		background-color: transparent;
+    		border: none;
+    		margin: 1px;
+    		color: $black;
+		}
+		
+		&.writeOff {
+    		background-color: white;
+    		border: 1px solid $grayLight;
+    		margin: 0px;
+    		color: $grayLight;
+		}
+		
+		&[type=submit] {
+    		background-color: transparent;
+    		cursor: pointer;
+    		border: 1px solid $red;
+    		font-family: $font-regular;
+    		color: $red;
+		}
+		
+		&[type=file] {
+    		background-color: transparent;
+    		cursor: pointer;
+    		border: none;
+    		outline: none;
+		}
+    }
+    
+    #addImage {
+		display: block;
+		width: 300px;
+		border: 2px dashed $grayLight;
+		cursor: pointer;
+		
+		&.hover {
+    		
+    		border-color: $red;
+    		color: $red;
+    		
+    		.iconImg {
+        		background-image: url('../images/add_image_hover.svg');
+    		}
+		}
+		
+		.iconImg {
+    		display: block;
+    		margin: 20px auto 10px;
+    		height: 64px;
+    		width: 64px;
+    		background-image: url('../images/add_image.svg');
+            background-size: 100%;
+		}
+		
+		.txt {
+    		text-align: center;
+    		margin-bottom: 20px;
+		}
+	}
+}
+
+
+
+

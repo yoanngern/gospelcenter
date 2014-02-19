@@ -1,0 +1,7 @@
+parameters:
+#    gospelcenter_image.example.class: gospelcenter\ImageBundle\Example
+
+services:
+#    gospelcenter_image.example:
+#        class: %gospelcenter_image.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]

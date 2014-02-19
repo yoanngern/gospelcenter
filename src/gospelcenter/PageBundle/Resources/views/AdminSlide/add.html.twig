@@ -1,0 +1,37 @@
+{% extends "::admin.html.twig" %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script type="text/javascript" src="{{ asset('js/form-min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('js/addImage-min.js') }}"></script>
+{% endblock %}
+
+{% block stylesheets %}
+	{{ parent() }}
+	<link rel="stylesheet" href="{{ asset('css/admin.css') }}" type="text/css" />
+	<link rel="stylesheet" href="{{ asset('css/form.css') }}" type="text/css" />
+{% endblock %}
+
+{% block title %}
+    {{ parent() }} - Add a slide
+{% endblock %}
+
+{% block adminBody %}
+    <h1>Admin - Add a slide</h1>
+    
+    <form class="slide" action="{{ path('gospelcenterAdmin_slides_add', {'center': center.ref}) }}" method="post" {{ form_enctype(form) }}>
+        <nav class="tools">
+    		<input type="submit" class="buttonRounded" />
+    	</nav>
+    	
+    	{{ form_widget(form.image.file) }}
+        {{ form_widget(form.title, {'attr': {'data-label': 'Title'} }) }}
+        {{ form_widget(form.text, {'attr': {'data-label': 'Text'} }) }}
+        {{ form_widget(form.link, {'attr': {'data-label': 'Link'} }) }}
+        {{ form_widget(form.labelLink, {'attr': {'placeholder': 'Link label'} }) }}
+        {{ form_widget(form.page) }}
+        {{ form_rest(form) }}
+    </form>
+    
+    
+{% endblock %}

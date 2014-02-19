@@ -1,0 +1,43 @@
+{% extends "::admin.html.twig" %}
+
+{% block stylesheets %}
+	{{ parent() }}
+	<link rel="stylesheet" href="{{ asset('css/adminEvents.css') }}" type="text/css" />
+	<link rel="stylesheet" href="{{ asset('css/admin.css') }}" type="text/css" />
+	<link rel="stylesheet" href="{{ asset('css/form.css') }}" type="text/css" />
+{% endblock %}
+
+{% block title %}
+    {{ parent() }} - Events
+{% endblock %}
+
+{% block adminBody %}
+    <h1>Admin - Events</h1>
+    
+    <section class="tools">
+        <a href="{{ path('gospelcenterAdmin_events_add', {'center': center.ref}) }}">Add an event</a>
+    </section>
+    
+    {% for event in events %}
+        <article class="events">
+        	<section class="picture">
+        		<img src="{{ asset(event.picture.webPath) }}" alt="{{ event.picture.alt }}" />
+        	</section>
+            <section class="detail">
+	            <h1>{{ event.title }}</h1>
+	            <article class="desc">
+	                <time>from {{ event.startingDate|date('d F Y') }}</time>
+                    <time>to {{ event.endingDate|date('d F Y') }}</time>
+                    <p>{{ event.location.name }}</p>
+                </article>
+	            <nav>
+	                <a href="{{ path('gospelcenterAdmin_events_edit', {'event': event.id, 'center': center.ref}) }}" class="buttonRounded">Edit</a>
+	                <a href="{{ path('gospelcenterAdmin_events_publish', {'event': event.id, 'center': center.ref}) }}" class="buttonRounded">Publish</a>
+	                <a href="{{ path('gospelcenterAdmin_events_delete', {'event': event.id, 'center': center.ref}) }}" class="buttonRounded">Delete</a>
+	            </nav>
+            </section>
+        </article>
+    {% else %}
+        <span class="empty">There are no events to come.</span>
+    {% endfor %}
+{% endblock %}

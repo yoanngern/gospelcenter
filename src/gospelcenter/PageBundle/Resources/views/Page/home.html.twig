@@ -1,0 +1,19 @@
+{% extends "::local.html.twig" %}
+
+{% block stylesheets %}
+	{{ parent() }}
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+{% endblock %}
+
+{% block title %}
+    {{ parent() }}
+{% endblock %}
+
+{% block body %}
+        
+    <img src="images/logo.svg" alt="Gospel Center {{ center.name }}" />
+        
+{% endblock %}

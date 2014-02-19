@@ -1,0 +1,24 @@
+{% extends "::mobileLocal.html.twig" %}
+
+{% block stylesheets %}
+	{{ parent() }}
+	<link rel="stylesheet" href="{{ asset('css/events.css') }}" type="text/css" />
+{% endblock %}
+
+{% block title %}
+    {{ parent() }}
+{% endblock %}
+
+{% block headerCenter %}Our upcoming events{% endblock %}
+
+{% block body %}
+    <nav class="sub_nav">
+    	<ul>
+    		<li><a href="{{ path('gospelcenterEvents_list', {'center': center.ref}) }}" class="current">Upcoming events</a></li>
+    		<li><a href="">Agenda</a></li>
+    	</ul>
+    </nav>
+    
+    {% block gospelcenterEvents_body %}
+    {% endblock %}
+{% endblock %}

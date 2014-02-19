@@ -1,0 +1,220 @@
+@import 'color';
+@import 'functions';
+@import 'font';
+@import 'size';
+
+#container article.event {
+	max-width: 1024px;
+	margin: 40px auto 0px;
+	height: 100%;
+	overflow: hidden;
+	
+	@media only screen and (min-width: $L) {
+        & {
+            max-width: 1100px;
+        }  
+    }
+    
+    @media only screen and (min-width: $XL) {
+        & {
+            max-width: 1150px;
+        }
+    }
+    
+    @media only screen and (min-width: $XXL) {
+        & {
+            max-width: 1300px;
+        }
+    }
+    
+    .labelOn {
+        color: lighten( $grayLight, 30% ) !important;
+    }
+	
+	h1,
+	input[name=title],
+	#gospelcenter_eventsbundle_event_title {
+		font-size: 2em;
+		border: none;
+		outline: none;
+		font-weight: 100;
+		margin: 0px 0px 40px;
+		display: block;
+		color: $black;
+		text-align: center;
+		width: 100%;
+		resize: none;
+		white-space: normal;
+		word-wrap: normal;
+		font-family: $font-light;
+		background-color: transparent;
+	}
+	
+	header {
+		width: auto;
+		overflow: hidden;
+		height: 300px;
+		position: absolute;
+		left: 0px;
+		width: 100%;
+		z-index: 10;
+		
+		@media only screen and (min-width: $L) {
+    		& {
+    			height: 350px;
+    		}
+    	}
+    	
+    	@media only screen and (min-width: $XL) {
+    		& {
+    			height: 400px;
+    		}
+    	}
+    	
+    	@media only screen and (min-width: $XXL) {
+    		& {
+    			height: 515px;
+    		}
+    	}
+		
+		img {
+			width: 100%;
+			min-width: 1100px;
+			left: 0px;
+			height: auto;
+		}
+	}
+	
+	section {
+    	margin-top: 330px;
+		display: block;
+		
+		@media only screen and (min-width: $L) {
+    		& {
+    			margin-top: 380px;
+    		}
+    	}
+    	
+    	@media only screen and (min-width: $XL) {
+    		& {
+    			margin-top: 430px;
+    		}
+    	}
+    	
+    	@media only screen and (min-width: $XXL) {
+    		& {
+    			margin-top: 545px;
+    		}
+    	}
+	}
+	
+	section.txt {
+		float: left;
+		width: 65%;
+		
+		sumary,
+		textarea[name=intro_text],
+		#gospelcenter_eventsbundle_event_introText {
+			font-weight: 100;
+			font-family: $font-bold;
+			text-align: justify;
+			display: block;
+			margin-bottom: 15px;
+			width: 100%;
+			border: none;
+			outline: none;
+			resize: none;
+			white-space: normal;
+			word-wrap: normal;
+			background-color: transparent;
+		}
+		
+		p,
+		textarea[name=full_text],
+		#gospelcenter_eventsbundle_event_text {
+			text-align: justify;
+			display: block;
+			width: 100%;
+			border: none;
+			outline: none;
+			margin-bottom: 0px;
+			resize: none;
+			white-space: normal;
+			word-wrap: normal;
+			background-color: transparent;
+			padding-bottom: 20px;
+		}
+	}
+	
+	section.details {
+    	float: right;
+    	width: 32%;
+    	border: 2px solid $red;
+    	@include border-radius (5px);
+    	padding-bottom: 10px;
+    	
+    	time {
+		    display: block;
+		    text-align: center;
+		    width: 100%;
+		    margin: 0px;
+		    width: auto;
+		    padding: 5px;
+		    font-size: 1.6em;
+		    background-color: $red;
+		    color: $white;
+		
+    		select {
+        		background: transparent;
+                line-height: 1;
+                border: 0;
+                border-radius: 0;
+                height: 34px;
+                -webkit-appearance: none;
+                outline: none;
+                color: $white;
+                font-size: 1em;
+                font-weight: 100;
+    		}
+        }
+        
+        h1,
+        input[name=locationName],
+        #gospelcenter_eventsbundle_event_location_name {
+            font-size: 1.5em;
+            padding: 10px 4%;
+            margin: 0px;
+            text-align: left;
+            background-color: transparent;
+            width: 100%;
+			border: none;
+			outline: none;
+			margin-bottom: 0px;
+			resize: none;
+			white-space: normal;
+			word-wrap: normal;
+        }
+        
+        p,
+        input {
+            padding: 0 4%;
+            background-color: transparent;
+            width: 100%;
+			border: none;
+			outline: none;
+			margin-bottom: 0px;
+			resize: none;
+			white-space: normal;
+			word-wrap: normal;
+        }
+	}
+	
+	nav {
+		text-align: right;
+		margin-top: 10px;
+		display: block;
+		float: right;
+	}
+	
+	
+}

@@ -1,0 +1,90 @@
+{% extends "::admin.html.twig" %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script type="text/javascript" src="{{ asset('js/addCelebration-min.js') }}"></script>
+{% endblock %}
+
+{% block stylesheets %}
+	{{ parent() }}
+	<link rel="stylesheet" href="{{ asset('css/admin.css') }}" type="text/css" />
+	<link rel="stylesheet" href="{{ asset('css/form.css') }}" type="text/css" />
+{% endblock %}
+
+{% block title %}
+    {{ parent() }} - Edit a celebration
+{% endblock %}
+
+{% block adminBody %}
+    <h1>Admin - Edit a celebration</h1>
+    
+    <form class="celebration" action="{{ path('gospelcenterAdmin_celebrations_edit', {'center': center.ref, 'celebration': celebration.id}) }}" method="post" {{ form_enctype(form) }}>
+        
+        <nav class="tools">
+    		<input type="submit" class="buttonRounded" />
+    	</nav>
+        
+    	{{ form_errors(form) }}
+    	<fieldset class="header">
+        	<h1>Celebration of {{ form_widget(form.date, {'attr': {'data-structure': 'day/month/year', 'class': 'resize'} }) }}</h1>
+            <time>from {{ form_widget(form.startingTime) }} to {{ form_widget(form.endingTime) }}</time>
+    	</fieldset>
+    	
+        <fieldset class="page">
+            <legend>General</legend>
+            
+            <fieldset class="full">
+                <fieldset class="column">
+                    <h2>Speaker</h2>
+                    {{ form_widget(form.existingSpeakers) }}
+                </fieldset>
+                
+                <fieldset class="column image">
+                    <h2>Image</h2>
+                    {{ form_widget(form.image.file) }}
+                </fieldset>
+            </fieldset>
+            
+            <fieldset class="full">
+                <fieldset class="column">
+                    <h2>Status</h2>
+                    {{ form_widget(form.status, {'attr': {'data-icon': 'status'} }) }}
+                    {{ form_widget(form.bestOf, {'attr': {'data-icon': 'best'} }) }}
+                    {{ form_widget(form.kidsProgram, {'attr': {'data-icon': 'kids'} }) }}
+                </fieldset>
+                
+                <fieldset class="column">
+                    <h2>Location</h2>
+                    {{ form_widget(form.location) }}
+                </fieldset>
+            </fieldset>
+            
+            
+            <fieldset class="full">
+                <h2>Preaching</h2>
+                
+                {{ form_widget(form.title, {'attr': {'data-label': 'Title'} }) }}
+                {{ form_widget(form.description, {'attr': {'data-label': 'Description'} }, {'attr': {'class': 'elastic'} }) }}
+            </fieldset>
+            
+            
+        </fieldset>
+        
+        <fieldset class="page">
+            <legend>Staff</legend>
+        </fieldset>
+        
+        <fieldset class="page">
+            <legend>Media</legend>
+            {{ form_widget(form.video) }}
+            {{ form_widget(form.audio) }}
+            
+            {{ form_widget(form.tags) }}
+        </fieldset>
+        
+        {{ form_rest(form) }}
+    
+    </form>
+    
+    
+{% endblock %}

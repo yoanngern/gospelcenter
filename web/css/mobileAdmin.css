@@ -1,0 +1,372 @@
+html body > header {
+  background: #313131;
+  color: #878787;
+  border-bottom: none; }
+  html body > header a.left#get_ruban {
+    background-image: url("../images/get_ruban_admin.svg"); }
+  html body > header a.left#back {
+    background-image: url("../images/back_admin.svg"); }
+  html body > header a.right#get_nav {
+    background-image: url("../images/get_nav_admin.svg"); }
+    html body > header a.right#get_nav.selected {
+      background-image: url("../images/get_nav_admin_inversed.svg"); }
+
+.no-svg #get_ruban {
+  background-image: url("../images/get_ruban_admin.png") !important;
+  background-size: 46px !important; }
+.no-svg #get_nav {
+  background-image: url("../images/get_nav_admin.png") !important;
+  background-size: 46px !important; }
+.no-svg #back {
+  background-image: url("../images/back_admin.png") !important;
+  background-size: 46px !important; }
+.no-svg div.arrow {
+  background-image: url("../images/select.png") !important;
+  background-size: 46px !important; }
+.no-svg div.status {
+  background-image: url("../images/selected.png") !important;
+  background-size: 46px !important; }
+.no-svg #status {
+  background: url("../images/status_0.png") !important;
+  background-size: 46px !important; }
+  .no-svg #status.selected {
+    background: url("../images/status_1.png") !important;
+    background-size: 46px !important; }
+.no-svg #best {
+  background: url("../images/best_0.png") !important;
+  background-size: 46px !important; }
+  .no-svg #best.selected {
+    background: url("../images/best_1.png") !important;
+    background-size: 46px !important; }
+.no-svg #kids {
+  background: url("../images/kids_0.png") !important;
+  background-size: 46px !important; }
+  .no-svg #kids.selected {
+    background: url("../images/kids_1.png") !important;
+    background-size: 46px !important; }
+.no-svg #abroad {
+  background: url("../images/abroad_0.png") !important;
+  background-size: 46px !important; }
+  .no-svg #abroad.selected {
+    background: url("../images/abroad_1.png") !important;
+    background-size: 46px !important; }
+.no-svg #hasChildren {
+  background: url("../images/hasChildren_0.png") !important;
+  background-size: 46px !important; }
+  .no-svg #hasChildren.selected {
+    background: url("../images/hasChildren_1.png") !important;
+    background-size: 46px !important; }
+.no-svg #isSpeaker {
+  background: url("../images/isSpeaker_0.png") !important;
+  background-size: 46px !important; }
+  .no-svg #isSpeaker.selected {
+    background: url("../images/isSpeaker_1.png") !important;
+    background-size: 46px !important; }
+.no-svg #isMember {
+  background: url("../images/isMember_0.png") !important;
+  background-size: 46px !important; }
+  .no-svg #isMember.selected {
+    background: url("../images/isMember_1.png") !important;
+    background-size: 46px !important; }
+.no-svg #isVisitor {
+  background: url("../images/isVisitor_0.png") !important;
+  background-size: 46px !important; }
+  .no-svg #isVisitor.selected {
+    background: url("../images/isVisitor_1.png") !important;
+    background-size: 46px !important; }
+
+#page {
+  background: #ebebeb; }
+
+html body #nav {
+  background: #313131; }
+  html body #nav ul {
+    background-color: #313131; }
+    html body #nav ul li a {
+      color: #878787; }
+
+section#viewSelect {
+  background-color: #ebebeb;
+  width: 100%;
+  height: 100%;
+  z-index: 300;
+  position: fixed;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  -webkit-overflow-scrolling: touch; }
+  section#viewSelect section.content {
+    margin-top: 55.2px;
+    background: #fdfdfc;
+    width: 100%; }
+    section#viewSelect section.content ul {
+      border-top: 1px solid #878787;
+      border-bottom: 1px solid #878787; }
+      section#viewSelect section.content ul li {
+        height: 46px;
+        width: 95%;
+        display: block;
+        border-top: 1px solid #878787;
+        color: #363331;
+        margin-left: 5%;
+        margin-top: -1px;
+        margin-right: 0px;
+        font-size: 1.2em;
+        cursor: pointer;
+        overflow: hidden; }
+        section#viewSelect section.content ul li h1 {
+          padding-top: 5px;
+          padding-bottom: 5px;
+          width: 60%;
+          display: inline-block;
+          float: left; }
+        section#viewSelect section.content ul li p {
+          font-size: 0.8em; }
+        section#viewSelect section.content ul li.selected div.status {
+          background: url("../images/selected.svg");
+          background-size: 100% 100%;
+          float: right;
+          width: 46px;
+          height: 46px; }
+
+section.tools {
+  position: relative;
+  margin-top: 11.5px;
+  height: 46px;
+  bottom: 0;
+  width: 100%;
+  background: #d91a15;
+  background: -webkit-gradient(linear, left bottom, left top, color-stop(0, #d11115), color-stop(1, #e22416));
+  background: -ms-linear-gradient(bottom, #d11115, #e22416);
+  background: -moz-linear-gradient(center bottom, #d11115 0%, #e22416 100%);
+  background: -o-linear-gradient(#e22416, #d11115);
+  filter: progid:DXImageTransform.Microsoft.gradient(enabled='false', startColorstr=$start, endColorstr=$stop);
+  color: #fdfdfc; }
+  section.tools a,
+  section.tools input[type=submit] {
+    text-align: center;
+    width: 100%;
+    color: #fdfdfc;
+    text-decoration: none;
+    font-family: "Radikal", sans-serif;
+    font-size: 1.2em;
+    padding-top: 11px;
+    padding-bottom: 11px;
+    display: block;
+    background-color: transparent;
+    cursor: pointer;
+    border: none; }
+
+form {
+  overflow: hidden; }
+  form fieldset.block {
+    margin-bottom: 23px;
+    border-top: 1px solid #878787;
+    border-bottom: 1px solid #878787;
+    background-color: #fdfdfc;
+    min-height: 46px; }
+    form fieldset.block legend {
+      width: 100%;
+      display: block;
+      position: relative;
+      background: #878787;
+      color: #313131;
+      padding: 2px 0 2px 10px; }
+  form fieldset.line {
+    height: 46px;
+    width: 95%;
+    overflow: hidden;
+    border-top: 1px solid #878787;
+    float: right;
+    margin-top: -1px; }
+  form div.select {
+    height: 46px;
+    display: block;
+    padding-left: 5%;
+    font-size: 1.2em;
+    cursor: pointer; }
+    form div.select span {
+      padding-top: 11px;
+      display: inline-block;
+      max-width: 75%;
+      max-height: 22px;
+      overflow: hidden; }
+    form div.select div.arrow {
+      background: url("../images/select.svg");
+      background-size: 100% 100%;
+      float: right;
+      width: 46px;
+      height: 46px; }
+  form fieldset.checkbox {
+    background: transparent;
+    border: none;
+    text-align: center; }
+    form fieldset.checkbox input {
+      border: none;
+      float: none; }
+    form fieldset.checkbox div.icon {
+      width: 46px;
+      height: 46px;
+      display: inline-block;
+      margin-left: 5%;
+      margin-right: 5%;
+      cursor: pointer; }
+      form fieldset.checkbox div.icon#status {
+        background: url("../images/status_0.svg");
+        background-size: 100% 100%; }
+        form fieldset.checkbox div.icon#status.selected {
+          background: url("../images/status_1.svg");
+          background-size: 100% 100%; }
+      form fieldset.checkbox div.icon#best {
+        background: url("../images/best_0.svg");
+        background-size: 100% 100%; }
+        form fieldset.checkbox div.icon#best.selected {
+          background: url("../images/best_1.svg");
+          background-size: 100% 100%; }
+      form fieldset.checkbox div.icon#kids {
+        background: url("../images/kids_0.svg");
+        background-size: 100% 100%; }
+        form fieldset.checkbox div.icon#kids.selected {
+          background: url("../images/kids_1.svg");
+          background-size: 100% 100%; }
+      form fieldset.checkbox div.icon#abroad {
+        background: url("../images/abroad_0.svg");
+        background-size: 100% 100%; }
+        form fieldset.checkbox div.icon#abroad.selected {
+          background: url("../images/abroad_1.svg");
+          background-size: 100% 100%; }
+      form fieldset.checkbox div.icon#hasChildren {
+        background: url("../images/hasChildren_0.svg");
+        background-size: 100% 100%; }
+        form fieldset.checkbox div.icon#hasChildren.selected {
+          background: url("../images/hasChildren_1.svg");
+          background-size: 100% 100%; }
+      form fieldset.checkbox div.icon#isSpeaker {
+        background: url("../images/isSpeaker_0.svg");
+        background-size: 100% 100%; }
+        form fieldset.checkbox div.icon#isSpeaker.selected {
+          background: url("../images/isSpeaker_1.svg");
+          background-size: 100% 100%; }
+      form fieldset.checkbox div.icon#isMember {
+        background: url("../images/isMember_0.svg");
+        background-size: 100% 100%; }
+        form fieldset.checkbox div.icon#isMember.selected {
+          background: url("../images/isMember_1.svg");
+          background-size: 100% 100%; }
+      form fieldset.checkbox div.icon#isVisitor {
+        background: url("../images/isVisitor_0.svg");
+        background-size: 100% 100%; }
+        form fieldset.checkbox div.icon#isVisitor.selected {
+          background: url("../images/isVisitor_1.svg");
+          background-size: 100% 100%; }
+  form input,
+  form textarea {
+    height: 46px;
+    border: none;
+    width: 95%;
+    float: right;
+    font-size: 1.2em;
+    font-family: "Radikal-Light", "Radikal", sans-serif;
+    outline: none;
+    margin: 0px;
+    background: #fdfdfc;
+    border-top: 1px solid #878787;
+    margin-top: -1px;
+    -webkit-appearance: none;
+    -webkit-border-radius: 0;
+    -moz-border-radius: 0;
+    -ms-border-radius: 0;
+    -o-border-radius: 0;
+    border-radius: 0; }
+    form input[type=checkbox],
+    form textarea[type=checkbox] {
+      width: 46px;
+      display: inline-block;
+      background-color: transparent;
+      float: left; }
+    form input[type=date], form input[type=time],
+    form textarea[type=date],
+    form textarea[type=time] {
+      width: 50%;
+      border-top: none; }
+    form input[type=file],
+    form textarea[type=file] {
+      -webkit-appearance: none; }
+  form #addImage {
+    height: 46px;
+    width: 95%;
+    padding-left: 5%; }
+    form #addImage span {
+      font-size: 1.2em;
+      max-width: 75%;
+      padding-top: 11px;
+      display: inline-block; }
+    form #addImage div.arrow {
+      width: 46px;
+      height: 46px;
+      float: right;
+      background: url("../images/select.svg");
+      background-size: 100% 100%; }
+  form img.newImg {
+    max-width: 100%;
+    max-height: 276px;
+    margin: 0;
+    display: block; }
+  form label {
+    width: 45%;
+    display: inline-block;
+    padding-top: 11px;
+    padding-bottom: 11px;
+    font-size: 1.2em;
+    margin-top: -1px; }
+  form textarea {
+    height: 138px; }
+  form select {
+    width: 95%;
+    height: 46px;
+    background: #fdfdfc;
+    -webkit-appearance: none;
+    -webkit-border-radius: 0;
+    -moz-border-radius: 0;
+    -ms-border-radius: 0;
+    -o-border-radius: 0;
+    border-radius: 0;
+    border: none;
+    float: right;
+    font-size: 1.2em;
+    font-family: "Radikal-Light", "Radikal", sans-serif;
+    padding-left: 0px; }
+
+nav.main {
+  width: 100%;
+  background: #fdfdfc; }
+  nav.main ul {
+    border-top: 1px solid #878787;
+    border-bottom: 1px solid #878787; }
+    nav.main ul li {
+      height: 46px;
+      width: 95%;
+      margin-left: 5%;
+      list-style: none; }
+      nav.main ul li.empty {
+        text-align: center;
+        display: block;
+        margin: 0;
+        width: 100%;
+        position: relative;
+        padding-top: 11px;
+        padding-bottom: 11px;
+        max-height: 46px;
+        height: auto; }
+      nav.main ul li a {
+        width: 100%;
+        display: block;
+        position: relative;
+        height: 46px;
+        border-bottom: 1px solid #878787;
+        color: #363331;
+        text-decoration: none; }
+        nav.main ul li a h1 {
+          padding-top: 5px;
+          padding-bottom: 0px; }
+        nav.main ul li a p {
+          font-size: 0.8em; }

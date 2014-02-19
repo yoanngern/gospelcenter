@@ -1,0 +1,26 @@
+{% extends "gospelcenterPeopleBundle::layout.html.twig" %}
+
+{% block gospelcenterAdminPeople_body %}
+    <table class="main">
+        <thead>
+            <tr>
+                <th>Firstname</th>
+                <th>Lastname</th>
+                <th>Gender</th>
+                <th>Frequency</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for visitor in visitors %}
+                <tr>
+                    <td><a href="{{ path('gospelcenterAdmin_persons_edit', {'person': visitor.person.id, 'center': center.ref}) }}">{{ visitor.person.firstname }}</a></td>
+                    <td><a href="{{ path('gospelcenterAdmin_persons_edit', {'person': visitor.person.id, 'center': center.ref}) }}">{{ visitor.person.lastname }}</a></td>
+                    <td><a href="{{ path('gospelcenterAdmin_persons_edit', {'person': visitor.person.id, 'center': center.ref}) }}">{{ visitor.person.title }}</a></td>
+                    <td><a href="{{ path('gospelcenterAdmin_persons_edit', {'person': visitor.person.id, 'center': center.ref}) }}">{{ visitor.frequency }}</a></td>
+                </tr>
+            {% else %}
+                <tr><td colspan="4">There are no visitors.</td></tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

@@ -1,0 +1,35 @@
+{% extends "::mobileAdmin.html.twig" %}
+
+{% block stylesheets %}
+	{{ parent() }}
+{% endblock %}
+
+{% block title %}
+    {{ parent() }}
+{% endblock %}
+
+{% block headerCenter %}Events{% endblock %}
+
+{% block body %}
+    
+    <nav class="main">
+        <ul>
+            {% for event in events %}
+            
+                <li>
+                    <a href="{{ path('gospelcenterAdmin_events_edit', {'event': event.id, 'center': center.ref}) }}">
+                        <h1>{{ event.title }}</h1>
+                        <p>{{ event.startingDate|date('d F Y') }}</p>
+                    </a>
+                </li>
+            {% else %}
+                <li class="empty">There are no events.</li>
+            {% endfor %}
+        </ul>
+    </nav>
+    
+    <section class="tools">
+        <a href="{{ path('gospelcenterAdmin_events_add', {'center': center.ref}) }}">Add an event</a>
+    </section>
+    
+{% endblock %}

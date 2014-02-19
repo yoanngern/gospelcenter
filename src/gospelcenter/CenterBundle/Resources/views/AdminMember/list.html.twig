@@ -1,0 +1,26 @@
+{% extends "gospelcenterPeopleBundle::layout.html.twig" %}
+
+{% block gospelcenterAdminPeople_body %}
+    <table class="main">
+        <thead>
+            <tr>
+                <th>Firstname</th>
+                <th>Lastname</th>
+                <th>Gender</th>
+                <th>Member from</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for member in members %}
+                <tr>
+                    <td><a href="{{ path('gospelcenterAdmin_persons_edit', {'person': member.person.id, 'center': center.ref}) }}">{{ member.person.firstname }}</a></td>
+                    <td><a href="{{ path('gospelcenterAdmin_persons_edit', {'person': member.person.id, 'center': center.ref}) }}">{{ member.person.lastname }}</a></td>
+                    <td><a href="{{ path('gospelcenterAdmin_persons_edit', {'person': member.person.id, 'center': center.ref}) }}">{{ member.person.title }}</a></td>
+                    <td><a href="{{ path('gospelcenterAdmin_persons_edit', {'person': member.person.id, 'center': center.ref}) }}">{{ member.memberFromDate|date('d F Y') }}</a></td>
+                </tr>
+            {% else %}
+                <tr><td colspan="4">There are no members.</td></tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

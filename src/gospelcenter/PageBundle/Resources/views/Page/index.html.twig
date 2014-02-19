@@ -1,0 +1,47 @@
+{% extends "gospelcenterPageBundle::layout.html.twig" %}
+
+{% block stylesheets %}
+	{{ parent() }}
+	<link rel="stylesheet" href="{{ asset('css/page.css') }}" type="text/css" />
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script type="text/javascript" src="{{ asset('js/page-min.js') }}"></script>
+{% endblock %}
+
+{% block title %}
+    {{ parent() }}
+{% endblock %}
+
+{% block gospelcenterPage_body %}
+    <section id="page" class="{{ article.template }}">
+        <h1>{{ article.title }}</h1>
+        <h2>{{ article.slogan }}</h2>
+        
+        {% if article.slides|length > 1 %}<div id="left" class="arrow"></div>{% endif %}
+        
+        {% for slide in article.slides %}
+            <article id="{{ loop.index }}" class="slide" {% if slide.image %}style="background-image: url('{{ asset(slide.image.webPath) }}')"{% endif %}>
+                <section>
+                    <h1>{{ slide.title }}</h1>
+                    <p>{{ slide.text }}</p>
+                    {% if slide.link %}<p class="link"><a href="{{ slide.link }}" target="_blank">{% if slide.labelLink %}{{ slide.labelLink }}{% else %}{{ slide.link }}{% endif %}</a></p>{% endif %}
+                </section>
+            </article>
+        {% endfor %}
+        
+        {% if article.slides|length > 2 %}<div id="right" class="arrow"></div>{% endif %}
+        
+        {% if article.slides|length > 2 %}
+            <nav id="slides">
+                <ul>
+                    {% for slide in article.slides %}
+                        <li class="{% if loop.index == 1 %}current{% endif %}" data-slide="{{ loop.index }}"></li>
+                    {% endfor %}
+                </ul>
+            </nav>
+        {% endif %}
+        
+    </section>
+{% endblock %}

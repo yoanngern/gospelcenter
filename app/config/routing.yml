@@ -1,0 +1,2 @@
+gospelcenter_center:
+    resource: "@gospelcenterCenterBundle/Resources/config/routing.yml"

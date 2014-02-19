@@ -1,0 +1,64 @@
+{% extends "::admin.html.twig" %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script type="text/javascript" src="{{ asset('js/form-min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('js/addImage-min.js') }}"></script>
+{% endblock %}
+
+{% block stylesheets %}
+	{{ parent() }}
+	<link rel="stylesheet" href="{{ asset('css/admin.css') }}" type="text/css" />
+	<link rel="stylesheet" href="{{ asset('css/form.css') }}" type="text/css" />
+{% endblock %}
+
+{% block title %}
+    {{ parent() }} - Add an event
+{% endblock %}
+
+{% block adminBody %}
+    <h1>Admin - Add an event</h1>
+    
+    <form class="event" action="{{ path('gospelcenterAdmin_events_add', {'center': center.ref}) }}" method="post" {{ form_enctype(form) }}>
+        
+        <nav class="tools">
+    		<input type="submit" class="buttonRounded" />
+    	</nav>
+    	
+    	{{ form_errors(form) }}
+    	
+    	<fieldset class="header">
+        	<h1>{{ form_widget(form.status, {'attr': {'data-icon': 'status'} }) }}{{ form_widget(form.title, {'attr': {'placeholder': 'Title'} }) }}</h1>
+    	</fieldset>
+        
+        <fieldset class="full">
+            <fieldset class="column picture">
+                <h2>Picture</h2>
+                {{ form_widget(form.picture.file) }}
+            </fieldset>
+            <fieldset class="column cover">
+                <h2>Cover</h2>
+                {{ form_widget(form.cover.file) }}
+            </fieldset>
+        </fieldset>
+        
+        <fieldset class="txt">
+            {{ form_widget(form.introText, {'attr': {'placeholder': 'Intro text', 'class': 'intro elastic'} }) }}
+            {{ form_widget(form.text, {'attr': {'placeholder': 'Full text', 'class': 'full elastic'} }) }}
+        </fieldset>
+        
+        <fieldset class="details">
+            {{ form_widget(form.startingDate, {'attr': {'placeholder': 'Starting date'} }) }}
+            {{ form_widget(form.endingDate, {'attr': {'placeholder': 'Ending date'} }) }}
+             {{ form_widget(form.location, {'attr': {'placeholder': 'Location'} }) }}
+        </fieldset>
+        
+       
+        
+        
+        
+        {{ form_rest(form) }}
+    </form>
+    
+    
+{% endblock %}

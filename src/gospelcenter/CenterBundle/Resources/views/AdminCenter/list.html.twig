@@ -1,0 +1,41 @@
+{% extends "::adminGlobal.html.twig" %}
+
+{% block stylesheets %}
+	{{ parent() }}
+	<link rel="stylesheet" href="{{ asset('css/admin.css') }}" type="text/css" />
+{% endblock %}
+
+{% block title %}
+    {{ parent() }} - Centers
+{% endblock %}
+
+{% block adminBody %}
+    <h1>Admin - Centers</h1>
+    
+    <section class="tools">
+        <a href="{{ path('gospelcenterAdminGlobal_centers_add') }}">Add a center</a>
+    </section>
+    
+    <table class="main">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>City</th>
+                <th>Country</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for center in centers %}
+                <tr>
+                    <td><a href="{{ path('gospelcenterAdminGlobal_centers_edit', {'center': center.ref}) }}">Gospel Center {{ center.name }}</a></td>
+                    <td><a href="{{ path('gospelcenterAdminGlobal_centers_edit', {'center': center.ref}) }}">{{ center.location.city }}</a></td>
+                    <td><a href="{{ path('gospelcenterAdminGlobal_centers_edit', {'center': center.ref}) }}">{{ center.location.country }}</a></td>
+                </tr>
+            {% else %}
+                <tr><td colspan="3">There are no centers.</td></tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    
+    
+{% endblock %}

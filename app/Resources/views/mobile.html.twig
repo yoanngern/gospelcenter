@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+	    <meta charset="utf-8">
+        <title>{% block title %}Gospel Center{% endblock %}</title>
+        <meta name="description" content="Gospel Center">
+    	<link rel="apple-touch-icon" href="images/apple-touch-icon.png" />
+    	<meta name="apple-mobile-web-app-capable" content="yes">
+    	<meta name="mobile-web-app-capable" content="yes">
+    	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+    	<meta content="initial-scale=1, minimum-scale=1, user-scalable=no, maximum-scale=1, width=device-width" name="viewport">
+    	<link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
+        <link rel="icon" type="image/png" href="images/favicon.png" />
+        
+        {% block stylesheets %}
+            <link rel="stylesheet" href="{{ asset('css/mobile.css') }}" type="text/css" />
+        {% endblock %}
+        
+        
+        {% block javascripts %}
+            <script type="text/javascript" src="{{ asset('js/mobile-min.js') }}"></script>
+        {% endblock %}
+        
+        <script type="text/javascript">
+            if(("standalone" in window.navigator) && window.navigator.standalone){
+
+                var noddy, remotes = false;
+            
+                document.addEventListener('click', function(event) {
+            
+                    noddy = event.target;
+            
+                    while(noddy.nodeName !== "A" && noddy.nodeName !== "HTML") {
+                        noddy = noddy.parentNode;
+                    }
+            
+                    if('href' in noddy && noddy.href.indexOf('http') !== -1 && (noddy.href.indexOf(document.location.host) !== -1 || remotes)) {
+                        event.preventDefault();
+                        document.location.href = noddy.href;
+                    }
+                },false);
+            }
+        </script>
+        
+    </head>
+    <body>
+        <header>
+            {% block headerLeft %}<a id="get_ruban" class="left" href="#"></a>{% endblock %}
+            <h1>{% block headerCenter %}Gospel Center{% endblock %}</h1>
+            {% block headerRight %}<a id="get_nav" class="right" href="#"></a>{% endblock %}
+    	</header>
+        <section id="ruban_nav">
+            <article>
+                {% include "::ruban_nav.html.twig" %}
+                <nav class="social">
+                    <h1>Admin</h1>
+                	<ul>
+                		<li><a href="{{ path('gospelcenterAdmin_celebrations_add', {'center': center.ref}) }}">Create a celebration</a></li>
+                        <li><a href="{{ path('gospelcenterEvents_add', {'center': center.ref}) }}">Create an event</a></li>
+                        <li><a href="{{ path('gospelcenterAdmin_events', {'center': center.ref}) }}">Manage events</a></li>
+                        <li><a href="{{ path('gospelcenterAdmin_celebrations', {'center': center.ref}) }}">Admin</a></li>
+                	</ul>
+                </nav>
+            </article>
+        </section>
+        <section id="nav">
+            <ul>
+                {% block nav %}
+                {% endblock %}
+            </ul>
+        </section>
+        <section id="page">
+        	<section id="container">
+        	    {% block body %}
+	    	    {% endblock %}
+        	</section>
+        </section>
+    </body>
+</html>

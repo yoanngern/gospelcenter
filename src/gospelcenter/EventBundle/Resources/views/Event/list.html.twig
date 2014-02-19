@@ -1,0 +1,30 @@
+{% extends "gospelcenterEventBundle::layout.html.twig" %}
+
+{% block stylesheets %}
+	{{ parent() }}
+	<link rel="stylesheet" href="{{ asset('css/events.css') }}" type="text/css" />
+{% endblock %}
+
+{% block title %}
+    {{ parent() }}
+{% endblock %}
+
+{% block gospelcenterEvents_body %}
+    {% for event in events %}
+        <article class="events">
+        	<section class="picture">
+        		<img src="{{ asset(event.picture.webPath) }}" alt="{{ event.picture.alt }}" />
+        	</section>
+            <section class="detail">
+	            <h1>{{ event.title }}</h1>
+	            <time>{{ event.startingDate|date('d F Y') }}</time>
+	            <sumary>{{ event.introText }}</sumary>
+	            <p>
+	            	<a href="{{ path('gospelcenterEvents_event', {'event': event.id, 'center': center.ref}) }}" class="buttonRounded">More infos</a>
+	            </p>
+            </section>
+        </article>
+    {% else %}
+        <span class="empty">There are no events to come.</span>
+    {% endfor %}
+{% endblock %}

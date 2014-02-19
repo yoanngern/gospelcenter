@@ -1,0 +1,47 @@
+{% extends "gospelcenterPeopleBundle::layout.html.twig" %}
+
+{% block gospelcenterAdminPeople_body %}
+    <nav class="sorting_nav">
+        <ul>
+            <li><a href="{{ path('gospelcenterAdmin_speakers', {'center': center.ref}) }}" {% if tab == 'speakers' %}class="current"{% endif %}>{{ center.name }}'s speakers</a></li>
+            <li><a href="{{ path('gospelcenterAdmin_speakers_all', {'center': center.ref}) }}" {% if tab == 'speakersAll' %}class="current"{% endif %}>All speakers</a></li>
+        </ul>
+    </nav>
+    <table class="main">
+        <thead>
+            <tr>
+                <th>Firstname</th>
+                <th>Lastname</th>
+                <th>Function</th>
+                <th>Language</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for speaker in speakers %}
+            
+                {% set languages = '' %}
+        
+                {% for key, language in speaker.person.languages %}
+                    
+                    {% if key != 0 and key != (speaker.person.languages|length -1) %}
+                        {% set languages = languages ~ ', '%}
+                    {% elseif key != 0 and key == (speaker.person.languages|length -1) %}
+                        {% set languages = languages ~ ' et '%}
+                    {% endif %}
+                    
+                    {% set languages = languages ~ language.value %}
+                    
+                {% endfor %}
+                
+                <tr>
+                    <td><a href="{{ path('gospelcenterAdmin_persons_edit', {'person': speaker.person.id, 'center': center.ref}) }}">{{ speaker.person.firstname }}</a></td>
+                    <td><a href="{{ path('gospelcenterAdmin_persons_edit', {'person': speaker.person.id, 'center': center.ref}) }}">{{ speaker.person.lastname }}</a></td>
+                    <td><a href="{{ path('gospelcenterAdmin_persons_edit', {'person': speaker.person.id, 'center': center.ref}) }}">{{ speaker.person.function }}</a></td>
+                    <td><a href="{{ path('gospelcenterAdmin_persons_edit', {'person': speaker.person.id, 'center': center.ref}) }}">{{ languages }}</a></td>
+                </tr>
+            {% else %}
+                <tr><td colspan="4">There are no speakers.</td></tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

@@ -1,0 +1,43 @@
+{% extends "::mobileAdmin.html.twig" %}
+
+{% block stylesheets %}
+	{{ parent() }}
+{% endblock %}
+
+{% block title %}
+    {{ parent() }}
+{% endblock %}
+
+{% block headerCenter %}Images{% endblock %}
+
+{% block body %}
+    
+    <nav class="sub_nav">
+    	<ul>
+    		<li><a href="{{ path('gospelcenterAdmin_images', {'center': center.ref}) }}" {% if tab == 'images' %}class="current"{% endif %}>{{ center.name }}'s images</a></li>
+            <li><a href="{{ path('gospelcenterAdmin_images_all', {'center': center.ref}) }}" {% if tab == 'imagesAll' %}class="current"{% endif %}>All images</a></li>
+    	</ul>
+    </nav>
+    
+    <nav class="main">
+        <ul>
+            
+            {% for image in images %}
+                <li>
+                    <a href="{{ path('gospelcenterAdmin_images_edit', {'image': image.id, 'center': center.ref}) }}">
+                        <h1>{{ image.title }}</h1>
+                        <p>{{ image.createdDate|date('d F Y') }}</p>
+                    </a>
+                </li>
+            {% else %}
+                <li class="empty">There are no images.</li>
+            {% endfor %}
+            
+        </ul>
+    </nav>
+    
+    <section class="tools">
+        <a href="{{ path('gospelcenterAdmin_images_add', {'center': center.ref}) }}">Add an image</a>
+    </section>
+    
+{% endblock %}

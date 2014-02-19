@@ -1,0 +1,45 @@
+{% extends "::admin.html.twig" %}
+
+{% block stylesheets %}
+	{{ parent() }}
+	<link rel="stylesheet" href="{{ asset('css/admin.css') }}" type="text/css" />
+{% endblock %}
+
+{% block title %}
+    {{ parent() }} - Locations
+{% endblock %}
+
+{% block adminBody %}
+    <h1>Admin - Locations</h1>
+    
+    <section class="tools">
+        <a href="{{ path('gospelcenterAdmin_locations_add', {'center': center.ref}) }}">Add a location</a>
+    </section>
+    
+    <table class="main">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Address</th>
+                <th>Postal Code</th>
+                <th>City</th>
+                <th>Country</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for location in locations %}
+                <tr>
+                    <td><a href="{{ path('gospelcenterAdmin_locations_edit', {'location': location.id, 'center': center.ref}) }}">{{ location.name }}</a></td>
+                    <td><a href="{{ path('gospelcenterAdmin_locations_edit', {'location': location.id, 'center': center.ref}) }}">{{ location.address1 }} {{ location.address2 }}</a></td>
+                    <td><a href="{{ path('gospelcenterAdmin_locations_edit', {'location': location.id, 'center': center.ref}) }}">{{ location.postalCode }}</a></td>
+                    <td><a href="{{ path('gospelcenterAdmin_locations_edit', {'location': location.id, 'center': center.ref}) }}">{{ location.city }}</a></td>
+                    <td><a href="{{ path('gospelcenterAdmin_locations_edit', {'location': location.id, 'center': center.ref}) }}">{{ location.country }}</a></td>
+                </tr>
+            {% else %}
+                <tr><td colspan="5">There are no location.</td></tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    
+    
+{% endblock %}

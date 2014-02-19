@@ -1,0 +1,28 @@
+{% extends "::mobileLocal.html.twig" %}
+
+{% block stylesheets %}
+	{{ parent() }}
+{% endblock %}
+
+{% block title %}
+    {{ parent() }}
+{% endblock %}
+
+{% block headerCenter %}{{ article.title }}{% endblock %}
+
+{% block body %}
+
+    <h2>{{ article.slogan }}</h2>
+    
+    {% for slide in article.slides %}
+        <article>
+            {% if slide.image %}
+                <img src="{{ asset(slide.image.webPath) }}" alt="{{ slide.image.alt }}" />
+            {% endif %}
+            <h1>{{ slide.title }}</h1>
+            <p>{{ slide.text }}</p>
+            {% if slide.link %}<a href="{{ slide.link }}">Link</a>{% endif %}
+        </article>
+    {% endfor %}
+    
+{% endblock %}

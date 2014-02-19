@@ -1,0 +1,47 @@
+{% extends "::mobileAdmin.html.twig" %}
+
+{% block stylesheets %}
+	{{ parent() }}
+{% endblock %}
+
+{% block title %}
+    {{ parent() }}
+{% endblock %}
+
+{% block headerLeft%}<a id="back" class="left" href="{{ path('gospelcenterAdmin_events', {'center': center.nickname}) }}"></a>{% endblock %}
+{% block headerCenter %}Edit an event{% endblock %}
+{% block headerRight %}{% endblock %}
+
+{% block body %}
+    
+    <form class="celebration" action="{{ path('gospelcenterAdmin_celebrations_edit', {'center': center.nickname, 'event': event.id}) }}" method="post" {{ form_enctype(form) }}>
+
+    	{{ form_errors(form) }}
+    	
+    	<fieldset class="block">
+    	    {{ form_widget(form.title, {'attr': {'placeholder': 'Title'} }) }}
+    	</fieldset>
+    	
+    	<fieldset class="block">
+        	<fieldset class="line">
+            	{{ form_label(form.startingDate, "Starting date") }}
+            	{{ form_widget(form.startingDate) }}
+        	</fieldset>
+            
+            <fieldset class="line">
+        	    {{ form_label(form.endingDate, "Ending date") }}
+        	    {{ form_widget(form.endingDate) }}
+            </fieldset>
+    	</fieldset>
+    	
+    	
+        
+        {{ form_rest(form) }}
+        
+        <section class="tools">
+            <input type="submit" class="buttonRounded" />
+        </section>
+        
+    </form>
+    
+{% endblock %}

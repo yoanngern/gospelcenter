@@ -1,0 +1,21 @@
+{% extends "::local.html.twig" %}
+
+{% block title %}
+    {{ parent() }} - Events
+{% endblock %}
+
+{% block body %}
+    
+    <h1>Our upcoming events</h1>
+    
+    <nav class="sub_nav">
+    	<ul>
+    		<li><a href="{{ path('gospelcenterEvents_list', {'center': center.ref}) }}" class="current">Upcoming events</a></li>
+    		<li><a href="">Agenda</a></li>
+    	</ul>
+    </nav>
+    
+    {% block gospelcenterEvents_body %}
+    {% endblock %}
+    
+{% endblock %}

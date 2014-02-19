@@ -1,0 +1,7 @@
+parameters:
+#    gospelcenter_celebration.example.class: gospelcenter\CelebrationBundle\Example
+
+services:
+#    gospelcenter_celebration.example:
+#        class: %gospelcenter_celebration.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]

@@ -1,0 +1,32 @@
+{% extends "gospelcenterPeopleBundle::layout.html.twig" %}
+
+{% block gospelcenterAdminPeople_body %}
+    <nav class="sorting_nav">
+        <ul>
+            <li><a href="{{ path('gospelcenterAdmin_persons', {'center': center.ref}) }}" {% if tab == 'contacts' %}class="current"{% endif %}>{{ center.name }}'s contacts</a></li>
+            <li><a href="{{ path('gospelcenterAdmin_persons_all', {'center': center.ref}) }}" {% if tab == 'contactsAll' %}class="current"{% endif %}>All contacts</a></li>
+        </ul>
+    </nav>
+    <table class="main">
+        <thead>
+            <tr>
+                <th>Firstname</th>
+                <th>Lastname</th>
+                <th>Title</th>
+                <th>Date of birth</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for person in persons %}
+                <tr>
+                    <td><a href="{{ path('gospelcenterAdmin_persons_edit', {'person': person.id, 'center': center.ref}) }}">{{ person.firstName }}</a></td>
+                    <td><a href="{{ path('gospelcenterAdmin_persons_edit', {'person': person.id, 'center': center.ref}) }}">{{ person.lastName }}</a></td>
+                    <td><a href="{{ path('gospelcenterAdmin_persons_edit', {'person': person.id, 'center': center.ref}) }}">{{ person.title }}</a></td>
+                    <td><a href="{{ path('gospelcenterAdmin_persons_edit', {'person': person.id, 'center': center.ref}) }}">{% if person.dateOfBirth %}{{ person.dateOfBirth|date('d F Y') }}{% endif %}</a></td>
+                </tr>
+            {% else %}
+                <tr><td colspan="4">There are no contacts.</td></tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

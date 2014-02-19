@@ -1,0 +1,15 @@
+{% extends "::layout.html.twig" %}
+
+{% block param %}
+    {{ parent() }}
+    <li><a href="{{ path('gospelcenterAdminGlobal_pages') }}">Admin</a></li>
+{% endblock %}
+
+{% block footer %}
+    <li><a href="" {% if page == 'celebration' %}class="current"{% endif %}>Celebrations</a></li>
+    <li><a href="" {% if page == 'vision' %}class="current"{% endif %}>Our vision</a></li>
+    <li><a href="" {% if page == 'god' %}class="current"{% endif %}>God?</a></li>
+    <li><a href="" {% if page == 'television' %}class="current"{% endif %}>Television</a></li>
+    <li><a href="" {% if page == 'training' %}class="current"{% endif %}>Training</a></li>
+    <li><a href="" {% if page == 'contact' %}class="current"{% endif %}>Contact</a></li>
+{% endblock %}

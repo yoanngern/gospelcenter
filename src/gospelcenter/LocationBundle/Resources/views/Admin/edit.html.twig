@@ -1,0 +1,37 @@
+{% extends "::admin.html.twig" %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script type="text/javascript" src="{{ asset('js/form-min.js') }}"></script>
+{% endblock %}
+
+{% block stylesheets %}
+	{{ parent() }}
+	<link rel="stylesheet" href="{{ asset('css/admin.css') }}" type="text/css" />
+	<link rel="stylesheet" href="{{ asset('css/form.css') }}" type="text/css" />
+{% endblock %}
+
+{% block title %}
+    {{ parent() }} - Edit a location
+{% endblock %}
+
+{% block adminBody %}
+    <h1>Admin - Edit a location</h1>
+    
+    <form action="{{ path('gospelcenterAdmin_locations_edit', {'center': center.ref, 'location': location.id}) }}" method="post" {{ form_enctype(form) }}>
+        <nav class="tools">
+    		<input type="submit" class="buttonRounded" />
+    		<a href="{{ path('gospelcenterAdmin_locations_delete', {'center': center.ref, 'location': location.id}) }}" class="buttonRounded">Delete</a>
+    	</nav>
+    	
+        {{ form_widget(form.name, {'attr': {'data-label': 'Name'} }) }}
+        {{ form_widget(form.address1, {'attr': {'data-label': 'Address line 1'} }) }}
+        {{ form_widget(form.address2, {'attr': {'data-label': 'Address line 2'} }) }}
+        {{ form_widget(form.postalCode, {'attr': {'data-label': 'Postal code'} }) }}
+        {{ form_widget(form.city, {'attr': {'data-label': 'City'} }) }}
+        {{ form_widget(form.country, {'attr': {'data-label': 'Country'} }) }}
+        {{ form_rest(form) }}
+    </form>
+    
+    
+{% endblock %}

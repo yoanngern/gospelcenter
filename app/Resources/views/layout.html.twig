@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+	    <meta charset="utf-8">
+        <title>{% block title %}Gospel Center{% endblock %}</title>
+    	<link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
+        <link rel="icon" type="image/png" href="images/favicon.png" />
+        
+        {% block stylesheets %}
+            <link rel="stylesheet" href="{{ asset('css/layout.css') }}" type="text/css" />
+        {% endblock %}
+        
+        
+        {% block javascripts %}
+            <script type="text/javascript" src="{{ asset('js/javascript-min.js') }}"></script>
+        {% endblock %}
+        
+        {% block jsTemplating %}
+            
+        {% endblock %}
+        
+        
+        
+    </head>
+    <body>
+    	<section id="ruban_nav">
+	    	{% include "::ruban_nav.html.twig" %}
+	    </section>
+	    <section id="page">
+	    	<header>
+	    	    {% for type in ['info', 'success', 'error'] %}
+                    {% for message in app.session.flashbag.get(type) %}
+                        <section id="message" class="{{ type }}">
+                            {{ message }}
+                        </section>
+                    {% endfor %}
+                {% endfor %}
+		        <a id="get_ruban" href=""></a>
+		        <a id="get_param" href=""></a>
+		        <div class="param_arrow">
+		        	<div class="arrow_up_border"></div>
+		        	<div class="arrow_up"></div>
+		        </div>
+		        <nav id="param_nav">
+		        	<ul>
+		        		{% block param %}
+						{% endblock %}
+		        	</ul>
+		        </nav>
+		        
+	    	    <nav class="language">
+	        	    <ul>
+	            	    <li>Français</li>
+	            	    <li>English</li>
+	        	    </ul>
+	    	    </nav>
+		    </header>
+		    <section id="container" class="{{ page }}">
+	    	    {% block body %}
+	    	    {% endblock %}
+		    </section>
+		    <footer>
+		    	<nav>
+		    	    <ul>
+		    	        {% block footer %}
+                        {% endblock %}
+		    	    </ul>
+			    </nav>
+		    </footer>
+	    </section>
+    </body>
+</html>

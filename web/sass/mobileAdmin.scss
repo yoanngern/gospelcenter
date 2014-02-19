@@ -1,0 +1,541 @@
+@import 'color';
+@import 'functions';
+@import 'font';
+@import 'nav_mobile';
+
+$lineH: 46px;
+
+html body > header {
+    background: $grayDark;
+    color: $grayLight;
+    border-bottom: none;
+    
+    a.left {
+        
+        &#get_ruban {
+            background-image: url('../images/get_ruban_admin.svg');
+        }
+        
+        &#back {
+            background-image: url('../images/back_admin.svg');
+        }
+    }
+    
+    a.right {
+        
+        &#get_nav {
+            background-image: url('../images/get_nav_admin.svg');
+            
+            &.selected {
+                background-image: url('../images/get_nav_admin_inversed.svg');
+            }
+        }
+    }
+}
+
+.no-svg {
+    
+    #get_ruban {
+        background-image: url('../images/get_ruban_admin.png') !important;
+        background-size: $lineH !important;
+    }
+    
+    #get_nav {
+        background-image: url('../images/get_nav_admin.png') !important;
+        background-size: $lineH !important;
+    }
+    
+    #back {
+        background-image: url('../images/back_admin.png') !important;
+        background-size: $lineH !important;
+    }
+    
+    div.arrow {
+        background-image: url('../images/select.png') !important;
+        background-size: $lineH !important;
+    }
+    
+    div.status {
+        background-image: url('../images/selected.png') !important;
+        background-size: $lineH !important;
+    }
+    
+    #status {
+    	background: url('../images/status_0.png') !important;
+    	background-size: $lineH !important;
+    	
+    	&.selected {
+        	background: url('../images/status_1.png') !important;
+        	background-size: $lineH !important;
+    	}
+	}
+	
+	#best {
+    	background: url('../images/best_0.png') !important;
+    	background-size: $lineH !important;
+    	
+    	&.selected {
+        	background: url('../images/best_1.png') !important;
+        	background-size: $lineH !important;
+    	}
+	}
+	
+	#kids {
+    	background: url('../images/kids_0.png') !important;
+    	background-size: $lineH !important;
+    	
+    	&.selected {
+        	background: url('../images/kids_1.png') !important;
+        	background-size: $lineH !important;
+    	}
+	}
+	
+	#abroad {
+    	background: url('../images/abroad_0.png') !important;
+    	background-size: $lineH !important;
+    	
+    	&.selected {
+        	background: url('../images/abroad_1.png') !important;
+        	background-size: $lineH !important;
+    	}
+	}
+	
+	#hasChildren {
+    	background: url('../images/hasChildren_0.png') !important;
+    	background-size: $lineH !important;
+    	
+    	&.selected {
+        	background: url('../images/hasChildren_1.png') !important;
+        	background-size: $lineH !important;
+    	}
+	}
+	
+	#isSpeaker {
+    	background: url('../images/isSpeaker_0.png') !important;
+    	background-size: $lineH !important;
+    	
+    	&.selected {
+        	background: url('../images/isSpeaker_1.png') !important;
+        	background-size: $lineH !important;
+    	}
+	}
+	
+	#isMember {
+    	background: url('../images/isMember_0.png') !important;
+    	background-size: $lineH !important;
+    	
+    	&.selected {
+        	background: url('../images/isMember_1.png') !important;
+        	background-size: $lineH !important;
+    	}
+	}
+	
+	#isVisitor {
+    	background: url('../images/isVisitor_0.png') !important;
+    	background-size: $lineH !important;
+    	
+    	&.selected {
+        	background: url('../images/isVisitor_1.png') !important;
+        	background-size: $lineH !important;
+    	}
+	}
+}
+
+#page {
+    background: $backgroundMobile;
+}
+
+html body #nav {
+    background: $grayDark;
+    
+    
+    ul {
+        background-color: $grayDark;
+        
+        li a {
+            color: $grayLight;
+        }
+    }
+}
+
+section#viewSelect {
+    background-color: $backgroundMobile;
+    width: 100%;
+    height: 100%;
+    z-index: 300;
+    position: fixed;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    -webkit-overflow-scrolling: touch;
+    
+    section.content {
+        margin-top: (1.2 * $lineH);
+        background: $white;
+        width: 100%;
+        
+        ul {
+            border-top: 1px solid $grayLight;
+            border-bottom: 1px solid $grayLight;
+            
+            li {
+                height: $lineH;
+                width: 95%;
+                display: block;
+                border-top: 1px solid $grayLight;
+                color: $black;
+                margin-left: 5%;
+                margin-top: -1px;
+                margin-right: 0px;
+                font-size: 1.2em;
+                cursor: pointer;
+                overflow: hidden;
+                
+                h1 {
+                    padding-top: 5px;
+                    padding-bottom: 5px;
+                    width: 60%;
+                    display: inline-block;
+                    float: left;
+                }
+                
+                p {
+                    font-size: 0.8em;
+                }
+                
+                &.selected {
+                    div.status {
+                        background: url('../images/selected.svg');
+                        background-size: 100% 100%;
+                        float: right;
+                        width: $lineH;
+                        height: $lineH;
+                    }
+                }
+                
+                
+            }
+
+        }
+        
+    }
+}
+
+section.tools {
+    position: relative;
+    margin-top: ($lineH / 4);
+    height: $lineH;
+    bottom: 0;
+    width: 100%;
+    @include gradient($red, $redBottom, $redTop);
+    color: $white;
+    
+    a,
+    input[type=submit] {
+        text-align: center;
+        width: 100%;
+        color: $white;
+        text-decoration: none;
+        font-family: $font-regular;
+        font-size: 1.2em;
+        padding-top: 11px;
+        padding-bottom: 11px;
+        display: block;
+        background-color: transparent;
+        cursor: pointer;
+        border: none;
+    }
+}
+
+form {
+    overflow: hidden;
+    
+    fieldset.block {
+        margin-bottom: ($lineH / 2);
+        border-top: 1px solid $grayLight;
+        border-bottom: 1px solid $grayLight;
+        background-color: $white;
+        min-height: $lineH;
+        
+        legend {
+            width: 100%;
+            display: block;
+            position: relative;
+            background: $grayLight;
+            color: $grayDark;
+            padding: 2px 0 2px 10px;
+        }
+    }
+    
+    fieldset.line {
+        height: $lineH;
+        width: 95%;
+        overflow: hidden;
+        border-top: 1px solid $grayLight;
+        float: right;
+        margin-top: -1px;
+    }
+    
+    div.select {
+        height: $lineH;
+        display: block;
+        padding-left: 5%;
+        font-size: 1.2em;
+        cursor: pointer;
+        
+        span {
+            padding-top: 11px;
+            display: inline-block;
+            max-width: 75%;
+            max-height: 22px;
+            overflow: hidden;
+        }
+        
+        div.arrow {
+            background: url('../images/select.svg');
+            background-size: 100% 100%;
+            float: right;
+            width: $lineH;
+            height: $lineH;
+        }
+    }
+    
+    fieldset.checkbox {
+        background: transparent;
+        border: none;
+        text-align: center;
+        
+        input {
+            border: none;
+            float: none;
+        }
+        
+        
+        
+        div.icon {
+            width: $lineH;
+            height: $lineH;
+            display: inline-block;
+            margin-left: 5%;
+            margin-right: 5%;
+            cursor: pointer;
+            
+            &#status {
+            	background: url('../images/status_0.svg');
+            	background-size: 100% 100%;
+            	
+            	&.selected {
+                	background: url('../images/status_1.svg');
+                	background-size: 100% 100%;
+            	}
+        	}
+        	
+        	&#best {
+            	background: url('../images/best_0.svg');
+            	background-size: 100% 100%;
+            	
+            	&.selected {
+                	background: url('../images/best_1.svg');
+                	background-size: 100% 100%;
+            	}
+        	}
+        	
+        	&#kids {
+            	background: url('../images/kids_0.svg');
+            	background-size: 100% 100%;
+            	
+            	&.selected {
+                	background: url('../images/kids_1.svg');
+                	background-size: 100% 100%;
+            	}
+        	}
+        	
+        	&#abroad {
+            	background: url('../images/abroad_0.svg');
+            	background-size: 100% 100%;
+            	
+            	&.selected {
+                	background: url('../images/abroad_1.svg');
+                	background-size: 100% 100%;
+            	}
+        	}
+        	
+        	&#hasChildren {
+            	background: url('../images/hasChildren_0.svg');
+            	background-size: 100% 100%;
+            	
+            	&.selected {
+                	background: url('../images/hasChildren_1.svg');
+                	background-size: 100% 100%;
+            	}
+        	}
+        	
+        	&#isSpeaker {
+            	background: url('../images/isSpeaker_0.svg');
+            	background-size: 100% 100%;
+            	
+            	&.selected {
+                	background: url('../images/isSpeaker_1.svg');
+                	background-size: 100% 100%;
+            	}
+        	}
+        	
+        	&#isMember {
+            	background: url('../images/isMember_0.svg');
+            	background-size: 100% 100%;
+            	
+            	&.selected {
+                	background: url('../images/isMember_1.svg');
+                	background-size: 100% 100%;
+            	}
+        	}
+        	
+        	&#isVisitor {
+            	background: url('../images/isVisitor_0.svg');
+            	background-size: 100% 100%;
+            	
+            	&.selected {
+                	background: url('../images/isVisitor_1.svg');
+                	background-size: 100% 100%;
+            	}
+        	}
+        }
+    }
+    
+    input,
+    textarea {
+        height: $lineH;
+        border: none;
+        width: 95%;
+        float: right;  
+        font-size: 1.2em;
+        font-family: $font-light;
+        outline: none;
+        margin: 0px;
+        background: $white;
+        border-top: 1px solid $grayLight;
+        margin-top: -1px;
+        -webkit-appearance: none;
+        @include border-radius(0);
+        
+        &[type=checkbox] {
+            width: $lineH;
+            display: inline-block;
+            background-color: transparent;
+            float: left;
+        }
+        
+        &[type=date],
+        &[type=time] {
+            width: 50%;
+            border-top: none;
+        }
+        
+        &[type=file] {
+            -webkit-appearance: none;
+        }
+    }
+    
+    #addImage {
+        height: $lineH;
+        width: 95%;
+        padding-left: 5%;
+        
+        span {
+            font-size: 1.2em;
+            max-width: 75%;
+            padding-top: 11px;
+            display: inline-block;
+        }
+        
+        div.arrow {
+            width: $lineH;
+            height: $lineH;
+            float: right;
+            background: url('../images/select.svg');
+            background-size: 100% 100%;
+        }
+    }
+    
+    img.newImg {
+        max-width: 100%;
+        max-height: 6 * $lineH;
+        margin: 0;
+        display: block;
+    }
+    
+    label {
+        width: 45%;
+        display: inline-block;
+        padding-top: 11px;
+        padding-bottom: 11px;
+        font-size: 1.2em;
+        margin-top: -1px;
+    }
+    
+    textarea {
+        height: (3 * $lineH);
+    }
+    
+    select {
+        width: 95%;
+        height: $lineH;
+        background: $white;
+        -webkit-appearance: none;
+        @include border-radius(0);
+        border: none;
+        float: right;
+        font-size: 1.2em;
+        font-family: $font-light;
+        padding-left: 0px;
+    }
+}
+
+nav.main {
+    width: 100%;
+    background: $white;
+    
+    ul {
+        
+        border-top: 1px solid $grayLight;
+        border-bottom: 1px solid $grayLight;
+        
+        li {
+            height: $lineH;
+            width: 95%;
+            margin-left: 5%;
+            list-style: none;
+            
+            &.empty {
+                text-align: center;
+                display: block;
+                margin: 0;
+                width: 100%;
+                position: relative;
+                padding-top: 11px;
+                padding-bottom: 11px;
+                max-height: $lineH;
+                height: auto;
+            }
+            
+            a {
+                width: 100%;
+                display: block;
+                position: relative;
+                height: $lineH;
+                border-bottom: 1px solid $grayLight;
+                color: $black;
+                text-decoration: none;
+                
+                
+                h1 {
+                    padding-top: 5px;
+                    padding-bottom: 0px;
+                }
+                
+                p {
+                    font-size: 0.8em;
+                }
+            }
+        }
+    }
+}

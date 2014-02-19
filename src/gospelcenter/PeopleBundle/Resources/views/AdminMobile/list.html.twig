@@ -1,0 +1,36 @@
+{% extends "::mobileAdmin.html.twig" %}
+
+{% block stylesheets %}
+	{{ parent() }}
+{% endblock %}
+
+{% block title %}
+    {{ parent() }}
+{% endblock %}
+
+{% block headerCenter %}Contacts{% endblock %}
+
+{% block body %}
+    
+    <nav class="main">
+        <ul>
+            
+            {% for person in persons %}              
+                <li>
+                    <a href="{{ path('gospelcenterAdmin_persons_edit', {'person': person.id, 'center': center.ref}) }}">
+                        <h1>{{ person.firstName }} {{ person.lastName }}</h1>
+                        <p>{{ person.function }}</p>
+                    </a>
+                </li>
+            {% else %}
+                <li class="empty">There are no contacts.</li>
+            {% endfor %}
+            
+        </ul>
+    </nav>
+    
+    <section class="tools">
+        <a href="{{ path('gospelcenterAdmin_persons_add', {'center': center.ref}) }}">Add a contact</a>
+    </section>
+    
+{% endblock %}

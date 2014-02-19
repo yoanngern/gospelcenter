@@ -1,0 +1,43 @@
+{% extends "::adminGlobal.html.twig" %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script type="text/javascript" src="{{ asset('js/form-min.js') }}"></script>
+{% endblock %}
+
+{% block stylesheets %}
+	{{ parent() }}
+	<link rel="stylesheet" href="{{ asset('css/admin.css') }}" type="text/css" />
+	<link rel="stylesheet" href="{{ asset('css/form.css') }}" type="text/css" />
+{% endblock %}
+
+{% block title %}
+    {{ parent() }} - Add a center
+{% endblock %}
+
+{% block adminBody %}
+    <h1>Admin - Add a center</h1>
+    
+    <form action="{{ path('gospelcenterAdminGlobal_centers_add') }}" method="post" {{ form_enctype(form) }}>
+        
+        <nav class="tools">
+    		<input type="submit" class="buttonRounded" />
+    	</nav>
+        
+        {{ form_widget(form.ref, {'attr': {'placeholder': 'Ref'} }) }}
+        {{ form_widget(form.name, {'attr': {'placeholder': 'Name'} }) }}
+        
+        <fieldset>
+            <h2>Location</h2>
+            {{ form_widget(form.location.address1, {'attr': {'placeholder': 'Address 1'} }) }}
+            {{ form_widget(form.location.address2, {'attr': {'placeholder': 'Address 1'} }) }}
+            {{ form_widget(form.location.postalCode, {'attr': {'placeholder': 'Postal code'} }) }}
+            {{ form_widget(form.location.city, {'attr': {'placeholder': 'City'} }) }}
+            {{ form_widget(form.location.country, {'attr': {'placeholder': 'Country'} }) }}
+        </fieldset>
+        
+        {{ form_rest(form) }}
+    </form>
+    
+    
+{% endblock %}
