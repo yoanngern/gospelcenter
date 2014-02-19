@@ -1,4 +1,3 @@
-gospelcenter
-============
+# Gospel Center
 
 Gospel Center website
