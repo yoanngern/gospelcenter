@@ -1,3 +1,7 @@
+###########################   
+########## PROD ###########
+###########################
+
 gospelcenterAdminGlobal:
     resource: "@gospelcenterAdminBundle/Resources/config/routingGlobal.yml"
     prefix:   /admin
@@ -28,4 +32,34 @@ gospelcenterPageGlobal:
     resource: "@gospelcenterPageBundle/Resources/config/routingGlobal.yml"
     prefix:   /
     host: "gospelcenter.local"
-    
+
+
+###########################   
+########### DEV ###########
+###########################
+
+gospelcenterAdminGlobal_dev:
+    resource: "@gospelcenterAdminBundle/Resources/config/routingGlobal.yml"
+    prefix:   /admin
+
+gospelcenterAdmin_dev:
+    resource: "@gospelcenterAdminBundle/Resources/config/routing.yml"
+    prefix:   /{center}/admin
+    requirements:
+        center: lausanne|annecy|montreux|jura
+
+gospelcenterEvents_dev:
+    resource: "@gospelcenterEventBundle/Resources/config/routing.yml"
+    prefix:   /{center}/events
+    requirements:
+        center: lausanne|annecy|montreux|jura
+
+gospelcenterPage_dev:
+    resource: "@gospelcenterPageBundle/Resources/config/routing.yml"
+    prefix:   /{center}/
+    requirements:
+        center: lausanne|annecy|montreux|jura
+
+gospelcenterPageGlobal_dev:
+    resource: "@gospelcenterPageBundle/Resources/config/routingGlobal.yml"
+    prefix:   /
