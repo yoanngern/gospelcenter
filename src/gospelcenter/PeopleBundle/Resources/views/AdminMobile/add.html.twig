@@ -25,7 +25,7 @@
         </fieldset>
         
         <fieldset class="block">
-            {{ form_widget(form.image.file) }}
+            {{ form_widget(form.image.file, {'attr': {'data-title': 'Select an image.'} }) }}
         </fieldset>
         
         <fieldset class="block">
@@ -61,6 +61,15 @@
             {{ form_widget(form.isSpeaker, {'attr': {'data-icon': 'isSpeaker'} }) }}
             {{ form_widget(form.isMember, {'attr': {'data-icon': 'isMember'} }) }}
             {{ form_widget(form.isVisitor, {'attr': {'data-icon': 'isVisitor'} }) }}
+        </fieldset>
+        
+        <fieldset class="block">
+            <legend>Location</legend>
+            {{ form_widget(form.location.address1, {'attr': {'placeholder': 'Address line 1'} }) }}
+            {{ form_widget(form.location.address2, {'attr': {'placeholder': 'Address line 2'} }) }}
+            {{ form_widget(form.location.postalCode, {'attr': {'placeholder': 'Postal code'} }) }}
+            {{ form_widget(form.location.city, {'attr': {'placeholder': 'City'} }) }}
+            {{ form_widget(form.location.country, {'attr': {'placeholder': 'Country'} }) }}
         </fieldset>
         
         <fieldset class="block">

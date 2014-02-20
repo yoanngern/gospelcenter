@@ -76,7 +76,7 @@
         
             <fieldset class="languages">
                 {{ form_label(form.languages, "languages") }}
-                {{ form_widget(form.languages) }}
+                {{ form_widget(form.languages, {'attr': {'class': 'selectMultiple'} }) }}
             </fieldset>
             
             <fieldset class="checkbox">
@@ -86,7 +86,7 @@
             
             <fieldset>
                 {{ form_label(form.function, "Function") }}
-                {{ form_widget(form.function) }}
+                {{ form_widget(form.function, {'attr': {'placeholder': '. . .'} }) }}
             </fieldset>
             
             <fieldset class="checkbox">
