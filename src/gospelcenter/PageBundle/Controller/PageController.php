@@ -43,6 +43,13 @@ class PageController extends Controller
     
     public function homeAction(Center $center)
     {
+        $mobileDetector = $this->get('mobile_detect.mobile_detector');
+        if($mobileDetector->isMobile()) {
+            return $this->render('gospelcenterPageBundle:Mobile:home.html.twig', array(
+                'center' => $center,
+                'page' => 'home'
+            ));
+        }
         
         return $this->render('gospelcenterPageBundle:Page:home.html.twig', array(
             'center' => $center,
