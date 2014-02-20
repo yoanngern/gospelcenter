@@ -22,8 +22,8 @@ use gospelcenter\CenterBundle\Entity\Center;
 class AdminController extends Controller {
     
     /*
-     * List of all Events
-     * @param the Center
+     * List of all events
+     * @param $center = Center
      */
     public function listAction(Center $center)
     {
@@ -43,32 +43,6 @@ class AdminController extends Controller {
         return $this->render('gospelcenterEventBundle:Admin:list.html.twig', array(
             'center' => $center,
             'events' => $events,
-            'page' => 'events'
-        ));
-    }
-    
-    
-    /*
-    *   Edit an event
-    */
-    public function editAction(Center $center, Event $event)
-    {
-        $em = $this->getDoctrine()->getManager();
-        
-        $event = $em->getRepository('gospelcenterEventBundle:Event')->findWithAll($event, $center);
-        
-        $mobileDetector = $this->get('mobile_detect.mobile_detector');
-        if($mobileDetector->isMobile()) {
-            return $this->render('gospelcenterEventBundle:AdminMobile:edit.html.twig', array(
-                'center' => $center,
-                'event' => $event,
-                'page' => 'events'
-            ));
-        }
-        
-        return $this->render('gospelcenterEventBundle:Admin:edit.html.twig', array(
-            'center' => $center,
-            'event' => $event,
             'page' => 'events'
         ));
     }
@@ -100,9 +74,63 @@ class AdminController extends Controller {
             }
         }
         
+        $mobileDetector = $this->get('mobile_detect.mobile_detector');
+        if($mobileDetector->isMobile()) {
+            return $this->render('gospelcenterEventBundle:AdminMobile:add.html.twig', array(
+                'center' => $center,
+                'form' => $form->createView(),
+                'page' => 'events'
+            ));
+        }
         
         return $this->render('gospelcenterEventBundle:Admin:add.html.twig', array(
             'center' => $center,
+            'form' => $form->createView(),
+            'page' => 'events'
+        ));
+    }
+    
+    
+    /*
+     *   Edit an event
+     *   @param $event = Event
+     *          $center = Center
+     */
+    public function editAction(Center $center, Event $event)
+    {   
+        $form = $this->createForm(new EventType, $event);
+        
+        $request = $this->get('request');
+        
+        if($request->getMethod() == 'POST')
+        {
+            $form->bind($request);
+            
+            if($form->isValid())
+            {
+                $em = $this->getDoctrine()->getManager();
+                $em->persist($event);
+                $em->flush();
+                
+                return $this->redirect( $this->generateUrl('gospelcenterAdmin_events', array(
+                    'center' => $center->getRef()
+                )));
+            }
+        }
+        
+        $mobileDetector = $this->get('mobile_detect.mobile_detector');
+        if($mobileDetector->isMobile()) {
+            return $this->render('gospelcenterEventBundle:AdminMobile:edit.html.twig', array(
+                'center' => $center,
+                'event' => $event,
+                'form' => $form->createView(),
+                'page' => 'events'
+            ));
+        }
+        
+        return $this->render('gospelcenterEventBundle:Admin:edit.html.twig', array(
+            'center' => $center,
+            'event' => $event,
             'form' => $form->createView(),
             'page' => 'events'
         ));
