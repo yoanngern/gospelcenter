@@ -85,7 +85,13 @@ function initInputFile(input) {
     
     $(input).hide();
     
-    var div = '<div id="addImage"><span>Select an image.</span><div class="arrow"></div></div>';
+    var title = $(input).data("title");
+    
+    if(title != null) {
+        var div = '<div id="addImage"><span>'+ title +'</span><div class="arrow"></div></div>';
+    } else {
+        var div = '<div id="addImage"><span>Select a file.</span><div class="arrow"></div></div>';
+    }
     
     $(input).after(div);
 }
