@@ -25,7 +25,7 @@ function setSelectOption(li) {
 }
 
 function initSlectMultiple() {
-    $("select[multiple=multiple]").each( function() {
+    $("select.selectMultiple[multiple=multiple]").each( function() {
         
         var selectId = $(this).attr("id");
         
