@@ -1,0 +1,21 @@
+{% extends "::adminGlobal.html.twig" %}
+
+{% block title %}
+    {{ parent() }} - People
+{% endblock %}
+
+{% block stylesheets %}
+	{{ parent() }}
+	<link rel="stylesheet" href="{{ asset('css/admin.css') }}" type="text/css" />
+{% endblock %}
+
+{% block adminBody %}
+    <h1>Admin - Contacts</h1>
+    <section class="tools">
+        <a href="{{ path('gospelcenterAdminGlobal_persons_add') }}">Add a contact</a>
+    </section>
+    
+    {% block gospelcenterAdminPeople_body %}
+    {% endblock %}
+    
+{% endblock %}

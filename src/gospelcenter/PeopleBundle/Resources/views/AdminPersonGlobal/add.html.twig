@@ -1,0 +1,102 @@
+{% extends "::adminGlobal.html.twig" %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script type="text/javascript" src="{{ asset('js/form-min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('js/addImage-min.js') }}"></script>
+{% endblock %}
+
+{% block stylesheets %}
+	{{ parent() }}
+	<link rel="stylesheet" href="{{ asset('css/admin.css') }}" type="text/css" />
+	<link rel="stylesheet" href="{{ asset('css/form.css') }}" type="text/css" />
+{% endblock %}
+
+{% block title %}
+    {{ parent() }} - Add a person
+{% endblock %}
+
+{% block adminBody %}
+    <h1>Admin - Add a person</h1>
+    
+    <form class="person" action="{{ path('gospelcenterAdminGlobal_persons_add') }}" method="post" {{ form_enctype(form) }}>
+        
+        <nav class="tools">
+    		<input type="submit" class="buttonRounded" />
+    	</nav>
+    	
+    	{{ form_errors(form) }}
+        
+        <fieldset class="image">
+            {{ form_widget(form.image.file) }}
+        </fieldset>
+        
+        <fieldset class="header">
+            {{ form_widget(form.title, {'attr': {'placeholder': 'Title'}, 'autofocus': true}) }}
+            {{ form_widget(form.firstname, {'attr': {'placeholder': 'Firstname', 'class': 'resize'} }) }}
+            {{ form_widget(form.lastname, {'attr': {'placeholder': 'Lastname', 'class': 'resize'} }) }}
+        </fieldset>
+        
+        <fieldset class="phone">
+            {{ form_label(form.privatePhone, "private") }}
+            {{ form_widget(form.privatePhone, {'attr': {'placeholder': 'Phone'} }) }}
+            
+            {{ form_label(form.mobilePhone, "mobile") }}
+            {{ form_widget(form.mobilePhone, {'attr': {'placeholder': 'Phone'} }) }}
+        </fieldset>
+        
+        <fieldset class="email">
+            {{ form_label(form.email, "private") }}
+            {{ form_widget(form.email, {'attr': {'placeholder': 'Email'} }) }}
+        </fieldset>
+        
+        <fieldset class="birthday">
+            {{ form_label(form.dateOfBirth, "birthday") }}
+            {{ form_widget(form.dateOfBirth, {'attr': {'placeholder': 'Birthday'} }) }}
+        </fieldset>
+        
+        <fieldset class="location">
+            {{ form_label(form.location, "home") }}
+            {{ form_widget(form.location.address1, {'attr': {'placeholder': 'address'} }) }}
+
+            {{ form_widget(form.location.address2, {'attr': {'placeholder': 'address'} }) }}
+
+            {{ form_widget(form.location.postalCode, {'attr': {'placeholder': 'Postal code'} }) }}
+
+            {{ form_widget(form.location.city, {'attr': {'placeholder': 'City'} }) }}
+            
+            {{ form_widget(form.location.country, {'attr': {'placeholder': 'Country'} }) }}
+        </fieldset>
+        
+        <fieldset class="details">
+        
+            <fieldset class="languages">
+                {{ form_label(form.languages, "languages") }}
+                {{ form_widget(form.languages, {'attr': {'class': 'selectMultiple'} }) }}
+            </fieldset>
+            
+            <fieldset class="checkbox">
+                {{ form_widget(form.abroad, {'attr': {'data-icon': 'abroad'} }) }}
+                {{ form_widget(form.hasChildren, {'attr': {'data-icon': 'hasChildren'} }) }}
+            </fieldset>
+            
+            <fieldset>
+                {{ form_label(form.function, "Function") }}
+                {{ form_widget(form.function, {'attr': {'placeholder': '. . .'} }) }}
+            </fieldset>
+        </fieldset>
+        
+        <fieldset class="notes">
+            {{ form_label(form.notes, "notes") }}
+            {{ form_widget(form.notes, {'attr': {'class': 'elastic', 'placeholder': '. . .'} }) }}
+        </fieldset>
+        
+        <fieldset class="more">
+            {{ form_rest(form) }}
+        </fieldset>
+        
+        
+    </form>
+    
+    
+{% endblock %}

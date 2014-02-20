@@ -1,0 +1,36 @@
+{% extends "::adminGlobal.html.twig" %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script type="text/javascript" src="{{ asset('js/form-min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('js/addImage-min.js') }}"></script>
+{% endblock %}
+
+{% block stylesheets %}
+	{{ parent() }}
+	<link rel="stylesheet" href="{{ asset('css/admin.css') }}" type="text/css" />
+	<link rel="stylesheet" href="{{ asset('css/form.css') }}" type="text/css" />
+{% endblock %}
+
+{% block title %}
+    {{ parent() }} - Add an image
+{% endblock %}
+
+{% block adminBody %}
+    <h1>Admin - Add an image</h1>
+    
+    <form class="image" action="{{ path('gospelcenterAdminGlobal_images_add') }}" method="post" {{ form_enctype(form) }}>
+        <nav class="tools">
+    		<input type="submit" class="buttonRounded" />
+    	</nav>
+    	
+        {{ form_widget(form.file) }}
+        {{ form_widget(form.title, {'attr': {'placeholder': 'Title'} }) }}
+        {{ form_widget(form.type, {'attr': {'placeholder': 'Type'} }) }}
+        {{ form_widget(form.description, {'attr': {'placeholder': 'Description'} }) }}
+        {{ form_rest(form) }}
+        
+    </form>
+    
+    
+{% endblock %}

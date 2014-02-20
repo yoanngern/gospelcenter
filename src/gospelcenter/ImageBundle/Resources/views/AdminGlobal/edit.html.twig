@@ -1,0 +1,37 @@
+{% extends "::adminGlobal.html.twig" %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script type="text/javascript" src="{{ asset('js/form-min.js') }}"></script>
+{% endblock %}
+
+{% block stylesheets %}
+	{{ parent() }}
+	<link rel="stylesheet" href="{{ asset('css/admin.css') }}" type="text/css" />
+	<link rel="stylesheet" href="{{ asset('css/form.css') }}" type="text/css" />
+{% endblock %}
+
+{% block title %}
+    {{ parent() }} - Edit an image
+{% endblock %}
+
+{% block adminBody %}
+    <h1>Admin - Edit an image</h1>
+    
+    
+    
+    <form class="image" action="{{ path('gospelcenterAdminGlobal_images_edit', {'image': image.id}) }}" method="post" {{ form_enctype(form) }}>
+        <nav class="tools">
+    		<input type="submit" class="buttonRounded" />
+    	</nav>
+    	
+    	<img src="{{ asset(image.webPath) }}" alt="{{ image.alt }}" />
+    	
+        {{ form_widget(form.title, {'attr': {'placeholder': 'Title'} }) }}
+        {{ form_widget(form.type, {'attr': {'placeholder': 'Type'} }) }}
+        {{ form_widget(form.description, {'attr': {'placeholder': 'Description'} }) }}
+        {{ form_rest(form) }}
+    </form>
+    
+    
+{% endblock %}
