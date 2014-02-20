@@ -16,6 +16,7 @@
 {% endblock %}
 
 {% block footer %}
+    <li><a href="{{ path('gospelcenterAdminGlobal_persons') }}" {% if page == 'people' %}class="current"{% endif %}>Contacts</a></li>
     <li><a href="{{ path('gospelcenterAdminGlobal_pages') }}" {% if page == 'pages' %}class="current"{% endif %}>Pages</a></li>
     <li><a href="{{ path('gospelcenterAdminGlobal_images') }}" {% if page == 'images' %}class="current"{% endif %}>Images</a></li>
     <li><a href="{{ path('gospelcenterAdminGlobal_centers') }}" {% if page == 'centers' %}class="current"{% endif %}>Centers</a></li>
