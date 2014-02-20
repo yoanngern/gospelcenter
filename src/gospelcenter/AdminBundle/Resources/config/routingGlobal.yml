@@ -13,7 +13,22 @@ gospelcenterAdminGlobal_home:
 ######### People #########
 ##########################
 
+# Persons
+gospelcenterAdminGlobal_persons:
+    path:       /persons
+    defaults:   { _controller: gospelcenterPeopleBundle:AdminPersonGlobal:list }
 
+# Add a person
+gospelcenterAdminGlobal_persons_add:
+    path:       /persons/add
+    defaults:   { _controller: gospelcenterPeopleBundle:AdminPersonGlobal:add }
+
+# Edit a person
+gospelcenterAdminGlobal_persons_edit:
+    path:       /persons/edit/{person}
+    defaults:   { _controller: gospelcenterPeopleBundle:AdminPersonGlobal:edit }
+    requirements:
+        person: \d+
 
 
 ##########################
