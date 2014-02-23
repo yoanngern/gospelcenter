@@ -27,7 +27,7 @@ class CelebrationType extends AbstractType
     {
         $builder
             ->add('title',              'text', array('required' => false))
-            ->add('date',               'date', array('widget' => 'single_text'))
+            ->add('date',               'datetime', array('widget' => 'single_text'))
             ->add('startingTime',       'time', array('widget' => 'single_text'))
             ->add('endingTime',         'time', array('widget' => 'single_text'))
             ->add('description',        'textarea', array('required' => false))

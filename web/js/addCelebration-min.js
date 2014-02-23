@@ -407,9 +407,16 @@ $(document).ready( function() {
     
     stylingForm();
     
+    
+    
     // init checkbox
 	$("input[type=checkbox]").each( function() {
     	initCheckBox(this);
+	});
+	
+	// init date
+	$("input[type=datetime]").each( function() {
+    	setDateTime(this);
 	});
 	
 	// Select a status
@@ -417,89 +424,9 @@ $(document).ready( function() {
 	    setCheckbox(this);
 	});
     
-    /*
-	$('form input, form textarea').each( function() {
-    	if($(this).attr('data-label')) {
-    	    if(!$(this).val()) {
-        	    $(this).removeClass('writeOn');
-                $(this).addClass('writeOff');
-                $(this).removeClass('labelOn');
-                $(this).addClass('labelOff');
-    	    } else {
-        	    $(this).removeClass('writeOff');
-                $(this).addClass('writeOn');
-                $(this).removeClass('labelOff');
-                $(this).addClass('labelOn');
-    	    }
-        }
-	});
-	
-	
-	$('form').submit(function() {
-        
-        $('form input, form textarea').each( function() {
-            var label = $(this).attr('data-label');
-            if($(this).val() == label) {
-                $(this).val('');
-            }
-        });
-        
-        return true;
-    });
-    
-	
-	$("input[type='text']").click(function () {
-	    var label = $(this).attr('data-label');
-        if($(this).val() == label) {
-            $(this).select();
-        }
-    });
-    
-    $('form input, form textarea').each( function() {
-        if($(this).attr('data-label')) {
-            if(!$(this).val()) {
-                var label = $(this).attr('data-label');
-                var input = $(this);
-                $(this).val(label);
-                $(this).removeClass('labelOff');
-                $(this).addClass('labelOn');
-            }
-        }
-    });
-    */
-    
     $('form.person fieldset.header input.resize').autoGrowInput();
     
-    /*
-    $('form').on('focus', '.labelOn', function() {
-        var label = $(this).attr('data-label');
-        if($(this).val() == label) {
-            $(this).removeClass('labelOn');
-            $(this).addClass('labelOff');
-        }
-    });
     
-    $('form').on('blur', '.labelOff, .labelOn', function() {
-        if($(this).val() == "") {
-            var label = $(this).attr('data-label');
-            $(this).val(label);
-            $(this).removeClass('labelOff');
-            $(this).addClass('labelOn');  
-        }
-    });
-	
-	$('form').on("keyup", 'input, textarea', function() {	
-		 var label = $(this).attr('data-label');
-         if($(this).val() == label) {
-    		 $(this).removeClass('writeOn');
-             $(this).addClass('writeOff');
-		 } else {
-    		 $(this).removeClass('writeOff');
-    		 $(this).addClass('writeOn'); 
-		 }
-	});
-	*/
-	
 	$('form.person fieldset.header').on("keyup", 'input.resize', function() {
     	$(this).autoGrowInput();
 	});
@@ -511,22 +438,7 @@ $(document).ready( function() {
 	});
 	
 	$("form").on("focusout", "input[type=datetime]", function() {
-    	var value = $(this).val();
-    	var date = stringToDate(value);
-    	
-    	if(date != null) {
-    	    
-    	    
-        	date = Date.parse(date).toString("d MMMM yyyy");
-        	value = date;
-        	
-    	} else {
-        	value = "";
-    	}
-    	
-    	$(this).val(value);
-    	$(this).autoGrowInput();
-    	
+    	setDateTime(this);
 	});
 	
 	$("form fieldset[data-prototype]").on("click", "#add", function(e) {
@@ -564,6 +476,26 @@ function formMultiplePage() {
     });
     
     $("fieldset.page > legend").remove();
+}
+
+
+function setDateTime(input) {
+    
+    var value = $(input).val();
+
+    var date = stringToDate(value);
+        
+    if(date != null) {
+	    
+    	date = Date.parse(date).toString("d MMMM yyyy");
+    	value = date;
+    	
+	} else {
+    	value = "";
+	}
+	
+	$(input).val(value);
+	$(input).autoGrowInput();
 }
 
 

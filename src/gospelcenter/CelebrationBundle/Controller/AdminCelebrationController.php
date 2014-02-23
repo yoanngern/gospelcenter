@@ -8,6 +8,7 @@ use Symfony\Component\HttpFoundation\Response;
 // Celebration
 use gospelcenter\CelebrationBundle\Entity\Celebration;
 use gospelcenter\CelebrationBundle\Form\CelebrationType;
+use gospelcenter\CelebrationBundle\Form\CelebrationMobileType;
 
 // Entity
 use gospelcenter\CenterBundle\Entity\Center;
@@ -51,7 +52,13 @@ class AdminCelebrationController extends Controller {
     {
         $celebration = new celebration($center);
         
-        $form = $this->createForm(new CelebrationType, $celebration);
+        $mobileDetector = $this->get('mobile_detect.mobile_detector');
+        
+        if($mobileDetector->isMobile()) {
+            $form = $this->createForm(new CelebrationMobileType, $celebration);
+        } else {
+            $form = $this->createForm(new CelebrationType, $celebration);
+        }
         
         $request = $this->get('request');
         
@@ -82,7 +89,7 @@ class AdminCelebrationController extends Controller {
             }
         }
         
-        $mobileDetector = $this->get('mobile_detect.mobile_detector');
+        
         if($mobileDetector->isMobile()) {
             return $this->render('gospelcenterCelebrationBundle:MobileCelebration:add.html.twig', array(
                 'center' => $center,
@@ -119,7 +126,13 @@ class AdminCelebrationController extends Controller {
         $celebration->setStartingTime($celebration->getStartingDate());
         $celebration->setEndingTime($celebration->getEndingDate());
         
-        $form = $this->createForm(new CelebrationType, $celebration);
+        $mobileDetector = $this->get('mobile_detect.mobile_detector');
+        
+        if($mobileDetector->isMobile()) {
+            $form = $this->createForm(new CelebrationMobileType, $celebration);
+        } else {
+            $form = $this->createForm(new CelebrationType, $celebration);
+        }
         
         $request = $this->get('request');
         
@@ -155,7 +168,6 @@ class AdminCelebrationController extends Controller {
             }
         }
         
-        $mobileDetector = $this->get('mobile_detect.mobile_detector');
         if($mobileDetector->isMobile()) {
             return $this->render('gospelcenterCelebrationBundle:MobileCelebration:edit.html.twig', array(
                 'center' => $center,

@@ -222,6 +222,10 @@
                 	
                 	&:nth-child(even) {
                     	float: right;
+                    	
+                    	img {
+                        	margin: 0;
+                    	}
                 	}
             	}
             	

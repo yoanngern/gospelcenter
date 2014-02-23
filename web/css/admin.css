@@ -228,6 +228,8 @@ table {
         float: left; }
       #container form.celebration fieldset.page fieldset.column:nth-child(even) {
         float: right; }
+        #container form.celebration fieldset.page fieldset.column:nth-child(even) img {
+          margin: 0; }
     #container form.celebration fieldset.page fieldset.full {
       width: 100%; }
     #container form.celebration fieldset.page article h1 {

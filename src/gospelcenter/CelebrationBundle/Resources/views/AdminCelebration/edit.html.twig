@@ -3,6 +3,7 @@
 {% block javascripts %}
     {{ parent() }}
     <script type="text/javascript" src="{{ asset('js/addCelebration-min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('js/addImage-min.js') }}"></script>
 {% endblock %}
 
 {% block stylesheets %}
@@ -26,7 +27,7 @@
         
     	{{ form_errors(form) }}
     	<fieldset class="header">
-        	<h1>Celebration of {{ form_widget(form.date, {'attr': {'data-structure': 'day/month/year', 'class': 'resize'} }) }}</h1>
+        	<h1>Celebration of {{ form_widget(form.date, {'attr': {'data-structure': 'day/month/year', 'class': 'resize', value: form.date.vars.value|date('d F Y')} }) }}</h1>
             <time>from {{ form_widget(form.startingTime) }} to {{ form_widget(form.endingTime) }}</time>
     	</fieldset>
     	
@@ -41,6 +42,9 @@
                 
                 <fieldset class="column image">
                     <h2>Image</h2>
+                    {% if form.image.vars.value %}
+                        <img src="{{ asset(form.image.vars.value.webPath)}}" alt="{{ form.image.vars.value.alt }}" data-image="{{ form.image.vars.id }}" />
+                    {% endif %}
                     {{ form_widget(form.image.file) }}
                 </fieldset>
             </fieldset>
