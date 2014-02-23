@@ -20,7 +20,7 @@ class LocationType extends AbstractType
             ->add('address2',   'text', array('required' => false))
             ->add('postalCode', 'text')
             ->add('city',       'text')
-            ->add('country',     'text')
+            ->add('country',    'text')
         ;
     }
     

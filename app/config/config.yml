@@ -26,6 +26,9 @@ twig:
     debug:            %kernel.debug%
     strict_variables: %kernel.debug%
     cache:            false
+    form:
+        resources:
+            - 'gospelcenterPeopleBundle:Form:tel.html.twig'
 
 # Assetic Configuration
 assetic:

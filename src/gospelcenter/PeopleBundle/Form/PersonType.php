@@ -10,6 +10,8 @@ use gospelcenter\CelebrationBundle\Form\SpeakerOnlyType;
 use gospelcenter\ImageBundle\Form\ImageSimpleType;
 use gospelcenter\LocationBundle\Form\LocationSimpleType;
 
+use gospelcenter\PeopleBundle\Form\Type\TelType;
+
 class PersonType extends AbstractType
 {
         /**
@@ -24,11 +26,11 @@ class PersonType extends AbstractType
             ->add('title',          'text')
             ->add('dateOfBirth',    'birthday', array('required' => false,
                                                       'widget'    => 'single_text'))
-            ->add('email',          'text', array('required' => false))
-            ->add('privatePhone',   'text', array('required' => false))
-            ->add('mobilePhone',    'text', array('required' => false))
+            ->add('email',          'email', array('required' => false))
+            ->add('privatePhone',   new TelType(), array('required' => false))
+            ->add('mobilePhone',    new TelType(), array('required' => false))
             ->add('notes',          'textarea', array('required' => false))
-            ->add('languages',       'entity', array('class'         => 'gospelcenterLanguageBundle:Language',
+            ->add('languages',      'entity', array('class'         => 'gospelcenterLanguageBundle:Language',
                                                     'required'      => false,
                                                     'empty_value'   => 'Select languages',
                                                     'multiple'      => true,
