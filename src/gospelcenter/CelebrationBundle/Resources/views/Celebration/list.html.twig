@@ -1,0 +1,102 @@
+{% extends "::local.html.twig" %}
+
+{% block stylesheets %}
+	{{ parent() }}
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+{% endblock %}
+
+{% block title %}
+    {{ parent() }} - Celebrations
+{% endblock %}
+
+{% block body %}
+    <h1>Celebrations</h1>
+    
+    <section class="nextCelebrations slider" id="1">
+        
+        {% if nextCelebrations|length > 1 %}<div id="left" class="arrow black"></div>{% endif %}
+    
+        {% for celebration in nextCelebrations %}
+            
+            {% set speakers = '' %}
+        
+            {% for key, speaker in celebration.speakers %}
+                
+                {% if key != 0 and key != (celebration.speakers|length -1) %}
+                    {% set speakers = speakers ~ ', '%}
+                {% elseif key != 0 and key == (celebration.speakers|length -1) %}
+                    {% set speakers = speakers ~ ' et '%}
+                {% endif %}
+                
+                {% set speakers = speakers ~ speaker.person.firstname ~ ' ' ~ speaker.person.lastname %}
+                
+            {% endfor %}
+            
+            <article class="slide" id="{{ loop.index }}">
+                <section class="picture">
+                    <img src="{{ asset(celebration.image.webPath) }}" alt="{{ celebration.image.alt }}" />
+                </section>
+                <section class="details content">
+                    <h1><span>{{ celebration.startingDate|date('j F') }}</span> at {{ celebration.startingDate|date('H:i') }}</h1>
+                    <h2>{{ speakers }}</h2>
+                    {% if celebration.description %}<p>{{ celebration.description }}</p>{% endif %}
+                    {% if celebration.kidsProgram %}<a href="#">Program for kids</a>{% endif %}
+                </section>
+            </article>
+            
+        {% endfor %}
+        
+        {% if nextCelebrations|length > 1 %}<div id="right" class="arrow black"></div>{% endif %}
+        
+        {% if nextCelebrations|length > 1 %}
+            <nav id="slides">
+                <ul>
+                    {% for celebration in nextCelebrations %}
+                        <li class="{% if loop.index == 1 %}current{% endif %}" data-slide="{{ loop.index }}" data-slider="1"></li>
+                    {% endfor %}
+                </ul>
+            </nav>
+        {% endif %}
+    </section>
+    
+    <section class="lastCelebrations">
+        <h1>Watch our last celebrations</h1>
+        
+        <section class="clip">
+            {% for celebration in lastCelebrations %}
+                
+                {% set speakers = '' %}
+            
+                {% for key, speaker in celebration.speakers %}
+                    
+                    {% if key != 0 and key != (celebration.speakers|length -1) %}
+                        {% set speakers = speakers ~ ', '%}
+                    {% elseif key != 0 and key == (celebration.speakers|length -1) %}
+                        {% set speakers = speakers ~ ' et '%}
+                    {% endif %}
+                    
+                    {% set speakers = speakers ~ speaker.person.firstname ~ ' ' ~ speaker.person.lastname %}
+                    
+                {% endfor %}
+                
+                <article>
+                    <img src="{{ asset(celebration.image.webPath) }}" alt="{{ celebration.image.alt }}" />
+                    <section class="details">
+                        <h1>{{ speakers }}</h1>
+                        <span>{{ celebration.startingDate|date('d F') }}</span>
+                    </section>
+                </article>
+                
+            {% endfor %}
+            
+            <article class="more">
+                <span>More</span>
+            </article>
+        </section>
+            
+    </section>
+    
+{% endblock %}

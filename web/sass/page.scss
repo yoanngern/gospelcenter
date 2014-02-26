@@ -74,25 +74,76 @@ html.js {
             text-align: center;
             font-size: 2em;
             margin: 0px;
-            
             font-weight: 100;
     		font-family: $font-light;
+        }
+        
+        &.about {
+            
+            nav.sub_nav {
+                position: absolute;
+                bottom: 75px;
+            }
+            
+            &.leadership {
+                article {
+                    display: inline-block;
+                    margin: 1% 1% 1% 0;
+                    height: 15%;
+                    min-height: 150px;
+                    width: auto;
+                    
+                    img {
+                        display: block;
+                        margin: 0 auto;
+                        height: 100%;
+                    }
+                    
+                    span {
+                        display: block;
+                        font-family: $font-bold;
+                        font-size: 0.9em;
+                        padding-top: 5px;
+                        width: 100%;
+                        text-align: center;
+                    }
+                }
+            }
+        }
+        
+        &.complex {
+            margin: 0 auto;
+            position: inherit;
+            width: 50%;
+            min-width: auto;
+            
+            h1 {
+                padding-top: 40px;
+                top: 0px;
+                position: relative;
+            }
+            
+            h2 {
+                display: block;
+                font-size: 1.4em;
+                padding-top: 20px;
+            }
         }
         
         &.simple {
             
             & > h2 {
-                position: absolute;
+                position: relative;
                 top: 18%;
-                width: 100%;
+                width: 60%;
                 text-align: center;
-                margin: 0px;
+                margin: 0 auto;
                 font-size: 1.5em;
                 font-family: $font-light;
                 text-transform: uppercase;
             }
             
-            nav {
+            nav#slides {
                 position: absolute;
                 top: 87%;
                 width: 100%;
@@ -165,6 +216,22 @@ html.js {
                 }
                 
                 
+            }
+            
+            &.about {
+                
+                & > h2 {
+                    top: 17%;
+                }
+                
+                article.slide {
+                    top: 33%;
+                    height: 47%;
+                }
+                
+                nav#slides {
+                    top: 81%;
+                }
             }
         }
         

@@ -20,6 +20,13 @@ gospelcenterEvents:
     host: "{center}.gospelcenter.local"
     requirements:
         center: lausanne|annecy|montreux|jura
+        
+gospelcenterCelebrations:
+    resource: "@gospelcenterCelebrationBundle/Resources/config/routing.yml"
+    prefix:   /celebrations
+    host: "{center}.gospelcenter.local"
+    requirements:
+        center: lausanne|annecy|montreux|jura
 
 gospelcenterPage:
     resource: "@gospelcenterPageBundle/Resources/config/routing.yml"
@@ -51,6 +58,12 @@ gospelcenterAdmin_dev:
 gospelcenterEvents_dev:
     resource: "@gospelcenterEventBundle/Resources/config/routing.yml"
     prefix:   /{center}/events
+    requirements:
+        center: lausanne|annecy|montreux|jura
+
+gospelcenterCelebrations_dev:
+    resource: "@gospelcenterCelebrationBundle/Resources/config/routing.yml"
+    prefix:   /{center}/celebrations
     requirements:
         center: lausanne|annecy|montreux|jura
 

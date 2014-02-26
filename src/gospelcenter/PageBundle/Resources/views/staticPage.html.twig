@@ -1,0 +1,7 @@
+{% extends "gospelcenterPageBundle::layout.html.twig" %}
+
+
+
+{% block body %}
+    {% include "@gospelcenterPage/StaticPage/"~ center.ref ~"/"~ language ~"/"~ template ~".html.twig" %}
+{% endblock %}

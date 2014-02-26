@@ -143,7 +143,7 @@ function addLocation(id) {
  */
 function getLocation(id) {
     
-    var url = "../../locations/json/" + id;
+    var url = "../locations/json/" + id;
     
     $.ajax({
         type: "POST",
@@ -291,7 +291,7 @@ function addSpeaker(id) {
  */
 function getSpeaker(id) {
     
-    var url = "../../speakers/json/" + id;
+    var url = "../speakers/json/" + id;
     
     $.ajax({
         type: "POST",

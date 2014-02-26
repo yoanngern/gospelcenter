@@ -45,22 +45,55 @@ html.js #page article.slide {
       margin: 0px;
       font-weight: 100;
       font-family: "Radikal-Light", "Radikal", sans-serif; }
-    #container #page.simple > h2 {
+    #container #page.about nav.sub_nav {
       position: absolute;
+      bottom: 75px; }
+    #container #page.about.leadership article {
+      display: inline-block;
+      margin: 1% 1% 1% 0;
+      height: 15%;
+      min-height: 150px;
+      width: auto; }
+      #container #page.about.leadership article img {
+        display: block;
+        margin: 0 auto;
+        height: 100%; }
+      #container #page.about.leadership article span {
+        display: block;
+        font-family: "Radikal-Bold", "Radikal", sans-serif;
+        font-size: 0.9em;
+        padding-top: 5px;
+        width: 100%;
+        text-align: center; }
+    #container #page.complex {
+      margin: 0 auto;
+      position: inherit;
+      width: 50%;
+      min-width: auto; }
+      #container #page.complex h1 {
+        padding-top: 40px;
+        top: 0px;
+        position: relative; }
+      #container #page.complex h2 {
+        display: block;
+        font-size: 1.4em;
+        padding-top: 20px; }
+    #container #page.simple > h2 {
+      position: relative;
       top: 18%;
-      width: 100%;
+      width: 60%;
       text-align: center;
-      margin: 0px;
+      margin: 0 auto;
       font-size: 1.5em;
       font-family: "Radikal-Light", "Radikal", sans-serif;
       text-transform: uppercase; }
-    #container #page.simple nav {
+    #container #page.simple nav#slides {
       position: absolute;
       top: 87%;
       width: 100%; }
-      #container #page.simple nav ul {
+      #container #page.simple nav#slides ul {
         text-align: center; }
-        #container #page.simple nav ul li {
+        #container #page.simple nav#slides ul li {
           border: 1px solid #d91a15;
           margin-left: 5px;
           margin-right: 5px;
@@ -69,9 +102,9 @@ html.js #page article.slide {
           width: 10px;
           height: 10px;
           cursor: pointer; }
-          #container #page.simple nav ul li:hover {
+          #container #page.simple nav#slides ul li:hover {
             background: #d91a15; }
-          #container #page.simple nav ul li.current {
+          #container #page.simple nav#slides ul li.current {
             background: #d91a15; }
     #container #page.simple article.slide {
       position: absolute;
@@ -107,3 +140,10 @@ html.js #page article.slide {
             #container #page.simple article.slide section p.link a:hover {
               background: #fdfdfc;
               color: #313131; }
+    #container #page.simple.about > h2 {
+      top: 17%; }
+    #container #page.simple.about article.slide {
+      top: 33%;
+      height: 47%; }
+    #container #page.simple.about nav#slides {
+      top: 81%; }

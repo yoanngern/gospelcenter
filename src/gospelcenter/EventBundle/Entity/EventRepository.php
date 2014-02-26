@@ -94,6 +94,28 @@ class EventRepository extends EntityRepository
         
     }
     
+    public function findNext(\gospelcenter\CenterBundle\Entity\Center $center, $nb)
+    {
+        $qb = $this->createQueryBuilder('e');
+        
+        $qb->join('e.centers', 'c');
+            
+        $qb->where('c.ref = :center')
+            ->setParameter('center', $center->getRef());
+            
+        $qb->andWhere('e.startingDate > :now')
+            ->setParameter('now', new \Datetime());
+        
+        $qb->orderBy('e.startingDate', 'ASC');
+        
+        if($nb > 0)
+        {
+            $qb->setMaxResults($nb);
+        }
+        
+        return $qb->getQuery()->getResult();
+    }
+    
     public function findWithAll(\gospelcenter\EventBundle\Entity\Event $event, \gospelcenter\CenterBundle\Entity\Center $center)
     {
         $qb = $this->createQueryBuilder('e');

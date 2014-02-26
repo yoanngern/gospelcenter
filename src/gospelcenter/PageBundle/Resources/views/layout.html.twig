@@ -1,12 +1,15 @@
 {% extends "::local.html.twig" %}
 
-{% block title %}
-    {{ parent() }} - {{ article.title }}
+{% block stylesheets %}
+	{{ parent() }}
+	<link rel="stylesheet" href="{{ asset('css/page.css') }}" type="text/css" />
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script type="text/javascript" src="{{ asset('js/page-min.js') }}"></script>
 {% endblock %}
 
 {% block body %}
-    
-    {% block gospelcenterPage_body %}
-    {% endblock %}
     
 {% endblock %}

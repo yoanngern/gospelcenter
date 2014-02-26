@@ -321,7 +321,298 @@ div.arrow_up {
         display: block;
         margin-top: 50px;
     }
+
 }
+
+#page {
+    
+    &.home {
+        
+        header {
+            background: none;
+        }
+        
+        #container {
+            background: url('../images/home.jpg');
+            background-repeat: no-repeat;
+            background-position: center center;
+            background-size: cover;
+            height: 100%;
+            padding-bottom: 0px;
+            
+            #logo {
+                margin: 0 auto;
+                display: none;
+                
+            }
+            
+            #news {
+                position: absolute;
+                height: 18%;
+                display: block;
+                width: 100%;
+                text-align: center;
+                bottom: 70px;
+                
+                
+                a {
+                    display: inline-block;
+                    height: 100%;
+                    border: 2px solid $white;
+                    margin: 0px;
+                    margin-left: -6px;
+                    
+                    &:first-of-type {
+                	    margin-left: 0px;
+            	    }
+            	    
+            	    &:first-child:nth-last-child(6),
+                    &:first-child:nth-last-child(6) ~ & {
+                        
+                        &:first-of-type {
+                    	    border-left: 0px;
+                    	    margin-left: 0px;
+                	    }
+                	    
+                	    &:last-of-type {
+                    	    border-right: 0px;
+                	    }
+                    }
+                    
+                    img {
+                        height: 100%;
+                    }
+                }
+            }
+        }
+        
+        footer {
+            background: none;
+        }
+    }
+    
+    &.celebrations {
+        
+        
+        #container {
+            margin: 0px;
+            padding: 0px;
+            height: 100%;
+            min-height: 650px;
+            background: transparent;
+            width: 100%;
+            overflow-x: hidden;
+        }
+        
+        .nextCelebrations {
+            height: 45%;
+            top: 14%;
+            width: 100%;
+            
+            nav {
+                top: 56%;
+            }
+            
+            div.arrow {
+                width: 20%;
+                top: 13.5%;
+                height: 40%;
+            }
+            
+            .slide {
+                height: 40%;
+                width: 100%;
+                margin: 0 auto;
+                left: 0px;
+                position: absolute;
+                top: 13.5%;
+                min-width: 800px;
+                display: none;
+                
+                .picture {
+                    float: left;
+                    width: 58%;
+                    overflow: hidden;
+                    height: 100%;
+                    
+                    img {
+                        height: 100%;
+                        display: block;
+                        float: right;
+                    }
+                }
+                
+                .details {
+                    float: right;
+                    width: 39%;
+                    padding-top: 80px;
+                    
+                    h1 {
+                        font-size: 1.3em;
+                        
+                        span {
+                            font-family: $font-bold;
+                        }
+                    }
+                    
+                    h2 {
+                        font-size: 1.2em;
+                    }
+                    
+                    a {
+                        text-decoration: none;
+                        color: $red;
+                    }
+                }
+            }
+            
+            
+        }
+        
+        .lastCelebrations {
+            height: 25%;
+            position: absolute;
+            top: 62%;
+            width: 100%;
+            
+            h1 {
+                font-size: 1.4em;
+                height: 25%;
+                text-align: center;
+            }
+            
+            .clip {
+                height: 75%;
+                margin: 0 auto;
+                width: auto;
+                text-align: center;
+                
+                article {
+                    display: inline-block;
+                    margin: 0 0.5%;
+                    height: 100%;
+                    
+                    img {
+                        height: 85%;
+                        margin: 0px;
+                        padding: 0px;
+                    }
+                    
+                    section.details {
+                        height: 10%;
+                        margin: 0px;
+                        color: $grayDark;
+                        
+                        h1 {
+                            font-size: 0.8em;
+                            float: left;
+                            font-family: $font-bold;
+                        }
+                        
+                        span {
+                            font-size: 0.8em;
+                            float: right;
+                        }
+                    }
+                    
+                    &.more {
+                        border: 1px solid $black;
+                        width: 177.8px;
+                        height: 100px;
+                        top: -50px;
+                        position: relative;
+                        
+                        span {
+                            text-align: center;
+                            padding-top: 40px;
+                            display: block;
+                        }
+                    }
+                }
+
+            }
+            
+        }
+        
+        nav#slides {
+            position: absolute;
+            width: 100%;
+            
+            ul {
+                text-align: center;
+                
+                li {
+                    border: 1px solid $red;
+                    margin-left: 5px;
+                    margin-right: 5px;
+                    border-radius: 6px;
+                    display: inline-block;
+                    width: 10px;
+                    height: 10px;
+                    cursor: pointer;
+                    
+                    &:hover {
+                        background: $red;
+                    }
+                    
+                    &.current {
+                        background: $red;
+                    }
+                }
+            }
+        }
+
+        
+    }
+    
+    .slider {
+        div.arrow {
+            position: absolute;
+            z-index: 100;
+            cursor: pointer;
+            
+            &#right {
+                right: 0px;
+                
+                &:hover {
+                    background: url('../images/right.svg');
+                    background-repeat: no-repeat;
+                    background-position: right center;
+                } 
+            }
+            
+            &#left {
+                left: 0px;
+                
+                &:hover {
+                    background: url('../images/left.svg');
+                    background-repeat: no-repeat;
+                    background-position: left center;
+                }
+            }
+            
+            &.black {
+                
+                &#left {
+                    &:hover {
+                        background: url('../images/left_black.svg');
+                        background-repeat: no-repeat;
+                        background-position: left center;
+                    }
+                }
+                
+                &#right {
+                    &:hover {
+                        background: url('../images/right_black.svg');
+                        background-repeat: no-repeat;
+                        background-position: right center;
+                    }
+                }
+            }
+        }
+    }
+}
+
 
 .buttonRounded {
 	color: $red;

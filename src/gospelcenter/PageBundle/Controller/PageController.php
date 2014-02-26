@@ -43,6 +43,12 @@ class PageController extends Controller
     
     public function homeAction(Center $center)
     {
+        $em = $this->getDoctrine()->getManager();
+        
+        $celebrations = $em->getRepository('gospelcenterCelebrationBundle:Celebration')->findNext($center, 1);
+        
+        $events = $em->getRepository('gospelcenterEventBundle:Event')->findNext($center, 2);
+        
         $mobileDetector = $this->get('mobile_detect.mobile_detector');
         if($mobileDetector->isMobile()) {
             return $this->render('gospelcenterPageBundle:Mobile:home.html.twig', array(
@@ -53,7 +59,61 @@ class PageController extends Controller
         
         return $this->render('gospelcenterPageBundle:Page:home.html.twig', array(
             'center' => $center,
+            'celebrations' => $celebrations,
+            'events' => $events,
             'page' => 'home'
+        ));
+    }
+    
+    public function aboutAction(Center $center)
+    {
+        
+        $language = 'fr';
+        
+        return $this->render('gospelcenterPageBundle::staticPage.html.twig', array(
+            'center' => $center,
+            'language' => $language,
+            'template' => 'about',
+            'page' => 'about'
+        ));
+    }
+    
+    public function leadershipAction(Center $center)
+    {
+        
+        $language = 'fr';
+        
+        return $this->render('gospelcenterPageBundle::staticPage.html.twig', array(
+            'center' => $center,
+            'language' => $language,
+            'template' => 'leadership',
+            'page' => 'about'
+        ));
+    }
+    
+    public function staffAction(Center $center)
+    {
+        
+        $language = 'fr';
+        
+        return $this->render('gospelcenterPageBundle::staticPage.html.twig', array(
+            'center' => $center,
+            'language' => $language,
+            'template' => 'staff',
+            'page' => 'about'
+        ));
+    }
+    
+    public function musicAction(Center $center)
+    {
+        
+        $language = 'fr';
+        
+        return $this->render('gospelcenterPageBundle::staticPage.html.twig', array(
+            'center' => $center,
+            'language' => $language,
+            'template' => 'music',
+            'page' => 'about'
         ));
     }
 }

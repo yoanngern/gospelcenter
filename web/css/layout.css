@@ -260,6 +260,177 @@ div.arrow_up {
     display: block;
     margin-top: 50px; }
 
+#page.home header {
+  background: none; }
+#page.home #container {
+  background: url("../images/home.jpg");
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  height: 100%;
+  padding-bottom: 0px; }
+  #page.home #container #logo {
+    margin: 0 auto;
+    display: none; }
+  #page.home #container #news {
+    position: absolute;
+    height: 18%;
+    display: block;
+    width: 100%;
+    text-align: center;
+    bottom: 70px; }
+    #page.home #container #news a {
+      display: inline-block;
+      height: 100%;
+      border: 2px solid #fdfdfc;
+      margin: 0px;
+      margin-left: -6px; }
+      #page.home #container #news a:first-of-type {
+        margin-left: 0px; }
+      #page.home #container #news a:first-child:nth-last-child(6):first-of-type, #page.home #container #news a:first-child:nth-last-child(6) ~ #page.home #container #news a:first-of-type {
+        border-left: 0px;
+        margin-left: 0px; }
+      #page.home #container #news a:first-child:nth-last-child(6):last-of-type, #page.home #container #news a:first-child:nth-last-child(6) ~ #page.home #container #news a:last-of-type {
+        border-right: 0px; }
+      #page.home #container #news a img {
+        height: 100%; }
+#page.home footer {
+  background: none; }
+#page.celebrations #container {
+  margin: 0px;
+  padding: 0px;
+  height: 100%;
+  min-height: 650px;
+  background: transparent;
+  width: 100%;
+  overflow-x: hidden; }
+#page.celebrations .nextCelebrations {
+  height: 45%;
+  top: 14%;
+  width: 100%; }
+  #page.celebrations .nextCelebrations nav {
+    top: 56%; }
+  #page.celebrations .nextCelebrations div.arrow {
+    width: 20%;
+    top: 13.5%;
+    height: 40%; }
+  #page.celebrations .nextCelebrations .slide {
+    height: 40%;
+    width: 100%;
+    margin: 0 auto;
+    left: 0px;
+    position: absolute;
+    top: 13.5%;
+    min-width: 800px;
+    display: none; }
+    #page.celebrations .nextCelebrations .slide .picture {
+      float: left;
+      width: 58%;
+      overflow: hidden;
+      height: 100%; }
+      #page.celebrations .nextCelebrations .slide .picture img {
+        height: 100%;
+        display: block;
+        float: right; }
+    #page.celebrations .nextCelebrations .slide .details {
+      float: right;
+      width: 39%;
+      padding-top: 80px; }
+      #page.celebrations .nextCelebrations .slide .details h1 {
+        font-size: 1.3em; }
+        #page.celebrations .nextCelebrations .slide .details h1 span {
+          font-family: "Radikal-Bold", "Radikal", sans-serif; }
+      #page.celebrations .nextCelebrations .slide .details h2 {
+        font-size: 1.2em; }
+      #page.celebrations .nextCelebrations .slide .details a {
+        text-decoration: none;
+        color: #d91a15; }
+#page.celebrations .lastCelebrations {
+  height: 25%;
+  position: absolute;
+  top: 62%;
+  width: 100%; }
+  #page.celebrations .lastCelebrations h1 {
+    font-size: 1.4em;
+    height: 25%;
+    text-align: center; }
+  #page.celebrations .lastCelebrations .clip {
+    height: 75%;
+    margin: 0 auto;
+    width: auto;
+    text-align: center; }
+    #page.celebrations .lastCelebrations .clip article {
+      display: inline-block;
+      margin: 0 0.5%;
+      height: 100%; }
+      #page.celebrations .lastCelebrations .clip article img {
+        height: 85%;
+        margin: 0px;
+        padding: 0px; }
+      #page.celebrations .lastCelebrations .clip article section.details {
+        height: 10%;
+        margin: 0px;
+        color: #313131; }
+        #page.celebrations .lastCelebrations .clip article section.details h1 {
+          font-size: 0.8em;
+          float: left;
+          font-family: "Radikal-Bold", "Radikal", sans-serif; }
+        #page.celebrations .lastCelebrations .clip article section.details span {
+          font-size: 0.8em;
+          float: right; }
+      #page.celebrations .lastCelebrations .clip article.more {
+        border: 1px solid #363331;
+        width: 177.8px;
+        height: 100px;
+        top: -50px;
+        position: relative; }
+        #page.celebrations .lastCelebrations .clip article.more span {
+          text-align: center;
+          padding-top: 40px;
+          display: block; }
+#page.celebrations nav#slides {
+  position: absolute;
+  width: 100%; }
+  #page.celebrations nav#slides ul {
+    text-align: center; }
+    #page.celebrations nav#slides ul li {
+      border: 1px solid #d91a15;
+      margin-left: 5px;
+      margin-right: 5px;
+      border-radius: 6px;
+      display: inline-block;
+      width: 10px;
+      height: 10px;
+      cursor: pointer; }
+      #page.celebrations nav#slides ul li:hover {
+        background: #d91a15; }
+      #page.celebrations nav#slides ul li.current {
+        background: #d91a15; }
+#page .slider div.arrow {
+  position: absolute;
+  z-index: 100;
+  cursor: pointer; }
+  #page .slider div.arrow#right {
+    right: 0px; }
+    #page .slider div.arrow#right:hover {
+      background: url("../images/right.svg");
+      background-repeat: no-repeat;
+      background-position: right center; }
+  #page .slider div.arrow#left {
+    left: 0px; }
+    #page .slider div.arrow#left:hover {
+      background: url("../images/left.svg");
+      background-repeat: no-repeat;
+      background-position: left center; }
+  #page .slider div.arrow.black#left:hover {
+    background: url("../images/left_black.svg");
+    background-repeat: no-repeat;
+    background-position: left center; }
+  #page .slider div.arrow.black#right:hover {
+    background: url("../images/right_black.svg");
+    background-repeat: no-repeat;
+    background-position: right center; }
+
 .buttonRounded {
   color: #d91a15;
   border: 1px solid #d91a15;

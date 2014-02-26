@@ -26,7 +26,7 @@
     	<section id="ruban_nav">
 	    	{% include "::ruban_nav.html.twig" %}
 	    </section>
-	    <section id="page">
+	    <section id="page" class="{{ page }}">
 	    	<header>
 	    	    {% for type in ['info', 'success', 'error'] %}
                     {% for message in app.session.flashbag.get(type) %}

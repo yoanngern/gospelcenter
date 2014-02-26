@@ -1,20 +1,10 @@
 {% extends "gospelcenterPageBundle::layout.html.twig" %}
 
-{% block stylesheets %}
-	{{ parent() }}
-	<link rel="stylesheet" href="{{ asset('css/page.css') }}" type="text/css" />
-{% endblock %}
-
-{% block javascripts %}
-    {{ parent() }}
-    <script type="text/javascript" src="{{ asset('js/page-min.js') }}"></script>
-{% endblock %}
-
 {% block title %}
-    {{ parent() }}
+    {{ parent() }} - {{ article.title }}
 {% endblock %}
 
-{% block gospelcenterPage_body %}
+{% block body %}
     <section id="page" class="{{ article.template }}">
         <h1>{{ article.title }}</h1>
         <h2>{{ article.slogan }}</h2>
@@ -23,7 +13,7 @@
         
         {% for slide in article.slides %}
             <article id="{{ loop.index }}" class="slide" {% if slide.image %}style="background-image: url('{{ asset(slide.image.webPath) }}')"{% endif %}>
-                <section>
+                <section class="content">
                     <h1>{{ slide.title }}</h1>
                     <p>{{ slide.text }}</p>
                     {% if slide.link %}<p class="link"><a href="{{ slide.link }}" target="_blank">{% if slide.labelLink %}{{ slide.labelLink }}{% else %}{{ slide.link }}{% endif %}</a></p>{% endif %}

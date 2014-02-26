@@ -1,6 +1,22 @@
 gospelcenterPage_home:
     path: /
     defaults: { _controller: gospelcenterPageBundle:Page:home }
+    
+gospelcenterAbout:
+    path: /about
+    defaults: { _controller: gospelcenterPageBundle:Page:about }
+    
+gospelcenterLeadership:
+    path: /leadership
+    defaults: { _controller: gospelcenterPageBundle:Page:leadership }
+    
+gospelcenterStaff:
+    path: /staff
+    defaults: { _controller: gospelcenterPageBundle:Page:staff }
+    
+gospelcenterMusic:
+    path: /music
+    defaults: { _controller: gospelcenterPageBundle:Page:music }
 
 gospelcenterPage_default:
     path: /{page}

@@ -9796,6 +9796,7 @@ if ( typeof module === "object" && module && typeof module.exports === "object" 
 var rubanVisible = false;
 var paramVisible = false;
 var rubanProcess = false;
+var onMove = false;
 
 var red = '#d91a15';
 var white = '#fdfdfc';
@@ -9813,11 +9814,40 @@ var XXL = 1921;
 $(document).ready( function() {
 	
 	$('header').on('click', '#get_ruban', function() {
-		console.log("click");
 		
 		event.preventDefault();
 		toggleRuban();
 		
+	});
+	
+	$("nav#slides li").click( function() {
+    	move(this);
+	});
+	
+	$(".slide").each( function() {
+    	
+    	var slider = $(".slide").parent();
+    	
+    	initSlider(slider);
+    	$(this).fadeIn(300);
+	});
+	
+	$("div.arrow").click( function() {
+    	
+    	var slider = $(this).parent();
+    	
+    	if($(this).attr("id") == 'right') {
+        	moveToLeft(1, slider);
+    	} else {
+        	moveToRight(1, slider);
+    	}
+	});
+	
+	start();
+	
+	// If the window is resised
+	$(window).resize(function() {
+        setWindow();
 	});
 	
 	$('header').on('click', '#get_param', function() {
@@ -9848,8 +9878,247 @@ $(document).ready( function() {
 		}
 	}, 2000);
 	
-	
 });
+
+function move(slide) {
+    
+    if(onMove) {
+        return false;
+    }
+    onMove = true;
+    
+    delay(function(){
+		onMove = false;
+	}, 350);
+    
+    var nav = $(slide).parent().parent();
+    var current = $("li.current", nav).data("slide");
+
+    var id = $(slide).data("slide");
+    
+    var sliderId = $(slide).data("slider");
+    var slider = $(".slider[id="+ sliderId +"]");
+    
+    if(id > current) {
+        var pos = id - current;
+        moveToLeft(pos, slider);
+    }
+    
+    if(id < current) {
+        var pos = current - id;
+        moveToRight(pos, slider);
+    }
+}
+
+function setMax(slider) {
+    var posMaxLeft = 0;
+    var posMaxRight = 0;
+    
+    $(".slide", slider).each( function() {
+        var pos = $(this).position().left;
+        
+        if(pos <= posMaxLeft) {
+            posMaxLeft = pos;
+            $(".slide", slider).removeClass("maxLeft");
+            $(this).addClass("maxLeft");
+        }
+        
+        if(pos >= posMaxRight) {
+            posMaxRight = pos;
+            $(".slide", slider).removeClass("maxRight");
+            $(this).addClass("maxRight");
+        }
+    });
+}
+
+function moveToLeft(pos, slider) {
+    
+    if(onMove) {
+        return false;
+    }
+    onMove = true;
+    
+    delay(function(){
+		onMove = false;
+	}, 350);
+    
+    var total = $(".slide", slider).length;
+    var current = $("nav#slides li.current", slider).data("slide");
+    var currentSlide = $(".slide[id="+ current +"]", slider);
+    
+    $("nav#slides li", slider).removeClass("current");
+    
+    if(current == total) {
+        var newCurrent = 1
+    } else {
+        var newCurrent = current + pos;
+    }
+    
+    $("nav#slides li[data-slide="+ newCurrent +"]", slider).addClass("current");
+    
+    windowW = $(window).width();
+    var left = pos * windowW;
+    left = "-="+left;
+    
+    $(".slide", slider).each( function() {
+        
+        var id = $(this).attr("id");
+        
+        if($(this).hasClass("maxLeft") && id != current) {
+            var pos = $(".slide.maxRight", slider).position().left;
+            
+            $(this).css("left", pos+windowW);
+            
+            $(".slide", slider).removeClass("maxRight");
+            $(".slide", slider).removeClass("maxLeft");
+            $(this).addClass("maxRight");
+        }
+        
+        $(this).animate({
+    		left: left
+    	}, 300, function() {
+        	setMax(slider);
+    	});
+    });
+}
+
+function moveToRight(pos, slider) {
+    
+    console.log(slider);
+    
+    if(onMove) {
+        return false;
+    }
+    onMove = true;
+    
+    delay(function(){
+		onMove = false;
+	}, 350);
+    
+    var total = $(".slide", slider).length;
+    var current = $("nav#slides li.current", slider).data("slide");
+    var currentSlide = $(".slide[id="+ current +"]", slider);
+    
+    $("nav#slides li", slider).removeClass("current");
+    
+    if(current == 1) {
+        var newCurrent = total
+    } else {
+        var newCurrent = current - pos;
+    }
+    
+    $("nav#slides li[data-slide="+ newCurrent +"]", slider).addClass("current");
+    
+    windowW = $(window).width();
+    var left = pos * windowW;
+    left = "+="+left;
+    
+    var nbSlide = $(".slide", slider).length;
+    
+    $(".slide", slider).each( function() {
+        
+        var id = $(this).attr("id");
+        
+        if($(this).hasClass("maxRight") && id != current) {
+            var pos = $(".slide.maxLeft", slider).position().left;
+            
+            $(this).css("left", pos-windowW);
+            
+            $(".slide", slider).removeClass("maxRight");
+            $(".slide", slider).removeClass("maxLeft");
+            $(this).addClass("maxLeft");
+        }
+        
+        $(this).animate({
+    		left: left
+    	}, 300, function() {
+        	setMax(slider);
+    	});
+    });
+    
+}
+
+function start() {
+    setWindow();
+    
+    $("#logo").fadeIn(500).css("display","block");
+    
+    $('.slider').each( function() {
+        initSlider(this);
+    });
+    
+}
+
+function initSlider(slider) {
+    
+    $(".slide", slider).each( function() {
+        
+        var slide = $(this);
+        
+        var id = $(slide).attr("id");
+        var total = $(".slide", slider).length;
+        
+        windowW = $(window).width();
+        
+        var left = (id - 1) * windowW;
+        
+        $(slide).css("left", left);
+        	
+    	if(id == 1) {
+        	$(slide).addClass("maxLeft");
+    	}
+    	
+    	if(id == total) {
+        	$(slide).addClass("maxRight");
+    	}
+        
+    });
+    
+}
+
+
+function setWindow() {
+    
+    var windowH = $(window).height(); 
+    
+    $('#logo').each( function() {
+    	var logoH = $(this).height();
+    	var paddingTop = (windowH / 2) - (logoH / 2)
+    	$(this).css("padding-top", paddingTop);
+	});
+	
+	$("article.slide").each( function() {
+        var sectionH = $(".content", this).height();
+        var articleH = $(this).height();
+        var paddingTop = ((articleH - sectionH) / 2);
+        $(".content", this).css('padding-top', paddingTop);
+    });
+    
+    $(".clip article").each( function() {
+        $(this).css("margin-left", windowW * 0.005);
+        $(this).css("margin-right", windowW * 0.005);
+    });
+    
+    $("article.more").each( function() {
+        var containerH = $(this).parent().height();
+        var txtH = $("span", this).height();
+        
+        var moreH = containerH * 0.85;
+        var moreW = moreH * (16/9);
+        
+        var paddingTop = (moreH - txtH) / 2;
+        var top = (moreH / 2) * (-1) + (txtH/4);
+        
+        $(this).height(moreH);
+        $(this).width(moreW);
+        $(this).css("top", top);
+        $("span", this).css("padding-top", paddingTop);
+    });
+    
+    if($("article.slide").length) {
+        //setSlide();
+    }
+}
 
 /*
  *	delay() function is added to jQuery

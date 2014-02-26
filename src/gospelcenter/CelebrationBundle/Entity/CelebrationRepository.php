@@ -38,4 +38,48 @@ class CelebrationRepository extends EntityRepository
         
         return $qb->getQuery()->getResult();
     }
+    
+    public function findNext(\gospelcenter\CenterBundle\Entity\Center $center, $nb)
+    {
+        $qb = $this->createQueryBuilder('cel');
+        
+        $qb->join('cel.center', 'c');
+            
+        $qb->where('c.ref = :center')
+            ->setParameter('center', $center->getRef());
+            
+        $qb->andWhere('cel.startingDate > :now')
+            ->setParameter('now', new \Datetime());
+        
+        $qb->orderBy('cel.startingDate', 'ASC');
+        
+        if($nb > 0)
+        {
+            $qb->setMaxResults($nb);
+        }
+        
+        return $qb->getQuery()->getResult();
+    }
+    
+    public function findLast(\gospelcenter\CenterBundle\Entity\Center $center, $nb)
+    {
+        $qb = $this->createQueryBuilder('cel');
+        
+        $qb->join('cel.center', 'c');
+            
+        $qb->where('c.ref = :center')
+            ->setParameter('center', $center->getRef());
+            
+        $qb->andWhere('cel.startingDate < :now')
+            ->setParameter('now', new \Datetime());
+        
+        $qb->orderBy('cel.startingDate', 'DESC');
+        
+        if($nb > 0)
+        {
+            $qb->setMaxResults($nb);
+        }
+        
+        return $qb->getQuery()->getResult();
+    }
 }
