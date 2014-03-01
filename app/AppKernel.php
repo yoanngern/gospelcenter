@@ -27,6 +27,7 @@ class AppKernel extends Kernel
             new gospelcenter\MediaBundle\gospelcenterMediaBundle(),
             new gospelcenter\PeopleBundle\gospelcenterPeopleBundle(),
             new gospelcenter\LanguageBundle\gospelcenterLanguageBundle(),
+            new gospelcenter\ArticleBundle\gospelcenterArticleBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {
