@@ -299,7 +299,8 @@ form {
         }
     }
     
-    fieldset.checkbox {
+    fieldset.checkbox,
+    fieldset.radio {
         background: transparent;
         border: none;
         text-align: center;
@@ -308,8 +309,6 @@ form {
             border: none;
             float: none;
         }
-        
-        
         
         div.icon {
             width: $lineH;
@@ -399,6 +398,37 @@ form {
             	}
         	}
         }
+        
+        div.radio-icon {
+            div {
+                width: $lineH;
+                height: $lineH;
+                display: inline-block;
+                margin-left: 5%;
+                margin-right: 5%;
+                cursor: pointer;
+                
+                &#man {
+                	background: url('../images/man_0.svg');
+                	background-size: 100% 100%;
+                	
+                	&.selected {
+                    	background: url('../images/man_1.svg');
+                    	background-size: 100% 100%;
+                	}
+            	}
+                	
+            	&#woman {
+                	background: url('../images/woman_0.svg');
+                	background-size: 100% 100%;
+                	
+                	&.selected {
+                    	background: url('../images/woman_1.svg');
+                    	background-size: 100% 100%;
+                	}
+            	}
+            }
+    	}
     }
     
     input,

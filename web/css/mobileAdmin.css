@@ -196,67 +196,110 @@ form {
       float: right;
       width: 46px;
       height: 46px; }
-  form fieldset.checkbox {
+  form fieldset.checkbox,
+  form fieldset.radio {
     background: transparent;
     border: none;
     text-align: center; }
-    form fieldset.checkbox input {
+    form fieldset.checkbox input,
+    form fieldset.radio input {
       border: none;
       float: none; }
-    form fieldset.checkbox div.icon {
+    form fieldset.checkbox div.icon,
+    form fieldset.radio div.icon {
       width: 46px;
       height: 46px;
       display: inline-block;
       margin-left: 5%;
       margin-right: 5%;
       cursor: pointer; }
-      form fieldset.checkbox div.icon#status {
+      form fieldset.checkbox div.icon#status,
+      form fieldset.radio div.icon#status {
         background: url("../images/status_0.svg");
         background-size: 100% 100%; }
-        form fieldset.checkbox div.icon#status.selected {
+        form fieldset.checkbox div.icon#status.selected,
+        form fieldset.radio div.icon#status.selected {
           background: url("../images/status_1.svg");
           background-size: 100% 100%; }
-      form fieldset.checkbox div.icon#best {
+      form fieldset.checkbox div.icon#best,
+      form fieldset.radio div.icon#best {
         background: url("../images/best_0.svg");
         background-size: 100% 100%; }
-        form fieldset.checkbox div.icon#best.selected {
+        form fieldset.checkbox div.icon#best.selected,
+        form fieldset.radio div.icon#best.selected {
           background: url("../images/best_1.svg");
           background-size: 100% 100%; }
-      form fieldset.checkbox div.icon#kids {
+      form fieldset.checkbox div.icon#kids,
+      form fieldset.radio div.icon#kids {
         background: url("../images/kids_0.svg");
         background-size: 100% 100%; }
-        form fieldset.checkbox div.icon#kids.selected {
+        form fieldset.checkbox div.icon#kids.selected,
+        form fieldset.radio div.icon#kids.selected {
           background: url("../images/kids_1.svg");
           background-size: 100% 100%; }
-      form fieldset.checkbox div.icon#abroad {
+      form fieldset.checkbox div.icon#abroad,
+      form fieldset.radio div.icon#abroad {
         background: url("../images/abroad_0.svg");
         background-size: 100% 100%; }
-        form fieldset.checkbox div.icon#abroad.selected {
+        form fieldset.checkbox div.icon#abroad.selected,
+        form fieldset.radio div.icon#abroad.selected {
           background: url("../images/abroad_1.svg");
           background-size: 100% 100%; }
-      form fieldset.checkbox div.icon#hasChildren {
+      form fieldset.checkbox div.icon#hasChildren,
+      form fieldset.radio div.icon#hasChildren {
         background: url("../images/hasChildren_0.svg");
         background-size: 100% 100%; }
-        form fieldset.checkbox div.icon#hasChildren.selected {
+        form fieldset.checkbox div.icon#hasChildren.selected,
+        form fieldset.radio div.icon#hasChildren.selected {
           background: url("../images/hasChildren_1.svg");
           background-size: 100% 100%; }
-      form fieldset.checkbox div.icon#isSpeaker {
+      form fieldset.checkbox div.icon#isSpeaker,
+      form fieldset.radio div.icon#isSpeaker {
         background: url("../images/isSpeaker_0.svg");
         background-size: 100% 100%; }
-        form fieldset.checkbox div.icon#isSpeaker.selected {
+        form fieldset.checkbox div.icon#isSpeaker.selected,
+        form fieldset.radio div.icon#isSpeaker.selected {
           background: url("../images/isSpeaker_1.svg");
           background-size: 100% 100%; }
-      form fieldset.checkbox div.icon#isMember {
+      form fieldset.checkbox div.icon#isMember,
+      form fieldset.radio div.icon#isMember {
         background: url("../images/isMember_0.svg");
         background-size: 100% 100%; }
-        form fieldset.checkbox div.icon#isMember.selected {
+        form fieldset.checkbox div.icon#isMember.selected,
+        form fieldset.radio div.icon#isMember.selected {
           background: url("../images/isMember_1.svg");
           background-size: 100% 100%; }
-      form fieldset.checkbox div.icon#isVisitor {
+      form fieldset.checkbox div.icon#isVisitor,
+      form fieldset.radio div.icon#isVisitor {
         background: url("../images/isVisitor_0.svg");
         background-size: 100% 100%; }
-        form fieldset.checkbox div.icon#isVisitor.selected {
+        form fieldset.checkbox div.icon#isVisitor.selected,
+        form fieldset.radio div.icon#isVisitor.selected {
           background: url("../images/isVisitor_1.svg");
+          background-size: 100% 100%; }
+    form fieldset.checkbox div.radio-icon div,
+    form fieldset.radio div.radio-icon div {
+      width: 46px;
+      height: 46px;
+      display: inline-block;
+      margin-left: 5%;
+      margin-right: 5%;
+      cursor: pointer; }
+      form fieldset.checkbox div.radio-icon div#man,
+      form fieldset.radio div.radio-icon div#man {
+        background: url("../images/man_0.svg");
+        background-size: 100% 100%; }
+        form fieldset.checkbox div.radio-icon div#man.selected,
+        form fieldset.radio div.radio-icon div#man.selected {
+          background: url("../images/man_1.svg");
+          background-size: 100% 100%; }
+      form fieldset.checkbox div.radio-icon div#woman,
+      form fieldset.radio div.radio-icon div#woman {
+        background: url("../images/woman_0.svg");
+        background-size: 100% 100%; }
+        form fieldset.checkbox div.radio-icon div#woman.selected,
+        form fieldset.radio div.radio-icon div#woman.selected {
+          background: url("../images/woman_1.svg");
           background-size: 100% 100%; }
   form input,
   form textarea {

@@ -13,6 +13,11 @@ $(document).ready( function() {
     	initCheckBox(this);
 	});
 	
+	// init checkbox
+	$("input[type=radio]").parent().each( function() {
+    	initRadio(this);
+	});
+	
 	// init date
 	$("input[type=datetime]").each( function() {
     	setDateTime(this);
@@ -21,6 +26,11 @@ $(document).ready( function() {
 	// Select a status
 	$("form").on('click', 'div.icon', function() {
 	    setCheckbox(this);
+	});
+	
+	// Select a status
+	$("form").on('click', 'div.radio-icon div', function() {
+	    setRadio(this);
 	});
     
     $('form.person fieldset.header input.resize').autoGrowInput();

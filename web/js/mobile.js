@@ -39,6 +39,11 @@ $(document).ready( function() {
     	initCheckBox(this);
 	});
 	
+	// init checkbox
+	$("input[type=radio]").parent().each( function() {
+    	initRadio(this);
+	});
+	
 	// Select a checkbox
 	$("form").on('click', 'div.icon', function() {
 	    setCheckbox(this);

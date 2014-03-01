@@ -220,6 +220,27 @@ table {
       #container form div.icon#isVisitor.selected {
         background: url("../images/isVisitor_1.svg");
         background-size: 100% 100%; }
+  #container form div.radio-icon {
+    display: block; }
+    #container form div.radio-icon div {
+      height: 40px;
+      width: 40px;
+      cursor: pointer;
+      display: inline-block;
+      margin-left: 10px;
+      margin-right: 10px; }
+      #container form div.radio-icon div#man {
+        background: url("../images/man_0.svg");
+        background-size: 100% 100%; }
+        #container form div.radio-icon div#man.selected {
+          background: url("../images/man_1.svg");
+          background-size: 100% 100%; }
+      #container form div.radio-icon div#woman {
+        background: url("../images/woman_0.svg");
+        background-size: 100% 100%; }
+        #container form div.radio-icon div#woman.selected {
+          background: url("../images/woman_1.svg");
+          background-size: 100% 100%; }
   #container form.celebration fieldset.page {
     margin-top: 40px; }
     #container form.celebration fieldset.page fieldset.column {
