@@ -36,9 +36,9 @@
         </fieldset>
         
         <fieldset class="header">
-            {{ form_widget(form.title, {'attr': {'placeholder': 'Title'}, 'autofocus': true}) }}
             {{ form_widget(form.firstname, {'attr': {'placeholder': 'Firstname', 'class': 'resize'} }) }}
             {{ form_widget(form.lastname, {'attr': {'placeholder': 'Lastname', 'class': 'resize'} }) }}
+            {{ form_widget(form.gender, {'attr': {'placeholder': 'Gender', 'data-icon': 'gender'} }) }}
         </fieldset>
         
         <fieldset class="phone">
@@ -65,9 +65,9 @@
 
             {{ form_widget(form.location.address2, {'attr': {'placeholder': 'address'} }) }}
 
-            {{ form_widget(form.location.postalCode, {'attr': {'placeholder': 'Postal code'} }) }}
+            {{ form_widget(form.location.postalCode, {'attr': {'placeholder': 'Postal code', 'class': 'resize'} }) }}
 
-            {{ form_widget(form.location.city, {'attr': {'placeholder': 'City'} }) }}
+            {{ form_widget(form.location.city, {'attr': {'placeholder': 'City', 'class': 'resize'} }) }}
             
             {{ form_widget(form.location.country, {'attr': {'placeholder': 'Country'} }) }}
         </fieldset>

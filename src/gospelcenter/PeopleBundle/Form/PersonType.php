@@ -23,7 +23,13 @@ class PersonType extends AbstractType
         $builder
             ->add('firstname',      'text')
             ->add('lastname',       'text')
-            ->add('title',          'text')
+            ->add('gender',         'choice', array(
+                                        'choices'   => array(
+                                            'man'     => 'Man',
+                                            'woman' => 'Woman',
+                                        ),
+                                        'multiple'  => false,
+                                        'expanded'  => true))
             ->add('dateOfBirth',    'birthday', array('required' => false,
                                                       'widget'    => 'single_text'))
             ->add('email',          'email', array('required' => false))
@@ -35,8 +41,7 @@ class PersonType extends AbstractType
                                                     'empty_value'   => 'Select languages',
                                                     'multiple'      => true,
                                                     'query_builder' => function(\gospelcenter\LanguageBundle\Entity\LanguageRepository $r) {
-                                                        return $r->getSelectList();},
-                                                    'property' => 'value'))
+                                                        return $r->getSelectList();}))
             ->add('abroad',         'checkbox', array('required' => false))
             ->add('hasChildren',    'checkbox', array('required' => false))
             ->add('function',       'text', array('required' => false))

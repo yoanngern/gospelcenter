@@ -15,7 +15,7 @@
                 <tr>
                     <td><a href="{{ path('gospelcenterAdmin_persons_edit', {'person': visitor.person.id, 'center': center.ref}) }}">{{ visitor.person.firstname }}</a></td>
                     <td><a href="{{ path('gospelcenterAdmin_persons_edit', {'person': visitor.person.id, 'center': center.ref}) }}">{{ visitor.person.lastname }}</a></td>
-                    <td><a href="{{ path('gospelcenterAdmin_persons_edit', {'person': visitor.person.id, 'center': center.ref}) }}">{{ visitor.person.title }}</a></td>
+                    <td><a href="{{ path('gospelcenterAdmin_persons_edit', {'person': visitor.person.id, 'center': center.ref}) }}">{{ visitor.person.Gender }}</a></td>
                     <td><a href="{{ path('gospelcenterAdmin_persons_edit', {'person': visitor.person.id, 'center': center.ref}) }}">{{ visitor.frequency }}</a></td>
                 </tr>
             {% else %}

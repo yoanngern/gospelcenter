@@ -24,7 +24,7 @@ class LanguageRepository extends EntityRepository
         //$qb->groupBy('l.id');
         
         //$qb->addOrderBy("COUNT(p.id)", 'DESC');
-        $qb->addOrderBy("l.value", 'ASC');
+        $qb->addOrderBy("l.ref", 'ASC');
         
         return $qb;
     }

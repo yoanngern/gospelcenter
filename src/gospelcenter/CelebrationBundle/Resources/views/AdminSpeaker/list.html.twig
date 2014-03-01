@@ -29,7 +29,7 @@
                         {% set languages = languages ~ ' et '%}
                     {% endif %}
                     
-                    {% set languages = languages ~ language.value %}
+                    {% set languages = languages ~ language.ref %}
                     
                 {% endfor %}
                 

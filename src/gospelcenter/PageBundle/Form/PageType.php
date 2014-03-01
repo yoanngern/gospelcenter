@@ -24,14 +24,10 @@ class PageType extends AbstractType
         $builder
             ->add('ref',            'choice', array(
                                         'choices'   => array(
-                                            'about'     => 'About - About',
-                                            'direction' => 'About - Direction',
-                                            'staff'     => 'About - Staff',
-                                            'music'     => 'About - Music',
                                             'bases'     => 'Bases',
                                             'minis'     => 'Youth - Gospel Minis',
-                                            'potential' => 'Youth - Gospel Potential',
-                                            'warriors'  => 'Youth - Gospel Warriors',
+                                            'kids' => 'Youth - Gospel Kids',
+                                            'teens'  => 'Youth - Gospel Teens',
                                             'fullPack'  => 'Youth - Full Pack',
                                             'youth'     => 'Youth - Gospel Youth'
                                         ),
@@ -52,8 +48,7 @@ class PageType extends AbstractType
                                                     'required'      => true,
                                                     'empty_value'   => 'Select a language',
                                                     'query_builder' => function(\gospelcenter\LanguageBundle\Entity\LanguageRepository $r) {
-                                                        return $r->getSelectList();},
-                                                    'property'      => 'value'))
+                                                        return $r->getSelectList();}))
             ->add('slides',          new SlideSimpleType($center), array('required' => false))
             ->add('slides',          "collection", array("type"=> new SlideSimpleType($center),
                                                             'required'      => false))

@@ -15,7 +15,7 @@
                 <tr>
                     <td><a href="{{ path('gospelcenterAdminGlobal_persons_edit', {'person': person.id}) }}">{{ person.firstName }}</a></td>
                     <td><a href="{{ path('gospelcenterAdminGlobal_persons_edit', {'person': person.id}) }}">{{ person.lastName }}</a></td>
-                    <td><a href="{{ path('gospelcenterAdminGlobal_persons_edit', {'person': person.id}) }}">{{ person.title }}</a></td>
+                    <td><a href="{{ path('gospelcenterAdminGlobal_persons_edit', {'person': person.id}) }}">{{ person.gender }}</a></td>
                     <td><a href="{{ path('gospelcenterAdminGlobal_persons_edit', {'person': person.id}) }}">{% if person.dateOfBirth %}{{ person.dateOfBirth|date('d F Y') }}{% endif %}</a></td>
                 </tr>
             {% else %}

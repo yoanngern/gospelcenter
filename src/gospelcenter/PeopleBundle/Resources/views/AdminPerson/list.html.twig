@@ -12,7 +12,7 @@
             <tr>
                 <th>Firstname</th>
                 <th>Lastname</th>
-                <th>Title</th>
+                <th>Gender</th>
                 <th>Date of birth</th>
             </tr>
         </thead>
@@ -21,7 +21,7 @@
                 <tr>
                     <td><a href="{{ path('gospelcenterAdmin_persons_edit', {'person': person.id, 'center': center.ref}) }}">{{ person.firstName }}</a></td>
                     <td><a href="{{ path('gospelcenterAdmin_persons_edit', {'person': person.id, 'center': center.ref}) }}">{{ person.lastName }}</a></td>
-                    <td><a href="{{ path('gospelcenterAdmin_persons_edit', {'person': person.id, 'center': center.ref}) }}">{{ person.title }}</a></td>
+                    <td><a href="{{ path('gospelcenterAdmin_persons_edit', {'person': person.id, 'center': center.ref}) }}">{{ person.gender }}</a></td>
                     <td><a href="{{ path('gospelcenterAdmin_persons_edit', {'person': person.id, 'center': center.ref}) }}">{% if person.dateOfBirth %}{{ person.dateOfBirth|date('d F Y') }}{% endif %}</a></td>
                 </tr>
             {% else %}
