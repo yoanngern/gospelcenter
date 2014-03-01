@@ -9,6 +9,7 @@ use Doctrine\ORM\Mapping as ORM;
  *
  * @ORM\Table(name="visitor")
  * @ORM\Entity(repositoryClass="gospelcenter\CenterBundle\Entity\VisitorRepository")
+ * @ORM\HasLifecycleCallbacks
  */
 class Visitor
 {
@@ -50,6 +51,11 @@ class Visitor
     {
         $this->centers = new \Doctrine\Common\Collections\ArrayCollection();
     }
+    
+    /*************************************/
+    /**** Getter setter auto generate ****/
+    /*************************************/
+
 
     /**
      * Set frequency
@@ -129,7 +135,6 @@ class Visitor
     public function addCenter(\gospelcenter\CenterBundle\Entity\Center $centers)
     {
         $this->centers[] = $centers;
-        $centers->addVisitor($this);
     
         return $this;
     }

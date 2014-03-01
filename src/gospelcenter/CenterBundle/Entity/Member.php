@@ -9,6 +9,7 @@ use Doctrine\ORM\Mapping as ORM;
  *
  * @ORM\Table(name="member")
  * @ORM\Entity(repositoryClass="gospelcenter\CenterBundle\Entity\MemberRepository")
+ * @ORM\HasLifecycleCallbacks
  */
 class Member
 {   
@@ -25,9 +26,16 @@ class Member
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="MemberFromDate", type="date")
+     * @ORM\Column(name="memberFromDate", type="date")
      */
     private $memberFromDate;
+    
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="departureFromDate", type="date", nullable=true)
+     */
+    private $departureFromDate;
     
     /**
      * is member of
@@ -44,6 +52,11 @@ class Member
         $this->centers = new \Doctrine\Common\Collections\ArrayCollection();
         $this->memberFromDate = new \Datetime();
     }
+
+    /*************************************/
+    /**** Getter setter auto generate ****/
+    /*************************************/
+
 
     /**
      * Set memberFromDate
@@ -66,6 +79,29 @@ class Member
     public function getMemberFromDate()
     {
         return $this->memberFromDate;
+    }
+
+    /**
+     * Set departureFromDate
+     *
+     * @param \DateTime $departureFromDate
+     * @return Member
+     */
+    public function setDepartureFromDate($departureFromDate)
+    {
+        $this->departureFromDate = $departureFromDate;
+    
+        return $this;
+    }
+
+    /**
+     * Get departureFromDate
+     *
+     * @return \DateTime 
+     */
+    public function getDepartureFromDate()
+    {
+        return $this->departureFromDate;
     }
 
     /**
@@ -100,7 +136,6 @@ class Member
     public function addCenter(\gospelcenter\CenterBundle\Entity\Center $centers)
     {
         $this->centers[] = $centers;
-        $centers->addMember($this);
     
         return $this;
     }

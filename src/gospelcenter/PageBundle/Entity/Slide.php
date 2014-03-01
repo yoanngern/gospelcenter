@@ -60,9 +60,24 @@ class Slide
     /**
      * @var \DateTime
      *
+     * @ORM\Column(name="createdDate", type="datetime")
+     */
+    private $createdDate;
+    
+    /**
+     * @var \DateTime
+     *
      * @ORM\Column(name="modifiedDate", type="datetime")
      */
     private $modifiedDate;
+    
+    
+    /**
+     * uses
+     * 
+     * @ORM\ManyToOne(targetEntity="gospelcenter\ImageBundle\Entity\Image", inversedBy="slides", cascade={"persist", "remove"})
+     */
+    private $image;
     
     
     /**
@@ -75,19 +90,12 @@ class Slide
     
     
     /**
-     * uses
-     * 
-     * @ORM\ManyToOne(targetEntity="gospelcenter\ImageBundle\Entity\Image", inversedBy="slides", cascade={"persist", "remove"})
-     */
-    private $image;
-    
-    
-    /**
      * Constructor
      */
     public function __construct()
     {
         $this->modifiedDate = new \Datetime();
+        $this->createdDate = new \Datetime();
     }
     
     /**
@@ -115,12 +123,14 @@ class Slide
      */
     public function preSave()
     {
+        $this->modifiedDate = new \Datetime();
         
         if($this->sort === null) {
             $this->sort = 999;
         }
         
     }
+
     
     /*************************************/
     /**** Getter setter auto generate ****/
@@ -254,6 +264,29 @@ class Slide
     }
 
     /**
+     * Set createdDate
+     *
+     * @param \DateTime $createdDate
+     * @return Slide
+     */
+    public function setCreatedDate($createdDate)
+    {
+        $this->createdDate = $createdDate;
+    
+        return $this;
+    }
+
+    /**
+     * Get createdDate
+     *
+     * @return \DateTime 
+     */
+    public function getCreatedDate()
+    {
+        return $this->createdDate;
+    }
+
+    /**
      * Set modifiedDate
      *
      * @param \DateTime $modifiedDate
@@ -277,6 +310,16 @@ class Slide
     }
 
     /**
+     * Get image
+     *
+     * @return \gospelcenter\ImageBundle\Entity\Image 
+     */
+    public function getImage()
+    {
+        return $this->image;
+    }
+
+    /**
      * Set page
      *
      * @param \gospelcenter\PageBundle\Entity\Page $page
@@ -297,15 +340,5 @@ class Slide
     public function getPage()
     {
         return $this->page;
-    }
-
-    /**
-     * Get image
-     *
-     * @return \gospelcenter\ImageBundle\Entity\Image 
-     */
-    public function getImage()
-    {
-        return $this->image;
     }
 }

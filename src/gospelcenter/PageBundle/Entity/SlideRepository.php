@@ -25,7 +25,7 @@ class SlideRepository extends EntityRepository
             ->setParameter('center', $center->getRef());
             
         $qb->addOrderBy('p.title', 'ASC')
-            ->addOrderBy('l.value', 'ASC')
+            ->addOrderBy('l.ref', 'ASC')
             ->addOrderBy('s.title', 'ASC');
         
         return $qb->getQuery()->getResult();
@@ -47,7 +47,7 @@ class SlideRepository extends EntityRepository
         
         
         $qb->addOrderBy('p.title', 'ASC')
-            ->addOrderBy('l.value', 'ASC')
+            ->addOrderBy('l.ref', 'ASC')
             ->addOrderBy('s.title', 'ASC');
         
         $qb->andWhere('p.center IS NULL');

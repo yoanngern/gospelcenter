@@ -9,6 +9,7 @@ use Doctrine\ORM\Mapping as ORM;
  *
  * @ORM\Table(name="tag")
  * @ORM\Entity(repositoryClass="gospelcenter\CelebrationBundle\Entity\TagRepository")
+ * @ORM\HasLifecycleCallbacks
  */
 class Tag
 {
@@ -36,6 +37,12 @@ class Tag
     {
         $this->celebrations = new \Doctrine\Common\Collections\ArrayCollection();
     }
+    
+    /*************************************/
+    /**** Getter setter auto generate ****/
+    /*************************************/
+    
+    
 
     /**
      * Set value

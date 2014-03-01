@@ -9,6 +9,7 @@ use Doctrine\ORM\Mapping as ORM;
  *
  * @ORM\Table(name="role")
  * @ORM\Entity(repositoryClass="gospelcenter\PeopleBundle\Entity\RoleRepository")
+ * @ORM\HasLifecycleCallbacks
  */
 class Role
 {
@@ -28,13 +29,19 @@ class Role
      */
     private $name;
     
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="createdDate", type="datetime")
+     */
+    private $createdDate;
     
     /**
-     * works for
+     * @var \DateTime
      *
-     * @ORM\ManyToMany(targetEntity="gospelcenter\CelebrationBundle\Entity\Celebration", mappedBy="roles")
+     * @ORM\Column(name="modifiedDate", type="datetime")
      */
-    private $celebrations;
+    private $modifiedDate;
     
     
     /**
@@ -43,6 +50,14 @@ class Role
      * @ORM\ManyToMany(targetEntity="gospelcenter\CenterBundle\Entity\Band", inversedBy="roles")
      */
     private $bands;
+    
+    
+    /**
+     * works for
+     *
+     * @ORM\ManyToMany(targetEntity="gospelcenter\CelebrationBundle\Entity\Celebration", mappedBy="roles")
+     */
+    private $celebrations;
     
     
     /**
@@ -58,10 +73,27 @@ class Role
      */
     public function __construct()
     {
+        $this->createdDate = new \Datetime();
+        $this->modifiedDate = new \Datetime();
         $this->celebrations = new \Doctrine\Common\Collections\ArrayCollection();
         $this->bands = new \Doctrine\Common\Collections\ArrayCollection();
         $this->persons = new \Doctrine\Common\Collections\ArrayCollection();
     }
+    
+    /**
+     * @ORM\PrePersist()
+     * @ORM\PreUpdate()
+     */
+    public function preSave()
+    {
+        $this->modifiedDate = new \Datetime();
+    }
+    
+    /*************************************/
+    /**** Getter setter auto generate ****/
+    /*************************************/
+
+
 
     /**
      * Get id
@@ -97,36 +129,49 @@ class Role
     }
 
     /**
-     * Add celebrations
+     * Set createdDate
      *
-     * @param \gospelcenter\CelebrationBundle\Entity\Celebration $celebrations
+     * @param \DateTime $createdDate
      * @return Role
      */
-    public function addCelebration(\gospelcenter\CelebrationBundle\Entity\Celebration $celebrations)
+    public function setCreatedDate($createdDate)
     {
-        $this->celebrations[] = $celebrations;
+        $this->createdDate = $createdDate;
     
         return $this;
     }
 
     /**
-     * Remove celebrations
+     * Get createdDate
      *
-     * @param \gospelcenter\CelebrationBundle\Entity\Celebration $celebrations
+     * @return \DateTime 
      */
-    public function removeCelebration(\gospelcenter\CelebrationBundle\Entity\Celebration $celebrations)
+    public function getCreatedDate()
     {
-        $this->celebrations->removeElement($celebrations);
+        return $this->createdDate;
     }
 
     /**
-     * Get celebrations
+     * Set modifiedDate
      *
-     * @return \Doctrine\Common\Collections\Collection 
+     * @param \DateTime $modifiedDate
+     * @return Role
      */
-    public function getCelebrations()
+    public function setModifiedDate($modifiedDate)
     {
-        return $this->celebrations;
+        $this->modifiedDate = $modifiedDate;
+    
+        return $this;
+    }
+
+    /**
+     * Get modifiedDate
+     *
+     * @return \DateTime 
+     */
+    public function getModifiedDate()
+    {
+        return $this->modifiedDate;
     }
 
     /**
@@ -160,6 +205,39 @@ class Role
     public function getBands()
     {
         return $this->bands;
+    }
+
+    /**
+     * Add celebrations
+     *
+     * @param \gospelcenter\CelebrationBundle\Entity\Celebration $celebrations
+     * @return Role
+     */
+    public function addCelebration(\gospelcenter\CelebrationBundle\Entity\Celebration $celebrations)
+    {
+        $this->celebrations[] = $celebrations;
+    
+        return $this;
+    }
+
+    /**
+     * Remove celebrations
+     *
+     * @param \gospelcenter\CelebrationBundle\Entity\Celebration $celebrations
+     */
+    public function removeCelebration(\gospelcenter\CelebrationBundle\Entity\Celebration $celebrations)
+    {
+        $this->celebrations->removeElement($celebrations);
+    }
+
+    /**
+     * Get celebrations
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getCelebrations()
+    {
+        return $this->celebrations;
     }
 
     /**

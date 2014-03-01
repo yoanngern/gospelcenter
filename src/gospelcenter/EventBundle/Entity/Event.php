@@ -65,9 +65,25 @@ class Event
     /**
      * @var \DateTime
      *
+     * @ORM\Column(name="createdDate", type="datetime")
+     */
+    private $createdDate;
+    
+    /**
+     * @var \DateTime
+     *
      * @ORM\Column(name="modifiedDate", type="datetime")
      */
     private $modifiedDate;
+    
+    
+    /**
+     * is presented by
+     * 
+     * @ORM\ManyToMany(targetEntity="gospelcenter\CenterBundle\Entity\Center", mappedBy="events")
+     */
+    private $centers;
+    
     
     /**
      * takes place at
@@ -76,13 +92,13 @@ class Event
      */
     private $location;
     
+    
     /**
-     * is illustrated by
+     * uses
      * 
-     * @ORM\ManyToOne(targetEntity="gospelcenter\ImageBundle\Entity\Image", inversedBy="eventsPicture", cascade={"persist", "remove"})
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\ManyToOne(targetEntity="gospelcenter\MediaBundle\Entity\Video", inversedBy="events")
      */
-    private $picture;
+    private $video;
     
     
     /**
@@ -95,11 +111,12 @@ class Event
     
     
     /**
-     * is presented by
+     * is illustrated by
      * 
-     * @ORM\ManyToMany(targetEntity="gospelcenter\CenterBundle\Entity\Center", mappedBy="events")
+     * @ORM\ManyToOne(targetEntity="gospelcenter\ImageBundle\Entity\Image", inversedBy="eventsPicture", cascade={"persist", "remove"})
+     * @ORM\JoinColumn(nullable=false)
      */
-     private $centers;
+    private $picture;
      
     
     /**
@@ -108,6 +125,7 @@ class Event
     public function __construct(\gospelcenter\CenterBundle\Entity\Center $center = null)
     {
         $this->status = true;
+        $this->createdDate = new \Datetime();
         $this->modifiedDate = new \Datetime();
         $this->centers = new \Doctrine\Common\Collections\ArrayCollection();
         
@@ -154,11 +172,22 @@ class Event
         return $this;
     }
     
+    /**
+     * @ORM\PrePersist()
+     * @ORM\PreUpdate()
+     */
+    public function preSave()
+    {
+        $this->modifiedDate = new \Datetime();
+    }
+    
+    
     /*************************************/
     /**** Getter setter auto generate ****/
     /*************************************/
     
-    
+
+
 
     /**
      * Get id
@@ -309,6 +338,29 @@ class Event
     }
 
     /**
+     * Set createdDate
+     *
+     * @param \DateTime $createdDate
+     * @return Event
+     */
+    public function setCreatedDate($createdDate)
+    {
+        $this->createdDate = $createdDate;
+    
+        return $this;
+    }
+
+    /**
+     * Get createdDate
+     *
+     * @return \DateTime 
+     */
+    public function getCreatedDate()
+    {
+        return $this->createdDate;
+    }
+
+    /**
      * Set modifiedDate
      *
      * @param \DateTime $modifiedDate
@@ -329,49 +381,6 @@ class Event
     public function getModifiedDate()
     {
         return $this->modifiedDate;
-    }
-
-    /**
-     * Set location
-     *
-     * @param \gospelcenter\LocationBundle\Entity\Location $location
-     * @return Event
-     */
-    public function setLocation(\gospelcenter\LocationBundle\Entity\Location $location = null)
-    {
-        $this->location = $location;
-    
-        return $this;
-    }
-
-    /**
-     * Get location
-     *
-     * @return \gospelcenter\LocationBundle\Entity\Location 
-     */
-    public function getLocation()
-    {
-        return $this->location;
-    }
-
-    /**
-     * Get picture
-     *
-     * @return \gospelcenter\ImageBundle\Entity\Image 
-     */
-    public function getPicture()
-    {
-        return $this->picture;
-    }
-
-    /**
-     * Get cover
-     *
-     * @return \gospelcenter\ImageBundle\Entity\Image 
-     */
-    public function getCover()
-    {
-        return $this->cover;
     }
 
     /**
@@ -405,5 +414,71 @@ class Event
     public function getCenters()
     {
         return $this->centers;
+    }
+
+    /**
+     * Set location
+     *
+     * @param \gospelcenter\LocationBundle\Entity\Location $location
+     * @return Event
+     */
+    public function setLocation(\gospelcenter\LocationBundle\Entity\Location $location = null)
+    {
+        $this->location = $location;
+    
+        return $this;
+    }
+
+    /**
+     * Get location
+     *
+     * @return \gospelcenter\LocationBundle\Entity\Location 
+     */
+    public function getLocation()
+    {
+        return $this->location;
+    }
+
+    /**
+     * Set video
+     *
+     * @param \gospelcenter\MediaBundle\Entity\Video $video
+     * @return Event
+     */
+    public function setVideo(\gospelcenter\MediaBundle\Entity\Video $video = null)
+    {
+        $this->video = $video;
+    
+        return $this;
+    }
+
+    /**
+     * Get video
+     *
+     * @return \gospelcenter\MediaBundle\Entity\Video 
+     */
+    public function getVideo()
+    {
+        return $this->video;
+    }
+
+    /**
+     * Get cover
+     *
+     * @return \gospelcenter\ImageBundle\Entity\Image 
+     */
+    public function getCover()
+    {
+        return $this->cover;
+    }
+
+    /**
+     * Get picture
+     *
+     * @return \gospelcenter\ImageBundle\Entity\Image 
+     */
+    public function getPicture()
+    {
+        return $this->picture;
     }
 }

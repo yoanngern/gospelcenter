@@ -9,6 +9,7 @@ use Doctrine\ORM\Mapping as ORM;
  *
  * @ORM\Table(name="center")
  * @ORM\Entity(repositoryClass="gospelcenter\CenterBundle\Entity\CenterRepository")
+ * @ORM\HasLifecycleCallbacks
  */
 class Center
 {
@@ -28,22 +29,19 @@ class Center
      */
     private $name;
     
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="createdDate", type="datetime")
+     */
+    private $createdDate;
     
     /**
-     * presents
-     * 
-     * @ORM\ManyToMany(targetEntity="gospelcenter\EventBundle\Entity\Event", inversedBy="centers")
+     * @var \DateTime
+     *
+     * @ORM\Column(name="modifiedDate", type="datetime")
      */
-     private $events;
-     
-     
-    /**
-     * is located by
-     * 
-     * @ORM\ManyToOne(targetEntity="gospelcenter\LocationBundle\Entity\Location", inversedBy="centers", cascade={"persist", "remove"})
-     * @ORM\JoinColumn(nullable=false)
-     */
-     private $location;
+    private $modifiedDate;
     
     
     /**
@@ -55,28 +53,21 @@ class Center
     
     
     /**
-     * is presented by
+     * is located by
      * 
-     * @ORM\OneToMany(targetEntity="gospelcenter\PageBundle\Entity\Page", mappedBy="center")
+     * @ORM\ManyToOne(targetEntity="gospelcenter\LocationBundle\Entity\Location", inversedBy="centers", cascade={"persist", "remove"})
+     * @ORM\JoinColumn(nullable=false)
      */
-    private $pages;
+    private $location;
     
     
     /**
-     * is populated by
+     * add
      * 
-     * @ORM\ManyToMany(targetEntity="gospelcenter\CenterBundle\Entity\Member", inversedBy="centers")
+     * @ORM\OneToMany(targetEntity="gospelcenter\LocationBundle\Entity\Location", mappedBy="centerCreator")
      */
-    private $members;
-    
-    
-    /**
-     * is visited by
-     * 
-     * @ORM\ManyToMany(targetEntity="gospelcenter\CenterBundle\Entity\Visitor", inversedBy="centers")
-     */
-    private $visitors;
-    
+    private $locationCreated;
+     
     
     /**
      * owns
@@ -92,13 +83,71 @@ class Center
      * @ORM\OneToMany(targetEntity="gospelcenter\CenterBundle\Entity\Base", mappedBy="center")
      */
     private $bases;
-
-
+    
+    
+    /**
+     * wrote
+     * 
+     * @ORM\OneToMany(targetEntity="gospelcenter\ArticleBundle\Entity\Article", mappedBy="center")
+     */
+    private $articles;
+    
+    
+    /**
+     * presents
+     * 
+     * @ORM\ManyToMany(targetEntity="gospelcenter\EventBundle\Entity\Event", inversedBy="centers")
+     */
+    private $events;
+    
+    
+    /**
+     * is presented by
+     * 
+     * @ORM\OneToMany(targetEntity="gospelcenter\PageBundle\Entity\Page", mappedBy="center")
+     */
+    private $pages;
+    
+    
+    /**
+     * publishes
+     * 
+     * @ORM\OneToMany(targetEntity="gospelcenter\ImageBundle\Entity\Image", mappedBy="centerCreator")
+     */
+    private $images;
+    
+    
+    /**
+     * is described by
+     * 
+     * @ORM\OneToOne(targetEntity="gospelcenter\ImageBundle\Entity\Image", inversedBy="center")
+     */
+    private $image;
+    
+    
+    /**
+     * is visited by
+     * 
+     * @ORM\ManyToMany(targetEntity="gospelcenter\CenterBundle\Entity\Visitor", inversedBy="centers")
+     */
+    private $visitors;
+    
+    
+    /**
+     * is populated by
+     * 
+     * @ORM\ManyToMany(targetEntity="gospelcenter\CenterBundle\Entity\Member", inversedBy="centers")
+     */
+    private $members;
+    
+    
     /**
      * Constructor
      */
     public function __construct()
     {
+        $this->createdDate = new \Datetime();
+        $this->modifiedDate = new \Datetime();
         $this->events = new \Doctrine\Common\Collections\ArrayCollection();
         $this->celebrations = new \Doctrine\Common\Collections\ArrayCollection();
         $this->pages = new \Doctrine\Common\Collections\ArrayCollection();
@@ -106,6 +155,8 @@ class Center
         $this->visitors = new \Doctrine\Common\Collections\ArrayCollection();
         $this->bands = new \Doctrine\Common\Collections\ArrayCollection();
         $this->bases = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->articles = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->images = new \Doctrine\Common\Collections\ArrayCollection();
     }
     
     /**
@@ -124,6 +175,15 @@ class Center
         }
     
         return $this;
+    }
+    
+    /**
+     * @ORM\PrePersist()
+     * @ORM\PreUpdate()
+     */
+    public function preSave()
+    {
+        $this->modifiedDate = new \Datetime();
     }
     
     /*************************************/
@@ -179,46 +239,49 @@ class Center
     }
 
     /**
-     * Add events
+     * Set createdDate
      *
-     * @param \gospelcenter\EventBundle\Entity\Event $events
+     * @param \DateTime $createdDate
      * @return Center
      */
-    public function addEvent(\gospelcenter\EventBundle\Entity\Event $events)
+    public function setCreatedDate($createdDate)
     {
-        $this->events[] = $events;
+        $this->createdDate = $createdDate;
     
         return $this;
     }
 
     /**
-     * Remove events
+     * Get createdDate
      *
-     * @param \gospelcenter\EventBundle\Entity\Event $events
+     * @return \DateTime 
      */
-    public function removeEvent(\gospelcenter\EventBundle\Entity\Event $events)
+    public function getCreatedDate()
     {
-        $this->events->removeElement($events);
+        return $this->createdDate;
     }
 
     /**
-     * Get events
+     * Set modifiedDate
      *
-     * @return \Doctrine\Common\Collections\Collection 
+     * @param \DateTime $modifiedDate
+     * @return Center
      */
-    public function getEvents()
+    public function setModifiedDate($modifiedDate)
     {
-        return $this->events;
+        $this->modifiedDate = $modifiedDate;
+    
+        return $this;
     }
 
     /**
-     * Get location
+     * Get modifiedDate
      *
-     * @return \gospelcenter\LocationBundle\Entity\Location 
+     * @return \DateTime 
      */
-    public function getLocation()
+    public function getModifiedDate()
     {
-        return $this->location;
+        return $this->modifiedDate;
     }
 
     /**
@@ -255,102 +318,46 @@ class Center
     }
 
     /**
-     * Add pages
+     * Get location
      *
-     * @param \gospelcenter\PageBundle\Entity\Page $pages
+     * @return \gospelcenter\LocationBundle\Entity\Location 
+     */
+    public function getLocation()
+    {
+        return $this->location;
+    }
+
+    /**
+     * Add locationCreated
+     *
+     * @param \gospelcenter\LocationBundle\Entity\Location $locationCreated
      * @return Center
      */
-    public function addPage(\gospelcenter\PageBundle\Entity\Page $pages)
+    public function addLocationCreated(\gospelcenter\LocationBundle\Entity\Location $locationCreated)
     {
-        $this->pages[] = $pages;
+        $this->locationCreated[] = $locationCreated;
     
         return $this;
     }
 
     /**
-     * Remove pages
+     * Remove locationCreated
      *
-     * @param \gospelcenter\PageBundle\Entity\Page $pages
+     * @param \gospelcenter\LocationBundle\Entity\Location $locationCreated
      */
-    public function removePage(\gospelcenter\PageBundle\Entity\Page $pages)
+    public function removeLocationCreated(\gospelcenter\LocationBundle\Entity\Location $locationCreated)
     {
-        $this->pages->removeElement($pages);
+        $this->locationCreated->removeElement($locationCreated);
     }
 
     /**
-     * Get pages
+     * Get locationCreated
      *
      * @return \Doctrine\Common\Collections\Collection 
      */
-    public function getPages()
+    public function getLocationCreated()
     {
-        return $this->pages;
-    }
-
-    /**
-     * Add members
-     *
-     * @param \gospelcenter\CenterBundle\Entity\Member $members
-     * @return Center
-     */
-    public function addMember(\gospelcenter\CenterBundle\Entity\Member $members)
-    {
-        $this->members[] = $members;
-    
-        return $this;
-    }
-
-    /**
-     * Remove members
-     *
-     * @param \gospelcenter\CenterBundle\Entity\Member $members
-     */
-    public function removeMember(\gospelcenter\CenterBundle\Entity\Member $members)
-    {
-        $this->members->removeElement($members);
-    }
-
-    /**
-     * Get members
-     *
-     * @return \Doctrine\Common\Collections\Collection 
-     */
-    public function getMembers()
-    {
-        return $this->members;
-    }
-
-    /**
-     * Add visitors
-     *
-     * @param \gospelcenter\CenterBundle\Entity\Visitor $visitors
-     * @return Center
-     */
-    public function addVisitor(\gospelcenter\CenterBundle\Entity\Visitor $visitors)
-    {
-        $this->visitors[] = $visitors;
-    
-        return $this;
-    }
-
-    /**
-     * Remove visitors
-     *
-     * @param \gospelcenter\CenterBundle\Entity\Visitor $visitors
-     */
-    public function removeVisitor(\gospelcenter\CenterBundle\Entity\Visitor $visitors)
-    {
-        $this->visitors->removeElement($visitors);
-    }
-
-    /**
-     * Get visitors
-     *
-     * @return \Doctrine\Common\Collections\Collection 
-     */
-    public function getVisitors()
-    {
-        return $this->visitors;
+        return $this->locationCreated;
     }
 
     /**
@@ -417,5 +424,226 @@ class Center
     public function getBases()
     {
         return $this->bases;
+    }
+
+    /**
+     * Add articles
+     *
+     * @param \gospelcenter\ArticleBundle\Entity\Article $articles
+     * @return Center
+     */
+    public function addArticle(\gospelcenter\ArticleBundle\Entity\Article $articles)
+    {
+        $this->articles[] = $articles;
+    
+        return $this;
+    }
+
+    /**
+     * Remove articles
+     *
+     * @param \gospelcenter\ArticleBundle\Entity\Article $articles
+     */
+    public function removeArticle(\gospelcenter\ArticleBundle\Entity\Article $articles)
+    {
+        $this->articles->removeElement($articles);
+    }
+
+    /**
+     * Get articles
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getArticles()
+    {
+        return $this->articles;
+    }
+
+    /**
+     * Add events
+     *
+     * @param \gospelcenter\EventBundle\Entity\Event $events
+     * @return Center
+     */
+    public function addEvent(\gospelcenter\EventBundle\Entity\Event $events)
+    {
+        $this->events[] = $events;
+    
+        return $this;
+    }
+
+    /**
+     * Remove events
+     *
+     * @param \gospelcenter\EventBundle\Entity\Event $events
+     */
+    public function removeEvent(\gospelcenter\EventBundle\Entity\Event $events)
+    {
+        $this->events->removeElement($events);
+    }
+
+    /**
+     * Get events
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getEvents()
+    {
+        return $this->events;
+    }
+
+    /**
+     * Add pages
+     *
+     * @param \gospelcenter\PageBundle\Entity\Page $pages
+     * @return Center
+     */
+    public function addPage(\gospelcenter\PageBundle\Entity\Page $pages)
+    {
+        $this->pages[] = $pages;
+    
+        return $this;
+    }
+
+    /**
+     * Remove pages
+     *
+     * @param \gospelcenter\PageBundle\Entity\Page $pages
+     */
+    public function removePage(\gospelcenter\PageBundle\Entity\Page $pages)
+    {
+        $this->pages->removeElement($pages);
+    }
+
+    /**
+     * Get pages
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getPages()
+    {
+        return $this->pages;
+    }
+
+    /**
+     * Add images
+     *
+     * @param \gospelcenter\ImageBundle\Entity\Image $images
+     * @return Center
+     */
+    public function addImage(\gospelcenter\ImageBundle\Entity\Image $images)
+    {
+        $this->images[] = $images;
+    
+        return $this;
+    }
+
+    /**
+     * Remove images
+     *
+     * @param \gospelcenter\ImageBundle\Entity\Image $images
+     */
+    public function removeImage(\gospelcenter\ImageBundle\Entity\Image $images)
+    {
+        $this->images->removeElement($images);
+    }
+
+    /**
+     * Get images
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getImages()
+    {
+        return $this->images;
+    }
+
+    /**
+     * Set image
+     *
+     * @param \gospelcenter\ImageBundle\Entity\Image $image
+     * @return Center
+     */
+    public function setImage(\gospelcenter\ImageBundle\Entity\Image $image = null)
+    {
+        $this->image = $image;
+    
+        return $this;
+    }
+
+    /**
+     * Get image
+     *
+     * @return \gospelcenter\ImageBundle\Entity\Image 
+     */
+    public function getImage()
+    {
+        return $this->image;
+    }
+
+    /**
+     * Add visitors
+     *
+     * @param \gospelcenter\CenterBundle\Entity\Visitor $visitors
+     * @return Center
+     */
+    public function addVisitor(\gospelcenter\CenterBundle\Entity\Visitor $visitors)
+    {
+        $this->visitors[] = $visitors;
+    
+        return $this;
+    }
+
+    /**
+     * Remove visitors
+     *
+     * @param \gospelcenter\CenterBundle\Entity\Visitor $visitors
+     */
+    public function removeVisitor(\gospelcenter\CenterBundle\Entity\Visitor $visitors)
+    {
+        $this->visitors->removeElement($visitors);
+    }
+
+    /**
+     * Get visitors
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getVisitors()
+    {
+        return $this->visitors;
+    }
+
+    /**
+     * Add members
+     *
+     * @param \gospelcenter\CenterBundle\Entity\Member $members
+     * @return Center
+     */
+    public function addMember(\gospelcenter\CenterBundle\Entity\Member $members)
+    {
+        $this->members[] = $members;
+    
+        return $this;
+    }
+
+    /**
+     * Remove members
+     *
+     * @param \gospelcenter\CenterBundle\Entity\Member $members
+     */
+    public function removeMember(\gospelcenter\CenterBundle\Entity\Member $members)
+    {
+        $this->members->removeElement($members);
+    }
+
+    /**
+     * Get members
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getMembers()
+    {
+        return $this->members;
     }
 }

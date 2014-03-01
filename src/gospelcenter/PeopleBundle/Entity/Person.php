@@ -42,9 +42,9 @@ class Person
     /**
      * @var string
      *
-     * @ORM\Column(name="title", type="string", length=255)
+     * @ORM\Column(name="gender", type="string", length=255)
      */
-    private $title;
+    private $gender;
 
     /**
      * @var \DateTime
@@ -103,41 +103,38 @@ class Person
     private $function;
     
     /**
+     * @var integer
+     *
+     * @ORM\Column(name="status", type="integer")
+     */
+    private $status;
+    
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="createdDate", type="datetime")
+     */
+    private $createdDate;
+    
+    /**
      * @var \DateTime
      *
      * @ORM\Column(name="modifiedDate", type="datetime")
      */
     private $modifiedDate;
     
+    
     private $isSpeaker;
-    
     private $isMember;
-    
     private $isVisitor;
     
     
     /**
-     * is shown by
+     * organizes
      * 
-     * @ORM\ManyToOne(targetEntity="gospelcenter\ImageBundle\Entity\Image", inversedBy="persons", cascade={"persist", "remove"})
+     * @ORM\ManyToOne(targetEntity="gospelcenter\CenterBundle\Entity\Base", inversedBy="organizers")
      */
-    private $image;
-    
-    
-    /**
-     * is member of
-     * 
-     * @ORM\ManyToMany(targetEntity="gospelcenter\CenterBundle\Entity\Band", mappedBy="members")
-     */
-    private $bandsPopulated;
-    
-    
-    /**
-     * manages
-     * 
-     * @ORM\ManyToMany(targetEntity="gospelcenter\CenterBundle\Entity\Band", mappedBy="managers")
-     */
-    private $bandsManaged;
+    private $baseOrganized;
     
     
     /**
@@ -149,11 +146,19 @@ class Person
     
     
     /**
-     * organizes
+     * manages
      * 
-     * @ORM\ManyToOne(targetEntity="gospelcenter\CenterBundle\Entity\Base", inversedBy="organizers")
+     * @ORM\ManyToMany(targetEntity="gospelcenter\CenterBundle\Entity\Band", mappedBy="managers")
      */
-    private $baseOrganized;
+    private $bandsManaged;
+    
+    
+    /**
+     * is member of
+     * 
+     * @ORM\ManyToMany(targetEntity="gospelcenter\CenterBundle\Entity\Band", mappedBy="members")
+     */
+    private $bandsPopulated;
     
     
     /**
@@ -173,14 +178,6 @@ class Person
     
     
     /**
-     * is parent of a Member
-     * 
-     * @ORM\OneToOne(targetEntity="gospelcenter\CenterBundle\Entity\Member", mappedBy="person", cascade={"persist", "remove"})
-     */
-    private $member;
-    
-    
-    /**
      * is parent of a Speaker
      * 
      * @ORM\OneToOne(targetEntity="gospelcenter\CelebrationBundle\Entity\Speaker", mappedBy="person", cascade={"persist", "remove"})
@@ -189,11 +186,27 @@ class Person
     
     
     /**
+     * is parent of a Member
+     * 
+     * @ORM\OneToOne(targetEntity="gospelcenter\CenterBundle\Entity\Member", mappedBy="person", cascade={"persist", "remove"})
+     */
+    private $member;
+    
+    
+    /**
      * is parent of a Visitor
      * 
      * @ORM\OneToOne(targetEntity="gospelcenter\CenterBundle\Entity\Visitor", mappedBy="person", cascade={"persist", "remove"})
      */
     private $visitor;
+    
+    
+    /**
+     * is shown by
+     * 
+     * @ORM\ManyToOne(targetEntity="gospelcenter\ImageBundle\Entity\Image", inversedBy="persons", cascade={"persist", "remove"})
+     */
+    private $image;
     
     
     /**
@@ -209,12 +222,24 @@ class Person
      */
     public function __construct()
     {
+        $this->createdDate = new \Datetime();
         $this->modifiedDate = new \Datetime();
         $this->bandsManaged = new \Doctrine\Common\Collections\ArrayCollection();
         $this->bandsPopulated = new \Doctrine\Common\Collections\ArrayCollection();
         $this->roles = new \Doctrine\Common\Collections\ArrayCollection();
         $this->languages = new \Doctrine\Common\Collections\ArrayCollection();
     }
+    
+    
+    /**
+     * @ORM\PrePersist()
+     * @ORM\PreUpdate()
+     */
+    public function preSave()
+    {
+        $this->modifiedDate = new \Datetime();
+    }
+    
     
     /**
      * Display a Person
@@ -359,26 +384,26 @@ class Person
     }
 
     /**
-     * Set title
+     * Set gender
      *
-     * @param string $title
+     * @param string $gender
      * @return Person
      */
-    public function setTitle($title)
+    public function setGender($gender)
     {
-        $this->title = $title;
+        $this->gender = $gender;
     
         return $this;
     }
 
     /**
-     * Get title
+     * Get gender
      *
      * @return string 
      */
-    public function getTitle()
+    public function getGender()
     {
-        return $this->title;
+        return $this->gender;
     }
 
     /**
@@ -566,6 +591,52 @@ class Person
     }
 
     /**
+     * Set status
+     *
+     * @param integer $status
+     * @return Person
+     */
+    public function setStatus($status)
+    {
+        $this->status = $status;
+    
+        return $this;
+    }
+
+    /**
+     * Get status
+     *
+     * @return integer 
+     */
+    public function getStatus()
+    {
+        return $this->status;
+    }
+
+    /**
+     * Set createdDate
+     *
+     * @param \DateTime $createdDate
+     * @return Person
+     */
+    public function setCreatedDate($createdDate)
+    {
+        $this->createdDate = $createdDate;
+    
+        return $this;
+    }
+
+    /**
+     * Get createdDate
+     *
+     * @return \DateTime 
+     */
+    public function getCreatedDate()
+    {
+        return $this->createdDate;
+    }
+
+    /**
      * Set modifiedDate
      *
      * @param \DateTime $modifiedDate
@@ -588,49 +659,50 @@ class Person
         return $this->modifiedDate;
     }
 
-    
-
     /**
-     * Get image
+     * Set baseOrganized
      *
-     * @return \gospelcenter\ImageBundle\Entity\Image 
-     */
-    public function getImage()
-    {
-        return $this->image;
-    }
-
-    /**
-     * Add bandsPopulated
-     *
-     * @param \gospelcenter\CenterBundle\Entity\Band $bandsPopulated
+     * @param \gospelcenter\CenterBundle\Entity\Base $baseOrganized
      * @return Person
      */
-    public function addBandsPopulated(\gospelcenter\CenterBundle\Entity\Band $bandsPopulated)
+    public function setBaseOrganized(\gospelcenter\CenterBundle\Entity\Base $baseOrganized = null)
     {
-        $this->bandsPopulated[] = $bandsPopulated;
+        $this->baseOrganized = $baseOrganized;
     
         return $this;
     }
 
     /**
-     * Remove bandsPopulated
+     * Get baseOrganized
      *
-     * @param \gospelcenter\CenterBundle\Entity\Band $bandsPopulated
+     * @return \gospelcenter\CenterBundle\Entity\Base 
      */
-    public function removeBandsPopulated(\gospelcenter\CenterBundle\Entity\Band $bandsPopulated)
+    public function getBaseOrganized()
     {
-        $this->bandsPopulated->removeElement($bandsPopulated);
+        return $this->baseOrganized;
     }
 
     /**
-     * Get bandsPopulated
+     * Set baseParticipated
      *
-     * @return \Doctrine\Common\Collections\Collection 
+     * @param \gospelcenter\CenterBundle\Entity\Base $baseParticipated
+     * @return Person
      */
-    public function getBandsPopulated()
+    public function setBaseParticipated(\gospelcenter\CenterBundle\Entity\Base $baseParticipated = null)
     {
-        return $this->bandsPopulated;
+        $this->baseParticipated = $baseParticipated;
+    
+        return $this;
+    }
+
+    /**
+     * Get baseParticipated
+     *
+     * @return \gospelcenter\CenterBundle\Entity\Base 
+     */
+    public function getBaseParticipated()
+    {
+        return $this->baseParticipated;
     }
 
     /**
@@ -667,49 +739,36 @@ class Person
     }
 
     /**
-     * Set baseParticipated
+     * Add bandsPopulated
      *
-     * @param \gospelcenter\CenterBundle\Entity\Base $baseParticipated
+     * @param \gospelcenter\CenterBundle\Entity\Band $bandsPopulated
      * @return Person
      */
-    public function setBaseParticipated(\gospelcenter\CenterBundle\Entity\Base $baseParticipated = null)
+    public function addBandsPopulated(\gospelcenter\CenterBundle\Entity\Band $bandsPopulated)
     {
-        $this->baseParticipated = $baseParticipated;
+        $this->bandsPopulated[] = $bandsPopulated;
     
         return $this;
     }
 
     /**
-     * Get baseParticipated
+     * Remove bandsPopulated
      *
-     * @return \gospelcenter\CenterBundle\Entity\Base 
+     * @param \gospelcenter\CenterBundle\Entity\Band $bandsPopulated
      */
-    public function getBaseParticipated()
+    public function removeBandsPopulated(\gospelcenter\CenterBundle\Entity\Band $bandsPopulated)
     {
-        return $this->baseParticipated;
+        $this->bandsPopulated->removeElement($bandsPopulated);
     }
 
     /**
-     * Set baseOrganized
+     * Get bandsPopulated
      *
-     * @param \gospelcenter\CenterBundle\Entity\Base $baseOrganized
-     * @return Person
+     * @return \Doctrine\Common\Collections\Collection 
      */
-    public function setBaseOrganized(\gospelcenter\CenterBundle\Entity\Base $baseOrganized = null)
+    public function getBandsPopulated()
     {
-        $this->baseOrganized = $baseOrganized;
-    
-        return $this;
-    }
-
-    /**
-     * Get baseOrganized
-     *
-     * @return \gospelcenter\CenterBundle\Entity\Base 
-     */
-    public function getBaseOrganized()
-    {
-        return $this->baseOrganized;
+        return $this->bandsPopulated;
     }
 
     /**
@@ -756,29 +815,6 @@ class Person
     }
 
     /**
-     * Set member
-     *
-     * @param \gospelcenter\CenterBundle\Entity\Member $member
-     * @return Person
-     */
-    public function setMember(\gospelcenter\CenterBundle\Entity\Member $member = null)
-    {
-        $this->member = $member;
-    
-        return $this;
-    }
-
-    /**
-     * Get member
-     *
-     * @return \gospelcenter\CenterBundle\Entity\Member 
-     */
-    public function getMember()
-    {
-        return $this->member;
-    }
-
-    /**
      * Set speaker
      *
      * @param \gospelcenter\CelebrationBundle\Entity\Speaker $speaker
@@ -802,6 +838,29 @@ class Person
     }
 
     /**
+     * Set member
+     *
+     * @param \gospelcenter\CenterBundle\Entity\Member $member
+     * @return Person
+     */
+    public function setMember(\gospelcenter\CenterBundle\Entity\Member $member = null)
+    {
+        $this->member = $member;
+    
+        return $this;
+    }
+
+    /**
+     * Get member
+     *
+     * @return \gospelcenter\CenterBundle\Entity\Member 
+     */
+    public function getMember()
+    {
+        return $this->member;
+    }
+
+    /**
      * Set visitor
      *
      * @param \gospelcenter\CenterBundle\Entity\Visitor $visitor
@@ -822,6 +881,16 @@ class Person
     public function getVisitor()
     {
         return $this->visitor;
+    }
+
+    /**
+     * Get image
+     *
+     * @return \gospelcenter\ImageBundle\Entity\Image 
+     */
+    public function getImage()
+    {
+        return $this->image;
     }
 
     /**

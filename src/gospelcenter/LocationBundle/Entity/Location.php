@@ -9,6 +9,7 @@ use Doctrine\ORM\Mapping as ORM;
  *
  * @ORM\Table(name="location")
  * @ORM\Entity(repositoryClass="gospelcenter\LocationBundle\Entity\LocationRepository")
+ * @ORM\HasLifecycleCallbacks
  */
 class Location
 {
@@ -77,6 +78,57 @@ class Location
      */
     private $longitude;
     
+    /**
+     * @var float
+     *
+     * @ORM\Column(name="latitudeAprox", type="float", nullable=true)
+     */
+    private $latitudeAprox;
+    
+    /**
+     * @var float
+     *
+     * @ORM\Column(name="longitudeAprox", type="float", nullable=true)
+     */
+    private $longitudeAprox;
+    
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="createdDate", type="datetime")
+     */
+    private $createdDate;
+    
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="modifiedDate", type="datetime")
+     */
+    private $modifiedDate;
+    
+    /**
+     * gathered
+     * 
+     * @ORM\OneToMany(targetEntity="gospelcenter\CenterBundle\Entity\Base", mappedBy="location")
+     */
+    private $bases;
+    
+    
+    /**
+     * hosts
+     * 
+     * @ORM\OneToMany(targetEntity="gospelcenter\EventBundle\Entity\Event", mappedBy="location")
+     */
+    private $events;
+    
+    
+    /**
+     * is added by
+     * 
+     * @ORM\ManyToOne(targetEntity="gospelcenter\CenterBundle\Entity\Center", inversedBy="location")
+     */
+     private $centerCreator;
+     
      
     /**
      * locates
@@ -92,26 +144,10 @@ class Location
      * @ORM\OneToMany(targetEntity="gospelcenter\CelebrationBundle\Entity\Celebration", mappedBy="location")
      */
     private $celebrations;
-     
-     
-    /**
-     * hosts
-     * 
-     * @ORM\OneToMany(targetEntity="gospelcenter\EventBundle\Entity\Event", mappedBy="location")
-     */
-    private $events;
-     
-     
-    /**
-     * gathered
-     * 
-     * @ORM\OneToMany(targetEntity="gospelcenter\CenterBundle\Entity\Base", mappedBy="location")
-     */
-    private $bases;
     
     
     /**
-     * is leved by
+     * is lived by
      * 
      * @ORM\OneToMany(targetEntity="gospelcenter\PeopleBundle\Entity\Person", mappedBy="location")
      */
@@ -121,13 +157,28 @@ class Location
     /**
      * Constructor
      */
-    public function __construct()
+    public function __construct(\gospelcenter\CenterBundle\Entity\Center $center = null)
     {
+        if($center != null){
+            $this->centerCreator = $center;
+        }
+        
+        $this->createdDate = new \Datetime();
+        $this->modifiedDate = new \Datetime();
         $this->celebrations = new \Doctrine\Common\Collections\ArrayCollection();
         $this->events = new \Doctrine\Common\Collections\ArrayCollection();
         $this->centers = new \Doctrine\Common\Collections\ArrayCollection();
         $this->bases = new \Doctrine\Common\Collections\ArrayCollection();
         $this->persons = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+    
+    /**
+     * @ORM\PrePersist()
+     * @ORM\PreUpdate()
+     */
+    public function preSave()
+    {
+        $this->modifiedDate = new \Datetime();
     }
     
     /**
@@ -138,6 +189,12 @@ class Location
         
         return $this->name;
     }
+    
+    /*************************************/
+    /**** Getter setter auto generate ****/
+    /*************************************/
+
+
 
     /**
      * Get id
@@ -334,6 +391,187 @@ class Location
     }
 
     /**
+     * Set latitudeAprox
+     *
+     * @param float $latitudeAprox
+     * @return Location
+     */
+    public function setLatitudeAprox($latitudeAprox)
+    {
+        $this->latitudeAprox = $latitudeAprox;
+    
+        return $this;
+    }
+
+    /**
+     * Get latitudeAprox
+     *
+     * @return float 
+     */
+    public function getLatitudeAprox()
+    {
+        return $this->latitudeAprox;
+    }
+
+    /**
+     * Set longitudeAprox
+     *
+     * @param float $longitudeAprox
+     * @return Location
+     */
+    public function setLongitudeAprox($longitudeAprox)
+    {
+        $this->longitudeAprox = $longitudeAprox;
+    
+        return $this;
+    }
+
+    /**
+     * Get longitudeAprox
+     *
+     * @return float 
+     */
+    public function getLongitudeAprox()
+    {
+        return $this->longitudeAprox;
+    }
+
+    /**
+     * Set createdDate
+     *
+     * @param \DateTime $createdDate
+     * @return Location
+     */
+    public function setCreatedDate($createdDate)
+    {
+        $this->createdDate = $createdDate;
+    
+        return $this;
+    }
+
+    /**
+     * Get createdDate
+     *
+     * @return \DateTime 
+     */
+    public function getCreatedDate()
+    {
+        return $this->createdDate;
+    }
+
+    /**
+     * Set modifiedDate
+     *
+     * @param \DateTime $modifiedDate
+     * @return Location
+     */
+    public function setModifiedDate($modifiedDate)
+    {
+        $this->modifiedDate = $modifiedDate;
+    
+        return $this;
+    }
+
+    /**
+     * Get modifiedDate
+     *
+     * @return \DateTime 
+     */
+    public function getModifiedDate()
+    {
+        return $this->modifiedDate;
+    }
+
+    /**
+     * Add bases
+     *
+     * @param \gospelcenter\CenterBundle\Entity\Base $bases
+     * @return Location
+     */
+    public function addBase(\gospelcenter\CenterBundle\Entity\Base $bases)
+    {
+        $this->bases[] = $bases;
+    
+        return $this;
+    }
+
+    /**
+     * Remove bases
+     *
+     * @param \gospelcenter\CenterBundle\Entity\Base $bases
+     */
+    public function removeBase(\gospelcenter\CenterBundle\Entity\Base $bases)
+    {
+        $this->bases->removeElement($bases);
+    }
+
+    /**
+     * Get bases
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getBases()
+    {
+        return $this->bases;
+    }
+
+    /**
+     * Add events
+     *
+     * @param \gospelcenter\EventBundle\Entity\Event $events
+     * @return Location
+     */
+    public function addEvent(\gospelcenter\EventBundle\Entity\Event $events)
+    {
+        $this->events[] = $events;
+    
+        return $this;
+    }
+
+    /**
+     * Remove events
+     *
+     * @param \gospelcenter\EventBundle\Entity\Event $events
+     */
+    public function removeEvent(\gospelcenter\EventBundle\Entity\Event $events)
+    {
+        $this->events->removeElement($events);
+    }
+
+    /**
+     * Get events
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getEvents()
+    {
+        return $this->events;
+    }
+
+    /**
+     * Set centerCreator
+     *
+     * @param \gospelcenter\CenterBundle\Entity\Center $centerCreator
+     * @return Location
+     */
+    public function setCenterCreator(\gospelcenter\CenterBundle\Entity\Center $centerCreator = null)
+    {
+        $this->centerCreator = $centerCreator;
+    
+        return $this;
+    }
+
+    /**
+     * Get centerCreator
+     *
+     * @return \gospelcenter\CenterBundle\Entity\Center 
+     */
+    public function getCenterCreator()
+    {
+        return $this->centerCreator;
+    }
+
+    /**
      * Add centers
      *
      * @param \gospelcenter\CenterBundle\Entity\Center $centers
@@ -397,72 +635,6 @@ class Location
     public function getCelebrations()
     {
         return $this->celebrations;
-    }
-
-    /**
-     * Add events
-     *
-     * @param \gospelcenter\EventBundle\Entity\Event $events
-     * @return Location
-     */
-    public function addEvent(\gospelcenter\EventBundle\Entity\Event $events)
-    {
-        $this->events[] = $events;
-    
-        return $this;
-    }
-
-    /**
-     * Remove events
-     *
-     * @param \gospelcenter\EventBundle\Entity\Event $events
-     */
-    public function removeEvent(\gospelcenter\EventBundle\Entity\Event $events)
-    {
-        $this->events->removeElement($events);
-    }
-
-    /**
-     * Get events
-     *
-     * @return \Doctrine\Common\Collections\Collection 
-     */
-    public function getEvents()
-    {
-        return $this->events;
-    }
-
-    /**
-     * Add bases
-     *
-     * @param \gospelcenter\CenterBundle\Entity\Base $bases
-     * @return Location
-     */
-    public function addBase(\gospelcenter\CenterBundle\Entity\Base $bases)
-    {
-        $this->bases[] = $bases;
-    
-        return $this;
-    }
-
-    /**
-     * Remove bases
-     *
-     * @param \gospelcenter\CenterBundle\Entity\Base $bases
-     */
-    public function removeBase(\gospelcenter\CenterBundle\Entity\Base $bases)
-    {
-        $this->bases->removeElement($bases);
-    }
-
-    /**
-     * Get bases
-     *
-     * @return \Doctrine\Common\Collections\Collection 
-     */
-    public function getBases()
-    {
-        return $this->bases;
     }
 
     /**

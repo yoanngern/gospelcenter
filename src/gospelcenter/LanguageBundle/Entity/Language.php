@@ -3,12 +3,14 @@
 namespace gospelcenter\LanguageBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Locale\Locale;
 
 /**
  * Language
  *
  * @ORM\Table(name="language")
  * @ORM\Entity(repositoryClass="gospelcenter\LanguageBundle\Entity\LanguageRepository")
+ * @ORM\HasLifecycleCallbacks
  */
 class Language
 {
@@ -19,13 +21,20 @@ class Language
      * @ORM\Id
      */
     private $ref;
-
+    
     /**
-     * @var string
+     * @var \DateTime
      *
-     * @ORM\Column(name="value", type="string", length=255)
+     * @ORM\Column(name="createdDate", type="datetime")
      */
-    private $value;
+    private $createdDate;
+    
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="modifiedDate", type="datetime")
+     */
+    private $modifiedDate;
     
     /**
      * is spoken by
@@ -47,8 +56,33 @@ class Language
      */
     public function __construct()
     {
+        $this->createdDate = new \Datetime();
+        $this->modifiedDate = new \Datetime();
         $this->persons = new \Doctrine\Common\Collections\ArrayCollection();
         $this->pages = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+    
+    /**
+     * @ORM\PrePersist()
+     * @ORM\PreUpdate()
+     */
+    public function preSave()
+    {
+        $this->modifiedDate = new \Datetime();
+    }
+    
+    /**
+     * Display a Person
+     * @return String 
+     */
+    public function __toString()
+    {   
+        
+        $ref = $this->ref;
+        
+        //$language = Locale::getDisplayLanguages('de');
+        
+        return (string)$ref;
     }
     
     /*************************************/
@@ -81,26 +115,49 @@ class Language
     }
 
     /**
-     * Set value
+     * Set createdDate
      *
-     * @param string $value
+     * @param \DateTime $createdDate
      * @return Language
      */
-    public function setValue($value)
+    public function setCreatedDate($createdDate)
     {
-        $this->value = $value;
+        $this->createdDate = $createdDate;
     
         return $this;
     }
 
     /**
-     * Get value
+     * Get createdDate
      *
-     * @return string 
+     * @return \DateTime 
      */
-    public function getValue()
+    public function getCreatedDate()
     {
-        return $this->value;
+        return $this->createdDate;
+    }
+
+    /**
+     * Set modifiedDate
+     *
+     * @param \DateTime $modifiedDate
+     * @return Language
+     */
+    public function setModifiedDate($modifiedDate)
+    {
+        $this->modifiedDate = $modifiedDate;
+    
+        return $this;
+    }
+
+    /**
+     * Get modifiedDate
+     *
+     * @return \DateTime 
+     */
+    public function getModifiedDate()
+    {
+        return $this->modifiedDate;
     }
 
     /**

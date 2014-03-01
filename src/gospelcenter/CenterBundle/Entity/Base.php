@@ -9,6 +9,7 @@ use Doctrine\ORM\Mapping as ORM;
  *
  * @ORM\Table(name="base")
  * @ORM\Entity(repositoryClass="gospelcenter\CenterBundle\Entity\BaseRepository")
+ * @ORM\HasLifecycleCallbacks
  */
 class Base
 {
@@ -28,6 +29,20 @@ class Base
      */
     private $title;
     
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="createdDate", type="datetime")
+     */
+    private $createdDate;
+    
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="modifiedDate", type="datetime")
+     */
+    private $modifiedDate;
+    
     
     /**
      * composes
@@ -35,6 +50,14 @@ class Base
      * @ORM\ManyToOne(targetEntity="gospelcenter\CenterBundle\Entity\Center", inversedBy="bases")
      */
     private $center;
+    
+    
+    /**
+     * meets to
+     * 
+     * @ORM\ManyToOne(targetEntity="gospelcenter\LocationBundle\Entity\Location", inversedBy="bases")
+     */
+    private $location;
     
     
     /**
@@ -54,21 +77,30 @@ class Base
     
     
     /**
-     * meets to
-     * 
-     * @ORM\ManyToOne(targetEntity="gospelcenter\LocationBundle\Entity\Location", inversedBy="bases")
-     */
-    private $location;
-    
-    
-    /**
      * Constructor
      */
     public function __construct()
     {
+        $this->createdDate = new \Datetime();
+        $this->modifiedDate = new \Datetime();
         $this->participants = new \Doctrine\Common\Collections\ArrayCollection();
         $this->organizers = new \Doctrine\Common\Collections\ArrayCollection();
     }
+    
+    /**
+     * @ORM\PrePersist()
+     * @ORM\PreUpdate()
+     */
+    public function preSave()
+    {
+        $this->modifiedDate = new \Datetime();
+    }
+    
+    /*************************************/
+    /**** Getter setter auto generate ****/
+    /*************************************/
+    
+    
 
     /**
      * Get id
@@ -104,6 +136,52 @@ class Base
     }
 
     /**
+     * Set createdDate
+     *
+     * @param \DateTime $createdDate
+     * @return Base
+     */
+    public function setCreatedDate($createdDate)
+    {
+        $this->createdDate = $createdDate;
+    
+        return $this;
+    }
+
+    /**
+     * Get createdDate
+     *
+     * @return \DateTime 
+     */
+    public function getCreatedDate()
+    {
+        return $this->createdDate;
+    }
+
+    /**
+     * Set modifiedDate
+     *
+     * @param \DateTime $modifiedDate
+     * @return Base
+     */
+    public function setModifiedDate($modifiedDate)
+    {
+        $this->modifiedDate = $modifiedDate;
+    
+        return $this;
+    }
+
+    /**
+     * Get modifiedDate
+     *
+     * @return \DateTime 
+     */
+    public function getModifiedDate()
+    {
+        return $this->modifiedDate;
+    }
+
+    /**
      * Set center
      *
      * @param \gospelcenter\CenterBundle\Entity\Center $center
@@ -124,6 +202,29 @@ class Base
     public function getCenter()
     {
         return $this->center;
+    }
+
+    /**
+     * Set location
+     *
+     * @param \gospelcenter\LocationBundle\Entity\Location $location
+     * @return Base
+     */
+    public function setLocation(\gospelcenter\LocationBundle\Entity\Location $location = null)
+    {
+        $this->location = $location;
+    
+        return $this;
+    }
+
+    /**
+     * Get location
+     *
+     * @return \gospelcenter\LocationBundle\Entity\Location 
+     */
+    public function getLocation()
+    {
+        return $this->location;
     }
 
     /**
@@ -190,28 +291,5 @@ class Base
     public function getOrganizers()
     {
         return $this->organizers;
-    }
-
-    /**
-     * Set location
-     *
-     * @param \gospelcenter\LocationBundle\Entity\Location $location
-     * @return Base
-     */
-    public function setLocation(\gospelcenter\LocationBundle\Entity\Location $location = null)
-    {
-        $this->location = $location;
-    
-        return $this;
-    }
-
-    /**
-     * Get location
-     *
-     * @return \gospelcenter\LocationBundle\Entity\Location 
-     */
-    public function getLocation()
-    {
-        return $this->location;
     }
 }

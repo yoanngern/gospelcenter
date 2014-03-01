@@ -9,6 +9,7 @@ use Doctrine\ORM\Mapping as ORM;
  *
  * @ORM\Table(name="band")
  * @ORM\Entity(repositoryClass="gospelcenter\CenterBundle\Entity\BandRepository")
+ * @ORM\HasLifecycleCallbacks
  */
 class Band
 {
@@ -27,6 +28,36 @@ class Band
      * @ORM\Column(name="Title", type="string", length=255)
      */
     private $title;
+    
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="createdDate", type="datetime")
+     */
+    private $createdDate;
+    
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="modifiedDate", type="datetime")
+     */
+    private $modifiedDate;
+    
+    
+    /**
+     * depends on
+     * 
+     * @ORM\ManyToOne(targetEntity="gospelcenter\CenterBundle\Entity\Band", inversedBy="bandsOwned")
+     */
+    private $bandOwner;
+    
+    
+    /**
+     * is depended of
+     * 
+     * @ORM\OneToMany(targetEntity="gospelcenter\CenterBundle\Entity\Band", mappedBy="bandOwner")
+     */
+    private $bandsOwned;
     
     
     /**
@@ -68,10 +99,28 @@ class Band
      */
     public function __construct()
     {
+        $this->createdDate = new \Datetime();
+        $this->modifiedDate = new \Datetime();
         $this->roles = new \Doctrine\Common\Collections\ArrayCollection();
         $this->members = new \Doctrine\Common\Collections\ArrayCollection();
         $this->managers = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->bandsOwned = new \Doctrine\Common\Collections\ArrayCollection();
     }
+    
+    /**
+     * @ORM\PrePersist()
+     * @ORM\PreUpdate()
+     */
+    public function preSave()
+    {
+        $this->modifiedDate = new \Datetime();
+    }
+    
+    /*************************************/
+    /**** Getter setter auto generate ****/
+    /*************************************/
+    
+    
 
     /**
      * Get id
@@ -104,6 +153,108 @@ class Band
     public function getTitle()
     {
         return $this->title;
+    }
+
+    /**
+     * Set createdDate
+     *
+     * @param \DateTime $createdDate
+     * @return Band
+     */
+    public function setCreatedDate($createdDate)
+    {
+        $this->createdDate = $createdDate;
+    
+        return $this;
+    }
+
+    /**
+     * Get createdDate
+     *
+     * @return \DateTime 
+     */
+    public function getCreatedDate()
+    {
+        return $this->createdDate;
+    }
+
+    /**
+     * Set modifiedDate
+     *
+     * @param \DateTime $modifiedDate
+     * @return Band
+     */
+    public function setModifiedDate($modifiedDate)
+    {
+        $this->modifiedDate = $modifiedDate;
+    
+        return $this;
+    }
+
+    /**
+     * Get modifiedDate
+     *
+     * @return \DateTime 
+     */
+    public function getModifiedDate()
+    {
+        return $this->modifiedDate;
+    }
+
+    /**
+     * Set bandOwner
+     *
+     * @param \gospelcenter\CenterBundle\Entity\Band $bandOwner
+     * @return Band
+     */
+    public function setBandOwner(\gospelcenter\CenterBundle\Entity\Band $bandOwner = null)
+    {
+        $this->bandOwner = $bandOwner;
+    
+        return $this;
+    }
+
+    /**
+     * Get bandOwner
+     *
+     * @return \gospelcenter\CenterBundle\Entity\Band 
+     */
+    public function getBandOwner()
+    {
+        return $this->bandOwner;
+    }
+
+    /**
+     * Add bandsOwned
+     *
+     * @param \gospelcenter\CenterBundle\Entity\Band $bandsOwned
+     * @return Band
+     */
+    public function addBandsOwned(\gospelcenter\CenterBundle\Entity\Band $bandsOwned)
+    {
+        $this->bandsOwned[] = $bandsOwned;
+    
+        return $this;
+    }
+
+    /**
+     * Remove bandsOwned
+     *
+     * @param \gospelcenter\CenterBundle\Entity\Band $bandsOwned
+     */
+    public function removeBandsOwned(\gospelcenter\CenterBundle\Entity\Band $bandsOwned)
+    {
+        $this->bandsOwned->removeElement($bandsOwned);
+    }
+
+    /**
+     * Get bandsOwned
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getBandsOwned()
+    {
+        return $this->bandsOwned;
     }
 
     /**

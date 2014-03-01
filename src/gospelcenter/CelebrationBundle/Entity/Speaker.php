@@ -9,6 +9,7 @@ use Doctrine\ORM\Mapping as ORM;
  *
  * @ORM\Table(name="speaker")
  * @ORM\Entity(repositoryClass="gospelcenter\CelebrationBundle\Entity\SpeakerRepository")
+ * @ORM\HasLifecycleCallbacks
  */
 class Speaker
 {
@@ -57,6 +58,12 @@ class Speaker
         
         return $name;
     }
+    
+    
+    /*************************************/
+    /**** Getter setter auto generate ****/
+    /*************************************/
+    
     
 
     /**

@@ -9,6 +9,7 @@ use Doctrine\ORM\Mapping as ORM;
  *
  * @ORM\Table(name="audio")
  * @ORM\Entity(repositoryClass="gospelcenter\MediaBundle\Entity\AudioRepository")
+ * @ORM\HasLifecycleCallbacks
  */
 class Audio
 {
@@ -28,6 +29,20 @@ class Audio
      */
     private $soundCloudId;
     
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="createdDate", type="datetime")
+     */
+    private $createdDate;
+    
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="modifiedDate", type="datetime")
+     */
+    private $modifiedDate;
+    
     
     /**
      * spreads
@@ -42,8 +57,23 @@ class Audio
      */
     public function __construct()
     {
-        
+        $this->createdDate = new \Datetime();
+        $this->modifiedDate = new \Datetime();
     }
+    
+    /**
+     * @ORM\PrePersist()
+     * @ORM\PreUpdate()
+     */
+    public function preSave()
+    {
+        $this->modifiedDate = new \Datetime();
+    }
+
+    /*************************************/
+    /**** Getter setter auto generate ****/
+    /*************************************/
+    
 
     /**
      * Get id
@@ -76,6 +106,52 @@ class Audio
     public function getSoundCloudId()
     {
         return $this->soundCloudId;
+    }
+
+    /**
+     * Set createdDate
+     *
+     * @param \DateTime $createdDate
+     * @return Audio
+     */
+    public function setCreatedDate($createdDate)
+    {
+        $this->createdDate = $createdDate;
+    
+        return $this;
+    }
+
+    /**
+     * Get createdDate
+     *
+     * @return \DateTime 
+     */
+    public function getCreatedDate()
+    {
+        return $this->createdDate;
+    }
+
+    /**
+     * Set modifiedDate
+     *
+     * @param \DateTime $modifiedDate
+     * @return Audio
+     */
+    public function setModifiedDate($modifiedDate)
+    {
+        $this->modifiedDate = $modifiedDate;
+    
+        return $this;
+    }
+
+    /**
+     * Get modifiedDate
+     *
+     * @return \DateTime 
+     */
+    public function getModifiedDate()
+    {
+        return $this->modifiedDate;
     }
 
     /**

@@ -74,53 +74,30 @@ class Celebration
     /**
      * @var \DateTime
      *
+     * @ORM\Column(name="createdDate", type="datetime")
+     */
+    private $createdDate;
+    
+    /**
+     * @var \DateTime
+     *
      * @ORM\Column(name="modifiedDate", type="datetime")
      */
     private $modifiedDate;
     
     private $existingSpeakers;
-    
     private $newSpeakers;
-    
     private $date;
-    
     private $startingTime;
-    
     private $endingTime;
     
     
     /**
-     * is organised by
-     * 
-     * @ORM\ManyToOne(targetEntity="gospelcenter\CenterBundle\Entity\Center", inversedBy="celebrations")
-     * @ORM\JoinColumn(nullable=false)
+     * is composed by
+     *
+     * @ORM\ManyToMany(targetEntity="gospelcenter\PeopleBundle\Entity\Role", inversedBy="celebrations")
      */
-    private $center;
-    
-    
-    /**
-     * is imaged by
-     * 
-     * @ORM\ManyToOne(targetEntity="gospelcenter\ImageBundle\Entity\Image", inversedBy="celebrations", cascade={"persist", "remove"})
-     */
-    private $image;
-    
-    
-    /**
-     * is situated by
-     * 
-     * @ORM\ManyToOne(targetEntity="gospelcenter\LocationBundle\Entity\Location", inversedBy="celebrations", cascade={"persist"})
-     * @ORM\JoinColumn(nullable=false)
-     */
-    private $location;
-    
-    
-    /**
-     * is diffused by
-     * 
-     * @ORM\OneToOne(targetEntity="gospelcenter\MediaBundle\Entity\Video", mappedBy="celebration")
-     */
-    private $video;
+    private $roles;
     
     
     /**
@@ -140,19 +117,45 @@ class Celebration
     
     
     /**
+     * is situated by
+     * 
+     * @ORM\ManyToOne(targetEntity="gospelcenter\LocationBundle\Entity\Location", inversedBy="celebrations", cascade={"persist"})
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $location;
+    
+    
+    /**
+     * diffuses
+     * 
+     * @ORM\OneToOne(targetEntity="gospelcenter\MediaBundle\Entity\Video", mappedBy="celebration")
+     */
+    private $video;
+    
+    
+    /**
+     * is organized by
+     * 
+     * @ORM\ManyToOne(targetEntity="gospelcenter\CenterBundle\Entity\Center", inversedBy="celebrations")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $center;
+    
+    
+    /**
+     * is imaged by
+     * 
+     * @ORM\ManyToOne(targetEntity="gospelcenter\ImageBundle\Entity\Image", inversedBy="celebrations", cascade={"persist", "remove"})
+     */
+    private $image;
+    
+    
+    /**
      * is preached by
      *
      * @ORM\ManyToMany(targetEntity="gospelcenter\CelebrationBundle\Entity\Speaker", inversedBy="celebrations", cascade={"persist"})
      */
     private $speakers;
-    
-    
-    /**
-     * is composed by
-     *
-     * @ORM\ManyToMany(targetEntity="gospelcenter\PeopleBundle\Entity\Role", inversedBy="celebrations")
-     */
-    private $roles;
     
     
     /*
@@ -161,14 +164,18 @@ class Celebration
     public function __construct(\gospelcenter\CenterBundle\Entity\Center $center)
     {
         $this->status = true;
+        $this->createdDate = new \Datetime();
+        $this->modifiedDate = new \Datetime();
+        
         $this->tags = new \Doctrine\Common\Collections\ArrayCollection();
         $this->speakers = new \Doctrine\Common\Collections\ArrayCollection();
         $this->existingSpeakers = new \Doctrine\Common\Collections\ArrayCollection();
         $this->newSpeakers = new \Doctrine\Common\Collections\ArrayCollection();
         $this->roles = new \Doctrine\Common\Collections\ArrayCollection();
-        $this->modifiedDate = new \Datetime();
         $this->center = $center;
     }
+    
+    
     
     public function setExistingSpeakers($existingSpeakers)
     {
@@ -236,11 +243,45 @@ class Celebration
     }
     
     /**
+     * Set image
+     *
+     * @param \gospelcenter\ImageBundle\Entity\Image $image
+     * @return Celebration
+     */
+    public function setImage(\gospelcenter\ImageBundle\Entity\Image $image)
+    {
+        $this->image = $image;
+        
+        if($image != null) {
+            $title = "Celebration of ";
+            $title .= date_format($this->startingDate, 'd m Y');
+            $title .= " with ";
+            
+            $speakers = $this->getSpeakers();
+
+            
+            foreach($speakers as $speaker) {
+                $title .= $speaker->getFirstname();
+                $title .= " ";
+                $title .= $speaker->getLastname();
+            }
+            
+            
+            $this->image->setTitle($title);
+            $this->image->setType('Celebration');
+        }
+    
+        return $this;
+    }
+    
+    /**
      * @ORM\PrePersist()
      * @ORM\PreUpdate()
      */
     public function preSave()
     {
+        
+        $this->modifiedDate = new \Datetime();
         
         $startingDate = date_create($this->date->format('Y-m-d'));
         $startingDate->setTime($this->startingTime->format('H'), $this->startingTime->format('i'));
@@ -255,6 +296,8 @@ class Celebration
     /*************************************/
     /**** Getter setter auto generate ****/
     /*************************************/
+    
+    
 
     /**
      * Get id
@@ -428,6 +471,29 @@ class Celebration
     }
 
     /**
+     * Set createdDate
+     *
+     * @param \DateTime $createdDate
+     * @return Celebration
+     */
+    public function setCreatedDate($createdDate)
+    {
+        $this->createdDate = $createdDate;
+    
+        return $this;
+    }
+
+    /**
+     * Get createdDate
+     *
+     * @return \DateTime 
+     */
+    public function getCreatedDate()
+    {
+        return $this->createdDate;
+    }
+
+    /**
      * Set modifiedDate
      *
      * @param \DateTime $modifiedDate
@@ -451,101 +517,36 @@ class Celebration
     }
 
     /**
-     * Set center
+     * Add roles
      *
-     * @param \gospelcenter\CenterBundle\Entity\Center $center
+     * @param \gospelcenter\PeopleBundle\Entity\Role $roles
      * @return Celebration
      */
-    public function setCenter(\gospelcenter\CenterBundle\Entity\Center $center)
+    public function addRole(\gospelcenter\PeopleBundle\Entity\Role $roles)
     {
-        $this->center = $center;
+        $this->roles[] = $roles;
     
         return $this;
     }
 
     /**
-     * Get center
+     * Remove roles
      *
-     * @return \gospelcenter\CenterBundle\Entity\Center 
+     * @param \gospelcenter\PeopleBundle\Entity\Role $roles
      */
-    public function getCenter()
+    public function removeRole(\gospelcenter\PeopleBundle\Entity\Role $roles)
     {
-        return $this->center;
+        $this->roles->removeElement($roles);
     }
 
     /**
-     * Set image
+     * Get roles
      *
-     * @param \gospelcenter\ImageBundle\Entity\Image $image
-     * @return Celebration
+     * @return \Doctrine\Common\Collections\Collection 
      */
-    public function setImage(\gospelcenter\ImageBundle\Entity\Image $image)
+    public function getRoles()
     {
-        $this->image = $image;
-        
-        if($image != null) {
-            $title = date_format($this->startingDate, 'd m Y');
-            $this->image->setTitle($title);
-            $this->image->setType('Celebration');
-        }
-    
-        return $this;
-    }
-
-    /**
-     * Get image
-     *
-     * @return \gospelcenter\ImageBundle\Entity\Image 
-     */
-    public function getImage()
-    {
-        return $this->image;
-    }
-
-    /**
-     * Set location
-     *
-     * @param \gospelcenter\LocationBundle\Entity\Location $location
-     * @return Celebration
-     */
-    public function setLocation(\gospelcenter\LocationBundle\Entity\Location $location)
-    {
-        $this->location = $location;
-    
-        return $this;
-    }
-
-    /**
-     * Get location
-     *
-     * @return \gospelcenter\LocationBundle\Entity\Location 
-     */
-    public function getLocation()
-    {
-        return $this->location;
-    }
-
-    /**
-     * Set video
-     *
-     * @param \gospelcenter\MediaBundle\Entity\Video $video
-     * @return Celebration
-     */
-    public function setVideo(\gospelcenter\MediaBundle\Entity\Video $video = null)
-    {
-        $this->video = $video;
-    
-        return $this;
-    }
-
-    /**
-     * Get video
-     *
-     * @return \gospelcenter\MediaBundle\Entity\Video 
-     */
-    public function getVideo()
-    {
-        return $this->video;
+        return $this->roles;
     }
 
     /**
@@ -605,6 +606,85 @@ class Celebration
     }
 
     /**
+     * Set location
+     *
+     * @param \gospelcenter\LocationBundle\Entity\Location $location
+     * @return Celebration
+     */
+    public function setLocation(\gospelcenter\LocationBundle\Entity\Location $location)
+    {
+        $this->location = $location;
+    
+        return $this;
+    }
+
+    /**
+     * Get location
+     *
+     * @return \gospelcenter\LocationBundle\Entity\Location 
+     */
+    public function getLocation()
+    {
+        return $this->location;
+    }
+
+    /**
+     * Set video
+     *
+     * @param \gospelcenter\MediaBundle\Entity\Video $video
+     * @return Celebration
+     */
+    public function setVideo(\gospelcenter\MediaBundle\Entity\Video $video = null)
+    {
+        $this->video = $video;
+    
+        return $this;
+    }
+
+    /**
+     * Get video
+     *
+     * @return \gospelcenter\MediaBundle\Entity\Video 
+     */
+    public function getVideo()
+    {
+        return $this->video;
+    }
+
+    /**
+     * Set center
+     *
+     * @param \gospelcenter\CenterBundle\Entity\Center $center
+     * @return Celebration
+     */
+    public function setCenter(\gospelcenter\CenterBundle\Entity\Center $center)
+    {
+        $this->center = $center;
+    
+        return $this;
+    }
+
+    /**
+     * Get center
+     *
+     * @return \gospelcenter\CenterBundle\Entity\Center 
+     */
+    public function getCenter()
+    {
+        return $this->center;
+    }
+
+    /**
+     * Get image
+     *
+     * @return \gospelcenter\ImageBundle\Entity\Image 
+     */
+    public function getImage()
+    {
+        return $this->image;
+    }
+
+    /**
      * Add speakers
      *
      * @param \gospelcenter\CelebrationBundle\Entity\Speaker $speakers
@@ -613,7 +693,6 @@ class Celebration
     public function addSpeaker(\gospelcenter\CelebrationBundle\Entity\Speaker $speakers)
     {
         $this->speakers[] = $speakers;
-        $speakers->addCelebration($this);
     
         return $this;
     }
@@ -626,7 +705,6 @@ class Celebration
     public function removeSpeaker(\gospelcenter\CelebrationBundle\Entity\Speaker $speakers)
     {
         $this->speakers->removeElement($speakers);
-        $speakers->removeCelebration($this);
     }
 
     /**
@@ -637,38 +715,5 @@ class Celebration
     public function getSpeakers()
     {
         return $this->speakers;
-    }
-
-    /**
-     * Add roles
-     *
-     * @param \gospelcenter\PeopleBundle\Entity\Role $roles
-     * @return Celebration
-     */
-    public function addRole(\gospelcenter\PeopleBundle\Entity\Role $roles)
-    {
-        $this->roles[] = $roles;
-    
-        return $this;
-    }
-
-    /**
-     * Remove roles
-     *
-     * @param \gospelcenter\PeopleBundle\Entity\Role $roles
-     */
-    public function removeRole(\gospelcenter\PeopleBundle\Entity\Role $roles)
-    {
-        $this->roles->removeElement($roles);
-    }
-
-    /**
-     * Get roles
-     *
-     * @return \Doctrine\Common\Collections\Collection 
-     */
-    public function getRoles()
-    {
-        return $this->roles;
     }
 }

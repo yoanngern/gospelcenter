@@ -30,21 +30,7 @@ class Image
      * @ORM\Column(name="title", type="string", length=255)
      */
     private $title;
-
-    /**
-     * @var \DateTime
-     *
-     * @ORM\Column(name="createdDate", type="datetime")
-     */
-    private $createdDate;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="extension", type="string", length=255)
-     */
-    private $extension;
-
+    
     /**
      * @var string
      *
@@ -66,17 +52,45 @@ class Image
      */
     private $originalName;
     
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="extension", type="string", length=255)
+     */
+    private $extension;
     
-    private $file;
-    
-    private $tempFilename;
-
     /**
      * @var string
      *
      * @ORM\Column(name="description", type="text", nullable=true)
      */
     private $description;
+    
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="createdDate", type="datetime")
+     */
+    private $createdDate;
+    
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="modifiedDate", type="datetime")
+     */
+    private $modifiedDate;
+    
+    
+    private $file;
+    private $tempFilename;
+    
+    
+    /**
+     * shows
+     * 
+     * @ORM\OneToMany(targetEntity="gospelcenter\PeopleBundle\Entity\Person", mappedBy="image")
+     */
+    private $persons;
     
     
     /**
@@ -85,6 +99,30 @@ class Image
      * @ORM\OneToMany(targetEntity="gospelcenter\CelebrationBundle\Entity\Celebration", mappedBy="image")
      */
     private $celebrations;
+    
+    
+    /**
+     * describes
+     * 
+     * @ORM\OneToOne(targetEntity="gospelcenter\CenterBundle\Entity\Center", mappedBy="image")
+     */
+    private $center;
+    
+    
+    /**
+     * is bublished by
+     * 
+     * @ORM\ManyToOne(targetEntity="gospelcenter\CenterBundle\Entity\Center", inversedBy="images")
+     */
+    private $centerCreator;
+    
+    
+    /**
+     * is contained by
+     * 
+     * @ORM\OneToMany(targetEntity="gospelcenter\ArticleBundle\Entity\Article", mappedBy="image")
+     */
+    private $articles;
     
     
     /**
@@ -102,14 +140,6 @@ class Image
      */
     private $eventsCover;
     
-    
-    /**
-     * shows
-     * 
-     * @ORM\OneToMany(targetEntity="gospelcenter\PeopleBundle\Entity\Person", mappedBy="image")
-     */
-    private $persons;
-    
      
     /**
      * is used by
@@ -124,11 +154,13 @@ class Image
     public function __construct()
     {
         $this->createdDate = new \Datetime();
+        $this->modifiedDate = new \Datetime();
         $this->eventsPicture = new \Doctrine\Common\Collections\ArrayCollection();
         $this->eventsCover = new \Doctrine\Common\Collections\ArrayCollection();
         $this->slides = new \Doctrine\Common\Collections\ArrayCollection();
         $this->persons = new \Doctrine\Common\Collections\ArrayCollection();
         $this->celebrations = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->articles = new \Doctrine\Common\Collections\ArrayCollection();
     }
     
     
@@ -176,6 +208,9 @@ class Image
      */
     public function upload()
     {
+        
+        $this->modifiedDate = new \Datetime();
+        
         if($this->file === null) {
             return;
         }
@@ -280,52 +315,6 @@ class Image
     }
 
     /**
-     * Set createdDate
-     *
-     * @param \DateTime $createdDate
-     * @return Image
-     */
-    public function setCreatedDate($createdDate)
-    {
-        $this->createdDate = $createdDate;
-    
-        return $this;
-    }
-
-    /**
-     * Get createdDate
-     *
-     * @return \DateTime 
-     */
-    public function getCreatedDate()
-    {
-        return $this->createdDate;
-    }
-
-    /**
-     * Set extension
-     *
-     * @param string $extension
-     * @return Image
-     */
-    public function setExtension($extension)
-    {
-        $this->extension = $extension;
-    
-        return $this;
-    }
-
-    /**
-     * Get extension
-     *
-     * @return string 
-     */
-    public function getExtension()
-    {
-        return $this->extension;
-    }
-
-    /**
      * Set alt
      *
      * @param string $alt
@@ -395,6 +384,29 @@ class Image
     }
 
     /**
+     * Set extension
+     *
+     * @param string $extension
+     * @return Image
+     */
+    public function setExtension($extension)
+    {
+        $this->extension = $extension;
+    
+        return $this;
+    }
+
+    /**
+     * Get extension
+     *
+     * @return string 
+     */
+    public function getExtension()
+    {
+        return $this->extension;
+    }
+
+    /**
      * Set description
      *
      * @param string $description
@@ -415,6 +427,85 @@ class Image
     public function getDescription()
     {
         return $this->description;
+    }
+
+    /**
+     * Set createdDate
+     *
+     * @param \DateTime $createdDate
+     * @return Image
+     */
+    public function setCreatedDate($createdDate)
+    {
+        $this->createdDate = $createdDate;
+    
+        return $this;
+    }
+
+    /**
+     * Get createdDate
+     *
+     * @return \DateTime 
+     */
+    public function getCreatedDate()
+    {
+        return $this->createdDate;
+    }
+
+    /**
+     * Set modifiedDate
+     *
+     * @param \DateTime $modifiedDate
+     * @return Image
+     */
+    public function setModifiedDate($modifiedDate)
+    {
+        $this->modifiedDate = $modifiedDate;
+    
+        return $this;
+    }
+
+    /**
+     * Get modifiedDate
+     *
+     * @return \DateTime 
+     */
+    public function getModifiedDate()
+    {
+        return $this->modifiedDate;
+    }
+
+    /**
+     * Add persons
+     *
+     * @param \gospelcenter\PeopleBundle\Entity\Person $persons
+     * @return Image
+     */
+    public function addPerson(\gospelcenter\PeopleBundle\Entity\Person $persons)
+    {
+        $this->persons[] = $persons;
+    
+        return $this;
+    }
+
+    /**
+     * Remove persons
+     *
+     * @param \gospelcenter\PeopleBundle\Entity\Person $persons
+     */
+    public function removePerson(\gospelcenter\PeopleBundle\Entity\Person $persons)
+    {
+        $this->persons->removeElement($persons);
+    }
+
+    /**
+     * Get persons
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getPersons()
+    {
+        return $this->persons;
     }
 
     /**
@@ -448,6 +539,85 @@ class Image
     public function getCelebrations()
     {
         return $this->celebrations;
+    }
+
+    /**
+     * Set center
+     *
+     * @param \gospelcenter\CenterBundle\Entity\Center $center
+     * @return Image
+     */
+    public function setCenter(\gospelcenter\CenterBundle\Entity\Center $center = null)
+    {
+        $this->center = $center;
+    
+        return $this;
+    }
+
+    /**
+     * Get center
+     *
+     * @return \gospelcenter\CenterBundle\Entity\Center 
+     */
+    public function getCenter()
+    {
+        return $this->center;
+    }
+
+    /**
+     * Set centerCreator
+     *
+     * @param \gospelcenter\CenterBundle\Entity\Center $centerCreator
+     * @return Image
+     */
+    public function setCenterCreator(\gospelcenter\CenterBundle\Entity\Center $centerCreator = null)
+    {
+        $this->centerCreator = $centerCreator;
+    
+        return $this;
+    }
+
+    /**
+     * Get centerCreator
+     *
+     * @return \gospelcenter\CenterBundle\Entity\Center 
+     */
+    public function getCenterCreator()
+    {
+        return $this->centerCreator;
+    }
+
+    /**
+     * Add articles
+     *
+     * @param \gospelcenter\ArticleBundle\Entity\Article $articles
+     * @return Image
+     */
+    public function addArticle(\gospelcenter\ArticleBundle\Entity\Article $articles)
+    {
+        $this->articles[] = $articles;
+    
+        return $this;
+    }
+
+    /**
+     * Remove articles
+     *
+     * @param \gospelcenter\ArticleBundle\Entity\Article $articles
+     */
+    public function removeArticle(\gospelcenter\ArticleBundle\Entity\Article $articles)
+    {
+        $this->articles->removeElement($articles);
+    }
+
+    /**
+     * Get articles
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getArticles()
+    {
+        return $this->articles;
     }
 
     /**
@@ -514,39 +684,6 @@ class Image
     public function getEventsCover()
     {
         return $this->eventsCover;
-    }
-
-    /**
-     * Add persons
-     *
-     * @param \gospelcenter\PeopleBundle\Entity\Person $persons
-     * @return Image
-     */
-    public function addPerson(\gospelcenter\PeopleBundle\Entity\Person $persons)
-    {
-        $this->persons[] = $persons;
-    
-        return $this;
-    }
-
-    /**
-     * Remove persons
-     *
-     * @param \gospelcenter\PeopleBundle\Entity\Person $persons
-     */
-    public function removePerson(\gospelcenter\PeopleBundle\Entity\Person $persons)
-    {
-        $this->persons->removeElement($persons);
-    }
-
-    /**
-     * Get persons
-     *
-     * @return \Doctrine\Common\Collections\Collection 
-     */
-    public function getPersons()
-    {
-        return $this->persons;
     }
 
     /**

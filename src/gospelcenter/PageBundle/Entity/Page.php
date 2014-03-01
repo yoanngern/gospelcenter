@@ -54,27 +54,26 @@ class Page
     /**
      * @var \DateTime
      *
+     * @ORM\Column(name="createdDate", type="datetime")
+     */
+    private $createdDate;
+    
+    /**
+     * @var \DateTime
+     *
      * @ORM\Column(name="modifiedDate", type="datetime")
      */
     private $modifiedDate;
     
     
     /**
-     * is presented by
+     * presents
      * 
      * @ORM\ManyToOne(targetEntity="gospelcenter\CenterBundle\Entity\Center", inversedBy="pages")
      * @ORM\JoinColumn(nullable=true)
      */
     private $center;
     
-    
-    /**
-     * contains
-     * 
-     * @ORM\OneToMany(targetEntity="gospelcenter\PageBundle\Entity\Slide", mappedBy="page")
-     * @ORM\OrderBy({"sort" = "ASC"})
-     */
-    private $slides;
     
     /**
      * is written in
@@ -85,16 +84,35 @@ class Page
     
     
     /**
+     * contains
+     * 
+     * @ORM\OneToMany(targetEntity="gospelcenter\PageBundle\Entity\Slide", mappedBy="page")
+     * @ORM\OrderBy({"sort" = "ASC"})
+     */
+    private $slides;
+    
+    
+    /**
      * Constructor
      */
     public function __construct(\gospelcenter\CenterBundle\Entity\Center $center = null)
     {
         $this->slides = new \Doctrine\Common\Collections\ArrayCollection();
         $this->modifiedDate = new \Datetime();
+        $this->createdDate = new \Datetime();
         
         if($center != null) {
             $this->center = $center;
         }
+    }
+    
+    /**
+     * @ORM\PrePersist()
+     * @ORM\PreUpdate()
+     */
+    public function preSave()
+    {
+        $this->modifiedDate = new \Datetime();
     }
 
     /*************************************/
@@ -207,6 +225,29 @@ class Page
     }
 
     /**
+     * Set createdDate
+     *
+     * @param \DateTime $createdDate
+     * @return Page
+     */
+    public function setCreatedDate($createdDate)
+    {
+        $this->createdDate = $createdDate;
+    
+        return $this;
+    }
+
+    /**
+     * Get createdDate
+     *
+     * @return \DateTime 
+     */
+    public function getCreatedDate()
+    {
+        return $this->createdDate;
+    }
+
+    /**
      * Set modifiedDate
      *
      * @param \DateTime $modifiedDate
@@ -235,7 +276,7 @@ class Page
      * @param \gospelcenter\CenterBundle\Entity\Center $center
      * @return Page
      */
-    public function setCenter(\gospelcenter\CenterBundle\Entity\Center $center)
+    public function setCenter(\gospelcenter\CenterBundle\Entity\Center $center = null)
     {
         $this->center = $center;
     
@@ -250,6 +291,29 @@ class Page
     public function getCenter()
     {
         return $this->center;
+    }
+
+    /**
+     * Set language
+     *
+     * @param \gospelcenter\LanguageBundle\Entity\Language $language
+     * @return Page
+     */
+    public function setLanguage(\gospelcenter\LanguageBundle\Entity\Language $language = null)
+    {
+        $this->language = $language;
+    
+        return $this;
+    }
+
+    /**
+     * Get language
+     *
+     * @return \gospelcenter\LanguageBundle\Entity\Language 
+     */
+    public function getLanguage()
+    {
+        return $this->language;
     }
 
     /**
@@ -283,28 +347,5 @@ class Page
     public function getSlides()
     {
         return $this->slides;
-    }
-
-    /**
-     * Set language
-     *
-     * @param \gospelcenter\LanguageBundle\Entity\Language $language
-     * @return Page
-     */
-    public function setLanguage(\gospelcenter\LanguageBundle\Entity\Language $language = null)
-    {
-        $this->language = $language;
-    
-        return $this;
-    }
-
-    /**
-     * Get language
-     *
-     * @return \gospelcenter\LanguageBundle\Entity\Language 
-     */
-    public function getLanguage()
-    {
-        return $this->language;
     }
 }

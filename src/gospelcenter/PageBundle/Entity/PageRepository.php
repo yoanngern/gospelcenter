@@ -24,7 +24,7 @@ class PageRepository extends EntityRepository
             ->setParameter('center', $center->getRef());
             
         $qb->addOrderBy('p.title', 'ASC')
-            ->addOrderBy('l.value', 'ASC');
+            ->addOrderBy('l.ref', 'ASC');
         
         return $qb->getQuery()->getResult();
     }
@@ -44,7 +44,7 @@ class PageRepository extends EntityRepository
         }
             
         $qb->addOrderBy('p.title', 'ASC')
-            ->addOrderBy('l.value', 'ASC');
+            ->addOrderBy('l.ref', 'ASC');
         
         return $qb;
     }
@@ -96,7 +96,7 @@ class PageRepository extends EntityRepository
         $qb->join('p.language', 'l');
         
         $qb->addOrderBy('p.title', 'ASC')
-            ->addOrderBy('l.value', 'ASC');
+            ->addOrderBy('l.ref', 'ASC');
         
         $qb->andWhere('p.center IS NULL');
         
