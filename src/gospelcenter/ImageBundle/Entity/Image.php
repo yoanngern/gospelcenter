@@ -199,6 +199,8 @@ class Image
         $this->originalName = $this->file->getClientOriginalName();
         
         $this->alt = $this->title;
+        
+        $this->modifiedDate = new \Datetime();
     }
     
     

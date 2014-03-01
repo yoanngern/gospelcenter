@@ -541,6 +541,17 @@
         	
     	}
     	
+    	&.image {
+        	& > input,
+        	& > textarea {
+            	margin-left: 25%;
+        	}
+        	
+        	#editImage {
+            	width: 50%;
+        	}
+    	}
+    	
     	&.person {
     	    
     	    & > fieldset {
@@ -618,6 +629,17 @@
     	    fieldset.image {
         	    float: right;
         	    width: 39%;
+        	    
+        	    img {
+            	    height: inherit;
+            	    max-height: inherit;
+            	    min-height: inherit;
+            	    width: 100%;
+        	    }
+        	    
+        	    div#editImage {
+            	    width: 100%;
+        	    }
         	    
         	    div#addImage {
             	    display: block;

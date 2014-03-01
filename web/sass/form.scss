@@ -48,6 +48,40 @@ form {
 		}
     }
     
+    #editImage {
+        display: block;
+        width: auto;
+        cursor: pointer;
+        margin: 0 auto 40px;
+        
+        div.edit {
+            text-align: center;
+            height: 20px;
+            background-color: $black;
+            color: $white;
+            display: none;
+            position: relative;
+            width: auto;
+            margin-top: -30px;
+            padding-top: 5px;
+            padding-bottom: 5px;
+            
+        }
+        
+        img {
+            width: 100%;
+            height: inherit;
+            max-height: inherit;
+            min-height: inherit;
+        }
+        
+        &:hover {
+            div.edit {
+                display: block;
+            }
+        }
+    }
+    
     #addImage {
 		display: block;
 		width: 300px;

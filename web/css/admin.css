@@ -411,6 +411,10 @@ table {
         padding-bottom: 10px; }
   #container form.image #addImage, #container form.slide #addImage {
     margin: 0 auto 20px; }
+  #container form.image > input, #container form.image > textarea {
+    margin-left: 25%; }
+  #container form.image #editImage {
+    width: 50%; }
   #container form.person > fieldset {
     width: 60%;
     float: left; }
@@ -456,6 +460,13 @@ table {
   #container form.person fieldset.image {
     float: right;
     width: 39%; }
+    #container form.person fieldset.image img {
+      height: inherit;
+      max-height: inherit;
+      min-height: inherit;
+      width: 100%; }
+    #container form.person fieldset.image div#editImage {
+      width: 100%; }
     #container form.person fieldset.image div#addImage {
       display: block;
       width: 300px;

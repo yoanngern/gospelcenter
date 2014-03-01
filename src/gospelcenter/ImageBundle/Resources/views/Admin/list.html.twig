@@ -26,7 +26,7 @@
         <thead>
             <tr>
                 <th>Title</th>
-                <th>Created date</th>
+                <th>Modified date</th>
                 <th>Type</th>
             </tr>
         </thead>
@@ -34,7 +34,7 @@
             {% for image in images %}
                 <tr>
                     <td><a href="{{ path('gospelcenterAdmin_images_edit', {'image': image.id, 'center': center.ref}) }}">{{ image.title }}</a></td>
-                    <td><a href="{{ path('gospelcenterAdmin_images_edit', {'image': image.id, 'center': center.ref}) }}">{{ image.createdDate|date('d F Y') }}</a></td>
+                    <td><a href="{{ path('gospelcenterAdmin_images_edit', {'image': image.id, 'center': center.ref}) }}">{{ image.modifiedDate|date('d F Y') }}</a></td>
                     <td><a href="{{ path('gospelcenterAdmin_images_edit', {'image': image.id, 'center': center.ref}) }}">{{ image.type }}</a></td>
                 </tr>
             {% else %}

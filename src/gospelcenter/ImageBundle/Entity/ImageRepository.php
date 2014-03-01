@@ -48,7 +48,7 @@ class ImageRepository extends EntityRepository
         $qb->orWhere('c5.ref = :center')
             ->setParameter('center', $center->getRef());
             
-        $qb->addOrderBy('i.createdDate', 'DESC');
+        $qb->addOrderBy('i.modifiedDate', 'DESC');
         
         return $qb->getQuery()->getResult();
     }

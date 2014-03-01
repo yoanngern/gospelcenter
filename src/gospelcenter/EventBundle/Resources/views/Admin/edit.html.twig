@@ -3,7 +3,7 @@
 {% block javascripts %}
     {{ parent() }}
     <script type="text/javascript" src="{{ asset('js/form-min.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('js/addImage-min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('js/editImage-min.js') }}"></script>
 {% endblock %}
 
 {% block stylesheets %}
@@ -35,10 +35,16 @@
             <fieldset class="column picture">
                 <h2>Picture</h2>
                 {{ form_widget(form.picture.file) }}
+                <div id="editImage" data-input="{{ form.picture.file.vars.id }}">
+            	    <img src="{{ asset(event.picture.webPath) }}" alt="{{ event.picture.alt }}" />
+            	</div>
             </fieldset>
             <fieldset class="column cover">
                 <h2>Cover</h2>
                 {{ form_widget(form.cover.file) }}
+                <div id="editImage" data-input="{{ form.cover.file.vars.id }}">
+            	    <img src="{{ asset(event.cover.webPath) }}" alt="{{ event.cover.alt }}" />
+            	</div>
             </fieldset>
         </fieldset>
         

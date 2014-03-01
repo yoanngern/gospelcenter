@@ -40,6 +40,29 @@ form textarea {
     cursor: pointer;
     border: none;
     outline: none; }
+form #editImage {
+  display: block;
+  width: auto;
+  cursor: pointer;
+  margin: 0 auto 40px; }
+  form #editImage div.edit {
+    text-align: center;
+    height: 20px;
+    background-color: #363331;
+    color: #fdfdfc;
+    display: none;
+    position: relative;
+    width: auto;
+    margin-top: -30px;
+    padding-top: 5px;
+    padding-bottom: 5px; }
+  form #editImage img {
+    width: 100%;
+    height: inherit;
+    max-height: inherit;
+    min-height: inherit; }
+  form #editImage:hover div.edit {
+    display: block; }
 form #addImage {
   display: block;
   width: 300px;

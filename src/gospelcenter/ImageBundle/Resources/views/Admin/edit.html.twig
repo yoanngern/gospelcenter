@@ -3,6 +3,7 @@
 {% block javascripts %}
     {{ parent() }}
     <script type="text/javascript" src="{{ asset('js/form-min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('js/editImage-min.js') }}"></script>
 {% endblock %}
 
 {% block stylesheets %}
@@ -26,7 +27,10 @@
     		<a href="{{ path('gospelcenterAdmin_images_delete', {'center': center.ref, 'image': image.id}) }}" class="buttonRounded">Delete</a>
     	</nav>
     	
-    	<img src="{{ asset(image.webPath) }}" alt="{{ image.alt }}" />
+    	{{ form_widget(form.file) }}
+    	<div id="editImage" data-input="{{ form.file.vars.id }}">
+    	    <img src="{{ asset(image.webPath) }}" alt="{{ image.alt }}" />
+    	</div>
     	
         {{ form_widget(form.title, {'attr': {'placeholder': 'Title'} }) }}
         {{ form_widget(form.type, {'attr': {'placeholder': 'Type'} }) }}
