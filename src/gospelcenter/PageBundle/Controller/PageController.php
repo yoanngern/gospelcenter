@@ -45,7 +45,7 @@ class PageController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
         
-        $celebrations = $em->getRepository('gospelcenterCelebrationBundle:Celebration')->findNext($center, 1);
+        $celebrations = $em->getRepository('gospelcenterCelebrationBundle:Celebration')->findNext($center, 2);
         
         $events = $em->getRepository('gospelcenterEventBundle:Event')->findNext($center, 2);
         

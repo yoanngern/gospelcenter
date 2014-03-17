@@ -1,23 +1,64 @@
-{% extends "::mobileAdmin.html.twig" %}
+{% extends "::mobileLocal.html.twig" %}
 
-{% block stylesheets %}
-	{{ parent() }}
-{% endblock %}
-
-{% block title %}
-    {{ parent() }}
-{% endblock %}
-
-{% block headerCenter %}Celebrations{% endblock %}
+{% block headerCenter %}Next celebrations{% endblock %}
 
 {% block body %}
     
-    <nav class="main">
-        <ul>
-            {% for celebration in celebrations %}
+    <section class="nextCelebrations slider" id="1">
+        {% for celebration in nextCelebrations %}
+        
+            {% set speakers = '' %}
+            
+            {% for key, speaker in celebration.speakers %}
+                
+                {% if key != 0 and key != (celebration.speakers|length -1) %}
+                    {% set speakers = speakers ~ ', '%}
+                {% elseif key != 0 and key == (celebration.speakers|length -1) %}
+                    {% set speakers = speakers ~ ' et '%}
+                {% endif %}
+                
+                {% set speakers = speakers ~ speaker.person.firstname ~ ' ' ~ speaker.person.lastname %}
+                
+            {% endfor %}
+            
+            <article class="celebration slide" id="{{ loop.index }}">
+                
+                <section class="img" style="background-image: url({{ asset(celebration.image.webPath) }})"></section>
+                
+                <section class="details">
+                    <div>
+                        <h1><span>{{ celebration.startingDate|date('j F') }}</span> at {{ celebration.startingDate|date('H:i') }}</h1>
+                        <h2>{{ speakers }}</h2>
+                        
+                        {% if celebration.description %}<p>{{ celebration.description }}</p>{% endif %}
+                        {% if celebration.kidsProgram %}<a href="#">Program for kids</a>{% endif %}
+                    </div>
+                </section>
+                
+                
+            </article>
+        
+        {% endfor %}
+        
+        {% if nextCelebrations|length > 1 %}
+            <nav id="slides">
+                <ul>
+                    {% for celebration in nextCelebrations %}
+                        <li class="{% if loop.index == 1 %}current{% endif %}" data-slide="{{ loop.index }}" data-slider="1"></li>
+                    {% endfor %}
+                </ul>
+            </nav>
+        {% endif %}
+    </section>
+    
+    <section class="lastCelebrations slider small" id="2">
+        <h1>Watch our last celebrations</h1>
+        
+        <section class="clip">
+            {% for celebration in lastCelebrations %}
                 
                 {% set speakers = '' %}
-        
+            
                 {% for key, speaker in celebration.speakers %}
                     
                     {% if key != 0 and key != (celebration.speakers|length -1) %}
@@ -29,21 +70,16 @@
                     {% set speakers = speakers ~ speaker.person.firstname ~ ' ' ~ speaker.person.lastname %}
                     
                 {% endfor %}
-            
-                <li>
-                    <a href="{{ path('gospelcenterAdmin_celebrations_edit', {'celebration': celebration.id, 'center': center.ref}) }}">
-                        <h1>{{ celebration.startingDate|date('d F Y') }}</h1>
-                        <p>{{ speakers }}</p>
-                    </a>
-                </li>
-            {% else %}
-                <li class="empty">There are no celebrations.</li>
+                
+                <article class="slide" id="{{ loop.index }}">
+                    <section class="img">
+                        <img src="{{ asset(celebration.image.webPath) }}" alt="{{ celebration.image.alt }}" />
+                    </section>
+                    <section class="details">
+                        <h1>{{ speakers }}</h1>
+                    </section>
+                </article>
+                
             {% endfor %}
-        </ul>
-    </nav>
-    
-    <section class="tools">
-        <a href="{{ path('gospelcenterAdmin_celebrations_add', {'center': center.ref}) }}">Add a celebration</a>
-    </section>
     
 {% endblock %}

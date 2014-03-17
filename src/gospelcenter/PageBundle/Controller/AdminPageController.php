@@ -61,6 +61,8 @@ class AdminPageController extends Controller {
                 $em->persist($page);
                 $em->flush();
                 
+                $this->get('session')->getFlashBag()->add('info', 'The page has been added.');
+                
                 return $this->redirect( $this->generateUrl('gospelcenterAdmin_pages', array(
                     'center' => $center->getRef()
                 )));
@@ -96,6 +98,8 @@ class AdminPageController extends Controller {
                 $em = $this->getDoctrine()->getManager();
                 $em->persist($page);
                 $em->flush();
+                
+                $this->get('session')->getFlashBag()->add('info', 'The page has been edited.');
                 
                 return $this->redirect( $this->generateUrl('gospelcenterAdmin_pages', array(
                     'center' => $center->getRef()

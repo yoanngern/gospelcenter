@@ -352,6 +352,10 @@ table {
     #container form.event fieldset.details {
       float: right;
       width: 32%; }
+  #container form.page > input, #container form.page > textarea, #container form.page > select {
+    margin-left: 25%; }
+  #container form.page > input, #container form.page > textarea {
+    width: 49%; }
   #container form.page select {
     display: block;
     margin-bottom: 10px; }
@@ -408,13 +412,19 @@ table {
         font-family: "Radikal-Bold", "Radikal", sans-serif;
         padding-bottom: 5px; }
       #container form.page #slides article.slide section p {
-        padding-bottom: 10px; }
+        padding-bottom: 10px;
+        margin-left: 210px; }
   #container form.image #addImage, #container form.slide #addImage {
     margin: 0 auto 20px; }
-  #container form.image > input, #container form.image > textarea {
+  #container form.image > input, #container form.image > textarea, #container form.image > select, #container form.slide > input, #container form.slide > textarea, #container form.slide > select {
     margin-left: 25%; }
-  #container form.image #editImage {
+  #container form.image #editImage, #container form.slide #editImage {
     width: 50%; }
+  #container form.slide > input, #container form.slide > textarea {
+    width: 49%; }
+  #container form.location > input {
+    width: 49%;
+    margin-left: 25%; }
   #container form.person > fieldset {
     width: 60%;
     float: left; }

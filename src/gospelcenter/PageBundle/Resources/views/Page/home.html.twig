@@ -19,7 +19,32 @@
     <section id="news">
         {% if celebrations|length %}
             {% for celebration in celebrations %}
-                <a href="{{ path('gospelcenterCelebrations_list', {'center': center.ref}) }}"><img src="{{ asset(celebration.image.webPath) }}" alt="{{ celebration.image.alt }}" /></a>
+                
+                {% set speakers = '' %}
+            
+                {% for key, speaker in celebration.speakers %}
+                    
+                    {% if key != 0 and key != (celebration.speakers|length -1) %}
+                        {% set speakers = speakers ~ ', '%}
+                    {% elseif key != 0 and key == (celebration.speakers|length -1) %}
+                        {% set speakers = speakers ~ ' et '%}
+                    {% endif %}
+                    
+                    {% set speakers = speakers ~ speaker.person.firstname ~ ' ' ~ speaker.person.lastname %}
+                    
+                {% endfor %}
+                
+                <a href="{{ path('gospelcenterCelebrations_list', {'center': center.ref}) }}">
+                    <section class="img">
+                        <img src="{{ asset(celebration.image.webPath) }}" alt="{{ celebration.image.alt }}" />
+                    </section>
+                    <section class="details">
+                        <div>
+                            <p>Celebration of {{ celebration.startingDate|date('d F') }}</p>
+                            {% if speakers %}<p>with {{ speakers }}</p>{% endif %}
+                        </div>
+                    </section>
+                </a>
             {% endfor %}
         {% endif %}
         

@@ -33,6 +33,9 @@ html {
   -webkit-text-size-adjust: 100%;
   -ms-text-size-adjust: 100%; }
 
+html body > header a.left#back {
+  background-image: url("../images/back.svg"); }
+
 body {
   margin: 0px;
   color: #363331;
@@ -53,9 +56,6 @@ body {
   height: auto; }
   .no-overflowscrolling body {
     height: auto; }
-    .no-overflowscrolling body #page {
-      position: absolute;
-      height: auto; }
     .no-overflowscrolling body #ruban_nav {
       height: auto;
       overflow: hidden;
@@ -177,6 +177,310 @@ body > header {
       text-align: center;
       width: 100%;
       display: block; }
+  #page.bases.local #container {
+    margin-top: 0px;
+    height: 100%;
+    width: auto;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    -webkit-overflow-scrolling: touch; }
+    #page.bases.local #container h2 {
+      margin-top: 23px;
+      width: 88%;
+      margin-left: 6%;
+      border-bottom: 1px solid #fdfdfc;
+      font-size: 1.2em;
+      text-align: center;
+      padding-bottom: 4.6px;
+      z-index: 200;
+      position: absolute;
+      top: 46px;
+      color: #fdfdfc; }
+    #page.bases.local #container section.slider {
+      height: 100%;
+      position: absolute;
+      top: 0px;
+      width: 100%;
+      min-height: 184px;
+      display: block;
+      overflow: hidden;
+      cursor: pointer; }
+      #page.bases.local #container section.slider article.slide {
+        display: inline-block;
+        height: 100%;
+        width: 100%;
+        position: relative; }
+        #page.bases.local #container section.slider article.slide section.img {
+          height: 100%;
+          width: 100%;
+          background-repeat: no-repeat;
+          background-position: top center;
+          background-size: cover; }
+        #page.bases.local #container section.slider article.slide section.details {
+          padding: 0px;
+          margin: 0px;
+          top: 21%;
+          height: 80%;
+          width: 100%;
+          z-index: 100;
+          padding-left: 0%;
+          position: absolute;
+          background: rgba(0, 0, 0, 0.7);
+          background: -webkit-gradient(linear, left bottom, left top, color-stop(0, rgba(0, 0, 0, 0.8)), color-stop(1, rgba(0, 0, 0, 0)));
+          background: -ms-linear-gradient(bottom, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0));
+          background: -moz-linear-gradient(center bottom, rgba(0, 0, 0, 0.8) 0%, rgba(0, 0, 0, 0) 100%);
+          background: -o-linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.8));
+          filter: progid:DXImageTransform.Microsoft.gradient(enabled='false', startColorstr=$start, endColorstr=$stop); }
+          #page.bases.local #container section.slider article.slide section.details div {
+            color: #fdfdfc;
+            padding-left: 4%;
+            padding-right: 4%;
+            width: 92%;
+            display: block;
+            position: absolute;
+            bottom: 8%;
+            left: 0px; }
+            #page.bases.local #container section.slider article.slide section.details div h1 {
+              font-family: "Radikal-Bold", "Radikal", sans-serif;
+              font-size: 1.4em; }
+            #page.bases.local #container section.slider article.slide section.details div p {
+              text-align: justify; }
+            #page.bases.local #container section.slider article.slide section.details div p.link {
+              text-align: center;
+              margin-top: 20px;
+              margin-bottom: 20px; }
+              #page.bases.local #container section.slider article.slide section.details div p.link a {
+                color: #fdfdfc;
+                text-decoration: none;
+                text-align: center;
+                -webkit-border-radius: 3px;
+                -moz-border-radius: 3px;
+                -ms-border-radius: 3px;
+                -o-border-radius: 3px;
+                border-radius: 3px;
+                cursor: pointer;
+                padding: 6px 25px;
+                border: 1px solid #fdfdfc; }
+                #page.bases.local #container section.slider article.slide section.details div p.link a a:active {
+                  background-color: #fdfdfc; }
+      #page.bases.local #container section.slider nav#slides {
+        position: absolute;
+        bottom: 0%;
+        width: 100%;
+        z-index: 200; }
+        #page.bases.local #container section.slider nav#slides ul {
+          text-align: center; }
+          #page.bases.local #container section.slider nav#slides ul li {
+            border: 1px solid #fdfdfc;
+            margin-left: 5px;
+            margin-right: 5px;
+            border-radius: 6px;
+            display: inline-block;
+            width: 10px;
+            height: 10px;
+            cursor: pointer; }
+            #page.bases.local #container section.slider nav#slides ul li.current {
+              background: #fdfdfc; }
+  #page.events.local #container {
+    margin-top: 46px;
+    height: initial;
+    width: auto;
+    overflow: hidden;
+    overflow-x: hidden;
+    overflow-y: hidden; }
+    #page.events.local #container nav.sub_nav {
+      margin-bottom: 13.8px; }
+    #page.events.local #container a.events {
+      display: block;
+      width: 96%;
+      position: relative;
+      margin: 3% auto; }
+      #page.events.local #container a.events img {
+        width: 100%;
+        vertical-align: middle; }
+      #page.events.local #container a.events section.details {
+        padding: 0px;
+        margin: 0px;
+        background: #313131;
+        width: 100%;
+        z-index: 100;
+        padding-left: 0%;
+        position: relative;
+        color: #fdfdfc;
+        text-decoration: none; }
+        #page.events.local #container a.events section.details h1 {
+          font-family: "Radikal-Bold", "Radikal", sans-serif;
+          font-size: 1.4em;
+          display: inline-block;
+          padding: 1% 2%; }
+        #page.events.local #container a.events section.details time {
+          float: right;
+          padding: 2% 2%; }
+    #page.events.local #container article.event img {
+      width: 100%; }
+    #page.events.local #container article.event sumary {
+      font-family: "Radikal-Bold", "Radikal", sans-serif;
+      margin: 13.8px;
+      text-align: justify;
+      display: block; }
+    #page.events.local #container article.event > p {
+      margin: 13.8px;
+      text-align: justify; }
+    #page.events.local #container article.event section.details {
+      margin: 13.8px;
+      border: 2px solid #d91a15;
+      padding-bottom: 13.8px;
+      -webkit-border-radius: 3px;
+      -moz-border-radius: 3px;
+      -ms-border-radius: 3px;
+      -o-border-radius: 3px;
+      border-radius: 3px; }
+      #page.events.local #container article.event section.details time {
+        text-align: center;
+        background: #d91a15;
+        color: #fdfdfc;
+        display: block;
+        font-size: 1.5em;
+        padding: 5px 0; }
+      #page.events.local #container article.event section.details h1 {
+        font-family: "Radikal-Light", "Radikal", sans-serif;
+        font-size: 1.5em;
+        padding: 13.8px; }
+      #page.events.local #container article.event section.details p {
+        padding-left: 13.8px; }
+  #page.celebrations.local {
+    overflow-x: hidden;
+    overflow-y: hidden;
+    -webkit-overflow-scrolling: hidden; }
+    #page.celebrations.local #container {
+      margin-top: 46px;
+      height: 100%;
+      width: auto;
+      overflow-x: hidden;
+      overflow-y: scroll;
+      -webkit-overflow-scrolling: touch; }
+      #page.celebrations.local #container section.nextCelebrations {
+        height: 50%;
+        min-height: 184px;
+        display: block;
+        overflow: hidden;
+        cursor: pointer; }
+        #page.celebrations.local #container section.nextCelebrations article {
+          display: inline-block;
+          height: 100%;
+          width: 100%;
+          position: relative; }
+          #page.celebrations.local #container section.nextCelebrations article section.img {
+            height: 100%;
+            background-repeat: no-repeat;
+            background-position: top center;
+            background-size: cover; }
+            #page.celebrations.local #container section.nextCelebrations article section.img img {
+              height: 100%;
+              padding: 0px;
+              margin: 0px; }
+          #page.celebrations.local #container section.nextCelebrations article section.details {
+            padding: 0px;
+            margin: 0px;
+            margin-top: -105.8px;
+            height: 105.8px;
+            width: 100%;
+            z-index: 100;
+            padding-left: 0%;
+            position: relative;
+            background: rgba(0, 0, 0, 0.7);
+            background: -webkit-gradient(linear, left bottom, left top, color-stop(0, rgba(0, 0, 0, 0.8)), color-stop(1, rgba(0, 0, 0, 0)));
+            background: -ms-linear-gradient(bottom, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0));
+            background: -moz-linear-gradient(center bottom, rgba(0, 0, 0, 0.8) 0%, rgba(0, 0, 0, 0) 100%);
+            background: -o-linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.8));
+            filter: progid:DXImageTransform.Microsoft.gradient(enabled='false', startColorstr=$start, endColorstr=$stop); }
+            #page.celebrations.local #container section.nextCelebrations article section.details div {
+              color: #fdfdfc;
+              padding-left: 4%;
+              padding-right: 4%;
+              width: 92%;
+              display: block;
+              position: absolute;
+              bottom: 30%;
+              left: 0px; }
+              #page.celebrations.local #container section.nextCelebrations article section.details div h1 {
+                font-family: "Radikal-Bold", "Radikal", sans-serif;
+                font-size: 1.4em; }
+              #page.celebrations.local #container section.nextCelebrations article section.details div h2 {
+                font-size: 1.3em; }
+        #page.celebrations.local #container section.nextCelebrations nav#slides {
+          width: 100%;
+          z-index: 200;
+          position: absolute;
+          top: 57%; }
+          #page.celebrations.local #container section.nextCelebrations nav#slides ul {
+            text-align: center; }
+            #page.celebrations.local #container section.nextCelebrations nav#slides ul li {
+              border: 1px solid #fdfdfc;
+              margin-left: 5px;
+              margin-right: 5px;
+              border-radius: 6px;
+              display: inline-block;
+              width: 10px;
+              height: 10px;
+              cursor: pointer; }
+              #page.celebrations.local #container section.nextCelebrations nav#slides ul li.current {
+                background: #fdfdfc; }
+        #page.celebrations.local #container section.nextCelebrations img {
+          height: 70%;
+          width: auto; }
+      #page.celebrations.local #container section.lastCelebrations {
+        width: 100%;
+        margin-top: 23px;
+        cursor: pointer; }
+        #page.celebrations.local #container section.lastCelebrations > h1 {
+          font-size: 1.2em;
+          font-family: "Radikal-Bold", "Radikal", sans-serif;
+          padding-left: 13.8px;
+          margin-bottom: 9.2px; }
+        #page.celebrations.local #container section.lastCelebrations > section {
+          padding-left: 13.8px;
+          overflow: hidden;
+          position: absolute;
+          left: 0px; }
+          #page.celebrations.local #container section.lastCelebrations > section article {
+            height: 92px;
+            width: 163.55556px;
+            display: inline-block;
+            margin-right: 13.8px;
+            position: relative; }
+            #page.celebrations.local #container section.lastCelebrations > section article section.img {
+              height: 100%; }
+              #page.celebrations.local #container section.lastCelebrations > section article section.img img {
+                height: 100%;
+                padding: 0px;
+                margin: 0px; }
+            #page.celebrations.local #container section.lastCelebrations > section article section.details {
+              padding: 0px;
+              margin: 0px;
+              margin-top: -55.2px;
+              height: 55.2px;
+              width: 100%;
+              z-index: 100;
+              padding-left: 0%;
+              position: relative;
+              background: rgba(0, 0, 0, 0.7);
+              background: -webkit-gradient(linear, left bottom, left top, color-stop(0, rgba(0, 0, 0, 0.8)), color-stop(1, rgba(0, 0, 0, 0)));
+              background: -ms-linear-gradient(bottom, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0));
+              background: -moz-linear-gradient(center bottom, rgba(0, 0, 0, 0.8) 0%, rgba(0, 0, 0, 0) 100%);
+              background: -o-linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.8));
+              filter: progid:DXImageTransform.Microsoft.gradient(enabled='false', startColorstr=$start, endColorstr=$stop); }
+              #page.celebrations.local #container section.lastCelebrations > section article section.details h1 {
+                color: #fdfdfc;
+                padding-left: 4%;
+                padding-right: 4%;
+                width: 92%;
+                display: block;
+                position: absolute;
+                bottom: 4%;
+                left: 0px;
+                font-size: 1.2em;
+                font-family: "Radikal-Bold", "Radikal", sans-serif; }
 
 #ruban_nav {
   z-index: 0;

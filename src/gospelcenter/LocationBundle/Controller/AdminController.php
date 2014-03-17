@@ -68,6 +68,8 @@ class AdminController extends Controller {
                 $em->persist($location);
                 $em->flush();
                 
+                $this->get('session')->getFlashBag()->add('info', 'The location has been added.');
+                
                 return $this->redirect( $this->generateUrl('gospelcenterAdmin_locations', array(
                     'center' => $center->getRef()
                 )));
@@ -111,6 +113,8 @@ class AdminController extends Controller {
                 $em = $this->getDoctrine()->getManager();
                 $em->persist($location);
                 $em->flush();
+                
+                $this->get('session')->getFlashBag()->add('info', 'The location has been edited.');
                 
                 return $this->redirect( $this->generateUrl('gospelcenterAdmin_locations', array(
                     'center' => $center->getRef()

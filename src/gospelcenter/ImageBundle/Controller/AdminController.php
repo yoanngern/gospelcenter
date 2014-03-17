@@ -72,7 +72,7 @@ class AdminController extends Controller {
     
     
     /*
-     *   Add a location
+     *   Add an image
      */
     public function addAction(Center $center)
     {
@@ -91,6 +91,8 @@ class AdminController extends Controller {
                 $em = $this->getDoctrine()->getManager();
                 $em->persist($image);
                 $em->flush();
+                
+                $this->get('session')->getFlashBag()->add('info', 'The image has been added.');
                 
                 return $this->redirect( $this->generateUrl('gospelcenterAdmin_images', array(
                     'center' => $center->getRef()
@@ -116,7 +118,7 @@ class AdminController extends Controller {
     
     
     /*
-     *   Edit a location
+     *   Edit an image
      *   @param $image = Image
      *          $center = Center
      */
@@ -135,6 +137,8 @@ class AdminController extends Controller {
                 $em = $this->getDoctrine()->getManager();
                 $em->persist($image);
                 $em->flush();
+                
+                $this->get('session')->getFlashBag()->add('info', 'The image has been edited.');
                 
                 return $this->redirect( $this->generateUrl('gospelcenterAdmin_images', array(
                     'center' => $center->getRef()

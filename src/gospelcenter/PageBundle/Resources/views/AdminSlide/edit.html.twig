@@ -3,7 +3,7 @@
 {% block javascripts %}
     {{ parent() }}
     <script type="text/javascript" src="{{ asset('js/form-min.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('js/addImage-min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('js/editImage-min.js') }}"></script>
 {% endblock %}
 
 {% block stylesheets %}
@@ -25,8 +25,12 @@
     	</nav>
     	
     	{{ form_widget(form.image.file) }}
+    	<div id="editImage" data-input="{{ form.image.file.vars.id }}">
+    	    <img src="{{ asset(slide.image.webPath) }}" alt="{{ slide.image.alt }}" />
+    	</div>
+    	
         {{ form_widget(form.title, {'attr': {'placeholder': 'Title'} }) }}
-        {{ form_widget(form.text, {'attr': {'placeholder': 'Text'} }) }}
+        {{ form_widget(form.text, {'attr': {'placeholder': 'Text', 'class': 'elastic'} }) }}
         {{ form_widget(form.link, {'attr': {'placeholder': 'Link'} }) }}
         {{ form_widget(form.labelLink, {'attr': {'placeholder': 'Link label'} }) }}
         {{ form_widget(form.page) }}

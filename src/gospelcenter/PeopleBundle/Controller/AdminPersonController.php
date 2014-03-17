@@ -159,7 +159,7 @@ class AdminPersonController extends Controller {
                     $em->flush();
                 }
                 
-                
+                $this->get('session')->getFlashBag()->add('info', 'The contact has been added.');
                 
                 return $this->redirect($previousUrl);
             }
@@ -290,6 +290,8 @@ class AdminPersonController extends Controller {
                     $em->remove($visitor);
                     $em->flush();
                 }
+                
+                $this->get('session')->getFlashBag()->add('info', 'The contact has been edited.');
                 
                 return $this->redirect($previousUrl);
             }

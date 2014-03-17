@@ -1,0 +1,49 @@
+{% extends "::mobileAdmin.html.twig" %}
+
+{% block stylesheets %}
+	{{ parent() }}
+{% endblock %}
+
+{% block title %}
+    {{ parent() }}
+{% endblock %}
+
+{% block headerCenter %}Celebrations{% endblock %}
+
+{% block body %}
+    
+    <nav class="main">
+        <ul>
+            {% for celebration in celebrations %}
+                
+                {% set speakers = '' %}
+        
+                {% for key, speaker in celebration.speakers %}
+                    
+                    {% if key != 0 and key != (celebration.speakers|length -1) %}
+                        {% set speakers = speakers ~ ', '%}
+                    {% elseif key != 0 and key == (celebration.speakers|length -1) %}
+                        {% set speakers = speakers ~ ' et '%}
+                    {% endif %}
+                    
+                    {% set speakers = speakers ~ speaker.person.firstname ~ ' ' ~ speaker.person.lastname %}
+                    
+                {% endfor %}
+            
+                <li>
+                    <a href="{{ path('gospelcenterAdmin_celebrations_edit', {'celebration': celebration.id, 'center': center.ref}) }}">
+                        <h1>{{ celebration.startingDate|date('d F Y') }}</h1>
+                        <p>{{ speakers }}</p>
+                    </a>
+                </li>
+            {% else %}
+                <li class="empty">There are no celebrations.</li>
+            {% endfor %}
+        </ul>
+    </nav>
+    
+    <section class="tools">
+        <a href="{{ path('gospelcenterAdmin_celebrations_add', {'center': center.ref}) }}">Add a celebration</a>
+    </section>
+    
+{% endblock %}

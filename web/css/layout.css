@@ -292,6 +292,33 @@ div.arrow_up {
         margin-left: 0px; }
       #page.home #container #news a:first-child:nth-last-child(6):last-of-type, #page.home #container #news a:first-child:nth-last-child(6) ~ #page.home #container #news a:last-of-type {
         border-right: 0px; }
+      #page.home #container #news a section.img {
+        height: 100%; }
+      #page.home #container #news a section.details {
+        padding: 0px;
+        margin: 0px;
+        margin-top: -70px;
+        height: 70px;
+        width: 100%;
+        z-index: 100;
+        padding-left: 0%;
+        position: relative;
+        background: rgba(0, 0, 0, 0.7);
+        background: -webkit-gradient(linear, left bottom, left top, color-stop(0, rgba(0, 0, 0, 0.8)), color-stop(1, rgba(0, 0, 0, 0)));
+        background: -ms-linear-gradient(bottom, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0));
+        background: -moz-linear-gradient(center bottom, rgba(0, 0, 0, 0.8) 0%, rgba(0, 0, 0, 0) 100%);
+        background: -o-linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.8));
+        filter: progid:DXImageTransform.Microsoft.gradient(enabled='false', startColorstr=$start, endColorstr=$stop); }
+        #page.home #container #news a section.details div {
+          color: #fdfdfc;
+          padding-left: 4%;
+          padding-right: 4%;
+          width: 92%;
+          display: block;
+          position: absolute;
+          bottom: 4%;
+          left: 0px;
+          text-align: left; }
       #page.home #container #news a img {
         height: 100%; }
 #page.home footer {

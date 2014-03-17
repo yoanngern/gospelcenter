@@ -30,7 +30,7 @@ class AdminCelebrationController extends Controller {
         
         $mobileDetector = $this->get('mobile_detect.mobile_detector');
         if($mobileDetector->isMobile()) {
-            return $this->render('gospelcenterCelebrationBundle:MobileCelebration:list.html.twig', array(
+            return $this->render('gospelcenterCelebrationBundle:MobileAdminCelebration:list.html.twig', array(
                 'center' => $center,
                 'celebrations' => $celebrations,
                 'page' => 'celebrations'
@@ -91,7 +91,7 @@ class AdminCelebrationController extends Controller {
         
         
         if($mobileDetector->isMobile()) {
-            return $this->render('gospelcenterCelebrationBundle:MobileCelebration:add.html.twig', array(
+            return $this->render('gospelcenterCelebrationBundle:MobileAdminCelebration:add.html.twig', array(
                 'center' => $center,
                 'form' => $form->createView(),
                 'page' => 'celebrations'
@@ -160,7 +160,7 @@ class AdminCelebrationController extends Controller {
                 $em->persist($celebration);
                 $em->flush();
                 
-                $this->get('session')->getFlashBag()->add('info', 'The celebration has been added.');
+                $this->get('session')->getFlashBag()->add('info', 'The celebration has been edited.');
                 
                 return $this->redirect( $this->generateUrl('gospelcenterAdmin_celebrations', array(
                     'center' => $center->getRef()
@@ -169,7 +169,7 @@ class AdminCelebrationController extends Controller {
         }
         
         if($mobileDetector->isMobile()) {
-            return $this->render('gospelcenterCelebrationBundle:MobileCelebration:edit.html.twig', array(
+            return $this->render('gospelcenterCelebrationBundle:MobileAdminCelebration:edit.html.twig', array(
                 'center' => $center,
                 'celebration' => $celebration,
                 'form' => $form->createView(),

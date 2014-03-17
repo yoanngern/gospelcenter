@@ -61,6 +61,8 @@ class AdminSlideGlobalController extends Controller {
                 $em->persist($slide);
                 $em->flush();
                 
+                $this->get('session')->getFlashBag()->add('info', 'The slide has been added.');
+                
                 return $this->redirect( $this->generateUrl('gospelcenterAdminGlobal_slides'));
             }
         }
@@ -91,6 +93,8 @@ class AdminSlideGlobalController extends Controller {
                 $em = $this->getDoctrine()->getManager();
                 $em->persist($slide);
                 $em->flush();
+                
+                $this->get('session')->getFlashBag()->add('info', 'The slide has been edited.');
                 
                 return $this->redirect( $this->generateUrl('gospelcenterAdminGlobal_slides'));
             }

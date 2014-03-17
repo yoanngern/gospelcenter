@@ -52,6 +52,8 @@ class AdminGlobalController extends Controller {
                 $em->persist($image);
                 $em->flush();
                 
+                $this->get('session')->getFlashBag()->add('info', 'The image has been added.');
+                
                 return $this->redirect( $this->generateUrl('gospelcenterAdminGlobal_images'));
             }
         }
@@ -82,6 +84,8 @@ class AdminGlobalController extends Controller {
                 $em = $this->getDoctrine()->getManager();
                 $em->persist($image);
                 $em->flush();
+                
+                $this->get('session')->getFlashBag()->add('info', 'The image has been edited.');
                 
                 return $this->redirect( $this->generateUrl('gospelcenterAdminGlobal_images'));
             }

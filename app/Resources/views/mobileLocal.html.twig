@@ -1,5 +1,7 @@
 {% extends "::mobile.html.twig" %}
 
+{% block pageClass %}local{% endblock %}
+
 {% block nav %}
     <li><a href="{{ path('gospelcenterPage_home', {'center': center.ref}) }}" {% if page == 'home' %}class="current"{% endif %}>Home</a></li>
     <li><a href="{{ path('gospelcenterPage_default', {'center': center.ref, 'page': 'celebrations'}) }}" {% if page == 'celebrations' %}class="current"{% endif %}>Celebrations</a></li>

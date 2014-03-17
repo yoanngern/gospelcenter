@@ -8,7 +8,7 @@
     	<meta name="apple-mobile-web-app-capable" content="yes">
     	<meta name="mobile-web-app-capable" content="yes">
     	<meta name="apple-mobile-web-app-status-bar-style" content="black">
-    	<meta content="initial-scale=1, minimum-scale=1, user-scalable=no, maximum-scale=1, width=device-width" name="viewport">
+    	<meta content="initial-scale=1, minimum-scale=1, user-scalable=no, maximum-scale=1, width=device-width, minimal-ui" name="viewport">
     	<link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
         <link rel="icon" type="image/png" href="images/favicon.png" />
         
@@ -69,7 +69,7 @@
                 {% endblock %}
             </ul>
         </section>
-        <section id="page">
+        <section id="page" class="{{ page }} {% block pageClass %}{% endblock %}">
         	<section id="container">
         	    {% block body %}
 	    	    {% endblock %}

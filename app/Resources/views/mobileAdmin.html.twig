@@ -5,6 +5,8 @@
     <link rel="stylesheet" href="{{ asset('css/mobileAdmin.css') }}" type="text/css" />
 {% endblock %}
 
+{% block pageClass %}admin{% endblock %}
+
 {% block nav %}
     <li><a href="{{ path('gospelcenterAdmin_celebrations', {'center': center.ref}) }}" {% if page == 'celebrations' %}class="current"{% endif %}>Celebrations</a></li>
     <li><a href="{{ path('gospelcenterAdmin_persons', {'center': center.ref}) }}" {% if page == 'people' %}class="current"{% endif %}>People</a></li>

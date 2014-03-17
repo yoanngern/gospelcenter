@@ -1,0 +1,28 @@
+{% extends "::mobileLocal.html.twig" %}
+
+{% block headerLeft%}<a id="back" class="left" href="{{ path('gospelcenterEvents_list', {'center': center.ref}) }}"></a>{% endblock %}
+{% block headerCenter %}{{ event.title }}{% endblock %}
+
+{% block body %}
+
+    <article class="event">
+        <img src="{{ asset(event.cover.webPath) }}" alt="{{ event.cover.alt }}" />
+        
+        <sumary>{{ event.introText }}</sumary>
+        <p>{{ event.text }}</p>
+        
+        <section class="details">
+            <time>{{ event.startingDate|date('d F Y') }}</time>
+            {% if event.location is not null %}
+                <h1>{{ event.location.name }}</h1>
+                <p>{{ event.location.address1 }}</p>
+                {% if event.location.address2 is not null %}
+                    <p>{{ event.location.address2 }}</p>
+                {% endif %}
+                <p>{{ event.location.postalCode }} {{ event.location.city }}</p>
+                <p>{{ event.location.country }}</p>
+            {% endif %}
+        </section>
+    </article>
+    
+{% endblock %}

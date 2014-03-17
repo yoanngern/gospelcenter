@@ -443,6 +443,17 @@
     	
     	&.page {
         	
+        	& > input,
+        	& > textarea,
+        	& > select {
+            	margin-left: 25%;
+        	}
+        	
+        	& > input,
+        	& > textarea {
+            	width: 49%;
+        	}
+        	
         	select {
             	display: block;
             	margin-bottom: 10px;
@@ -524,6 +535,7 @@
                     	
                     	p {
                         	padding-bottom: 10px;
+                        	margin-left: 210px;
                     	}
                 	}
                 	
@@ -539,16 +551,28 @@
             	margin: 0 auto 20px;
         	}
         	
-    	}
-    	
-    	&.image {
         	& > input,
-        	& > textarea {
+        	& > textarea,
+        	& > select {
             	margin-left: 25%;
         	}
         	
         	#editImage {
             	width: 50%;
+        	}
+    	}
+    	
+    	&.slide {
+        	& > input,
+        	& > textarea {
+            	width: 49%;
+        	}
+    	}
+    	
+    	&.location {
+        	& > input {
+            	width: 49%;
+            	margin-left: 25%;
         	}
     	}
     	

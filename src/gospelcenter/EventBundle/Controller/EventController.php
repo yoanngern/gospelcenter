@@ -49,6 +49,15 @@ class EventController extends Controller {
         
         $event = $em->getRepository('gospelcenterEventBundle:Event')->findWithAll($event, $center);
         
+        $mobileDetector = $this->get('mobile_detect.mobile_detector');
+        if($mobileDetector->isMobile()) {
+            return $this->render('gospelcenterEventBundle:Mobile:event.html.twig', array(
+                'event' => $event,
+                'center' => $center,
+                'page' => 'events'
+            ));  
+        }
+        
         return $this->render('gospelcenterEventBundle:Event:event.html.twig', array(
             'event' => $event,
             'center' => $center,

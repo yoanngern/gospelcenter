@@ -53,6 +53,8 @@ class AdminCenterController extends Controller {
                 $em->persist($center);
                 $em->flush();
                 
+                $this->get('session')->getFlashBag()->add('info', 'The center has been added.');
+                
                 return $this->redirect( $this->generateUrl('gospelcenterAdminGlobal_centers'));
             }
         }
@@ -82,6 +84,8 @@ class AdminCenterController extends Controller {
                 $em = $this->getDoctrine()->getManager();
                 $em->persist($center);
                 $em->flush();
+                
+                $this->get('session')->getFlashBag()->add('info', 'The center has been edited.');
                 
                 return $this->redirect( $this->generateUrl('gospelcenterAdminGlobal_centers'));
             }

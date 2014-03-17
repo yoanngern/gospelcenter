@@ -2,19 +2,16 @@
 
 {% block gospelcenterEvents_body %}
     {% for event in events %}
-        <article class="events">
-        	<section class="picture">
-        		<img src="{{ event.picture.url }}" alt="{{ event.picture.alt }}" />
-        	</section>
-            <section class="detail">
+        <a class="events" href="{{ path('gospelcenterEvents_event', {'event': event.id, 'center': center.ref}) }}">
+            
+            <img src="{{ asset(event.picture.webPath) }}" alt="{{ event.picture.alt }}" />
+            
+            <section class="details">
 	            <h1>{{ event.title }}</h1>
 	            <time>{{ event.startingDate|date('d F Y') }}</time>
-	            <sumary>{{ event.introText }}</sumary>
-	            <p>
-	            	<a href="{{ path('gospelcenterEvents_event', {'event': event.id, 'center': center.ref}) }}" class="buttonRounded">More infos</a>
-	            </p>
             </section>
-        </article>
+        
+        </a>
     {% else %}
         <span class="empty">There are no events to come.</span>
     {% endfor %}

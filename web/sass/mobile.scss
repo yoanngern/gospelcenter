@@ -20,7 +20,15 @@ html {
     -ms-text-size-adjust: 100%;
 }
 
-
+html body > header {
+    
+    a.left {
+        
+        &#back {
+            background-image: url('../images/back.svg');
+        }
+    }
+}
 
 body {
 	margin: 0px;
@@ -45,6 +53,7 @@ body {
     }
 }
 
+
 .no-overflowscrolling {
     height: auto;
     
@@ -52,8 +61,8 @@ body {
         height: auto;
         
         #page {
-            position: absolute;
-            height: auto;
+            //position: absolute;
+            //height: auto;
         }
         
         #ruban_nav {
@@ -142,6 +151,7 @@ body > header {
         margin-top: (1.2 * $lineH);
         overflow-y: scroll;  
         
+        
         nav.sub_nav {
             display: block;
             width: 100%;
@@ -155,8 +165,419 @@ body > header {
             width: 100%;
             display: block;
         }
+        
+    }
+    
+    &.bases.local {
+        
+        #container {
+            margin-top: 0px;
+            height: 100%;
+            width: auto;
+            overflow-x: hidden;
+            overflow-y: scroll;
+            -webkit-overflow-scrolling: touch;
+            
+            h2 {
+                margin-top: 0.5 * $lineH;
+                width: 88%;
+                margin-left: 6%;
+                border-bottom: 1px solid $white;
+                font-size: 1.2em;
+                text-align: center;
+                padding-bottom: 0.1 * $lineH;
+                z-index: 200;
+                position: absolute;
+                top: $lineH;
+                color: $white;
+            }
+            
+            section.slider {
+                height: 100%;
+                position: absolute;
+                top: 0px;
+                width: 100%;
+                min-height: 4 * $lineH;
+                display: block;
+                overflow: hidden;
+                cursor: pointer;
+                
+                article.slide {
+                    display: inline-block;
+                    height: 100%;
+                    width: 100%;
+                    position: relative;
+                    
+                    section.img {
+                        height: 100%;
+                        width: 100%;
+                        background-repeat: no-repeat;
+                        background-position: top center;
+                        background-size: cover;
+                    }
+                    
+                    section.details {
+                        padding: 0px;
+                        margin: 0px;
+                        top: 21%;
+                        height: 80%;
+                        width: 100%;
+                        z-index: 100;
+                        padding-left: 0%;
+                        position: absolute;
+                        @include gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.8), rgba(0,0,0,0.0));
+                        
+                        div {
+                            color: $white;
+                            padding-left: 4%;
+                            padding-right: 4%;
+                            width: 92%;
+                            display: block;
+                            position: absolute;
+                            bottom: 8%;
+                            left: 0px;
+                            
+                            h1 {
+                                font-family: $font-bold;
+                                font-size: 1.4em;
+                            }
+                            
+                            p {
+                                text-align: justify;
+                            }
+                            
+                            p.link {
+                                text-align: center;
+                                margin-top: 20px;
+                                margin-bottom: 20px;
+                                
+                                a {
+                                    color: $white;
+                                    text-decoration: none;
+                                    text-align: center;
+                                    @include border-radius (3px);
+                                    cursor: pointer;
+                                    padding: 6px 25px;
+                                    border: 1px solid $white;
+                                    
+                                    a:active {
+                                        background-color: $white;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    
+                    
+                }
+                
+                nav#slides {
+                    position: absolute;
+                    bottom: 0%;
+                    width: 100%;
+                    z-index: 200;
+                    
+                    ul {
+                        text-align: center;
+                        
+                        li {
+                            border: 1px solid $white;
+                            margin-left: 5px;
+                            margin-right: 5px;
+                            border-radius: 6px;
+                            display: inline-block;
+                            width: 10px;
+                            height: 10px;
+                            cursor: pointer;
+                            
+                            &.current {
+                                background: $white;
+                            }
+                        }
+                    }
+                }
+            }
+            
+        }
+        
+    }
+    
+    &.events.local {
+        
+        #container {
+            margin-top: $lineH;
+            height: initial;
+            width: auto;
+            overflow: hidden;
+            overflow-x: hidden;
+            overflow-y: hidden;
+            
+            nav.sub_nav {
+                margin-bottom: 0.3 * $lineH;
+            }
+            
+            a.events {
+                display: block;
+                width: 96%;
+                position: relative;
+                margin: 3% auto;
+                
+                img {
+                    width: 100%;
+                    vertical-align: middle;
+                }
+                
+                section.details {
+                    padding: 0px;
+                    margin: 0px;
+                    background: $grayDark;
+                    width: 100%;
+                    z-index: 100;
+                    padding-left: 0%;
+                    position: relative;
+                    color: $white;
+                    text-decoration: none;
+                        
+                    h1 {
+                        font-family: $font-bold;
+                        font-size: 1.4em;
+                        display: inline-block;
+                        padding: 1% 2%;
+                    }
+                    
+                    time {
+                        float: right;
+                        padding: 2% 2%;
+                    }
+                }
+                
+                
+            }
+            
+            article.event {
+                
+                img {
+                    width: 100%;
+                }
+                
+                sumary {
+                    font-family: $font-bold;
+                    margin: 0.3 * $lineH;
+                    text-align: justify;
+                    display: block;
+                }
+                
+                & > p {
+                    margin: 0.3 * $lineH;
+                    text-align: justify;
+                }
+                
+                section.details {
+                    margin: 0.3 * $lineH;
+                    border: 2px solid $red;
+                    padding-bottom: 0.3 * $lineH;
+                    @include border-radius (3px);
+                    
+                    time {
+                        text-align: center;
+                        background: $red;
+                        color: $white;
+                        display: block;
+                        font-size: 1.5em;
+                        padding: 5px 0;
+                    }
+                    
+                    h1 {
+                        font-family: $font-light;
+                        font-size: 1.5em;
+                        padding: 0.3 * $lineH;
+                    }
+                    
+                    p {
+                        padding-left: 0.3 * $lineH;
+                    }
+                }
+            }
+        }
+    }
+    
+    &.celebrations.local {
+        overflow-x: hidden;
+        overflow-y: hidden;
+        -webkit-overflow-scrolling: hidden;
+        
+        #container {
+            margin-top: $lineH;
+            height: 100%;
+            width: auto;
+            overflow-x: hidden;
+            overflow-y: scroll;
+            -webkit-overflow-scrolling: touch;
+            
+            section.nextCelebrations {
+                height: 50%;
+                min-height: 4 * $lineH;
+                display: block;
+                overflow: hidden;
+                cursor: pointer;
+                
+                article {
+                    display: inline-block;
+                    height: 100%;
+                    width: 100%;
+                    position: relative;
+                    
+                    section.img {
+                        height: 100%;
+                        background-repeat: no-repeat;
+                        background-position: top center;
+                        background-size: cover; 
+                        
+                        img {
+                            height: 100%;
+                            padding: 0px;
+                            margin: 0px;
+                        }
+                    }
+                    
+                    section.details {
+                        padding: 0px;
+                        margin: 0px;
+                        margin-top: -2.3 * $lineH;
+                        height: 2.3 * $lineH;
+                        width: 100%;
+                        z-index: 100;
+                        padding-left: 0%;
+                        position: relative;
+                        @include gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.8), rgba(0,0,0,0.0));
+                        
+                        div {
+                            color: $white;
+                            padding-left: 4%;
+                            padding-right: 4%;
+                            width: 92%;
+                            display: block;
+                            position: absolute;
+                            bottom: 30%;
+                            left: 0px;
+                            
+                            h1 {
+                                font-family: $font-bold;
+                                font-size: 1.4em;
+                            }
+                            
+                            h2 {
+                                font-size: 1.3em;
+                            }
+                        }
+                    }
+                    
+                }
+                
+                nav#slides {
+                    width: 100%;
+                    z-index: 200;
+                    position: absolute;
+                    top: 57%;
+                    
+                    ul {
+                        text-align: center;
+                        
+                        li {
+                            border: 1px solid $white;
+                            margin-left: 5px;
+                            margin-right: 5px;
+                            border-radius: 6px;
+                            display: inline-block;
+                            width: 10px;
+                            height: 10px;
+                            cursor: pointer;
+                            
+                            &.current {
+                                background: $white;
+                            }
+                        }
+                    }
+                }
+
+                
+                img {
+                    height: 70%;
+                    width: auto;
+                }
+            }
+            
+            section.lastCelebrations {
+                width: 100%;
+                margin-top: 0.5 * $lineH;
+                cursor: pointer;
+                
+                & > h1 {
+                    font-size: 1.2em;
+                    font-family: $font-bold;
+                    padding-left: 0.3 * $lineH;
+                    margin-bottom: 0.2 * $lineH;
+                }
+                
+                & > section {
+                    padding-left: 0.3 * $lineH;
+                    overflow: hidden;
+                    position: absolute;
+                    left: 0px;
+                    
+                    article {
+                        height: 2 * $lineH;
+                        width: (16/9) * (2 * $lineH);
+                        display: inline-block;
+                        margin-right: 0.3 * $lineH;
+                        position: relative;
+                        
+                        section.img {
+                            height: 100%;
+                            
+                            img {
+                                height: 100%;
+                                padding: 0px;
+                                margin: 0px;
+                            }
+                        }
+                        
+                        section.details {
+                            padding: 0px;
+                            margin: 0px;
+                            margin-top: -1.2 * $lineH;
+                            height: 1.2 * $lineH;
+                            width: 100%;
+                            z-index: 100;
+                            padding-left: 0%;
+                            position: relative;
+                            @include gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.8), rgba(0,0,0,0.0));
+                            
+                            h1 {
+                                color: $white;
+                                padding-left: 4%;
+                                padding-right: 4%;
+                                width: 92%;
+                                display: block;
+                                position: absolute;
+                                bottom: 4%;
+                                left: 0px;
+                                font-size: 1.2em;
+                                font-family: $font-bold;
+                            }
+                        }
+                        
+                    }
+                }
+            }
+            
+            
+        }
+
+        
     }
 }
+
 
 #ruban_nav {
 	z-index: 0;
