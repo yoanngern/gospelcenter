@@ -1,0 +1,24 @@
+{% extends "gospelcenterMediaBundle::layout.html.twig" %}
+
+{% block stylesheets %}
+	{{ parent() }}
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+{% endblock %}
+
+{% block body %}
+
+    <h1>{{ speaker.person.firstname }} {{ speaker.person.lastname }}</h1>
+    
+    <section class="wall">
+        {% for celebration in celebrations %}<a href="{{ path('gospelcenterMedia_video', {'video': celebration.video.id}) }}">
+                <img src="{{ asset(celebration.image.webPath) }}" alt="{{ celebration.image.alt }}" />
+                <section class="details">
+                    <h1>{% if celebration.title|length %}{{ celebration.title }}{% else %}Celebration of {{ celebration.startingDate|date('d F Y') }}{% endif %}</h1>
+                </section>
+            </a>{% endfor %}
+    </section>
+    
+{% endblock %}

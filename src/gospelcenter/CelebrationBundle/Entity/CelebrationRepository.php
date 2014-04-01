@@ -66,6 +66,7 @@ class CelebrationRepository extends EntityRepository
         $qb = $this->createQueryBuilder('cel');
         
         $qb->join('cel.center', 'c');
+        $qb->join('cel.video', 'v');
             
         $qb->where('c.ref = :center')
             ->setParameter('center', $center->getRef());
@@ -79,6 +80,62 @@ class CelebrationRepository extends EntityRepository
         {
             $qb->setMaxResults($nb);
         }
+        
+        return $qb->getQuery()->getResult();
+    }
+    
+    public function findLastVideo($nb)
+    {
+        $qb = $this->createQueryBuilder('cel');
+        
+        $qb->join('cel.video', 'v');
+            
+        $qb->andWhere('cel.startingDate < :now')
+            ->setParameter('now', new \Datetime());
+        
+        $qb->orderBy('cel.startingDate', 'DESC');
+        
+        if($nb > 0)
+        {
+            $qb->setMaxResults($nb);
+        }
+        
+        return $qb->getQuery()->getResult();
+    }
+    
+    public function findStarVideo($nb)
+    {
+        $qb = $this->createQueryBuilder('cel');
+        
+        $qb->join('cel.video', 'v');
+        
+        $qb->andWhere('cel.bestOf = 1');
+        $qb->andWhere('cel.startingDate < :now')
+            ->setParameter('now', new \Datetime());
+        
+        $qb->orderBy('cel.startingDate', 'DESC');
+        
+        if($nb > 0)
+        {
+            $qb->setMaxResults($nb);
+        }
+        
+        return $qb->getQuery()->getResult();
+    }
+    
+    public function findAllBySpeakerWithVideo(\gospelcenter\CelebrationBundle\Entity\Speaker $speaker)
+    {
+        $qb = $this->createQueryBuilder('cel');
+        
+        $qb->join('cel.center', 'c');
+        $qb->join('cel.speakers', 's');
+        $qb->join('s.person', 'p');
+        $qb->join('cel.video', 'v');
+            
+        $qb->where('p.id = :speaker')
+            ->setParameter('speaker', $speaker->getPerson()->getId());
+        
+        $qb->addOrderBy('cel.startingDate', 'ASC');
         
         return $qb->getQuery()->getResult();
     }

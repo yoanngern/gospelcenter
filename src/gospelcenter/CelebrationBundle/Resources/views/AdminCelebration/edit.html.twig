@@ -2,12 +2,12 @@
 
 {% block javascripts %}
     {{ parent() }}
-    <script type="text/javascript" src="{{ asset('js/addCelebration-min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('js/addCelebration.min.js') }}"></script>
     
     {% if celebration.image %}
-        <script type="text/javascript" src="{{ asset('js/editImage-min.js') }}"></script>
+        <script type="text/javascript" src="{{ asset('js/editImage.min.js') }}"></script>
     {% else %}
-        <script type="text/javascript" src="{{ asset('js/addImage-min.js') }}"></script>
+        <script type="text/javascript" src="{{ asset('js/addImage.min.js') }}"></script>
     {% endif %}
     
 {% endblock %}

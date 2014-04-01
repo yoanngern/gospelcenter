@@ -1,0 +1,37 @@
+{% extends "gospelcenterMediaBundle::layout.html.twig" %}
+
+{% block stylesheets %}
+	{{ parent() }}
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+{% endblock %}
+
+{% block body %}
+    
+    {% set speakers = '' %}
+            
+    {% for key, speaker in video.celebration.speakers %}
+        
+        {% if key != 0 and key != (celebration.speakers|length -1) %}
+            {% set speakers = speakers ~ ', '%}
+        {% elseif key != 0 and key == (celebration.speakers|length -1) %}
+            {% set speakers = speakers ~ ' et '%}
+        {% endif %}
+        
+        {% set speakers = speakers ~ speaker.person.firstname ~ ' ' ~ speaker.person.lastname %}
+        
+    {% endfor %}
+
+    <h1>{% if video.celebration.title|length %}{{ video.celebration.title }}{% else %}Celebration{% endif %}</h1>
+    
+    <section class="video">
+    
+        <iframe src="//player.vimeo.com/video/{{ video.ownerId }}?title=0&amp;byline=0&amp;portrait=0&amp;color=d91a15&amp;autoplay=1" width="960" height="540" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+        <h2>{{ speakers }}</h2>
+        <time>{{ video.celebration.startingDate|date('d F Y') }}</time>
+        
+    </section>
+
+{% endblock %}

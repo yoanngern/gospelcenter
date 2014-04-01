@@ -1,0 +1,24 @@
+{% extends "gospelcenterMediaBundle::layout.html.twig" %}
+
+{% block stylesheets %}
+	{{ parent() }}
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+{% endblock %}
+
+{% block body %}
+
+    <h1>Orators of the Gospel Center</h1>
+    
+    <section class="wall">
+        {% for speaker in speakers %}<a href="{{ path('gospelcenterMedia_speaker', {'speaker': speaker.person.id}) }}">
+                <img src="{{ asset(speaker.celebrations[0].image.webPath) }}" alt="{{ speaker.celebrations[0].image.alt }}" />
+                <section class="details">
+                    <h1>{{ speaker.person.firstname }} {{ speaker.person.lastname }}</h1>
+                </section>
+            </a>{% endfor %}
+    </section>
+    
+{% endblock %}

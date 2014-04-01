@@ -1,4 +1,4 @@
-{% extends "::local.html.twig" %}
+{% extends "gospelcenterMediaBundle::layout.html.twig" %}
 
 {% block stylesheets %}
 	{{ parent() }}
@@ -8,18 +8,15 @@
     {{ parent() }}
 {% endblock %}
 
-{% block title %}
-    {{ parent() }} - Celebrations
-{% endblock %}
-
 {% block body %}
-    <h1>Next celebrations</h1>
+    <h1>Gospel Center TV</h1>
+    
     
     <section class="sliderTop slider" id="1">
         
-        {% if nextCelebrations|length > 1 %}<div id="left" class="arrow black"></div>{% endif %}
+        {% if starsVideos|length > 1 %}<div id="left" class="arrow black"></div>{% endif %}
     
-        {% for celebration in nextCelebrations %}
+        {% for celebration in starsVideos %}
             
             {% set speakers = '' %}
         
@@ -35,26 +32,27 @@
                 
             {% endfor %}
             
-            <article class="slide" id="{{ loop.index }}">
+            <a href="{{ path('gospelcenterMedia_video', {'video': celebration.video.id}) }}" class="slide" id="{{ loop.index }}">
                 <section class="picture">
                     <img src="{{ asset(celebration.image.webPath) }}" alt="{{ celebration.image.alt }}" />
                 </section>
                 <section class="details content">
-                    <h1><span>{{ celebration.startingDate|date('j F') }}</span> at {{ celebration.startingDate|date('H:i') }}</h1>
-                    <h2>{{ speakers }}</h2>
+                    <h1>{{ speakers }}</h1>
+                    {% if celebration.title|length %}<h2>{{ celebration.title }}</h2>{% endif %}
+                    <time data-time="{{ celebration.startingDate|date('Y-m-d H:i:s') }}">{{ celebration.startingDate|date('d F') }}</time>
+                    
                     {% if celebration.description %}<p>{{ celebration.description }}</p>{% endif %}
-                    {% if celebration.kidsProgram %}<a href="#">Program for kids</a>{% endif %}
                 </section>
-            </article>
+            </a>
             
         {% endfor %}
         
-        {% if nextCelebrations|length > 1 %}<div id="right" class="arrow black"></div>{% endif %}
+        {% if starsVideos|length > 1 %}<div id="right" class="arrow black"></div>{% endif %}
         
-        {% if nextCelebrations|length > 1 %}
+        {% if starsVideos|length > 1 %}
             <nav id="slides" class="redRound">
                 <ul>
-                    {% for celebration in nextCelebrations %}
+                    {% for celebration in starsVideos %}
                         <li class="{% if loop.index == 1 %}current{% endif %}" data-slide="{{ loop.index }}" data-slider="1"></li>
                     {% endfor %}
                 </ul>
@@ -62,11 +60,12 @@
         {% endif %}
     </section>
     
+    
     <section class="sliderDown">
-        <h1>Watch our last celebrations</h1>
+        <h1>Our last videos</h1>
         
         <section class="clip">
-            {% for celebration in lastCelebrations %}
+            {% for celebration in lastVideos %}
                 
                 {% set speakers = '' %}
             
@@ -86,17 +85,12 @@
                     <img src="{{ asset(celebration.image.webPath) }}" alt="{{ celebration.image.alt }}" />
                     <section class="details">
                         <h1>{{ speakers }}</h1>
-                        <span>{{ celebration.startingDate|date('d F') }}</span>
+                        <span data-time="{{ celebration.startingDate|date('Y-m-d H:i:s') }}">{{ celebration.startingDate|date('d F') }}</span>
                     </section>
                 </a>
                 
             {% endfor %}
-            
-            <a class="more">
-                <span>More</span>
-            </a>
         </section>
             
     </section>
-    
 {% endblock %}

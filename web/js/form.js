@@ -1,3 +1,12 @@
+// @codekit-append "_date.js"
+// @codekit-append "vendor/jquery.elastic.source.js"
+// @codekit-append "vendor/autoGrowInput.js"
+// @codekit-append "vendor/removeDiacritics.js"
+// @codekit-append "_checkbox.js"
+// @codekit-append "_radio.js"
+// @codekit-append "_selectMultiple.js"
+
+
 $(document).ready( function() {
     
     displayMultipleRelationFrom();

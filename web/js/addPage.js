@@ -1,3 +1,5 @@
+// @codekit-append "form.js"
+
 $(document).ready( function() {
 	initSlides();
 	

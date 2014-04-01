@@ -91,4 +91,20 @@ class SpeakerRepository extends EntityRepository
         return $qb->getQuery()->getArrayResult();
         
     }
+    
+    public function findAllWithVideo()
+    {
+        $qb = $this->createQueryBuilder('s');
+        
+        $qb->addSelect('p');
+        
+        $qb->join('s.person', 'p');
+        $qb->join('s.celebrations', 'cel');
+        $qb->join('cel.video', 'v');
+            
+        $qb->addOrderBy('p.lastname', 'ASC')
+            ->addOrderBy('p.firstname', 'ASC');
+        
+        return $qb->getQuery()->getResult();
+    }
 }

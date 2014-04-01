@@ -15,7 +15,7 @@ class VideoType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('vimeoId',    'text')
+            ->add('ownerId',    'text')
         ;
     }
     

@@ -33,6 +33,26 @@ article, aside, footer, header, hgroup, nav, section, figure, figcaption {
 /* iphone landscape */
 /* iphone 4 portrait */
 /* iphone 5 portrait */
+section.video {
+  width: 960px;
+  margin: 0 auto;
+  display: block; }
+  section.video iframe {
+    display: block;
+    margin-bottom: 10px;
+    margin-top: 20px; }
+  section.video h2 {
+    font-size: 1.5em;
+    width: 100%;
+    height: 50px;
+    margin-left: 1%; }
+  section.video time {
+    float: right;
+    color: #313131;
+    margin-top: -45px;
+    font-size: 1.1em;
+    margin-right: 1%; }
+
 nav.sub_nav {
   text-align: center;
   width: 100%;
@@ -304,10 +324,10 @@ div.arrow_up {
         padding-left: 0%;
         position: relative;
         background: rgba(0, 0, 0, 0.7);
-        background: -webkit-gradient(linear, left bottom, left top, color-stop(0, rgba(0, 0, 0, 0.8)), color-stop(1, rgba(0, 0, 0, 0)));
-        background: -ms-linear-gradient(bottom, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0));
-        background: -moz-linear-gradient(center bottom, rgba(0, 0, 0, 0.8) 0%, rgba(0, 0, 0, 0) 100%);
-        background: -o-linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.8));
+        background: -webkit-gradient(linear, left bottom, left top, color-stop(0, rgba(0, 0, 0, 0.8)), color-stop(1, transparent));
+        background: -ms-linear-gradient(bottom, rgba(0, 0, 0, 0.8), transparent);
+        background: -moz-linear-gradient(center bottom, rgba(0, 0, 0, 0.8) 0%, transparent 100%);
+        background: -o-linear-gradient(transparent, rgba(0, 0, 0, 0.8));
         filter: progid:DXImageTransform.Microsoft.gradient(enabled='false', startColorstr=$start, endColorstr=$stop); }
         #page.home #container #news a section.details div {
           color: #fdfdfc;
@@ -323,7 +343,7 @@ div.arrow_up {
         height: 100%; }
 #page.home footer {
   background: none; }
-#page.celebrations #container {
+#page.selections #container, #page.celebrations #container {
   margin: 0px;
   padding: 0px;
   height: 100%;
@@ -331,108 +351,6 @@ div.arrow_up {
   background: transparent;
   width: 100%;
   overflow-x: hidden; }
-#page.celebrations .nextCelebrations {
-  height: 45%;
-  top: 14%;
-  width: 100%; }
-  #page.celebrations .nextCelebrations nav {
-    top: 56%; }
-  #page.celebrations .nextCelebrations div.arrow {
-    width: 20%;
-    top: 13.5%;
-    height: 40%; }
-  #page.celebrations .nextCelebrations .slide {
-    height: 40%;
-    width: 100%;
-    margin: 0 auto;
-    left: 0px;
-    position: absolute;
-    top: 13.5%;
-    min-width: 800px;
-    display: none; }
-    #page.celebrations .nextCelebrations .slide .picture {
-      float: left;
-      width: 58%;
-      overflow: hidden;
-      height: 100%; }
-      #page.celebrations .nextCelebrations .slide .picture img {
-        height: 100%;
-        display: block;
-        float: right; }
-    #page.celebrations .nextCelebrations .slide .details {
-      float: right;
-      width: 39%;
-      padding-top: 80px; }
-      #page.celebrations .nextCelebrations .slide .details h1 {
-        font-size: 1.3em; }
-        #page.celebrations .nextCelebrations .slide .details h1 span {
-          font-family: "Radikal-Bold", "Radikal", sans-serif; }
-      #page.celebrations .nextCelebrations .slide .details h2 {
-        font-size: 1.2em; }
-      #page.celebrations .nextCelebrations .slide .details a {
-        text-decoration: none;
-        color: #d91a15; }
-#page.celebrations .lastCelebrations {
-  height: 25%;
-  position: absolute;
-  top: 62%;
-  width: 100%; }
-  #page.celebrations .lastCelebrations h1 {
-    font-size: 1.4em;
-    height: 25%;
-    text-align: center; }
-  #page.celebrations .lastCelebrations .clip {
-    height: 75%;
-    margin: 0 auto;
-    width: auto;
-    text-align: center; }
-    #page.celebrations .lastCelebrations .clip article {
-      display: inline-block;
-      margin: 0 0.5%;
-      height: 100%; }
-      #page.celebrations .lastCelebrations .clip article img {
-        height: 85%;
-        margin: 0px;
-        padding: 0px; }
-      #page.celebrations .lastCelebrations .clip article section.details {
-        height: 10%;
-        margin: 0px;
-        color: #313131; }
-        #page.celebrations .lastCelebrations .clip article section.details h1 {
-          font-size: 0.8em;
-          float: left;
-          font-family: "Radikal-Bold", "Radikal", sans-serif; }
-        #page.celebrations .lastCelebrations .clip article section.details span {
-          font-size: 0.8em;
-          float: right; }
-      #page.celebrations .lastCelebrations .clip article.more {
-        border: 1px solid #363331;
-        width: 177.8px;
-        height: 100px;
-        top: -50px;
-        position: relative; }
-        #page.celebrations .lastCelebrations .clip article.more span {
-          text-align: center;
-          padding-top: 40px;
-          display: block; }
-#page.celebrations nav#slides {
-  position: absolute;
-  width: 100%; }
-  #page.celebrations nav#slides ul {
-    text-align: center; }
-    #page.celebrations nav#slides ul li {
-      border: 1px solid #d91a15;
-      margin-left: 5px;
-      margin-right: 5px;
-      border-radius: 6px;
-      display: inline-block;
-      width: 10px;
-      height: 10px;
-      cursor: pointer; }
-      #page.celebrations nav#slides ul li:hover {
-        background: #d91a15; }
-      #page.celebrations nav#slides ul li.current {
-        background: #d91a15; }
 #page .slider div.arrow {
   position: absolute;
   z-index: 100;
@@ -477,6 +395,128 @@ div.arrow_up {
     background: -o-linear-gradient(#e22416, #d11115);
     filter: progid:DXImageTransform.Microsoft.gradient(enabled='false', startColorstr=$start, endColorstr=$stop);
     color: #fdfdfc; }
+
+section.sliderTop {
+  height: 45%;
+  top: 14%;
+  width: 100%; }
+  section.sliderTop nav {
+    top: 56%; }
+  section.sliderTop div.arrow {
+    width: 20%;
+    top: 13.5%;
+    height: 40%; }
+  section.sliderTop .slide {
+    height: 40%;
+    width: 100%;
+    margin: 0 auto;
+    left: 0px;
+    position: absolute;
+    top: 13.5%;
+    min-width: 800px;
+    display: none;
+    color: #363331; }
+    section.sliderTop .slide .picture {
+      float: left;
+      width: 58%;
+      overflow: hidden;
+      height: 100%; }
+      section.sliderTop .slide .picture img {
+        height: 100%;
+        display: block;
+        float: right; }
+    section.sliderTop .slide .details {
+      float: right;
+      width: 39%;
+      padding-top: 80px; }
+      section.sliderTop .slide .details h1 {
+        font-size: 1.3em; }
+        section.sliderTop .slide .details h1 span {
+          font-family: "Radikal-Bold", "Radikal", sans-serif; }
+      section.sliderTop .slide .details h2 {
+        font-size: 1.2em; }
+      section.sliderTop .slide .details a {
+        text-decoration: none;
+        color: #d91a15; }
+
+section.sliderDown {
+  height: 25%;
+  position: absolute;
+  top: 62%;
+  width: 100%; }
+  section.sliderDown h1 {
+    font-size: 1.4em;
+    height: 25%;
+    text-align: center; }
+  section.sliderDown .clip {
+    height: 75%;
+    margin: 0 auto;
+    width: auto;
+    text-align: center; }
+    section.sliderDown .clip a {
+      display: inline-block;
+      margin: 0 0.5%;
+      height: 100%; }
+      section.sliderDown .clip a img {
+        height: 85%;
+        margin: 0px;
+        padding: 0px; }
+      section.sliderDown .clip a section.details {
+        height: 10%;
+        margin: 0px;
+        color: #313131; }
+        section.sliderDown .clip a section.details h1 {
+          font-size: 0.8em;
+          float: left;
+          font-family: "Radikal-Bold", "Radikal", sans-serif; }
+        section.sliderDown .clip a section.details span {
+          font-size: 0.8em;
+          float: right; }
+      section.sliderDown .clip a.more {
+        border: 1px solid #363331;
+        width: 177.8px;
+        height: 100px;
+        top: -50px;
+        position: relative; }
+        section.sliderDown .clip a.more span {
+          text-align: center;
+          padding-top: 40px;
+          display: block; }
+
+section.wall {
+  max-width: 1260px;
+  margin: 0 auto; }
+  section.wall a {
+    display: inline-block;
+    width: 22%;
+    margin: 1.5%;
+    vertical-align: middle;
+    text-decoration: none; }
+    section.wall a img {
+      width: 100%; }
+    section.wall a .details {
+      color: #363331; }
+      section.wall a .details h1 {
+        font-family: "Radikal-Bold", "Radikal", sans-serif; }
+
+nav#slides.redRound {
+  position: absolute;
+  width: 100%; }
+  nav#slides.redRound ul {
+    text-align: center; }
+    nav#slides.redRound ul li {
+      border: 1px solid #d91a15;
+      margin-left: 5px;
+      margin-right: 5px;
+      border-radius: 6px;
+      display: inline-block;
+      width: 10px;
+      height: 10px;
+      cursor: pointer; }
+      nav#slides.redRound ul li:hover {
+        background: #d91a15; }
+      nav#slides.redRound ul li.current {
+        background: #d91a15; }
 
 footer {
   display: block;

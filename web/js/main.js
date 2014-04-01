@@ -1,3 +1,9 @@
+// @codekit-prepend "vendor/jquery-1.10.2.js"
+// @codekit-append "vendor/handlebars-v1.3.0.js"
+// @codekit-append "vendor/modernizr.js"
+
+
+
 var rubanVisible = false;
 var paramVisible = false;
 var rubanProcess = false;

@@ -1,3 +1,11 @@
+// @codekit-prepend "vendor/jquery-1.10.2.js.js"
+// @codekit-prepend "vendor/jquery.touchSwipe.js"
+// @codekit-prepend "vendor/modernizr.js"
+// @codekit-append "vendor/handlebars-v1.3.0.js"
+// @codekit-append "vendor/handlebars-v1.3.0.js"
+// @codekit-append "_checkbox.js"
+// @codekit-append "_radio.js"
+
 var rubanVisible = false;
 var navVisible = false;
 var rubanProcess = false;

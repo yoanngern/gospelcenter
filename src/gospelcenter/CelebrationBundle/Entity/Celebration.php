@@ -128,7 +128,7 @@ class Celebration
     /**
      * diffuses
      * 
-     * @ORM\OneToOne(targetEntity="gospelcenter\MediaBundle\Entity\Video", mappedBy="celebration")
+     * @ORM\OneToOne(targetEntity="gospelcenter\MediaBundle\Entity\Video", mappedBy="celebration", cascade={"persist", "remove"})
      */
     private $video;
     
@@ -269,6 +269,37 @@ class Celebration
             
             $this->image->setTitle($title);
             $this->image->setType('Celebration');
+        }
+    
+        return $this;
+    }
+    
+    
+    /**
+     * Set video
+     *
+     * @param \gospelcenter\MediaBundle\Entity\Video $video
+     * @return Celebration
+     */
+    public function setVideo(\gospelcenter\MediaBundle\Entity\Video $video = null)
+    {
+        $this->video = $video;
+        
+        if($video != null) {
+            $title = "Celebration of ";
+            $title .= date_format($this->startingDate, 'd m Y');
+            $title .= " with ";
+            
+            $speakers = $this->getSpeakers();
+
+            
+            foreach($speakers as $speaker) {
+                $title .= $speaker->getPerson()->getFirstname();
+                $title .= " ";
+                $title .= $speaker->getPerson()->getLastname();
+            }
+            
+            $this->video->setOwner('vimeo');
         }
     
         return $this;
@@ -628,18 +659,7 @@ class Celebration
         return $this->location;
     }
 
-    /**
-     * Set video
-     *
-     * @param \gospelcenter\MediaBundle\Entity\Video $video
-     * @return Celebration
-     */
-    public function setVideo(\gospelcenter\MediaBundle\Entity\Video $video = null)
-    {
-        $this->video = $video;
     
-        return $this;
-    }
 
     /**
      * Get video

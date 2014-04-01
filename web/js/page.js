@@ -1,3 +1,5 @@
+// @codekit-append "vendor/removeDiacritics.js"
+
 var onMove = false;
 
 $(document).ready( function() {
