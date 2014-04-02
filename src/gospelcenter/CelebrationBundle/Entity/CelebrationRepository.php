@@ -135,7 +135,18 @@ class CelebrationRepository extends EntityRepository
         $qb->where('p.id = :speaker')
             ->setParameter('speaker', $speaker->getPerson()->getId());
         
-        $qb->addOrderBy('cel.startingDate', 'ASC');
+        $qb->addOrderBy('cel.startingDate', 'DESC');
+        
+        return $qb->getQuery()->getResult();
+    }
+    
+    public function findAllWithVideo()
+    {
+        $qb = $this->createQueryBuilder('cel');
+        
+        $qb->join('cel.video', 'v');
+        
+        $qb->addOrderBy('cel.startingDate', 'DESC');
         
         return $qb->getQuery()->getResult();
     }

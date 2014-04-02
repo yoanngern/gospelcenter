@@ -66,6 +66,23 @@ class MediaController extends Controller
         ));
     }
     
+    /*
+    *   All Videos
+    *
+    */
+    public function videosAction()
+    {
+        
+        $em = $this->getDoctrine()->getManager();
+        
+        $celebrations = $em->getRepository('gospelcenterCelebrationBundle:Celebration')->findAllWithVideo();
+        
+        return $this->render('gospelcenterMediaBundle:Media:videos.html.twig', array(
+            'celebrations' => $celebrations,
+            'page' => 'videos'
+        ));
+    }
+    
     
     /*
     *   One video

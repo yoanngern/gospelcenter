@@ -10,6 +10,10 @@ gospelcenterMedia_speaker:
     path:       /speaker/{speaker}
     defaults:   { _controller: gospelcenterMediaBundle:Media:speaker }
     
+gospelcenterMedia_videos:
+    path:       /videos
+    defaults:   { _controller: gospelcenterMediaBundle:Media:videos }
+
 gospelcenterMedia_video:
     path:       /video/{video}
     defaults:   { _controller: gospelcenterMediaBundle:Media:video }

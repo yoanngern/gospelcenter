@@ -1,0 +1,39 @@
+{% extends "gospelcenterMediaBundle::layout.html.twig" %}
+
+{% block stylesheets %}
+	{{ parent() }}
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+{% endblock %}
+
+{% block body %}
+
+    <h1>Videos</h1>
+    
+    <section class="wall">
+        {% for celebration in celebrations %}<a href="{{ path('gospelcenterMedia_video', {'video': celebration.video.id}) }}">
+                <img src="{{ asset(celebration.image.webPath) }}" alt="{{ celebration.image.alt }}" />
+                <section class="details">
+                    {% set speakers = '' %}
+            
+                    {% for key, speaker in celebration.speakers %}
+                        
+                        {% if key != 0 and key != (celebration.speakers|length -1) %}
+                            {% set speakers = speakers ~ ', '%}
+                        {% elseif key != 0 and key == (celebration.speakers|length -1) %}
+                            {% set speakers = speakers ~ ' et '%}
+                        {% endif %}
+                        
+                        {% set speakers = speakers ~ speaker.person.firstname ~ ' ' ~ speaker.person.lastname %}
+                        
+                    {% endfor %}
+                    
+                    <h1>{{ speakers }}</h1>
+                    <span data-time="{{ celebration.startingDate|date('Y-m-d H:i:s') }}">{{ celebration.startingDate|date('d F') }}</span>
+                </section>
+            </a>{% endfor %}
+    </section>
+    
+{% endblock %}

@@ -1474,6 +1474,72 @@
 		"shouldRunAutoprefixer": 0,
 		"shouldRunBless": 0,
 		"useLibsass": 0
+		},
+	"\/uploads\/images\/2014_02_24_12.jpeg": {
+		"fileType": 16384,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 59408,
+		"inputAbbreviatedPath": "\/uploads\/images\/2014_02_24_12.jpeg",
+		"outputAbbreviatedPath": "\/uploads\/images\/2014_02_24_12.jpeg",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
+	"\/uploads\/images\/2014_02_24_13.jpeg": {
+		"fileType": 16384,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 63189,
+		"inputAbbreviatedPath": "\/uploads\/images\/2014_02_24_13.jpeg",
+		"outputAbbreviatedPath": "\/uploads\/images\/2014_02_24_13.jpeg",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
+	"\/uploads\/images\/2014_02_24_14.jpeg": {
+		"fileType": 16384,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 47721,
+		"inputAbbreviatedPath": "\/uploads\/images\/2014_02_24_14.jpeg",
+		"outputAbbreviatedPath": "\/uploads\/images\/2014_02_24_14.jpeg",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
+	"\/uploads\/images\/2014_02_24_15.jpeg": {
+		"fileType": 16384,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 52740,
+		"inputAbbreviatedPath": "\/uploads\/images\/2014_02_24_15.jpeg",
+		"outputAbbreviatedPath": "\/uploads\/images\/2014_02_24_15.jpeg",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
+	"\/uploads\/images\/2014_02_24_16.jpeg": {
+		"fileType": 16384,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 47773,
+		"inputAbbreviatedPath": "\/uploads\/images\/2014_02_24_16.jpeg",
+		"outputAbbreviatedPath": "\/uploads\/images\/2014_02_24_16.jpeg",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
+	"\/uploads\/images\/2014_03_15_21.jpeg": {
+		"fileType": 16384,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 24763,
+		"inputAbbreviatedPath": "\/uploads\/images\/2014_03_15_21.jpeg",
+		"outputAbbreviatedPath": "\/uploads\/images\/2014_03_15_21.jpeg",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
 		}
 	},
 "hooks": [
@@ -1601,7 +1667,7 @@
 	"coffeeOutputStyle": 0,
 	"coffeeSyntaxCheckerStyle": 1,
 	"externalServerAddress": "gospelcenter.local",
-	"externalServerPreviewPathAddition": "\/app_dev.php",
+	"externalServerPreviewPathAddition": "",
 	"genericWebpageFileExtensionsString": "html, htm, shtml, shtm, xhtml, php, jsp, asp, aspx, erb, ctp",
 	"hamlAutoOutputPathRelativePath": "",
 	"hamlAutoOutputPathReplace1": "",
@@ -2045,7 +2111,7 @@
 	"markdownEnableFootnotes": 0,
 	"markdownEnableSmartyPants": 1,
 	"markdownExpandTabs": 1,
-	"reloadFileURLs": 1,
+	"reloadFileURLs": 0,
 	"sassAutoOutputPathRelativePath": "..\/css",
 	"sassAutoOutputPathReplace1": "sass",
 	"sassAutoOutputPathReplace2": "css",

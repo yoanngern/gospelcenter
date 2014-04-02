@@ -97,13 +97,14 @@ class SpeakerRepository extends EntityRepository
         $qb = $this->createQueryBuilder('s');
         
         $qb->addSelect('p');
+        $qb->addSelect('cel');
+        $qb->addSelect('v');
         
         $qb->join('s.person', 'p');
         $qb->join('s.celebrations', 'cel');
         $qb->join('cel.video', 'v');
-            
-        $qb->addOrderBy('p.lastname', 'ASC')
-            ->addOrderBy('p.firstname', 'ASC');
+        
+        $qb->addOrderBy('cel.startingDate', 'DESC');
         
         return $qb->getQuery()->getResult();
     }
