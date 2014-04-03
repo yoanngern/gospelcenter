@@ -60,4 +60,20 @@ class CenterRepository extends EntityRepository
         return $qb->getQuery()->getOneOrNullResult();
         
     }
+    
+    public function findAllWithMedia()
+    {
+        $qb = $this->createQueryBuilder('c');
+        
+        $qb->join('c.celebrations', 'cel');
+        $qb->leftJoin('cel.video', 'v');
+        $qb->leftJoin('cel.audio', 'a');
+        
+        $qb->addOrderBy('c.name', 'ASC');
+            
+        return $qb->getQuery()->getResult();
+        
+    }
+    
+    
 }

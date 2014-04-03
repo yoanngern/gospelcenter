@@ -1,0 +1,46 @@
+{% extends "gospelcenterMediaBundle::layout.html.twig" %}
+
+{% block stylesheets %}
+	{{ parent() }}
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+{% endblock %}
+
+{% block body %}
+
+    <header class="tv">
+        <div>
+            <nav class="left">
+                {% if previousUrl %}<a id="back" href="{{ previousUrl }}">{{ previousLabel }}</a>{% endif %}
+            </nav>
+            
+            <h1>Gospel Center {{ center.name }}</h1>
+            
+            <nav class="right">
+            
+            </nav>
+        </div>
+    </header>
+    
+    <section class="wall">
+        {% spaceless %}
+            {% for celebration in celebrations %}
+            
+                {% if celebration.video or celebration.audio %}
+                    <a href="{% if celebration.video %}{{ path('gospelcenterMedia_video', {'video': celebration.video.id}) }}{% elseif celebration.audio %}{{ path('gospelcenterMedia_audio', {'audio': celebration.audio.id}) }}{% endif %}">
+                        <img src="{{ asset(celebration.image.webPath) }}" alt="{{ celebration.image.alt }}" />
+                        <section class="details">
+                            <h1>{% if celebration.title|length %}{{ celebration.title }}{% else %}Celebration{% endif %}</h1>
+                            <span data-time="{{ celebration.startingDate|date('Y-m-d H:i:s') }}">{{ celebration.startingDate|date('d F') }}</span>
+                        </section>
+                    </a>
+                {% endif %}
+            {% else %}
+                <span class="empty">There are no events to come.</span>
+            {% endfor %}
+        {% endspaceless %}
+    </section>
+    
+{% endblock %}

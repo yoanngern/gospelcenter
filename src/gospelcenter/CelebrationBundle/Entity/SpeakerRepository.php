@@ -92,17 +92,19 @@ class SpeakerRepository extends EntityRepository
         
     }
     
-    public function findAllWithVideo()
+    public function findAllWithMedia()
     {
         $qb = $this->createQueryBuilder('s');
         
         $qb->addSelect('p');
         $qb->addSelect('cel');
         $qb->addSelect('v');
+        $qb->addSelect('a');
         
         $qb->join('s.person', 'p');
         $qb->join('s.celebrations', 'cel');
-        $qb->join('cel.video', 'v');
+        $qb->leftJoin('cel.video', 'v');
+        $qb->leftJoin('cel.audio', 'a');
         
         $qb->addOrderBy('cel.startingDate', 'DESC');
         

@@ -16,7 +16,7 @@
                 
             </nav>
             
-            <h1>Videos</h1>
+            <h1>Audios</h1>
             
             <nav class="right">
             
@@ -26,7 +26,7 @@
 
     
     <section class="wall">
-        {% for celebration in celebrations %}<a href="{{ path('gospelcenterMedia_video', {'video': celebration.video.id}) }}">
+        {% for celebration in celebrations %}<a href="{{ path('gospelcenterMedia_audio', {'audio': celebration.audio.id}) }}">
                 <img src="{{ asset(celebration.image.webPath) }}" alt="{{ celebration.image.alt }}" />
                 <section class="details">
                     {% set speakers = '' %}

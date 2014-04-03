@@ -16,7 +16,7 @@
                 
             </nav>
             
-            <h1>Our speakers</h1>
+            <h1>Our cities</h1>
             
             <nav class="right">
             
@@ -27,26 +27,26 @@
     
     <section class="wall">
         {% spaceless %}
-            {% for speaker in speakers %}
-                
+            {% for center in centers %}
+            
                 {% set hasMedia = false %}
-                {% for celebration in speaker.celebrations %}
+                {% for celebration in center.celebrations %}
                     {% if celebration.video or celebration.audio %}
                         {% set hasMedia = true %}
                     {% endif %}
                 {% endfor %}
                 
                 {% if hasMedia %}
-                    <a href="{{ path('gospelcenterMedia_speaker', {'speaker': speaker.person.id}) }}">
-                        <img src="{{ asset(speaker.celebrations[0].image.webPath) }}" alt="{{ speaker.celebrations[0].image.alt }}" />
+                    <a {% if not center.image %}class="empty"{% endif %} href="{{ path('gospelcenterMedia_center', {'center': center.ref}) }}">
+                        {% if center.image %}
+                            <img src="{{ asset(center.image.webPath) }}" alt="{{ center.image.alt }}" />
+                        {% endif %}
                         <section class="details">
-                            <h1>{{ speaker.person.firstname }} {{ speaker.person.lastname }}</h1>
-                            <span>{{ speaker.celebrations|length }} {% if speaker.celebrations|length > 1 %}videos{% else %}video{% endif %}</span>
+                            <h1>{{ center.name }}</h1>
                         </section>
                     </a>
                 {% endif %}
-                
-            {% endfor %}   
+            {% endfor %}
         {% endspaceless %}
     </section>
     

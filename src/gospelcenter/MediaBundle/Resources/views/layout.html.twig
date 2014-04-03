@@ -12,8 +12,8 @@
 
 {% block footer %}
     <li><a href="{{ path('gospelcenterMedia') }}" {% if page == 'selections' %}class="current"{% endif %}>Selection</a></li>
-    <li><a href="{{ path('gospelcenterMedia_speakers') }}" {% if page == 'speakers' %}class="current"{% endif %}>Orators</a></li>
-    <li><a href="">Cities</a></li>
+    <li><a href="{{ path('gospelcenterMedia_speakers') }}" {% if page == 'speakers' %}class="current"{% endif %}>Speakers</a></li>
+    <li><a href="{{ path('gospelcenterMedia_centers') }}" {% if page == 'centers' %}class="current"{% endif %}>Cities</a></li>
     <li><a href="{{ path('gospelcenterMedia_videos') }}" {% if page == 'videos' %}class="current"{% endif %}>Video</a></li>
-    <li><a href="">Audio</a></li>
+    <li><a href="{{ path('gospelcenterMedia_audios') }}" {% if page == 'audios' %}class="current"{% endif %}>Audio</a></li>
 {% endblock %}

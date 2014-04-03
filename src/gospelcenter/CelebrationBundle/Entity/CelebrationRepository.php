@@ -123,14 +123,15 @@ class CelebrationRepository extends EntityRepository
         return $qb->getQuery()->getResult();
     }
     
-    public function findAllBySpeakerWithVideo(\gospelcenter\CelebrationBundle\Entity\Speaker $speaker)
+    public function findAllBySpeakerWithMedia(\gospelcenter\CelebrationBundle\Entity\Speaker $speaker)
     {
         $qb = $this->createQueryBuilder('cel');
         
         $qb->join('cel.center', 'c');
         $qb->join('cel.speakers', 's');
         $qb->join('s.person', 'p');
-        $qb->join('cel.video', 'v');
+        $qb->leftJoin('cel.video', 'v');
+        $qb->leftJoin('cel.audio', 'a');
             
         $qb->where('p.id = :speaker')
             ->setParameter('speaker', $speaker->getPerson()->getId());
@@ -145,6 +146,36 @@ class CelebrationRepository extends EntityRepository
         $qb = $this->createQueryBuilder('cel');
         
         $qb->join('cel.video', 'v');
+        
+        $qb->addOrderBy('cel.startingDate', 'DESC');
+        
+        return $qb->getQuery()->getResult();
+    }
+    
+    
+    public function findAllWithAudio()
+    {
+        $qb = $this->createQueryBuilder('cel');
+        
+        $qb->join('cel.audio', 'a');
+        
+        $qb->addOrderBy('cel.startingDate', 'DESC');
+        
+        return $qb->getQuery()->getResult();
+    }
+    
+    public function findAllByCenterWithMedia(\gospelcenter\CenterBundle\Entity\Center $center)
+    {
+        $qb = $this->createQueryBuilder('cel');
+        
+        $qb->join('cel.center', 'c');
+        $qb->join('cel.speakers', 's');
+        $qb->join('s.person', 'p');
+        $qb->leftJoin('cel.video', 'v');
+        $qb->leftJoin('cel.audio', 'a');
+            
+        $qb->where('c.ref = :center')
+            ->setParameter('center', $center->getRef());
         
         $qb->addOrderBy('cel.startingDate', 'DESC');
         

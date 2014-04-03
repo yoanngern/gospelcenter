@@ -33,25 +33,88 @@ article, aside, footer, header, hgroup, nav, section, figure, figcaption {
 /* iphone landscape */
 /* iphone 4 portrait */
 /* iphone 5 portrait */
-section.video {
+section.video,
+section.audio {
   width: 960px;
   margin: 0 auto;
   display: block; }
-  section.video iframe {
+  section.video iframe,
+  section.audio iframe {
     display: block;
     margin-bottom: 10px;
     margin-top: 20px; }
-  section.video h2 {
+  section.video h2,
+  section.audio h2 {
     font-size: 1.5em;
     width: 100%;
     height: 50px;
     margin-left: 1%; }
-  section.video time {
+  section.video time,
+  section.audio time {
     float: right;
     color: #313131;
     margin-top: -45px;
     font-size: 1.1em;
     margin-right: 1%; }
+
+header.tv {
+  display: block;
+  width: 100%;
+  position: fixed;
+  background: #fdfdfc;
+  top: 0; }
+  header.tv div {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    margin-top: 40px;
+    margin-bottom: 10px;
+    height: 50px; }
+  header.tv nav {
+    display: inline-block;
+    position: absolute;
+    z-index: 100; }
+    header.tv nav.left {
+      float: left; }
+    header.tv nav.right {
+      float: right; }
+    header.tv nav #back {
+      width: 100%;
+      margin-top: 5px;
+      padding-left: 30px;
+      padding-top: 6px;
+      display: block;
+      background-image: url("../images/back.svg");
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position: left top;
+      font-family: "Radikal-Bold", "Radikal", sans-serif;
+      font-size: 1.1em;
+      color: #363331;
+      text-decoration: none; }
+      @media only screen and (min-width: 1441px) {
+        header.tv nav #back {
+          padding-left: 32px; } }
+      @media only screen and (min-width: 1701px) {
+        header.tv nav #back {
+          padding-left: 34px; } }
+      @media only screen and (min-width: 1921px) {
+        header.tv nav #back {
+          padding-left: 36px; } }
+  header.tv h1 {
+    width: 100%;
+    z-index: 50;
+    left: 0;
+    position: absolute;
+    text-align: center;
+    font-family: "Radikal-Light", "Radikal", sans-serif;
+    font-size: 2em;
+    display: inline-block; }
+
+section.wall,
+section.video,
+section.audio {
+  margin-top: 110px !important; }
 
 nav.sub_nav {
   text-align: center;
@@ -494,10 +557,28 @@ section.wall {
     text-decoration: none; }
     section.wall a img {
       width: 100%; }
+    section.wall a.empty {
+      min-height: 150px;
+      border: 1px solid #363331; }
+      section.wall a.empty .details {
+        height: 100%; }
+        section.wall a.empty .details h1 {
+          text-align: center;
+          float: none;
+          width: inherit;
+          margin-top: 25%; }
     section.wall a .details {
-      color: #363331; }
+      height: 10%;
+      margin: 0px;
+      color: #313131; }
       section.wall a .details h1 {
-        font-family: "Radikal-Bold", "Radikal", sans-serif; }
+        float: left;
+        font-family: "Radikal-Bold", "Radikal", sans-serif;
+        overflow: hidden;
+        width: 60%;
+        height: 20px; }
+      section.wall a .details span {
+        float: right; }
 
 nav#slides.redRound {
   position: absolute;

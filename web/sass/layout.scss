@@ -645,11 +645,38 @@ section.wall {
             width: 100%;
         }
         
+        &.empty {
+            min-height: 150px;
+            border: 1px solid $black;
+            
+            .details {
+                height: 100%;
+                
+                h1 {
+                    text-align: center;
+                    float: none;
+                    width: inherit;
+                    margin-top: 25%;
+                }
+            }
+        }
+        
         .details {
-            color: $black;
+            height: 10%;
+            margin: 0px;
+            color: $grayDark;
+            
             
             h1 {
+                float: left;
                 font-family: $font-bold;
+                overflow: hidden;
+                width: 60%;
+                height: 20px;
+            }
+            
+            span {
+                float: right;
             }
         }
     }

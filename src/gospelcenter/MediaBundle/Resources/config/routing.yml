@@ -17,3 +17,19 @@ gospelcenterMedia_videos:
 gospelcenterMedia_video:
     path:       /video/{video}
     defaults:   { _controller: gospelcenterMediaBundle:Media:video }
+    
+gospelcenterMedia_audios:
+    path:       /audios
+    defaults:   { _controller: gospelcenterMediaBundle:Media:audios }
+    
+gospelcenterMedia_audio:
+    path:       /audio/{audio}
+    defaults:   { _controller: gospelcenterMediaBundle:Media:audio }
+    
+gospelcenterMedia_centers:
+    path:       /centers
+    defaults:   { _controller: gospelcenterMediaBundle:Media:centers }
+    
+gospelcenterMedia_center:
+    path:       /center/{center}
+    defaults:   { _controller: gospelcenterMediaBundle:Media:center }

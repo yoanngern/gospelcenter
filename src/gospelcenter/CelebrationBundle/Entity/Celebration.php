@@ -103,7 +103,7 @@ class Celebration
     /**
      * is spreader by
      * 
-     * @ORM\OneToOne(targetEntity="gospelcenter\MediaBundle\Entity\Audio", mappedBy="celebration")
+     * @ORM\OneToOne(targetEntity="gospelcenter\MediaBundle\Entity\Audio", mappedBy="celebration", cascade={"persist", "remove"})
      */
     private $audio;
     
@@ -284,6 +284,7 @@ class Celebration
     public function setVideo(\gospelcenter\MediaBundle\Entity\Video $video = null)
     {
         $this->video = $video;
+        $video->setCelebration($this);
         
         if($video != null) {
             $title = "Celebration of ";
@@ -322,6 +323,20 @@ class Celebration
         $endingDate->setTime($this->endingTime->format('H'), $this->endingTime->format('i'));
         $this->endingDate = $endingDate;
         
+    }
+    
+    /**
+     * Set audio
+     *
+     * @param \gospelcenter\MediaBundle\Entity\Audio $audio
+     * @return Celebration
+     */
+    public function setAudio(\gospelcenter\MediaBundle\Entity\Audio $audio = null)
+    {
+        $this->audio = $audio;
+        $audio->setCelebration($this);
+    
+        return $this;
     }
     
     /*************************************/
@@ -580,18 +595,7 @@ class Celebration
         return $this->roles;
     }
 
-    /**
-     * Set audio
-     *
-     * @param \gospelcenter\MediaBundle\Entity\Audio $audio
-     * @return Celebration
-     */
-    public function setAudio(\gospelcenter\MediaBundle\Entity\Audio $audio = null)
-    {
-        $this->audio = $audio;
     
-        return $this;
-    }
 
     /**
      * Get audio
