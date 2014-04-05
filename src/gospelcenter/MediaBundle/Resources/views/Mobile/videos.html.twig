@@ -1,0 +1,39 @@
+{% extends "gospelcenterMediaBundle::mobile.html.twig" %}
+
+{% block headerCenter %}Videos{% endblock %}
+
+{% block body %}
+    
+    {% spaceless %}
+
+        {% for celebration in celebrations %}
+        
+            {% set speakers = '' %}
+            
+            {% for key, speaker in celebration.speakers %}
+                
+                {% if key != 0 and key != (celebration.speakers|length -1) %}
+                    {% set speakers = speakers ~ ', '%}
+                {% elseif key != 0 and key == (celebration.speakers|length -1) %}
+                    {% set speakers = speakers ~ ' et '%}
+                {% endif %}
+                
+                {% set speakers = speakers ~ speaker.person.firstname ~ ' ' ~ speaker.person.lastname %}
+                
+            {% endfor %}
+            
+            <a class="bigList" href="{{ path('gospelcenterMedia_video', {'video': celebration.video.id}) }}">
+                
+                <img src="{{ asset(celebration.image.webPath) }}" alt="{{ celebration.image.alt }}" />
+                
+                <section class="details">
+    	            <h1>Celebration with {{ speakers }}</h1>
+    	            <time>{{ celebration.startingDate|date('d F Y') }}</time>
+                </section>
+             
+            </a>
+        {% else %}
+            <span class="empty">There are no celebrations.</span>
+        {% endfor %}
+    {% endspaceless %}
+{% endblock %}

@@ -316,44 +316,6 @@ body > header {
                 margin-bottom: 0.3 * $lineH;
             }
             
-            a.events {
-                display: block;
-                width: 96%;
-                position: relative;
-                margin: 3% auto;
-                
-                img {
-                    width: 100%;
-                    vertical-align: middle;
-                }
-                
-                section.details {
-                    padding: 0px;
-                    margin: 0px;
-                    background: $grayDark;
-                    width: 100%;
-                    z-index: 100;
-                    padding-left: 0%;
-                    position: relative;
-                    color: $white;
-                    text-decoration: none;
-                        
-                    h1 {
-                        font-family: $font-bold;
-                        font-size: 1.4em;
-                        display: inline-block;
-                        padding: 1% 2%;
-                    }
-                    
-                    time {
-                        float: right;
-                        padding: 2% 2%;
-                    }
-                }
-                
-                
-            }
-            
             article.event {
                 
                 img {
@@ -525,7 +487,7 @@ body > header {
                     position: absolute;
                     left: 0px;
                     
-                    article {
+                    a {
                         height: 2 * $lineH;
                         width: (16/9) * (2 * $lineH);
                         display: inline-block;
@@ -576,6 +538,117 @@ body > header {
 
         
     }
+}
+
+#page.tv {
+    #container {
+        margin-top: $lineH;
+        height: initial;
+        width: auto;
+        overflow: hidden;
+        overflow-x: hidden;
+        overflow-y: hidden;
+        
+        section.details {
+            
+            
+            h1 {
+                display: block;
+            }
+            
+            time,
+            span {
+                float: none;
+                display: block;
+                padding: 2% 2%;
+            }
+        }
+    }
+}
+
+#page.tv.player {
+
+    &.video {
+        background: black;
+        color: $white;
+    }
+    
+    #container {
+
+        section.video,
+        section.audio {
+            
+            iframe {
+                width: 100%;
+                margin-bottom: 3%;
+            }
+            
+            h1,
+            h2,
+            time {
+                padding: 2% 4%;
+            }
+            
+            h1 {
+                font-family: $font-bold;
+                font-size: 1.4em;
+            }
+        }
+    }
+}
+
+
+a.bigList {
+    display: block;
+    width: 96%;
+    position: relative;
+    margin: 3% auto;
+    text-decoration: none;
+    
+    &.empty {
+        height: 200px;
+        background: $grayDark;
+        
+        section.details {
+            display: block;
+            
+            h1 {
+                text-align: center;
+                padding-top: 25%;
+            }
+        }
+    }
+    
+    img {
+        width: 100%;
+        vertical-align: middle;
+    }
+    
+    section.details {
+        padding: 0px;
+        margin: 0px;
+        background: $grayDark;
+        width: 100%;
+        z-index: 100;
+        padding-left: 0%;
+        position: relative;
+        color: $white;
+        text-decoration: none;
+            
+        h1 {
+            font-family: $font-bold;
+            font-size: 1.4em;
+            display: inline-block;
+            padding: 1% 2%;
+        }
+        
+        time {
+            float: right;
+            padding: 2% 2%;
+        }
+    }
+    
+    
 }
 
 

@@ -168,6 +168,7 @@ class Center
     public function setLocation(\gospelcenter\LocationBundle\Entity\Location $location = null)
     {
         $this->location = $location;
+        $location->addCenter($this);
         
         if($location != null) {
             $name = "Gospel Center ". $this->name;

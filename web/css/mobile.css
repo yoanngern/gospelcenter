@@ -226,10 +226,10 @@ body > header {
           padding-left: 0%;
           position: absolute;
           background: rgba(0, 0, 0, 0.7);
-          background: -webkit-gradient(linear, left bottom, left top, color-stop(0, rgba(0, 0, 0, 0.8)), color-stop(1, rgba(0, 0, 0, 0)));
-          background: -ms-linear-gradient(bottom, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0));
-          background: -moz-linear-gradient(center bottom, rgba(0, 0, 0, 0.8) 0%, rgba(0, 0, 0, 0) 100%);
-          background: -o-linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.8));
+          background: -webkit-gradient(linear, left bottom, left top, color-stop(0, rgba(0, 0, 0, 0.8)), color-stop(1, transparent));
+          background: -ms-linear-gradient(bottom, rgba(0, 0, 0, 0.8), transparent);
+          background: -moz-linear-gradient(center bottom, rgba(0, 0, 0, 0.8) 0%, transparent 100%);
+          background: -o-linear-gradient(transparent, rgba(0, 0, 0, 0.8));
           filter: progid:DXImageTransform.Microsoft.gradient(enabled='false', startColorstr=$start, endColorstr=$stop); }
           #page.bases.local #container section.slider article.slide section.details div {
             color: #fdfdfc;
@@ -290,32 +290,6 @@ body > header {
     overflow-y: hidden; }
     #page.events.local #container nav.sub_nav {
       margin-bottom: 13.8px; }
-    #page.events.local #container a.events {
-      display: block;
-      width: 96%;
-      position: relative;
-      margin: 3% auto; }
-      #page.events.local #container a.events img {
-        width: 100%;
-        vertical-align: middle; }
-      #page.events.local #container a.events section.details {
-        padding: 0px;
-        margin: 0px;
-        background: #313131;
-        width: 100%;
-        z-index: 100;
-        padding-left: 0%;
-        position: relative;
-        color: #fdfdfc;
-        text-decoration: none; }
-        #page.events.local #container a.events section.details h1 {
-          font-family: "Radikal-Bold", "Radikal", sans-serif;
-          font-size: 1.4em;
-          display: inline-block;
-          padding: 1% 2%; }
-        #page.events.local #container a.events section.details time {
-          float: right;
-          padding: 2% 2%; }
     #page.events.local #container article.event img {
       width: 100%; }
     #page.events.local #container article.event sumary {
@@ -389,10 +363,10 @@ body > header {
             padding-left: 0%;
             position: relative;
             background: rgba(0, 0, 0, 0.7);
-            background: -webkit-gradient(linear, left bottom, left top, color-stop(0, rgba(0, 0, 0, 0.8)), color-stop(1, rgba(0, 0, 0, 0)));
-            background: -ms-linear-gradient(bottom, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0));
-            background: -moz-linear-gradient(center bottom, rgba(0, 0, 0, 0.8) 0%, rgba(0, 0, 0, 0) 100%);
-            background: -o-linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.8));
+            background: -webkit-gradient(linear, left bottom, left top, color-stop(0, rgba(0, 0, 0, 0.8)), color-stop(1, transparent));
+            background: -ms-linear-gradient(bottom, rgba(0, 0, 0, 0.8), transparent);
+            background: -moz-linear-gradient(center bottom, rgba(0, 0, 0, 0.8) 0%, transparent 100%);
+            background: -o-linear-gradient(transparent, rgba(0, 0, 0, 0.8));
             filter: progid:DXImageTransform.Microsoft.gradient(enabled='false', startColorstr=$start, endColorstr=$stop); }
             #page.celebrations.local #container section.nextCelebrations article section.details div {
               color: #fdfdfc;
@@ -443,19 +417,19 @@ body > header {
           overflow: hidden;
           position: absolute;
           left: 0px; }
-          #page.celebrations.local #container section.lastCelebrations > section article {
+          #page.celebrations.local #container section.lastCelebrations > section a {
             height: 92px;
             width: 163.55556px;
             display: inline-block;
             margin-right: 13.8px;
             position: relative; }
-            #page.celebrations.local #container section.lastCelebrations > section article section.img {
+            #page.celebrations.local #container section.lastCelebrations > section a section.img {
               height: 100%; }
-              #page.celebrations.local #container section.lastCelebrations > section article section.img img {
+              #page.celebrations.local #container section.lastCelebrations > section a section.img img {
                 height: 100%;
                 padding: 0px;
                 margin: 0px; }
-            #page.celebrations.local #container section.lastCelebrations > section article section.details {
+            #page.celebrations.local #container section.lastCelebrations > section a section.details {
               padding: 0px;
               margin: 0px;
               margin-top: -55.2px;
@@ -465,12 +439,12 @@ body > header {
               padding-left: 0%;
               position: relative;
               background: rgba(0, 0, 0, 0.7);
-              background: -webkit-gradient(linear, left bottom, left top, color-stop(0, rgba(0, 0, 0, 0.8)), color-stop(1, rgba(0, 0, 0, 0)));
-              background: -ms-linear-gradient(bottom, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0));
-              background: -moz-linear-gradient(center bottom, rgba(0, 0, 0, 0.8) 0%, rgba(0, 0, 0, 0) 100%);
-              background: -o-linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.8));
+              background: -webkit-gradient(linear, left bottom, left top, color-stop(0, rgba(0, 0, 0, 0.8)), color-stop(1, transparent));
+              background: -ms-linear-gradient(bottom, rgba(0, 0, 0, 0.8), transparent);
+              background: -moz-linear-gradient(center bottom, rgba(0, 0, 0, 0.8) 0%, transparent 100%);
+              background: -o-linear-gradient(transparent, rgba(0, 0, 0, 0.8));
               filter: progid:DXImageTransform.Microsoft.gradient(enabled='false', startColorstr=$start, endColorstr=$stop); }
-              #page.celebrations.local #container section.lastCelebrations > section article section.details h1 {
+              #page.celebrations.local #container section.lastCelebrations > section a section.details h1 {
                 color: #fdfdfc;
                 padding-left: 4%;
                 padding-right: 4%;
@@ -481,6 +455,76 @@ body > header {
                 left: 0px;
                 font-size: 1.2em;
                 font-family: "Radikal-Bold", "Radikal", sans-serif; }
+
+#page.tv #container {
+  margin-top: 46px;
+  height: initial;
+  width: auto;
+  overflow: hidden;
+  overflow-x: hidden;
+  overflow-y: hidden; }
+  #page.tv #container section.details h1 {
+    display: block; }
+  #page.tv #container section.details time,
+  #page.tv #container section.details span {
+    float: none;
+    display: block;
+    padding: 2% 2%; }
+
+#page.tv.player.video {
+  background: black;
+  color: #fdfdfc; }
+#page.tv.player #container section.video iframe,
+#page.tv.player #container section.audio iframe {
+  width: 100%;
+  margin-bottom: 3%; }
+#page.tv.player #container section.video h1,
+#page.tv.player #container section.video h2,
+#page.tv.player #container section.video time,
+#page.tv.player #container section.audio h1,
+#page.tv.player #container section.audio h2,
+#page.tv.player #container section.audio time {
+  padding: 2% 4%; }
+#page.tv.player #container section.video h1,
+#page.tv.player #container section.audio h1 {
+  font-family: "Radikal-Bold", "Radikal", sans-serif;
+  font-size: 1.4em; }
+
+a.bigList {
+  display: block;
+  width: 96%;
+  position: relative;
+  margin: 3% auto;
+  text-decoration: none; }
+  a.bigList.empty {
+    height: 200px;
+    background: #313131; }
+    a.bigList.empty section.details {
+      display: block; }
+      a.bigList.empty section.details h1 {
+        text-align: center;
+        padding-top: 25%; }
+  a.bigList img {
+    width: 100%;
+    vertical-align: middle; }
+  a.bigList section.details {
+    padding: 0px;
+    margin: 0px;
+    background: #313131;
+    width: 100%;
+    z-index: 100;
+    padding-left: 0%;
+    position: relative;
+    color: #fdfdfc;
+    text-decoration: none; }
+    a.bigList section.details h1 {
+      font-family: "Radikal-Bold", "Radikal", sans-serif;
+      font-size: 1.4em;
+      display: inline-block;
+      padding: 1% 2%; }
+    a.bigList section.details time {
+      float: right;
+      padding: 2% 2%; }
 
 #ruban_nav {
   z-index: 0;

@@ -8,7 +8,7 @@ use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
 class LocationSimpleType extends LocationType
 {
-        /**
+    /**
      * @param FormBuilderInterface $builder
      * @param array $options
      */

@@ -1,0 +1,34 @@
+{% extends "gospelcenterMediaBundle::mobile.html.twig" %}
+
+{% block headerCenter %}Gospel Center TV{% endblock %}
+{% block pageClass %}{{ parent() }} player video{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script type="text/javascript" src="{{ asset('js/tvMobile.min.js') }}"></script>
+{% endblock %}
+
+{% block body %}
+
+    {% set speakers = '' %}
+            
+    {% for key, speaker in video.celebration.speakers %}
+        
+        {% if key != 0 and key != (video.celebration.speakers|length -1) %}
+            {% set speakers = speakers ~ ', '%}
+        {% elseif key != 0 and key == (video.celebration.speakers|length -1) %}
+            {% set speakers = speakers ~ ' et '%}
+        {% endif %}
+        
+        {% set speakers = speakers ~ speaker.person.firstname ~ ' ' ~ speaker.person.lastname %}
+        
+    {% endfor %}
+    
+    <section class="video">
+        <iframe src="//player.vimeo.com/video/{{ video.ownerId }}?title=0&amp;byline=0&amp;portrait=0&amp;color=d91a15&amp;autoplay=1"  frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+        <h1>{% if video.celebration.title|length %}{{ video.celebration.title }}{% else %}Celebration{% endif %}</h1>
+        <h2>{{ speakers }}</h2>
+        <time>{{ video.celebration.startingDate|date('d F Y') }}</time>
+    </section>
+    
+{% endblock %}

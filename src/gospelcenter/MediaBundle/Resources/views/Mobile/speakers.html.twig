@@ -1,0 +1,35 @@
+{% extends "gospelcenterMediaBundle::mobile.html.twig" %}
+
+{% block headerCenter %}Speakers{% endblock %}
+
+{% block body %}
+    
+    {% spaceless %}
+
+        {% for speaker in speakers %}
+            
+            {% set hasMedia = false %}
+            {% for celebration in speaker.celebrations %}
+                {% if celebration.video or celebration.audio %}
+                    {% set hasMedia = true %}
+                {% endif %}
+            {% endfor %}
+            
+            {% if hasMedia %}
+                <a class="bigList" href="{{ path('gospelcenterMedia_speaker', {'speaker': speaker.person.id}) }}">
+                    
+                    <img src="{{ asset(speaker.celebrations[0].image.webPath) }}" alt="{{ speaker.celebrations[0].image.alt }}" />
+                    
+                    <section class="details">
+        	            <h1>{{ speaker.person.firstname }} {{ speaker.person.lastname }}</h1>
+        	            <span>{{ speaker.celebrations|length }} {% if speaker.celebrations|length > 1 %}videos{% else %}video{% endif %}</span>
+                    </section>
+                    
+                </a>
+            {% endif %}
+        {% else %}
+            <span class="empty">There are no speakers.</span>
+        {% endfor %}
+        
+    {% endspaceless %}
+{% endblock %}

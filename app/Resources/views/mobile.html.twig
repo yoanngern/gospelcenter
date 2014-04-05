@@ -52,15 +52,8 @@
         <section id="ruban_nav">
             <article>
                 {% include "::ruban_nav.html.twig" %}
-                <nav class="social">
-                    <h1>Admin</h1>
-                	<ul>
-                		<li><a href="{{ path('gospelcenterAdmin_celebrations_add', {'center': center.ref}) }}">Create a celebration</a></li>
-                        <li><a href="{{ path('gospelcenterEvents_add', {'center': center.ref}) }}">Create an event</a></li>
-                        <li><a href="{{ path('gospelcenterAdmin_events', {'center': center.ref}) }}">Manage events</a></li>
-                        <li><a href="{{ path('gospelcenterAdmin_celebrations', {'center': center.ref}) }}">Admin</a></li>
-                	</ul>
-                </nav>
+                {% block mobileAdminNav %}
+                {% endblock %}
             </article>
         </section>
         <section id="nav">

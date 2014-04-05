@@ -224,6 +224,7 @@ class Person
     {
         $this->createdDate = new \Datetime();
         $this->modifiedDate = new \Datetime();
+        $this->status = 1;
         $this->bandsManaged = new \Doctrine\Common\Collections\ArrayCollection();
         $this->bandsPopulated = new \Doctrine\Common\Collections\ArrayCollection();
         $this->roles = new \Doctrine\Common\Collections\ArrayCollection();

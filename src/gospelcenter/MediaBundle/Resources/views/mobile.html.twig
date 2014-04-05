@@ -1,0 +1,21 @@
+{% extends "::mobile.html.twig" %}
+
+{% block pageClass %}tv{% endblock %}
+
+{% block nav %}
+    <li><a href="{{ path('gospelcenterMedia') }}" {% if page == 'selections' %}class="current"{% endif %}>Selection</a></li>
+    <li><a href="{{ path('gospelcenterMedia_speakers') }}" {% if page == 'speakers' %}class="current"{% endif %}>Speakers</a></li>
+    <li><a href="{{ path('gospelcenterMedia_centers') }}" {% if page == 'centers' %}class="current"{% endif %}>Cities</a></li>
+    <li><a href="{{ path('gospelcenterMedia_videos') }}" {% if page == 'videos' %}class="current"{% endif %}>Video</a></li>
+    <li><a href="{{ path('gospelcenterMedia_audios') }}" {% if page == 'audios' %}class="current"{% endif %}>Audio</a></li>
+{% endblock %}
+
+{% block stylesheets %}
+	{{ parent() }}
+{% endblock %}
+
+{% block title %}
+    {{ parent() }}
+{% endblock %}
+
+{% block headerCenter %}Gospel Center TV{% endblock %}

@@ -2,7 +2,7 @@
 
 {% block gospelcenterEvents_body %}
     {% for event in events %}
-        <a class="events" href="{{ path('gospelcenterEvents_event', {'event': event.id, 'center': center.ref}) }}">
+        <a class="bigList" href="{{ path('gospelcenterEvents_event', {'event': event.id, 'center': center.ref}) }}">
             
             <img src="{{ asset(event.picture.webPath) }}" alt="{{ event.picture.alt }}" />
             

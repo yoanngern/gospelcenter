@@ -2,6 +2,18 @@
 
 {% block pageClass %}local{% endblock %}
 
+{% block mobileAdminNav %}
+    <nav class="social">
+        <h1>Admin</h1>
+    	<ul>
+    		<li><a href="{{ path('gospelcenterAdmin_celebrations_add', {'center': center.ref}) }}">Create a celebration</a></li>
+            <li><a href="{{ path('gospelcenterEvents_add', {'center': center.ref}) }}">Create an event</a></li>
+            <li><a href="{{ path('gospelcenterAdmin_events', {'center': center.ref}) }}">Manage events</a></li>
+            <li><a href="{{ path('gospelcenterAdmin_celebrations', {'center': center.ref}) }}">Admin</a></li>
+    	</ul>
+    </nav>
+{% endblock %}
+
 {% block nav %}
     <li><a href="{{ path('gospelcenterPage_home', {'center': center.ref}) }}" {% if page == 'home' %}class="current"{% endif %}>Home</a></li>
     <li><a href="{{ path('gospelcenterPage_default', {'center': center.ref, 'page': 'celebrations'}) }}" {% if page == 'celebrations' %}class="current"{% endif %}>Celebrations</a></li>

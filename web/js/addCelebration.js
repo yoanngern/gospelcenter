@@ -293,7 +293,7 @@ function addSpeaker(id) {
  */
 function getSpeaker(id) {
     
-    var url = "../speakers/json/" + id;
+    var url = "../../speakers/json/" + id;
     
     $.ajax({
         type: "POST",

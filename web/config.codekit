@@ -1058,6 +1058,28 @@
 		"outputStyle": 1,
 		"syntaxCheckerStyle": 1
 		},
+	"\/js\/tvMobile.js": {
+		"fileType": 64,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/js\/tvMobile.js",
+		"outputAbbreviatedPath": "\/js\/tvMobile.min.js",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"outputStyle": 1,
+		"syntaxCheckerStyle": 0
+		},
+	"\/js\/tvMobile.min.js": {
+		"fileType": 64,
+		"ignore": 1,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/js\/tvMobile.min.js",
+		"outputAbbreviatedPath": "\/js\/tvMobile.min.min.js",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"outputStyle": 1,
+		"syntaxCheckerStyle": 1
+		},
 	"\/js\/vendor\/autoGrowInput.js": {
 		"fileType": 64,
 		"ignore": 1,
@@ -1493,6 +1515,39 @@
 		"initialSize": 82723,
 		"inputAbbreviatedPath": "\/uploads\/images\/2014_02_20_2.png",
 		"outputAbbreviatedPath": "\/uploads\/images\/2014_02_20_2.png",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
+	"\/uploads\/images\/2014_02_21_3.jpeg": {
+		"fileType": 16384,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 76384,
+		"inputAbbreviatedPath": "\/uploads\/images\/2014_02_21_3.jpeg",
+		"outputAbbreviatedPath": "\/uploads\/images\/2014_02_21_3.jpeg",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
+	"\/uploads\/images\/2014_02_21_4.jpeg": {
+		"fileType": 16384,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 48860,
+		"inputAbbreviatedPath": "\/uploads\/images\/2014_02_21_4.jpeg",
+		"outputAbbreviatedPath": "\/uploads\/images\/2014_02_21_4.jpeg",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
+	"\/uploads\/images\/2014_02_21_5.jpeg": {
+		"fileType": 16384,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 42110,
+		"inputAbbreviatedPath": "\/uploads\/images\/2014_02_21_5.jpeg",
+		"outputAbbreviatedPath": "\/uploads\/images\/2014_02_21_5.jpeg",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"processed": 0

@@ -71,14 +71,14 @@
                     
                 {% endfor %}
                 
-                <article class="slide" id="{{ loop.index }}">
+                <a class="slide" id="{{ loop.index }}" href="{{ path('gospelcenterMedia_video', {'video': celebration.video.id}) }}">
                     <section class="img">
                         <img src="{{ asset(celebration.image.webPath) }}" alt="{{ celebration.image.alt }}" />
                     </section>
                     <section class="details">
                         <h1>{{ speakers }}</h1>
                     </section>
-                </article>
+                </a>
                 
             {% endfor %}
     

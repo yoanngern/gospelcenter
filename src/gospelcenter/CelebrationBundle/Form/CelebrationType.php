@@ -35,7 +35,6 @@ class CelebrationType extends AbstractType
             ->add('bestOf',             'checkbox', array('required' => false))
             ->add('kidsProgram',        'checkbox', array('required' => false))
             ->add('image',              new ImageSimpleType(), array('required' => false))
-            ->add('location',           new LocationType())
             ->add('location',           'entity', array('class'         => 'gospelcenterLocationBundle:Location',
                                                         'required'      => false,
                                                         'empty_value'   => 'Choose a location',

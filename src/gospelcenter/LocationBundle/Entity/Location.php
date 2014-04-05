@@ -190,6 +190,19 @@ class Location
         return $this->name;
     }
     
+    /**
+     * Add centers
+     *
+     * @param \gospelcenter\CenterBundle\Entity\Center $centers
+     * @return Location
+     */
+    public function addCenter(\gospelcenter\CenterBundle\Entity\Center $centers)
+    {
+        $this->centers[] = $centers;
+    
+        return $this;
+    }
+    
     /*************************************/
     /**** Getter setter auto generate ****/
     /*************************************/
@@ -569,19 +582,6 @@ class Location
     public function getCenterCreator()
     {
         return $this->centerCreator;
-    }
-
-    /**
-     * Add centers
-     *
-     * @param \gospelcenter\CenterBundle\Entity\Center $centers
-     * @return Location
-     */
-    public function addCenter(\gospelcenter\CenterBundle\Entity\Center $centers)
-    {
-        $this->centers[] = $centers;
-    
-        return $this;
     }
 
     /**

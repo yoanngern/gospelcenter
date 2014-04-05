@@ -1,0 +1,36 @@
+{% extends "gospelcenterMediaBundle::mobile.html.twig" %}
+
+{% block headerCenter %}Our cities{% endblock %}
+
+{% block body %}
+    
+    {% spaceless %}
+
+        {% for center in centers %}
+            
+            {% set hasMedia = false %}
+            {% for celebration in center.celebrations %}
+                {% if celebration.video or celebration.audio %}
+                    {% set hasMedia = true %}
+                {% endif %}
+            {% endfor %}
+                
+            {% if hasMedia %}
+                <a class="bigList {% if not center.image %}empty{% endif %}" href="{{ path('gospelcenterMedia_center', {'center': center.ref}) }}">
+                    
+                    {% if center.image %}
+                        <img src="{{ asset(center.image.webPath) }}" alt="{{ center.image.alt }}" />
+                    {% endif %}
+                    
+                    <section class="details">
+        	            <h1>{{ center.name }}</h1>
+                    </section>
+                    
+                </a>
+            {% endif %}
+        {% else %}
+            <span class="empty">There are no centers.</span>
+        {% endfor %}
+        
+    {% endspaceless %}
+{% endblock %}

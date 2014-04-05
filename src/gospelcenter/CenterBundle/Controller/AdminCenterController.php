@@ -50,6 +50,7 @@ class AdminCenterController extends Controller {
             if($form->isValid())
             {
                 $em = $this->getDoctrine()->getManager();
+                
                 $em->persist($center);
                 $em->flush();
                 

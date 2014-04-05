@@ -90,6 +90,7 @@ class CelebrationRepository extends EntityRepository
         
         $qb->join('cel.video', 'v');
             
+        $qb->andWhere('cel.bestOf = 0');
         $qb->andWhere('cel.startingDate < :now')
             ->setParameter('now', new \Datetime());
         
