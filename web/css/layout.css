@@ -515,7 +515,8 @@ section.sliderDown {
     height: 75%;
     margin: 0 auto;
     width: auto;
-    text-align: center; }
+    text-align: center;
+    min-width: 1024px; }
     section.sliderDown .clip a {
       display: inline-block;
       margin: 0 0.5%;
@@ -536,15 +537,21 @@ section.sliderDown {
           font-size: 0.8em;
           float: right; }
       section.sliderDown .clip a.more {
-        border: 1px solid #363331;
-        width: 177.8px;
-        height: 100px;
-        top: -50px;
-        position: relative; }
-        section.sliderDown .clip a.more span {
-          text-align: center;
-          padding-top: 40px;
-          display: block; }
+        width: 166px;
+        height: 100%;
+        position: relative;
+        text-decoration: none;
+        color: #363331;
+        top: 15%; }
+        section.sliderDown .clip a.more div {
+          position: absolute;
+          border: 1px solid #363331;
+          height: 85%; }
+          section.sliderDown .clip a.more div span {
+            text-align: center;
+            display: block;
+            padding-top: 25%;
+            font-size: 1.2em; }
 
 section.wall {
   max-width: 1260px;
@@ -558,7 +565,7 @@ section.wall {
     section.wall a img {
       width: 100%; }
     section.wall a.empty {
-      min-height: 150px;
+      height: 150px;
       border: 1px solid #363331; }
       section.wall a.empty .details {
         height: 100%; }

@@ -7,6 +7,7 @@
 @import 'size';
 @import 'tv';
 
+$minSize: 1024px;
 
 nav.sub_nav {
 	@include navUnderline();
@@ -57,7 +58,7 @@ select {
 	background-color: $white;
 	width: 100%;
 	position: absolute;
-	min-width: 1024px;
+	min-width: $minSize;
 	height: 100%;
 }
 
@@ -581,6 +582,7 @@ section.sliderDown {
         margin: 0 auto;
         width: auto;
         text-align: center;
+        min-width: $minSize;
         
         a {
             display: inline-block;
@@ -611,16 +613,25 @@ section.sliderDown {
             }
             
             &.more {
-                border: 1px solid $black;
-                width: 177.8px;
-                height: 100px;
-                top: -50px;
-                position: relative;
                 
-                span {
-                    text-align: center;
-                    padding-top: 40px;
-                    display: block;
+                width: 166px;
+                height: 100%;
+                position: relative;
+                text-decoration: none;
+                color: $black;
+                top: 15%;
+                
+                div {
+                    position: absolute;
+                    border: 1px solid $black;
+                    height: 85%;
+                    
+                    span {
+                        text-align: center;
+                        display: block;
+                        padding-top: 25%;
+                        font-size: 1.2em;
+                    }
                 }
             }
         }
@@ -646,7 +657,7 @@ section.wall {
         }
         
         &.empty {
-            min-height: 150px;
+            height: 150px;
             border: 1px solid $black;
             
             .details {

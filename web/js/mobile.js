@@ -5,6 +5,7 @@
 // @codekit-append "vendor/handlebars-v1.3.0.js"
 // @codekit-append "_checkbox.js"
 // @codekit-append "_radio.js"
+// @codekit-append "_resize16_9.js"
 
 var rubanVisible = false;
 var navVisible = false;

@@ -37,7 +37,7 @@
                 {% endfor %}
                 
                 {% if hasMedia %}
-                    <a {% if not center.image %}class="empty"{% endif %} href="{{ path('gospelcenterMedia_center', {'center': center.ref}) }}">
+                    <a class="{% if not center.image %}empty{% endif %} 16_9width" href="{{ path('gospelcenterMedia_center', {'center': center.ref}) }}">
                         {% if center.image %}
                             <img src="{{ asset(center.image.webPath) }}" alt="{{ center.image.alt }}" />
                         {% endif %}

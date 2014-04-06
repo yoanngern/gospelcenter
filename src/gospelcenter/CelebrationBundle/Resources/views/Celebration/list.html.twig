@@ -66,35 +66,39 @@
         <h1>Watch our last celebrations</h1>
         
         <section class="clip">
-            {% for celebration in lastCelebrations %}
+            {% spaceless %}
+                {% for celebration in lastCelebrations %}
+                    
+                    {% set speakers = '' %}
                 
-                {% set speakers = '' %}
-            
-                {% for key, speaker in celebration.speakers %}
+                    {% for key, speaker in celebration.speakers %}
+                        
+                        {% if key != 0 and key != (celebration.speakers|length -1) %}
+                            {% set speakers = speakers ~ ', '%}
+                        {% elseif key != 0 and key == (celebration.speakers|length -1) %}
+                            {% set speakers = speakers ~ ' et '%}
+                        {% endif %}
+                        
+                        {% set speakers = speakers ~ speaker.person.firstname ~ ' ' ~ speaker.person.lastname %}
+                        
+                    {% endfor %}
                     
-                    {% if key != 0 and key != (celebration.speakers|length -1) %}
-                        {% set speakers = speakers ~ ', '%}
-                    {% elseif key != 0 and key == (celebration.speakers|length -1) %}
-                        {% set speakers = speakers ~ ' et '%}
-                    {% endif %}
-                    
-                    {% set speakers = speakers ~ speaker.person.firstname ~ ' ' ~ speaker.person.lastname %}
+                    <a href="{{ path('gospelcenterMedia_video', {'video': celebration.video.id}) }}">
+                        <img src="{{ asset(celebration.image.webPath) }}" alt="{{ celebration.image.alt }}" />
+                        <section class="details">
+                            <h1>{{ speakers }}</h1>
+                            <span>{{ celebration.startingDate|date('d F') }}</span>
+                        </section>
+                    </a>
                     
                 {% endfor %}
                 
-                <a href="{{ path('gospelcenterMedia_video', {'video': celebration.video.id}) }}">
-                    <img src="{{ asset(celebration.image.webPath) }}" alt="{{ celebration.image.alt }}" />
-                    <section class="details">
-                        <h1>{{ speakers }}</h1>
-                        <span>{{ celebration.startingDate|date('d F') }}</span>
-                    </section>
+                <a href="{{ path('gospelcenterMedia_center', {'center': center.ref}) }}" class="more 16_9height" data-ratio="0.85">
+                    <div class="16_9height">
+                        <span>More</span>
+                    </div>
                 </a>
-                
-            {% endfor %}
-            
-            <a class="more">
-                <span>More</span>
-            </a>
+            {% endspaceless %}
         </section>
             
     </section>

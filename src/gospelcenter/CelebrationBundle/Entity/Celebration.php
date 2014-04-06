@@ -254,7 +254,7 @@ class Celebration
         
         if($image != null) {
             $title = "Celebration of ";
-            $title .= date_format($this->startingDate, 'd m Y');
+            $title .= date_format($this->date, 'd m Y');
             $title .= " with ";
             
             $speakers = $this->getSpeakers();
@@ -288,11 +288,10 @@ class Celebration
         
         if($video != null) {
             $title = "Celebration of ";
-            $title .= date_format($this->startingDate, 'd m Y');
+            $title .= date_format($this->date, 'd m Y');
             $title .= " with ";
             
             $speakers = $this->getSpeakers();
-
             
             foreach($speakers as $speaker) {
                 $title .= $speaker->getPerson()->getFirstname();
