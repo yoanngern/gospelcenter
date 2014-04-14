@@ -351,8 +351,6 @@ function showMessage() {
     
     $(header).addClass("message");
     
-    $("#container h1").css("margin-top", 50);
-    
 }
 
 function hideMessage() {
@@ -362,8 +360,6 @@ function hideMessage() {
     $(header).removeClass("message");
     
     $("#message").remove();
-    
-    $("#container h1").css("margin-top", 40);
     
 }
 

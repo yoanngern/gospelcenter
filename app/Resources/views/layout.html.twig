@@ -26,7 +26,7 @@
     	<section id="ruban_nav">
 	    	{% include "::ruban_nav.html.twig" %}
 	    </section>
-	    <section id="page" class="{{ page }}">
+	    <section id="page" class="{{ page }} {% block classPage %}{% endblock %}">
 	    	<header>
 	    	    {% for type in ['info', 'success', 'error'] %}
                     {% for message in app.session.flashbag.get(type) %}
@@ -35,6 +35,7 @@
                         </section>
                     {% endfor %}
                 {% endfor %}
+                        
 		        <a id="get_ruban" href=""></a>
 		        <a id="get_param" href=""></a>
 		        <div class="param_arrow">

@@ -89,11 +89,12 @@ select {
 	#message {
         width: 100%;
         display: block;
-        position: absolute;
+        position: fixed;
         text-align: center;
         font-size: 1.3em;
         padding: 10px 0;
         margin-bottom: 10px;
+        top: 0;
     }
 	
 	#get_ruban {
@@ -327,6 +328,12 @@ div.arrow_up {
 }
 
 #page {
+
+    &.admin {
+        h1 {
+            margin-top: 50px; 
+        }
+    }
     
     &.home {
         
@@ -422,7 +429,7 @@ div.arrow_up {
     }
     
     &.selections,
-    &.celebrations {
+    &.local.celebrations {
         #container {
             margin: 0px;
             padding: 0px;

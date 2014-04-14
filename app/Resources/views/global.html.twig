@@ -1,5 +1,7 @@
 {% extends "::layout.html.twig" %}
 
+{% block classPage %}global{% endblock %}
+
 {% block param %}
     {{ parent() }}
     <li><a href="{{ path('gospelcenterAdminGlobal_pages') }}">Admin</a></li>

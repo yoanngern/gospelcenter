@@ -36,7 +36,8 @@
     width: 75%;
     float: left; }
     #container article.events section.detail h1 {
-      padding-top: 2px; }
+      padding-top: 8px;
+      margin-top: 0; }
     #container article.events section.detail article.desc {
       width: 30%;
       display: block;
