@@ -1,0 +1,54 @@
+{% extends "gospelcenterPageBundle::layout.html.twig" %}
+
+{% block title %}
+    {{ parent() }} - {{ group.title }}
+{% endblock %}
+
+{% block body %}
+    <section id="page" class="simple">
+        <h1>Youth</h1>
+        
+        <nav class="youth">
+            <ul>
+                {% for article in pages %}
+                <li>
+                    {% if article.alias %}
+                        <a href="{{ path('gospelcenterPage_default', {'center': center.ref, 'page': article.alias}) }}" {% if article.alias == group.alias %}class="current"{% endif %}>
+                    {% else %}
+                        <a href="{{ path('gospelcenterPage_default', {'center': center.ref, 'page': article.title}) }}" {% if article.title == group.title %}class="current"{% endif %}>
+                    {% endif %}
+                        <h2>{{ article.slogan }}</h2>
+                        <h1>{{ article.title }}</h1>
+                    </a>
+                </li>
+                {% endfor %}
+            </ul>
+        </nav>
+        
+        {% if group.slides|length > 1 %}<div id="left" class="arrow"></div>{% endif %}
+        
+        {% for slide in group.slides %}
+            <article id="{{ loop.index }}" class="slide" {% if slide.image %}style="background-image: url('{{ asset(slide.image.webPath) }}')"{% endif %}>
+                <section class="content">
+                    <h1>{{ slide.title }}</h1>
+                    <p>{{ slide.text }}</p>
+                    {% if slide.link %}<p class="link"><a href="{{ slide.link }}" target="_blank">{% if slide.labelLink %}{{ slide.labelLink }}{% else %}{{ slide.link }}{% endif %}</a></p>{% endif %}
+                </section>
+            </article>
+        {% endfor %}
+        
+        {% if group.slides|length > 1 %}<div id="right" class="arrow"></div>{% endif %}
+        
+        {% if group.slides|length > 1 %}
+            <nav id="slides">
+                <ul>
+                    {% for slide in group.slides %}
+                        <li class="{% if loop.index == 1 %}current{% endif %}" data-slide="{{ loop.index }}"></li>
+                    {% endfor %}
+                </ul>
+            </nav>
+        {% endif %}
+        
+        
+    </section>
+{% endblock %}

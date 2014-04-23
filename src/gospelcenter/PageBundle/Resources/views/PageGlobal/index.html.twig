@@ -6,42 +6,100 @@
 
 {% block stylesheets %}
 	{{ parent() }}
-	<link rel="stylesheet" href="{{ asset('css/page.css') }}" type="text/css" />
 {% endblock %}
 
 {% block javascripts %}
     {{ parent() }}
-    <script type="text/javascript" src="{{ asset('js/page-min.js') }}"></script>
 {% endblock %}
 
 {% block body %}
     <section id="page" class="{{ article.template }}">
         <h1>{{ article.title }}</h1>
-        <h2>{{ article.slogan }}</h2>
         
-        {% if article.slides|length > 1  %}<div id="left" class="arrow"></div>{% endif %}
+        {% if article.template == 'full' %}
+            
+            <section class="slider vertical" id="1">
         
-        {% for slide in article.slides %}
-            <article id="{{ loop.index }}" class="slide" {% if slide.image %}style="background-image: url('{{ asset(slide.image.webPath) }}')"{% endif %}>
-                <section>
-                    <h1>{{ slide.title }}</h1>
-                    <p>{{ slide.text }}</p>
-                    {% if slide.link %}<p class="link"><a href="{{ slide.link }}" target="_blank">{% if slide.labelLink %}{{ slide.labelLink }}{% else %}{{ slide.link }}{% endif %}</a></p>{% endif %}
-                </section>
-            </article>
-        {% endfor %}
-        
-        {% if article.slides|length > 1  %}<div id="right" class="arrow"></div>{% endif %}
-        
-        {% if article.slides|length > 1 %}
-            <nav id="slides">
-                <ul>
-                    {% for slide in article.slides %}
-                        <li class="{% if loop.index == 1 %}current{% endif %}" data-slide="{{ loop.index }}"></li>
+                {% if article.slides|length > 1  %}
+                    
+                    <nav id="slides" data-mode="vertical">
+                        <ul>
+                            {% for slide in article.slides %}
+                                <li class="{% if loop.index == 1 %}current{% endif %}" data-slide="{{ loop.index }}"></li>
+                            {% endfor %}
+                                <li data-slide="{{ article.slides|length +1 }}"></li>
+                        </ul>
+                    </nav>
+                
+                {% endif %}
+                
+                {% spaceless %}
+                
+                {% for slide in article.slides %}
+                    <article id="{{ loop.index }}" class="slide{% if loop.index == 1 %} first{% endif %}" {% if slide.image %}style="background-image: url('{{ asset(slide.image.webPath) }}')"{% endif %}>
+                        <section>
+                            <h1>{{ slide.title }}</h1>
+                            <p>{{ slide.text }}</p>
+                            {% if slide.link %}<p class="link"><a href="{{ slide.link }}" target="_blank">{% if slide.labelLink %}{{ slide.labelLink }}{% else %}{{ slide.link }}{% endif %}</a></p>{% endif %}
+                        </section>
+                    </article>
+                {% endfor %}
+                
+                <article id="{{ article.slides|length +1 }}" class="slide last celebrations" data-title="Celebrations">
+                    <h1>Rejoignez-nous lors d'une célébration!</h1>
+                    
+                    {% for center in centers %}
+                        <a class="{% if not center.image %}empty{% endif %} resize16_9width" href="{{ path('gospelcenterPage_home', {'center': center.ref}) }}">
+                            {% if center.image %}
+                                <img src="{{ asset(center.image.webPath) }}" alt="{{ center.image.alt }}" />
+                            {% endif %}
+                            <h1>{{ center.name }}</h1>
+                        </a>
+                    {% else %}
+                        <span class="empty">There are no centers.</span>
                     {% endfor %}
-                </ul>
-            </nav>
+                    
+                </article>
+                
+                {% endspaceless %}
+            
+            </section>
+            
+        {% elseif article.template == 'simple' %}
+        
+            <h2>{{ article.slogan }}</h2>
+            
+            <section class="slider" id="5">
+        
+                {% if article.slides|length > 1  %}<div id="left" class="arrow"></div>{% endif %}
+                
+                {% for slide in article.slides %}
+                    <article id="{{ loop.index }}" class="slide" {% if slide.image %}style="background-image: url('{{ asset(slide.image.webPath) }}')"{% endif %}>
+                        <section>
+                            <h1>{{ slide.title }}</h1>
+                            <p>{{ slide.text }}</p>
+                            {% if slide.link %}<p class="link"><a href="{{ slide.link }}" target="_blank">{% if slide.labelLink %}{{ slide.labelLink }}{% else %}{{ slide.link }}{% endif %}</a></p>{% endif %}
+                        </section>
+                    </article>
+                {% endfor %}
+                
+                {% if article.slides|length > 1  %}<div id="right" class="arrow"></div>{% endif %}
+                
+                {% if article.slides|length > 1 %}
+                    <nav id="slides">
+                        <ul>
+                            {% for slide in article.slides %}
+                                <li class="{% if loop.index == 1 %}current{% endif %}" data-slide="{{ loop.index }}"></li>
+                            {% endfor %}
+                        </ul>
+                    </nav>
+                {% endif %}
+            
+            </section>
+            
         {% endif %}
+        
+        
         
     </section>
 {% endblock %}

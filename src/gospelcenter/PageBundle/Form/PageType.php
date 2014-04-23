@@ -25,11 +25,7 @@ class PageType extends AbstractType
             ->add('ref',            'choice', array(
                                         'choices'   => array(
                                             'bases'     => 'Bases',
-                                            'minis'     => 'Youth - Gospel Minis',
-                                            'kids' => 'Youth - Gospel Kids',
-                                            'teens'  => 'Youth - Gospel Teens',
-                                            'fullPack'  => 'Youth - Full Pack',
-                                            'youth'     => 'Youth - Gospel Youth'
+                                            'youth'     => 'Youth'
                                         ),
                                         'multiple'  => false,
                                         'empty_value'   => 'Select a menu'))

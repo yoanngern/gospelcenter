@@ -29,6 +29,25 @@ class PageRepository extends EntityRepository
         return $qb->getQuery()->getResult();
     }
     
+    public function findYouthByCenter(\gospelcenter\CenterBundle\Entity\Center $center)
+    {
+        $qb = $this->createQueryBuilder('p');
+        
+        $qb->join('p.center', 'c');
+        $qb->join('p.language', 'l');
+        
+        $qb->where('c.ref = :center')
+            ->setParameter('center', $center->getRef());
+            
+        $qb->andWhere('p.ref = :ref')
+            ->setParameter('ref', "youth");
+            
+        $qb->addOrderBy('l.ref', 'ASC')
+            ->addOrderBy('p.sort', 'ASC');
+        
+        return $qb->getQuery()->getResult();
+    }
+    
     public function getSelectList($center)
     {
         $qb = $this->createQueryBuilder('p');
@@ -69,6 +88,74 @@ class PageRepository extends EntityRepository
         
         return $qb->getQuery()->getOneOrNullResult();
     }
+    
+    
+    public function findAYouthGroupByAlias(\gospelcenter\CenterBundle\Entity\Center $center, $alias)
+    {
+        $qb = $this->createQueryBuilder('p');
+        
+        $qb->join('p.center', 'c');
+        $qb->join('p.language', 'l');
+        
+        $qb->where('p.alias = :alias')
+            ->setParameter('alias', $alias);
+        
+        $qb->andWhere('c.ref = :center')
+            ->setParameter('center', $center->getRef());
+            
+        $qb->andWhere('l.ref = :language')
+            ->setParameter('language', 'fr');
+            
+        
+        return $qb->getQuery()->getOneOrNullResult();
+    }
+    
+    
+    public function findAYouthGroupByTitle(\gospelcenter\CenterBundle\Entity\Center $center, $title)
+    {
+        $qb = $this->createQueryBuilder('p');
+        
+        $qb->join('p.center', 'c');
+        $qb->join('p.language', 'l');
+        
+        $qb->where('p.title = :title')
+            ->setParameter('title', $title);
+        
+        $qb->andWhere('c.ref = :center')
+            ->setParameter('center', $center->getRef());
+            
+        $qb->andWhere('l.ref = :language')
+            ->setParameter('language', 'fr');
+            
+        
+        return $qb->getQuery()->getOneOrNullResult();
+    }
+    
+    
+    public function findYouthPages(\gospelcenter\CenterBundle\Entity\Center $center)
+    {
+        $qb = $this->createQueryBuilder('p');
+        
+        $qb->join('p.center', 'c');
+        $qb->leftJoin('p.slides', 's');
+        $qb->join('p.language', 'l');
+        
+        $qb->where('p.ref = :page')
+            ->setParameter('page', 'youth');
+        
+        $qb->andWhere('c.ref = :center')
+            ->setParameter('center', $center->getRef());
+            
+        $qb->andWhere('l.ref = :language')
+            ->setParameter('language', 'fr');
+            
+        $qb->addOrderBy('p.sort', 'ASC')
+            ->addOrderBy('p.title', 'ASC');
+            
+        
+        return $qb->getQuery()->getResult();
+    }
+    
     
     public function findAGlobalPage($pageRef)
     {

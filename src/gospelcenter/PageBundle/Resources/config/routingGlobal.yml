@@ -1,8 +1,23 @@
 gospelcenterPageGlobal_home:
     path: /
-    defaults: { _controller: gospelcenterPageBundle:PageGlobal:index, page: 'home' }
+    defaults: { _controller: gospelcenterPageBundle:PageGlobal:home }
+    
+gospelcenterPageGlobal_home2:
+    path: /home
+    defaults: { _controller: gospelcenterPageBundle:PageGlobal:home }
+    
+gospelcenterPageGlobal_god:
+    path: /god
+    defaults: { _controller: gospelcenterPageBundle:PageGlobal:god }
+    
+gospelcenterPageGlobal_tv:
+    path: /television
+    defaults: { _controller: gospelcenterPageBundle:PageGlobal:tv }
+    
+gospelcenterPageGlobal_contact:
+    path: /contact
+    defaults: { _controller: gospelcenterPageBundle:PageGlobal:contact }
 
 gospelcenterPageGlobal_default:
     path: /{page}
     defaults: { _controller: gospelcenterPageBundle:PageGlobal:index }
-    

@@ -1,0 +1,55 @@
+{% extends "::global.html.twig" %}
+
+{% block title %}
+    {{ parent() }}
+{% endblock %}
+
+{% block stylesheets %}
+	{{ parent() }}
+	<link rel="stylesheet" href="{{ asset('css/page.css') }}" type="text/css" />
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+{% endblock %}
+
+{% block body %}
+    <section id="page" class="contact">
+    
+        <h1>Contact</h1>
+        
+        {% spaceless %}
+        <section class="top">
+            <article class="map">
+                <img src="{{ asset('bundles/gospelcenterpage/images/lausanne.jpg') }}" />
+            </article>
+            
+            <article class="info">
+                <section>
+                    <h1><a href="mailto:info@gospel-center.org">info@gospel-center.org</a></h1>
+                    <p>Gospel Center Lausanne</p>
+                    <p>Avenue de Provence 4</p>
+                    <p>1007 Lausanne</p>
+                    <p>Suisse</p>
+                </section>
+                
+                <a class="buttonRounded" href="">Nous soutenir</a>
+                
+            </article>
+        </section>
+        
+        <form>
+            <fieldset class="left">
+                <input placeholder="Nom">
+                <input placeholder="E-mail">
+                <input placeholder="Téléphone">
+            </fieldset>
+            <fieldset class="right">
+                <textarea placeholder="Description"></textarea>
+            </fieldset>
+            <input type="submit" class="buttonRounded" />
+        </form>
+        
+        {% endspaceless %}
+    </section>
+{% endblock %}

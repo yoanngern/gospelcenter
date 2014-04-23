@@ -16,6 +16,7 @@ use gospelcenter\ImageBundle\Entity\Image;
 use gospelcenter\PageBundle\Entity\Page;
 use gospelcenter\PageBundle\Form\PageType;
 use gospelcenter\PageBundle\Form\PageAddType;
+use gospelcenter\PageBundle\Form\YouthPageType;
 
 // Center
 use gospelcenter\CenterBundle\Entity\Center;
@@ -145,5 +146,62 @@ class AdminPageController extends Controller {
         $response->headers->set('Content-Type', 'application/json');
         
         return $response;
+    }
+    
+    
+    /*
+     *   List of all youth pages
+     */
+    public function youthAction(Center $center)
+    {
+        $em = $this->getDoctrine()->getManager();
+        
+        $pages = $em->getRepository('gospelcenterPageBundle:Page')->findYouthByCenter($center);
+        
+        return $this->render('gospelcenterPageBundle:AdminPage:youth.html.twig', array(
+            'center' => $center,
+            'pages' => $pages,
+            'page' => 'pages',
+            'tab' => 'youth'
+        ));
+    }
+    
+    
+    /*
+     *   Edit a youth page
+     *   @param $page = Page
+     *          $center = Center
+     */
+    public function youthEditAction(Center $center, Page $page)
+    {   
+        $form = $this->createForm(new YouthPageType($center), $page);
+        
+        $request = $this->get('request');
+        
+        if($request->getMethod() == 'POST')
+        {
+            $form->bind($request);
+            
+            if($form->isValid())
+            {
+                $em = $this->getDoctrine()->getManager();
+                $em->persist($page);
+                $em->flush();
+                
+                $this->get('session')->getFlashBag()->add('info', 'The page has been edited.');
+                
+                return $this->redirect( $this->generateUrl('gospelcenterAdmin_youth', array(
+                    'center' => $center->getRef()
+                )));
+            }
+        }
+        
+        return $this->render('gospelcenterPageBundle:AdminPage:youthEdit.html.twig', array(
+            'center' => $center,
+            'objPage' => $page,
+            'form' => $form->createView(),
+            'page' => 'pages',
+            'article' => $page
+        ));
     }
 }

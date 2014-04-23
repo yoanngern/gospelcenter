@@ -29,6 +29,13 @@ class Page
      * @ORM\Column(name="ref", type="string", length=255)
      */
     private $ref;
+    
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="alias", type="string", length=255, nullable=true)
+     */
+    private $alias;
 
     /**
      * @var string
@@ -50,6 +57,13 @@ class Page
      * @ORM\Column(name="template", type="string", length=255)
      */
     private $template; 
+    
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="sort", type="integer", nullable=true)
+     */
+    private $sort; 
 
     /**
      * @var \DateTime
@@ -156,6 +170,29 @@ class Page
     }
 
     /**
+     * Set alias
+     *
+     * @param string $alias
+     * @return Page
+     */
+    public function setAlias($alias)
+    {
+        $this->alias = $alias;
+    
+        return $this;
+    }
+
+    /**
+     * Get alias
+     *
+     * @return string 
+     */
+    public function getAlias()
+    {
+        return $this->alias;
+    }
+
+    /**
      * Set title
      *
      * @param string $title
@@ -222,6 +259,29 @@ class Page
     public function getTemplate()
     {
         return $this->template;
+    }
+
+    /**
+     * Set sort
+     *
+     * @param integer $sort
+     * @return Page
+     */
+    public function setSort($sort)
+    {
+        $this->sort = $sort;
+    
+        return $this;
+    }
+
+    /**
+     * Get sort
+     *
+     * @return integer 
+     */
+    public function getSort()
+    {
+        return $this->sort;
     }
 
     /**

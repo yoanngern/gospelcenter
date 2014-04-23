@@ -15,7 +15,7 @@
         <thead>
             <tr>
                 <th>Title</th>
-                <th>Ref</th>
+                <th>Menu</th>
                 <th>Language</th>
             </tr>
         </thead>
@@ -24,7 +24,7 @@
                 <tr>
                     <td><a href="{{ path('gospelcenterAdminGlobal_pages_edit', {'page': page.id}) }}">{{ page.title }}</a></td>
                     <td><a href="{{ path('gospelcenterAdminGlobal_pages_edit', {'page': page.id}) }}">{{ page.ref }}</a></td>
-                    <td><a href="{{ path('gospelcenterAdminGlobal_pages_edit', {'page': page.id}) }}">{{ page.language.value }}</a></td>
+                    <td><a href="{{ path('gospelcenterAdminGlobal_pages_edit', {'page': page.id}) }}">{{ page.language.ref }}</a></td>
                 </tr>
             {% else %}
                 <tr><td colspan="3">There are no pages.</td></tr>

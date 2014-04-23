@@ -7,11 +7,23 @@
     <li><a href="{{ path('gospelcenterAdminGlobal_pages') }}">Admin</a></li>
 {% endblock %}
 
+{% block stylesheets %}
+	{{ parent() }}
+	<link rel="stylesheet" href="{{ asset('css/global.css') }}" type="text/css" />
+	<link rel="stylesheet" href="{{ asset('css/page.css') }}" type="text/css" />
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script type="text/javascript" src="{{ asset('js/global.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('js/page.min.js') }}"></script>
+{% endblock %}
+
 {% block footer %}
-    <li><a href="" {% if page == 'celebration' %}class="current"{% endif %}>Celebrations</a></li>
-    <li><a href="" {% if page == 'vision' %}class="current"{% endif %}>Our vision</a></li>
-    <li><a href="" {% if page == 'god' %}class="current"{% endif %}>God?</a></li>
-    <li><a href="" {% if page == 'television' %}class="current"{% endif %}>Television</a></li>
-    <li><a href="" {% if page == 'training' %}class="current"{% endif %}>Training</a></li>
-    <li><a href="" {% if page == 'contact' %}class="current"{% endif %}>Contact</a></li>
+    <li><a href="celebrations" class="celebrations {% if page == 'celebrations' %}current{% endif %}">Celebrations</a></li>
+    <li><a href="vision" class="vision {% if page == 'vision' %}current{% endif %}">Our vision</a></li>
+    <li><a href="god" class="god {% if page == 'god' %}current"{% endif %}"">God?</a></li>
+    <li><a href="television" class="television {% if page == 'television' %}current{% endif %}">Television</a></li>
+    <li><a href="training" class="training {% if page == 'training' %}current{% endif %}">Training</a></li>
+    <li><a href="contact" class="contact {% if page == 'contact' %}current{% endif %}">Contact</a></li>
 {% endblock %}

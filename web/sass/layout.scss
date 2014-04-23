@@ -9,6 +9,9 @@
 
 $minSize: 1024px;
 
+/***************/
+/*** sub nav ***/
+/***************/
 nav.sub_nav {
 	@include navUnderline();
 	text-align: center;
@@ -16,6 +19,9 @@ nav.sub_nav {
 	padding-top: 5px;
 }
 
+/**************/
+/**** body ****/
+/**************/
 body {
 	margin: 0px;
 	color: $black;
@@ -44,8 +50,6 @@ body {
     }
 }
 
-
-
 input,
 textarea,
 select {
@@ -53,6 +57,17 @@ select {
 	font-size: 16px;
 }
 
+a {
+    &:focus {
+        outline: none;
+        text-decoration: underline !important;
+    }
+}
+
+
+/***************/
+/**** #page ****/
+/***************/
 #page {
 	z-index: 10;
 	background-color: $white;
@@ -63,7 +78,9 @@ select {
 }
 
 
-
+/**************/
+/*** Header ***/
+/**************/
 #page > header {
 	height: 40px;
 	position: fixed;
@@ -132,8 +149,78 @@ select {
 			font-size: 0.8em;
 		}
 	}
+	
+	div.param_arrow {
+    	z-index: 1001;
+    	position: fixed;
+    	right: 20px;
+    	top: 41px;
+    	display: none;
+    }
+    
+    div.arrow_up_border {
+    	width: 0; 
+    	height: 0; 
+    	border-left: 11px solid transparent;
+    	border-right: 11px solid transparent;
+    	border-bottom: 10px solid $grayLight;
+    }
+    
+    div.arrow_up {
+    	width: 0; 
+    	height: 0; 
+    	border-left: 11px solid transparent;
+    	border-right: 11px solid transparent;
+    	border-bottom: 10px solid $white;
+    	margin-left: 0px;
+    	margin-top: -9px;
+    }
+    
+    #param_nav {
+    	z-index: 1000;
+    	display: none;
+    	background-color: $white;
+    	box-shadow: 0 2px 10px rgba(0,0,0,.2);
+    	border: 1px solid $grayLight;
+    	color: $white;
+    	position: fixed;
+    	right: 10px;
+    	top: 50px;
+    	
+    	
+    	ul {
+    		margin: 1px;
+    		
+    		
+    		li {
+    			
+    			list-style-type: none;
+    			
+    			a {
+    				padding: 5px 5px 5px 10px;
+    				color: $black;
+    				text-decoration: none;
+    				font-size: 0.8em;
+    				width: 180px;
+    				display: block;
+    			}
+    			
+    			&:hover {
+    				background-color: $grayDark;
+    				
+    				a {
+    					color: $white;
+    				}
+    			}
+    		}
+    	}
+    }
 }
 
+
+/*****************/
+/*** Ruban nav ***/
+/*****************/
 #ruban_nav {
 	z-index: 0;
 	background-color: $grayDark;
@@ -232,72 +319,10 @@ select {
 	
 }
 
-div.param_arrow {
-	z-index: 1001;
-	position: fixed;
-	right: 20px;
-	top: 41px;
-	display: none;
-}
 
-div.arrow_up_border {
-	width: 0; 
-	height: 0; 
-	border-left: 11px solid transparent;
-	border-right: 11px solid transparent;
-	border-bottom: 10px solid $grayLight;
-}
-
-div.arrow_up {
-	width: 0; 
-	height: 0; 
-	border-left: 11px solid transparent;
-	border-right: 11px solid transparent;
-	border-bottom: 10px solid $white;
-	margin-left: 0px;
-	margin-top: -9px;
-}
-
-#param_nav {
-	z-index: 1000;
-	display: none;
-	background-color: $white;
-	box-shadow: 0 2px 10px rgba(0,0,0,.2);
-	border: 1px solid $grayLight;
-	color: $white;
-	position: fixed;
-	right: 10px;
-	top: 50px;
-	
-	
-	ul {
-		margin: 1px;
-		
-		
-		li {
-			
-			list-style-type: none;
-			
-			a {
-				padding: 5px 5px 5px 10px;
-				color: $black;
-				text-decoration: none;
-				font-size: 0.8em;
-				width: 180px;
-				display: block;
-			}
-			
-			&:hover {
-				background-color: $grayDark;
-				
-				a {
-					color: $white;
-				}
-			}
-		}
-	}
-}
-
+/*****************/
+/*** Container ***/
+/*****************/
 #container {
 	padding-bottom: 90px;
 	position: relative;
@@ -327,6 +352,10 @@ div.arrow_up {
 
 }
 
+
+/****************/
+/***** Page *****/
+/****************/
 #page {
 
     &.admin {
@@ -335,6 +364,7 @@ div.arrow_up {
         }
     }
     
+    // Home
     &.home {
         
         header {
@@ -363,13 +393,16 @@ div.arrow_up {
                 text-align: center;
                 bottom: 70px;
                 
-                
                 a {
                     display: inline-block;
                     height: 100%;
                     border: 2px solid $white;
                     margin: 0px;
                     margin-left: -6px;
+                    
+                    &.resize16_9height {
+                        overflow: hidden;
+                    }
                     
                     &:first-of-type {
                 	    margin-left: 0px;
@@ -440,9 +473,7 @@ div.arrow_up {
             overflow-x: hidden;
         }
     }
-    
-    
-    
+        
     .slider {
         div.arrow {
             position: absolute;
@@ -491,7 +522,203 @@ div.arrow_up {
     }
 }
 
+/*****************/
+/**** Contact ****/
+/*****************/
+#container #page {
+    &.contact {
+        width: 70%;
+        max-width: 1300px;
+        margin: 0 auto;
+        position: relative;
+        
+        & > h1 {
+            position: initial;
+            margin-top: 40px;
+            margin-bottom: 18px;
+        }
+        
+        .top {
+            display: block;
+            width: 100%;
+            margin: 0;
+            margin-top: 40px;
+            
+            .map {
+                width: 60%;
+                display: inline-block;
+                position: relative;
+                
+                img {
+                    float: right;
+                    width: 100%;
+                }
+            }
+            
+            .info {
+                width: 35%;
+                margin-left: 5%;
+                display: inline-block;
+                position: absolute;
+                                
+                section {
+                    margin-bottom: 30px;
+                    
+                    h1 {
+                        padding: 0;
+                        font-size: 1.4em;
+                    }
+                    
+                    a {
+                        margin-top: 5px;
+                        display: block;
+                        color: $red;
+                        text-decoration: none;
+                    }
+                }
+            }
+        }
+        
+        form {
+            width: 800px;
+            margin: 5% auto 0;
+            
+            fieldset {
+                display: inline-block;
+                
+                &.left {
+                    width: 30%;
+                    float: left;
+                }
+                
+                &.right {
+                    width: 68%;
+                    margin-left: 2%;
+                }
+                
+                input,
+                textarea {
+                    width: 98%;
+                    margin: 0;
+                    padding: 5px 1%;
+                    margin-bottom: 10px;
+                    border: none;
+                    background-color: lighten( $grayLight, 40% );
+                    font-family: $font-regular;
+                    font-weight: 100;
+                    
+                    &:focus {
+                        outline: none;
+                        border: 1px solid $grayDark;
+                    }
+                }
+                
+                input {
+                    text-align: center;
+                    height: 30px;
+                }
+                
+                textarea {
+                    height: 130px;
+                    resize: none;
+                }
+            }
+            
+            input[type="submit"] {
+                display: block;
+                float: right;
+                cursor: pointer;
+            }
+        }
+    }
+}
 
+
+/*******************/
+/**** Youth nav ****/
+/*******************/
+nav.youth {
+    @include navRounded();
+    position: absolute;
+    top: 13%;
+	text-align: center;
+	margin-top: 20px;
+	width: 100%;
+	
+	@media only screen and (min-width: $L) {
+	    ul li {
+	        height: 105px !important;
+	        
+            a {
+                width: 180px !important;
+                
+                h1, h2 {
+                    width: 160px !important;
+                }
+            }
+        }
+    }
+    
+    @media only screen and (min-width: $XL) {
+        ul li {
+	        height: 110px !important;
+	        
+            a {
+                width: 190px !important;
+                
+                h1, h2 {
+                    width: 170px !important;
+                }
+            }
+        }
+    }
+    
+    @media only screen and (min-width: $XXL) {
+        ul li {
+	        height: 115px !important;
+	        
+            a {
+                width: 200px !important;
+                
+                h1, h2 {
+                    width: 180px !important;
+                }
+            }
+        }
+    }
+	
+	
+	ul li {
+	    height: 100px;
+	    
+	    a {
+        	height: 100%;
+        	width: 170px;
+        	padding: 0;
+        	
+        	h1 {
+            	font-size: 1.4em;
+            	bottom: 10%;
+            	position: absolute;
+            	width: 140px;
+            	padding: 0 10px;
+        	}
+        	
+        	h2 {
+            	height: 40px;
+            	position: absolute;
+            	top: 10%;
+            	width: 140px;
+            	padding: 0 10px;
+        	}
+        }
+	}
+}
+
+
+/**********************/
+/*** Button rounded ***/
+/**********************/
 .buttonRounded {
 	color: $red;
 	border: 1px solid $red;
@@ -499,13 +726,24 @@ div.arrow_up {
 	@include border-radius (3px);
 	text-decoration: none;
 	display: inline-block;
+	background: transparent;
 	
 	&:hover {
 		@include gradient($red, $redBottom, $redTop);
 		color: $white;
 	}
+	
+	&:focus {
+    	outline: none;
+    	border: 2px solid $red;
+    	text-decoration: none !important;
+	}
 }
 
+
+/******************/
+/*** Slider top ***/
+/******************/
 section.sliderTop {
     height: 45%;
     top: 14%;
@@ -572,6 +810,59 @@ section.sliderTop {
     
 }
 
+
+/*******************/
+/*** Slider full ***/
+/*******************/
+section.sliderFull {
+    top: 15%;
+    bottom: 160px;
+    position: absolute;
+    width: 100%;
+    max-height: 720px;
+    min-height: 300px;
+    
+    nav {
+        bottom: 0px;
+    }
+    
+    div.arrow {
+        width: 20%;
+        top: 0%;
+        bottom: 40px;
+    }
+    
+    .slide {
+        width: 100%;
+        margin: 0 auto;
+        position: absolute;
+        top: 0%;
+        bottom: 40px;
+        min-width: 800px;
+        color: $black;
+        
+        .picture {
+            width: 100%;
+            overflow: hidden;
+            height: 100%;
+            
+            
+            img {
+                height: 100%;
+                display: block;
+                margin: 0 auto;
+                
+            }
+        }
+    }
+    
+    
+}
+
+
+/*******************/
+/*** Slider down ***/
+/*******************/
 section.sliderDown {
     height: 25%;
     position: absolute;
@@ -647,6 +938,10 @@ section.sliderDown {
     
 }
 
+
+/****************/
+/***** Wall *****/
+/****************/
 section.wall {
     max-width: 1260px;
     margin: 0 auto;
@@ -700,6 +995,10 @@ section.wall {
     }
 }
 
+
+/***********************/
+/*** Slide red round ***/
+/***********************/
 nav#slides.redRound {
     position: absolute;
     width: 100%;
@@ -728,6 +1027,10 @@ nav#slides.redRound {
     }
 }
 
+
+/**************/
+/*** Footer ***/
+/**************/
 footer {
 	display: block;
 	position: fixed;

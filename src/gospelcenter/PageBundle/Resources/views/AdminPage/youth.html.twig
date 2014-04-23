@@ -1,0 +1,38 @@
+{% extends "gospelcenterPageBundle::admin.html.twig" %}
+
+{% block stylesheets %}
+	{{ parent() }}
+	<link rel="stylesheet" href="{{ asset('css/admin.css') }}" type="text/css" />
+{% endblock %}
+
+{% block title %}
+    {{ parent() }} - Youth
+{% endblock %}
+
+{% block gospelcenterAdminPages_body %}
+    
+    <table class="main">
+        <thead>
+            <tr>
+                <th>Title</th>
+                <th>Slogan</th>
+                <th>Language</th>
+                <th>Sort</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for page in pages %}
+                <tr>
+                    <td><a href="{{ path('gospelcenterAdmin_youth_edit', {'page': page.id, 'center': center.ref}) }}">{{ page.title }}</a></td>
+                    <td><a href="{{ path('gospelcenterAdmin_youth_edit', {'page': page.id, 'center': center.ref}) }}">{{ page.slogan }}</a></td>
+                    <td><a href="{{ path('gospelcenterAdmin_youth_edit', {'page': page.id, 'center': center.ref}) }}">{{ page.language.ref }}</a></td>
+                    <td><a href="{{ path('gospelcenterAdmin_youth_edit', {'page': page.id, 'center': center.ref}) }}">{{ page.sort }}</a></td>
+                </tr>
+            {% else %}
+                <tr><td colspan="3">There are no pages.</td></tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    
+    
+{% endblock %}

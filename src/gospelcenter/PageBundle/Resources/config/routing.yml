@@ -17,6 +17,10 @@ gospelcenterStaff:
 gospelcenterMusic:
     path: /music
     defaults: { _controller: gospelcenterPageBundle:Page:music }
+    
+gospelcenterContact:
+    path: /contact
+    defaults: { _controller: gospelcenterPageBundle:Page:contact }
 
 gospelcenterPage_default:
     path: /{page}

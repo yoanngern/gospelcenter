@@ -38,13 +38,16 @@ html.js {
         width: 100%;
         overflow-x: hidden;
         
+        /**********************/
+        /**** Slider arrow ****/
+        /**********************/
         div.arrow {
-            width: 30%;
             position: absolute;
             z-index: 100;
+            cursor: pointer;
+            width: 30%;
             top: 32%;
             height: 54%;
-            cursor: pointer;
             
             &#right {
                 right: 0px;
@@ -67,6 +70,108 @@ html.js {
             }
         }
         
+        /***********************/
+        /*** Slider vertical ***/
+        /***********************/
+        section.slider.vertical {
+            position: absolute;
+            top: 15%;
+            bottom: 70px;
+            width: 100%;
+            overflow: hidden;
+            
+            
+            article.slide {
+                position: relative;
+                height: 101%;
+                top: initial;
+                bottom: initial;
+                
+                &.celebrations {
+                    width: 70%;
+                    max-width: 1300px;
+                    margin: 0 auto;
+                    
+                    & > h1 {
+                        color: $black;
+                        font-family: $font-regular;
+                        text-align: center;
+                        margin-top: 50px;
+                        font-size: 1.5em;
+                        margin-bottom: 70px;
+                    }
+                    
+                    a {
+                        display: inline-block;
+                        width: 25%;
+                        margin: 2%;
+                        text-decoration: none;
+                        color: $white;
+                        
+                        &.empty {
+                            border: 1px solid $grayDark;
+                            color: $black;
+                        }
+                        
+                        h1 {
+                            text-align: center;
+                            margin-top: 25%;
+                        }
+                    }
+                    
+                }
+            }
+            
+            #slides {
+                right: 0;
+                position: absolute;
+                width: 5%;
+                top: 46%;
+                z-index: 100;
+                
+                &.black {
+                    li {
+                        border: 1px solid $black;
+                        
+                        &:hover {
+                            background: $black;
+                        }
+                        
+                        &.current {
+                            background: $black;
+                        }
+                    }
+                }
+                
+                ul {
+                    text-align: center;
+                    
+                    li {
+                        border: 1px solid $white;
+                        border-radius: 6px;
+                        margin: 20% auto;
+                        display: block;
+                        width: 10px;
+                        height: 10px;
+                        cursor: pointer;
+                        
+                        &:hover {
+                            background: $white;
+                        }
+                        
+                        &.current {
+                            background: $white;
+                        }
+                    }
+                }
+            }
+            
+        }
+        
+        
+        /**********************/
+        /***** Page title *****/
+        /**********************/
         & > h1 {
             position: absolute;
             top: 6%;
@@ -78,6 +183,10 @@ html.js {
     		font-family: $font-light;
         }
         
+        
+        /***********************/
+        /*** Template: about ***/
+        /***********************/
         &.about {
             
             nav.sub_nav {
@@ -111,6 +220,10 @@ html.js {
             }
         }
         
+        
+        /*************************/
+        /*** Template: complex ***/
+        /*************************/
         &.complex {
             margin: 0 auto;
             position: inherit;
@@ -127,9 +240,65 @@ html.js {
                 display: block;
                 font-size: 1.4em;
                 padding-top: 20px;
+                white-space: pre-line;
             }
         }
         
+        /**********************/
+        /*** Template: full ***/
+        /**********************/
+        &.full {
+            
+            article.slide {
+                position: absolute;
+                bottom: 70px;
+                width: 100%;
+                color: $white;
+                top: 15%;
+                background-repeat: no-repeat;
+                background-size: cover;
+                background-position: center;
+                
+                &:nth-child(odd) {
+                    section {
+                        left: 15%;
+                        float: left;
+                    }
+                }
+                
+                &:nth-child(even) {
+                    section {
+                        right: 15%;
+                        float: right;
+                    }
+                }
+                
+                section {
+                    margin: 0 auto;
+                    width: 20%;
+                    position: relative;
+                    margin-top: 10%;
+                    
+                    
+                    
+                    h1 {
+                        font-size: 1.5em;
+                        padding-bottom: 20px;
+                    }
+                    
+                    p {
+                        font-size: 1.1em;
+                    }
+                    
+                }
+                
+                
+            }
+        }
+        
+        /************************/
+        /*** Template: simple ***/
+        /************************/
         &.simple {
             
             & > h2 {
@@ -141,6 +310,7 @@ html.js {
                 font-size: 1.5em;
                 font-family: $font-light;
                 text-transform: uppercase;
+                white-space: pre-wrap;
             }
             
             nav#slides {
@@ -192,11 +362,12 @@ html.js {
                     
                     p {
                         font-size: 1.2em;
+                        white-space: pre-line;
                     }
                     
                     p.link {
                         text-align: center;
-                        margin-top: 20px;
+                        margin-top: 40px;
                         
                         a {
                             color: $white;

@@ -1,0 +1,48 @@
+{% block body %}
+    <section id="page" class="contact">
+    
+        <h1>Contact</h1>
+        
+        {% spaceless %}
+        <section class="top">
+            <article class="map">
+                <img src="{{ asset('bundles/gospelcenterpage/images/lausanne.jpg') }}" />
+            </article>
+            
+            <article class="info">
+                <section>
+                    <h1>Pasteur</h1>
+                    <p>Marc Gallay</p>
+                    <p>076 412 10 48</p>
+                    <a href="mailto:mgallay@gospel-center.org">mgallay@gospel-center.org</a>
+                </section>
+                
+                <section>
+                    <h1>Secrétariat</h1>
+                    <p>Gospel Center Lausanne</p>
+                    <p>Avenue de Provence 4</p>
+                    <p>1007 Lausanne</p>
+                    <p>Suisse</p>
+                    <a href="mailto:info@gclausanne.ch">info@gclausanne.ch</a>
+                </section>
+                
+                <a class="buttonRounded" href="">Nous soutenir</a>
+                
+            </article>
+        </section>
+        
+        <form>
+            <fieldset class="left">
+                <input      placeholder="Nom">
+                <input      placeholder="E-mail">
+                <input      placeholder="Téléphone">
+            </fieldset>
+            <fieldset class="right">
+                <textarea   placeholder="Description"></textarea>
+            </fieldset>
+            <input type="submit" class="buttonRounded" />
+        </form>
+        
+        {% endspaceless %}
+    </section>
+{% endblock %}

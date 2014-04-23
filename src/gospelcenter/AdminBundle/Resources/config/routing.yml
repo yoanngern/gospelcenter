@@ -176,6 +176,18 @@ gospelcenterAdmin_pages_edit:
     requirements:
         page: \d+
         
+# Youth
+gospelcenterAdmin_youth:
+    path:       /pages/youth
+    defaults:   { _controller: gospelcenterPageBundle:AdminPage:youth }
+    
+# Youth
+gospelcenterAdmin_youth_edit:
+    path:       /pages/youth/edit/{page}
+    defaults:   { _controller: gospelcenterPageBundle:AdminPage:youthEdit }
+    requirements:
+        page: \d+
+
 # Slides
 gospelcenterAdmin_slides:
     path:       /slides
@@ -192,6 +204,8 @@ gospelcenterAdmin_slides_edit:
     defaults:   { _controller: gospelcenterPageBundle:AdminSlide:edit }
     requirements:
         slide: \d+
+        
+
 
 ##########################
 ######### Images #########

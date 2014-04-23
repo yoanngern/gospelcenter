@@ -1,0 +1,26 @@
+{% extends "::global.html.twig" %}
+
+{% block title %}
+    {{ parent() }}
+{% endblock %}
+
+{% block stylesheets %}
+	{{ parent() }}
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+{% endblock %}
+
+{% block body %}
+    <section>
+        <article class="logo">
+            <img src="{{ asset('images/logo.svg') }}" alt="Gospel Center"/>
+            <h1>A place where miracles happen!</h1>
+        </article>
+        
+        <article class="arrow">
+            <a data-event="goDown" href=""></a>
+        </article>
+    </section>
+{% endblock %}

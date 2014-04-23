@@ -1,0 +1,51 @@
+{% extends "::global.html.twig" %}
+
+{% block title %}
+    {{ parent() }}
+{% endblock %}
+
+{% block stylesheets %}
+	{{ parent() }}
+	<link rel="stylesheet" href="{{ asset('css/page.css') }}" type="text/css" />
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+{% endblock %}
+
+{% block body %}
+    <section class="custom">
+        <h1>Gospel Center TV</h1>
+        
+        <section class="sliderFull slider" id="10">
+            
+            {% if starsVideos|length > 1 %}<div id="left" class="arrow black"></div>{% endif %}
+        
+            {% for celebration in starsVideos %}
+                
+                <a href="{{ path('gospelcenterMedia_video', {'video': celebration.video.id}) }}" class="slide" id="{{ loop.index }}">
+                    <section class="picture">
+                        <img src="{{ asset(celebration.image.webPath) }}" alt="{{ celebration.image.alt }}" />
+                    </section>
+                </a>
+                
+            {% endfor %}
+            
+            {% if starsVideos|length > 1 %}<div id="right" class="arrow black"></div>{% endif %}
+            
+            {% if starsVideos|length > 1 %}
+                <nav id="slides" class="redRound">
+                    <ul>
+                        {% for celebration in starsVideos %}
+                            <li class="{% if loop.index == 1 %}current{% endif %}" data-slide="{{ loop.index }}" data-slider="1"></li>
+                        {% endfor %}
+                    </ul>
+                </nav>
+            {% endif %}
+        </section>
+        
+        <section class="link">
+            <a class="big" href="{{ path('gospelcenterMedia') }}">More than 100 videos</a>
+        </section>
+    </section>
+{% endblock %}

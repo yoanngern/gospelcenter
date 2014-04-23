@@ -31,6 +31,9 @@ Modernizr.addTest("overflowscrolling",function(){
 });
 
 $(document).ready( function() {
+
+    // Fullscreen mode
+    window.scrollTo(0,1);
 	
 	// Get ruban is clicked
 	$('header').on('click', '#get_ruban', function() {

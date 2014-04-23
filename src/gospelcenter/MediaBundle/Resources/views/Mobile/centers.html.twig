@@ -16,7 +16,7 @@
             {% endfor %}
                 
             {% if hasMedia %}
-                <a class="bigList {% if not center.image %}empty{% endif %} 16_9width" href="{{ path('gospelcenterMedia_center', {'center': center.ref}) }}">
+                <a class="bigList {% if not center.image %}empty{% endif %} resize16_9width" href="{{ path('gospelcenterMedia_center', {'center': center.ref}) }}">
                     
                     {% if center.image %}
                         <img src="{{ asset(center.image.webPath) }}" alt="{{ center.image.alt }}" />

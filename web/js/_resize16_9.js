@@ -10,11 +10,11 @@ $(document).ready( function() {
 });
 
 function resize() {
-    $(".16_9width").each( function() {
+    $(".resize16_9width").each( function() {
     	resizeHeight(this);
 	});
 	
-	$(".16_9height").each( function() {
+	$(".resize16_9height").each( function() {
     	resizeWidth(this);
 	});
 }

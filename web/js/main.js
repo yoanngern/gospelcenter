@@ -32,7 +32,7 @@ $(document).ready( function() {
 		
 	});
 	
-	$("nav#slides li").click( function() {
+	$(document).on('click', 'nav#slides li', function() {
     	move(this);
 	});
 	
@@ -44,7 +44,7 @@ $(document).ready( function() {
     	$(this).fadeIn(300);
 	});
 	
-	$("div.arrow").click( function() {
+	$(document).on('click', 'div.arrow', function() {
     	
     	var slider = $(this).parent();
     	
@@ -105,20 +105,32 @@ function move(slide) {
     
     var nav = $(slide).parent().parent();
     var current = $("li.current", nav).data("slide");
+    var mode = $(nav).attr("data-mode");
 
     var id = $(slide).data("slide");
     
-    var sliderId = $(slide).data("slider");
+    var sliderId = $(nav).parent().attr("id");
     var slider = $(".slider[id="+ sliderId +"]");
     
     if(id > current) {
         var pos = id - current;
-        moveToLeft(pos, slider);
+        
+        if(mode == "vertical") {
+            moveToDown(pos, slider);
+        } else {
+            moveToLeft(pos, slider);
+        }
+        
     }
     
     if(id < current) {
         var pos = current - id;
-        moveToRight(pos, slider);
+        
+        if(mode == "vertical") {
+            moveToTop(pos, slider);
+        } else {
+            moveToRight(pos, slider);
+        }
     }
 }
 
@@ -143,6 +155,120 @@ function setMax(slider) {
     });
 }
 
+
+/**
+ *  Move to top
+ *  @param  pos the number of position to move
+ *          slider the slider of the slide
+ */
+function moveToTop(pos, slider) {
+    
+    var sliderH = $(slider).height();
+    
+    var total = $(".slide", slider).length;
+    
+    var currentTop = $("article.slide.first", slider).css("margin-top");
+    currentTop = currentTop.replace("px", "");
+    currentTop = parseInt(currentTop);
+    
+    var top = currentTop + sliderH * 1.015 * pos;
+    
+    var currentId = $("nav li.current", slider).attr("data-slide");
+    currentId = parseInt(currentId);
+    var newId = currentId - pos;
+    var newSlide = $(".slide#"+newId, slider);
+
+    var newTitle = $(newSlide).attr("data-title");
+    var titleNode = $("article.page.active > section > h1");
+    var title = $(titleNode).attr("data-title");
+    
+    if(newTitle !== null && newTitle !== "" && typeof newTitle !== "undefined") {
+        $(titleNode).attr("data-title", $(titleNode).text());
+        $(titleNode).text(newTitle);
+    } else {
+        if(title !== null && title !== "" && typeof title !== "undefined") {
+            $(titleNode).text(title);
+        }
+    }
+    
+    var newRound = $('nav li[data-slide="'+newId+'"]', slider);
+    
+	$("nav li", slider).removeClass("current");
+    $(newRound).addClass("current");
+    
+    if(newRound.attr("data-slide") == total) {
+        $("nav", slider).addClass("black");
+    } else {
+        $("nav", slider).removeClass("black");
+    }
+    
+    $("article.slide.first", slider).animate({
+        marginTop: top
+    }, 1000, 'easeInOutCubic', function() {
+        
+    });
+}
+
+
+/**
+ *  Move to down
+ *  @param  pos the number of position to move
+ *          slider the slider of the slide
+ */
+function moveToDown(pos, slider) {
+    
+    var sliderH = $(slider).height();
+    
+    var total = $(".slide", slider).length;
+    
+    var currentTop = $("article.slide.first", slider).css("margin-top");
+    currentTop = currentTop.replace("px", "");
+    currentTop = parseInt(currentTop);
+    
+    var top = currentTop - sliderH * 1.015 * pos;
+    
+    var currentId = $("nav li.current", slider).attr("data-slide");
+    currentId = parseInt(currentId);
+    var newId = currentId + pos;
+    var newSlide = $(".slide#"+newId, slider);
+    
+    var newTitle = $(newSlide).attr("data-title");
+    var titleNode = $("article.page.active > section > h1");
+    var title = $(titleNode).attr("data-title");
+    
+    if(newTitle !== null && newTitle !== "" && typeof newTitle !== "undefined") {
+        $(titleNode).attr("data-title", $(titleNode).text());
+        $(titleNode).text(newTitle);
+    } else {
+        if(title !== null && title !== "" && typeof title !== "undefined") {
+            $(titleNode).text(title);
+        }
+    }
+    
+    var newRound = $('nav li[data-slide="'+newId+'"]', slider);
+    
+    $("nav li", slider).removeClass("current");
+    $(newRound).addClass("current");
+    
+    if(newRound.attr("data-slide") == total) {
+        $("nav", slider).addClass("black");
+    } else {
+        $("nav", slider).removeClass("black");
+    }
+    
+    $("article.slide.first", slider).animate({
+        marginTop: top
+    }, 1000, 'easeInOutCubic', function() {
+        
+    });
+}
+
+
+/**
+ *  Move to left
+ *  @param  pos the number of position to move
+ *          slider the slider of the slide
+ */
 function moveToLeft(pos, slider) {
     
     if(onMove) {
@@ -194,9 +320,13 @@ function moveToLeft(pos, slider) {
     });
 }
 
+
+/**
+ *  Move to right
+ *  @param  pos the number of position to move
+ *          slider the slider of the slide
+ */
 function moveToRight(pos, slider) {
-    
-    console.log(slider);
     
     if(onMove) {
         return false;
@@ -269,20 +399,33 @@ function initSlider(slider) {
         
         var id = $(slide).attr("id");
         var total = $(".slide", slider).length;
+        var mode = $("nav", slider).attr("data-mode");
         
-        windowW = $(window).width();
+        if(mode == "vertical") {
+            
+            var slideH = $(slide).height();
+            
+            var top = (id - 1) * slideH;
+            
+            var currentPos = $("nav li.current", slider).attr("data-slide");
+            var currentSlide = $(".slide#"+currentPos, slider);
+            
+        } else {
         
-        var left = (id - 1) * windowW;
+            windowW = $(window).width();
         
-        $(slide).css("left", left);
+            var left = (id - 1) * windowW;
+            
+            $(slide).css("left", left);
+            	
+        	if(id == 1) {
+            	$(slide).addClass("maxLeft");
+        	}
         	
-    	if(id == 1) {
-        	$(slide).addClass("maxLeft");
-    	}
-    	
-    	if(id == total) {
-        	$(slide).addClass("maxRight");
-    	}
+        	if(id == total) {
+            	$(slide).addClass("maxRight");
+        	}
+        }
         
     });
     
@@ -326,11 +469,9 @@ function setWindow() {
         $(this).css("top", top);
         $("span", this).css("padding-top", paddingTop);
     });
-    
-    if($("article.slide").length) {
-        //setSlide();
-    }
 }
+
+
 
 /*
  *	delay() function is added to jQuery

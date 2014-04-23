@@ -34,7 +34,7 @@
                     
                 {% endfor %}
                 
-                <a href="{{ path('gospelcenterCelebrations_list', {'center': center.ref}) }}">
+                <a class="resize16_9height" href="{{ path('gospelcenterCelebrations_list', {'center': center.ref}) }}">
                     <section class="img">
                         <img src="{{ asset(celebration.image.webPath) }}" alt="{{ celebration.image.alt }}" />
                     </section>
@@ -50,7 +50,7 @@
         
         {% if events|length %}
             {% for event in events %}
-                <a href="{{ path('gospelcenterEvents_event', {'center': center.ref, 'event': event.id}) }}"><img src="{{ asset(event.picture.webPath) }}" alt="{{ event.title }}" /></a>
+                <a class="resize16_9height" href="{{ path('gospelcenterEvents_event', {'center': center.ref, 'event': event.id}) }}"><img src="{{ asset(event.picture.webPath) }}" alt="{{ event.title }}" /></a>
             {% endfor %}
         {% endif %}
     </section>
