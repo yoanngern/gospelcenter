@@ -89,6 +89,25 @@ a {
 	background-color: $white;
 	z-index: 500;
 	
+	&.scrolled {
+    	border-bottom: 4px solid $red;
+    	padding-bottom: 5px;
+    	
+    	& > h1 {
+        	position: absolute;
+        	width: 100%;
+        	text-align: center;
+        	padding-top: 10px;
+        	font-family: $font-bold;
+        	font-size: 1.3em;
+        	display: block;
+    	}
+	}
+	
+	& > h1 {
+    	display: none;
+	}
+	
 	&.message {
     	background: $grayDark;
     	color: white;
@@ -334,6 +353,18 @@ a {
 		font-size: 2em;
 		margin-top: 40px;
 		margin-bottom: 18px;
+		
+		em {
+    		font-family: $font-black;
+    		font-size: 1.5em;
+    		color: $red;
+		}
+		
+		span {
+    		font-family: $font-light;
+    		color: $grayLight;
+    		font-size: 1.5em;
+		}
 	}
 	
 	& > article {
@@ -943,7 +974,7 @@ section.sliderDown {
 /***** Wall *****/
 /****************/
 section.wall {
-    max-width: 1260px;
+    max-width: 1320px;
     margin: 0 auto;
     
     

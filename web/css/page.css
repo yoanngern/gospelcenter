@@ -1,1 +1,258 @@
-html.js #page>h1{display:none}html.js #page>h2{display:none}html.js #page article.slide{display:none}html.js #page article.slide section{display:none}#container{margin:0px;padding:0px;height:100%}#container #page{padding:0px;min-height:650px;background:transparent;width:100%;overflow-x:hidden}#container #page div.arrow{position:absolute;z-index:100;cursor:pointer;width:30%;top:32%;height:54%}#container #page div.arrow#right{right:0px}#container #page div.arrow#right:hover{background:url("../images/right.svg");background-repeat:no-repeat;background-position:right center}#container #page div.arrow#left{left:0px}#container #page div.arrow#left:hover{background:url("../images/left.svg");background-repeat:no-repeat;background-position:left center}#container #page section.slider.vertical{position:absolute;top:15%;bottom:70px;width:100%;overflow:hidden}#container #page section.slider.vertical article.slide{position:relative;height:101%;top:initial;bottom:initial}#container #page section.slider.vertical article.slide.celebrations{width:70%;max-width:1300px;margin:0 auto}#container #page section.slider.vertical article.slide.celebrations>h1{color:#363331;font-family:"Radikal",sans-serif;text-align:center;margin-top:50px;font-size:1.5em;margin-bottom:70px}#container #page section.slider.vertical article.slide.celebrations a{display:inline-block;width:25%;margin:2%;text-decoration:none;color:#fdfdfc}#container #page section.slider.vertical article.slide.celebrations a.empty{border:1px solid #313131;color:#363331}#container #page section.slider.vertical article.slide.celebrations a h1{text-align:center;margin-top:25%}#container #page section.slider.vertical #slides{right:0;position:absolute;width:5%;top:46%;z-index:100}#container #page section.slider.vertical #slides.black li{border:1px solid #363331}#container #page section.slider.vertical #slides.black li:hover{background:#363331}#container #page section.slider.vertical #slides.black li.current{background:#363331}#container #page section.slider.vertical #slides ul{text-align:center}#container #page section.slider.vertical #slides ul li{border:1px solid #fdfdfc;border-radius:6px;margin:20% auto;display:block;width:10px;height:10px;cursor:pointer}#container #page section.slider.vertical #slides ul li:hover{background:#fdfdfc}#container #page section.slider.vertical #slides ul li.current{background:#fdfdfc}#container #page>h1{position:absolute;top:6%;width:100%;text-align:center;font-size:2em;margin:0px;font-weight:100;font-family:"Radikal-Light","Radikal",sans-serif}#container #page.about nav.sub_nav{position:absolute;bottom:75px}#container #page.about.leadership article{display:inline-block;margin:1% 1% 1% 0;height:15%;min-height:150px;width:auto}#container #page.about.leadership article img{display:block;margin:0 auto;height:100%}#container #page.about.leadership article span{display:block;font-family:"Radikal-Bold","Radikal",sans-serif;font-size:0.9em;padding-top:5px;width:100%;text-align:center}#container #page.complex{margin:0 auto;position:inherit;width:50%;min-width:auto}#container #page.complex h1{padding-top:40px;top:0px;position:relative}#container #page.complex h2{display:block;font-size:1.4em;padding-top:20px;white-space:pre-line}#container #page.full article.slide{position:absolute;bottom:70px;width:100%;color:#fdfdfc;top:15%;background-repeat:no-repeat;background-size:cover;background-position:center}#container #page.full article.slide:nth-child(odd) section{left:15%;float:left}#container #page.full article.slide:nth-child(even) section{right:15%;float:right}#container #page.full article.slide section{margin:0 auto;width:20%;position:relative;margin-top:10%}#container #page.full article.slide section h1{font-size:1.5em;padding-bottom:20px}#container #page.full article.slide section p{font-size:1.1em}#container #page.simple>h2{position:relative;top:18%;width:60%;text-align:center;margin:0 auto;font-size:1.5em;font-family:"Radikal-Light","Radikal",sans-serif;text-transform:uppercase;white-space:pre-wrap}#container #page.simple nav#slides{position:absolute;top:87%;width:100%}#container #page.simple nav#slides ul{text-align:center}#container #page.simple nav#slides ul li{border:1px solid #d91a15;margin-left:5px;margin-right:5px;border-radius:6px;display:inline-block;width:10px;height:10px;cursor:pointer}#container #page.simple nav#slides ul li:hover{background:#d91a15}#container #page.simple nav#slides ul li.current{background:#d91a15}#container #page.simple article.slide{position:absolute;top:32%;width:100%;color:#fdfdfc;height:54%;background-repeat:no-repeat;background-size:cover;background-position:center}#container #page.simple article.slide section{margin:0 auto;width:40%}#container #page.simple article.slide section h1{font-size:1.6em}#container #page.simple article.slide section p{font-size:1.2em;white-space:pre-line}#container #page.simple article.slide section p.link{text-align:center;margin-top:40px}#container #page.simple article.slide section p.link a{color:#fdfdfc;text-align:center;text-decoration:none;border:1px solid #fdfdfc;cursor:pointer;padding:6px 25px;-webkit-border-radius:3px;-moz-border-radius:3px;-ms-border-radius:3px;-o-border-radius:3px;border-radius:3px}#container #page.simple article.slide section p.link a:hover{background:#fdfdfc;color:#313131}#container #page.simple.about>h2{top:17%}#container #page.simple.about article.slide{top:33%;height:47%}#container #page.simple.about nav#slides{top:81%}
+html.js #page > h1 {
+  display: none; }
+html.js #page > h2 {
+  display: none; }
+html.js #page article.slide {
+  display: none; }
+  html.js #page article.slide section {
+    display: none; }
+
+#container {
+  margin: 0px;
+  padding: 0px;
+  height: 100%; }
+  #container #page {
+    padding: 0px;
+    min-height: 650px;
+    background: transparent;
+    width: 100%;
+    overflow-x: hidden;
+    /**********************/
+    /**** Slider arrow ****/
+    /**********************/
+    /***********************/
+    /*** Slider vertical ***/
+    /***********************/
+    /**********************/
+    /***** Page title *****/
+    /**********************/
+    /***********************/
+    /*** Template: about ***/
+    /***********************/
+    /*************************/
+    /*** Template: complex ***/
+    /*************************/
+    /**********************/
+    /*** Template: full ***/
+    /**********************/
+    /************************/
+    /*** Template: simple ***/
+    /************************/ }
+    #container #page div.arrow {
+      position: absolute;
+      z-index: 100;
+      cursor: pointer;
+      width: 30%;
+      top: 32%;
+      height: 54%; }
+      #container #page div.arrow#right {
+        right: 0px; }
+        #container #page div.arrow#right:hover {
+          background: url("../images/right.svg");
+          background-repeat: no-repeat;
+          background-position: right center; }
+      #container #page div.arrow#left {
+        left: 0px; }
+        #container #page div.arrow#left:hover {
+          background: url("../images/left.svg");
+          background-repeat: no-repeat;
+          background-position: left center; }
+    #container #page section.slider.vertical {
+      position: absolute;
+      top: 15%;
+      bottom: 70px;
+      width: 100%;
+      overflow: hidden; }
+      #container #page section.slider.vertical article.slide {
+        position: relative;
+        height: 101%;
+        top: initial;
+        bottom: initial; }
+        #container #page section.slider.vertical article.slide.celebrations {
+          width: 70%;
+          max-width: 1300px;
+          margin: 0 auto; }
+          #container #page section.slider.vertical article.slide.celebrations > h1 {
+            color: #363331;
+            font-family: "Radikal", sans-serif;
+            text-align: center;
+            margin-top: 50px;
+            font-size: 1.5em;
+            margin-bottom: 70px; }
+          #container #page section.slider.vertical article.slide.celebrations a {
+            display: inline-block;
+            width: 25%;
+            margin: 2%;
+            text-decoration: none;
+            color: #fdfdfc; }
+            #container #page section.slider.vertical article.slide.celebrations a.empty {
+              border: 1px solid #313131;
+              color: #363331; }
+            #container #page section.slider.vertical article.slide.celebrations a h1 {
+              text-align: center;
+              margin-top: 25%; }
+      #container #page section.slider.vertical #slides {
+        right: 0;
+        position: absolute;
+        width: 5%;
+        top: 46%;
+        z-index: 100; }
+        #container #page section.slider.vertical #slides.black li {
+          border: 1px solid #363331; }
+          #container #page section.slider.vertical #slides.black li:hover {
+            background: #363331; }
+          #container #page section.slider.vertical #slides.black li.current {
+            background: #363331; }
+        #container #page section.slider.vertical #slides ul {
+          text-align: center; }
+          #container #page section.slider.vertical #slides ul li {
+            border: 1px solid #fdfdfc;
+            border-radius: 6px;
+            margin: 20% auto;
+            display: block;
+            width: 10px;
+            height: 10px;
+            cursor: pointer; }
+            #container #page section.slider.vertical #slides ul li:hover {
+              background: #fdfdfc; }
+            #container #page section.slider.vertical #slides ul li.current {
+              background: #fdfdfc; }
+    #container #page > h1 {
+      position: absolute;
+      top: 6%;
+      width: 100%;
+      text-align: center;
+      font-size: 2em;
+      margin: 0px;
+      font-weight: 100;
+      font-family: "Radikal-Light", "Radikal", sans-serif; }
+    #container #page.about nav.sub_nav {
+      position: absolute;
+      bottom: 75px; }
+    #container #page.about.leadership article {
+      display: inline-block;
+      margin: 1% 1% 1% 0;
+      height: 15%;
+      min-height: 150px;
+      width: auto; }
+      #container #page.about.leadership article img {
+        display: block;
+        margin: 0 auto;
+        height: 100%; }
+      #container #page.about.leadership article span {
+        display: block;
+        font-family: "Radikal-Bold", "Radikal", sans-serif;
+        font-size: 0.9em;
+        padding-top: 5px;
+        width: 100%;
+        text-align: center; }
+    #container #page.complex {
+      margin: 0 auto;
+      position: inherit;
+      width: 50%;
+      min-width: auto; }
+      #container #page.complex h1 {
+        padding-top: 40px;
+        top: 0px;
+        position: relative; }
+      #container #page.complex h2 {
+        display: block;
+        font-size: 1.4em;
+        padding-top: 20px;
+        white-space: pre-line; }
+    #container #page.full article.slide {
+      position: absolute;
+      bottom: 70px;
+      width: 100%;
+      color: #fdfdfc;
+      top: 15%;
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-position: center; }
+      #container #page.full article.slide:nth-child(odd) section {
+        left: 15%;
+        float: left; }
+      #container #page.full article.slide:nth-child(even) section {
+        right: 15%;
+        float: right; }
+      #container #page.full article.slide section {
+        margin: 0 auto;
+        width: 20%;
+        position: relative;
+        margin-top: 10%; }
+        #container #page.full article.slide section h1 {
+          font-size: 1.5em;
+          padding-bottom: 20px; }
+        #container #page.full article.slide section p {
+          font-size: 1.1em; }
+    #container #page.simple > h2 {
+      position: relative;
+      top: 18%;
+      width: 60%;
+      text-align: center;
+      margin: 0 auto;
+      font-size: 1.5em;
+      font-family: "Radikal-Light", "Radikal", sans-serif;
+      text-transform: uppercase;
+      white-space: pre-wrap; }
+    #container #page.simple nav#slides {
+      position: absolute;
+      top: 87%;
+      width: 100%; }
+      #container #page.simple nav#slides ul {
+        text-align: center; }
+        #container #page.simple nav#slides ul li {
+          border: 1px solid #d91a15;
+          margin-left: 5px;
+          margin-right: 5px;
+          border-radius: 6px;
+          display: inline-block;
+          width: 10px;
+          height: 10px;
+          cursor: pointer; }
+          #container #page.simple nav#slides ul li:hover {
+            background: #d91a15; }
+          #container #page.simple nav#slides ul li.current {
+            background: #d91a15; }
+    #container #page.simple article.slide {
+      position: absolute;
+      top: 32%;
+      width: 100%;
+      color: #fdfdfc;
+      height: 54%;
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-position: center; }
+      #container #page.simple article.slide section {
+        margin: 0 auto;
+        width: 40%; }
+        #container #page.simple article.slide section h1 {
+          font-size: 1.6em; }
+        #container #page.simple article.slide section p {
+          font-size: 1.2em;
+          white-space: pre-line; }
+        #container #page.simple article.slide section p.link {
+          text-align: center;
+          margin-top: 40px; }
+          #container #page.simple article.slide section p.link a {
+            color: #fdfdfc;
+            text-align: center;
+            text-decoration: none;
+            border: 1px solid #fdfdfc;
+            cursor: pointer;
+            padding: 6px 25px;
+            -webkit-border-radius: 3px;
+            -moz-border-radius: 3px;
+            -ms-border-radius: 3px;
+            -o-border-radius: 3px;
+            border-radius: 3px; }
+            #container #page.simple article.slide section p.link a:hover {
+              background: #fdfdfc;
+              color: #313131; }
+    #container #page.simple.about > h2 {
+      top: 17%; }
+    #container #page.simple.about article.slide {
+      top: 33%;
+      height: 47%; }
+    #container #page.simple.about nav#slides {
+      top: 81%; }

@@ -8,23 +8,19 @@
     {{ parent() }}
 {% endblock %}
 
-{% block body %}
-    
-    <header class="tv">
-        <div>
-            <nav class="left">
-                
-            </nav>
-            
-            <h1>Our speakers</h1>
-            
-            <nav class="right">
-            
-            </nav>
-        </div>
-    </header>
+{% block headerTitle %}Our speakers{% endblock %}
 
+{% block tvHeader %}
+
+    <nav class="left"></nav>
     
+    <h1>Our speakers</h1>
+    
+    <nav class="right"></nav>
+    
+{% endblock %}
+
+{% block tv_body %}    
     <section class="wall">
         {% spaceless %}
             {% for speaker in speakers %}

@@ -8,23 +8,19 @@
     {{ parent() }}
 {% endblock %}
 
-{% block body %}
-    
-    <header class="tv">
-        <div>
-            <nav class="left">
-                
-            </nav>
-            
-            <h1>Our cities</h1>
-            
-            <nav class="right">
-            
-            </nav>
-        </div>
-    </header>
+{% block headerTitle %}Our cities{% endblock %}
 
+{% block tvHeader %}
+
+    <nav class="left"></nav>
     
+    <h1>Our cities</h1>
+    
+    <nav class="right"></nav>
+    
+{% endblock %}
+
+{% block tv_body %}
     <section class="wall">
         {% spaceless %}
             {% for center in centers %}

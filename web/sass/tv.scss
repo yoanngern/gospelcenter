@@ -1,3 +1,5 @@
+@import 'functions';
+
 section.video,
 section.audio {
     width: 960px;
@@ -10,17 +12,29 @@ section.audio {
         margin-top: 20px;
     }
     
-    h2 {
-        font-size: 1.5em;
-        width: 100%;
-        height: 50px;
-        margin-left: 1%;
+    a {
+        text-decoration: none;
+        color: $black;
+        display: block;
+        margin-bottom: 20px;
+        
+        h2, p {
+            margin-left: 1%;
+            position: relative;
+            display: block;
+            width: auto;
+        }
+        
+        h2 {
+            font-size: 1.5em;
+        }
     }
+    
+    
     
     time {
         float: right;
         color: $grayDark;
-        margin-top: -45px;
         font-size: 1.1em;
         margin-right: 1%;
     }
@@ -28,85 +42,146 @@ section.audio {
 }
 
 
-header.tv {
-    display: block;
-    width: 100%;
-    position: fixed;
-    background: $white;
-    top: 0;
+
+#page.tv {
     
-    div {
-        width: 100%;
-        max-width: 1200px;
-        margin: 0 auto;
-        margin-top: 40px;
-        margin-bottom: 10px;
-        height: 50px;
-    }
+    #container {
     
-    nav {
-        display: inline-block;
-        position: absolute;
-        z-index: 100;
-        
-        &.left {
-            float: left;
+        &.selections {
+            & > a.title {
+                width: 100%;
+        		text-align: center;
+                margin: 0;
+        		font-weight: 100;
+        		font-family: $font-light;
+        		font-size: 2em;
+        		text-decoration: none;
+        		display: block;
+        		position: absolute;
+        		margin-top: 40px;
+        		        		
+        		em {
+            		font-family: $font-black;
+            		font-size: 1.5em;
+            		color: $redTop;
+        		}
+        		
+        		span {
+            		font-family: $font-light;
+            		color: lighten($grayDark, 20%);
+            		font-size: 1.5em;
+        		}
+            }
         }
         
-        &.right {
-            float: right;
-        }
-        
-        #back {
-            width: 100%;
-            margin-top: 5px;
-            padding-left: 30px;
-            padding-top: 6px;
+        header.tv {
             display: block;
-            background-image: url('../images/back.svg');
-            background-size: contain;
-            background-repeat: no-repeat;
-            background-position: left top;
-            font-family: $font-bold;
-            font-size: 1.1em;
-            color: $black;
-            text-decoration: none;
+            width: 100%;
+            background: $white;
             
-            @media only screen and (min-width: $L) {
-                & {
-                    padding-left: 32px;
-                }
+            & > a {
+                width: 90%;
+                min-width: 1024px;
+                max-width: 1280px;
+        		text-align: left;
+                margin: 40px auto 0px;
+        		font-weight: 100;
+        		font-family: $font-light;
+        		font-size: 2em;
+        		text-decoration: none;
+        		display: block;
+        		border-bottom: 4px solid $red;
+        		        		
+        		em {
+            		font-family: $font-black;
+            		font-size: 1.5em;
+            		color: $redTop;
+        		}
+        		
+        		span {
+            		font-family: $font-light;
+            		color: lighten($grayDark, 20%);
+            		font-size: 1.5em;
+        		}
+        	}
+            
+            div {
+                width: 100%;
+                max-width: 1280px;
+                margin: 0 auto;
+                margin-top: 10px;
+                margin-bottom: 10px;
+                height: 50px;
             }
             
-            @media only screen and (min-width: $XL) {
-                & {
-                    padding-left: 34px;
+            nav {
+                display: inline-block;
+                position: absolute;
+                z-index: 100;
+                
+                &.left {
+                    float: left;
                 }
+                
+                &.right {
+                    float: right;
+                }
+                
+                #back {
+                    width: 100%;
+                    margin-top: 5px;
+                    padding-left: 30px;
+                    padding-top: 6px;
+                    display: block;
+                    background-image: url('../images/back.svg');
+                    background-size: contain;
+                    background-repeat: no-repeat;
+                    background-position: left top;
+                    font-family: $font-bold;
+                    font-size: 1.1em;
+                    color: $black;
+                    text-decoration: none;
+                    
+                    @media only screen and (min-width: $L) {
+                        & {
+                            padding-left: 32px;
+                        }
+                    }
+                    
+                    @media only screen and (min-width: $XL) {
+                        & {
+                            padding-left: 34px;
+                        }
+                    }
+                    
+                    @media only screen and (min-width: $XXL) {
+                        & {
+                            padding-left: 36px;
+                        }
+                    }
+                }
+            
             }
             
-            @media only screen and (min-width: $XXL) {
-                & {
-                    padding-left: 36px;
-                }
+            h1 {
+                width: 100%;
+                z-index: 50;
+                left: 0;
+                position: absolute;
+                text-align: center;
+                font-family: $font-light;
+                font-size: 2em;
+                display: inline-block;
             }
-        }
-    
-    }
-    
-    h1 {
-        width: 100%;
-        z-index: 50;
-        left: 0;
-        position: absolute;
-        text-align: center;
-        font-family: $font-light;
-        font-size: 2em;
-        display: inline-block;
+        }    
     }
 }
+
+
+
 
 section.wall,
 section.video,
 section.audio {
-    margin-top: 110px !important;
+    //margin-top: 180px !important;
 }

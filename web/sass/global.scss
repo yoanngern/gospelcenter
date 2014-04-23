@@ -13,6 +13,13 @@
 html.js {
     #page {
         background: transparent !important;
+        
+        article.page#home {
+            article.arrow {
+                position: absolute;
+                bottom: -100px;
+            }
+        }
     }
     
     #container {
@@ -23,6 +30,8 @@ html.js {
             opacity: 0;
         }
     }
+    
+    
 }
 
 
@@ -151,8 +160,8 @@ html.js {
            a {
                text-align: center;
                margin: 0 auto;
-               width: 50px;
-               height: 50px;
+               width: 80px;
+               height: 80px;
                display: block;
                cursor: pointer;
                background-image: url('../images/goDown.svg');

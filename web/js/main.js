@@ -92,21 +92,27 @@ $(document).ready( function() {
 	
 });
 
-function move(slide) {
+$(window).scroll(function() {
     
-    if(onMove) {
-        return false;
+    if($("#page").hasClass("tv") && !$("#page").hasClass("selections")) {
+        if($(window).scrollTop() > $("header.tv").height()) {
+            $("#page > header").addClass("scrolled");
+            
+        } else {
+            $("#page > header").removeClass("scrolled");
+            
+        }
     }
-    onMove = true;
     
-    delay(function(){
-		onMove = false;
-	}, 350);
+});
+
+function move(slide) {
     
     var nav = $(slide).parent().parent();
     var current = $("li.current", nav).data("slide");
+    
     var mode = $(nav).attr("data-mode");
-
+    
     var id = $(slide).data("slide");
     
     var sliderId = $(nav).parent().attr("id");
@@ -161,7 +167,8 @@ function setMax(slider) {
  *  @param  pos the number of position to move
  *          slider the slider of the slide
  */
-function moveToTop(pos, slider) {
+function moveToTop(pos, slider, speed) {
+    speed = typeof speed !== 'undefined' ? speed : false;
     
     var sliderH = $(slider).height();
     
@@ -202,11 +209,13 @@ function moveToTop(pos, slider) {
         $("nav", slider).removeClass("black");
     }
     
-    $("article.slide.first", slider).animate({
-        marginTop: top
-    }, 1000, 'easeInOutCubic', function() {
-        
-    });
+    if(speed) {
+        $("article.slide.first", slider).css("margin-top", top);
+    } else {
+        $("article.slide.first", slider).animate({
+            marginTop: top
+        }, 1000, 'easeInOutCubic');
+    }
 }
 
 
@@ -214,8 +223,12 @@ function moveToTop(pos, slider) {
  *  Move to down
  *  @param  pos the number of position to move
  *          slider the slider of the slide
+ *          speed if true then no animation
  */
-function moveToDown(pos, slider) {
+function moveToDown(pos, slider, speed) {
+    speed = typeof speed !== 'undefined' ? speed : false;
+
+    console.log("moveToDown("+pos+", "+slider+")");
     
     var sliderH = $(slider).height();
     
@@ -256,11 +269,15 @@ function moveToDown(pos, slider) {
         $("nav", slider).removeClass("black");
     }
     
-    $("article.slide.first", slider).animate({
-        marginTop: top
-    }, 1000, 'easeInOutCubic', function() {
-        
-    });
+    if(speed) {
+        $("article.slide.first", slider).css("margin-top", top);
+    } else {
+        $("article.slide.first", slider).animate({
+            marginTop: top
+        }, 1000, 'easeInOutCubic');
+    }
+    
+    
 }
 
 
@@ -297,6 +314,8 @@ function moveToLeft(pos, slider) {
     windowW = $(window).width();
     var left = pos * windowW;
     left = "-="+left;
+    
+    
     
     $(".slide", slider).each( function() {
         

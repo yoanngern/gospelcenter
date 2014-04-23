@@ -8,23 +8,19 @@
     {{ parent() }}
 {% endblock %}
 
-{% block body %}
-    
-    <header class="tv">
-        <div>
-            <nav class="left">
-                
-            </nav>
-            
-            <h1>Audios</h1>
-            
-            <nav class="right">
-            
-            </nav>
-        </div>
-    </header>
+{% block headerTitle %}Audios{% endblock %}
 
+{% block tvHeader %}
+
+    <nav class="left"></nav>
     
+    <h1>Audios</h1>
+    
+    <nav class="right"></nav>
+    
+{% endblock %}
+
+{% block tv_body %}
     <section class="wall">
         {% for celebration in celebrations %}<a href="{{ path('gospelcenterMedia_audio', {'audio': celebration.audio.id}) }}">
                 <img src="{{ asset(celebration.image.webPath) }}" alt="{{ celebration.image.alt }}" />

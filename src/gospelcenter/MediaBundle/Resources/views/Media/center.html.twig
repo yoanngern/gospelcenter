@@ -8,22 +8,23 @@
     {{ parent() }}
 {% endblock %}
 
-{% block body %}
+{% block headerTitle %}Gospel Center {{ center.name }}{% endblock %}
 
-    <header class="tv">
-        <div>
-            <nav class="left">
-                {% if previousUrl %}<a id="back" href="{{ previousUrl }}">{{ previousLabel }}</a>{% endif %}
-            </nav>
-            
-            <h1>Gospel Center {{ center.name }}</h1>
-            
-            <nav class="right">
-            
-            </nav>
-        </div>
-    </header>
+{% block tvHeader %}
+
+    <nav class="left">
+        {% if previousUrl %}<a id="back" href="{{ previousUrl }}">{{ previousLabel }}</a>{% endif %}
+    </nav>
     
+    <h1>Gospel Center {{ center.name }}</h1>
+    
+    <nav class="right">
+    
+    </nav>
+    
+{% endblock %}
+
+{% block tv_body %}    
     <section class="wall">
         {% spaceless %}
             {% for celebration in celebrations %}

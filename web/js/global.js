@@ -38,6 +38,28 @@ $(document).ready( function() {
         clearInterval(timer);
     }, 100);
     
+    timer2 = setInterval(function() {
+        
+        $("#home .arrow").animate({
+            bottom: '3%'
+        }, 1000, 'easeInOutElastic');
+        
+        clearInterval(timer2);
+    }, 500);
+    
+    
+    $(document).on('mouseenter', '#home .arrow', function() {
+        $(this).animate({
+            bottom: '2%'
+        }, 500, 'easeOutElastic');
+    });
+    
+    $(document).on('mouseout', '#home .arrow', function() {
+        $(this).animate({
+            bottom: '3%'
+        }, 500, 'easeOutElastic');
+    });
+    
     
     /**
      *  When the window is resize
@@ -132,12 +154,31 @@ function scrollToPage(page) {
     console.log("scrollToPage()");
     
     var element = $("#"+page);
+
+    if(page == "celebrations") {
+        var currentPage = $("article.page.active");
+        var currentClass = $(currentPage).attr("id");
+        
+        var currentPos = $.inArray(currentClass, navigation);
+        var nextPos = $.inArray(page, navigation);
+        
+        var posSlider = $("article.page#celebrations nav li.current").attr("data-slide");
+        var totalSlider = $("article.page#celebrations .slide").length;
+        
+        if(currentPos > nextPos) {
+            moveToDown((totalSlider - posSlider), $("article.page#celebrations .slider"), true);
+            
+        } else {
+            moveToTop((posSlider-1), $("article.page#celebrations .slider"), true);
+        }   
+    }
     
     if(page == "home") {
         $("footer").fadeOut(300);
-        $("article.page#home .arrow").fadeIn();
     } else {
-        $("article.page#home .arrow").fadeOut();
+        $("article.page#home .arrow").fadeOut(300, function() {
+            $("#home .arrow").css("bottom", '-100px');
+        });
         $("footer li a").removeClass("current");
         $("footer li a."+ page).addClass("current");
     }
@@ -158,6 +199,11 @@ function scrollToPage(page) {
     	    $("footer").fadeIn(300);
     	    
     	    title = title +" - "+ $("footer li a.current").text();
+	    } else {
+    	    $("#home .arrow").show();
+    	    $("#home .arrow").animate({
+                bottom: '3%'
+            }, 1000, 'easeInOutElastic');
 	    }
 	    
 	    $("article.page").removeClass("active");

@@ -4,9 +4,23 @@
     {{ parent() }}
 {% endblock %}
 
+{% block classPage %}tv{% endblock %}
+
 {% block javascripts %}
     {{ parent() }}
     <script type="text/javascript" src="{{ asset('js/tv.min.js') }}"></script>
+{% endblock %}
+
+{% block body %}
+    <header class="tv">
+        <a href="{{ path('gospelcenterMedia') }}"><span>Gospel Center</span> <em>TV</em></a>
+        <div>
+            {% block tvHeader %}{% endblock %}
+        </div>
+    </header>
+    
+    {% block tv_body %}{% endblock %}
+
 {% endblock %}
 
 
