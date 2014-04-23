@@ -17,7 +17,7 @@
 {% endblock %}
 
 {% block adminBody %}
-    <h1>Admin - Add a person</h1>
+    <h1>Add a contact</h1>
     
     <form class="person" action="{{ path('gospelcenterAdmin_persons_add', {'center': center.ref}) }}" method="post" {{ form_enctype(form) }}>
         

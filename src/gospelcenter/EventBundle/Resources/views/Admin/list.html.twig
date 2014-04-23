@@ -12,11 +12,18 @@
 {% endblock %}
 
 {% block adminBody %}
-    <h1>Admin - Events</h1>
+    <h1>Events</h1>
     
     <section class="tools">
         <a href="{{ path('gospelcenterAdmin_events_add', {'center': center.ref}) }}">Add an event</a>
     </section>
+    
+    <nav class="sorting_nav">
+        <ul>
+            <li><a href="{{ path('gospelcenterAdmin_events', {'center': center.ref}) }}" {% if tab == 'nextEvents' %}class="current"{% endif %}>Upcoming events</a></li>
+            <li><a href="{{ path('gospelcenterAdmin_events_past', {'center': center.ref}) }}" {% if tab == 'pastEvents' %}class="current"{% endif %}>Past events</a></li>
+        </ul>
+    </nav>
     
     {% for event in events %}
         <article class="events">
@@ -38,6 +45,10 @@
             </section>
         </article>
     {% else %}
-        <span class="empty">There are no events to come.</span>
+        {% if tab == 'nextEvents' %}
+            <span class="empty">There are no events to come.</span>
+        {% else %}
+            <span class="empty">There are no past events.</span>
+        {% endif %}
     {% endfor %}
 {% endblock %}

@@ -17,6 +17,8 @@
     
 {% endblock %}
 
+{% block headerTitle %}{{ center.name }}{% endblock %}
+
 {% block footer %}
     <li><a href="{{ path('gospelcenterAdmin_celebrations', {'center': center.ref}) }}" {% if page == 'celebrations' %}class="current"{% endif %}>Celebrations</a></li>
     <li><a href="{{ path('gospelcenterAdmin_persons', {'center': center.ref}) }}" {% if page == 'people' %}class="current"{% endif %}>Contacts</a></li>

@@ -16,7 +16,7 @@
 {% endblock %}
 
 {% block adminBody %}
-    <h1>Admin - Edit a center</h1>
+    <h1>Edit a center</h1>
     
     <form action="{{ path('gospelcenterAdminGlobal_centers_edit', {'center': center.ref}) }}" method="post" {{ form_enctype(form) }}>
         

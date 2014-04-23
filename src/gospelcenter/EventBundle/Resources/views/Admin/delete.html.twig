@@ -1,0 +1,44 @@
+{% extends "::admin.html.twig" %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script type="text/javascript" src="{{ asset('js/form.min.js') }}"></script>
+{% endblock %}
+
+{% block stylesheets %}
+	{{ parent() }}
+	<link rel="stylesheet" href="{{ asset('css/admin.css') }}" type="text/css" />
+	<link rel="stylesheet" href="{{ asset('css/form.css') }}" type="text/css" />
+{% endblock %}
+
+{% block title %}
+    {{ parent() }} - Delete an event
+{% endblock %}
+
+{% block adminBody %}
+    <h1>Delete an event</h1>
+    
+    <form class="delete" action="{{ path('gospelcenterAdmin_events_delete', {'center': center.ref, 'event': event.id}) }}" method="post" {{ form_enctype(form) }}>
+        
+        <nav class="tools">
+    		
+    	</nav>
+    	
+    	<p>Are you sure you want to delete the event:</p>
+    	<section class="details">
+            <h1>{{ event.title }}</h1>
+            <p>from {{ event.startingDate|date("d F Y") }}</p>
+            <p>to {{ event.startingDate|date("d F Y") }}</p>
+            <p>{{ event.location.name }}</p>
+        </section>
+        
+        <input type="submit" class="buttonRounded" value="Yes" />
+        
+        <a class="buttonRounded" href="{{ path('gospelcenterAdmin_events', {'center': center.ref}) }}">No</a>
+        
+        {{ form_rest(form) }}
+        
+    </form>
+    
+    
+{% endblock %}

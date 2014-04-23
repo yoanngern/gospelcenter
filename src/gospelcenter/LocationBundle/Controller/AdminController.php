@@ -145,10 +145,32 @@ class AdminController extends Controller {
      *   Delete a location
      */
     public function deleteAction(Center $center, Location $location)
-    {      
-        return $this->redirect( $this->generateUrl('gospelcenterAdmin_locations', array(
-            'center' => $center->getRef()
-        )));
+    {   
+        $form = $this->createFormBuilder()->getForm();
+        
+        $request = $this->getRequest();
+        if ($request->getMethod() == 'POST') {
+            $form->bind($request);
+            
+            if ($form->isValid()) {
+                $em = $this->getDoctrine()->getManager();
+                $em->remove($location);
+                $em->flush();
+                
+                $this->get('session')->getFlashBag()->add('info', 'Location deleted.');
+        
+                return $this->redirect( $this->generateUrl('gospelcenterAdmin_locations', array(
+                    'center' => $center->getRef()
+                )));
+            }
+        }
+        
+        return $this->render('gospelcenterLocationBundle:Admin:delete.html.twig', array(
+              'center' => $center,
+              'location' => $location,
+              'form'    => $form->createView(),
+              'page' => 'locations'
+        ));
     }
     
     

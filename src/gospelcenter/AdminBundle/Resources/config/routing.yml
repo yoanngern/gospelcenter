@@ -18,6 +18,13 @@ gospelcenterAdmin_celebrations_edit:
     defaults:   { _controller: gospelcenterCelebrationBundle:AdminCelebration:edit }
     requirements:
         celebration: \d+
+        
+# Delete a celebration
+gospelcenterAdmin_celebrations_delete:
+    path:       /celebrations/delete/{celebration}
+    defaults:   { _controller: gospelcenterCelebrationBundle:AdminCelebration:delete }
+    requirements:
+        celebration: \d+
 
 # Speakers
 gospelcenterAdmin_speakers:
@@ -124,6 +131,11 @@ gospelcenterAdmin_visitors_edit:
 gospelcenterAdmin_events:
     path:       /events
     defaults:   { _controller: gospelcenterEventBundle:Admin:list }
+
+# Events
+gospelcenterAdmin_events_past:
+    path:       /events/past
+    defaults:   { _controller: gospelcenterEventBundle:Admin:past }
 
 # Add an event
 gospelcenterAdmin_events_add:

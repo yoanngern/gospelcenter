@@ -254,7 +254,7 @@ class Celebration
         
         if($image != null) {
             $title = "Celebration of ";
-            $title .= date_format($this->date, 'd m Y');
+            $title .= date_format($this->date, 'j F Y');
             $title .= " with ";
             
             $speakers = $this->getSpeakers();

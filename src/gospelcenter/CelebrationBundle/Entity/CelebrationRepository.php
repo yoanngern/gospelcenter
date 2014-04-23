@@ -34,7 +34,7 @@ class CelebrationRepository extends EntityRepository
         $qb->where('c.ref = :center')
             ->setParameter('center', $center->getRef());
         
-        $qb->addOrderBy('cel.startingDate', 'ASC');
+        $qb->addOrderBy('cel.startingDate', 'DESC');
         
         return $qb->getQuery()->getResult();
     }

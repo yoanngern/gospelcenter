@@ -49,6 +49,14 @@ table {
         tr {
             height: 40px;
             
+            &.old td a {
+                color: $grayLight;
+            }
+            
+            &.today td a {
+                color: $red;
+            }
+            
             &:nth-child(even) {
                 background-color: lighten( $grayLight, 40% );
             }

@@ -11,7 +11,7 @@
 
 {% block adminBody %}
 
-    <h1>Admin - Celebrations</h1>
+    <h1>Celebrations</h1>
     
     <section class="tools">
         <a href="{{ path('gospelcenterAdmin_celebrations_add', {'center': center.ref}) }}">Add a celebration</a>
@@ -41,8 +41,8 @@
                     {% set speakers = speakers ~ speaker.person.firstname ~ ' ' ~ speaker.person.lastname %}
                     
                 {% endfor %}
-            
-                <tr>
+                
+                <tr {% if date(celebration.startingDate) < date("now") %}class="old"{% endif %}{% if date(celebration.startingDate) < date("+6days") %}class="today"{% endif %}>
                     <td><a href="{{ path('gospelcenterAdmin_celebrations_edit', {'celebration': celebration.id, 'center': center.ref}) }}">{{ celebration.startingDate|date('d F Y') }}</a></td>
                     <td><a href="{{ path('gospelcenterAdmin_celebrations_edit', {'celebration': celebration.id, 'center': center.ref}) }}">{{ celebration.startingDate|date('H:i') }} - {{ celebration.endingDate|date('H:i') }}</a></td>
                     <td><a href="{{ path('gospelcenterAdmin_celebrations_edit', {'celebration': celebration.id, 'center': center.ref}) }}">{{ speakers }}</a></td>

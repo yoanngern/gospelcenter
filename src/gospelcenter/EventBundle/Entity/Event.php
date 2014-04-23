@@ -117,7 +117,6 @@ class Event
      * @ORM\JoinColumn(nullable=false)
      */
     private $picture;
-     
     
     /**
      * Constructor
@@ -173,12 +172,27 @@ class Event
     }
     
     /**
+     * Add centers
+     *
+     * @param \gospelcenter\CenterBundle\Entity\Center $centers
+     * @return Event
+     */
+    public function addCenter(\gospelcenter\CenterBundle\Entity\Center $centers)
+    {
+        $this->centers[] = $centers;
+        $centers->addEvent($this);
+    
+        return $this;
+    }
+    
+    /**
      * @ORM\PrePersist()
      * @ORM\PreUpdate()
      */
     public function preSave()
     {
         $this->modifiedDate = new \Datetime();
+        
     }
     
     
@@ -384,19 +398,6 @@ class Event
     }
 
     /**
-     * Add centers
-     *
-     * @param \gospelcenter\CenterBundle\Entity\Center $centers
-     * @return Event
-     */
-    public function addCenter(\gospelcenter\CenterBundle\Entity\Center $centers)
-    {
-        $this->centers[] = $centers;
-    
-        return $this;
-    }
-
-    /**
      * Remove centers
      *
      * @param \gospelcenter\CenterBundle\Entity\Center $centers
@@ -481,4 +482,5 @@ class Event
     {
         return $this->picture;
     }
+
 }

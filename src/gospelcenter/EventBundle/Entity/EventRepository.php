@@ -69,7 +69,7 @@ class EventRepository extends EntityRepository
         
     }
     
-    public function findAllByCenterWithHidden(\gospelcenter\CenterBundle\Entity\Center $center)
+    public function findNextByCenterWithHidden(\gospelcenter\CenterBundle\Entity\Center $center)
     {
         $qb = $this->createQueryBuilder('e');
         
@@ -87,6 +87,37 @@ class EventRepository extends EntityRepository
             
         $qb->where('c.ref = :center')
             ->setParameter('center', $center->getRef());
+            
+        $qb->andWhere('e.endingDate >= :now')
+            ->setParameter('now', new \Datetime());
+            
+        $qb->orderBy('e.startingDate', 'DESC');
+            
+        return $qb->getQuery()->getResult();
+        
+    }
+    
+    public function findPastByCenterWithHidden(\gospelcenter\CenterBundle\Entity\Center $center)
+    {
+        $qb = $this->createQueryBuilder('e');
+        
+        $qb->join('e.centers', 'c')
+            ->addSelect('c');
+        
+        $qb->leftJoin('e.location', 'l')
+            ->addSelect('l');
+        
+        $qb->join('e.picture', 'pic')
+            ->addSelect('pic');
+            
+        $qb->join('e.cover', 'cov')
+            ->addSelect('cov');
+            
+        $qb->where('c.ref = :center')
+            ->setParameter('center', $center->getRef());
+            
+        $qb->andWhere('e.startingDate < :now')
+            ->setParameter('now', new \Datetime());
             
         $qb->orderBy('e.startingDate', 'DESC');
             

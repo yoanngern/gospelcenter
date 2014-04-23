@@ -16,7 +16,7 @@
 {% endblock %}
 
 {% block adminBody %}
-    <h1>Admin - Edit a location</h1>
+    <h1>Edit a location</h1>
     
     <form class="location" action="{{ path('gospelcenterAdmin_locations_edit', {'center': center.ref, 'location': location.id}) }}" method="post" {{ form_enctype(form) }}>
         <nav class="tools">

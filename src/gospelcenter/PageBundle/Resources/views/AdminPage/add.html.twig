@@ -16,7 +16,7 @@
 {% endblock %}
 
 {% block adminBody %}
-    <h1>Admin - Add a page</h1>
+    <h1>Add a page</h1>
     
     <form class="page" action="{{ path('gospelcenterAdmin_pages_add', {'center': center.ref}) }}" method="post" {{ form_enctype(form) }}>
         <nav class="tools">

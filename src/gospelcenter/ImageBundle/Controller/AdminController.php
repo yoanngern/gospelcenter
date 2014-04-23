@@ -50,7 +50,7 @@ class AdminController extends Controller {
     {
         $em = $this->getDoctrine()->getManager();
         
-        $images = $em->getRepository('gospelcenterImageBundle:Image')->findAll();
+        $images = $em->getRepository('gospelcenterImageBundle:Image')->findAllOrder();
         
         $mobileDetector = $this->get('mobile_detect.mobile_detector');
         if($mobileDetector->isMobile() && !$mobileDetector->isTablet()) {

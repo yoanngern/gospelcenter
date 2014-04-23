@@ -187,12 +187,34 @@ class AdminCelebrationController extends Controller {
     
     
     /*
-     *   Delete a celebration
+     *   Delete a event
      */
     public function deleteAction(Center $center, Celebration $celebration)
-    {      
-        return $this->redirect( $this->generateUrl('gospelcenterAdmin_celebrations', array(
-            'center' => $center->getRef()
-        )));
+    {   
+        $form = $this->createFormBuilder()->getForm();
+        
+        $request = $this->getRequest();
+        if ($request->getMethod() == 'POST') {
+            $form->bind($request);
+            
+            if ($form->isValid()) {
+                $em = $this->getDoctrine()->getManager();
+                $em->remove($celebration);
+                $em->flush();
+                
+                $this->get('session')->getFlashBag()->add('info', 'Celebration deleted.');
+        
+                return $this->redirect( $this->generateUrl('gospelcenterAdmin_celebrations', array(
+                    'center' => $center->getRef()
+                )));
+            }
+        }
+        
+        return $this->render('gospelcenterCelebrationBundle:AdminCelebration:delete.html.twig', array(
+              'center' => $center,
+              'celebration' => $celebration,
+              'form'    => $form->createView(),
+              'page' => 'celebrations'
+        ));
     }
 }

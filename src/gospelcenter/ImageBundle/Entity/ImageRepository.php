@@ -52,4 +52,13 @@ class ImageRepository extends EntityRepository
         
         return $qb->getQuery()->getResult();
     }
+    
+    public function findAllOrder()
+    {
+        $qb = $this->createQueryBuilder('i');
+            
+        $qb->addOrderBy('i.modifiedDate', 'DESC');
+        
+        return $qb->getQuery()->getResult();
+    }
 }

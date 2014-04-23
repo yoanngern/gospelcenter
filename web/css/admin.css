@@ -24,6 +24,10 @@ table {
         padding-left: 5px; }
   table tbody tr {
     height: 40px; }
+    table tbody tr.old td a {
+      color: #878787; }
+    table tbody tr.today td a {
+      color: #d91a15; }
     table tbody tr:nth-child(even) {
       background-color: #ededed; }
     table tbody tr td {
@@ -35,6 +39,15 @@ table {
         display: block;
         height: 20px;
         padding: 10px 0; }
+
+#page.admin > header > h1 {
+  position: absolute;
+  margin-left: 70px;
+  padding-top: 10px;
+  font-family: "Radikal-Bold", "Radikal", sans-serif;
+  font-size: 1.3em;
+  display: block;
+  margin-top: 0; }
 
 #container section.tools {
   display: block;
@@ -254,6 +267,8 @@ table {
           margin: 0; }
     #container form.celebration fieldset.page fieldset.full {
       width: 100%; }
+      #container form.celebration fieldset.page fieldset.full input, #container form.celebration fieldset.page fieldset.full textarea {
+        width: 300px; }
     #container form.celebration fieldset.page article h1 {
       font-family: "Radikal-Bold", "Radikal", sans-serif; }
   #container form.celebration legend {
@@ -504,3 +519,20 @@ table {
     margin-top: 30px;
     overflow: auto;
     padding-bottom: 70px; }
+  #container form.delete {
+    max-width: 800px; }
+    #container form.delete > p {
+      font-size: 1.4em; }
+    #container form.delete > section.details {
+      margin: 10px; }
+      #container form.delete > section.details h1 {
+        margin: 0;
+        font-family: "Radikal-Bold", "Radikal", sans-serif; }
+    #container form.delete input[type="submit"] {
+      margin: 0;
+      width: initial; }
+    #container form.delete input[type="submit"],
+    #container form.delete a {
+      display: inline-block;
+      margin: 5px;
+      font-size: 1.2em; }

@@ -22,7 +22,7 @@ class AdminGlobalController extends Controller {
     {
         $em = $this->getDoctrine()->getManager();
         
-        $images = $em->getRepository('gospelcenterImageBundle:Image')->findAll();
+        $images = $em->getRepository('gospelcenterImageBundle:Image')->findAllOrder();
         
         return $this->render('gospelcenterImageBundle:AdminGlobal:list.html.twig', array(
             'images' => $images,

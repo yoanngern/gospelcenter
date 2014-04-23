@@ -22,14 +22,14 @@ use gospelcenter\CenterBundle\Entity\Center;
 class AdminController extends Controller {
     
     /*
-     * List of all events
+     * List of next events
      * @param $center = Center
      */
     public function listAction(Center $center)
     {
         $em = $this->getDoctrine()->getManager();
         
-        $events = $em->getRepository('gospelcenterEventBundle:Event')->findAllByCenterWithHidden($center);
+        $events = $em->getRepository('gospelcenterEventBundle:Event')->findNextByCenterWithHidden($center);
         
         $mobileDetector = $this->get('mobile_detect.mobile_detector');
         if($mobileDetector->isMobile()) {
@@ -43,7 +43,36 @@ class AdminController extends Controller {
         return $this->render('gospelcenterEventBundle:Admin:list.html.twig', array(
             'center' => $center,
             'events' => $events,
-            'page' => 'events'
+            'page' => 'events',
+            'tab' => 'nextEvents'
+        ));
+    }
+    
+    
+    /*
+     * List of past events
+     * @param $center = Center
+     */
+    public function pastAction(Center $center)
+    {
+        $em = $this->getDoctrine()->getManager();
+        
+        $events = $em->getRepository('gospelcenterEventBundle:Event')->findPastByCenterWithHidden($center);
+        
+        $mobileDetector = $this->get('mobile_detect.mobile_detector');
+        if($mobileDetector->isMobile()) {
+            return $this->render('gospelcenterEventBundle:AdminMobile:list.html.twig', array(
+                'center' => $center,
+                'events' => $events,
+                'page' => 'events'
+            ));
+        }
+        
+        return $this->render('gospelcenterEventBundle:Admin:list.html.twig', array(
+            'center' => $center,
+            'events' => $events,
+            'page' => 'events',
+            'tab' => 'pastEvents'
         ));
     }
     
@@ -65,6 +94,9 @@ class AdminController extends Controller {
             if($form->isValid())
             {
                 $em = $this->getDoctrine()->getManager();
+                
+                $event->addCenter($center);
+                
                 $em->persist($event);
                 $em->flush();
                 
@@ -157,17 +189,35 @@ class AdminController extends Controller {
     
     
     /*
-    *   Delete event
-    */
+     *   Delete a event
+     */
     public function deleteAction(Center $center, Event $event)
-    {
-        $em = $this->getDoctrine()->getManager();
+    {   
+        $form = $this->createFormBuilder()->getForm();
         
-        $event = $em->getRepository('gospelcenterEventBundle:Event')->findWithAll($event, $center);
+        $request = $this->getRequest();
+        if ($request->getMethod() == 'POST') {
+            $form->bind($request);
+            
+            if ($form->isValid()) {
+                $em = $this->getDoctrine()->getManager();
+                $em->remove($event);
+                $em->flush();
+                
+                $this->get('session')->getFlashBag()->add('info', 'Event deleted.');
         
-        return $this->redirect( $this->generateUrl('gospelcenterAdmin_events', array(
-            'center' => $center->getRef()
-        )));
+                return $this->redirect( $this->generateUrl('gospelcenterAdmin_events', array(
+                    'center' => $center->getRef()
+                )));
+            }
+        }
+        
+        return $this->render('gospelcenterEventBundle:Admin:delete.html.twig', array(
+              'center' => $center,
+              'event' => $event,
+              'form'    => $form->createView(),
+              'page' => 'events'
+        ));
     }
 
 }

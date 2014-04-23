@@ -23,7 +23,7 @@
 {% endblock %}
 
 {% block adminBody %}
-    <h1>Admin - Edit a person</h1>
+    <h1>Edit a contact</h1>
     
     <form class="person" action="{{ path('gospelcenterAdmin_persons_edit', {'center': center.ref, 'person': person.id}) }}" method="post" {{ form_enctype(form) }}>
         
