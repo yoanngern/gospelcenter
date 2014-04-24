@@ -121,42 +121,4 @@ class AdminSpeakerController extends Controller {
             'page' => 'speakers'
         ));
     }
-    
-    
-    /*
-     *   All speakers in JSON
-     *   @param Center
-     *   @return all speakers in JSON
-     */
-    public function jsonAction(Center $center)
-    {
-        $em = $this->getDoctrine()->getManager();
-        
-        $speakers = $em->getRepository('gospelcenterCelebrationBundle:Speaker')->findAllJSON();
-        
-        $response = new Response(json_encode($speakers));
-        
-        $response->headers->set('Content-Type', 'application/json');    
-        
-        return $response;
-    }
-    
-    /*
-     *   Get JSON speaker
-     *   @param $speaker = speaker id
-     *          $center = Center
-     */
-    public function singleJSONAction(Center $center, $speaker)
-    {   
-        
-        $em = $this->getDoctrine()->getManager();
-        
-        $speaker = $em->getRepository('gospelcenterCelebrationBundle:Speaker')->findOne($speaker);
-        
-        $response = new Response(json_encode($speaker));
-        
-        $response->headers->set('Content-Type', 'application/json');
-        
-        return $response;
-    }
 }

@@ -172,24 +172,4 @@ class AdminController extends Controller {
               'page' => 'locations'
         ));
     }
-    
-    
-    /*
-     *   Get JSON location
-     *   @param $location = location id
-     *          $center = Center
-     */
-    public function singleJSONAction(Center $center, $location)
-    {   
-        
-        $em = $this->getDoctrine()->getManager();
-        
-        $location = $em->getRepository('gospelcenterLocationBundle:Location')->findOne($location);
-        
-        $response = new Response(json_encode($location));
-        
-        $response->headers->set('Content-Type', 'application/json');
-        
-        return $response;
-    }
 }

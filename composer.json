@@ -21,7 +21,6 @@
         "incenteev/composer-parameter-handler": "~2.0",
         "doctrine/doctrine-fixtures-bundle": "v2.2.0",
         "suncat/mobile-detect-bundle": "0.9.*",
-        "symfony/icu": "1.1.*",
         "symfony/intl": "2.3.*",
         "coresphere/console-bundle": "dev-master",
         "symfony/locale": "v2.4.2"

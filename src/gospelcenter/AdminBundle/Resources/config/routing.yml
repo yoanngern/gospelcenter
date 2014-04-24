@@ -47,17 +47,6 @@ gospelcenterAdmin_speakers_edit:
     defaults:   { _controller: gospelcenterCelebrationBundle:AdminSpeaker:edit }
     requirements:
         speaker: \d+
-        
-# Speakers in JSON
-gospelcenterAdmin_speakers_json:
-    path:       /celebrations/speakers.json
-    defaults:   { _controller: gospelcenterCelebrationBundle:AdminSpeaker:json }
-
-
-# Speaker in JSON
-gospelcenterAdmin_speakers_singleJSON:
-    path:       /speakers/json/{speaker}
-    defaults:   { _controller: gospelcenterCelebrationBundle:AdminSpeaker:singleJSON }
 
 
 ##########################
@@ -277,12 +266,5 @@ gospelcenterAdmin_locations_edit:
 gospelcenterAdmin_locations_delete:
     path:       /locations/delete/{location}
     defaults:   { _controller: gospelcenterLocationBundle:Admin:delete }
-    requirements:
-        location: \d+
-
-# Location in JSON
-gospelcenterAdmin_locations_singleJSON:
-    path:       /locations/json/{location}
-    defaults:   { _controller: gospelcenterLocationBundle:Admin:singleJSON }
     requirements:
         location: \d+

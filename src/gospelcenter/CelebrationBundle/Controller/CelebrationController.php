@@ -120,29 +120,6 @@ class CelebrationController extends Controller {
     
     
    /*
-    *   Get next events
-    *   @param the number of event
-    *   @return next events in JSON
-    */
-    public function jsonAction(Center $center, $nb)
-    {   
-        $em = $this->getDoctrine()->getManager();
-        
-        $request = $this->getRequest();
-        
-        $start = $request->query->get('start');
-        
-        $events = $em->getRepository('gospelcenterEventBundle:Event')->findAllByCenter($center, $nb, $start);
-        
-        $response = new Response(json_encode($events));
-        
-        $response->headers->set('Content-Type', 'application/json');
-        
-        return $response;
-    }
-    
-    
-   /*
     *   Get next star events
     *   @param the number of star event
     *   @return next star events in HTML
