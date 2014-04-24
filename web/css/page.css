@@ -85,12 +85,17 @@ html.js #page article.slide {
             margin: 2%;
             text-decoration: none;
             color: #fdfdfc; }
+            #container #page section.slider.vertical article.slide.celebrations a img {
+              width: 100%; }
             #container #page section.slider.vertical article.slide.celebrations a.empty {
               border: 1px solid #313131;
               color: #363331; }
+              #container #page section.slider.vertical article.slide.celebrations a.empty h1 {
+                text-align: center;
+                margin-top: 25%; }
             #container #page section.slider.vertical article.slide.celebrations a h1 {
               text-align: center;
-              margin-top: 25%; }
+              margin-top: -35%; }
       #container #page section.slider.vertical #slides {
         right: 0;
         position: absolute;

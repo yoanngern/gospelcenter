@@ -274,7 +274,6 @@ class Celebration
         return $this;
     }
     
-    
     /**
      * Set video
      *

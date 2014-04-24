@@ -3,6 +3,13 @@
 {% block javascripts %}
     {{ parent() }}
     <script type="text/javascript" src="{{ asset('js/form.min.js') }}"></script>
+    
+    {% if person.image %}
+        <script type="text/javascript" src="{{ asset('js/editImage.min.js') }}"></script>
+    {% else %}
+        <script type="text/javascript" src="{{ asset('js/addImage.min.js') }}"></script>
+    {% endif %}
+    
 {% endblock %}
 
 {% block stylesheets %}
@@ -28,8 +35,10 @@
         
         <fieldset class="image">
             {% if person.image %}
-                <img src="{{ asset(person.image.webPath) }}" alt="{{ person.image.alt }}" />
                 {{ form_widget(form.image.file) }}
+                <div id="editImage" data-input="{{ form.image.file.vars.id }}">
+            	    <img src="{{ asset(person.image.webPath) }}" alt="{{ person.image.alt }}" />
+            	</div>
             {% else %}
                 {{ form_widget(form.image.file) }}
             {% endif %}

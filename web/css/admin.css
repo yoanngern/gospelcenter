@@ -20,6 +20,23 @@ table {
     table thead tr th {
       font-family: "Radikal-Bold", "Radikal", sans-serif;
       color: #fdfdfc; }
+      table thead tr th span {
+        background-repeat: no-repeat;
+        background-size: contain;
+        background-position: center bottom;
+        width: 25px;
+        height: 25px;
+        display: inline-block;
+        margin-bottom: -4px;
+        margin-left: 10px; }
+      table thead tr th[data-sort] {
+        cursor: pointer; }
+        table thead tr th[data-sort] span {
+          background-image: url("../images/sort.svg"); }
+      table thead tr th.sorting-desc span {
+        background-image: url("../images/desc.svg"); }
+      table thead tr th.sorting-asc span {
+        background-image: url("../images/asc.svg"); }
       table thead tr th:first-child {
         padding-left: 5px; }
   table tbody tr {
@@ -270,7 +287,8 @@ table {
       #container form.celebration fieldset.page fieldset.full input, #container form.celebration fieldset.page fieldset.full textarea {
         width: 300px; }
     #container form.celebration fieldset.page article h1 {
-      font-family: "Radikal-Bold", "Radikal", sans-serif; }
+      font-family: "Radikal-Bold", "Radikal", sans-serif;
+      margin-top: 5px; }
   #container form.celebration legend {
     font-family: "Radikal-Bold", "Radikal", sans-serif; }
   #container form.celebration fieldset > h1 {
@@ -290,8 +308,8 @@ table {
     #container form.celebration time input {
       display: inline-block; }
   #container form.celebration h2 {
-    font-family: "Radikal-Bold", "Radikal", sans-serif;
-    font-size: 1.2em; }
+    font-family: "Radikal-Light", "Radikal", sans-serif;
+    font-size: 1.6em; }
   #container form.celebration #locationSearch,
   #container form.celebration #speakersSearch {
     border: 1px solid #363331;
@@ -429,11 +447,17 @@ table {
       #container form.page #slides article.slide section p {
         padding-bottom: 10px;
         margin-left: 210px; }
-  #container form.image #addImage, #container form.slide #addImage {
+  #container form.image > h2, #container form.slide > h2, #container form.center > h2 {
+    font-family: "Radikal-Bold", "Radikal", sans-serif;
+    font-size: 1.3em;
+    margin-top: 30px; }
+  #container form.image #addImage, #container form.slide #addImage, #container form.center #addImage {
     margin: 0 auto 20px; }
-  #container form.image > input, #container form.image > textarea, #container form.image > select, #container form.slide > input, #container form.slide > textarea, #container form.slide > select {
+  #container form.image > input, #container form.image > textarea, #container form.image > select, #container form.image > h2, #container form.slide > input, #container form.slide > textarea, #container form.slide > select, #container form.slide > h2, #container form.center > input, #container form.center > textarea, #container form.center > select, #container form.center > h2 {
     margin-left: 25%; }
-  #container form.image #editImage, #container form.slide #editImage {
+  #container form.image > input, #container form.image > textarea, #container form.slide > input, #container form.slide > textarea, #container form.center > input, #container form.center > textarea {
+    width: 49%; }
+  #container form.image #editImage, #container form.slide #editImage, #container form.center #editImage {
     width: 50%; }
   #container form.slide > input, #container form.slide > textarea {
     width: 49%; }

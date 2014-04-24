@@ -120,7 +120,7 @@ class Center
     /**
      * is described by
      * 
-     * @ORM\OneToOne(targetEntity="gospelcenter\ImageBundle\Entity\Image", inversedBy="center")
+     * @ORM\OneToOne(targetEntity="gospelcenter\ImageBundle\Entity\Image", inversedBy="center", cascade={"persist", "remove"})
      */
     private $image;
     
@@ -185,6 +185,24 @@ class Center
     public function preSave()
     {
         $this->modifiedDate = new \Datetime();
+    }
+    
+     /**
+     * Set image
+     *
+     * @param \gospelcenter\ImageBundle\Entity\Image $image
+     * @return Center
+     */
+    public function setImage(\gospelcenter\ImageBundle\Entity\Image $image = null)
+    {
+        $this->image = $image;
+        
+        if($image != null) {
+            $this->image->setTitle("Gospel Center ".$this->name);
+            $this->image->setType('Center');
+        }
+    
+        return $this;
     }
     
     /*************************************/
@@ -559,18 +577,7 @@ class Center
         return $this->images;
     }
 
-    /**
-     * Set image
-     *
-     * @param \gospelcenter\ImageBundle\Entity\Image $image
-     * @return Center
-     */
-    public function setImage(\gospelcenter\ImageBundle\Entity\Image $image = null)
-    {
-        $this->image = $image;
-    
-        return $this;
-    }
+   
 
     /**
      * Get image

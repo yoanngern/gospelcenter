@@ -38,6 +38,39 @@ table {
                 font-family: $font-bold;
                 color: $white;
                 
+                span {
+                    background-repeat: no-repeat;
+                    background-size: contain;
+                    background-position: center bottom;
+                    width: 25px;
+                    height: 25px;
+                    display: inline-block;
+                    margin-bottom: -4px;
+                    margin-left: 10px;
+                }
+                
+                &[data-sort] {
+                    cursor: pointer;
+                    
+                    span {
+                        background-image: url('../images/sort.svg');
+                    }
+                }
+                
+                &.sorting-desc {
+                    
+                    span {
+                        background-image: url('../images/desc.svg');
+                    }
+                }
+                
+                &.sorting-asc {
+                    
+                    span {
+                        background-image: url('../images/asc.svg');
+                    }
+                }
+                
                 &:first-child {
                     padding-left: 5px;
                 }

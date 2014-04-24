@@ -1,5 +1,7 @@
 {% extends "::layout.html.twig" %}
 
+{% block classPage %}admin{% endblock %}
+
 {% block title %}
     {{ parent() }} - Admin
 {% endblock %}
@@ -15,9 +17,24 @@
     
 {% endblock %}
 
+{% block headerTitle %}GCEurope{% endblock %}
+
 {% block footer %}
     <li><a href="{{ path('gospelcenterAdminGlobal_persons') }}" {% if page == 'people' %}class="current"{% endif %}>Contacts</a></li>
     <li><a href="{{ path('gospelcenterAdminGlobal_pages') }}" {% if page == 'pages' %}class="current"{% endif %}>Pages</a></li>
     <li><a href="{{ path('gospelcenterAdminGlobal_images') }}" {% if page == 'images' %}class="current"{% endif %}>Images</a></li>
     <li><a href="{{ path('gospelcenterAdminGlobal_centers') }}" {% if page == 'centers' %}class="current"{% endif %}>Centers</a></li>
+{% endblock %}
+
+{% block jsTemplating %}
+    {{ parent() }}
+    <script id="selectMultiple" type="text/x-handlebars-template">
+        {% raw %} 
+            <ul class="selectMultiple" data-select="{{selectId}}">
+                {{#each options}}
+                    <li id="{{id}}" class="{{selected}}">{{text}}</li>
+                {{/each}}
+            </ul>
+        {% endraw %}
+    </script>
 {% endblock %}

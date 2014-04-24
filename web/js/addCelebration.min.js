@@ -14,6 +14,8 @@ $(document).ready( function() {
 	initLocationSearch(locationContainer);
 	initSpeakerSearch(speakersContainer);
 	
+	initSpeakerList(speakersContainer);
+	initLocationList(locationContainer);
 	
 	
 	// Location search is edited
@@ -51,6 +53,23 @@ $(document).ready( function() {
         removeSpeaker($(this).data('speaker'));
 	});
 });
+
+
+function initSpeakerList(select) {
+    
+    $('option[selected="selected"]', select).each( function() {
+        
+        addSpeaker($(this).val());
+    });
+}
+
+function initLocationList(select) {
+    
+    $('option[selected="selected"]', select).each( function() {
+        
+        addLocation($(this).val());
+    });
+}
 
 
 /**
@@ -145,10 +164,10 @@ function addLocation(id) {
  */
 function getLocation(id) {
     
-    var url = "../locations/json/" + id;
+    var url = "/api/locations/" + id;
     
     $.ajax({
-        type: "POST",
+        type: "GET",
         dataType: "json",
         url: url,
         error: function () {
@@ -293,10 +312,10 @@ function addSpeaker(id) {
  */
 function getSpeaker(id) {
     
-    var url = "../speakers/json/" + id;
+    var url = "/api/speakers/" + id;
     
     $.ajax({
-        type: "POST",
+        type: "GET",
         dataType: "json",
         url: url,
         error: function () {

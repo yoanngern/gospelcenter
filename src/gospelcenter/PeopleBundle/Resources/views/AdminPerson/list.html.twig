@@ -10,10 +10,10 @@
     <table class="main">
         <thead>
             <tr>
-                <th>Firstname</th>
-                <th>Lastname</th>
-                <th>Gender</th>
-                <th>Date of birth</th>
+                <th data-sort="string">Firstname</th>
+                <th data-sort="string">Lastname</th>
+                <th data-sort="string">Gender</th>
+                <th data-sort="int">Date of birth</th>
             </tr>
         </thead>
         <tbody>
@@ -22,7 +22,7 @@
                     <td><a href="{{ path('gospelcenterAdmin_persons_edit', {'person': person.id, 'center': center.ref}) }}">{{ person.firstName }}</a></td>
                     <td><a href="{{ path('gospelcenterAdmin_persons_edit', {'person': person.id, 'center': center.ref}) }}">{{ person.lastName }}</a></td>
                     <td><a href="{{ path('gospelcenterAdmin_persons_edit', {'person': person.id, 'center': center.ref}) }}">{{ person.gender }}</a></td>
-                    <td><a href="{{ path('gospelcenterAdmin_persons_edit', {'person': person.id, 'center': center.ref}) }}">{% if person.dateOfBirth %}{{ person.dateOfBirth|date('d F Y') }}{% endif %}</a></td>
+                    <td data-sort-value="{% if person.dateOfBirth %}{{ person.dateOfBirth|date('U') }}{% endif %}"><a href="{{ path('gospelcenterAdmin_persons_edit', {'person': person.id, 'center': center.ref}) }}">{% if person.dateOfBirth %}{{ person.dateOfBirth|date('d F Y') }}{% endif %}</a></td>
                 </tr>
             {% else %}
                 <tr><td colspan="4">There are no contacts.</td></tr>

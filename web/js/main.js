@@ -1,6 +1,7 @@
 // @codekit-prepend "vendor/jquery-1.10.2.js"
 // @codekit-append "vendor/handlebars-v1.3.0.js"
 // @codekit-append "vendor/modernizr.js"
+// @codekit-append "vendor/stupidtable.js"
 // @codekit-append "_resize16_9.js"
 
 
@@ -30,6 +31,12 @@ $(document).ready( function() {
 		event.preventDefault();
 		toggleRuban();
 		
+	});
+	
+	$("table.main").stupidtable();
+	
+	$("table.main th[data-sort]").each( function() {
+    	$(this).append("<span></span>");
 	});
 	
 	$(document).on('click', 'nav#slides li', function() {

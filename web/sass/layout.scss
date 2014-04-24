@@ -989,6 +989,41 @@ section.wall {
             width: 100%;
         }
         
+        &.centers {
+        
+            &.empty {
+                height: 150px;
+                border: 1px solid $black;
+                
+                .details {
+                    height: 100%;
+                    color: $black;
+                    margin-top: 0;
+                    
+                    h1 {
+                        text-align: center;
+                        float: none;
+                        width: inherit;
+                        margin-top: 25%;
+                    }
+                }
+            }
+        
+            .details {
+                margin-top: -35%;
+                color: $white;
+                position: relative;
+                text-align: center;
+                
+                h1 {
+                    width: 100%;
+                    font-family: $font-regular;
+                    font-size: 1.5em;
+                    height: initial;
+                }
+            }
+        }
+        
         &.empty {
             height: 150px;
             border: 1px solid $black;

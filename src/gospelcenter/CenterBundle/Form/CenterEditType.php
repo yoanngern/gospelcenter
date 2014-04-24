@@ -7,7 +7,7 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
 // FormType
-use gospelcenter\LocationBundle\Form\LocationType;
+use gospelcenter\CenterBundle\Form\CenterType;
 
 class CenterEditType extends CenterType
 {

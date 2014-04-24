@@ -129,6 +129,7 @@ class AdminPersonController extends Controller {
                 $em->persist($person);
                 $em->flush();
                 
+                
                 // If the person is a Speaker
                 if($person->getIsSpeaker() == 1) {
                     $speaker = new Speaker();
@@ -137,6 +138,7 @@ class AdminPersonController extends Controller {
                     $em->persist($speaker);
                     $em->flush();
                 }
+                
                 
                 // If the person is a Visitor
                 if($person->getIsVisitor() == 1) {
@@ -158,6 +160,7 @@ class AdminPersonController extends Controller {
                     $em->persist($member);
                     $em->flush();
                 }
+                
                 
                 $this->get('session')->getFlashBag()->add('info', 'The contact has been added.');
                 
@@ -250,6 +253,7 @@ class AdminPersonController extends Controller {
                 $em->persist($person);
                 $em->flush();
                 
+                
                 // If the person is a Speaker
                 if($person->getIsSpeaker() && !$wasSpeaker) {
                     $speaker = new Speaker();
@@ -262,6 +266,7 @@ class AdminPersonController extends Controller {
                     $em->remove($speaker);
                     $em->flush();
                 }
+                
                 
                 // If the person is a Member
                 if($person->getIsMember() && !$wasMember) {

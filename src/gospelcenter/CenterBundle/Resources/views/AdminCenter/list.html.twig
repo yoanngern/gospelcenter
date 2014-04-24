@@ -10,7 +10,7 @@
 {% endblock %}
 
 {% block adminBody %}
-    <h1>Admin - Centers</h1>
+    <h1>Centers</h1>
     
     <section class="tools">
         <a href="{{ path('gospelcenterAdminGlobal_centers_add') }}">Add a center</a>
@@ -19,9 +19,9 @@
     <table class="main">
         <thead>
             <tr>
-                <th>Name</th>
-                <th>City</th>
-                <th>Country</th>
+                <th data-sort="string">Name</th>
+                <th data-sort="string">City</th>
+                <th data-sort="string">Country</th>
             </tr>
         </thead>
         <tbody>

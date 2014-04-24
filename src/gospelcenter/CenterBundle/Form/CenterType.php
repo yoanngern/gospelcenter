@@ -8,6 +8,7 @@ use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
 // FormType
 use gospelcenter\LocationBundle\Form\LocationSimpleType;
+use gospelcenter\ImageBundle\Form\ImageSimpleType;
 
 class CenterType extends AbstractType
 {
@@ -21,6 +22,7 @@ class CenterType extends AbstractType
             ->add('ref',        'text')
             ->add('name',       'text')
             ->add('location',   new LocationSimpleType())
+            ->add('image',      new ImageSimpleType(), array('required' => false))
         ;
     }
     

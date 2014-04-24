@@ -1,0 +1,47 @@
+####
+#   /speakers
+#
+
+# GET - list all speakers
+gospelcenterAPI_speakers:
+    path:       /speakers
+    defaults:   { _controller: gospelcenterAPIBundle:Speaker:getSpeakers }
+    requirements:
+        _method:  GET
+
+
+####
+#   /speakers/{id}
+#
+  
+# GET - get speaker details
+gospelcenterAPI_speakers_speaker:
+    path:       /speakers/{speaker}
+    defaults:   { _controller: gospelcenterAPIBundle:Speaker:getSpeaker }
+    requirements:
+        _method:  GET
+        speaker: \d+
+        
+####
+#   /locations
+#
+
+# GET - list all locations
+gospelcenterAPI_locations:
+    path:       /locations
+    defaults:   { _controller: gospelcenterAPIBundle:Location:getLocations }
+    requirements:
+        _method:  GET
+
+
+####
+#   /locations/{id}
+#
+  
+# GET - get speaker details
+gospelcenterAPI_locations_location:
+    path:       /locations/{location}
+    defaults:   { _controller: gospelcenterAPIBundle:Location:getLocation }
+    requirements:
+        _method:  GET
+        location: \d+

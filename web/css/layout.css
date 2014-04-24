@@ -876,6 +876,28 @@ section.wall {
     text-decoration: none; }
     section.wall a img {
       width: 100%; }
+    section.wall a.centers.empty {
+      height: 150px;
+      border: 1px solid #363331; }
+      section.wall a.centers.empty .details {
+        height: 100%;
+        color: #363331;
+        margin-top: 0; }
+        section.wall a.centers.empty .details h1 {
+          text-align: center;
+          float: none;
+          width: inherit;
+          margin-top: 25%; }
+    section.wall a.centers .details {
+      margin-top: -35%;
+      color: #fdfdfc;
+      position: relative;
+      text-align: center; }
+      section.wall a.centers .details h1 {
+        width: 100%;
+        font-family: "Radikal", sans-serif;
+        font-size: 1.5em;
+        height: initial; }
     section.wall a.empty {
       height: 150px;
       border: 1px solid #363331; }

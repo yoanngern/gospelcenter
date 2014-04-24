@@ -3,6 +3,13 @@
 {% block javascripts %}
     {{ parent() }}
     <script type="text/javascript" src="{{ asset('js/form.min.js') }}"></script>
+    
+    {% if center.image %}
+        <script type="text/javascript" src="{{ asset('js/editImage.min.js') }}"></script>
+    {% else %}
+        <script type="text/javascript" src="{{ asset('js/addImage.min.js') }}"></script>
+    {% endif %}
+    
 {% endblock %}
 
 {% block stylesheets %}
@@ -18,7 +25,7 @@
 {% block adminBody %}
     <h1>Edit a center</h1>
     
-    <form action="{{ path('gospelcenterAdminGlobal_centers_edit', {'center': center.ref}) }}" method="post" {{ form_enctype(form) }}>
+    <form class="center" action="{{ path('gospelcenterAdminGlobal_centers_edit', {'center': center.ref}) }}" method="post" {{ form_enctype(form) }}>
         
         <nav class="tools">
     		<input type="submit" class="buttonRounded" />
@@ -26,17 +33,23 @@
         
         {{ form_errors(form) }}
         
+
         {{ form_widget(form.name, {'attr': {'placeholder': 'Name'} }) }}
+
+        <h2>Location</h2>
+        {{ form_widget(form.location.address1, {'attr': {'placeholder': 'Address 1'} }) }}
+        {{ form_widget(form.location.address2, {'attr': {'placeholder': 'Address 1'} }) }}
+        {{ form_widget(form.location.postalCode, {'attr': {'placeholder': 'Postal code'} }) }}
+        {{ form_widget(form.location.city, {'attr': {'placeholder': 'City'} }) }}
+        {{ form_widget(form.location.country, {'attr': {'placeholder': 'Country'} }) }}
         
-        <fieldset>
-            <h2>Location</h2>
-            {{ form_widget(form.location.name, {'attr': {'placeholder': 'Name'} }) }}
-            {{ form_widget(form.location.address1, {'attr': {'placeholder': 'Address 1'} }) }}
-            {{ form_widget(form.location.address2, {'attr': {'placeholder': 'Address 1'} }) }}
-            {{ form_widget(form.location.postalCode, {'attr': {'placeholder': 'Postal code'} }) }}
-            {{ form_widget(form.location.city, {'attr': {'placeholder': 'City'} }) }}
-            {{ form_widget(form.location.country, {'attr': {'placeholder': 'Country'} }) }}
-        </fieldset>
+        <h2>Image</h2>
+        {{ form_widget(form.image.file) }}
+        {% if center.image %}
+        	<div id="editImage" data-input="{{ form.image.file.vars.id }}">
+        	    <img src="{{ asset(center.image.webPath) }}" alt="{{ center.image.alt }}" />
+        	</div>
+        {% endif %}
         
         {{ form_rest(form) }}
     </form>

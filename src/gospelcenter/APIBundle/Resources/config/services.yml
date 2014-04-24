@@ -1,0 +1,7 @@
+parameters:
+#    gospelcenter_api.example.class: gospelcenter\APIBundle\Example
+
+services:
+#    gospelcenter_api.example:
+#        class: %gospelcenter_api.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]

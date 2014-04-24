@@ -1,4 +1,12 @@
 ###########################   
+########### API ###########
+###########################
+gospelcenterAPI:
+    resource: "@gospelcenterAPIBundle/Resources/config/routing.yml"
+    prefix:   /api
+
+
+###########################   
 ########## PROD ###########
 ###########################
 

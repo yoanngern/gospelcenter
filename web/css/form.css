@@ -44,7 +44,7 @@ form #editImage {
   display: block;
   width: auto;
   cursor: pointer;
-  margin: 0 auto 40px; }
+  margin: 0 auto; }
   form #editImage div.edit {
     text-align: center;
     height: 20px;

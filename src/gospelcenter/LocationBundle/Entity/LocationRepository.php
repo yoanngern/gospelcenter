@@ -44,6 +44,13 @@ class LocationRepository extends EntityRepository
         return $qb;
     }
     
+    public function findAllJSON()
+    {
+        $qb = $this->createQueryBuilder('s');
+        
+        return $qb->getQuery()->getArrayResult();
+    }
+    
     public function findOne($location)
     {
         $qb = $this->createQueryBuilder('l');
