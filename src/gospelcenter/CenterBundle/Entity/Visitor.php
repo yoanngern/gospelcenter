@@ -3,6 +3,7 @@
 namespace gospelcenter\CenterBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Visitor
@@ -20,6 +21,7 @@ class Visitor
      * @ORM\Id
      * @ORM\OneToOne(targetEntity="gospelcenter\PeopleBundle\Entity\Person", inversedBy="visitor")
      * @ORM\JoinColumn(nullable=false, name="id", referencedColumnName="id")
+     * @Assert\Valid()
      */
     private $person;
     
@@ -27,6 +29,7 @@ class Visitor
      * @var string
      *
      * @ORM\Column(name="Frequency", type="string", length=255, nullable=true)
+     * @Assert\DateTime()
      */
     private $frequency;
 
@@ -41,6 +44,7 @@ class Visitor
      * visites
      * 
      * @ORM\ManyToMany(targetEntity="gospelcenter\CenterBundle\Entity\Center", mappedBy="visitors")
+     * @Assert\Valid()
      */
     private $centers;
     

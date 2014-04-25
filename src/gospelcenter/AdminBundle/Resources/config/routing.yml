@@ -57,11 +57,6 @@ gospelcenterAdmin_speakers_edit:
 gospelcenterAdmin_persons:
     path:       /persons
     defaults:   { _controller: gospelcenterPeopleBundle:AdminPerson:list }
-    
-# All persons
-gospelcenterAdmin_persons_all:
-    path:       /persons/all
-    defaults:   { _controller: gospelcenterPeopleBundle:AdminPerson:all }
 
 # Add a person
 gospelcenterAdmin_persons_add:

@@ -23,15 +23,24 @@
         <nav class="tools">
     		<input type="submit" class="buttonRounded" />
     	</nav>
-    	
-    	
         
         {{ form_widget(form.name, {'attr': {'placeholder': 'Name'} }) }}
+        {{ form_errors(form.name) }}
+        
         {{ form_widget(form.address1, {'attr': {'placeholder': 'Address line 1'} }) }}
+        {{ form_errors(form.address1) }}
+        
         {{ form_widget(form.address2, {'attr': {'placeholder': 'Address line 2'} }) }}
+        {{ form_errors(form.address2) }}
+        
         {{ form_widget(form.postalCode, {'attr': {'placeholder': 'Postal code'} }) }}
+        {{ form_errors(form.postalCode) }}
+        
         {{ form_widget(form.city, {'attr': {'placeholder': 'City'} }) }}
+        {{ form_errors(form.city) }}
+        
         {{ form_widget(form.country, {'attr': {'placeholder': 'Country'} }) }}
+        {{ form_errors(form.country) }}
         
         {{ form_rest(form) }}
         

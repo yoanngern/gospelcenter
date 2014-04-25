@@ -3,6 +3,7 @@
 namespace gospelcenter\LanguageBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Component\Locale\Locale;
 
 /**
@@ -26,6 +27,7 @@ class Language
      * @var \DateTime
      *
      * @ORM\Column(name="createdDate", type="datetime")
+     * @Assert\DateTime()
      */
     private $createdDate;
     
@@ -33,6 +35,7 @@ class Language
      * @var \DateTime
      *
      * @ORM\Column(name="modifiedDate", type="datetime")
+     * @Assert\DateTime()
      */
     private $modifiedDate;
     
@@ -40,6 +43,7 @@ class Language
      * is spoken by
      * 
      * @ORM\ManyToMany(targetEntity="gospelcenter\PeopleBundle\Entity\Person", mappedBy="languages")
+     * @Assert\Valid()
      */
     private $persons;
     
@@ -84,6 +88,7 @@ class Language
         
         return (string)$ref;
     }
+    
     
     /*************************************/
     /**** Getter setter auto generate ****/

@@ -29,6 +29,7 @@ twig:
     form:
         resources:
             - 'gospelcenterPeopleBundle:Form:tel.html.twig'
+            - '::errors.html.twig'
 
 # Assetic Configuration
 assetic:

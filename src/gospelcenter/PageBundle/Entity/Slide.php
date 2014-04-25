@@ -3,6 +3,7 @@
 namespace gospelcenter\PageBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Slide
@@ -26,6 +27,7 @@ class Slide
      * @var string
      *
      * @ORM\Column(name="title", type="string", length=255)
+     * @Assert\NotBlank()
      */
     private $title;
 
@@ -33,6 +35,7 @@ class Slide
      * @var string
      *
      * @ORM\Column(name="text", type="text")
+     * @Assert\NotBlank()
      */
     private $text;
     
@@ -54,6 +57,7 @@ class Slide
      * @var integer
      *
      * @ORM\Column(name="sort", type="integer")
+     * @Assert\NotBlank()
      */
     private $sort; 
 
@@ -61,6 +65,7 @@ class Slide
      * @var \DateTime
      *
      * @ORM\Column(name="createdDate", type="datetime")
+     * @Assert\DateTime()
      */
     private $createdDate;
     
@@ -68,6 +73,7 @@ class Slide
      * @var \DateTime
      *
      * @ORM\Column(name="modifiedDate", type="datetime")
+     * @Assert\DateTime()
      */
     private $modifiedDate;
     
@@ -76,6 +82,7 @@ class Slide
      * uses
      * 
      * @ORM\ManyToOne(targetEntity="gospelcenter\ImageBundle\Entity\Image", inversedBy="slides", cascade={"persist", "remove"})
+     * @Assert\Valid()
      */
     private $image;
     
@@ -85,6 +92,7 @@ class Slide
      * 
      * @ORM\ManyToOne(targetEntity="gospelcenter\PageBundle\Entity\Page", inversedBy="slides")
      * @ORM\JoinColumn(nullable=false)
+     * @Assert\Valid()
      */
     private $page;
     

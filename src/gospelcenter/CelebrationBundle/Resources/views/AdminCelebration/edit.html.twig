@@ -35,7 +35,10 @@
     	{{ form_errors(form) }}
     	<fieldset class="header">
         	<h1>Celebration of {{ form_widget(form.date, {'attr': {'data-structure': 'day/month/year', 'class': 'resize', value: form.date.vars.value|date('d F Y')} }) }}</h1>
+        	{{ form_errors(form.date) }}
+        	
             <time>from {{ form_widget(form.startingTime) }} to {{ form_widget(form.endingTime) }}</time>
+            {{ form_errors(form.startingTime) }}{{ form_errors(form.endingTime) }}
     	</fieldset>
     	
         <fieldset class="page">
@@ -45,11 +48,13 @@
                 <fieldset class="column">
                     <h2>Speakers</h2>
                     {{ form_widget(form.existingSpeakers) }}
+                    {{ form_errors(form.existingSpeakers) }}
                 </fieldset>
                 
                 <fieldset class="column image">
                     <h2>Image</h2>
                     {{ form_widget(form.image.file) }}
+                    {{ form_errors(form.image.file) }}
                     {% if celebration.image %}
                     	<div id="editImage" data-input="{{ form.image.file.vars.id }}">
                     	    <img src="{{ asset(celebration.image.webPath) }}" alt="{{ celebration.image.alt }}" />
@@ -62,13 +67,19 @@
                 <fieldset class="column">
                     <h2>Status</h2>
                     {{ form_widget(form.status, {'attr': {'data-icon': 'status'} }) }}
+                    {{ form_errors(form.status) }}
+                    
                     {{ form_widget(form.bestOf, {'attr': {'data-icon': 'best'} }) }}
+                    {{ form_errors(form.bestOf) }}
+                    
                     {{ form_widget(form.kidsProgram, {'attr': {'data-icon': 'kids'} }) }}
+                    {{ form_errors(form.kidsProgram) }}
                 </fieldset>
                 
                 <fieldset class="column">
                     <h2>Location</h2>
                     {{ form_widget(form.location) }}
+                    {{ form_errors(form.location) }}
                 </fieldset>
             </fieldset>
             
@@ -77,7 +88,10 @@
                 <h2>Preaching</h2>
                 
                 {{ form_widget(form.title, {'attr': {'placeholder': 'Title'} }) }}
+                {{ form_errors(form.title) }}
+                
                 {{ form_widget(form.description, {'attr': {'placeholder': 'Description'} }, {'attr': {'class': 'elastic'} }) }}
+                {{ form_errors(form.description) }}
             </fieldset>
             
             
@@ -90,9 +104,13 @@
         <fieldset class="page">
             <legend>Media</legend>
             {{ form_widget(form.video) }}
+            {{ form_errors(form.video) }}
+            
             {{ form_widget(form.audio) }}
+            {{ form_errors(form.audio) }}
             
             {{ form_widget(form.tags) }}
+            {{ form_errors(form.tags) }}
         </fieldset>
         
         {{ form_rest(form) }}

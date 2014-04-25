@@ -3,6 +3,7 @@
 namespace gospelcenter\CenterBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Member
@@ -20,6 +21,7 @@ class Member
      * @ORM\Id
      * @ORM\OneToOne(targetEntity="gospelcenter\PeopleBundle\Entity\Person", inversedBy="member")
      * @ORM\JoinColumn(nullable=false, name="id", referencedColumnName="id")
+     * @Assert\Valid()
      */
     private $person;
     
@@ -27,6 +29,7 @@ class Member
      * @var \DateTime
      *
      * @ORM\Column(name="memberFromDate", type="date")
+     * @Assert\DateTime()
      */
     private $memberFromDate;
     
@@ -34,6 +37,7 @@ class Member
      * @var \DateTime
      *
      * @ORM\Column(name="departureFromDate", type="date", nullable=true)
+     * @Assert\DateTime()
      */
     private $departureFromDate;
     
@@ -41,6 +45,7 @@ class Member
      * is member of
      * 
      * @ORM\ManyToMany(targetEntity="gospelcenter\CenterBundle\Entity\Center", mappedBy="members")
+     * @Assert\Valid()
      */
     private $centers;
     
@@ -51,6 +56,20 @@ class Member
     {
         $this->centers = new \Doctrine\Common\Collections\ArrayCollection();
         $this->memberFromDate = new \Datetime();
+    }
+    
+    /**
+     * Add centers
+     *
+     * @param \gospelcenter\CenterBundle\Entity\Center $centers
+     * @return Member
+     */
+    public function addCenter(\gospelcenter\CenterBundle\Entity\Center $centers)
+    {
+        $this->centers[] = $centers;
+        $centers->addMember($this);
+    
+        return $this;
     }
 
     /*************************************/
@@ -125,19 +144,6 @@ class Member
     public function getPerson()
     {
         return $this->person;
-    }
-
-    /**
-     * Add centers
-     *
-     * @param \gospelcenter\CenterBundle\Entity\Center $centers
-     * @return Member
-     */
-    public function addCenter(\gospelcenter\CenterBundle\Entity\Center $centers)
-    {
-        $this->centers[] = $centers;
-    
-        return $this;
     }
 
     /**

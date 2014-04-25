@@ -34,51 +34,64 @@
     	{{ form_errors(form) }}
         
         <fieldset class="image">
+            {{ form_widget(form.image.file) }}
+            {{ form_errors(form.image.file) }}
             {% if person.image %}
-                {{ form_widget(form.image.file) }}
-                <div id="editImage" data-input="{{ form.image.file.vars.id }}">
+            	<div id="editImage" data-input="{{ form.image.file.vars.id }}">
             	    <img src="{{ asset(person.image.webPath) }}" alt="{{ person.image.alt }}" />
             	</div>
-            {% else %}
-                {{ form_widget(form.image.file) }}
             {% endif %}
         </fieldset>
         
         <fieldset class="header">
-            {{ form_widget(form.gender, {'attr': {'placeholder': 'Gender'}, 'autofocus': true}) }}
             {{ form_widget(form.firstname, {'attr': {'placeholder': 'Firstname', 'class': 'resize'} }) }}
+            {{ form_errors(form.firstname) }}
+            
             {{ form_widget(form.lastname, {'attr': {'placeholder': 'Lastname', 'class': 'resize'} }) }}
+            {{ form_errors(form.lastname) }}
+            
+            {{ form_widget(form.gender, {'attr': {'placeholder': 'Gender', 'data-icon': 'gender'} }) }}
+            {{ form_errors(form.gender) }}
         </fieldset>
         
         <fieldset class="phone">
             {{ form_label(form.privatePhone, "private") }}
             {{ form_widget(form.privatePhone, {'attr': {'placeholder': 'Phone'} }) }}
+            {{ form_errors(form.privatePhone) }}
             
             {{ form_label(form.mobilePhone, "mobile") }}
             {{ form_widget(form.mobilePhone, {'attr': {'placeholder': 'Phone'} }) }}
+            {{ form_errors(form.mobilePhone) }}
         </fieldset>
         
         <fieldset class="email">
             {{ form_label(form.email, "private") }}
             {{ form_widget(form.email, {'attr': {'placeholder': 'Email'} }) }}
+            {{ form_errors(form.email) }}
         </fieldset>
         
         <fieldset class="birthday">
             {{ form_label(form.dateOfBirth, "birthday") }}
             {{ form_widget(form.dateOfBirth, {'attr': {'placeholder': 'Birthday'} }) }}
+            {{ form_errors(form.dateOfBirth) }}
         </fieldset>
         
         <fieldset class="location">
             {{ form_label(form.location, "home") }}
             {{ form_widget(form.location.address1, {'attr': {'placeholder': 'address'} }) }}
+            {{ form_errors(form.location.address1) }}
 
             {{ form_widget(form.location.address2, {'attr': {'placeholder': 'address'} }) }}
+            {{ form_errors(form.location.address2) }}
 
-            {{ form_widget(form.location.postalCode, {'attr': {'placeholder': 'Postal code'} }) }}
+            {{ form_widget(form.location.postalCode, {'attr': {'placeholder': 'Postal code', 'class': 'resize'} }) }}
+            {{ form_errors(form.location.postalCode) }}
 
-            {{ form_widget(form.location.city, {'attr': {'placeholder': 'City'} }) }}
+            {{ form_widget(form.location.city, {'attr': {'placeholder': 'City', 'class': 'resize'} }) }}
+            {{ form_errors(form.location.city) }}
             
             {{ form_widget(form.location.country, {'attr': {'placeholder': 'Country'} }) }}
+            {{ form_errors(form.location.country) }}
         </fieldset>
         
         <fieldset class="details">
@@ -86,29 +99,45 @@
             <fieldset class="languages">
                 {{ form_label(form.languages, "languages") }}
                 {{ form_widget(form.languages, {'attr': {'class': 'selectMultiple'} }) }}
+                {{ form_errors(form.languages) }}
             </fieldset>
             
             <fieldset class="checkbox">
                 {{ form_widget(form.abroad, {'attr': {'data-icon': 'abroad'} }) }}
+                {{ form_errors(form.abroad) }}
+                
                 {{ form_widget(form.hasChildren, {'attr': {'data-icon': 'hasChildren'} }) }}
+                {{ form_errors(form.hasChildren) }}
             </fieldset>
             
             <fieldset>
                 {{ form_label(form.function, "Function") }}
                 {{ form_widget(form.function, {'attr': {'placeholder': '. . .'} }) }}
+                {{ form_errors(form.function) }}
+            </fieldset>
+            
+            <fieldset class="checkbox">
+                {{ form_widget(form.isSpeaker, {'attr': {'data-icon': 'isSpeaker'} }) }}
+                {{ form_errors(form.isSpeaker) }}
+                
+                {{ form_widget(form.isMember, {'attr': {'data-icon': 'isMember'} }) }}
+                {{ form_errors(form.isMember) }}
+                
+                {{ form_widget(form.isVisitor, {'attr': {'data-icon': 'isVisitor'} }) }}
+                {{ form_errors(form.isVisitor) }}
             </fieldset>
         </fieldset>
         
         <fieldset class="notes">
             {{ form_label(form.notes, "notes") }}
             {{ form_widget(form.notes, {'attr': {'class': 'elastic', 'placeholder': '. . .'} }) }}
+            {{ form_errors(form.notes) }}
         </fieldset>
         
         <fieldset class="more">
             {{ form_rest(form) }}
         </fieldset>
-        
-        
+                
     </form>    
     
 {% endblock %}

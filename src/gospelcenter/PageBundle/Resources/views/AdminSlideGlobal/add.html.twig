@@ -25,11 +25,23 @@
     	</nav>
     	
     	{{ form_widget(form.image.file) }}
+    	{{ form_errors(form.image.file) }}
+    	
         {{ form_widget(form.title, {'attr': {'placeholder': 'Title'} }) }}
-        {{ form_widget(form.text, {'attr': {'placeholder': 'Text'} }) }}
+        {{ form_errors(form.title) }}
+        
+        {{ form_widget(form.text, {'attr': {'placeholder': 'Text', 'class': 'elastic'} }) }}
+        {{ form_errors(form.text) }}
+        
         {{ form_widget(form.link, {'attr': {'placeholder': 'Link'} }) }}
+        {{ form_errors(form.link) }}
+        
         {{ form_widget(form.labelLink, {'attr': {'placeholder': 'Link label'} }) }}
+        {{ form_errors(form.labelLink) }}
+        
         {{ form_widget(form.page) }}
+        {{ form_errors(form.page) }}
+        
         {{ form_rest(form) }}
     </form>
     

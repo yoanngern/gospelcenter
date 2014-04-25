@@ -3,6 +3,7 @@
 namespace gospelcenter\CenterBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Band
@@ -26,6 +27,7 @@ class Band
      * @var string
      *
      * @ORM\Column(name="Title", type="string", length=255)
+     * @Assert\NotBlank(message="Please enter a title.")
      */
     private $title;
     
@@ -33,6 +35,7 @@ class Band
      * @var \DateTime
      *
      * @ORM\Column(name="createdDate", type="datetime")
+     * @Assert\DateTime()
      */
     private $createdDate;
     
@@ -40,6 +43,7 @@ class Band
      * @var \DateTime
      *
      * @ORM\Column(name="modifiedDate", type="datetime")
+     * @Assert\DateTime()
      */
     private $modifiedDate;
     
@@ -48,6 +52,7 @@ class Band
      * depends on
      * 
      * @ORM\ManyToOne(targetEntity="gospelcenter\CenterBundle\Entity\Band", inversedBy="bandsOwned")
+     * @Assert\Valid()
      */
     private $bandOwner;
     
@@ -56,6 +61,7 @@ class Band
      * is depended of
      * 
      * @ORM\OneToMany(targetEntity="gospelcenter\CenterBundle\Entity\Band", mappedBy="bandOwner")
+     * @Assert\Valid()
      */
     private $bandsOwned;
     
@@ -64,6 +70,7 @@ class Band
      * is owned by
      * 
      * @ORM\ManyToOne(targetEntity="gospelcenter\CenterBundle\Entity\Center", inversedBy="bands")
+     * @Assert\Valid()
      */
     private $center;
     
@@ -72,6 +79,7 @@ class Band
      * manages
      * 
      * @ORM\ManyToMany(targetEntity="gospelcenter\PeopleBundle\Entity\Role", mappedBy="bands")
+     * @Assert\Valid()
      */
     private $roles;
     
@@ -81,6 +89,7 @@ class Band
      * 
      * @ORM\ManyToMany(targetEntity="gospelcenter\PeopleBundle\Entity\Person", inversedBy="bandsPopulated")
      * @ORM\JoinTable(name="bands_members")
+     * @Assert\Valid()
      */
     private $members;
     
@@ -90,6 +99,7 @@ class Band
      * 
      * @ORM\ManyToMany(targetEntity="gospelcenter\PeopleBundle\Entity\Person", inversedBy="bandsManaged")
      * @ORM\JoinTable(name="bands_managers")
+     * @Assert\Valid()
      */
     private $managers;
     

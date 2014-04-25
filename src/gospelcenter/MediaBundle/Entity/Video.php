@@ -3,6 +3,7 @@
 namespace gospelcenter\MediaBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Video
@@ -26,6 +27,7 @@ class Video
      * @var integer
      *
      * @ORM\Column(name="ownerId", type="integer")
+     * @Assert\NotBlank()
      */
     private $ownerId;
     
@@ -33,6 +35,7 @@ class Video
      * @var string
      *
      * @ORM\Column(name="Name", type="string", length=255)
+     * @Assert\NotBlank()
      */
     private $owner;
     
@@ -40,6 +43,7 @@ class Video
      * @var \DateTime
      *
      * @ORM\Column(name="createdDate", type="datetime")
+     * @Assert\DateTime()
      */
     private $createdDate;
     
@@ -47,6 +51,7 @@ class Video
      * @var \DateTime
      *
      * @ORM\Column(name="modifiedDate", type="datetime")
+     * @Assert\DateTime()
      */
     private $modifiedDate;
     
@@ -54,6 +59,7 @@ class Video
      * is shown by
      * 
      * @ORM\OneToMany(targetEntity="gospelcenter\ArticleBundle\Entity\Article", mappedBy="video")
+     * @Assert\Valid()
      */
     private $articles;
     
@@ -61,6 +67,7 @@ class Video
      * is used by
      * 
      * @ORM\OneToMany(targetEntity="gospelcenter\EventBundle\Entity\Event", mappedBy="video")
+     * @Assert\Valid()
      */
     private $events;
     
@@ -68,6 +75,7 @@ class Video
      * is diffused by
      * 
      * @ORM\OneToOne(targetEntity="gospelcenter\CelebrationBundle\Entity\Celebration", inversedBy="video")
+     * @Assert\Valid()
      */
     private $celebration;
     

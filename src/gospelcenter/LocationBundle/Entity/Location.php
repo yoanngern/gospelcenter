@@ -3,6 +3,7 @@
 namespace gospelcenter\LocationBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Location
@@ -26,6 +27,7 @@ class Location
      * @var string
      *
      * @ORM\Column(name="name", type="string", length=255)
+     * @Assert\NotBlank()
      */
     private $name;
 
@@ -33,6 +35,7 @@ class Location
      * @var string
      *
      * @ORM\Column(name="address1", type="string", length=255)
+     * @Assert\NotBlank()
      */
     private $address1;
 
@@ -44,9 +47,10 @@ class Location
     private $address2;
 
     /**
-     * @var integer
+     * @var string
      *
-     * @ORM\Column(name="postalCode", type="integer")
+     * @ORM\Column(name="postalCode", type="string", length=50)
+     * @Assert\NotBlank()
      */
     private $postalCode;
 
@@ -54,6 +58,7 @@ class Location
      * @var string
      *
      * @ORM\Column(name="city", type="string", length=255)
+     * @Assert\NotBlank()
      */
     private $city;
 
@@ -61,6 +66,7 @@ class Location
      * @var string
      *
      * @ORM\Column(name="country", type="string", length=255)
+     * @Assert\NotBlank()
      */
     private $country;
     
@@ -96,6 +102,7 @@ class Location
      * @var \DateTime
      *
      * @ORM\Column(name="createdDate", type="datetime")
+     * @Assert\DateTime()
      */
     private $createdDate;
     
@@ -103,6 +110,7 @@ class Location
      * @var \DateTime
      *
      * @ORM\Column(name="modifiedDate", type="datetime")
+     * @Assert\DateTime()
      */
     private $modifiedDate;
     
@@ -110,6 +118,7 @@ class Location
      * gathered
      * 
      * @ORM\OneToMany(targetEntity="gospelcenter\CenterBundle\Entity\Base", mappedBy="location")
+     * @Assert\Valid()
      */
     private $bases;
     
@@ -118,6 +127,7 @@ class Location
      * hosts
      * 
      * @ORM\OneToMany(targetEntity="gospelcenter\EventBundle\Entity\Event", mappedBy="location")
+     * @Assert\Valid()
      */
     private $events;
     
@@ -126,6 +136,7 @@ class Location
      * is added by
      * 
      * @ORM\ManyToOne(targetEntity="gospelcenter\CenterBundle\Entity\Center", inversedBy="location")
+     * @Assert\Valid()
      */
      private $centerCreator;
      
@@ -134,6 +145,7 @@ class Location
      * locates
      * 
      * @ORM\OneToMany(targetEntity="gospelcenter\CenterBundle\Entity\Center", mappedBy="location")
+     * @Assert\Valid()
      */
      private $centers;
      
@@ -142,6 +154,7 @@ class Location
      * situates
      * 
      * @ORM\OneToMany(targetEntity="gospelcenter\CelebrationBundle\Entity\Celebration", mappedBy="location")
+     * @Assert\Valid()
      */
     private $celebrations;
     
@@ -150,6 +163,7 @@ class Location
      * is lived by
      * 
      * @ORM\OneToMany(targetEntity="gospelcenter\PeopleBundle\Entity\Person", mappedBy="location")
+     * @Assert\Valid()
      */
     private $persons;
      

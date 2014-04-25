@@ -3,6 +3,7 @@
 namespace gospelcenter\CelebrationBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Speaker
@@ -20,6 +21,7 @@ class Speaker
      * @ORM\Id
      * @ORM\OneToOne(targetEntity="gospelcenter\PeopleBundle\Entity\Person", inversedBy="speaker", cascade={"persist"})
      * @ORM\JoinColumn(nullable=false, name="id", referencedColumnName="id")
+     * @Assert\Valid()
      */
     private $person;
     
@@ -28,6 +30,7 @@ class Speaker
      * @var \DateTime
      *
      * @ORM\Column(name="SpeakerFromDate", type="date")
+     * @Assert\DateTime()
      */
     private $speakerFromDate;
     
@@ -36,6 +39,7 @@ class Speaker
      * preaches
      * 
      * @ORM\ManyToMany(targetEntity="gospelcenter\CelebrationBundle\Entity\Celebration", mappedBy="speakers")
+     * @Assert\Valid()
      */
     private $celebrations;
     

@@ -35,16 +35,27 @@
         
 
         {{ form_widget(form.name, {'attr': {'placeholder': 'Name'} }) }}
+        {{ form_errors(form.name) }}
 
         <h2>Location</h2>
         {{ form_widget(form.location.address1, {'attr': {'placeholder': 'Address 1'} }) }}
-        {{ form_widget(form.location.address2, {'attr': {'placeholder': 'Address 1'} }) }}
+        {{ form_errors(form.location.address1) }}
+        
+        {{ form_widget(form.location.address2, {'attr': {'placeholder': 'Address 2'} }) }}
+        {{ form_errors(form.location.address2) }}
+        
         {{ form_widget(form.location.postalCode, {'attr': {'placeholder': 'Postal code'} }) }}
+        {{ form_errors(form.location.postalCode) }}
+        
         {{ form_widget(form.location.city, {'attr': {'placeholder': 'City'} }) }}
+        {{ form_errors(form.location.city) }}
+        
         {{ form_widget(form.location.country, {'attr': {'placeholder': 'Country'} }) }}
+        {{ form_errors(form.location.country) }}
         
         <h2>Image</h2>
         {{ form_widget(form.image.file) }}
+        {{ form_errors(form.image.file) }}
         {% if center.image %}
         	<div id="editImage" data-input="{{ form.image.file.vars.id }}">
         	    <img src="{{ asset(center.image.webPath) }}" alt="{{ center.image.alt }}" />

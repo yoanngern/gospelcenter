@@ -1,0 +1,22 @@
+{# fields_errors.html.twig #}
+{% block form_errors %}
+    {% spaceless %}
+        {% if errors|length > 0 %}
+        <div class="error_list">
+            <div class="arrow">
+                <div class="arrow_up_border"></div>
+                <div class="arrow_up"></div>
+            </div>
+            <div class="list">
+                {% for error in errors %}
+                    <span>{{
+                        error.messagePluralization is null
+                            ? error.messageTemplate|trans(error.messageParameters, 'validators')
+                            : error.messageTemplate|transchoice(error.messagePluralization, error.messageParameters, 'validators')
+                    }}</span>
+                {% endfor %}
+            </div>
+        </div>
+        {% endif %}
+    {% endspaceless %}
+{% endblock form_errors %}

@@ -40,6 +40,46 @@ form textarea {
     cursor: pointer;
     border: none;
     outline: none; }
+form div.error_list {
+  position: relative;
+  margin-top: 10px;
+  margin-bottom: 20px; }
+  form div.error_list div.arrow {
+    z-index: 1001;
+    position: absolute;
+    left: 15px;
+    top: -10px; }
+    form div.error_list div.arrow div.arrow_up_border {
+      width: 0;
+      height: 0;
+      border-left: 11px solid transparent;
+      border-right: 11px solid transparent;
+      border-bottom: 10px solid #e22416; }
+    form div.error_list div.arrow div.arrow_up {
+      width: 0;
+      height: 0;
+      border-left: 11px solid transparent;
+      border-right: 11px solid transparent;
+      border-bottom: 10px solid #e22416;
+      margin-left: 0px;
+      margin-top: -9px; }
+  form div.error_list div.list {
+    display: inline-block;
+    background: #d91a15;
+    background: -webkit-gradient(linear, left bottom, left top, color-stop(0, #d11115), color-stop(1, #e22416));
+    background: -ms-linear-gradient(bottom, #d11115, #e22416);
+    background: -moz-linear-gradient(center bottom, #d11115 0%, #e22416 100%);
+    background: -o-linear-gradient(#e22416, #d11115);
+    filter: progid:DXImageTransform.Microsoft.gradient(enabled='false', startColorstr=$start, endColorstr=$stop);
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    -ms-border-radius: 3px;
+    -o-border-radius: 3px;
+    border-radius: 3px;
+    padding: 5px; }
+    form div.error_list div.list span {
+      color: #fdfdfc;
+      display: block; }
 form #editImage {
   display: block;
   width: auto;

@@ -3,6 +3,9 @@
 namespace gospelcenter\CelebrationBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
+
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * Celebration
@@ -32,7 +35,8 @@ class Celebration
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="startingDate", type="datetime", nullable=true)
+     * @ORM\Column(name="startingDate", type="datetime")
+     * @Assert\DateTime()
      */
     private $startingDate;
 
@@ -40,6 +44,7 @@ class Celebration
      * @var \DateTime
      *
      * @ORM\Column(name="endingDate", type="datetime")
+     * @Assert\DateTime()
      */
     private $endingDate;
 
@@ -75,6 +80,7 @@ class Celebration
      * @var \DateTime
      *
      * @ORM\Column(name="createdDate", type="datetime")
+     * @Assert\DateTime()
      */
     private $createdDate;
     
@@ -82,8 +88,10 @@ class Celebration
      * @var \DateTime
      *
      * @ORM\Column(name="modifiedDate", type="datetime")
+     * @Assert\DateTime()
      */
     private $modifiedDate;
+    
     
     private $existingSpeakers;
     private $newSpeakers;
@@ -96,6 +104,7 @@ class Celebration
      * is composed by
      *
      * @ORM\ManyToMany(targetEntity="gospelcenter\PeopleBundle\Entity\Role", inversedBy="celebrations")
+     * @Assert\Valid()
      */
     private $roles;
     
@@ -104,6 +113,7 @@ class Celebration
      * is spreader by
      * 
      * @ORM\OneToOne(targetEntity="gospelcenter\MediaBundle\Entity\Audio", mappedBy="celebration", cascade={"persist", "remove"})
+     * @Assert\Valid()
      */
     private $audio;
     
@@ -112,6 +122,7 @@ class Celebration
      * is tagged by
      * 
      * @ORM\ManyToMany(targetEntity="gospelcenter\CelebrationBundle\Entity\Tag", inversedBy="celebrations")
+     * @Assert\Valid()
      */
     private $tags;
     
@@ -121,6 +132,7 @@ class Celebration
      * 
      * @ORM\ManyToOne(targetEntity="gospelcenter\LocationBundle\Entity\Location", inversedBy="celebrations", cascade={"persist"})
      * @ORM\JoinColumn(nullable=false)
+     * @Assert\Valid()
      */
     private $location;
     
@@ -129,6 +141,7 @@ class Celebration
      * diffuses
      * 
      * @ORM\OneToOne(targetEntity="gospelcenter\MediaBundle\Entity\Video", mappedBy="celebration", cascade={"persist", "remove"})
+     * @Assert\Valid()
      */
     private $video;
     
@@ -138,6 +151,7 @@ class Celebration
      * 
      * @ORM\ManyToOne(targetEntity="gospelcenter\CenterBundle\Entity\Center", inversedBy="celebrations")
      * @ORM\JoinColumn(nullable=false)
+     * @Assert\Valid()
      */
     private $center;
     
@@ -145,7 +159,8 @@ class Celebration
     /**
      * is imaged by
      * 
-     * @ORM\ManyToOne(targetEntity="gospelcenter\ImageBundle\Entity\Image", inversedBy="celebrations", cascade={"persist", "remove"})
+     * @ORM\ManyToOne(targetEntity="gospelcenter\ImageBundle\Entity\Image", inversedBy="celebrations", cascade={"persist", "detach"})
+     * @Assert\Valid()
      */
     private $image;
     
@@ -154,6 +169,7 @@ class Celebration
      * is preached by
      *
      * @ORM\ManyToMany(targetEntity="gospelcenter\CelebrationBundle\Entity\Speaker", inversedBy="celebrations", cascade={"persist"})
+     * @Assert\Valid()
      */
     private $speakers;
     
@@ -255,17 +271,18 @@ class Celebration
         if($image != null) {
             $title = "Celebration of ";
             $title .= date_format($this->date, 'j F Y');
-            $title .= " with ";
             
             $speakers = $this->getSpeakers();
+            
+            if($speakers != null) {
+                $title .= " with ";
 
-            
-            foreach($speakers as $speaker) {
-                $title .= $speaker->getFirstname();
-                $title .= " ";
-                $title .= $speaker->getLastname();
+                foreach($speakers as $speaker) {
+                    $title .= $speaker->getPerson()->getFirstname();
+                    $title .= " ";
+                    $title .= $speaker->getPerson()->getLastname();
+                }
             }
-            
             
             $this->image->setTitle($title);
             $this->image->setType('Celebration');
@@ -593,8 +610,6 @@ class Celebration
         return $this->roles;
     }
 
-    
-
     /**
      * Get audio
      *
@@ -660,8 +675,6 @@ class Celebration
     {
         return $this->location;
     }
-
-    
 
     /**
      * Get video

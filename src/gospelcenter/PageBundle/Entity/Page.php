@@ -3,6 +3,7 @@
 namespace gospelcenter\PageBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Page
@@ -27,6 +28,7 @@ class Page
      * @var string
      *
      * @ORM\Column(name="ref", type="string", length=255)
+     * @Assert\NotBlank(message="Please select a menu.")
      */
     private $ref;
     
@@ -41,6 +43,7 @@ class Page
      * @var string
      *
      * @ORM\Column(name="title", type="string", length=255)
+     * @Assert\NotBlank(message="Please enter a title.")
      */
     private $title;
     
@@ -69,6 +72,7 @@ class Page
      * @var \DateTime
      *
      * @ORM\Column(name="createdDate", type="datetime")
+     * @Assert\DateTime()
      */
     private $createdDate;
     
@@ -76,6 +80,7 @@ class Page
      * @var \DateTime
      *
      * @ORM\Column(name="modifiedDate", type="datetime")
+     * @Assert\DateTime()
      */
     private $modifiedDate;
     
@@ -85,6 +90,7 @@ class Page
      * 
      * @ORM\ManyToOne(targetEntity="gospelcenter\CenterBundle\Entity\Center", inversedBy="pages")
      * @ORM\JoinColumn(nullable=true)
+     * @Assert\Valid()
      */
     private $center;
     
@@ -93,6 +99,7 @@ class Page
      * is written in
      * 
      * @ORM\ManyToOne(targetEntity="gospelcenter\LanguageBundle\Entity\Language", inversedBy="pages")
+     * @Assert\Valid()
      */
     private $language;
     
@@ -102,6 +109,7 @@ class Page
      * 
      * @ORM\OneToMany(targetEntity="gospelcenter\PageBundle\Entity\Slide", mappedBy="page", cascade={"remove"})
      * @ORM\OrderBy({"sort" = "ASC"})
+     * @Assert\Valid()
      */
     private $slides;
     

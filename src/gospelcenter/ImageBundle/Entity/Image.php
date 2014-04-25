@@ -3,6 +3,7 @@
 namespace gospelcenter\ImageBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 
@@ -28,6 +29,7 @@ class Image
      * @var string
      *
      * @ORM\Column(name="title", type="string", length=255)
+     * @Assert\NotBlank(message="Please enter a title.")
      */
     private $title;
     
@@ -42,6 +44,7 @@ class Image
      * @var string
      *
      * @ORM\Column(name="type", type="string", length=255)
+     * @Assert\NotBlank(message="Please select a type.")
      */
     private $type;
     
@@ -70,6 +73,7 @@ class Image
      * @var \DateTime
      *
      * @ORM\Column(name="createdDate", type="datetime")
+     * @Assert\DateTime()
      */
     private $createdDate;
     
@@ -77,11 +81,16 @@ class Image
      * @var \DateTime
      *
      * @ORM\Column(name="modifiedDate", type="datetime")
+     * @Assert\DateTime()
      */
     private $modifiedDate;
     
-    
+    /**
+     * @Assert\Image()
+     */
     private $file;
+    
+    
     private $tempFilename;
     
     
@@ -89,6 +98,7 @@ class Image
      * shows
      * 
      * @ORM\OneToMany(targetEntity="gospelcenter\PeopleBundle\Entity\Person", mappedBy="image")
+     * @Assert\Valid()
      */
     private $persons;
     
@@ -96,7 +106,8 @@ class Image
     /**
      * images
      * 
-     * @ORM\OneToMany(targetEntity="gospelcenter\CelebrationBundle\Entity\Celebration", mappedBy="image")
+     * @ORM\OneToMany(targetEntity="gospelcenter\CelebrationBundle\Entity\Celebration", mappedBy="image", cascade={"detach"})
+     * @Assert\Valid()
      */
     private $celebrations;
     
@@ -105,6 +116,7 @@ class Image
      * describes
      * 
      * @ORM\OneToOne(targetEntity="gospelcenter\CenterBundle\Entity\Center", mappedBy="image")
+     * @Assert\Valid()
      */
     private $center;
     
@@ -113,6 +125,7 @@ class Image
      * is bublished by
      * 
      * @ORM\ManyToOne(targetEntity="gospelcenter\CenterBundle\Entity\Center", inversedBy="images")
+     * @Assert\Valid()
      */
     private $centerCreator;
     
@@ -121,6 +134,7 @@ class Image
      * is contained by
      * 
      * @ORM\OneToMany(targetEntity="gospelcenter\ArticleBundle\Entity\Article", mappedBy="image")
+     * @Assert\Valid()
      */
     private $articles;
     
@@ -129,6 +143,7 @@ class Image
      * illustrates
      * 
      * @ORM\OneToMany(targetEntity="gospelcenter\EventBundle\Entity\Event", mappedBy="picture")
+     * @Assert\Valid()
      */
     private $eventsPicture;
     
@@ -137,6 +152,7 @@ class Image
      * covers
      * 
      * @ORM\OneToMany(targetEntity="gospelcenter\EventBundle\Entity\Event", mappedBy="cover")
+     * @Assert\Valid()
      */
     private $eventsCover;
     
@@ -145,6 +161,7 @@ class Image
      * is used by
      * 
      * @ORM\OneToMany(targetEntity="gospelcenter\PageBundle\Entity\Slide", mappedBy="image")
+     * @Assert\Valid()
      */
     private $slides;
     

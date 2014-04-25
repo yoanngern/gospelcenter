@@ -3,6 +3,7 @@
 namespace gospelcenter\CenterBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Base
@@ -25,7 +26,7 @@ class Base
     /**
      * @var string
      *
-     * @ORM\Column(name="Title", type="string", length=255)
+     * @ORM\Column(name="Title", type="string", length=255, nullable=true)
      */
     private $title;
     
@@ -33,6 +34,7 @@ class Base
      * @var \DateTime
      *
      * @ORM\Column(name="createdDate", type="datetime")
+     * @Assert\DateTime()
      */
     private $createdDate;
     
@@ -40,6 +42,7 @@ class Base
      * @var \DateTime
      *
      * @ORM\Column(name="modifiedDate", type="datetime")
+     * @Assert\DateTime()
      */
     private $modifiedDate;
     
@@ -48,6 +51,7 @@ class Base
      * composes
      * 
      * @ORM\ManyToOne(targetEntity="gospelcenter\CenterBundle\Entity\Center", inversedBy="bases")
+     * @Assert\Valid()
      */
     private $center;
     
@@ -56,6 +60,7 @@ class Base
      * meets to
      * 
      * @ORM\ManyToOne(targetEntity="gospelcenter\LocationBundle\Entity\Location", inversedBy="bases")
+     * @Assert\Valid()
      */
     private $location;
     
@@ -64,6 +69,7 @@ class Base
      * is participated by
      * 
      * @ORM\OneToMany(targetEntity="gospelcenter\PeopleBundle\Entity\Person", mappedBy="baseParticipated")
+     * @Assert\Valid()
      */
     private $participants;
     
@@ -72,6 +78,7 @@ class Base
      * is organized by
      * 
      * @ORM\OneToMany(targetEntity="gospelcenter\PeopleBundle\Entity\Person", mappedBy="baseOrganized")
+     * @Assert\Valid()
      */
     private $organizers;
     

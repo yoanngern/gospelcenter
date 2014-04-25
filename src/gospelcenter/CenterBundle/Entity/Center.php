@@ -3,6 +3,7 @@
 namespace gospelcenter\CenterBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Center
@@ -26,6 +27,7 @@ class Center
      * @var string
      *
      * @ORM\Column(name="name", type="string", length=255)
+     * @Assert\NotBlank(message="Please enter a name.")
      */
     private $name;
     
@@ -33,6 +35,7 @@ class Center
      * @var \DateTime
      *
      * @ORM\Column(name="createdDate", type="datetime")
+     * @Assert\DateTime()
      */
     private $createdDate;
     
@@ -40,6 +43,7 @@ class Center
      * @var \DateTime
      *
      * @ORM\Column(name="modifiedDate", type="datetime")
+     * @Assert\DateTime()
      */
     private $modifiedDate;
     
@@ -48,6 +52,7 @@ class Center
      * organizes
      * 
      * @ORM\OneToMany(targetEntity="gospelcenter\CelebrationBundle\Entity\Celebration", mappedBy="center")
+     * @Assert\Valid()
      */
     private $celebrations;
     
@@ -57,6 +62,7 @@ class Center
      * 
      * @ORM\ManyToOne(targetEntity="gospelcenter\LocationBundle\Entity\Location", inversedBy="centers", cascade={"persist", "remove"})
      * @ORM\JoinColumn(nullable=false)
+     * @Assert\Valid()
      */
     private $location;
     
@@ -65,6 +71,7 @@ class Center
      * add
      * 
      * @ORM\OneToMany(targetEntity="gospelcenter\LocationBundle\Entity\Location", mappedBy="centerCreator")
+     * @Assert\Valid()
      */
     private $locationCreated;
      
@@ -73,6 +80,7 @@ class Center
      * owns
      * 
      * @ORM\OneToMany(targetEntity="gospelcenter\CenterBundle\Entity\Band", mappedBy="center")
+     * @Assert\Valid()
      */
     private $bands;
     
@@ -81,6 +89,7 @@ class Center
      * is composed by
      * 
      * @ORM\OneToMany(targetEntity="gospelcenter\CenterBundle\Entity\Base", mappedBy="center")
+     * @Assert\Valid()
      */
     private $bases;
     
@@ -89,6 +98,7 @@ class Center
      * wrote
      * 
      * @ORM\OneToMany(targetEntity="gospelcenter\ArticleBundle\Entity\Article", mappedBy="center")
+     * @Assert\Valid()
      */
     private $articles;
     
@@ -97,6 +107,7 @@ class Center
      * presents
      * 
      * @ORM\ManyToMany(targetEntity="gospelcenter\EventBundle\Entity\Event", inversedBy="centers")
+     * @Assert\Valid()
      */
     private $events;
     
@@ -105,6 +116,7 @@ class Center
      * is presented by
      * 
      * @ORM\OneToMany(targetEntity="gospelcenter\PageBundle\Entity\Page", mappedBy="center")
+     * @Assert\Valid()
      */
     private $pages;
     
@@ -113,6 +125,7 @@ class Center
      * publishes
      * 
      * @ORM\OneToMany(targetEntity="gospelcenter\ImageBundle\Entity\Image", mappedBy="centerCreator")
+     * @Assert\Valid()
      */
     private $images;
     
@@ -121,6 +134,7 @@ class Center
      * is described by
      * 
      * @ORM\OneToOne(targetEntity="gospelcenter\ImageBundle\Entity\Image", inversedBy="center", cascade={"persist", "remove"})
+     * @Assert\Valid()
      */
     private $image;
     
@@ -129,14 +143,25 @@ class Center
      * is visited by
      * 
      * @ORM\ManyToMany(targetEntity="gospelcenter\CenterBundle\Entity\Visitor", inversedBy="centers")
+     * @Assert\Valid()
      */
     private $visitors;
+    
+    
+    /**
+     * creates
+     * 
+     * @ORM\OneToMany(targetEntity="gospelcenter\PeopleBundle\Entity\Person", mappedBy="center", cascade={"detach"})
+     * @Assert\Valid()
+     */
+    private $persons;
     
     
     /**
      * is populated by
      * 
      * @ORM\ManyToMany(targetEntity="gospelcenter\CenterBundle\Entity\Member", inversedBy="centers")
+     * @Assert\Valid()
      */
     private $members;
     
@@ -157,6 +182,7 @@ class Center
         $this->bases = new \Doctrine\Common\Collections\ArrayCollection();
         $this->articles = new \Doctrine\Common\Collections\ArrayCollection();
         $this->images = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->persons = new \Doctrine\Common\Collections\ArrayCollection();
     }
     
     /**
@@ -208,7 +234,6 @@ class Center
     /*************************************/
     /**** Getter setter auto generate ****/
     /*************************************/
-    
     
 
     /**
@@ -577,8 +602,6 @@ class Center
         return $this->images;
     }
 
-   
-
     /**
      * Get image
      *
@@ -620,6 +643,39 @@ class Center
     public function getVisitors()
     {
         return $this->visitors;
+    }
+
+    /**
+     * Add persons
+     *
+     * @param \gospelcenter\PeopleBundle\Entity\Person $persons
+     * @return Center
+     */
+    public function addPerson(\gospelcenter\PeopleBundle\Entity\Person $persons)
+    {
+        $this->persons[] = $persons;
+    
+        return $this;
+    }
+
+    /**
+     * Remove persons
+     *
+     * @param \gospelcenter\PeopleBundle\Entity\Person $persons
+     */
+    public function removePerson(\gospelcenter\PeopleBundle\Entity\Person $persons)
+    {
+        $this->persons->removeElement($persons);
+    }
+
+    /**
+     * Get persons
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getPersons()
+    {
+        return $this->persons;
     }
 
     /**

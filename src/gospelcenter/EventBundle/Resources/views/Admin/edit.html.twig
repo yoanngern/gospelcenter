@@ -29,12 +29,14 @@
     	
     	<fieldset class="header">
         	<h1>{{ form_widget(form.status, {'attr': {'data-icon': 'status'} }) }}{{ form_widget(form.title, {'attr': {'placeholder': 'Title'} }) }}</h1>
+        	{{ form_errors(form.status) }}{{ form_errors(form.title) }}
     	</fieldset>
         
         <fieldset class="full">
             <fieldset class="column picture">
                 <h2>Picture</h2>
                 {{ form_widget(form.picture.file) }}
+                {{ form_errors(form.picture.file) }}
                 <div id="editImage" data-input="{{ form.picture.file.vars.id }}">
             	    <img src="{{ asset(event.picture.webPath) }}" alt="{{ event.picture.alt }}" />
             	</div>
@@ -42,6 +44,7 @@
             <fieldset class="column cover">
                 <h2>Cover</h2>
                 {{ form_widget(form.cover.file) }}
+                {{ form_errors(form.cover.file) }}
                 <div id="editImage" data-input="{{ form.cover.file.vars.id }}">
             	    <img src="{{ asset(event.cover.webPath) }}" alt="{{ event.cover.alt }}" />
             	</div>
@@ -50,13 +53,21 @@
         
         <fieldset class="txt">
             {{ form_widget(form.introText, {'attr': {'placeholder': 'Intro text', 'class': 'intro elastic'} }) }}
+            {{ form_errors(form.introText) }}
+            
             {{ form_widget(form.text, {'attr': {'placeholder': 'Full text', 'class': 'full elastic'} }) }}
+            {{ form_errors(form.text) }}
         </fieldset>
         
         <fieldset class="details">
             {{ form_widget(form.startingDate, {'attr': {'placeholder': 'Starting date'} }) }}
+            {{ form_errors(form.startingDate) }}
+            
             {{ form_widget(form.endingDate, {'attr': {'placeholder': 'Ending date'} }) }}
+            {{ form_errors(form.endingDate) }}
+            
              {{ form_widget(form.location, {'attr': {'placeholder': 'Location'} }) }}
+             {{ form_errors(form.location) }}
         </fieldset>
         
         {{ form_rest(form) }}

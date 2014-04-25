@@ -3,6 +3,7 @@
 namespace gospelcenter\ArticleBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Article
@@ -26,6 +27,7 @@ class Article
      * @var string
      *
      * @ORM\Column(name="title", type="string", length=255)
+     * @Assert\NotBlank(message="Please enter a title.")
      */
     private $title;
 
@@ -33,13 +35,14 @@ class Article
      * @var string
      *
      * @ORM\Column(name="introText", type="text")
+     * @Assert\NotBlank(message="Please enter an introduction text.")
      */
     private $introText;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="text", type="text")
+     * @ORM\Column(name="text", type="text", nullable=true)
      */
     private $text;
 
@@ -54,6 +57,7 @@ class Article
      * @var string
      *
      * @ORM\Column(name="template", type="string", length=255)
+     * @Assert\NotBlank(message="Please select a template.")
      */
     private $template;
 
@@ -61,6 +65,7 @@ class Article
      * @var \DateTime
      *
      * @ORM\Column(name="createdDate", type="datetime")
+     * @Assert\DateTime()
      */
     private $createdDate;
 
@@ -68,6 +73,7 @@ class Article
      * @var \DateTime
      *
      * @ORM\Column(name="modifiedDate", type="datetime")
+     * @Assert\DateTime()
      */
     private $modifiedDate;
     
@@ -76,6 +82,7 @@ class Article
      * is written by
      * 
      * @ORM\ManyToOne(targetEntity="gospelcenter\CenterBundle\Entity\Center", inversedBy="articles")
+     * @Assert\Valid()
      */
     private $center;
     
@@ -84,6 +91,7 @@ class Article
      * shows
      * 
      * @ORM\ManyToOne(targetEntity="gospelcenter\MediaBundle\Entity\Video", inversedBy="articles")
+     * @Assert\Valid()
      */
     private $video;
     
@@ -92,6 +100,7 @@ class Article
      * contains
      * 
      * @ORM\ManyToOne(targetEntity="gospelcenter\ImageBundle\Entity\Image", inversedBy="articles")
+     * @Assert\Valid()
      */
     private $image;
     

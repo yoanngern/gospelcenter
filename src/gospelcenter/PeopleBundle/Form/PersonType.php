@@ -11,6 +11,7 @@ use gospelcenter\ImageBundle\Form\ImageSimpleType;
 use gospelcenter\LocationBundle\Form\LocationSimpleType;
 
 use gospelcenter\PeopleBundle\Form\Type\TelType;
+use gospelcenter\PeopleBundle\Form\Type\ErrorType;
 
 class PersonType extends AbstractType
 {

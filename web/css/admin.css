@@ -482,6 +482,8 @@ table {
       margin: 0px;
       margin-bottom: 15px;
       font-family: "Radikal-Light", "Radikal", sans-serif; }
+    #container form.person > fieldset div.error_list {
+      margin-left: 22%; }
     #container form.person > fieldset textarea {
       float: right;
       min-height: 200px;

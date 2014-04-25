@@ -64,34 +64,6 @@ class AdminPersonController extends Controller {
     
     
     /*
-     *   List of all persons
-     */
-    public function allAction(Center $center)
-    {
-        $em = $this->getDoctrine()->getManager();
-        
-        $persons = $em->getRepository('gospelcenterPeopleBundle:Person')->findAllOrder();
-        
-        $mobileDetector = $this->get('mobile_detect.mobile_detector');
-        if($mobileDetector->isMobile() && !$mobileDetector->isTablet()) {
-            return $this->render('gospelcenterPeopleBundle:AdminMobile:list.html.twig', array(
-                'center' => $center,
-                'persons' => $persons,
-                'page' => 'people',
-                'tab' => 'contactsAll'
-            ));
-        }
-        
-        return $this->render('gospelcenterPeopleBundle:AdminPerson:list.html.twig', array(
-            'center' => $center,
-            'persons' => $persons,
-            'page' => 'people',
-            'tab' => 'contactsAll'
-        ));
-    }
-    
-    
-    /*
     *   Add a person
     */
     public function addAction(Center $center)
@@ -281,6 +253,7 @@ class AdminPersonController extends Controller {
                     $em->remove($member);
                     $em->flush();
                 }
+                
                 
                 // If the person is a Visitor
                 if($person->getIsVisitor() && !$wasVisitor) {

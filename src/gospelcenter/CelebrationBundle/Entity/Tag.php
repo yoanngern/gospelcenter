@@ -3,6 +3,7 @@
 namespace gospelcenter\CelebrationBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Tag
@@ -26,6 +27,7 @@ class Tag
      * tags
      * 
      * @ORM\ManyToMany(targetEntity="gospelcenter\CelebrationBundle\Entity\Celebration", mappedBy="tags")
+     * @Assert\Valid()
      */
     private $celebrations;
     

@@ -3,6 +3,7 @@
 namespace gospelcenter\PeopleBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Role
@@ -26,6 +27,7 @@ class Role
      * @var string
      *
      * @ORM\Column(name="Name", type="string", length=255)
+     * @Assert\NotBlank()
      */
     private $name;
     
@@ -33,6 +35,7 @@ class Role
      * @var \DateTime
      *
      * @ORM\Column(name="createdDate", type="datetime")
+     * @Assert\DateTime()
      */
     private $createdDate;
     
@@ -40,6 +43,7 @@ class Role
      * @var \DateTime
      *
      * @ORM\Column(name="modifiedDate", type="datetime")
+     * @Assert\DateTime()
      */
     private $modifiedDate;
     
@@ -48,6 +52,7 @@ class Role
      * is managed by
      * 
      * @ORM\ManyToMany(targetEntity="gospelcenter\CenterBundle\Entity\Band", inversedBy="roles")
+     * @Assert\Valid()
      */
     private $bands;
     
@@ -56,6 +61,7 @@ class Role
      * works for
      *
      * @ORM\ManyToMany(targetEntity="gospelcenter\CelebrationBundle\Entity\Celebration", mappedBy="roles")
+     * @Assert\Valid()
      */
     private $celebrations;
     
@@ -64,6 +70,7 @@ class Role
      * is played by
      * 
      * @ORM\ManyToMany(targetEntity="gospelcenter\PeopleBundle\Entity\Person", inversedBy="roles")
+     * @Assert\Valid()
      */
     private $persons;
     

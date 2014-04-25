@@ -3,6 +3,7 @@
 namespace gospelcenter\EventBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Event
@@ -26,6 +27,7 @@ class Event
      * @var string
      *
      * @ORM\Column(name="title", type="string", length=255)
+     * @Assert\NotBlank(message="Please enter a title.")
      */
     private $title;
 
@@ -33,6 +35,7 @@ class Event
      * @var \DateTime
      *
      * @ORM\Column(name="startingDate", type="datetime")
+     * @Assert\DateTime()
      */
     private $startingDate;
 
@@ -40,6 +43,7 @@ class Event
      * @var \DateTime
      *
      * @ORM\Column(name="endingDate", type="datetime")
+     * @Assert\DateTime()
      */
     private $endingDate;
 
@@ -47,13 +51,14 @@ class Event
      * @var string
      *
      * @ORM\Column(name="introText", type="text")
+     * @Assert\NotBlank()
      */
     private $introText;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="text", type="text")
+     * @ORM\Column(name="text", type="text", nullable=true)
      */
     private $text;
     
@@ -66,6 +71,7 @@ class Event
      * @var \DateTime
      *
      * @ORM\Column(name="createdDate", type="datetime")
+     * @Assert\DateTime()
      */
     private $createdDate;
     
@@ -73,6 +79,7 @@ class Event
      * @var \DateTime
      *
      * @ORM\Column(name="modifiedDate", type="datetime")
+     * @Assert\DateTime()
      */
     private $modifiedDate;
     
@@ -81,6 +88,7 @@ class Event
      * is presented by
      * 
      * @ORM\ManyToMany(targetEntity="gospelcenter\CenterBundle\Entity\Center", mappedBy="events")
+     * @Assert\Valid()
      */
     private $centers;
     
@@ -89,6 +97,7 @@ class Event
      * takes place at
      * 
      * @ORM\ManyToOne(targetEntity="gospelcenter\LocationBundle\Entity\Location", inversedBy="events")
+     * @Assert\Valid()
      */
     private $location;
     
@@ -97,6 +106,7 @@ class Event
      * uses
      * 
      * @ORM\ManyToOne(targetEntity="gospelcenter\MediaBundle\Entity\Video", inversedBy="events")
+     * @Assert\Valid()
      */
     private $video;
     
@@ -106,6 +116,7 @@ class Event
      * 
      * @ORM\ManyToOne(targetEntity="gospelcenter\ImageBundle\Entity\Image", inversedBy="eventsCover", cascade={"persist", "remove"})
      * @ORM\JoinColumn(nullable=false)
+     * @Assert\Valid()
      */
     private $cover;
     
@@ -115,6 +126,7 @@ class Event
      * 
      * @ORM\ManyToOne(targetEntity="gospelcenter\ImageBundle\Entity\Image", inversedBy="eventsPicture", cascade={"persist", "remove"})
      * @ORM\JoinColumn(nullable=false)
+     * @Assert\Valid()
      */
     private $picture;
     

@@ -3,6 +3,7 @@
 namespace gospelcenter\MediaBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Audio
@@ -26,6 +27,7 @@ class Audio
      * @var integer
      *
      * @ORM\Column(name="soundCloudId", type="integer")
+     * @Assert\NotBlank()
      */
     private $soundCloudId;
     
@@ -33,6 +35,7 @@ class Audio
      * @var \DateTime
      *
      * @ORM\Column(name="createdDate", type="datetime")
+     * @Assert\DateTime()
      */
     private $createdDate;
     
@@ -40,6 +43,7 @@ class Audio
      * @var \DateTime
      *
      * @ORM\Column(name="modifiedDate", type="datetime")
+     * @Assert\DateTime()
      */
     private $modifiedDate;
     
@@ -49,6 +53,7 @@ class Audio
      * 
      * @ORM\OneToOne(targetEntity="gospelcenter\CelebrationBundle\Entity\Celebration", inversedBy="audio")
      * @ORM\JoinColumn(nullable=false)
+     * @Assert\Valid()
      */
     private $celebration;
     

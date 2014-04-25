@@ -1,12 +1,6 @@
 {% extends "gospelcenterPeopleBundle::layout.html.twig" %}
 
 {% block gospelcenterAdminPeople_body %}
-    <nav class="sorting_nav">
-        <ul>
-            <li><a href="{{ path('gospelcenterAdmin_persons', {'center': center.ref}) }}" {% if tab == 'contacts' %}class="current"{% endif %}>{{ center.name }}'s contacts</a></li>
-            <li><a href="{{ path('gospelcenterAdmin_persons_all', {'center': center.ref}) }}" {% if tab == 'contactsAll' %}class="current"{% endif %}>All contacts</a></li>
-        </ul>
-    </nav>
     <table class="main">
         <thead>
             <tr>

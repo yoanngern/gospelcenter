@@ -3,6 +3,7 @@
 namespace gospelcenter\PeopleBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 use gospelcenter\CelebrationBundle\Entity\Speaker;
 
@@ -29,6 +30,7 @@ class Person
      * @var string
      *
      * @ORM\Column(name="firstname", type="string", length=255)
+     * @Assert\NotBlank(message="Please enter a firstname.")
      */
     private $firstname;
 
@@ -36,6 +38,7 @@ class Person
      * @var string
      *
      * @ORM\Column(name="lastname", type="string", length=255)
+     * @Assert\NotBlank(message="Please enter a lastname.")
      */
     private $lastname;
     
@@ -50,6 +53,7 @@ class Person
      * @var \DateTime
      *
      * @ORM\Column(name="dateOfBirth", type="datetime", nullable=true)
+     * @Assert\DateTime()
      */
     private $dateOfBirth;
 
@@ -57,6 +61,7 @@ class Person
      * @var string
      *
      * @ORM\Column(name="email", type="string", length=255, nullable=true)
+     * @Assert\Email()
      */
     private $email;
 
@@ -113,6 +118,7 @@ class Person
      * @var \DateTime
      *
      * @ORM\Column(name="createdDate", type="datetime")
+     * @Assert\DateTime()
      */
     private $createdDate;
     
@@ -120,6 +126,7 @@ class Person
      * @var \DateTime
      *
      * @ORM\Column(name="modifiedDate", type="datetime")
+     * @Assert\DateTime()
      */
     private $modifiedDate;
     
@@ -133,6 +140,7 @@ class Person
      * organizes
      * 
      * @ORM\ManyToOne(targetEntity="gospelcenter\CenterBundle\Entity\Base", inversedBy="organizers")
+     * @Assert\Valid()
      */
     private $baseOrganized;
     
@@ -141,6 +149,7 @@ class Person
      * participates
      * 
      * @ORM\ManyToOne(targetEntity="gospelcenter\CenterBundle\Entity\Base", inversedBy="participants")
+     * @Assert\Valid()
      */
     private $baseParticipated;
     
@@ -149,6 +158,7 @@ class Person
      * manages
      * 
      * @ORM\ManyToMany(targetEntity="gospelcenter\CenterBundle\Entity\Band", mappedBy="managers")
+     * @Assert\Valid()
      */
     private $bandsManaged;
     
@@ -157,6 +167,7 @@ class Person
      * is member of
      * 
      * @ORM\ManyToMany(targetEntity="gospelcenter\CenterBundle\Entity\Band", mappedBy="members")
+     * @Assert\Valid()
      */
     private $bandsPopulated;
     
@@ -165,6 +176,7 @@ class Person
      * lives in
      * 
      * @ORM\ManyToOne(targetEntity="gospelcenter\LocationBundle\Entity\Location", inversedBy="persons", cascade={"persist", "remove"})
+     * @Assert\Valid()
      */
     private $location;
     
@@ -173,6 +185,7 @@ class Person
      * plays
      * 
      * @ORM\ManyToMany(targetEntity="gospelcenter\PeopleBundle\Entity\Role", mappedBy="persons")
+     * @Assert\Valid()
      */
     private $roles;
     
@@ -181,6 +194,7 @@ class Person
      * is parent of a Speaker
      * 
      * @ORM\OneToOne(targetEntity="gospelcenter\CelebrationBundle\Entity\Speaker", mappedBy="person", cascade={"persist", "remove"})
+     * @Assert\Valid()
      */
     private $speaker;
     
@@ -189,14 +203,25 @@ class Person
      * is parent of a Member
      * 
      * @ORM\OneToOne(targetEntity="gospelcenter\CenterBundle\Entity\Member", mappedBy="person", cascade={"persist", "remove"})
+     * @Assert\Valid()
      */
     private $member;
+    
+    
+    /**
+     * is created by
+     * 
+     * @ORM\ManyToOne(targetEntity="gospelcenter\CenterBundle\Entity\Center", inversedBy="persons", cascade={"detach"})
+     * @Assert\Valid()
+     */
+    private $center;
     
     
     /**
      * is parent of a Visitor
      * 
      * @ORM\OneToOne(targetEntity="gospelcenter\CenterBundle\Entity\Visitor", mappedBy="person", cascade={"persist", "remove"})
+     * @Assert\Valid()
      */
     private $visitor;
     
@@ -205,6 +230,7 @@ class Person
      * is shown by
      * 
      * @ORM\ManyToOne(targetEntity="gospelcenter\ImageBundle\Entity\Image", inversedBy="persons", cascade={"persist", "remove"})
+     * @Assert\Valid()
      */
     private $image;
     
@@ -220,7 +246,7 @@ class Person
     /**
      * Constructor
      */
-    public function __construct()
+    public function __construct(\gospelcenter\CenterBundle\Entity\Center $center)
     {
         $this->createdDate = new \Datetime();
         $this->modifiedDate = new \Datetime();
@@ -229,6 +255,8 @@ class Person
         $this->bandsPopulated = new \Doctrine\Common\Collections\ArrayCollection();
         $this->roles = new \Doctrine\Common\Collections\ArrayCollection();
         $this->languages = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->center = $center;
+        
     }
     
     
@@ -327,6 +355,7 @@ class Person
     /*************************************/
     
     
+
 
     /**
      * Get id
@@ -859,6 +888,29 @@ class Person
     public function getMember()
     {
         return $this->member;
+    }
+
+    /**
+     * Set center
+     *
+     * @param \gospelcenter\CenterBundle\Entity\Center $center
+     * @return Person
+     */
+    public function setCenter(\gospelcenter\CenterBundle\Entity\Center $center = null)
+    {
+        $this->center = $center;
+    
+        return $this;
+    }
+
+    /**
+     * Get center
+     *
+     * @return \gospelcenter\CenterBundle\Entity\Center 
+     */
+    public function getCenter()
+    {
+        return $this->center;
     }
 
     /**

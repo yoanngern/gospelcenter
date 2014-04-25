@@ -39,6 +39,9 @@ class PersonRepository extends EntityRepository
         $qb->leftJoin('p.visitor', 's2');
         $qb->leftJoin('s2.centers', 'c4');
         
+        // Person -> Center
+        $qb->leftJoin('p.center', 'c5');
+        
         $qb->where('s1.speakerFromDate < :now')
             ->setParameter('now', new \DateTime('now'));
             
@@ -49,6 +52,9 @@ class PersonRepository extends EntityRepository
             ->setParameter('center', $center->getRef());
             
         $qb->orWhere('c4.ref = :center')
+            ->setParameter('center', $center->getRef());
+            
+        $qb->orWhere('c5.ref = :center')
             ->setParameter('center', $center->getRef());
         
         $qb->addOrderBy('p.lastname', 'ASC')
