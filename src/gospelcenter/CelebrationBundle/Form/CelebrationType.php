@@ -45,7 +45,8 @@ class CelebrationType extends AbstractType
             ->add('audio',              new AudioType(), array('required' => false))
             ->add('tags',               'entity', array('class'     => 'gospelcenterCelebrationBundle:Tag',
                                                         'property'  => 'value',
-                                                        'multiple'  => true))
+                                                        'multiple'  => true,
+                                                        'required' => false))
             ->add('existingSpeakers',   'entity', array('class'         => 'gospelcenterCelebrationBundle:Speaker',
                                                         'required'      => false,
                                                         'empty_value'   => 'Choose a speaker',

@@ -753,9 +753,31 @@
         	& > section.details {
             	margin: 10px;
             	
+            	img {
+                	margin: 0;
+            	}
+            	
             	h1 {
                 	margin: 0;
                 	font-family: $font-bold;
+            	}
+            	
+            	h2 {
+                	margin-left: 20px;
+                	margin-top: 20px;
+                	font-family: $font-bold;
+            	}
+            	
+            	article.associations {
+                	margin: 0 20px 20px;
+                	border: 1px solid $grayDark;
+                	@include border-radius (3px);                	
+                	padding: 5px;
+                	
+                	p,
+                	h1 {
+                    	font-size: 1em;
+                	}
             	}
         	}
         	

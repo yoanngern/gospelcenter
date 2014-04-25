@@ -29,6 +29,7 @@
         
         <nav class="tools">
     		<input type="submit" class="buttonRounded" />
+    		<a href="{{ path('gospelcenterAdmin_persons_delete', {'center': center.ref, 'person': person.id}) }}" class="buttonRounded">Delete</a>
     	</nav>
     	
     	{{ form_errors(form) }}

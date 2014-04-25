@@ -75,6 +75,13 @@ gospelcenterAdmin_persons_edit:
     requirements:
         person: \d+
 
+# Delete a person
+gospelcenterAdmin_persons_delete:
+    path:       /persons/delete/{person}
+    defaults:   { _controller: gospelcenterPeopleBundle:AdminPerson:delete }
+    requirements:
+        person: \d+
+
 # Member
 gospelcenterAdmin_members:
     path:       /members
@@ -177,6 +184,13 @@ gospelcenterAdmin_pages_edit:
     requirements:
         page: \d+
         
+# Delete a page
+gospelcenterAdmin_pages_delete:
+    path:       /pages/delete/{page}
+    defaults:   { _controller: gospelcenterPageBundle:AdminPage:delete }
+    requirements:
+        page: \d+
+        
 # Youth
 gospelcenterAdmin_youth:
     path:       /pages/youth
@@ -206,7 +220,12 @@ gospelcenterAdmin_slides_edit:
     requirements:
         slide: \d+
         
-
+# Delete a slide
+gospelcenterAdmin_slides_delete:
+    path:       /slides/delete/{slide}
+    defaults:   { _controller: gospelcenterPageBundle:AdminSlide:delete }
+    requirements:
+        slide: \d+
 
 ##########################
 ######### Images #########

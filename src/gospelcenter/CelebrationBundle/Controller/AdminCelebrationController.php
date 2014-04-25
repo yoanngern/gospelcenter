@@ -186,8 +186,8 @@ class AdminCelebrationController extends Controller {
     }
     
     
-    /*
-     *   Delete a event
+    /**
+     *   Delete a celebration
      */
     public function deleteAction(Center $center, Celebration $celebration)
     {   

@@ -22,6 +22,7 @@
     <form class="slide" action="{{ path('gospelcenterAdmin_slides_edit', {'center': center.ref, 'slide': slide.id}) }}" method="post" {{ form_enctype(form) }}>
         <nav class="tools">
     		<input type="submit" class="buttonRounded" />
+    		<a href="{{ path('gospelcenterAdmin_slides_delete', {'center': center.ref, 'slide': slide.id}) }}" class="buttonRounded">Delete</a>
     	</nav>
     	
     	{{ form_widget(form.image.file) }}

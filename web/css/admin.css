@@ -549,9 +549,27 @@ table {
       font-size: 1.4em; }
     #container form.delete > section.details {
       margin: 10px; }
+      #container form.delete > section.details img {
+        margin: 0; }
       #container form.delete > section.details h1 {
         margin: 0;
         font-family: "Radikal-Bold", "Radikal", sans-serif; }
+      #container form.delete > section.details h2 {
+        margin-left: 20px;
+        margin-top: 20px;
+        font-family: "Radikal-Bold", "Radikal", sans-serif; }
+      #container form.delete > section.details article.associations {
+        margin: 0 20px 20px;
+        border: 1px solid #313131;
+        -webkit-border-radius: 3px;
+        -moz-border-radius: 3px;
+        -ms-border-radius: 3px;
+        -o-border-radius: 3px;
+        border-radius: 3px;
+        padding: 5px; }
+        #container form.delete > section.details article.associations p,
+        #container form.delete > section.details article.associations h1 {
+          font-size: 1em; }
     #container form.delete input[type="submit"] {
       margin: 0;
       width: initial; }

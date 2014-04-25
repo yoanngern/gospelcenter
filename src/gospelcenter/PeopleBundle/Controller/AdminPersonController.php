@@ -323,4 +323,37 @@ class AdminPersonController extends Controller {
             'page' => 'people'
         ));
     }    
+    
+    
+    /*
+     *   Delete a person
+     */
+    public function deleteAction(Center $center, Person $person)
+    {   
+        $form = $this->createFormBuilder()->getForm();
+        
+        $request = $this->getRequest();
+        if ($request->getMethod() == 'POST') {
+            $form->bind($request);
+            
+            if ($form->isValid()) {
+                $em = $this->getDoctrine()->getManager();
+                $em->remove($person);
+                $em->flush();
+                
+                $this->get('session')->getFlashBag()->add('info', 'Contact deleted.');
+        
+                return $this->redirect( $this->generateUrl('gospelcenterAdmin_persons', array(
+                    'center' => $center->getRef()
+                )));
+            }
+        }
+        
+        return $this->render('gospelcenterPeopleBundle:AdminPerson:delete.html.twig', array(
+              'center' => $center,
+              'person' => $person,
+              'form'    => $form->createView(),
+              'page' => 'people'
+        ));
+    }
 }

@@ -440,7 +440,8 @@ a:focus {
   padding-bottom: 0px; }
   #page.home #container #logo {
     margin: 0 auto;
-    display: none; }
+    display: none;
+    padding-top: 15%; }
   #page.home #container #news {
     position: absolute;
     height: 18%;

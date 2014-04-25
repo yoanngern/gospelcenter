@@ -119,33 +119,35 @@ class AdminPageController extends Controller {
     
     
     /*
-     *   Delete a location
+     *   Delete a page
      */
-    public function deleteAction(Center $center, Location $location)
-    {      
-        return $this->redirect( $this->generateUrl('gospelcenterAdmin_locations', array(
-            'center' => $center->getRef()
-        )));
-    }
-    
-    
-    /*
-     *   Get JSON location
-     *   @param $location = location id
-     *          $center = Center
-     */
-    public function singleJSONAction(Center $center, $location)
+    public function deleteAction(Center $center, Page $page)
     {   
+        $form = $this->createFormBuilder()->getForm();
         
-        $em = $this->getDoctrine()->getManager();
+        $request = $this->getRequest();
+        if ($request->getMethod() == 'POST') {
+            $form->bind($request);
+            
+            if ($form->isValid()) {
+                $em = $this->getDoctrine()->getManager();
+                $em->remove($page);
+                $em->flush();
+                
+                $this->get('session')->getFlashBag()->add('info', 'Page deleted.');
         
-        $location = $em->getRepository('gospelcenterLocationBundle:Location')->findOne($location);
+                return $this->redirect( $this->generateUrl('gospelcenterAdmin_pages', array(
+                    'center' => $center->getRef()
+                )));
+            }
+        }
         
-        $response = new Response(json_encode($location));
-        
-        $response->headers->set('Content-Type', 'application/json');
-        
-        return $response;
+        return $this->render('gospelcenterPageBundle:AdminPage:delete.html.twig', array(
+              'center' => $center,
+              'objPage' => $page,
+              'form'    => $form->createView(),
+              'page' => 'pages'
+        ));
     }
     
     

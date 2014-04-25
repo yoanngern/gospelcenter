@@ -1,0 +1,38 @@
+{% extends "::admin.html.twig" %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script type="text/javascript" src="{{ asset('js/form.min.js') }}"></script>
+{% endblock %}
+
+{% block stylesheets %}
+	{{ parent() }}
+	<link rel="stylesheet" href="{{ asset('css/admin.css') }}" type="text/css" />
+	<link rel="stylesheet" href="{{ asset('css/form.css') }}" type="text/css" />
+{% endblock %}
+
+{% block title %}
+    {{ parent() }} - Delete a slide
+{% endblock %}
+
+{% block adminBody %}
+    <h1>Delete a slide</h1>
+    
+    <form class="delete" action="{{ path('gospelcenterAdmin_slides_delete', {'center': center.ref, 'slide': slide.id}) }}" method="post" {{ form_enctype(form) }}>
+    	
+    	<p>Are you sure you want to delete the slide:</p>
+    	<section class="details">
+            <h1>{{ slide.title }}</h1>
+            <p>{{ slide.text }}</p>
+        </section>
+        
+        <input type="submit" class="buttonRounded" value="Yes" />
+        
+        <a class="buttonRounded" href="{{ path('gospelcenterAdmin_slides', {'center': center.ref}) }}">No</a>
+        
+        {{ form_rest(form) }}
+        
+    </form>
+    
+    
+{% endblock %}

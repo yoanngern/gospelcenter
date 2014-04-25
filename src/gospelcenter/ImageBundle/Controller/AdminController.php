@@ -166,12 +166,34 @@ class AdminController extends Controller {
     
     
     /*
-     *   Delete a location
+     *   Delete a slide
      */
-    public function deleteAction(Center $center, Location $location)
-    {      
-        return $this->redirect( $this->generateUrl('gospelcenterAdmin_locations', array(
-            'center' => $center->getRef()
-        )));
+    public function deleteAction(Center $center, Image $image)
+    {   
+        $form = $this->createFormBuilder()->getForm();
+        
+        $request = $this->getRequest();
+        if ($request->getMethod() == 'POST') {
+            $form->bind($request);
+            
+            if ($form->isValid()) {
+                $em = $this->getDoctrine()->getManager();
+                $em->remove($image);
+                $em->flush();
+                
+                $this->get('session')->getFlashBag()->add('info', 'Image deleted.');
+        
+                return $this->redirect( $this->generateUrl('gospelcenterAdmin_images', array(
+                    'center' => $center->getRef()
+                )));
+            }
+        }
+        
+        return $this->render('gospelcenterImageBundle:Admin:delete.html.twig', array(
+              'center' => $center,
+              'image' => $image,
+              'form'    => $form->createView(),
+              'page' => 'images'
+        ));
     }
 }

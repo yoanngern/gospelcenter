@@ -100,7 +100,7 @@ class Page
     /**
      * contains
      * 
-     * @ORM\OneToMany(targetEntity="gospelcenter\PageBundle\Entity\Slide", mappedBy="page")
+     * @ORM\OneToMany(targetEntity="gospelcenter\PageBundle\Entity\Slide", mappedBy="page", cascade={"remove"})
      * @ORM\OrderBy({"sort" = "ASC"})
      */
     private $slides;

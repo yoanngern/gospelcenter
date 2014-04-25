@@ -20,6 +20,95 @@
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0
 		},
+	"\/bundles\/coresphereconsole\/css\/base.css": {
+		"fileType": 16,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/bundles\/coresphereconsole\/css\/base.css",
+		"outputAbbreviatedPath": "No Output Path",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0
+		},
+	"\/bundles\/coresphereconsole\/css\/console.css": {
+		"fileType": 16,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/bundles\/coresphereconsole\/css\/console.css",
+		"outputAbbreviatedPath": "No Output Path",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0
+		},
+	"\/bundles\/coresphereconsole\/js\/console.js": {
+		"fileType": 64,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/bundles\/coresphereconsole\/js\/console.js",
+		"outputAbbreviatedPath": "\/bundles\/coresphereconsole\/js\/console.min.js",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"outputStyle": 1,
+		"syntaxCheckerStyle": 1
+		},
+	"\/bundles\/coresphereconsole\/js\/jquery-1.8.3.min.js": {
+		"fileType": 64,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/bundles\/coresphereconsole\/js\/jquery-1.8.3.min.js",
+		"outputAbbreviatedPath": "\/bundles\/coresphereconsole\/js\/jquery-1.8.3.min.min.js",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"outputStyle": 1,
+		"syntaxCheckerStyle": 1
+		},
+	"\/bundles\/framework\/css\/body.css": {
+		"fileType": 16,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/bundles\/framework\/css\/body.css",
+		"outputAbbreviatedPath": "No Output Path",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0
+		},
+	"\/bundles\/framework\/css\/exception.css": {
+		"fileType": 16,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/bundles\/framework\/css\/exception.css",
+		"outputAbbreviatedPath": "No Output Path",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0
+		},
+	"\/bundles\/framework\/css\/structure.css": {
+		"fileType": 16,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/bundles\/framework\/css\/structure.css",
+		"outputAbbreviatedPath": "No Output Path",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0
+		},
+	"\/bundles\/framework\/images\/grey_magnifier.png": {
+		"fileType": 32768,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 393,
+		"inputAbbreviatedPath": "\/bundles\/framework\/images\/grey_magnifier.png",
+		"outputAbbreviatedPath": "\/bundles\/framework\/images\/grey_magnifier.png",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
+	"\/bundles\/framework\/images\/logo_symfony.png": {
+		"fileType": 32768,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 1459,
+		"inputAbbreviatedPath": "\/bundles\/framework\/images\/logo_symfony.png",
+		"outputAbbreviatedPath": "\/bundles\/framework\/images\/logo_symfony.png",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
 	"\/bundles\/gospelcenterpage\/images\/AlixBingle.png": {
 		"fileType": 32768,
 		"ignore": 0,
@@ -93,6 +182,35 @@
 		"initialSize": 40376,
 		"inputAbbreviatedPath": "\/bundles\/gospelcenterpage\/images\/SimonMoser.png",
 		"outputAbbreviatedPath": "\/bundles\/gospelcenterpage\/images\/SimonMoser.png",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
+	"\/bundles\/sensiodistribution\/webconfigurator\/css\/configurator.css": {
+		"fileType": 16,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/bundles\/sensiodistribution\/webconfigurator\/css\/configurator.css",
+		"outputAbbreviatedPath": "No Output Path",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0
+		},
+	"\/bundles\/sensiodistribution\/webconfigurator\/css\/install.css": {
+		"fileType": 16,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/bundles\/sensiodistribution\/webconfigurator\/css\/install.css",
+		"outputAbbreviatedPath": "No Output Path",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0
+		},
+	"\/bundles\/sensiodistribution\/webconfigurator\/images\/blue-arrow.png": {
+		"fileType": 32768,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 181,
+		"inputAbbreviatedPath": "\/bundles\/sensiodistribution\/webconfigurator\/images\/blue-arrow.png",
+		"outputAbbreviatedPath": "\/bundles\/sensiodistribution\/webconfigurator\/images\/blue-arrow.png",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"processed": 0
@@ -2324,6 +2442,50 @@
 		"initialSize": 38975,
 		"inputAbbreviatedPath": "\/uploads\/images\/2014_04_24_73.png",
 		"outputAbbreviatedPath": "\/uploads\/images\/2014_04_24_73.png",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
+	"\/uploads\/images\/2014_04_24_74.jpeg": {
+		"fileType": 16384,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 42203,
+		"inputAbbreviatedPath": "\/uploads\/images\/2014_04_24_74.jpeg",
+		"outputAbbreviatedPath": "\/uploads\/images\/2014_04_24_74.jpeg",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
+	"\/uploads\/images\/2014_04_24_75.jpeg": {
+		"fileType": 16384,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 212568,
+		"inputAbbreviatedPath": "\/uploads\/images\/2014_04_24_75.jpeg",
+		"outputAbbreviatedPath": "\/uploads\/images\/2014_04_24_75.jpeg",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
+	"\/uploads\/images\/2014_04_24_76.jpeg": {
+		"fileType": 16384,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 212568,
+		"inputAbbreviatedPath": "\/uploads\/images\/2014_04_24_76.jpeg",
+		"outputAbbreviatedPath": "\/uploads\/images\/2014_04_24_76.jpeg",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
+	"\/uploads\/images\/2014_04_24_77.jpeg": {
+		"fileType": 16384,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 259393,
+		"inputAbbreviatedPath": "\/uploads\/images\/2014_04_24_77.jpeg",
+		"outputAbbreviatedPath": "\/uploads\/images\/2014_04_24_77.jpeg",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"processed": 0

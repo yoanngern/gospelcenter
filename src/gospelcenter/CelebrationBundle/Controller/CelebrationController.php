@@ -106,20 +106,6 @@ class CelebrationController extends Controller {
     
     
    /*
-    *   Remove the event received in parameter
-    *   @param the id of the event
-    */
-    public function deleteAction(Center $center, Event $event)
-    {
-        return $this->render('gospelcenterEventBundle:Event:delete.html.twig', array(
-            'event' => $event,
-            'center' => $center,
-            'page' => 'events'
-        ));
-    }
-    
-    
-   /*
     *   Get next star events
     *   @param the number of star event
     *   @return next star events in HTML
