@@ -321,6 +321,8 @@ a:focus {
       margin: 1px; }
       #page > header #param_nav ul li {
         list-style-type: none; }
+        #page > header #param_nav ul li.line {
+          border-bottom: 1px solid #bababa; }
         #page > header #param_nav ul li a {
           padding: 5px 5px 5px 10px;
           color: #363331;
@@ -602,6 +604,36 @@ a:focus {
       display: block;
       float: right;
       cursor: pointer; }
+
+#page.login #container article.error {
+  color: #d91a15;
+  text-align: center;
+  margin: 20px 0;
+  font-size: 1.2em; }
+#page.login #container form {
+  width: 300px;
+  margin: 40px auto 0; }
+  #page.login #container form input[type=text],
+  #page.login #container form input[type=password] {
+    display: block;
+    margin: 20px 0;
+    width: 94%;
+    background: none;
+    border: 1px solid #878787;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    -ms-border-radius: 3px;
+    -o-border-radius: 3px;
+    border-radius: 3px;
+    outline: none;
+    padding: 5px 3%;
+    font-size: 1.4em;
+    font-family: "Radikal-Light", "Radikal", sans-serif;
+    color: #313131; }
+  #page.login #container form input[type=submit] {
+    display: block;
+    margin-top: 40px;
+    float: right; }
 
 /*******************/
 /**** Youth nav ****/

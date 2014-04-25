@@ -5,6 +5,8 @@ namespace gospelcenter\CelebrationBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Response;
 
+use JMS\SecurityExtraBundle\Annotation\Secure;
+
 // Celebration
 use gospelcenter\CelebrationBundle\Entity\Celebration;
 use gospelcenter\CelebrationBundle\Form\CelebrationType;
@@ -19,8 +21,9 @@ use gospelcenter\CelebrationBundle\Entity\Tag;
 
 class AdminCelebrationController extends Controller {
     
-    /*
-     *   List of all celebrations
+    /**
+     *  List of all celebrations
+     *  @Secure(roles="ROLE_LOCAL")
      */
     public function listAction(Center $center)
     {
@@ -45,8 +48,9 @@ class AdminCelebrationController extends Controller {
     }
     
     
-    /*
-     *   Add a celebration
+    /**
+     *  Add a celebration
+     *  @Secure(roles="ROLE_CELEBRATION")
      */
     public function addAction(Center $center)
     {
@@ -106,10 +110,11 @@ class AdminCelebrationController extends Controller {
     }
     
     
-    /*
-     *   Edit a celebration
-     *   @param $celebration = Celebration
-     *   @param $center = Center
+    /**
+     *  Edit a celebration
+     *  @param $celebration = Celebration
+     *  @param $center = Center
+     *  @Secure(roles="ROLE_CELEBRATION")
      */
     public function editAction(Center $center, Celebration $celebration)
     {   

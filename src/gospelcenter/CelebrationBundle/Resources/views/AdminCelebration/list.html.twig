@@ -14,7 +14,9 @@
     <h1>Celebrations</h1>
     
     <section class="tools">
+        {% if is_granted('ROLE_CELEBRATION') %}
         <a href="{{ path('gospelcenterAdmin_celebrations_add', {'center': center.ref}) }}">Add a celebration</a>
+        {% endif %}
     </section>
     
     <table class="main">
@@ -43,9 +45,21 @@
                 {% endfor %}
                 
                 <tr {% if date(celebration.startingDate) < date("now") %}class="old"{% endif %}{% if date(celebration.startingDate) < date("+6days") %}class="today"{% endif %}>
-                    <td data-sort-value="{{ celebration.startingDate|date('U') }}"><a href="{{ path('gospelcenterAdmin_celebrations_edit', {'celebration': celebration.id, 'center': center.ref}) }}">{{ celebration.startingDate|date('d F Y') }}</a></td>
-                    <td data-sort-value="{{ celebration.startingDate|date('Hi') }}{{ celebration.startingDate|date('U') }}"><a href="{{ path('gospelcenterAdmin_celebrations_edit', {'celebration': celebration.id, 'center': center.ref}) }}">{{ celebration.startingDate|date('H:i') }} - {{ celebration.endingDate|date('H:i') }}</a></td>
-                    <td><a href="{{ path('gospelcenterAdmin_celebrations_edit', {'celebration': celebration.id, 'center': center.ref}) }}">{{ speakers }}</a></td>
+                    <td data-sort-value="{{ celebration.startingDate|date('U') }}">
+                        {% if is_granted('ROLE_CELEBRATION') %}<a href="{{ path('gospelcenterAdmin_celebrations_edit', {'celebration': celebration.id, 'center': center.ref}) }}">{% endif %}
+                            {{ celebration.startingDate|date('d F Y') }}
+                        {% if is_granted('ROLE_CELEBRATION') %}</a>{% endif %}
+                    </td>
+                    <td data-sort-value="{{ celebration.startingDate|date('Hi') }}{{ celebration.startingDate|date('U') }}">
+                        {% if is_granted('ROLE_CELEBRATION') %}<a href="{{ path('gospelcenterAdmin_celebrations_edit', {'celebration': celebration.id, 'center': center.ref}) }}">{% endif %}
+                            {{ celebration.startingDate|date('H:i') }} - {{ celebration.endingDate|date('H:i') }}
+                        {% if is_granted('ROLE_CELEBRATION') %}</a>{% endif %}
+                    </td>
+                    <td>
+                        {% if is_granted('ROLE_CELEBRATION') %}<a href="{{ path('gospelcenterAdmin_celebrations_edit', {'celebration': celebration.id, 'center': center.ref}) }}">{% endif %}
+                            {{ speakers }}
+                        {% if is_granted('ROLE_CELEBRATION') %}</a>{% endif %}
+                    </td>
                 </tr>
             {% else %}
                 <tr><td colspan="4">There are no celebrations.</td></tr>

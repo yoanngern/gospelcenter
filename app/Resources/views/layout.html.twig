@@ -25,6 +25,7 @@
     <body>
     	<section id="ruban_nav">
 	    	{% include "::ruban_nav.html.twig" %}
+	    	{% include "::login.html.twig" %}
 	    </section>
 	    <section id="page" class="{{ page }} {% block classPage %}{% endblock %}">
 	    	<header>
@@ -37,19 +38,24 @@
                 {% endfor %}
                 
                 <h1>{% block headerTitle %}{% endblock %}</h1>
-                        
+                       
 		        <a id="get_ruban" href=""></a>
-		        <a id="get_param" href=""></a>
-		        <div class="param_arrow">
-		        	<div class="arrow_up_border"></div>
-		        	<div class="arrow_up"></div>
-		        </div>
-		        <nav id="param_nav">
-		        	<ul>
-		        		{% block param %}
-						{% endblock %}
-		        	</ul>
-		        </nav>
+		        
+		        {% if app.user %}
+    		        <a id="get_param" href=""></a>
+    		        <div class="param_arrow">
+    		        	<div class="arrow_up_border"></div>
+    		        	<div class="arrow_up"></div>
+    		        </div>
+    		        <nav id="param_nav">
+    		        	<ul>
+    		        		{% block param %}
+    		        		    <li><a href="{{ path('fos_user_profile_edit') }}">Edit your profile</a></li>
+    		        		    <li><a href="{{ path('fos_user_security_logout') }}">Sign out</a></li>
+    						{% endblock %}
+    		        	</ul>
+    		        </nav>
+		        {% endif %}
 		        
 	    	    <nav class="language">
 	        	    <ul>

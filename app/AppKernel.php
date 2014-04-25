@@ -17,6 +17,10 @@ class AppKernel extends Kernel
             new Doctrine\Bundle\DoctrineBundle\DoctrineBundle(),
             new Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle(),
             new SunCat\MobileDetectBundle\MobileDetectBundle(),
+            new JMS\AopBundle\JMSAopBundle(),
+            new JMS\SecurityExtraBundle\JMSSecurityExtraBundle(),
+            new JMS\DiExtraBundle\JMSDiExtraBundle($this),
+            new FOS\UserBundle\FOSUserBundle(),
             new gospelcenter\EventBundle\gospelcenterEventBundle(),
             new gospelcenter\CenterBundle\gospelcenterCenterBundle(),
             new gospelcenter\PageBundle\gospelcenterPageBundle(),
@@ -29,6 +33,7 @@ class AppKernel extends Kernel
             new gospelcenter\LanguageBundle\gospelcenterLanguageBundle(),
             new gospelcenter\ArticleBundle\gospelcenterArticleBundle(),
             new gospelcenter\APIBundle\gospelcenterAPIBundle(),
+            new gospelcenter\UserBundle\gospelcenterUserBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {
