@@ -1,0 +1,12 @@
+{% extends "gospelcenterUserBundle::layout.html.twig" %}
+
+{% trans_default_domain 'FOSUserBundle' %}
+
+{% block body %}
+
+    <h1>Your profile</h1>
+    
+    <p><em>Username:</em> {{ user.username }}</p>
+    <p><em>Email:</em> {{ user.email }}</p>
+    
+{% endblock %}

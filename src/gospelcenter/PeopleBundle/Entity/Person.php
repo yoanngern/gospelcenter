@@ -244,6 +244,15 @@ class Person
     
     
     /**
+     * can be a
+     * 
+     * @ORM\OneToOne(targetEntity="gospelcenter\UserBundle\Entity\User", inversedBy="person")
+     * @Assert\Valid()
+     */
+    private $user;
+    
+    
+    /**
      * Constructor
      */
     public function __construct(\gospelcenter\CenterBundle\Entity\Center $center)
@@ -977,5 +986,28 @@ class Person
     public function getLanguages()
     {
         return $this->languages;
+    }
+
+    /**
+     * Set user
+     *
+     * @param \gospelcenter\UserBundle\Entity\User $user
+     * @return Person
+     */
+    public function setUser(\gospelcenter\UserBundle\Entity\User $user = null)
+    {
+        $this->user = $user;
+    
+        return $this;
+    }
+
+    /**
+     * Get user
+     *
+     * @return \gospelcenter\UserBundle\Entity\User 
+     */
+    public function getUser()
+    {
+        return $this->user;
     }
 }

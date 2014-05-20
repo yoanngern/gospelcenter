@@ -1,0 +1,11 @@
+{% extends "gospelcenterUserBundle::layout.html.twig" %}
+
+{% trans_default_domain 'FOSUserBundle' %}
+
+{% block body %}
+
+    <h1>Check Email</h1>
+
+    <p>{{ 'registration.check_email'|trans({'%email%': user.email}) }}</p>
+    
+{% endblock %}

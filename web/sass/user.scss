@@ -1,0 +1,103 @@
+#page {
+    
+    &.login,
+    &.profile,
+    &.changePassword,
+    &.register {
+        
+        #container {
+            
+            article.error {
+                color: $red;
+                text-align: center;
+                margin: 20px 0;
+                font-size: 1.2em;
+            }
+            
+            form {
+                width: 300px;
+                margin: 40px auto 0;
+                
+                input[type=text],
+                input[type=password],
+                input[type=email] {
+                    display: block;
+                    margin: 20px 0;
+                    width: 94%;
+                    background: none;
+                    border: 1px solid $grayLight;
+                    @include border-radius (3px);
+                    outline: none;
+                    padding: 5px 3%;
+                    font-size: 1.4em;
+                    font-family: $font-light;
+                    color: $grayDark;
+                }
+                
+                input[type=submit] {
+                    display: block;
+                    margin-top: 20px;
+                    float: right;
+                    cursor: pointer;
+                }
+            }
+            
+            div.error_list {
+                position: relative;
+                margin-top: 10px;
+                margin-bottom: 20px;
+                
+                div.arrow {
+                	z-index: 1001;
+                	position: absolute;
+                	left: 15px;
+                	top: -10px;
+                	        	
+                	div.arrow_up_border {
+                    	width: 0; 
+                    	height: 0; 
+                    	border-left: 11px solid transparent;
+                    	border-right: 11px solid transparent;
+                    	border-bottom: 10px solid $redTop;
+                    }
+                    
+                    div.arrow_up {
+                    	width: 0; 
+                    	height: 0; 
+                    	border-left: 11px solid transparent;
+                    	border-right: 11px solid transparent;
+                    	border-bottom: 10px solid $redTop;
+                    	margin-left: 0px;
+                    	margin-top: -9px;
+                    	
+                    }
+                }
+                
+                div.list {
+                    display: inline-block;
+                    @include gradient($red, $redBottom, $redTop);
+                    @include border-radius (3px);
+                    padding: 5px;
+                    
+                    span {
+                        color: $white;
+                        display: block;
+                    }
+                }
+            }
+        }
+    }
+    
+    &.profile {
+        
+        #container {
+            width: 70%;
+            max-width: 1300px;
+            margin: 0 auto;
+            
+            em {
+                font-family: $font-bold;
+            }
+        }
+    }
+}

@@ -6,6 +6,7 @@
 @import 'font';
 @import 'size';
 @import 'tv';
+@import 'user';
 
 $minSize: 1024px;
 
@@ -663,45 +664,6 @@ a {
                 display: block;
                 float: right;
                 cursor: pointer;
-            }
-        }
-    }
-}
-
-
-#page.login {
-    #container {
-        
-        article.error {
-            color: $red;
-            text-align: center;
-            margin: 20px 0;
-            font-size: 1.2em;
-        }
-        
-        form {
-            width: 300px;
-            margin: 40px auto 0;
-            
-            input[type=text],
-            input[type=password] {
-                display: block;
-                margin: 20px 0;
-                width: 94%;
-                background: none;
-                border: 1px solid $grayLight;
-                @include border-radius (3px);
-                outline: none;
-                padding: 5px 3%;
-                font-size: 1.4em;
-                font-family: $font-light;
-                color: $grayDark;
-            }
-            
-            input[type=submit] {
-                display: block;
-                margin-top: 40px;
-                float: right;
             }
         }
     }
