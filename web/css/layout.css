@@ -157,12 +157,12 @@ section.audio {
     font-size: 2em;
     display: inline-block; }
 
-#page.login #container article.error, #page.profile #container article.error, #page.changePassword #container article.error, #page.register #container article.error {
+#page.login #container article.error, #page.profile #container article.error, #page.changePassword #container article.error, #page.register #container article.error, #page.unit #container article.error {
   color: #d91a15;
   text-align: center;
   margin: 20px 0;
   font-size: 1.2em; }
-#page.login #container form, #page.profile #container form, #page.changePassword #container form, #page.register #container form {
+#page.login #container form, #page.profile #container form, #page.changePassword #container form, #page.register #container form, #page.unit #container form {
   width: 300px;
   margin: 40px auto 0; }
   #page.login #container form input[type=text],
@@ -173,7 +173,9 @@ section.audio {
   #page.changePassword #container form input[type=password],
   #page.changePassword #container form input[type=email], #page.register #container form input[type=text],
   #page.register #container form input[type=password],
-  #page.register #container form input[type=email] {
+  #page.register #container form input[type=email], #page.unit #container form input[type=text],
+  #page.unit #container form input[type=password],
+  #page.unit #container form input[type=email] {
     display: block;
     margin: 20px 0;
     width: 94%;
@@ -189,27 +191,27 @@ section.audio {
     font-size: 1.4em;
     font-family: "Radikal-Light", "Radikal", sans-serif;
     color: #313131; }
-  #page.login #container form input[type=submit], #page.profile #container form input[type=submit], #page.changePassword #container form input[type=submit], #page.register #container form input[type=submit] {
+  #page.login #container form input[type=submit], #page.profile #container form input[type=submit], #page.changePassword #container form input[type=submit], #page.register #container form input[type=submit], #page.unit #container form input[type=submit] {
     display: block;
     margin-top: 20px;
     float: right;
     cursor: pointer; }
-#page.login #container div.error_list, #page.profile #container div.error_list, #page.changePassword #container div.error_list, #page.register #container div.error_list {
+#page.login #container div.error_list, #page.profile #container div.error_list, #page.changePassword #container div.error_list, #page.register #container div.error_list, #page.unit #container div.error_list {
   position: relative;
   margin-top: 10px;
   margin-bottom: 20px; }
-  #page.login #container div.error_list div.arrow, #page.profile #container div.error_list div.arrow, #page.changePassword #container div.error_list div.arrow, #page.register #container div.error_list div.arrow {
+  #page.login #container div.error_list div.arrow, #page.profile #container div.error_list div.arrow, #page.changePassword #container div.error_list div.arrow, #page.register #container div.error_list div.arrow, #page.unit #container div.error_list div.arrow {
     z-index: 1001;
     position: absolute;
     left: 15px;
     top: -10px; }
-    #page.login #container div.error_list div.arrow div.arrow_up_border, #page.profile #container div.error_list div.arrow div.arrow_up_border, #page.changePassword #container div.error_list div.arrow div.arrow_up_border, #page.register #container div.error_list div.arrow div.arrow_up_border {
+    #page.login #container div.error_list div.arrow div.arrow_up_border, #page.profile #container div.error_list div.arrow div.arrow_up_border, #page.changePassword #container div.error_list div.arrow div.arrow_up_border, #page.register #container div.error_list div.arrow div.arrow_up_border, #page.unit #container div.error_list div.arrow div.arrow_up_border {
       width: 0;
       height: 0;
       border-left: 11px solid transparent;
       border-right: 11px solid transparent;
       border-bottom: 10px solid #e22416; }
-    #page.login #container div.error_list div.arrow div.arrow_up, #page.profile #container div.error_list div.arrow div.arrow_up, #page.changePassword #container div.error_list div.arrow div.arrow_up, #page.register #container div.error_list div.arrow div.arrow_up {
+    #page.login #container div.error_list div.arrow div.arrow_up, #page.profile #container div.error_list div.arrow div.arrow_up, #page.changePassword #container div.error_list div.arrow div.arrow_up, #page.register #container div.error_list div.arrow div.arrow_up, #page.unit #container div.error_list div.arrow div.arrow_up {
       width: 0;
       height: 0;
       border-left: 11px solid transparent;
@@ -217,7 +219,7 @@ section.audio {
       border-bottom: 10px solid #e22416;
       margin-left: 0px;
       margin-top: -9px; }
-  #page.login #container div.error_list div.list, #page.profile #container div.error_list div.list, #page.changePassword #container div.error_list div.list, #page.register #container div.error_list div.list {
+  #page.login #container div.error_list div.list, #page.profile #container div.error_list div.list, #page.changePassword #container div.error_list div.list, #page.register #container div.error_list div.list, #page.unit #container div.error_list div.list {
     display: inline-block;
     background: #d91a15;
     background: -webkit-gradient(linear, left bottom, left top, color-stop(0, #d11115), color-stop(1, #e22416));
@@ -231,7 +233,7 @@ section.audio {
     -o-border-radius: 3px;
     border-radius: 3px;
     padding: 5px; }
-    #page.login #container div.error_list div.list span, #page.profile #container div.error_list div.list span, #page.changePassword #container div.error_list div.list span, #page.register #container div.error_list div.list span {
+    #page.login #container div.error_list div.list span, #page.profile #container div.error_list div.list span, #page.changePassword #container div.error_list div.list span, #page.register #container div.error_list div.list span, #page.unit #container div.error_list div.list span {
       color: #fdfdfc;
       display: block; }
 #page.profile #container {

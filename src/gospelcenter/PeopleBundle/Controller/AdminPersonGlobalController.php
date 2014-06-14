@@ -22,6 +22,7 @@ use gospelcenter\CelebrationBundle\Form\SpeakerType;
 
 // People
 use gospelcenter\PeopleBundle\Entity\Person;
+use gospelcenter\PeopleBundle\Form\PersonGlobalWithAccountType;
 use gospelcenter\PeopleBundle\Form\PersonGlobalType;
 
 // Member
@@ -110,7 +111,11 @@ class AdminPersonGlobalController extends Controller {
     {
         $session = $this->get('session');
         
-        $form = $this->createForm(new PersonGlobalType, $person);
+        if($person->getUser()) {
+            $form = $this->createForm(new PersonGlobalWithAccountType, $person);
+        } else {
+            $form = $this->createForm(new PersonGlobalType, $person);
+        }
         
         $request = $this->get('request');
         

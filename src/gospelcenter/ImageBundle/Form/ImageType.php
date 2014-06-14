@@ -17,7 +17,16 @@ class ImageType extends AbstractType
         $builder
             ->add('title',          'text')
             ->add('file',           'file')
-            ->add('type',           'text')
+            ->add('type',           'choice', array(
+                                        'choices'   => array(
+                                            'Celebration'   => 'Celebration',
+                                            'Center'        => 'Center',
+                                            'Slide'         => 'Slide',
+                                            'Person'        => 'Person',
+                                            'Event'         => 'Event'
+                                        ),  
+                                        'multiple'  => false,
+                                        'empty_value'   => 'Select a type',))
             ->add('description',    'textarea', array('required' => false))
         ;
     }

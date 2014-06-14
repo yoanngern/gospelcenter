@@ -1,0 +1,19 @@
+{% extends "::adminGlobal_options.html.twig" %}
+
+{% trans_default_domain 'FOSUserBundle' %}
+
+{% block gospelcenterAdminOptions_body %}
+    
+    <form action="{{ path('gospelcenterAdminGlobal_options_units_edit', {'groupName': group_name}) }}" {{ form_enctype(form) }} method="POST" class="fos_user_group_new">
+        
+        {{ form_widget(form.name, {'attr': {'placeholder': 'Name'} }) }}
+        {{ form_errors(form.name) }}
+        
+        {{ form_widget(form) }}
+        
+        <div>
+            <input type="submit" class="buttonRounded" value="Save" />
+        </div>
+    </form>
+    
+{% endblock %}

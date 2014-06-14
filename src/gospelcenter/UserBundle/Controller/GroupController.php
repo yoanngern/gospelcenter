@@ -26,7 +26,8 @@ class GroupController extends BaseController
 
         return $this->container->get('templating')->renderResponse('FOSUserBundle:Group:list.html.'.$this->getEngine(), array(
             'groups' => $groups,
-            'page' => 'group'
+            'page' => 'options',
+            'tab' => 'units'
         ));
     }
 
@@ -39,7 +40,8 @@ class GroupController extends BaseController
 
         return $this->container->get('templating')->renderResponse('FOSUserBundle:Group:show.html.'.$this->getEngine(), array(
             'group' => $group,
-            'page' => 'group'
+            'page' => 'options',
+            'tab' => 'units'
         ));
     }
 
@@ -72,6 +74,13 @@ class GroupController extends BaseController
             if ($form->isValid()) {
                 /** @var $groupManager \FOS\UserBundle\Model\GroupManagerInterface */
                 $groupManager = $this->container->get('fos_user.group_manager');
+                
+                $group->setRoles(array());
+                
+                foreach($group->getLocalRoles() as $key => $value)
+                {
+                    $group->addRole($value);
+                }
 
                 $event = new FormEvent($form, $request);
                 $dispatcher->dispatch(FOSUserEvents::GROUP_EDIT_SUCCESS, $event);
@@ -92,6 +101,8 @@ class GroupController extends BaseController
         return $this->container->get('templating')->renderResponse('FOSUserBundle:Group:edit.html.'.$this->getEngine(), array(
             'form'      => $form->createview(),
             'group_name'  => $group->getName(),
+            'page' => 'options',
+            'tab' => 'units'
         ));
     }
 
@@ -124,7 +135,7 @@ class GroupController extends BaseController
                 $groupManager->updateGroup($group);
 
                 if (null === $response = $event->getResponse()) {
-                    $url = $this->container->get('router')->generate('fos_user_group_show', array('groupName' => $group->getName()));
+                    $url = $this->container->get('router')->generate('gospelcenterAdminGlobal_options_units_show', array('groupName' => $group->getName()));
                     $response = new RedirectResponse($url);
                 }
 
@@ -136,6 +147,9 @@ class GroupController extends BaseController
 
         return $this->container->get('templating')->renderResponse('FOSUserBundle:Group:new.html.'.$this->getEngine(), array(
             'form' => $form->createview(),
+            'page' => 'options',
+            'tab' => 'units'
+            
         ));
     }
 

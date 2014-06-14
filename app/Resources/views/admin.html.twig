@@ -9,6 +9,8 @@
 {% block param %}
     <li><a href="{{ path('fos_user_registration_register') }}">Register a user</a></li>
     <li><a href="{{ path('gospelcenterPage_home', {'center': center.ref}) }}">Back to website</a></li>
+    <li class="line"></li>
+    {{ parent() }}
 {% endblock %}
 
 {% block body %}

@@ -13,6 +13,8 @@ use gospelcenter\LocationBundle\Form\LocationSimpleType;
 use gospelcenter\PeopleBundle\Form\Type\TelType;
 use gospelcenter\PeopleBundle\Form\Type\ErrorType;
 
+use FOS\UserBundle\Form\Type\RegistrationFormType;
+
 class PersonType extends AbstractType
 {
         /**
@@ -24,6 +26,7 @@ class PersonType extends AbstractType
         $builder
             ->add('firstname',      'text')
             ->add('lastname',       'text')
+            ->add('user',           new RegistrationFormType('gospelcenter\UserBundle\Entity\User'), array('required' => false))
             ->add('gender',         'choice', array(
                                         'choices'   => array(
                                             'man'     => 'Man',

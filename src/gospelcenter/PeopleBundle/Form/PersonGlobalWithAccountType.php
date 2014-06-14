@@ -6,7 +6,9 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
-class PersonGlobalType extends PersonType
+use gospelcenter\UserBundle\Form\ProfileFormWithoutPWDType;
+
+class PersonGlobalWithAccountType extends PersonGlobalType
 {
         /**
      * @param FormBuilderInterface $builder
@@ -16,9 +18,8 @@ class PersonGlobalType extends PersonType
     {
         parent::buildForm($builder, $options);
         
-        $builder->remove('isVisitor');
-        $builder->remove('isMember');
-        
+        $builder->remove('user');
+        $builder->add('user', new ProfileFormWithoutPWDType('gospelcenter\UserBundle\Entity\User'), array('required' => false));
     }
     
     /**
@@ -36,6 +37,6 @@ class PersonGlobalType extends PersonType
      */
     public function getName()
     {
-        return 'gospelcenter_peoplebundle_personglobaltype';
+        return 'gospelcenter_peoplebundle_personglobalwithaccounttype';
     }
 }

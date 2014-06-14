@@ -1,0 +1,24 @@
+{% extends "::adminGlobal_options.html.twig" %}
+
+{% trans_default_domain 'FOSUserBundle' %}
+
+{% block gospelcenterAdminOptions_body %}
+    
+    <table class="main">
+        <thead>
+            <tr>
+                <th data-sort="string">Name</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for group in groups %}
+                <tr>
+                    <td><a href="{{ path('gospelcenterAdminGlobal_options_units_show', {'groupName': group.name}) }}">{{ group.name }}</a></td>
+                </tr>
+            {% else %}
+                <tr><td colspan="1">There are no units.</td></tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    
+{% endblock %}

@@ -7,6 +7,8 @@ use Symfony\Component\Validator\Constraints as Assert;
 
 use gospelcenter\CelebrationBundle\Entity\Speaker;
 
+use FOS\UserBundle\Entity\User;
+
 /**
  * Person
  *
@@ -246,7 +248,7 @@ class Person
     /**
      * can be a
      * 
-     * @ORM\OneToOne(targetEntity="gospelcenter\UserBundle\Entity\User", inversedBy="person")
+     * @ORM\OneToOne(targetEntity="gospelcenter\UserBundle\Entity\User", inversedBy="person", cascade={"persist", "remove"})
      * @Assert\Valid()
      */
     private $user;
@@ -255,7 +257,7 @@ class Person
     /**
      * Constructor
      */
-    public function __construct(\gospelcenter\CenterBundle\Entity\Center $center)
+    public function __construct(\gospelcenter\CenterBundle\Entity\Center $center = null)
     {
         $this->createdDate = new \Datetime();
         $this->modifiedDate = new \Datetime();

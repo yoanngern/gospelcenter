@@ -1,12 +1,14 @@
 <?php
 
-namespace gospelcenter\PeopleBundle\Form;
+namespace gospelcenter\UserBundle\Form;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
-class PersonGlobalType extends PersonType
+use FOS\UserBundle\Form\Type\ProfileFormType;
+
+class ProfileFormWithoutPWDType extends ProfileFormType
 {
         /**
      * @param FormBuilderInterface $builder
@@ -16,9 +18,7 @@ class PersonGlobalType extends PersonType
     {
         parent::buildForm($builder, $options);
         
-        $builder->remove('isVisitor');
-        $builder->remove('isMember');
-        
+        $builder->remove('current_password');
     }
     
     /**
@@ -27,7 +27,7 @@ class PersonGlobalType extends PersonType
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'gospelcenter\PeopleBundle\Entity\Person'
+            'data_class' => 'gospelcenter\UserBundle\Entity\User'
         ));
     }
 
@@ -36,6 +36,6 @@ class PersonGlobalType extends PersonType
      */
     public function getName()
     {
-        return 'gospelcenter_peoplebundle_personglobaltype';
+        return 'gospelcenter_peoplebundle_profileformwithoutpwdtype';
     }
 }

@@ -1,0 +1,30 @@
+{% extends "::adminGlobal.html.twig" %}
+
+{% block title %}
+    {{ parent() }} - Units
+{% endblock %}
+
+{% block stylesheets %}
+	{{ parent() }}
+	<link rel="stylesheet" href="{{ asset('css/admin.css') }}" type="text/css" />
+{% endblock %}
+
+{% block adminBody %}
+    <h1>Options</h1>
+    
+    <section class="tools">
+        {% if tab == 'units' %}
+            <a href="{{ path('gospelcenterAdminGlobal_options_units_add') }}">Add a unit</a>
+        {% endif %}
+    </section>
+    
+    <nav class="sub_nav">
+    	<ul>
+    		<li><a href="{{ path('gospelcenterAdminGlobal_options_units') }}" {% if tab == 'units' %}class="current"{% endif %}>Units</a></li>
+    	</ul>
+    </nav>
+    
+    {% block gospelcenterAdminOptions_body %}
+    {% endblock %}
+    
+{% endblock %}

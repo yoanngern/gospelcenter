@@ -436,17 +436,22 @@ table {
       display: inline-block; }
       #container form.page #slides article.slide section img {
         float: left;
-        margin-right: 10px;
-        width: 200px;
+        width: 30%;
         height: auto;
-        min-height: initial; }
+        min-height: initial;
+        margin: 0; }
       #container form.page #slides article.slide section h1 {
         padding-top: 10px;
         font-family: "Radikal-Bold", "Radikal", sans-serif;
-        padding-bottom: 5px; }
+        padding-bottom: 5px;
+        width: 65%;
+        display: inline-block;
+        margin-top: 0px;
+        float: right; }
       #container form.page #slides article.slide section p {
         padding-bottom: 10px;
-        margin-left: 210px; }
+        float: right;
+        width: 65%; }
   #container form.image > h2, #container form.slide > h2, #container form.center > h2 {
     font-family: "Radikal-Bold", "Radikal", sans-serif;
     font-size: 1.3em;
@@ -464,84 +469,104 @@ table {
   #container form.location > input {
     width: 49%;
     margin-left: 25%; }
-  #container form.person > fieldset {
+  #container form.person section.left {
     width: 60%;
     float: left; }
-    #container form.person > fieldset label {
-      display: inline-block;
-      width: 19%;
-      text-align: right;
-      margin: 0px;
-      margin-right: 1%; }
-    #container form.person > fieldset input,
-    #container form.person > fieldset textarea {
-      display: inline-block;
-      background: transparent;
-      border: none;
-      width: 75%;
-      margin: 0px;
-      margin-bottom: 15px;
-      font-family: "Radikal-Light", "Radikal", sans-serif; }
-    #container form.person > fieldset div.error_list {
-      margin-left: 22%; }
-    #container form.person > fieldset textarea {
-      float: right;
-      min-height: 200px;
-      width: 77%; }
-  #container form.person fieldset.details fieldset.languages {
+  #container form.person section.right {
+    width: 39%;
+    float: right; }
+  #container form.person section > fieldset label {
+    display: inline-block;
+    width: 19%;
+    text-align: right;
+    margin: 0px;
+    margin-right: 1%; }
+  #container form.person section > fieldset input,
+  #container form.person section > fieldset textarea {
+    display: inline-block;
+    background: transparent;
+    border: none;
+    width: 75%;
+    margin: 0px;
+    margin-bottom: 15px;
+    font-family: "Radikal-Light", "Radikal", sans-serif; }
+  #container form.person section > fieldset div.error_list {
+    margin-left: 22%; }
+  #container form.person section > fieldset textarea {
+    float: right;
+    min-height: 200px;
+    width: 77%; }
+  #container form.person section fieldset.details fieldset.languages {
     margin-left: 21%;
     margin-top: 20px; }
-    #container form.person fieldset.details fieldset.languages label {
+    #container form.person section fieldset.details fieldset.languages label {
       display: block;
-      font-family: "Radikal-Bold", "Radikal", sans-serif; }
-  #container form.person fieldset.details fieldset.checkbox {
+      font-family: "Radikal-Bold", "Radikal", sans-serif;
+      margin-bottom: 5px; }
+    #container form.person section fieldset.details fieldset.languages ul {
+      width: 90%; }
+  #container form.person section fieldset.details fieldset.checkbox {
     margin-left: 21%;
     margin-top: 20px;
     margin-bottom: 20px; }
-  #container form.person fieldset.location input {
+  #container form.person section fieldset.location input {
     margin-left: 21%;
     margin-bottom: 0px; }
-    #container form.person fieldset.location input:first-of-type {
+    #container form.person section fieldset.location input:first-of-type {
       margin-left: 0px; }
-    #container form.person fieldset.location input#gospelcenter_peoplebundle_person_location_postalCode {
+    #container form.person section fieldset.location input#gospelcenter_peoplebundle_person_location_postalCode {
       width: 20%; }
-    #container form.person fieldset.location input#gospelcenter_peoplebundle_person_location_city {
+    #container form.person section fieldset.location input#gospelcenter_peoplebundle_person_location_city {
       width: 35%;
       margin-left: 0px; }
-  #container form.person fieldset.image {
-    float: right;
-    width: 39%; }
-    #container form.person fieldset.image img {
-      height: inherit;
-      max-height: inherit;
-      min-height: inherit;
-      width: 100%; }
-    #container form.person fieldset.image div#editImage {
-      width: 100%; }
-    #container form.person fieldset.image div#addImage {
+  #container form.person section fieldset.account {
+    border: 1px solid #363331;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    -ms-border-radius: 3px;
+    -o-border-radius: 3px;
+    border-radius: 3px;
+    margin-top: 20px; }
+    #container form.person section fieldset.account h2 {
+      margin: 0;
+      background-color: #363331;
+      color: #fdfdfc;
+      padding: 5px; }
+    #container form.person section fieldset.account input {
+      width: 94%;
+      margin: 5px 1%;
+      padding: 3px 2%; }
+  #container form.person section fieldset.image img {
+    height: inherit;
+    max-height: inherit;
+    min-height: inherit;
+    width: 100%; }
+  #container form.person section fieldset.image div#editImage {
+    width: 100%; }
+  #container form.person section fieldset.image div#addImage {
+    display: block;
+    width: 300px;
+    border: 2px dashed #878787; }
+    #container form.person section fieldset.image div#addImage .iconImg {
       display: block;
-      width: 300px;
-      border: 2px dashed #878787; }
-      #container form.person fieldset.image div#addImage .iconImg {
-        display: block;
-        margin: 20px auto 10px;
-        width: 64px;
-        background-image: url("../images/add_image.svg");
-        background-size: 100%; }
-      #container form.person fieldset.image div#addImage .txt {
-        width: 100%; }
-  #container form.person fieldset.header {
+      margin: 20px auto 10px;
+      width: 64px;
+      background-image: url("../images/add_image.svg");
+      background-size: 100%; }
+    #container form.person section fieldset.image div#addImage .txt {
+      width: 100%; }
+  #container form.person section fieldset.header {
     padding-left: 12%;
     width: 48%;
     margin-left: 9px; }
-    #container form.person fieldset.header input {
+    #container form.person section fieldset.header input {
       display: inline-block;
       font-family: "Radikal", sans-serif;
       padding: 0px;
       width: 100%; }
-      #container form.person fieldset.header input.resize {
+      #container form.person section fieldset.header input.resize {
         width: 25%; }
-  #container form.person fieldset.notes {
+  #container form.person section fieldset.notes {
     margin-top: 30px;
     overflow: auto;
     padding-bottom: 70px; }

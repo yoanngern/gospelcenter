@@ -134,3 +134,36 @@ gospelcenterAdminGlobal_centers_edit:
     path:       /centers/edit/{center}
     defaults:   { _controller: gospelcenterCenterBundle:AdminCenter:edit }
 
+
+##########################
+######## Options #########
+##########################
+
+# Options
+gospelcenterAdminGlobal_options:
+    path:       /options
+    defaults:   { _controller: gospelcenterUserBundle:Group:list }
+    
+# Units
+gospelcenterAdminGlobal_options_units:
+    path:       /options/units
+    defaults:   { _controller: gospelcenterUserBundle:Group:list }
+    
+# Add a unit
+gospelcenterAdminGlobal_options_units_add:
+    path:       /options/units/add
+    defaults:   { _controller: gospelcenterUserBundle:Group:new }
+    
+# Edit a unit
+gospelcenterAdminGlobal_options_units_edit:
+    path:       /options/units/edit/{groupName}
+    defaults:   { _controller: gospelcenterUserBundle:Group:edit }
+    
+# Show a unit
+gospelcenterAdminGlobal_options_units_show:
+    path:       /options/units/{groupName}
+    defaults:   { _controller: gospelcenterUserBundle:Group:show }
+    
+
+
+

@@ -18,6 +18,7 @@ use FOS\UserBundle\Controller\SecurityController as BaseController;
 use gospelcenter\UserBundle\Entity\User;
 
 use gospelcenter\UserBundle\Form\RegistrationWithPersonType;
+use FOS\UserBundle\Form\Type\RegistrationFormType;
 
 class RegistrationController extends BaseController
 {
@@ -40,7 +41,7 @@ class RegistrationController extends BaseController
             return $event->getResponse();
         }
 
-        $form = $formFactory->createForm(new RegistrationWithPersonType('User'));
+        $form = $formFactory->createForm(new RegistrationFormType('User'));
         $form->setData($user);
 
         if ('POST' === $request->getMethod()) {

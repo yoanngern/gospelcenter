@@ -539,21 +539,26 @@
                     	
                     	img {
                         	float: left;
-                        	margin-right: 10px;
-                        	width: 200px;
+                        	width: 30%;
                         	height: auto;
                         	min-height: initial;
+                        	margin: 0;
                     	}
                     	
                     	h1 {
                         	padding-top: 10px;
                         	font-family: $font-bold;
                         	padding-bottom: 5px;
+                        	width: 65%;
+                        	display: inline-block;
+                        	margin-top: 0px;
+                        	float: right;
                     	}
                     	
                     	p {
                         	padding-bottom: 10px;
-                        	margin-left: 210px;
+                        	float: right;
+                        	width: 65%;
                     	}
                 	}
                 	
@@ -608,143 +613,175 @@
     	}
     	
     	&.person {
-    	    
-    	    & > fieldset {
-        	    width: 60%;
-        	    float: left;
-        	    
-        	    label {
-            	    display: inline-block;
-            	    width: 19%;
-            	    text-align: right;
-            	    margin: 0px;
-            	    margin-right: 1%;
+    	
+        	section {
+        	
+        	    &.left {
+            	    width: 60%;
+            	    float: left;
         	    }
         	    
-        	    input,
-        	    textarea {
-            	    display: inline-block;
-            	    background: transparent;
-            	    border: none;
-            	    width: 75%;
-            	    margin: 0px;
-                    margin-bottom: 15px;
-                    font-family: $font-light;
-        	    }
-        	    
-        	    div.error_list {
-            	    margin-left: 22%;
-        	    }
-        	    
-        	    textarea {
+        	    &.right {
+            	    width: 39%;
             	    float: right;
-            	    min-height: 200px;
-            	    width: 77%;
         	    }
-    	    }
-    	    
-    	    fieldset.details {
         	    
-        	    fieldset.languages {
-            	    margin-left: 21%;
-            	    margin-top: 20px;
+        	    & > fieldset {
             	    
             	    label {
-                	    display: block;
-                	    font-family: $font-bold;
-            	    }    
+                	    display: inline-block;
+                	    width: 19%;
+                	    text-align: right;
+                	    margin: 0px;
+                	    margin-right: 1%;
+            	    }
+            	    
+            	    input,
+            	    textarea {
+                	    display: inline-block;
+                	    background: transparent;
+                	    border: none;
+                	    width: 75%;
+                	    margin: 0px;
+                        margin-bottom: 15px;
+                        font-family: $font-light;
+            	    }
+            	    
+            	    div.error_list {
+                	    margin-left: 22%;
+            	    }
+            	    
+            	    textarea {
+                	    float: right;
+                	    min-height: 200px;
+                	    width: 77%;
+            	    }
         	    }
         	    
-        	    fieldset.checkbox {
-            	    margin-left: 21%;
+        	    fieldset.details {
+            	    
+            	    fieldset.languages {
+                	    margin-left: 21%;
+                	    margin-top: 20px;
+                	    
+                	    label {
+                    	    display: block;
+                    	    font-family: $font-bold;
+                    	    margin-bottom: 5px;
+                	    }
+                	    
+                	    ul {
+                    	    width: 90%;
+                	    }
+            	    }
+            	    
+            	    fieldset.checkbox {
+                	    margin-left: 21%;
+                	    margin-top: 20px;
+                	    margin-bottom: 20px;
+                    }
+        	    }
+        	    
+        	    fieldset.location {
+            	    
+            	    input {
+                	    margin-left: 21%;
+                	    margin-bottom: 0px;
+                	    
+                	    &:first-of-type {
+                    	    margin-left: 0px;
+                	    }
+                	    
+                	    &#gospelcenter_peoplebundle_person_location_postalCode {
+                    	    width: 20%;
+                	    }
+                	    
+                	    &#gospelcenter_peoplebundle_person_location_city {
+                    	    width: 35%;
+                    	    margin-left: 0px;
+                	    }
+                	    
+            	    }
+        	    }
+        	    
+        	    fieldset.account {
+            	    border: 1px solid $black;
+            	    @include border-radius (3px);
             	    margin-top: 20px;
-            	    margin-bottom: 20px;
-                }
-    	    }
-    	    
-    	    fieldset.location {
-        	    
-        	    input {
-            	    margin-left: 21%;
-            	    margin-bottom: 0px;
             	    
-            	    &:first-of-type {
-                	    margin-left: 0px;
+            	    h2 {
+                	    margin: 0;
+                	    background-color: $black;
+                	    color: $white;
+                	    padding: 5px;
             	    }
             	    
-            	    &#gospelcenter_peoplebundle_person_location_postalCode {
-                	    width: 20%;
+            	    input {
+                	    width: 94%;
+                	    margin: 5px 1%;
+                	    padding: 3px 2%;
             	    }
-            	    
-            	    &#gospelcenter_peoplebundle_person_location_city {
-                	    width: 35%;
-                	    margin-left: 0px;
-            	    }
-            	    
-        	    }
-    	    }
-    	    
-    	    
-    	    fieldset.image {
-        	    float: right;
-        	    width: 39%;
-        	    
-        	    img {
-            	    height: inherit;
-            	    max-height: inherit;
-            	    min-height: inherit;
-            	    width: 100%;
         	    }
         	    
-        	    div#editImage {
-            	    width: 100%;
-        	    }
         	    
-        	    div#addImage {
-            	    display: block;
-                    width: 300px;
-                    border: 2px dashed #878787;
-                    
-                    .iconImg {
-                	    display: block;
-                        margin: 20px auto 10px;
-                        width: 64px;
-                        background-image: url("../images/add_image.svg");
-                        background-size: 100%;
-            	    }
+        	    fieldset.image {
             	    
-            	    .txt {
+            	    img {
+                	    height: inherit;
+                	    max-height: inherit;
+                	    min-height: inherit;
                 	    width: 100%;
             	    }
-        	    }
-    	    }
-    	    
-    	    
-    	    fieldset.header {
-    	        
-    	        padding-left: 12%;
-    	        width: 48%;
-    	        margin-left: 9px;
-    	        
-                input {
-            	    display: inline-block;
-            	    font-family: $font-regular;
-            	    padding: 0px;
-            	    width: 100%;
             	    
-            	    &.resize {
-                	    width: 25%;
+            	    div#editImage {
+                	    width: 100%;
             	    }
-                }
+            	    
+            	    div#addImage {
+                	    display: block;
+                        width: 300px;
+                        border: 2px dashed #878787;
+                        
+                        .iconImg {
+                    	    display: block;
+                            margin: 20px auto 10px;
+                            width: 64px;
+                            background-image: url("../images/add_image.svg");
+                            background-size: 100%;
+                	    }
+                	    
+                	    .txt {
+                    	    width: 100%;
+                	    }
+            	    }
+        	    }
+        	    
+        	    
+        	    fieldset.header {
+        	        
+        	        padding-left: 12%;
+        	        width: 48%;
+        	        margin-left: 9px;
+        	        
+                    input {
+                	    display: inline-block;
+                	    font-family: $font-regular;
+                	    padding: 0px;
+                	    width: 100%;
+                	    
+                	    &.resize {
+                    	    width: 25%;
+                	    }
+                    }
+        	    }
+        	    
+        	    fieldset.notes {
+            	    margin-top: 30px;
+            	    overflow: auto;
+            	    padding-bottom: 70px;
+        	    }
+        	    
     	    }
-    	    
-    	    fieldset.notes {
-        	    margin-top: 30px;
-        	    overflow: auto;
-        	    padding-bottom: 70px;
-    	    }
-    	    
-    	    
     	}
     	
     	&.delete {

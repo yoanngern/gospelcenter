@@ -6,6 +6,8 @@ use FOS\UserBundle\Entity\User as BaseUser;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 
+use gospelcenter\PeopleBundle\Entity\Person;
+
 /**
  * User
  * 
@@ -30,6 +32,22 @@ class User extends BaseUser
      * @Assert\Valid()
      */
     private $person;
+    
+    /**
+     * @ORM\ManyToMany(targetEntity="gospelcenter\UserBundle\Entity\Unit", mappedBy="users")
+     * @Assert\Valid()
+     */
+    protected $units;
+    
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        parent::__construct();
+        $this->units = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->enabled = 1;
+    }
 
     /**
      * Get id
@@ -62,5 +80,38 @@ class User extends BaseUser
     public function getPerson()
     {
         return $this->person;
+    }
+
+    /**
+     * Add units
+     *
+     * @param \gospelcenter\UserBundle\Entity\Unit $units
+     * @return User
+     */
+    public function addUnit(\gospelcenter\UserBundle\Entity\Unit $units)
+    {
+        $this->units[] = $units;
+    
+        return $this;
+    }
+
+    /**
+     * Remove units
+     *
+     * @param \gospelcenter\UserBundle\Entity\Unit $units
+     */
+    public function removeUnit(\gospelcenter\UserBundle\Entity\Unit $units)
+    {
+        $this->units->removeElement($units);
+    }
+
+    /**
+     * Get units
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getUnits()
+    {
+        return $this->units;
     }
 }
