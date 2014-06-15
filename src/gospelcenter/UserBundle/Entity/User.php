@@ -34,12 +34,6 @@ class User extends BaseUser
     private $person;
     
     /**
-     * @ORM\ManyToMany(targetEntity="gospelcenter\UserBundle\Entity\Unit", mappedBy="users")
-     * @Assert\Valid()
-     */
-    protected $units;
-    
-    /**
      * Constructor
      */
     public function __construct()
@@ -80,38 +74,5 @@ class User extends BaseUser
     public function getPerson()
     {
         return $this->person;
-    }
-
-    /**
-     * Add units
-     *
-     * @param \gospelcenter\UserBundle\Entity\Unit $units
-     * @return User
-     */
-    public function addUnit(\gospelcenter\UserBundle\Entity\Unit $units)
-    {
-        $this->units[] = $units;
-    
-        return $this;
-    }
-
-    /**
-     * Remove units
-     *
-     * @param \gospelcenter\UserBundle\Entity\Unit $units
-     */
-    public function removeUnit(\gospelcenter\UserBundle\Entity\Unit $units)
-    {
-        $this->units->removeElement($units);
-    }
-
-    /**
-     * Get units
-     *
-     * @return \Doctrine\Common\Collections\Collection 
-     */
-    public function getUnits()
-    {
-        return $this->units;
     }
 }

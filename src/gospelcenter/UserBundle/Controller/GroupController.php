@@ -74,13 +74,6 @@ class GroupController extends BaseController
             if ($form->isValid()) {
                 /** @var $groupManager \FOS\UserBundle\Model\GroupManagerInterface */
                 $groupManager = $this->container->get('fos_user.group_manager');
-                
-                $group->setRoles(array());
-                
-                foreach($group->getLocalRoles() as $key => $value)
-                {
-                    $group->addRole($value);
-                }
 
                 $event = new FormEvent($form, $request);
                 $dispatcher->dispatch(FOSUserEvents::GROUP_EDIT_SUCCESS, $event);
@@ -88,7 +81,7 @@ class GroupController extends BaseController
                 $groupManager->updateGroup($group);
 
                 if (null === $response = $event->getResponse()) {
-                    $url = $this->container->get('router')->generate('fos_user_group_show', array('groupName' => $group->getName()));
+                    $url = $this->container->get('router')->generate('gospelcenterAdminGlobal_options_units');
                     $response = new RedirectResponse($url);
                 }
 
@@ -135,7 +128,7 @@ class GroupController extends BaseController
                 $groupManager->updateGroup($group);
 
                 if (null === $response = $event->getResponse()) {
-                    $url = $this->container->get('router')->generate('gospelcenterAdminGlobal_options_units_show', array('groupName' => $group->getName()));
+                    $url = $this->container->get('router')->generate('gospelcenterAdminGlobal_options_units');
                     $response = new RedirectResponse($url);
                 }
 

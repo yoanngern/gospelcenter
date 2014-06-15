@@ -4,11 +4,13 @@ security:
         gospelcenter\UserBundle\Entity\User: sha512
 
     role_hierarchy:
+        ROLE_LOCAL:         ROLE_USER
         ROLE_LOCAL_ADMIN:   ROLE_LOCAL
         ROLE_MEDIA:         ROLE_LOCAL_ADMIN
         ROLE_CELEBRATION:   ROLE_LOCAL_ADMIN
         ROLE_EVENT:         ROLE_LOCAL_ADMIN
         ROLE_PASTOR:        [ROLE_MEDIA, ROLE_CELEBRATION, ROLE_EVENT]
+        ROLE_GLOBAL:        ROLE_USER
         ROLE_SUPER_GLOBAL:  ROLE_GLOBAL
         ROLE_ADMIN:         [ROLE_LOCAL, ROLE_GLOBAL]
         ROLE_SUPER_ADMIN:   [ROLE_ADMIN, ROLE_ALLOWED_TO_SWITCH]
@@ -43,3 +45,6 @@ security:
     access_control:
         - { path: ^/demo/secured/hello/admin/, roles: ROLE_ADMIN }
         #- { path: ^/login, roles: IS_AUTHENTICATED_ANONYMOUSLY, requires_channel: https }
+    
+    
+    

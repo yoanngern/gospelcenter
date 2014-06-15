@@ -142,28 +142,36 @@ gospelcenterAdminGlobal_centers_edit:
 # Options
 gospelcenterAdminGlobal_options:
     path:       /options
-    defaults:   { _controller: gospelcenterUserBundle:Group:list }
+    defaults:   { _controller: gospelcenterAccessBundle:Unit:list }
     
 # Units
 gospelcenterAdminGlobal_options_units:
     path:       /options/units
-    defaults:   { _controller: gospelcenterUserBundle:Group:list }
+    defaults:   { _controller: gospelcenterAccessBundle:Unit:list }
     
 # Add a unit
 gospelcenterAdminGlobal_options_units_add:
     path:       /options/units/add
-    defaults:   { _controller: gospelcenterUserBundle:Group:new }
+    defaults:   { _controller: gospelcenterAccessBundle:Unit:add }
     
 # Edit a unit
 gospelcenterAdminGlobal_options_units_edit:
-    path:       /options/units/edit/{groupName}
-    defaults:   { _controller: gospelcenterUserBundle:Group:edit }
+    path:       /options/units/edit/{unit}
+    defaults:   { _controller: gospelcenterAccessBundle:Unit:edit }
     
-# Show a unit
-gospelcenterAdminGlobal_options_units_show:
-    path:       /options/units/{groupName}
-    defaults:   { _controller: gospelcenterUserBundle:Group:show }
+# Accesses
+gospelcenterAdminGlobal_options_accesses:
+    path:       /options/accesses
+    defaults:   { _controller: gospelcenterAccessBundle:Access:list }
     
-
+# Add an access
+gospelcenterAdminGlobal_options_accesses_add:
+    path:       /options/accesses/add
+    defaults:   { _controller: gospelcenterAccessBundle:Access:add }
+    
+# Edit an access
+gospelcenterAdminGlobal_options_accesses_edit:
+    path:       /options/accesses/edit/{access}
+    defaults:   { _controller: gospelcenterAccessBundle:Access:edit }
 
 

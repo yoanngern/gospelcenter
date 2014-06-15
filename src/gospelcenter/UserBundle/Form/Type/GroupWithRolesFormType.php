@@ -24,13 +24,19 @@ class GroupWithRolesFormType extends GroupFormType
     {
         parent::buildForm($builder, $options);
 
-        $builder->add('localRoles',           'choice', array(
+        $builder->add('roles',           'choice', array(
                                         'choices'   => array(
-                                            'ROLE_LOCAL'   => 'ROLE_LOCAL',
-                                            'Center'        => 'Center',
-                                            'Slide'         => 'Slide',
-                                            'Person'        => 'Person',
-                                            'Event'         => 'Event'
+                                            'ROLE_USER'         => 'ROLE_USER',
+                                            'ROLE_LOCAL'        => 'ROLE_LOCAL',
+                                            'ROLE_LOCAL_ADMIN'  => 'ROLE_LOCAL_ADMIN',
+                                            'ROLE_MEDIA'        => 'ROLE_MEDIA',
+                                            'ROLE_CELEBRATION'  => 'ROLE_CELEBRATION',
+                                            'ROLE_EVENT'        => 'ROLE_EVENT',
+                                            'ROLE_PASTOR'       => 'ROLE_PASTOR',
+                                            'ROLE_GLOBAL'       => 'ROLE_GLOBAL',
+                                            'ROLE_SUPER_GLOBAL' => 'ROLE_SUPER_GLOBAL',
+                                            'ROLE_ADMIN'        => 'ROLE_ADMIN',
+                                            'ROLE_SUPER_ADMIN'  => 'ROLE_SUPER_ADMIN',
                                         ),  
                                         'multiple'  => true,
                                         'empty_value'   => 'Select a role',));

@@ -4,6 +4,10 @@ namespace gospelcenter\CelebrationBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Security\Core\Exception\AccessDeniedException;
+use Symfony\Component\Security\Acl\Domain\ObjectIdentity;
+use Symfony\Component\Security\Acl\Domain\UserSecurityIdentity;
+use Symfony\Component\Security\Acl\Permission\MaskBuilder;
 
 use JMS\SecurityExtraBundle\Annotation\Secure;
 
@@ -85,6 +89,17 @@ class AdminCelebrationController extends Controller {
                 $em->persist($celebration);
                 $em->flush();
                 
+                $aclProvider = $this->get('security.acl.provider');
+                $objectIdentity = ObjectIdentity::fromDomainObject($celebration);
+                $acl = $aclProvider->createAcl($objectIdentity);
+                
+                $securityContext = $this->get('security.context');
+                $user = $securityContext->getToken()->getUser();
+                $securityIdentity = UserSecurityIdentity::fromAccount($user);
+                
+                $acl->insertObjectAce($securityIdentity, MaskBuilder::MASK_OWNER);
+                $aclProvider->updateAcl($acl);
+                
                 $this->get('session')->getFlashBag()->add('info', 'The celebration has been added.');
                 
                 return $this->redirect( $this->generateUrl('gospelcenterAdmin_celebrations', array(
@@ -118,6 +133,13 @@ class AdminCelebrationController extends Controller {
      */
     public function editAction(Center $center, Celebration $celebration)
     {   
+        $securityContext = $this->get('security.context');
+        
+        // check for edit access
+        if (false === $securityContext->isGranted('EDIT', $celebration))
+        {
+            throw new AccessDeniedException();
+        }
         
         if(count($celebration->getSpeakers())) {
             foreach($celebration->getSpeakers() as $speaker) {

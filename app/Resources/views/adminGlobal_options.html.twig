@@ -16,11 +16,16 @@
         {% if tab == 'units' %}
             <a href="{{ path('gospelcenterAdminGlobal_options_units_add') }}">Add a unit</a>
         {% endif %}
+        
+        {% if tab == 'accesses' %}
+            <a href="{{ path('gospelcenterAdminGlobal_options_accesses_add') }}">Add an access</a>
+        {% endif %}
     </section>
     
     <nav class="sub_nav">
     	<ul>
     		<li><a href="{{ path('gospelcenterAdminGlobal_options_units') }}" {% if tab == 'units' %}class="current"{% endif %}>Units</a></li>
+    		<li><a href="{{ path('gospelcenterAdminGlobal_options_accesses') }}" {% if tab == 'accesses' %}class="current"{% endif %}>Accesses</a></li>
     	</ul>
     </nav>
     

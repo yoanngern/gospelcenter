@@ -1,0 +1,35 @@
+{% extends "::adminGlobal.html.twig" %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script type="text/javascript" src="{{ asset('js/form.min.js') }}"></script>
+{% endblock %}
+
+{% block stylesheets %}
+	{{ parent() }}
+	<link rel="stylesheet" href="{{ asset('css/admin.css') }}" type="text/css" />
+	<link rel="stylesheet" href="{{ asset('css/form.css') }}" type="text/css" />
+{% endblock %}
+
+{% block title %}
+    {{ parent() }} - Edit a unit
+{% endblock %}
+
+{% block adminBody %}
+    
+    <h1>Edit a unit</h1>
+    
+    <form class="unit" action="{{ path('gospelcenterAdminGlobal_options_units_edit', {'unit': unit.id}) }}" method="post" {{ form_enctype(form) }}>
+        
+        <nav class="tools">
+    		<input type="submit" class="buttonRounded" />
+    	</nav>
+        
+        {{ form_widget(form.name, {'attr': {'placeholder': 'Name'} }) }}
+        {{ form_errors(form.name) }}
+        
+        {{ form_rest(form) }}
+        
+    </form>
+    
+{% endblock %}

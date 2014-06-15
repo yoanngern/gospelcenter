@@ -1,7 +1,5 @@
 {% extends "::adminGlobal_options.html.twig" %}
 
-{% trans_default_domain 'FOSUserBundle' %}
-
 {% block gospelcenterAdminOptions_body %}
     
     <table class="main">
@@ -11,9 +9,9 @@
             </tr>
         </thead>
         <tbody>
-            {% for group in groups %}
+            {% for unit in units %}
                 <tr>
-                    <td><a href="{{ path('gospelcenterAdminGlobal_options_units_edit', {'groupName': group.name}) }}">{{ group.name }}</a></td>
+                    <td><a href="{{ path('gospelcenterAdminGlobal_options_units_edit', {'unit': unit.id}) }}">{{ unit.name }}</a></td>
                 </tr>
             {% else %}
                 <tr><td colspan="1">There are no units.</td></tr>
