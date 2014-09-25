@@ -2763,7 +2763,8 @@ section.slider {
         -ms-border-radius: 10px;
         -o-border-radius: 10px;
         border-radius: 10px;
-        border: 1px solid #363331; }
+        border: 1px solid #363331;
+        cursor: pointer; }
         section.slider nav#slides ul li.current {
           background-color: #363331; }
   @media only screen and (min-width: 1700px) {

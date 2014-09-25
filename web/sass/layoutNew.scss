@@ -384,6 +384,7 @@ section {
                     margin: 10px 5px;
                     @include border-radius(10px);
                     border: 1px solid $grayDarkGC;
+                    cursor: pointer;
 
                     &.current {
                         background-color: $grayDarkGC;

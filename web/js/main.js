@@ -400,8 +400,8 @@ function moveToRight(pos, slider) {
         $(this).animate({
     		left: left
     	}, 300, function() {
-        	setMax(slider);
-    	});
+            setMax(slider);
+        });
     });
     
 }
