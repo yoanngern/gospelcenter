@@ -3,14 +3,6 @@
 namespace gospelcenter\PageBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use Symfony\Component\HttpFoundation\Response;
-
-// Page
-use gospelcenter\PageBundle\Entity\Page;
-use gospelcenter\PageBundle\Form\PageType;
-
-// Celebration
-use gospelcenter\CelebrationBundle\Entity\Celebration;
 
 class PageGlobalController extends Controller
 {

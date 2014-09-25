@@ -2,15 +2,9 @@
 
 namespace gospelcenter\ImageBundle\Controller;
 
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use Symfony\Component\HttpFoundation\Response;
-
-// Center
-use gospelcenter\CenterBundle\Entity\Center;
-
-// Image
 use gospelcenter\ImageBundle\Entity\Image;
 use gospelcenter\ImageBundle\Form\ImageType;
+use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 
 class AdminGlobalController extends Controller {
@@ -96,16 +90,5 @@ class AdminGlobalController extends Controller {
             'form' => $form->createView(),
             'page' => 'images'
         ));
-    }
-    
-    
-    /*
-     *   Delete a location
-     */
-    public function deleteAction(Center $center, Location $location)
-    {      
-        return $this->redirect( $this->generateUrl('gospelcenterAdmin_locations', array(
-            'center' => $center->getRef()
-        )));
     }
 }

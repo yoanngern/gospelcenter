@@ -2,11 +2,9 @@
 
 namespace gospelcenter\ImageBundle\Controller;
 
+use gospelcenter\ImageBundle\Entity\Image;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Response;
-
-// Image
-use gospelcenter\ImageBundle\Entity\Image;
 
 
 class ImageController extends Controller

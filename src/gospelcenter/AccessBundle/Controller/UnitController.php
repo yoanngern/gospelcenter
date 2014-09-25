@@ -2,15 +2,9 @@
 
 namespace gospelcenter\AccessBundle\Controller;
 
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-
-// Unit
 use gospelcenter\AccessBundle\Entity\Unit;
 use gospelcenter\AccessBundle\Form\UnitType;
-
-// Access
-use gospelcenter\AccessBundle\Entity\Access;
-use gospelcenter\AccessBundle\Form\AccessType;
+use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 class UnitController extends Controller
 {

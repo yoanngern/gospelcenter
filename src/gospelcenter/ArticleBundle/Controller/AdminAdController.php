@@ -4,16 +4,16 @@ namespace gospelcenter\ArticleBundle\Controller;
 
 use gospelcenter\ArticleBundle\Entity\Ad;
 use gospelcenter\ArticleBundle\Form\AdType;
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-
-// Center
 use gospelcenter\CenterBundle\Entity\Center;
+use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 
 class AdminAdController extends Controller {
-    
-    /*
-     *   List of all ads
+
+    /**
+     * List of all ads
+     * @param Center $center
+     * @return \Symfony\Component\HttpFoundation\Response
      */
     public function listAction(Center $center)
     {
@@ -27,10 +27,12 @@ class AdminAdController extends Controller {
             'page' => 'ads'
         ));
     }
-    
-    
-    /*
-     *   Add an ad
+
+
+    /**
+     * Add an ad
+     * @param Center $center
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
      */
     public function addAction(Center $center)
     {
@@ -64,12 +66,13 @@ class AdminAdController extends Controller {
             'page' => 'ads'
         ));
     }
-    
-    
-    /*
-     *   Edit a location
-     *   @param $ad = Ad
-     *          $center = Center
+
+
+    /**
+     * Edit a location
+     * @param Center $center
+     * @param Ad $ad
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
      */
     public function editAction(Center $center, Ad $ad)
     {   
@@ -103,10 +106,13 @@ class AdminAdController extends Controller {
             'page' => 'ads'
         ));
     }
-    
-    
-    /*
-     *   Delete a location
+
+
+    /**
+     * Delete a location
+     * @param Center $center
+     * @param Location $location
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
      */
     public function deleteAction(Center $center, Location $location)
     {   

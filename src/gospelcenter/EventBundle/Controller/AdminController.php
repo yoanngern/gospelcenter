@@ -2,21 +2,10 @@
 
 namespace gospelcenter\EventBundle\Controller;
 
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-
-
-// Event
+use gospelcenter\CenterBundle\Entity\Center;
 use gospelcenter\EventBundle\Entity\Event;
 use gospelcenter\EventBundle\Form\EventType;
-
-// Image
-use gospelcenter\ImageBundle\Entity\Image;
-
-// Location
-use gospelcenter\LocationBundle\Entity\Location;
-
-// Center
-use gospelcenter\CenterBundle\Entity\Center;
+use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 
 class AdminController extends Controller

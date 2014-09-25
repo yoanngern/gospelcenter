@@ -2,24 +2,12 @@
 
 namespace gospelcenter\PageBundle\Controller;
 
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use Symfony\Component\HttpFoundation\Response;
-
-// Event
-use gospelcenter\EventBundle\Entity\Event;
-use gospelcenter\EventBundle\Form\EventType;
-
-// Image
-use gospelcenter\ImageBundle\Entity\Image;
-
-// Page
-use gospelcenter\PageBundle\Entity\Page;
-use gospelcenter\PageBundle\Form\PageType;
-
-// Slide
+use gospelcenter\CenterBundle\Entity\Center;
+use gospelcenter\LocationBundle\Entity\Location;
 use gospelcenter\PageBundle\Entity\Slide;
 use gospelcenter\PageBundle\Form\SlideType;
-use gospelcenter\CenterBundle\Entity\Center;
+use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\Response;
 
 
 class AdminSlideGlobalController extends Controller {

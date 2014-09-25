@@ -5,13 +5,6 @@ namespace gospelcenter\APIBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Response;
 
-// Center
-use gospelcenter\CenterBundle\Entity\Center;
-
-// Location
-use gospelcenter\LocationBundle\Entity\Location;
-use gospelcenter\LocationBundle\Form\LocationType;
-
 class LocationController extends Controller
 {
     

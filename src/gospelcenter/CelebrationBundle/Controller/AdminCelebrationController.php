@@ -2,26 +2,11 @@
 
 namespace gospelcenter\CelebrationBundle\Controller;
 
-use gospelcenter\DateBundle\Entity\Date;
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\Security\Core\Exception\AccessDeniedException;
-use Symfony\Component\Security\Acl\Domain\ObjectIdentity;
-use Symfony\Component\Security\Acl\Domain\UserSecurityIdentity;
-use Symfony\Component\Security\Acl\Permission\MaskBuilder;
-
-use JMS\SecurityExtraBundle\Annotation\Secure;
-
-// Celebration
 use gospelcenter\CelebrationBundle\Entity\Celebration;
 use gospelcenter\CelebrationBundle\Form\CelebrationType;
-use gospelcenter\CelebrationBundle\Form\CelebrationMobileType;
-
-// Entity
 use gospelcenter\CenterBundle\Entity\Center;
-use gospelcenter\CelebrationBundle\Entity\Speaker;
-use gospelcenter\PeopleBundle\Entity\Person;
-use gospelcenter\CelebrationBundle\Entity\Tag;
+use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\Response;
 
 
 class AdminCelebrationController extends Controller
@@ -56,7 +41,7 @@ class AdminCelebrationController extends Controller
      */
     public function addAction(Center $center)
     {
-        $celebration = new celebration($center);
+        $celebration = new Celebration($center);
 
         $form = $this->createForm(new CelebrationType($center), $celebration);
 

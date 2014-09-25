@@ -5,12 +5,6 @@ namespace gospelcenter\APIBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Response;
 
-// Center
-use gospelcenter\CenterBundle\Entity\Center;
-
-// Speaker
-use gospelcenter\CelebrationBundle\Entity\Speaker;
-use gospelcenter\CelebrationBundle\Form\SpeakerType;
 
 class SpeakerController extends Controller
 {

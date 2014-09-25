@@ -2,15 +2,8 @@
 
 namespace gospelcenter\PageBundle\Controller;
 
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use Symfony\Component\HttpFoundation\Response;
-
-// Page
-use gospelcenter\PageBundle\Entity\Page;
-use gospelcenter\PageBundle\Form\PageType;
-
-// Center
 use gospelcenter\CenterBundle\Entity\Center;
+use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 class PageController extends Controller
 {

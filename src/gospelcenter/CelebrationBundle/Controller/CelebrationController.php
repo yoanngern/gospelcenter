@@ -2,19 +2,10 @@
 
 namespace gospelcenter\CelebrationBundle\Controller;
 
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use Symfony\Component\HttpFoundation\Response;
-
-// Celebration
-use gospelcenter\CelebrationBundle\Entity\Celebration;
-use gospelcenter\CelebrationBundle\Form\CelebrationType;
-use gospelcenter\CelebrationBundle\Form\CelebrationMobileType;
-
-// Entity
 use gospelcenter\CenterBundle\Entity\Center;
-use gospelcenter\CelebrationBundle\Entity\Speaker;
-use gospelcenter\PeopleBundle\Entity\Person;
-use gospelcenter\CelebrationBundle\Entity\Tag;
+use gospelcenter\EventBundle\Entity\Event;
+use gospelcenter\EventBundle\Form\EventType;
+use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 class CelebrationController extends Controller {
     

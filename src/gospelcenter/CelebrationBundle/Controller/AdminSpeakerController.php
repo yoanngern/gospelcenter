@@ -2,21 +2,10 @@
 
 namespace gospelcenter\CelebrationBundle\Controller;
 
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use Symfony\Component\HttpFoundation\Response;
-
-// Image
-use gospelcenter\ImageBundle\Entity\Image;
-
-// Location
-use gospelcenter\LocationBundle\Entity\Location;
-
-// Center
-use gospelcenter\CenterBundle\Entity\Center;
-
-// Speaker
 use gospelcenter\CelebrationBundle\Entity\Speaker;
 use gospelcenter\CelebrationBundle\Form\SpeakerType;
+use gospelcenter\CenterBundle\Entity\Center;
+use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 
 class AdminSpeakerController extends Controller {

@@ -2,24 +2,12 @@
 
 namespace gospelcenter\PageBundle\Controller;
 
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use Symfony\Component\HttpFoundation\Response;
-
-// Event
-use gospelcenter\EventBundle\Entity\Event;
-use gospelcenter\EventBundle\Form\EventType;
-
-// Image
-use gospelcenter\ImageBundle\Entity\Image;
-
-// Page
-use gospelcenter\PageBundle\Entity\Page;
-use gospelcenter\PageBundle\Form\PageType;
-use gospelcenter\PageBundle\Form\PageAddType;
-use gospelcenter\PageBundle\Form\YouthPageType;
-
-// Center
 use gospelcenter\CenterBundle\Entity\Center;
+use gospelcenter\PageBundle\Entity\Page;
+use gospelcenter\PageBundle\Form\PageAddType;
+use gospelcenter\PageBundle\Form\PageType;
+use gospelcenter\PageBundle\Form\YouthPageType;
+use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 
 class AdminPageController extends Controller {

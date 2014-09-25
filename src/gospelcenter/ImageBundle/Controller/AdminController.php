@@ -2,15 +2,11 @@
 
 namespace gospelcenter\ImageBundle\Controller;
 
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use Symfony\Component\HttpFoundation\Response;
-
-// Center
 use gospelcenter\CenterBundle\Entity\Center;
-
-// Image
 use gospelcenter\ImageBundle\Entity\Image;
 use gospelcenter\ImageBundle\Form\ImageType;
+use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\Response;
 
 
 class AdminController extends Controller

@@ -2,17 +2,10 @@
 
 namespace gospelcenter\CenterBundle\Controller;
 
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use Symfony\Component\HttpFoundation\Response;
-
-
-// Location
-use gospelcenter\LocationBundle\Entity\Location;
-
-// Center
 use gospelcenter\CenterBundle\Entity\Center;
-use gospelcenter\CenterBundle\Form\CenterType;
 use gospelcenter\CenterBundle\Form\CenterEditType;
+use gospelcenter\CenterBundle\Form\CenterType;
+use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 
 class AdminCenterController extends Controller {

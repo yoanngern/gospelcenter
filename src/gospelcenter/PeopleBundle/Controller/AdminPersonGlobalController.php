@@ -2,36 +2,10 @@
 
 namespace gospelcenter\PeopleBundle\Controller;
 
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use Symfony\Component\HttpFoundation\Response;
-
-use Symfony\Component\HttpFoundation\Session\Session;
-
-// Image
-use gospelcenter\ImageBundle\Entity\Image;
-
-// Location
-use gospelcenter\LocationBundle\Entity\Location;
-
-// Center
-use gospelcenter\CenterBundle\Entity\Center;
-
-// Speaker
-use gospelcenter\CelebrationBundle\Entity\Speaker;
-use gospelcenter\CelebrationBundle\Form\SpeakerType;
-
-// People
 use gospelcenter\PeopleBundle\Entity\Person;
-use gospelcenter\PeopleBundle\Form\PersonGlobalWithAccountType;
 use gospelcenter\PeopleBundle\Form\PersonGlobalType;
-
-// Member
-use gospelcenter\CenterBundle\Entity\Member;
-use gospelcenter\CenterBundle\Form\MemberType;
-
-// Visitor
-use gospelcenter\CenterBundle\Entity\Visitor;
-use gospelcenter\CenterBundle\Form\VisitorType;
+use gospelcenter\PeopleBundle\Form\PersonGlobalWithAccountType;
+use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 
 class AdminPersonGlobalController extends Controller {

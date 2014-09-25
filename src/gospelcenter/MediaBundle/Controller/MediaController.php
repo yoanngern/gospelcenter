@@ -2,22 +2,19 @@
 
 namespace gospelcenter\MediaBundle\Controller;
 
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-
-use Symfony\Component\HttpFoundation\Session\Session;
-
-use gospelcenter\MediaBundle\Entity\Video;
-use gospelcenter\MediaBundle\Entity\Audio;
 use gospelcenter\CelebrationBundle\Entity\Speaker;
 use gospelcenter\CenterBundle\Entity\Center;
+use gospelcenter\MediaBundle\Entity\Audio;
+use gospelcenter\MediaBundle\Entity\Video;
+use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 class MediaController extends Controller
 {
-    
-    /*
-    *   Home
-    *
-    */
+
+    /**
+     * Home
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
     public function homeAction()
     {
         
@@ -47,12 +44,12 @@ class MediaController extends Controller
             'page' => 'selections'
         ));
     }
-    
-    
-    /*
-    *   All Speakers
-    *
-    */
+
+
+    /**
+     * All Speakers
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
     public function speakersAction()
     {
         
@@ -80,12 +77,13 @@ class MediaController extends Controller
             'page' => 'speakers'
         ));
     }
-    
-    
-    /*
-    *   All videos of a speaker
-    *
-    */
+
+
+    /**
+     * All videos of a speaker
+     * @param Speaker $speaker
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
     public function speakerAction(Speaker $speaker)
     {
         
