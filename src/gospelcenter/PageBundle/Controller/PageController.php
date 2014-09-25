@@ -16,171 +16,139 @@ class PageController extends Controller
 {
     public function indexAction(Center $center, $page = 'home')
     {
+
+        $language = 'fr';
+
         $em = $this->getDoctrine()->getManager();
-        
-        if($page == "youth") {
+
+        if ($page == "youth") {
             $pages = $em->getRepository('gospelcenterPageBundle:Page')->findYouthPages($center);
-            
+
             $page = $pages[0]->getAlias();
-            
-            if(!$page) {
+
+            if (!$page) {
                 $page = $pages[0]->getTitle();
             }
         }
-        
+
         $aPage = $em->getRepository('gospelcenterPageBundle:Page')->findAPage($center, $page);
-        
-        if(!$aPage) {
-            
-            $youthGroup = $em->getRepository('gospelcenterPageBundle:Page')->findAYouthGroupByAlias($center, $page);
-            
-            if(!$youthGroup) {
-                
-                $youthGroup = $em->getRepository('gospelcenterPageBundle:Page')->findAYouthGroupByTitle($center, $page);
-                
-                if(!$youthGroup) {
-                    throw $this->createNotFoundException('This page doesn\'t exist');
-                }
-            }
-            
-        } else {
-            $youthGroup = null;
-        }
-        
-        if($youthGroup) {
+
+        if (!$aPage) {
+
             $pages = $em->getRepository('gospelcenterPageBundle:Page')->findYouthPages($center);
-                    
-            return $this->render('gospelcenterPageBundle:Page:youth.html.twig', array(
-                'center' => $center,
-                'page' => 'youth',
-                'pages' => $pages,
-                'group' => $youthGroup
-            ));
+
+            return $this->render(
+                'gospelcenterPageBundle:Page:youth.html.twig',
+                array(
+                    'center' => $center,
+                    'page' => 'youth',
+                    'pages' => $pages,
+                    'group' => $page
+                )
+            );
+
         }
-        
-        $mobileDetector = $this->get('mobile_detect.mobile_detector');
-        if($mobileDetector->isMobile()) {
-            return $this->render('gospelcenterPageBundle:Mobile:index.html.twig', array(
+
+
+        return $this->render(
+            'gospelcenterPageBundle:Page:index.html.twig',
+            array(
                 'center' => $center,
                 'page' => $aPage->getRef(),
+                'language' => $language,
                 'article' => $aPage
-            )); 
-        }
-        
-        return $this->render('gospelcenterPageBundle:Page:index.html.twig', array(
-            'center' => $center,
-            'page' => $aPage->getRef(),
-            'article' => $aPage
-        ));
+            )
+        );
     }
-    
+
     public function homeAction(Center $center)
     {
         $em = $this->getDoctrine()->getManager();
-        
-        $celebrations = $em->getRepository('gospelcenterCelebrationBundle:Celebration')->findNext($center, 2);
-        
-        $events = $em->getRepository('gospelcenterEventBundle:Event')->findNext($center, 2);
-        
-        $mobileDetector = $this->get('mobile_detect.mobile_detector');
-        if($mobileDetector->isMobile()) {
-            return $this->render('gospelcenterPageBundle:Mobile:home.html.twig', array(
-                'center' => $center,
+
+        $centerFound = $em->getRepository('gospelcenterCenterBundle:Center')->getHomeData($center);
+
+        return $this->render(
+            'gospelcenterPageBundle:Page:home.html.twig',
+            array(
+                'center' => $centerFound,
                 'page' => 'home'
-            ));
-        }
-        
-        return $this->render('gospelcenterPageBundle:Page:home.html.twig', array(
-            'center' => $center,
-            'celebrations' => $celebrations,
-            'events' => $events,
-            'page' => 'home'
-        ));
+            )
+        );
     }
-    
+
     public function youthAction(Center $center, $group = "minis")
     {
-        
+
         $em = $this->getDoctrine()->getManager();
-        
+
         $pages = $em->getRepository('gospelcenterPageBundle:Page')->findYouthPages($center);
-        
+
         $page = $em->getRepository('gospelcenterPageBundle:Page')->findAYouthGroup($center, $group);
-        
+
         if (!$page) {
             throw $this->createNotFoundException('This group doesn\'t exist');
         }
-        
-        return $this->render('gospelcenterPageBundle:Page:youth.html.twig', array(
-            'center' => $center,
-            'page' => 'youth',
-            'pages' => $pages,
-            'group' => $page
-        ));
+
+        return $this->render(
+            'gospelcenterPageBundle:Page:youth.html.twig',
+            array(
+                'center' => $center,
+                'page' => 'youth',
+                'pages' => $pages,
+                'group' => $page
+            )
+        );
     }
-    
+
     public function aboutAction(Center $center)
     {
-        
+
         $language = 'fr';
-        
-        return $this->render('gospelcenterPageBundle::staticPage.html.twig', array(
-            'center' => $center,
-            'language' => $language,
-            'template' => 'about',
-            'page' => 'about'
-        ));
+
+
+        return $this->render(
+            'gospelcenterPageBundle::staticPage.html.twig',
+            array(
+                'center' => $center,
+                'language' => $language,
+                'folder' => 'about',
+                'template' => 'about',
+                'page' => 'about',
+                'customClass' => 'simple'
+            )
+        );
     }
-    
-    public function leadershipAction(Center $center)
-    {
-        
-        $language = 'fr';
-        
-        return $this->render('gospelcenterPageBundle::staticPage.html.twig', array(
-            'center' => $center,
-            'language' => $language,
-            'template' => 'leadership',
-            'page' => 'about'
-        ));
-    }
-    
-    public function staffAction(Center $center)
-    {
-        
-        $language = 'fr';
-        
-        return $this->render('gospelcenterPageBundle::staticPage.html.twig', array(
-            'center' => $center,
-            'language' => $language,
-            'template' => 'staff',
-            'page' => 'about'
-        ));
-    }
-    
-    public function musicAction(Center $center)
-    {
-        
-        $language = 'fr';
-        
-        return $this->render('gospelcenterPageBundle::staticPage.html.twig', array(
-            'center' => $center,
-            'language' => $language,
-            'template' => 'music',
-            'page' => 'about'
-        ));
-    }
-    
+
     public function contactAction(Center $center)
     {
-        
+
         $language = 'fr';
-        
-        return $this->render('gospelcenterPageBundle::staticPage.html.twig', array(
-            'center' => $center,
-            'language' => $language,
-            'template' => 'contact',
-            'page' => 'contact'
-        ));
+
+
+        return $this->render(
+            'gospelcenterPageBundle::staticPage.html.twig',
+            array(
+                'center' => $center,
+                'language' => $language,
+                'template' => 'contact',
+                'page' => 'contact'
+            )
+        );
+    }
+
+    public function giveAction(Center $center)
+    {
+
+        $language = 'fr';
+
+        return $this->render(
+            'gospelcenterPageBundle::staticPage.html.twig',
+            array(
+                'center' => $center,
+                'language' => $language,
+                'template' => 'give',
+                'page' => 'give'
+            )
+        );
     }
 }

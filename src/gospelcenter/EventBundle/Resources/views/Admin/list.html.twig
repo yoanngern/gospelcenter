@@ -1,54 +1,109 @@
-{% extends "::admin.html.twig" %}
-
-{% block stylesheets %}
-	{{ parent() }}
-	<link rel="stylesheet" href="{{ asset('css/adminEvents.css') }}" type="text/css" />
-	<link rel="stylesheet" href="{{ asset('css/admin.css') }}" type="text/css" />
-	<link rel="stylesheet" href="{{ asset('css/form.css') }}" type="text/css" />
-{% endblock %}
+{% extends "::adminNew.html.twig" %}
 
 {% block title %}
     {{ parent() }} - Events
 {% endblock %}
 
-{% block adminBody %}
-    <h1>Events</h1>
-    
-    <section class="tools">
-        <a href="{{ path('gospelcenterAdmin_events_add', {'center': center.ref}) }}">Add an event</a>
-    </section>
-    
-    <nav class="sorting_nav">
-        <ul>
-            <li><a href="{{ path('gospelcenterAdmin_events', {'center': center.ref}) }}" {% if tab == 'nextEvents' %}class="current"{% endif %}>Upcoming events</a></li>
-            <li><a href="{{ path('gospelcenterAdmin_events_past', {'center': center.ref}) }}" {% if tab == 'pastEvents' %}class="current"{% endif %}>Past events</a></li>
-        </ul>
-    </nav>
-    
-    {% for event in events %}
-        <article class="events">
-        	<section class="picture">
-        		<img src="{{ asset(event.picture.webPath) }}" alt="{{ event.picture.alt }}" />
-        	</section>
-            <section class="detail">
-	            <h1>{{ event.title }}</h1>
-	            <article class="desc">
-	                <time>from {{ event.startingDate|date('d F Y') }}</time>
-                    <time>to {{ event.endingDate|date('d F Y') }}</time>
-                    <p>{{ event.location.name }}</p>
-                </article>
-	            <nav>
-	                <a href="{{ path('gospelcenterAdmin_events_edit', {'event': event.id, 'center': center.ref}) }}" class="buttonRounded">Edit</a>
-	                <a href="{{ path('gospelcenterAdmin_events_publish', {'event': event.id, 'center': center.ref}) }}" class="buttonRounded">Publish</a>
-	                <a href="{{ path('gospelcenterAdmin_events_delete', {'event': event.id, 'center': center.ref}) }}" class="buttonRounded">Delete</a>
-	            </nav>
-            </section>
-        </article>
-    {% else %}
-        {% if tab == 'nextEvents' %}
-            <span class="empty">There are no events to come.</span>
+{% block adminTitle %}
+
+    {% if tab == 'nextEvents' %}
+        <h1 class="switch">Upcoming events</h1>
+    {% endif %}
+
+    {% if tab == 'pastEvents' %}
+        <h1 class="switch">Past events</h1>
+    {% endif %}
+
+    <ul class="adminTitle">
+        <li {% if tab == 'nextEvents' %}class="current"{% endif %}>
+            <a href="{{ path('gospelcenterAdmin_events', {'center': center.ref}) }}">Upcoming events</a>
+        </li>
+        <li {% if tab == 'pastEvents' %}class="current"{% endif %}>
+            <a href="{{ path('gospelcenterAdmin_events_past', {'center': center.ref}) }}">Past events</a>
+        </li>
+    </ul>
+{% endblock %}
+
+{% block adminTools %}
+    <a href="{{ path('gospelcenterAdmin_events_add', {'center': center.ref}) }}" class="add">Add an event</a>
+{% endblock %}
+
+{% block adminListBody %}
+
+    <table class="main">
+        <thead>
+        <tr>
+            <th data-sort="string">Title<span>Title<div class="arrow"></div></span></th>
+            <th data-sort="string">Dates<span>Dates<div class="arrow"></div></span></th>
+            <th data-sort="string">Hours<span>Hours<div class="arrow"></div></span></th>
+            <th data-sort="string">Location<span>Location<div class="arrow"></div></span></th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for event in events %}
+
+            {% set link = path('gospelcenterAdmin_events_edit', {'event': event.id, 'center': center.ref}) %}
+
+            {% set date = "" %}
+            {% set hours = "" %}
+
+            {% if event.dates|length %}
+                {% if event.dates[0].start|date('Y-m-d') == event.dates[0].end|date('Y-m-d') %}
+                    {% set date = event.dates[0].start|date('j F Y') %}
+
+                {% else %}
+
+                    {% if event.dates[0].start|date('Y-m') == event.dates[0].end|date('Y-m') %}
+                        {% set date = event.dates[0].start|date('j') ~ ' - ' ~ event.dates[0].end|date('j F Y') %}
+                    {% else %}
+
+                        {% if event.dates[0].start|date('Y') == event.dates[0].end|date('Y') %}
+                            {% set date = event.dates[0].start|date('j F') ~ ' - ' ~ event.dates[0].end|date('j F Y') %}
+                        {% else %}
+
+                            {% set date = event.dates[0].start|date('j F Y') ~ ' - ' ~ event.dates[0].end|date('j F Y') %}
+
+                        {% endif %}
+                    {% endif %}
+
+                {% endif %}
+                {% set hours = event.dates[0].start|date('H:i') ~ ' - ' ~ event.dates[0].end|date('H:i') %}
+            {% endif %}
+
+            <tr>
+                <td class="em">
+                    <a href="{{ link }}">
+                        <span>{{ event.title }}</span>
+                    </a>
+                </td>
+                <td class="em">
+                    <a href="{{ link }}">
+                        <span>{{ date }}</span>
+                    </a>
+                </td>
+                <td>
+                    <a href="{{ link }}">
+                        <span>{{ hours }}</span>
+                    </a>
+                </td>
+                <td>
+                    <a href="{{ link }}">
+                        {% if event.location %}
+                            <span>{{ event.location.name }}</span>
+                        {% endif %}
+                    </a>
+                </td>
+            </tr>
         {% else %}
-            <span class="empty">There are no past events.</span>
-        {% endif %}
-    {% endfor %}
+            <tr class="empty">
+                {% if tab == 'nextEvents' %}
+                    <td colspan="4">There are no events to come.</td>
+                {% else %}
+                    <td colspan="4">There are no past events.</td>
+                {% endif %}
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
 {% endblock %}

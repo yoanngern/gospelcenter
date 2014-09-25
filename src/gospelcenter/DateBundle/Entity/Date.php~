@@ -1,0 +1,76 @@
+<?php
+
+namespace gospelcenter\DateBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
+
+/**
+ * Date
+ *
+ * @ORM\Table(name="date")
+ * @ORM\Entity(repositoryClass="gospelcenter\DateBundle\Entity\DateRepository")
+ */
+class Date
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="start", type="datetime")
+     */
+    private $start;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="end", type="datetime")
+     */
+    private $end;
+
+    private $startingTime;
+    private $endingTime;
+    private $startingDate;
+    private $endingDate;
+
+
+    /**
+     * has
+     *
+     * @ORM\ManyToOne(targetEntity="gospelcenter\EventBundle\Entity\Event", inversedBy="dates")
+     * @Assert\Valid()
+     */
+    private $event;
+
+
+    /**
+     * contains
+     *
+     * @ORM\OneToOne(targetEntity="gospelcenter\CelebrationBundle\Entity\Celebration", inversedBy="date")
+     * @Assert\Valid()
+     */
+    private $celebration;
+
+
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+
+    }
+
+
+    /*************************************/
+    /**** Getter setter auto generate ****/
+    /*************************************/
+
+}

@@ -8,7 +8,7 @@ use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
 class AccessType extends AbstractType
 {
-        /**
+    /**
      * @param FormBuilderInterface $builder
      * @param array $options
      */
@@ -16,8 +16,6 @@ class AccessType extends AbstractType
     {
         $builder
             ->add('service',    'text')
-            ->add('attribute',  'text', array('required' => false))
-            ->add('type',       'text')
         ;
     }
     

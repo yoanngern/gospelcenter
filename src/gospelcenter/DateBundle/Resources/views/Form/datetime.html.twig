@@ -1,0 +1,21 @@
+{% extends 'form_div_layout.html.twig' %}
+
+{% block datetime_widget %}
+    {% spaceless %}
+        {% if widget == 'single_text' %}1
+            {{ block('field_widget') }}
+        {% else %}
+            <div class="datetime" {{ block('widget_container_attributes') }}>
+                {{ form_errors(form.date.year) }}
+                {{ form_errors(form.date.month) }}
+                {{ form_errors(form.date.day) }}
+                {{ form_errors(form.time) }}
+                {{ form_widget(form.date.day) }}
+                {{ form_widget(form.date.month) }}
+                {{ form_widget(form.date.year) }}
+                {{ form_widget(form.time.hour, { 'attr': { 'size': '1' } }) }}
+                {{ form_widget(form.time.minute, { 'attr': { 'size': '1' } }) }}
+            </div>
+        {% endif %}
+    {% endspaceless %}
+{% endblock datetime_widget %}

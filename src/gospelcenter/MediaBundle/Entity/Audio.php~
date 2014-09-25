@@ -1,0 +1,92 @@
+<?php
+
+namespace gospelcenter\MediaBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
+
+/**
+ * Audio
+ *
+ * @ORM\Table(name="audio")
+ * @ORM\Entity(repositoryClass="gospelcenter\MediaBundle\Entity\AudioRepository")
+ * @ORM\HasLifecycleCallbacks
+ */
+class Audio
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="ownerId", type="string", length=255)
+     * @Assert\NotBlank()
+     */
+    private $ownerId;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="owner", type="string", length=255)
+     * @Assert\NotBlank()
+     */
+    private $owner;
+
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="createdDate", type="datetime")
+     * @Assert\DateTime()
+     */
+    private $createdDate;
+    
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="modifiedDate", type="datetime")
+     * @Assert\DateTime()
+     */
+    private $modifiedDate;
+    
+    
+    /**
+     * spreads
+     * 
+     * @ORM\OneToOne(targetEntity="gospelcenter\CelebrationBundle\Entity\Celebration", inversedBy="audio")
+     * @ORM\JoinColumn(nullable=false)
+     * @Assert\Valid()
+     */
+    private $celebration;
+    
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->createdDate = new \Datetime();
+        $this->modifiedDate = new \Datetime();
+    }
+    
+    /**
+     * @ORM\PrePersist()
+     * @ORM\PreUpdate()
+     */
+    public function preSave()
+    {
+        $this->modifiedDate = new \Datetime();
+    }
+
+    /*************************************/
+    /**** Getter setter auto generate ****/
+    /*************************************/
+    
+
+}

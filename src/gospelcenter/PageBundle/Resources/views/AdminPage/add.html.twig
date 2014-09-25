@@ -1,45 +1,36 @@
-{% extends "::admin.html.twig" %}
+{% extends "::adminNew.html.twig" %}
 
-{% block javascripts %}
-    {{ parent() }}
-    <script type="text/javascript" src="{{ asset('js/form.min.js') }}"></script>
-{% endblock %}
-
-{% block stylesheets %}
-	{{ parent() }}
-	<link rel="stylesheet" href="{{ asset('css/admin.css') }}" type="text/css" />
-	<link rel="stylesheet" href="{{ asset('css/form.css') }}" type="text/css" />
-{% endblock %}
+{% block classPage %}{{ parent() }} single{% endblock %}
 
 {% block title %}
     {{ parent() }} - Add a page
 {% endblock %}
 
+{% block adminTitle %}<h1>Add a page</h1>{% endblock %}
+
+{% block adminBack %}
+    <a class="back" href="{{ path('gospelcenterAdmin_pages', {'center': center.ref}) }}">Pages</a>
+{% endblock %}
+
 {% block adminBody %}
-    <h1>Add a page</h1>
     
     <form class="page" action="{{ path('gospelcenterAdmin_pages_add', {'center': center.ref}) }}" method="post" {{ form_enctype(form) }}>
-        <nav class="tools">
-    		<input type="submit" class="buttonRounded" />
-    	</nav>
     	
         {{ form_widget(form.ref) }}
         {{ form_errors(form.ref) }}
         
-        {{ form_widget(form.title, {'attr': {'placeholder': 'Title'} }) }}
+        {{ form_widget(form.title) }}
         {{ form_errors(form.title) }}
         
-        {{ form_widget(form.slogan, {'attr': {'placeholder': 'Slogan', 'class': 'elastic'} }) }}
+        {{ form_widget(form.slogan) }}
         {{ form_errors(form.slogan) }}
-        
-        {{ form_widget(form.template) }}
-        {{ form_errors(form.template) }}
         
         {{ form_widget(form.language) }}
         {{ form_errors(form.language) }}
         
         {{ form_rest(form) }}
+
+        <input type="submit" class="buttonLink" value="Add a page"/>
     </form>
-    
-    
+
 {% endblock %}

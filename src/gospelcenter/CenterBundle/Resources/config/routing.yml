@@ -5,6 +5,9 @@ gospelcenterAPI:
     resource: "@gospelcenterAPIBundle/Resources/config/routing.yml"
     prefix:   /api
 
+gospelcenterImage:
+    resource: "@gospelcenterImageBundle/Resources/config/routing.yml"
+    prefix:   /image
 
 ###########################   
 ########## PROD ###########
@@ -25,6 +28,13 @@ gospelcenterAdmin:
 gospelcenterEvents:
     resource: "@gospelcenterEventBundle/Resources/config/routing.yml"
     prefix:   /events
+    host: "{center}.gospelcenter.local"
+    requirements:
+        center: lausanne|annecy|montreux|jura
+        
+gospelcenterAgenda:
+    resource: "@gospelcenterEventBundle/Resources/config/routingAgenda.yml"
+    prefix:   /agenda
     host: "{center}.gospelcenter.local"
     requirements:
         center: lausanne|annecy|montreux|jura
@@ -74,6 +84,12 @@ gospelcenterAdmin_dev:
 gospelcenterEvents_dev:
     resource: "@gospelcenterEventBundle/Resources/config/routing.yml"
     prefix:   /{center}/events
+    requirements:
+        center: lausanne|annecy|montreux|jura
+        
+gospelcenterAgenda_dev:
+    resource: "@gospelcenterEventBundle/Resources/config/routingAgenda.yml"
+    prefix:   /{center}/agenda
     requirements:
         center: lausanne|annecy|montreux|jura
 

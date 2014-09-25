@@ -49,6 +49,10 @@ table {
                     margin-left: 10px;
                 }
                 
+                &.center {
+                    text-align: center;
+                }
+                
                 &[data-sort] {
                     cursor: pointer;
                     
@@ -100,6 +104,10 @@ table {
                 &:first-child {
                     padding-left: 5px;
                     font-family: $font-bold;
+                }
+                
+                input[type=checkbox] {
+                    margin: 10px auto !important;
                 }
                 
                 a {

@@ -21,7 +21,7 @@ class CenterType extends AbstractType
         $builder
             ->add('ref',        'text')
             ->add('name',       'text')
-            ->add('location',   new LocationSimpleType())
+            ->add('location',   new LocationSimpleType(), array('required' => false))
             ->add('image',      new ImageSimpleType(), array('required' => false))
         ;
     }

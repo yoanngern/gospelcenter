@@ -15,7 +15,14 @@ class AudioType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('soundCloudId',   'text')
+
+            ->add('ownerId', 'text', array(
+                    'attr' => array(
+                        'placeholder' => 'SoundCloud id',
+                        'class' => "soundCloud_id"
+                    ),
+                    'label' => false,
+                ))
         ;
     }
     

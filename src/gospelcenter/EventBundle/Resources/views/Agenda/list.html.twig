@@ -1,0 +1,89 @@
+{% extends "gospelcenterEventBundle::layout.html.twig" %}
+
+{% block stylesheets %}
+	{{ parent() }}
+	<link rel="stylesheet" href="{{ asset('css/events.css') }}" type="text/css" />
+{% endblock %}
+
+{% block classPage %}{{ parent() }} agenda{% endblock %}
+
+{% block title %}
+    {{ parent() }}
+{% endblock %}
+
+{% block gospelcenterEvents_body %}
+    {% spaceless %}
+        <a href="" class="agenda">
+        	<section class="date">
+        	    <span class="day">3</span>
+        	    <span class="month">Novembre</span>
+        	</section>
+        	
+        	<section class="desc">
+        	    <h1>Célébration avec Steve et Rita Fedele</h1>
+        	    <span class="time">18:00 - 19:30</span>
+        	    <span class="location">à la Salle des Cantons</span>
+        	</section>
+        </a>
+        
+        <a href="" class="agenda">
+        	<section class="date">
+        	    <span class="day">10</span>
+        	    <span class="month">Novembre</span>
+        	</section>
+        	
+        	<section class="desc">
+        	    <h1>Célébration avec Beni Prasad</h1>
+        	    <span class="time">18:00 - 19:30</span>
+        	    <span class="location">à la Salle des Cantons</span>
+        	</section>
+        </a>
+        
+        <a href="" class="agenda">
+        	<section class="date">
+        	    <span class="day">17</span>
+        	    <span class="month">Novembre</span>
+        	</section>
+        	
+        	<section class="desc">
+        	    <h1>Célébration avec Blaise Thomi</h1>
+        	    <span class="time">18:00 - 19:30</span>
+        	    <span class="location">à la Salle des Cantons</span>
+        	</section>
+        </a>
+        
+        <a href="" class="agenda">
+        	<section class="date">
+        	    <span class="day">24</span>
+        	    <span class="month">Novembre</span>
+        	</section>
+        	
+        	<section class="desc">
+        	    <h1>Célébration avec Donato Anzalone</h1>
+        	    <span class="time">18:00 - 19:30</span>
+        	    <span class="location">à la Salle des Cantons</span>
+        	</section>
+        </a>
+        
+        <a href="" class="agenda">
+        	<section class="date">
+        	    <span class="day">27</span>
+        	    <span class="month">Novembre</span>
+        	</section>
+        	
+        	<section class="desc">
+        	    <h1>Prayer Impact</h1>
+        	    <span class="time">19:30 - 21:00</span>
+        	    <span class="location">à Provence 4 - Lausanne</span>
+        	</section>
+        </a>
+    
+    {% for date in dates %}
+        <a href="" class="agenda">
+        	
+        </a>
+    {% else %}
+        <span class="empty">There are no events to come.</span>
+    {% endfor %}
+    {% endspaceless %}
+{% endblock %}

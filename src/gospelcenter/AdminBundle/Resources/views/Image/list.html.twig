@@ -1,0 +1,65 @@
+{% extends "gospelcenterAdminBundle::more.html.twig" %}
+
+{% block title %}
+    {{ parent() }} - Images
+{% endblock %}
+
+{% block adminTitle %}
+
+    {% if tab == 'images' %}
+        <h1 class="switch">{{ center.name }}'s images</h1>
+    {% endif %}
+
+    {% if tab == 'imagesAll' %}
+        <h1 class="switch">All images</h1>
+    {% endif %}
+
+    <ul class="adminTitle">
+
+        <li {% if tab == 'images' %}class="current"{% endif %}>
+            <a href="{{ path('gospelcenterAdmin_images', {'center': center.ref}) }}">{{ center.name }}'s images</a>
+        </li>
+        <li {% if tab == 'imagesAll' %}class="current"{% endif %}>
+            <a href="{{ path('gospelcenterAdmin_images_all', {'center': center.ref}) }}">All images</a>
+        </li>
+
+    </ul>
+{% endblock %}
+
+{% block adminTools %}
+    <a href="{{ path('gospelcenterAdmin_images_add', {'center': center.ref}) }}" class="add">Add an image</a>
+{% endblock %}
+
+{% block adminListBody %}
+    <table class="main">
+        <thead>
+        <tr>
+            <th data-sort="string">Title<span>Title<div class="arrow"></div></span></th>
+            <th data-sort="string">Modified date<span>Modified date<div class="arrow"></div></span></th>
+            <th data-sort="string">Type<span>Type<div class="arrow"></div></span></th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for image in images %}
+
+            {% set link = path('gospelcenterAdmin_images_edit', {'image': image.id, 'center': center.ref}) %}
+
+            <tr>
+                <td class="em">
+                    <a href="{{ link }}"><span>{{ image.title }}</span></a>
+                </td>
+                <td data-sort-value="{{ image.createdDate|date('U') }}">
+                    <a href="{{ link }}"><span>{{ image.modifiedDate|date('d F Y') }}</span></a>
+                </td>
+                <td>
+                    <a href="{{ link }}"><span>{{ image.type }}</span></a>
+                </td>
+            </tr>
+        {% else %}
+            <tr class="empty">
+                <td colspan="3">There are no image.</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

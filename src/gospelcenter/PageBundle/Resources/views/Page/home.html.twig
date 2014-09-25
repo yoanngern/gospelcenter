@@ -1,7 +1,9 @@
-{% extends "::local.html.twig" %}
+{% set admin = false %}
+
+{% extends "::layoutNew.html.twig" %}
 
 {% block stylesheets %}
-	{{ parent() }}
+    {{ parent() }}
 {% endblock %}
 
 {% block javascripts %}
@@ -12,47 +14,116 @@
     {{ parent() }}
 {% endblock %}
 
-{% block body %}
-        
-    <img src="{{ asset('images/logoGCL.png') }}" id="logo" alt="Gospel Center {{ center.name }}" />
-    
-    <section id="news">
-        {% if celebrations|length %}
-            {% for celebration in celebrations %}
-                
-                {% set speakers = '' %}
-            
-                {% for key, speaker in celebration.speakers %}
-                    
-                    {% if key != 0 and key != (celebration.speakers|length -1) %}
-                        {% set speakers = speakers ~ ', '%}
-                    {% elseif key != 0 and key == (celebration.speakers|length -1) %}
-                        {% set speakers = speakers ~ ' et '%}
-                    {% endif %}
-                    
-                    {% set speakers = speakers ~ speaker.person.firstname ~ ' ' ~ speaker.person.lastname %}
-                    
-                {% endfor %}
-                
-                <a class="resize16_9height" href="{{ path('gospelcenterCelebrations_list', {'center': center.ref}) }}">
-                    <section class="img">
-                        <img src="{{ asset(celebration.image.webPath) }}" alt="{{ celebration.image.alt }}" />
-                    </section>
-                    <section class="details">
-                        <div>
-                            <p>Celebration of {{ celebration.startingDate|date('d F') }}</p>
-                            {% if speakers %}<p>with {{ speakers }}</p>{% endif %}
-                        </div>
-                    </section>
-                </a>
-            {% endfor %}
-        {% endif %}
-        
-        {% if events|length %}
-            {% for event in events %}
-                <a class="resize16_9height" href="{{ path('gospelcenterEvents_event', {'center': center.ref, 'event': event.id}) }}"><img src="{{ asset(event.picture.webPath) }}" alt="{{ event.title }}" /></a>
-            {% endfor %}
-        {% endif %}
+{% block local_header %}
+    <div class="gradient_top"></div>
+    <div class="map_bg">
+        <div class="inner"></div>
+    </div>
+    <nav class="top">
+        <section class="container">
+            <a id="get_ruban" href=""></a>
+            <section class="right">
+                <ul class="nav">
+                    <li><a target="_blank" href="{{ path('gospelcenterPageGlobal_home') }}">GCMovement</a></li>
+                    <li><a target="_blank" href="http://www.ministeres.org">Equipe apostolique</a></li>
+                </ul>
+                {% if app.user %}
+                    {% include "::admin/param.html.twig" %}
+                {% endif %}
+            </section>
+
+        </section>
+    </nav>
+    <section class="center">
+        <a class="logo" href="{{ path('gospelcenterPage_home', {'center': center.ref}) }}">
+            {% if center.ref == 'lausanne' %}
+                <img src="{{ asset('images/visuGCLausanne.png') }}"
+                     srcset="{{ asset('images/visuGCLausanne_2x.png') }} 2x">
+            {% elseif center.ref == 'montreux' %}
+                <img src="{{ asset('images/visuGCMontreux.png') }}"
+                     srcset="{{ asset('images/visuGCMontreux_2x.png') }} 2x">
+            {% elseif center.ref == 'jura' %}
+                <img src="{{ asset('images/visuGCJura.png') }}" srcset="{{ asset('images/visuGCJura_2x.png') }} 2x">
+            {% elseif center.ref == 'annecy' %}
+                <img src="{{ asset('images/visuGCAnnecy.png') }}" srcset="{{ asset('images/visuGCAnnecy_2x.png') }} 2x">
+            {% endif %}
+        </a>
     </section>
-        
+    <nav class="mobile">
+        <ul>
+            {% spaceless %}
+                {% include "::nav/local.html.twig" %}
+            {% endspaceless %}
+        </ul>
+    </nav>
+    <div class="gradient_bottom"></div>
+{% endblock %}
+
+{% block header_nav %}
+    {% include "::nav/local.html.twig" %}
+{% endblock %}
+
+{% block footer %}
+    {% include "::footer_local.html.twig" %}
+{% endblock %}
+
+{% block body %}
+
+    {% if center.ads|length %}
+        <section class="ads">
+            {% spaceless %}
+
+                <div class="container">
+
+                    {% for ad in center.ads %}
+
+                        <div>
+                            <a href="{{ ad.url }}">
+                                <div style="background-image: url('{{ asset(ad.image.webPath) }}')">
+                                    <h1>{{ ad.title }}</h1>
+                                    <span>{{ ad.subtitle }}</span>
+                                </div>
+                            </a>
+                        </div>
+
+                    {% endfor %}
+
+                </div>
+
+            {% endspaceless %}
+
+        </section>
+    {% endif %}
+
+
+    {% if center.events|length %}
+        <section id="nextEvents" class="gray">
+            <h1>Next events</h1>
+
+            <section class="mediaList">
+                {% spaceless %}
+                    {% for event in center.events %}
+
+                        <a href="{{ path('gospelcenterEvents_event', {'center': center.ref, 'event': event.id}) }}">
+                            <div class="photo" style="background-image: url('{{ asset(event.picture.webPath) }}')">
+                                {#<img src="{{ asset(event.picture.webPath) }}" alt="{{ event.title }}"/>#}
+                            </div>
+                            <section class="details">
+                                <h1>{{ event.title }}</h1>
+                                <span>{{ event.dates[0].start|date('d F') }}</span>
+                            </section>
+                        </a>
+
+                    {% endfor %}
+
+                    <a class="more" href="{{ path('gospelcenterEvents_list', {'center': center.ref}) }}">
+                        <div class="photo">
+                            <span>More events</span>
+                        </div>
+                    </a>
+                {% endspaceless %}
+            </section>
+        </section>
+    {% endif %}
+
 {% endblock %}

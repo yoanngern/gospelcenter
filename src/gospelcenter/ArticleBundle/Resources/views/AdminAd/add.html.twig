@@ -1,0 +1,49 @@
+{% extends "::adminNew.html.twig" %}
+
+{% block classPage %}{{ parent() }} single{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script type="text/javascript" src="{{ asset('js/addImage.min.js') }}"></script>
+{% endblock %}
+
+{% block title %}
+    {{ parent() }} - Add an ad
+{% endblock %}
+
+{% block adminTitle %}<h1>Add an ad</h1>{% endblock %}
+
+{% block adminBack %}
+    <a class="back" href="{{ path('gospelcenterAdmin_ads', {'center': center.ref}) }}">Ads</a>
+{% endblock %}
+
+{% block adminBody %}
+
+    <form class="ad" action="{{ path('gospelcenterAdmin_ads_add', {'center': center.ref}) }}"
+          method="post" {{ form_enctype(form) }}>
+
+        {{ form_widget(form.status) }}
+        {{ form_errors(form.status) }}
+
+        {{ form_widget(form.title) }}
+        {{ form_errors(form.title) }}
+
+        {{ form_widget(form.subtitle) }}
+        {{ form_errors(form.subtitle) }}
+
+        {{ form_widget(form.url) }}
+        {{ form_errors(form.url) }}
+
+        {{ form_widget(form.type) }}
+        {{ form_errors(form.type) }}
+
+        {{ form_widget(form.image.file) }}
+        {{ form_errors(form.image.file) }}
+
+        {{ form_rest(form) }}
+
+        <input type="submit" class="buttonLink" value="Create an ad"/>
+
+    </form>
+
+{% endblock %}

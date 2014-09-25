@@ -21,6 +21,151 @@ table {
 article, aside, footer, header, hgroup, nav, section, figure, figcaption {
   display: block; }
 
+@font-face {
+  font-family: 'Radikal-Light';
+  src: url("../fonts/2B5662_0_0.eot");
+  src: url("../fonts/2B5662_0_0.eot?#iefix") format("embedded-opentype"), url("../fonts/2B5662_0_0.woff") format("woff"), url("../fonts/2B5662_0_0.ttf") format("truetype"); }
+@font-face {
+  font-family: 'Radikal-Black';
+  src: url("../fonts/2B5662_1_0.eot");
+  src: url("../fonts/2B5662_1_0.eot?#iefix") format("embedded-opentype"), url("../fonts/2B5662_1_0.woff") format("woff"), url("../fonts/2B5662_1_0.ttf") format("truetype"); }
+@font-face {
+  font-family: 'Radikal-Bold';
+  src: url("../fonts/2B5662_2_0.eot");
+  src: url("../fonts/2B5662_2_0.eot?#iefix") format("embedded-opentype"), url("../fonts/2B5662_2_0.woff") format("woff"), url("../fonts/2B5662_2_0.ttf") format("truetype"); }
+@font-face {
+  font-family: 'Radikal';
+  src: url("../fonts/2B5662_3_0.eot");
+  src: url("../fonts/2B5662_3_0.eot?#iefix") format("embedded-opentype"), url("../fonts/2B5662_3_0.woff") format("woff"), url("../fonts/2B5662_3_0.ttf") format("truetype"); }
+@font-face {
+  font-family: 'Radikal-UltraThin';
+  src: url("../fonts/2B5662_4_0.eot");
+  src: url("../fonts/2B5662_4_0.eot?#iefix") format("embedded-opentype"), url("../fonts/2B5662_4_0.woff") format("woff"), url("../fonts/2B5662_4_0.ttf") format("truetype"); }
+@font-face {
+  font-family: 'Radikal-Light';
+  src: url("../fonts/2B5662_0_0.eot");
+  src: url("../fonts/2B5662_0_0.eot?#iefix") format("embedded-opentype"), url("../fonts/2B5662_0_0.woff") format("woff"), url("../fonts/2B5662_0_0.ttf") format("truetype"); }
+@font-face {
+  font-family: 'Radikal-Black';
+  src: url("../fonts/2B5662_1_0.eot");
+  src: url("../fonts/2B5662_1_0.eot?#iefix") format("embedded-opentype"), url("../fonts/2B5662_1_0.woff") format("woff"), url("../fonts/2B5662_1_0.ttf") format("truetype"); }
+@font-face {
+  font-family: 'Radikal-Bold';
+  src: url("../fonts/2B5662_2_0.eot");
+  src: url("../fonts/2B5662_2_0.eot?#iefix") format("embedded-opentype"), url("../fonts/2B5662_2_0.woff") format("woff"), url("../fonts/2B5662_2_0.ttf") format("truetype"); }
+@font-face {
+  font-family: 'Radikal';
+  src: url("../fonts/2B5662_3_0.eot");
+  src: url("../fonts/2B5662_3_0.eot?#iefix") format("embedded-opentype"), url("../fonts/2B5662_3_0.woff") format("woff"), url("../fonts/2B5662_3_0.ttf") format("truetype"); }
+@font-face {
+  font-family: 'Radikal-UltraThin';
+  src: url("../fonts/2B5662_4_0.eot");
+  src: url("../fonts/2B5662_4_0.eot?#iefix") format("embedded-opentype"), url("../fonts/2B5662_4_0.woff") format("woff"), url("../fonts/2B5662_4_0.ttf") format("truetype"); }
+#page.sliderFull #container {
+  margin-top: 0px;
+  height: 100%;
+  width: auto;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  -webkit-overflow-scrolling: touch; }
+  #page.sliderFull #container h2 {
+    margin-top: 23px;
+    width: 88%;
+    margin-left: 6%;
+    border-bottom: 1px solid #fdfdfc;
+    font-size: 1.2em;
+    text-align: center;
+    padding-bottom: 4.6px;
+    z-index: 200;
+    position: absolute;
+    top: 46px;
+    color: #fdfdfc; }
+  #page.sliderFull #container section.slider {
+    height: 100%;
+    position: absolute;
+    top: 0px;
+    width: 100%;
+    min-height: 184px;
+    display: block;
+    overflow: hidden;
+    cursor: pointer; }
+    #page.sliderFull #container section.slider article.slide {
+      display: inline-block;
+      height: 100%;
+      width: 100%;
+      position: relative; }
+      #page.sliderFull #container section.slider article.slide section.img {
+        height: 100%;
+        width: 100%;
+        background-repeat: no-repeat;
+        background-position: top center;
+        background-size: cover; }
+      #page.sliderFull #container section.slider article.slide section.details {
+        padding: 0px;
+        margin: 0px;
+        top: 21%;
+        height: 80%;
+        width: 100%;
+        z-index: 100;
+        padding-left: 0%;
+        position: absolute;
+        background: rgba(0, 0, 0, 0.7);
+        background: -webkit-gradient(linear, left bottom, left top, color-stop(0, rgba(0, 0, 0, 0.8)), color-stop(1, transparent));
+        background: -ms-linear-gradient(bottom, rgba(0, 0, 0, 0.8), transparent);
+        background: -moz-linear-gradient(center bottom, rgba(0, 0, 0, 0.8) 0%, transparent 100%);
+        background: -o-linear-gradient(transparent, rgba(0, 0, 0, 0.8));
+        filter: progid:DXImageTransform.Microsoft.gradient(enabled='false', startColorstr=$start, endColorstr=$stop); }
+        #page.sliderFull #container section.slider article.slide section.details div {
+          color: #fdfdfc;
+          padding-left: 4%;
+          padding-right: 4%;
+          width: 92%;
+          display: block;
+          position: absolute;
+          bottom: 8%;
+          left: 0px; }
+          #page.sliderFull #container section.slider article.slide section.details div h1 {
+            font-family: "Radikal-Bold", "Radikal", sans-serif;
+            font-size: 1.4em; }
+          #page.sliderFull #container section.slider article.slide section.details div p {
+            text-align: justify; }
+          #page.sliderFull #container section.slider article.slide section.details div p.link {
+            text-align: center;
+            margin-top: 20px;
+            margin-bottom: 20px; }
+            #page.sliderFull #container section.slider article.slide section.details div p.link a {
+              color: #fdfdfc;
+              text-decoration: none;
+              text-align: center;
+              -webkit-border-radius: 3px;
+              -moz-border-radius: 3px;
+              -ms-border-radius: 3px;
+              -o-border-radius: 3px;
+              border-radius: 3px;
+              cursor: pointer;
+              padding: 6px 25px;
+              border: 1px solid #fdfdfc; }
+              #page.sliderFull #container section.slider article.slide section.details div p.link a a:active {
+                background-color: #fdfdfc; }
+    #page.sliderFull #container section.slider nav#slides {
+      position: absolute;
+      bottom: 0%;
+      width: 100%;
+      z-index: 200; }
+      #page.sliderFull #container section.slider nav#slides ul {
+        text-align: center; }
+        #page.sliderFull #container section.slider nav#slides ul li {
+          border: 1px solid #fdfdfc;
+          margin-left: 5px;
+          margin-right: 5px;
+          border-radius: 6px;
+          display: inline-block;
+          width: 10px;
+          height: 10px;
+          cursor: pointer; }
+          #page.sliderFull #container section.slider nav#slides ul li.current {
+            background: #fdfdfc; }
+
 html,
 body {
   min-height: 100%;
@@ -92,8 +237,10 @@ body > header {
     right: 51px;
     font-family: "Radikal-Bold", "Radikal", sans-serif;
     font-size: 1.2em;
-    padding-top: 11px;
-    padding-bottom: 11px; }
+    height: 46px;
+    vertical-align: sub;
+    line-height: 46px;
+    white-space: nowrap; }
   body > header a.right {
     height: 46px;
     width: 46px;
@@ -177,110 +324,6 @@ body > header {
       text-align: center;
       width: 100%;
       display: block; }
-  #page.bases.local #container {
-    margin-top: 0px;
-    height: 100%;
-    width: auto;
-    overflow-x: hidden;
-    overflow-y: scroll;
-    -webkit-overflow-scrolling: touch; }
-    #page.bases.local #container h2 {
-      margin-top: 23px;
-      width: 88%;
-      margin-left: 6%;
-      border-bottom: 1px solid #fdfdfc;
-      font-size: 1.2em;
-      text-align: center;
-      padding-bottom: 4.6px;
-      z-index: 200;
-      position: absolute;
-      top: 46px;
-      color: #fdfdfc; }
-    #page.bases.local #container section.slider {
-      height: 100%;
-      position: absolute;
-      top: 0px;
-      width: 100%;
-      min-height: 184px;
-      display: block;
-      overflow: hidden;
-      cursor: pointer; }
-      #page.bases.local #container section.slider article.slide {
-        display: inline-block;
-        height: 100%;
-        width: 100%;
-        position: relative; }
-        #page.bases.local #container section.slider article.slide section.img {
-          height: 100%;
-          width: 100%;
-          background-repeat: no-repeat;
-          background-position: top center;
-          background-size: cover; }
-        #page.bases.local #container section.slider article.slide section.details {
-          padding: 0px;
-          margin: 0px;
-          top: 21%;
-          height: 80%;
-          width: 100%;
-          z-index: 100;
-          padding-left: 0%;
-          position: absolute;
-          background: rgba(0, 0, 0, 0.7);
-          background: -webkit-gradient(linear, left bottom, left top, color-stop(0, rgba(0, 0, 0, 0.8)), color-stop(1, transparent));
-          background: -ms-linear-gradient(bottom, rgba(0, 0, 0, 0.8), transparent);
-          background: -moz-linear-gradient(center bottom, rgba(0, 0, 0, 0.8) 0%, transparent 100%);
-          background: -o-linear-gradient(transparent, rgba(0, 0, 0, 0.8));
-          filter: progid:DXImageTransform.Microsoft.gradient(enabled='false', startColorstr=$start, endColorstr=$stop); }
-          #page.bases.local #container section.slider article.slide section.details div {
-            color: #fdfdfc;
-            padding-left: 4%;
-            padding-right: 4%;
-            width: 92%;
-            display: block;
-            position: absolute;
-            bottom: 8%;
-            left: 0px; }
-            #page.bases.local #container section.slider article.slide section.details div h1 {
-              font-family: "Radikal-Bold", "Radikal", sans-serif;
-              font-size: 1.4em; }
-            #page.bases.local #container section.slider article.slide section.details div p {
-              text-align: justify; }
-            #page.bases.local #container section.slider article.slide section.details div p.link {
-              text-align: center;
-              margin-top: 20px;
-              margin-bottom: 20px; }
-              #page.bases.local #container section.slider article.slide section.details div p.link a {
-                color: #fdfdfc;
-                text-decoration: none;
-                text-align: center;
-                -webkit-border-radius: 3px;
-                -moz-border-radius: 3px;
-                -ms-border-radius: 3px;
-                -o-border-radius: 3px;
-                border-radius: 3px;
-                cursor: pointer;
-                padding: 6px 25px;
-                border: 1px solid #fdfdfc; }
-                #page.bases.local #container section.slider article.slide section.details div p.link a a:active {
-                  background-color: #fdfdfc; }
-      #page.bases.local #container section.slider nav#slides {
-        position: absolute;
-        bottom: 0%;
-        width: 100%;
-        z-index: 200; }
-        #page.bases.local #container section.slider nav#slides ul {
-          text-align: center; }
-          #page.bases.local #container section.slider nav#slides ul li {
-            border: 1px solid #fdfdfc;
-            margin-left: 5px;
-            margin-right: 5px;
-            border-radius: 6px;
-            display: inline-block;
-            width: 10px;
-            height: 10px;
-            cursor: pointer; }
-            #page.bases.local #container section.slider nav#slides ul li.current {
-              background: #fdfdfc; }
   #page.events.local #container {
     margin-top: 46px;
     height: initial;
@@ -382,6 +425,9 @@ body > header {
                 font-size: 1.4em; }
               #page.celebrations.local #container section.nextCelebrations article section.details div h2 {
                 font-size: 1.3em; }
+              #page.celebrations.local #container section.nextCelebrations article section.details div a {
+                color: #fdfdfc;
+                font-size: 1.2em; }
         #page.celebrations.local #container section.nextCelebrations nav#slides {
           width: 100%;
           z-index: 200;
@@ -525,6 +571,9 @@ a.bigList {
     a.bigList section.details time {
       float: right;
       padding: 2% 2%; }
+    a.bigList section.details span {
+      padding: 0 2% 1%;
+      display: block; }
 
 #ruban_nav {
   z-index: 0;

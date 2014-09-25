@@ -45,7 +45,7 @@ class GroupWithRolesFormType extends GroupFormType
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'gospelcenter\UserBundle\Entity\Unit',
+            'data_class' => 'gospelcenter\AccessBundle\Entity\Unit',
             'intention'  => 'group',
         ));
     }

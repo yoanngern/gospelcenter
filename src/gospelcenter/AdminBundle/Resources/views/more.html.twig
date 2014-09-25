@@ -1,0 +1,9 @@
+{% extends "::adminNew.html.twig" %}
+
+{% block adminSubNav %}
+    <li><a href="{{ path('gospelcenterAdmin_locations', {'center': center.ref}) }}"
+           {% if tab == 'locations' %}class="current focus"{% endif %}>Locations</a></li>
+    <li><a href="{{ path('gospelcenterAdmin_images', {'center': center.ref}) }}"
+           {% if tab == 'images' or tab == 'imagesAll' %}class="current focus"{% endif %}>Images</a></li>
+
+{% endblock %}

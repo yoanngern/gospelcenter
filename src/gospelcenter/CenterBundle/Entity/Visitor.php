@@ -56,6 +56,20 @@ class Visitor
         $this->centers = new \Doctrine\Common\Collections\ArrayCollection();
     }
     
+    /**
+     * Add centers
+     *
+     * @param \gospelcenter\CenterBundle\Entity\Center $centers
+     * @return Visitor
+     */
+    public function addCenter(\gospelcenter\CenterBundle\Entity\Center $centers)
+    {
+        $this->centers[] = $centers;
+        $centers->addVisitor($this);
+    
+        return $this;
+    }
+    
     /*************************************/
     /**** Getter setter auto generate ****/
     /*************************************/
@@ -130,18 +144,7 @@ class Visitor
         return $this->person;
     }
 
-    /**
-     * Add centers
-     *
-     * @param \gospelcenter\CenterBundle\Entity\Center $centers
-     * @return Visitor
-     */
-    public function addCenter(\gospelcenter\CenterBundle\Entity\Center $centers)
-    {
-        $this->centers[] = $centers;
     
-        return $this;
-    }
 
     /**
      * Remove centers

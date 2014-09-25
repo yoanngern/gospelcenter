@@ -24,13 +24,22 @@ class Audio
     private $id;
 
     /**
-     * @var integer
+     * @var string
      *
-     * @ORM\Column(name="soundCloudId", type="integer")
+     * @ORM\Column(name="ownerId", type="string", length=255)
      * @Assert\NotBlank()
      */
-    private $soundCloudId;
-    
+    private $ownerId;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="owner", type="string", length=255)
+     * @Assert\NotBlank()
+     */
+    private $owner;
+
+
     /**
      * @var \DateTime
      *
@@ -65,14 +74,18 @@ class Audio
         $this->createdDate = new \Datetime();
         $this->modifiedDate = new \Datetime();
     }
-    
+
     /**
      * @ORM\PrePersist()
      * @ORM\PreUpdate()
      */
     public function preSave()
     {
+
         $this->modifiedDate = new \Datetime();
+
+        $this->owner = "soundcloud";
+
     }
 
     /*************************************/
@@ -92,26 +105,49 @@ class Audio
     }
 
     /**
-     * Set soundCloudId
+     * Set ownerId
      *
-     * @param integer $soundCloudId
+     * @param string $ownerId
      * @return Audio
      */
-    public function setSoundCloudId($soundCloudId)
+    public function setOwnerId($ownerId)
     {
-        $this->soundCloudId = $soundCloudId;
+        $this->ownerId = $ownerId;
     
         return $this;
     }
 
     /**
-     * Get soundCloudId
+     * Get ownerId
      *
-     * @return integer 
+     * @return string 
      */
-    public function getSoundCloudId()
+    public function getOwnerId()
     {
-        return $this->soundCloudId;
+        return $this->ownerId;
+    }
+
+    /**
+     * Set owner
+     *
+     * @param string $owner
+     * @return Audio
+     */
+    public function setOwner($owner)
+    {
+        $this->owner = $owner;
+    
+        return $this;
+    }
+
+    /**
+     * Get owner
+     *
+     * @return string 
+     */
+    public function getOwner()
+    {
+        return $this->owner;
     }
 
     /**

@@ -1,0 +1,153 @@
+<?php
+
+namespace gospelcenter\ArticleBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
+
+/**
+ * Ad
+ *
+ * @ORM\Table(name="ad")
+ * @ORM\Entity(repositoryClass="gospelcenter\ArticleBundle\Entity\AdRepository")
+ * @ORM\HasLifecycleCallbacks
+ */
+class Ad
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="status", type="boolean")
+     */
+    private $status;
+
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="title", type="string", length=255)
+     */
+    private $title;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="subtitle", type="string", length=255, nullable=true)
+     */
+    private $subtitle;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="url", type="string", length=255)
+     */
+    private $url;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="type", type="string", length=255)
+     */
+    private $type;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="createdDate", type="datetime")
+     * @Assert\DateTime()
+     */
+    private $createdDate;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="modifiedDate", type="datetime")
+     * @Assert\DateTime()
+     */
+    private $modifiedDate;
+
+
+    /**
+     * advertises
+     *
+     * @ORM\ManyToOne(targetEntity="gospelcenter\CenterBundle\Entity\Center", inversedBy="ads")
+     * @Assert\Valid()
+     */
+    private $center;
+
+
+    /**
+     * is displayed by
+     *
+     * @ORM\ManyToOne(targetEntity="gospelcenter\ImageBundle\Entity\Image", inversedBy="ads", cascade={"persist", "remove"})
+     * @Assert\Valid()
+     */
+    private $image;
+
+
+    /**
+     * Constructor
+     */
+    public function __construct(\gospelcenter\CenterBundle\Entity\Center $center = null)
+    {
+        $this->status = true;
+        $this->createdDate = new \Datetime();
+        $this->modifiedDate = new \Datetime();
+
+        if($center != null){
+            $this->center = $center;
+        }
+    }
+
+    /**
+     * @ORM\PrePersist()
+     * @ORM\PreUpdate()
+     */
+    public function preSave()
+    {
+        $this->modifiedDate = new \Datetime();
+    }
+
+    /**
+     * Set center
+     *
+     * @param \gospelcenter\CenterBundle\Entity\Center $center
+     * @return Ad
+     */
+    public function setCenter(\gospelcenter\CenterBundle\Entity\Center $center = null)
+    {
+        $this->center = $center;
+        $center->addAd($this);
+
+        return $this;
+    }
+
+    /**
+     * Set image
+     *
+     * @param \gospelcenter\ImageBundle\Entity\Image $image
+     * @return Ad
+     */
+    public function setImage(\gospelcenter\ImageBundle\Entity\Image $image = null)
+    {
+        $this->image = $image;
+        $image->addAd($this);
+
+        return $this;
+    }
+
+    /*************************************/
+    /**** Getter setter auto generate ****/
+    /*************************************/
+
+
+}

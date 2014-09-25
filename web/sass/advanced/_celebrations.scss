@@ -1,0 +1,402 @@
+#page.celebrations {
+
+    section.allSunday {
+        width: 100%;
+        background-image: url('../../images/slide_allSunday.jpg');
+        background-color: $grayLightGC;
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: cover;
+        margin-top: 70px;
+        margin-bottom: 70px;
+        @include bannerResp(345px);
+
+        h2 {
+            text-align: center;
+            color: $whiteGC;
+            text-transform: uppercase;
+            font-family: $font-thin;
+            font-size: 2.2em;
+        }
+    }
+
+    #speakers {
+        margin: 46px auto;
+
+        article.default {
+            margin: 0 auto;
+
+            a.speaker {
+                display: inline-block;
+                width: 200px;
+                margin: 0 60px;
+                vertical-align: top;
+                color: $grayDarkGC;
+
+                &:hover {
+                    cursor: pointer;
+                    text-decoration: none;
+                    div.photo .hover {
+                        display: block;
+                    }
+                }
+
+                div.photo {
+                    width: 200px;
+                    height: 200px;
+                    @include border-radius(100px);
+                    background-size: cover;
+                    background-repeat: no-repeat;
+                    background-color: $grayLightGC;
+                    position: relative;
+
+                    .hover {
+                        width: 100%;
+                        height: 100%;
+                        background-color: rgba($grayDarkGC, 0.7);
+                        @include border-radius(100px);
+                        background-image: url('../../images/info.svg');
+                        background-position: center;
+                        background-size: normal;
+                        background-repeat: no-repeat;
+                        display: none;
+                    }
+                }
+
+                h1 {
+                    font-family: $font-bold;
+                    text-transform: uppercase;
+                    font-size: 1.1em;
+                    line-height: 1.1em;
+                    text-align: center;
+                    margin-top: 10px;
+                }
+
+                time {
+                    margin-top: 10px;
+                    color: $grayGC;
+                    font-family: $font-light;
+                    text-transform: uppercase;
+                    display: block;
+                    text-align: center;
+                    font-size: 0.9em;
+                    line-height: 0.9em;
+                }
+            }
+        }
+
+        article.celebrationInfo {
+            display: none;
+            background-color: $greenGC;
+            padding: 40px 0 30px;
+            margin-top: 30px;
+            margin-bottom: 70px;
+            position: relative;
+
+            &.actived {
+                display: block;
+            }
+
+            & > div.arrow {
+                display: block;
+                width: 0px;
+                height: 0px;
+                border-style: solid;
+                border-width: 0 22.5px 19px 22.5px;
+                border-color: transparent transparent $greenGC transparent;
+                position: absolute;
+                top: -19px;
+                left: 50%;
+                margin-left: -25px;
+            }
+
+            .info {
+                margin: 0 auto;
+                width: 100%;
+                max-width: 400px;
+                background-color: $whiteGC;
+                padding: 30px 30px 10px 30px;
+
+                h1 {
+                    font-family: $font-bold;
+                    font-size: 1.2em;
+                    line-height: 1.2em;
+                    text-transform: uppercase;
+                    padding-bottom: 10px;
+                }
+
+                span,
+                time {
+                    display: block;
+                    font-family: $font-light;
+                    text-transform: uppercase;
+                    color: $grayGC;
+                    padding-top: 5px;
+                }
+
+                a {
+                    border-top: 1px solid $grayGC;
+                    width: 100%;
+                    display: block;
+                    height: 67px;
+                    position: relative;
+                    cursor: pointer;
+
+                    &:hover {
+                        background-color: rgba($grayLightGC, 0.5);
+                        text-decoration: none;
+                    }
+
+                    div.icon {
+                        width: 60px;
+                        height: 67px;
+                        background-size: 100%;
+                        background-position: right center;
+                        background-repeat: no-repeat;
+                        display: inline-block;
+                    }
+
+                    span {
+                        font-family: $font-light;
+                        color: $grayDarkGC;
+                        text-transform: none;
+                        font-size: 1.2em;
+                        line-height: 1.2em;
+                        padding-left: 5px;
+                        padding-top: 22px;
+                        display: inline-block;
+                        vertical-align: top;
+                    }
+
+                    div.arrow {
+                        position: absolute;
+                        width: 15px;
+                        height: 67px;
+                        background-image: url('../../images/linkArrow.svg');
+                        background-repeat: no-repeat;
+                        background-position: right center;
+                        top: 0;
+                        right: 10px;
+                    }
+
+                    &.location {
+                        margin-top: 20px;
+
+                        div.icon {
+                            background-image: url('../../images/where.svg');
+                        }
+                    }
+
+                    &.kids {
+                        div.icon {
+                            background-image: url('../../images/kids.svg');
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    #description {
+        margin-top: 70px;
+        margin-bottom: 70px;
+
+        h2 {
+            font-size: 1.25em;
+            line-height: 1.25em;
+            font-family: $font-light;
+            width: 100%;
+            max-width: 560px;
+            margin: 0 auto;
+            text-align: center;
+        }
+    }
+
+    #map {
+        margin-top: 70px;
+        margin-bottom: 70px;
+    }
+
+    #pastCelebrations {
+        & > h1 {
+            font-family: $font-light;
+            font-size: 1.2em;
+            line-height: 1.2em;
+            text-align: center;
+        }
+
+    }
+
+    @media only screen and (max-width: 960px) {
+
+        #speakers {
+
+            article.default {
+                text-align: center;
+
+                a.speaker {
+                    width: 170px;
+                    margin: 0 32px;
+
+                    div.photo {
+                        width: 170px;
+                        height: 170px;
+                    }
+
+                    h1 {
+                        font-size: 1.05em;
+                        line-height: 1.05em;
+                    }
+
+                    time {
+                        font-size: 0.8em;
+                        line-height: 0.8em;
+                    }
+                }
+            }
+        }
+
+    }
+
+    @media only screen and (max-width: 750px) {
+
+        #speakers {
+
+            article.default {
+
+                a.speaker {
+                    margin: 0 16px;
+                }
+            }
+        }
+
+    }
+
+    @media only screen and (max-width: $mobileH) {
+        section.allSunday {
+            margin-top: 30px;
+            height: 125px;
+            margin-bottom: 30px;
+
+            h2 {
+                font-size: 1.6em;
+                line-height: 125px;
+                max-width: 90%;
+                margin: 0 auto;
+            }
+        }
+
+        #speakers {
+            margin: 20px auto;
+            
+            article.default {
+                padding: 0 10px;
+                a.speaker {
+                    width: 90px;
+                    margin: 0 15px 0 0;
+
+                    &:last-child {
+                        margin-right: 0;
+                    }
+
+                    div.photo {
+                        width: 90px;
+                        height: 90px;
+
+                        .hover {
+                            background-size: 60%;
+                        }
+                    }
+
+                    h1 {
+                        display: none;
+                    }
+
+                    time {
+                        font-size: 1em;
+                    }
+                }
+            }
+
+            article.celebrationInfos {
+
+                article.celebrationInfo {
+                    padding: 10px;
+                    margin-top: 20px;
+                    margin-bottom: 20px;
+
+                    div.arrow {
+                        top: -10px;
+                    }
+
+                    .info {
+                        width: 100%;
+                        max-width: inherit;
+                        padding: 0;
+
+                        h1 {
+                            padding: 10px 0 0 3%;
+                        }
+
+                        span,
+                        time {
+                            padding: 5px 0 0 3%;
+                        }
+
+                        a {
+                            height: 48px;
+                            max-width: 94%;
+                            margin: 0 auto;
+
+                            &:first-of-type {
+                                margin-top: 20px;
+                            }
+
+                            div.icon {
+                                height: 25px;
+                                width: 45px;
+                                background-size: contain;
+                                margin-top: 10px;
+                            }
+
+                            span {
+                                margin-top: 10px;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        #description {
+            margin-top: 30px;
+            margin-bottom: 30px;
+
+            h2 {
+                max-width: 90%;
+            }
+        }
+
+        #map {
+            margin-top: 30px;
+            margin-bottom: 30px;
+        }
+    }
+
+}
+
+html.touch {
+    #page.celebrations {
+        #speakers {
+            article.default {
+                a.speaker {
+                    &:hover {
+                        div.photo .hover {
+                            display: none;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

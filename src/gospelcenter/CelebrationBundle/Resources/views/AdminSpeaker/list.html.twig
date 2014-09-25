@@ -1,47 +1,92 @@
 {% extends "gospelcenterPeopleBundle::layout.html.twig" %}
 
-{% block gospelcenterAdminPeople_body %}
-    <nav class="sorting_nav">
-        <ul>
-            <li><a href="{{ path('gospelcenterAdmin_speakers', {'center': center.ref}) }}" {% if tab == 'speakers' %}class="current"{% endif %}>{{ center.name }}'s speakers</a></li>
-            <li><a href="{{ path('gospelcenterAdmin_speakers_all', {'center': center.ref}) }}" {% if tab == 'speakersAll' %}class="current"{% endif %}>All speakers</a></li>
-        </ul>
-    </nav>
+{% block adminTitle %}
+
+    {% if tab == 'speakers' %}
+        <h1 class="switch">{{ center.name }}'s speakers</h1>
+    {% endif %}
+
+    {% if tab == 'speakersAll' %}
+        <h1 class="switch">All speakers</h1>
+    {% endif %}
+
+    <ul class="adminTitle">
+
+        <li {% if tab == 'speakers' %}class="current"{% endif %}>
+            <a href="{{ path('gospelcenterAdmin_speakers', {'center': center.ref}) }}">{{ center.name }}'s speakers</a>
+        </li>
+        <li {% if tab == 'speakersAll' %}class="current"{% endif %}>
+            <a href="{{ path('gospelcenterAdmin_speakers_all', {'center': center.ref}) }}">All speakers</a>
+        </li>
+
+    </ul>
+{% endblock %}
+
+{% block adminListBody %}
+
     <table class="main">
         <thead>
-            <tr>
-                <th data-sort="string">Firstname</th>
-                <th data-sort="string">Lastname</th>
-                <th data-sort="string">Function</th>
-                <th data-sort="string">Language</th>
-            </tr>
+        <tr>
+            <th data-sort="string">Firstname<span>Firstname<div class="arrow"></div></span></th>
+            <th data-sort="string">Lastname<span>Lastname<div class="arrow"></div></span></th>
+            <th data-sort="string">Function<span>Function<div class="arrow"></div></span></th>
+            <th data-sort="string">Language<span>Language<div class="arrow"></div></span></th>
+        </tr>
         </thead>
         <tbody>
-            {% for speaker in speakers %}
-            
-                {% set languages = '' %}
-        
-                {% for key, language in speaker.person.languages %}
-                    
-                    {% if key != 0 and key != (speaker.person.languages|length -1) %}
-                        {% set languages = languages ~ ', '%}
-                    {% elseif key != 0 and key == (speaker.person.languages|length -1) %}
-                        {% set languages = languages ~ ' et '%}
-                    {% endif %}
-                    
-                    {% set languages = languages ~ language.ref %}
-                    
-                {% endfor %}
-                
-                <tr>
-                    <td><a href="{{ path('gospelcenterAdmin_persons_edit', {'person': speaker.person.id, 'center': center.ref}) }}">{{ speaker.person.firstname }}</a></td>
-                    <td><a href="{{ path('gospelcenterAdmin_persons_edit', {'person': speaker.person.id, 'center': center.ref}) }}">{{ speaker.person.lastname }}</a></td>
-                    <td><a href="{{ path('gospelcenterAdmin_persons_edit', {'person': speaker.person.id, 'center': center.ref}) }}">{{ speaker.person.function }}</a></td>
-                    <td><a href="{{ path('gospelcenterAdmin_persons_edit', {'person': speaker.person.id, 'center': center.ref}) }}">{{ languages }}</a></td>
-                </tr>
-            {% else %}
-                <tr><td colspan="4">There are no speakers.</td></tr>
+        {% for speaker in speakers %}
+
+            {% set languages = '' %}
+
+            {% for key, language in speaker.person.languages %}
+
+                {% if key != 0 and key != (speaker.person.languages|length -1) %}
+                    {% set languages = languages ~ ', ' %}
+                {% elseif key != 0 and key == (speaker.person.languages|length -1) %}
+                    {% set languages = languages ~ ' et ' %}
+                {% endif %}
+
+                {% set languages = languages ~ language.ref %}
+
             {% endfor %}
+
+            {% set link = path('gospelcenterAdmin_persons_edit', {'person': speaker.person.id, 'center': center.ref}) %}
+
+            <tr>
+                <td class="em">
+                    <a href="{{ link }}">
+                        <span>{{ speaker.person.firstname }}</span>
+                    </a>
+                </td>
+                <td class="em">
+                    <a href="{{ link }}">
+                        <span>{{ speaker.person.lastname }}</span>
+                    </a>
+                </td>
+                <td>
+                    <a href="{{ link }}">
+                        {% if speaker.person.function %}
+                            <span>{{ speaker.person.function }}</span>
+                        {% else %}
+                            <span>--</span>
+                        {% endif %}
+                    </a>
+                </td>
+                <td>
+                    <a href="{{ link }}">
+                        {% if languages %}
+                            <span>{{ languages }}</span>
+                        {% else %}
+                            <span>--</span>
+                        {% endif %}
+                    </a>
+                </td>
+            </tr>
+        {% else %}
+            <tr class="empty">
+                <td colspan="4">There are no speakers.</td>
+            </tr>
+        {% endfor %}
         </tbody>
     </table>
 {% endblock %}

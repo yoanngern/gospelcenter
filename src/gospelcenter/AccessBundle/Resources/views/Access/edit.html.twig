@@ -22,17 +22,11 @@
     <form class="unit" action="{{ path('gospelcenterAdminGlobal_options_accesses_edit', {'access': access.id}) }}" method="post" {{ form_enctype(form) }}>
         
         <nav class="tools">
-    		<input type="submit" class="buttonRounded" />
+    		<input type="submit" class="buttonLink" />
     	</nav>
         
         {{ form_widget(form.service, {'attr': {'placeholder': 'Service'} }) }}
         {{ form_errors(form.service) }}
-        
-        {{ form_widget(form.attribute, {'attr': {'placeholder': 'Attribute'} }) }}
-        {{ form_errors(form.attribute) }}
-        
-        {{ form_widget(form.type, {'attr': {'placeholder': 'Type'} }) }}
-        {{ form_errors(form.type) }}
         
         {{ form_rest(form) }}
         

@@ -34,7 +34,13 @@
                 
                 {% if hasMedia %}
                     <a href="{{ path('gospelcenterMedia_speaker', {'speaker': speaker.person.id}) }}">
-                        <img src="{{ asset(speaker.celebrations[0].image.webPath) }}" alt="{{ speaker.celebrations[0].image.alt }}" />
+                        {% set hasImage = false %}
+                        {% for celebration in speaker.celebrations %}                
+                            {% if not hasImage and celebration.image %}
+                                {% set hasImage = true %}
+                                <img src="{{ asset(celebration.image.webPath) }}" alt="{{ celebration.image.alt }}" />
+                            {% endif %}
+                        {% endfor %}
                         <section class="details">
                             <h1>{{ speaker.person.firstname }} {{ speaker.person.lastname }}</h1>
                             <span>{{ speaker.celebrations|length }} {% if speaker.celebrations|length > 1 %}videos{% else %}video{% endif %}</span>

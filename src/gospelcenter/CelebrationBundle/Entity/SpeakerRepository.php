@@ -15,99 +15,119 @@ class SpeakerRepository extends EntityRepository
     public function findAllByCenter(\gospelcenter\CenterBundle\Entity\Center $center)
     {
         $qb = $this->createQueryBuilder('s');
-        
+
         $qb->addSelect('p');
-        
+        $qb->addSelect('m');
+        $qb->addSelect('v');
+        $qb->addSelect('l');
+
         $qb->join('s.person', 'p');
         $qb->join('s.celebrations', 'cel');
         $qb->join('cel.center', 'c');
-        
+        $qb->leftJoin('p.member', 'm');
+        $qb->leftJoin('p.visitor', 'v');
+        $qb->leftJoin('p.languages', 'l');
+
+
         $qb->where('c.ref = :center')
             ->setParameter('center', $center->getRef());
-            
+
         $qb->addOrderBy('p.lastname', 'ASC')
             ->addOrderBy('p.firstname', 'ASC');
-        
+
         return $qb->getQuery()->getResult();
     }
-    
+
     public function findAllOrder()
     {
         $qb = $this->createQueryBuilder('s');
-        
-        $qb->addSelect('p');
-        
-        $qb->join('s.person', 'p');
-            
+
+        $qb->addSelect('p')
+            ->addSelect('m')
+            ->addSelect('v')
+            ->addSelect('l');
+
+        $qb->leftJoin('s.person', 'p');
+        $qb->leftJoin('p.member', 'm');
+        $qb->leftJoin('p.visitor', 'v');
+
+        $qb->leftJoin('p.languages', 'l');
+
         $qb->addOrderBy('p.lastname', 'ASC')
             ->addOrderBy('p.firstname', 'ASC');
-        
+
         return $qb->getQuery()->getResult();
     }
-    
-    
+
+
     public function getSelectList()
     {
         $qb = $this->createQueryBuilder('s');
-        
+
         $qb->addSelect('p');
-        
+
         $qb->join('s.person', 'p');
-            
+
         $qb->addOrderBy('p.lastname', 'ASC')
             ->addOrderBy('p.firstname', 'ASC');
-        
+
         return $qb;
     }
-    
-    
+
+
     public function findAllJSON()
     {
-        $qb = $this->createQueryBuilder('s');
-        
-        $qb->addSelect('p.firstname');
-        $qb->addSelect('p.lastname');
-        $qb->addSelect('p.function');
-        
-        $qb->join('s.person', 'p');
-            
-        $qb->addOrderBy('p.lastname', 'ASC')
-            ->addOrderBy('p.firstname', 'ASC');
-        
-        return $qb->getQuery()->getArrayResult();
+
+        $query = $this->getEntityManager()
+            ->createQuery(
+                '
+                SELECT p.id, p.firstname, p.lastname, p.function, i.id AS image_id
+                FROM gospelcenterCelebrationBundle:Speaker s
+                JOIN s.person p
+                LEFT JOIN p.image i
+                ORDER BY p.lastname ASC, p.firstname ASC'
+            );
+
+        try {
+            return $query->getArrayResult();
+        } catch (\Doctrine\ORM\NoResultException $e) {
+            return null;
+        }
     }
-    
+
     public function findOne($speaker)
     {
         $qb = $this->createQueryBuilder('s');
-        
+
         $qb->addSelect('p');
-        
+
         $qb->join('s.person', 'p');
-        
+
         $qb->where('p.id = :speaker')
             ->setParameter('speaker', $speaker);
-            
+
         return $qb->getQuery()->getArrayResult();
-        
+
     }
-    
+
     public function findAllWithMedia()
     {
         $qb = $this->createQueryBuilder('s');
-        
+
         $qb->addSelect('p');
         $qb->addSelect('cel');
         $qb->addSelect('v');
         $qb->addSelect('a');
-        
+        $qb->addSelect('d');
+
         $qb->join('s.person', 'p');
         $qb->join('s.celebrations', 'cel');
         $qb->leftJoin('cel.video', 'v');
         $qb->leftJoin('cel.audio', 'a');
-        
-        $qb->addOrderBy('cel.startingDate', 'DESC');
-        
+        $qb->leftJoin('cel.date', 'd');
+
+        $qb->addOrderBy('d.start', 'DESC');
+
         return $qb->getQuery()->getResult();
     }
 }

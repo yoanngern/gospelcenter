@@ -18,6 +18,7 @@ $(document).ready( function() {
 function initSlides() {
     $("#gospelcenter_pagebundle_page_slides").hide();
     $("#gospelcenter_pagebundle_pageglobaltype_slides").hide();
+    $("#gospelcenter_pagebundle_youthpagetype_slides").hide();
     
     var source   = $("#slide").html();
     var template = Handlebars.compile(source);
@@ -29,6 +30,7 @@ function initSlides() {
         var id = $(this).attr("id");
         $("div[id=gospelcenter_pagebundle_page_slides_"+ index +"] input").attr("data-slide", id);
         $("div[id=gospelcenter_pagebundle_pageglobaltype_slides_"+ index +"] input").attr("data-slide", id);
+        $("div[id=gospelcenter_pagebundle_youthpagetype_slides_"+ index +"] input").attr("data-slide", id);
     });
 }
 

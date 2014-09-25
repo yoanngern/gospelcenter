@@ -32,7 +32,7 @@ class PageGlobalController extends Controller
         
         $mobileDetector = $this->get('mobile_detect.mobile_detector');
         if($mobileDetector->isMobile()) {
-            return $this->render('gospelcenterPageBundle:Mobile:index.html.twig', array(
+            return $this->render('gospelcenterPageBundle:MobileGlobal:index.html.twig', array(
                 'page' => $page->getRef(),
                 'article' => $page,
                 'centers' => $centers

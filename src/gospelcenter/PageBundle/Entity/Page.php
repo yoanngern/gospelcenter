@@ -53,13 +53,6 @@ class Page
      * @ORM\Column(name="slogan", type="string", length=255, nullable=true)
      */
     private $slogan;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="template", type="string", length=255)
-     */
-    private $template; 
     
     /**
      * @var integer
@@ -89,8 +82,6 @@ class Page
      * presents
      * 
      * @ORM\ManyToOne(targetEntity="gospelcenter\CenterBundle\Entity\Center", inversedBy="pages")
-     * @ORM\JoinColumn(nullable=true)
-     * @Assert\Valid()
      */
     private $center;
     
@@ -99,7 +90,6 @@ class Page
      * is written in
      * 
      * @ORM\ManyToOne(targetEntity="gospelcenter\LanguageBundle\Entity\Language", inversedBy="pages")
-     * @Assert\Valid()
      */
     private $language;
     
@@ -107,7 +97,7 @@ class Page
     /**
      * contains
      * 
-     * @ORM\OneToMany(targetEntity="gospelcenter\PageBundle\Entity\Slide", mappedBy="page", cascade={"remove"})
+     * @ORM\OneToMany(targetEntity="gospelcenter\PageBundle\Entity\Slide", mappedBy="page", cascade={"persist", "remove"})
      * @ORM\OrderBy({"sort" = "ASC"})
      * @Assert\Valid()
      */

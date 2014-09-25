@@ -1,0 +1,139 @@
+@import 'color';
+@import 'functions';
+@import 'font';
+
+$lineH: 46px;
+
+
+
+#page.sliderFull #container {
+    margin-top: 0px;
+    height: 100%;
+    width: auto;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    -webkit-overflow-scrolling: touch;
+    
+    h2 {
+        margin-top: 0.5 * $lineH;
+        width: 88%;
+        margin-left: 6%;
+        border-bottom: 1px solid $white;
+        font-size: 1.2em;
+        text-align: center;
+        padding-bottom: 0.1 * $lineH;
+        z-index: 200;
+        position: absolute;
+        top: $lineH;
+        color: $white;
+    }
+    
+    section.slider {
+        height: 100%;
+        position: absolute;
+        top: 0px;
+        width: 100%;
+        min-height: 4 * $lineH;
+        display: block;
+        overflow: hidden;
+        cursor: pointer;
+        
+        article.slide {
+            display: inline-block;
+            height: 100%;
+            width: 100%;
+            position: relative;
+            
+            section.img {
+                height: 100%;
+                width: 100%;
+                background-repeat: no-repeat;
+                background-position: top center;
+                background-size: cover;
+            }
+            
+            section.details {
+                padding: 0px;
+                margin: 0px;
+                top: 21%;
+                height: 80%;
+                width: 100%;
+                z-index: 100;
+                padding-left: 0%;
+                position: absolute;
+                @include gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.8), rgba(0,0,0,0.0));
+                
+                div {
+                    color: $white;
+                    padding-left: 4%;
+                    padding-right: 4%;
+                    width: 92%;
+                    display: block;
+                    position: absolute;
+                    bottom: 8%;
+                    left: 0px;
+                    
+                    h1 {
+                        font-family: $font-bold;
+                        font-size: 1.4em;
+                    }
+                    
+                    p {
+                        text-align: justify;
+                    }
+                    
+                    p.link {
+                        text-align: center;
+                        margin-top: 20px;
+                        margin-bottom: 20px;
+                        
+                        a {
+                            color: $white;
+                            text-decoration: none;
+                            text-align: center;
+                            @include border-radius (3px);
+                            cursor: pointer;
+                            padding: 6px 25px;
+                            border: 1px solid $white;
+                            
+                            a:active {
+                                background-color: $white;
+                            }
+                        }
+                    }
+                }
+            }
+            
+            
+        }
+        
+        nav#slides {
+            position: absolute;
+            bottom: 0%;
+            width: 100%;
+            z-index: 200;
+            
+            ul {
+                text-align: center;
+                
+                li {
+                    border: 1px solid $white;
+                    margin-left: 5px;
+                    margin-right: 5px;
+                    border-radius: 6px;
+                    display: inline-block;
+                    width: 10px;
+                    height: 10px;
+                    cursor: pointer;
+                    
+                    &.current {
+                        background: $white;
+                    }
+                }
+            }
+        }
+    }
+    
+    
+}
+

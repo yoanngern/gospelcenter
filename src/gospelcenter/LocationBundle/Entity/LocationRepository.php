@@ -24,6 +24,8 @@ class LocationRepository extends EntityRepository
         $qb->leftJoin('l.celebrations', 'cel');
         $qb->leftJoin('cel.center', 'c3');
         
+        $qb->leftJoin('l.centerCreator', 'c4');
+        
         $qb->where('c1.ref = :center')
             ->setParameter('center', $center->getRef());
             
@@ -32,14 +34,25 @@ class LocationRepository extends EntityRepository
             
         $qb->orWhere('c3.ref = :center')
             ->setParameter('center', $center->getRef());
+            
+        $qb->orWhere('c4.ref = :center')
+            ->setParameter('center', $center->getRef());
         
         return $qb->getQuery()->getResult();
     }
     
-    public function getSelectList()
+    public function getSelectList(\gospelcenter\CenterBundle\Entity\Center $center)
     {
         $qb = $this->createQueryBuilder('l');
+        
+        $qb->leftJoin('l.centerCreator', 'c1');
+        $qb->leftJoin('l.centers', 'c2');
     
+        $qb->where('c1.ref = :center')
+            ->setParameter('center', $center->getRef());
+
+        $qb->orWhere('c2.ref = :center')
+            ->setParameter('center', $center->getRef());
         
         return $qb;
     }

@@ -35,6 +35,7 @@ class AppKernel extends Kernel
             new gospelcenter\APIBundle\gospelcenterAPIBundle(),
             new gospelcenter\UserBundle\gospelcenterUserBundle(),
             new gospelcenter\AccessBundle\gospelcenterAccessBundle(),
+            new gospelcenter\DateBundle\gospelcenterDateBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

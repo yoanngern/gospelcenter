@@ -1,0 +1,238 @@
+<?php
+
+namespace gospelcenter\LocationBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
+
+/**
+ * Location
+ *
+ * @ORM\Table(name="location")
+ * @ORM\Entity(repositoryClass="gospelcenter\LocationBundle\Entity\LocationRepository")
+ * @ORM\HasLifecycleCallbacks
+ */
+class Location
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="name", type="string", length=255)
+     * @Assert\NotBlank()
+     */
+    private $name;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="address1", type="string", length=255)
+     * @Assert\NotBlank()
+     */
+    private $address1;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="address2", type="string", length=255, nullable=true)
+     */
+    private $address2;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="postalCode", type="string", length=50)
+     * @Assert\NotBlank()
+     */
+    private $postalCode;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="city", type="string", length=255)
+     * @Assert\NotBlank()
+     */
+    private $city;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="country", type="string", length=255)
+     * @Assert\NotBlank()
+     */
+    private $country;
+    
+    /**
+     * @var float
+     *
+     * @ORM\Column(name="latitude", type="float", nullable=true)
+     */
+    private $latitude;
+    
+    /**
+     * @var float
+     *
+     * @ORM\Column(name="longitude", type="float", nullable=true)
+     */
+    private $longitude;
+    
+    /**
+     * @var float
+     *
+     * @ORM\Column(name="latitudeAprox", type="float", nullable=true)
+     */
+    private $latitudeAprox;
+    
+    /**
+     * @var float
+     *
+     * @ORM\Column(name="longitudeAprox", type="float", nullable=true)
+     */
+    private $longitudeAprox;
+    
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="createdDate", type="datetime")
+     * @Assert\DateTime()
+     */
+    private $createdDate;
+    
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="modifiedDate", type="datetime")
+     * @Assert\DateTime()
+     */
+    private $modifiedDate;
+    
+    /**
+     * gathered
+     * 
+     * @ORM\OneToMany(targetEntity="gospelcenter\CenterBundle\Entity\Base", mappedBy="location")
+     * @Assert\Valid()
+     */
+    private $bases;
+    
+    
+    /**
+     * hosts
+     * 
+     * @ORM\OneToMany(targetEntity="gospelcenter\EventBundle\Entity\Event", mappedBy="location")
+     * @Assert\Valid()
+     */
+    private $events;
+    
+    
+    /**
+     * is added by
+     * 
+     * @ORM\ManyToOne(targetEntity="gospelcenter\CenterBundle\Entity\Center", inversedBy="locationCreated")
+     * @Assert\Valid()
+     */
+     private $centerCreator;
+     
+     
+    /**
+     * locates
+     * 
+     * @ORM\OneToMany(targetEntity="gospelcenter\CenterBundle\Entity\Center", mappedBy="location")
+     * @Assert\Valid()
+     */
+     private $centers;
+     
+     
+    /**
+     * situates
+     * 
+     * @ORM\OneToMany(targetEntity="gospelcenter\CelebrationBundle\Entity\Celebration", mappedBy="location")
+     * @Assert\Valid()
+     */
+    private $celebrations;
+    
+    
+    /**
+     * is lived by
+     * 
+     * @ORM\OneToMany(targetEntity="gospelcenter\PeopleBundle\Entity\Person", mappedBy="location")
+     * @Assert\Valid()
+     */
+    private $persons;
+     
+    
+    /**
+     * Constructor
+     */
+    public function __construct(\gospelcenter\CenterBundle\Entity\Center $center = null)
+    {
+        if($center != null){
+            $this->centerCreator = $center;
+        }
+        
+        $this->createdDate = new \Datetime();
+        $this->modifiedDate = new \Datetime();
+        $this->celebrations = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->events = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->centers = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->bases = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->persons = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+    
+    /**
+     * @ORM\PrePersist()
+     * @ORM\PreUpdate()
+     */
+    public function preSave()
+    {
+        $this->modifiedDate = new \Datetime();
+    }
+    
+    /**
+     * toString
+     */
+    public function __toString()
+    {
+        
+        return $this->name;
+    }
+    
+    /**
+     * Add centers
+     *
+     * @param \gospelcenter\CenterBundle\Entity\Center $centers
+     * @return Location
+     */
+    public function addCenter(\gospelcenter\CenterBundle\Entity\Center $centers)
+    {
+        $this->centers[] = $centers;
+    
+        return $this;
+    }
+    
+    /**
+     * Add events
+     *
+     * @param \gospelcenter\EventBundle\Entity\Event $events
+     * @return Location
+     */
+    public function addEvent(\gospelcenter\EventBundle\Entity\Event $events)
+    {
+        $this->events[] = $events;
+    
+        return $this;
+    }
+
+    
+    /*************************************/
+    /**** Getter setter auto generate ****/
+    /*************************************/
+
+}

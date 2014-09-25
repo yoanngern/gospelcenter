@@ -17,12 +17,56 @@
             
             {% if hasMedia %}
                 <a class="bigList" href="{{ path('gospelcenterMedia_speaker', {'speaker': speaker.person.id}) }}">
+                
+                    {% set hasImage = false %}
+                    {% set nbVideo = 0 %}
+                    {% set nbAudio = 0 %}
                     
-                    <img src="{{ asset(speaker.celebrations[0].image.webPath) }}" alt="{{ speaker.celebrations[0].image.alt }}" />
+                    {% for celebration in speaker.celebrations %}                
+                        {% if not hasImage and celebration.image %}
+                            {% set hasImage = true %}
+                            <img src="{{ asset(celebration.image.webPath) }}" alt="{{ celebration.image.alt }}" />
+                        {% endif %}
+                        
+                        {% if celebration.video %}
+                            {% set nbVideo = nbVideo + 1 %}
+                        {% endif %}
+                        
+                        {% if celebration.audio %}
+                            {% set nbAudio = nbAudio + 1 %}
+                        {% endif %}
+                    {% endfor %}
+                    
+                    
+                    {% set txtQuantity = '' %}
+                    
+                    {% if nbVideo %}
+                        {% set txtQuantity = nbVideo %}
+                        
+                        {% if nbVideo > 1 %}
+                            {% set txtQuantity = txtQuantity ~ ' videos' %}
+                        {% else %}
+                            {% set txtQuantity = txtQuantity ~ ' video' %}
+                        {% endif %}
+                    {% endif %}
+                    
+                    {% if nbAudio %}
+                        {% if nbVideo %}
+                            {% set txtQuantity = txtQuantity ~ ' and ' ~ nbAudio %}
+                        {% else %}
+                            {% set txtQuantity = nbAudio %}
+                        {% endif %}
+                        
+                        {% if nbVideo > 1 %}
+                            {% set txtQuantity = txtQuantity ~ ' audios' %}
+                        {% else %}
+                            {% set txtQuantity = txtQuantity ~ ' audio' %}
+                        {% endif %}
+                    {% endif %}
                     
                     <section class="details">
         	            <h1>{{ speaker.person.firstname }} {{ speaker.person.lastname }}</h1>
-        	            <span>{{ speaker.celebrations|length }} {% if speaker.celebrations|length > 1 %}videos{% else %}video{% endif %}</span>
+        	            <span>{{ txtQuantity }}</span>
                     </section>
                     
                 </a>

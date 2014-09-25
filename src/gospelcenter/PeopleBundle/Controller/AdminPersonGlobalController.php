@@ -43,7 +43,7 @@ class AdminPersonGlobalController extends Controller {
     {
         $em = $this->getDoctrine()->getManager();
         
-        $persons = $em->getRepository('gospelcenterPeopleBundle:Person')->findAll();
+        $persons = $em->getRepository('gospelcenterPeopleBundle:Person')->findAllGlobal();
         
         return $this->render('gospelcenterPeopleBundle:AdminPersonGlobal:list.html.twig', array(
             'persons' => $persons,
@@ -89,6 +89,8 @@ class AdminPersonGlobalController extends Controller {
                 $em->persist($person);
                 $em->flush();
                 
+                $this->get('session')->getFlashBag()->add('info', 'The person has been added.');
+                
                 return $this->redirect($previousUrl);
             }
         }
@@ -133,8 +135,11 @@ class AdminPersonGlobalController extends Controller {
             if($form->isValid())
             {
                 $em = $this->getDoctrine()->getManager();
+                                
                 $em->persist($person);
                 $em->flush();
+                
+                $this->get('session')->getFlashBag()->add('info', 'The person has been edited.');
                 
                 return $this->redirect($previousUrl);
             }

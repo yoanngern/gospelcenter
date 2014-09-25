@@ -1,0 +1,51 @@
+@import 'color';
+@import 'functions';
+@import 'font';
+
+$lineH: 46px;
+
+#page.static {
+    h1 {
+        font-family: $font-bold;
+        text-align: center;
+        font-size: 1.2em;
+        margin-top: 50px;
+        margin-bottom: 10px;
+        padding: 0 3%;
+    }
+    
+    h2 {
+        font-family: $font-bold;
+        padding-left: 2%;
+        margin-top: 0.2 * $lineH;
+        
+        &.slogan {
+            text-align: center;
+            padding: 0 3%;
+            font-family: $font-regular;
+        }
+    }
+    
+    article {
+        padding: (0.1 * $lineH) 3%;
+        
+        h2 {
+            text-align: left;
+            
+        }
+        
+        &.people {
+            img {
+                height: 2 * $lineH;
+                display: inline-block;
+            }
+            
+            span {
+                padding-top: 0.8 * $lineH;
+                padding-left: 2%;
+                display: inline-block;
+                vertical-align: top;
+            }
+        }
+    }
+}

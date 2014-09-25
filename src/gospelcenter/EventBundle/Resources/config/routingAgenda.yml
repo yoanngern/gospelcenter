@@ -1,0 +1,3 @@
+gospelcenterAgenda_list:
+    path:       /
+    defaults:   { _controller: gospelcenterEventBundle:Agenda:list }

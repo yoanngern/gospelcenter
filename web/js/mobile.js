@@ -36,13 +36,13 @@ $(document).ready( function() {
     window.scrollTo(0,1);
 	
 	// Get ruban is clicked
-	$('header').on('click', '#get_ruban', function() {
+	$('header').on('click', '#get_ruban', function(event) {
 		event.preventDefault();
 		toggleRuban();
 	});
 	
 	// Get nav is clicked
-	$('header').on('click', '#get_nav', function() {
+	$('header').on('click', '#get_nav', function(event) {
 		event.preventDefault();
 		toggleNav();
 	});

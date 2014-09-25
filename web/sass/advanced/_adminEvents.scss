@@ -1,0 +1,40 @@
+#page.admin.events {
+
+    div.collection.links {
+        margin-top: 0;
+
+        & > div {
+            display: block;
+            margin-top: 0;
+
+            div {
+                display: inline-block;
+                vertical-align: top;
+            }
+        }
+
+        input.name {
+            display: inline-block;
+            width: 248px;
+            vertical-align: top;
+
+            &:focus {
+                width: 247px;
+            }
+
+            &:first-of-type {
+                margin-right: 10px;
+            }
+
+        }
+
+    }
+
+
+    #video {
+        #videoContainer {
+            margin-top: 30px;
+        }
+    }
+
+}

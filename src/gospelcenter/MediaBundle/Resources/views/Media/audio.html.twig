@@ -1,7 +1,7 @@
 {% extends "gospelcenterMediaBundle::layout.html.twig" %}
 
 {% block stylesheets %}
-	{{ parent() }}
+    {{ parent() }}
 {% endblock %}
 
 {% block javascripts %}
@@ -15,27 +15,29 @@
     <nav class="left">
         {% if previousUrl %}<a id="back" href="{{ previousUrl }}">{{ previousLabel }}</a>{% endif %}
     </nav>
-    
+
     <h1>{% if audio.celebration.title|length %}{{ audio.celebration.title }}{% else %}Celebration{% endif %}</h1>
-    
+
     <nav class="right">
-    
+
     </nav>
-    
+
 {% endblock %}
 
 {% block tv_body %}
     <section class="audio">
-    
-        <iframe width="100%" height="166" scrolling="no" frameborder="no" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/119935095&amp;color=d91a15&amp;auto_play=true&amp;hide_related=false&amp;show_artwork=true"></iframe>
-        <time>{{ audio.celebration.startingDate|date('d F Y') }}</time>
-        
+
+        <iframe width="100%" height="166" scrolling="no" frameborder="no"
+                src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/{{ audio.ownerId }}&amp;color=d91a15&amp;auto_play=true&amp;hide_related=false&amp;show_artwork=true"></iframe>
+        <time>{{ audio.celebration.date.start|date('d F Y') }}</time>
+
         {% for speaker in audio.celebration.speakers %}
             <a href="{{ path('gospelcenterMedia_speaker', {'speaker': speaker.person.id}) }}">
                 <h2>{{ speaker.person.firstname }} {{ speaker.person.lastname }}</h2>
+
                 <p>{{ speaker.person.function }}</p>
             </a>
         {% endfor %}
-        
+
     </section>
 {% endblock %}

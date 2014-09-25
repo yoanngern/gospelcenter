@@ -6,16 +6,12 @@
         <thead>
             <tr>
                 <th data-sort="string">Service</th>
-                <th data-sort="string">Attribute</th>
-                <th data-sort="string">Type</th>
             </tr>
         </thead>
         <tbody>
             {% for access in accesses %}
                 <tr>
                     <td><a href="{{ path('gospelcenterAdminGlobal_options_accesses_edit', {'access': access.id}) }}">{{ access.service }}</a></td>
-                    <td><a href="{{ path('gospelcenterAdminGlobal_options_accesses_edit', {'access': access.id}) }}">{{ access.attribute }}</a></td>
-                    <td><a href="{{ path('gospelcenterAdminGlobal_options_accesses_edit', {'access': access.id}) }}">{{ access.type }}</a></td>
                 </tr>
             {% else %}
                 <tr><td colspan="3">There are no accesses.</td></tr>

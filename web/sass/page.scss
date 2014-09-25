@@ -199,30 +199,35 @@ html.js {
         &.about {
             
             nav.sub_nav {
-                position: absolute;
-                bottom: 75px;
+                position: fixed;
+                left: 0;
+                bottom: 70px;
+                padding-bottom: 5px;
+                background-color: $white;
+                
             }
             
             &.leadership {
-                article {
+                
+                article.people {
                     display: inline-block;
-                    margin: 1% 1% 1% 0;
-                    height: 15%;
-                    min-height: 150px;
-                    width: auto;
+                    margin: 2%;
+                    width: 16%;
+                    
+                    &:last-of-type {
+                        margin-bottom: 120px;
+                    }
                     
                     img {
                         display: block;
                         margin: 0 auto;
-                        height: 100%;
+                        width: 100%;
                     }
                     
                     span {
                         display: block;
-                        font-family: $font-bold;
-                        font-size: 0.9em;
-                        padding-top: 5px;
                         width: 100%;
+                        padding-top: 10px;
                         text-align: center;
                     }
                 }

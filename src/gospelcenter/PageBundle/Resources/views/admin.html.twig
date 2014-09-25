@@ -1,35 +1,7 @@
-{% extends "::admin.html.twig" %}
+{% extends "::adminNew.html.twig" %}
 
-{% block title %}
-    {{ parent() }} - Pages
-{% endblock %}
-
-{% block stylesheets %}
-	{{ parent() }}
-	<link rel="stylesheet" href="{{ asset('css/admin.css') }}" type="text/css" />
-{% endblock %}
-
-{% block adminBody %}
-    <h1>Pages</h1>
-    <section class="tools">
-        {% if tab == 'pages' %}
-            <a href="{{ path('gospelcenterAdmin_pages_add', {'center': center.ref}) }}">Add a page</a>
-        {% endif %}
-        
-        {% if tab == 'slides' %}
-            <a href="{{ path('gospelcenterAdmin_slides_add', {'center': center.ref}) }}">Add a slide</a>
-        {% endif %}
-    </section>
-    
-    <nav class="sub_nav">
-    	<ul>
-    		<li><a href="{{ path('gospelcenterAdmin_pages', {'center': center.ref}) }}" {% if tab == 'pages' %}class="current"{% endif %}>Pages</a></li>
-    		<li><a href="{{ path('gospelcenterAdmin_slides', {'center': center.ref}) }}" {% if tab == 'slides' %}class="current"{% endif %}>Slides</a></li>
-    		<li><a href="{{ path('gospelcenterAdmin_youth', {'center': center.ref}) }}" {% if tab == 'youth' %}class="current"{% endif %}>Youth</a></li>
-    	</ul>
-    </nav>
-    
-    {% block gospelcenterAdminPages_body %}
-    {% endblock %}
-    
+{% block adminSubNav %}
+    <li><a href="{{ path('gospelcenterAdmin_pages', {'center': center.ref}) }}" {% if tab == 'pages' %}class="current focus"{% endif %}>Pages</a></li>
+    <li><a href="{{ path('gospelcenterAdmin_slides', {'center': center.ref}) }}" {% if tab == 'slides' %}class="current focus"{% endif %}>Slides</a></li>
+    <li><a href="{{ path('gospelcenterAdmin_youth', {'center': center.ref}) }}" {% if tab == 'youth' %}class="current focus"{% endif %}>Youth</a></li>
 {% endblock %}

@@ -16,7 +16,7 @@ $(document).ready( function() {
 
 function resizeVideo() {
     var windowH = $(window).height();
-    var sectionH = $(window).height() - $("footer").height() - 100;
+    var sectionH = $(window).height() - $("footer").height() - 170;
     
     var videoH = 540;
     var videoW = 960;

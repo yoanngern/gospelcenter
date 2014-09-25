@@ -77,8 +77,7 @@ class Tag
      */
     public function addCelebration(\gospelcenter\CelebrationBundle\Entity\Celebration $celebrations)
     {
-        $this->celebrations[] = $celebrations;
-    
+        $this->celebrations[] = $celebrations;   
         return $this;
     }
 

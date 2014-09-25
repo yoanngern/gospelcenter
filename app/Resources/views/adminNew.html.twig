@@ -1,0 +1,112 @@
+{% set admin = true %}
+
+{% extends "::layoutNew.html.twig" %}
+
+{% block classPage %}admin headerFixed{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('css/adminNew.css') }}" type="text/css"/>
+{% endblock %}
+
+{% block title %}
+    {{ parent() }} - Admin
+{% endblock %}
+
+{% block body %}
+
+    <header class="followRubanNav">
+        <section class="container">
+
+            {% block adminBack %}{% endblock %}
+
+            {% block adminTitle %}{% endblock %}
+
+            <section class="tools">
+                {% block adminTools %}{% endblock %}
+                {#<div id="search">Search...</div>#}
+            </section>
+        </section>
+    </header>
+
+    <nav class="sub_nav">
+        <ul>
+            {% block adminSubNav %}{% endblock %}
+        </ul>
+    </nav>
+
+    {% block adminBody %}
+
+        <div class="tableHeaderBG followRubanNav">
+            <div class="inner"></div>
+        </div>
+
+        {% block adminListBody %}{% endblock %}
+    {% endblock %}
+
+{% endblock %}
+
+{% block headerTitle %}GC{{ center.name }}{% endblock %}
+
+{% block header_nav %}
+    <li><a href="{{ path('gospelcenterAdmin_celebrations', {'center': center.ref}) }}"
+           {% if page == 'celebrations' %}class="current focus"{% endif %}>Celebrations</a></li>
+    <li><a href="{{ path('gospelcenterAdmin_persons', {'center': center.ref}) }}"
+           {% if page == 'people' %}class="current focus"{% endif %}>Contacts</a></li>
+    <li><a href="{{ path('gospelcenterAdmin_events', {'center': center.ref}) }}"
+           {% if page == 'events' %}class="current focus"{% endif %}>Events</a></li>
+    <li><a href="{{ path('gospelcenterAdmin_pages', {'center': center.ref}) }}"
+           {% if page == 'pages' %}class="current focus"{% endif %}>Pages</a></li>
+
+    <li><a href="{{ path('gospelcenterAdmin_ads', {'center': center.ref}) }}"
+           {% if page == 'ads' %}class="current focus"{% endif %}>Ads</a></li>
+
+    <li><a href="{{ path('gospelcenterAdmin_locations', {'center': center.ref}) }}"
+           {% if page == 'images' or page == 'locations' %}class="current focus"{% endif %}>Other</a></li>
+{% endblock %}
+
+{% block jsTemplating %}
+    {{ parent() }}
+    <script id="selectMultiple" type="text/x-handlebars-template">
+        {% raw %}
+        <ul class="selectMultiple" data-select="{{selectId}}">
+            {{#each options}}
+            <li id="{{id}}" class="{{selected}}">{{text}}</li>
+            {{/each}}
+        </ul>
+        {% endraw %}
+    </script>
+
+    <script id="selectList" type="text/x-handlebars-template">
+        {% raw %}
+
+        <header>
+            <h1>{{ title }}</h1>
+            <input class="search" type="text" placeholder="Rechercher...">
+        </header>
+        <ul class="items">
+            {{#each items }}
+
+            <li class="item" data-id="{{ this.id }}">
+                <div class="image">
+                    {{#if this.isImage }}
+                    <img src="{{ this.image_url }}" alt="{{ this.title }}"/>
+                    {{/if}}
+                    {{#unless this.isImage }}
+                    <div class="empty"></div>
+                    {{/unless}}
+                </div>
+                <div class="title">
+                    <h1>{{ this.title }}</h1>
+                </div>
+                <div class="date">
+                    <time>{{ this.subTitle }}</time>
+                </div>
+            </li>
+
+            {{/each}}
+        </ul>
+
+        {% endraw %}
+    </script>
+{% endblock %}

@@ -36,7 +36,10 @@
                     {% elseif celebration.audio %}
                         <a href="{{ path('gospelcenterMedia_audio', {'audio': celebration.audio.id}) }}">
                     {% endif %}
-                        <img src="{{ asset(celebration.image.webPath) }}" alt="{{ celebration.image.alt }}" />
+                        <div class="video_image">
+                            <span class="picto_play"></span>
+                            <img src="{{ asset(celebration.image.webPath) }}" alt="{{ celebration.image.alt }}" />
+                        </div>
                         <section class="details">
                             <h1>{% if celebration.title|length %}{{ celebration.title }}{% else %}Celebration{% endif %}</h1>
                             <span data-time="{{ celebration.startingDate|date('Y-m-d H:i:s') }}">{{ celebration.startingDate|date('d F') }}</span>

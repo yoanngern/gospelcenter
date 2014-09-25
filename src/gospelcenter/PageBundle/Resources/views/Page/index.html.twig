@@ -1,41 +1,60 @@
-{% extends "gospelcenterPageBundle::layout.html.twig" %}
+{% extends "::localNew.html.twig" %}
 
 {% block title %}
     {{ parent() }} - {{ article.title }}
 {% endblock %}
 
 {% block body %}
-    <section id="page" class="{{ article.template }}">
-        <h1>{{ article.title }}</h1>
-        <h2>{{ article.slogan }}</h2>
-        
-        <section class="slider" id="1">
-        
-            {% if article.slides|length > 1 %}<div id="left" class="arrow"></div>{% endif %}
-            
-            {% for slide in article.slides %}
-                <article id="{{ loop.index }}" class="slide" {% if slide.image %}style="background-image: url('{{ asset(slide.image.webPath) }}')"{% endif %}>
-                    <section class="content">
-                        <h1>{{ slide.title }}</h1>
-                        <p>{{ slide.text }}</p>
-                        {% if slide.link %}<p class="link"><a href="{{ slide.link }}" target="_blank">{% if slide.labelLink %}{{ slide.labelLink }}{% else %}{{ slide.link }}{% endif %}</a></p>{% endif %}
-                    </section>
-                </article>
-            {% endfor %}
-            
-            {% if article.slides|length > 1 %}<div id="right" class="arrow"></div>{% endif %}
-            
-            {% if article.slides|length > 1 %}
-                <nav id="slides">
-                    <ul>
+    <h1 class="titlePage"><span>{{ article.title }}</span></h1>
+    <h2 class="slogan">{{ article.slogan }}</h2>
+
+    <section class="slider" id="1">
+
+        {% if article.slides|length > 1 %}
+            <div id="left" class="arrow"></div>
+        {% endif %}
+
+        <div class="slides">
+            {% spaceless %}
+                {% for slide in article.slides %}
+                    <article id="{{ loop.index }}" class="slide {% if loop.index == 1 %}current{% endif %}"
+                             {% if slide.image %}style="background-image: url('{{ asset(slide.image.webPath) }}')"{% endif %}>
+                        <section class="content">
+                            <h1>{{ slide.title }}</h1>
+
+                            <p>{{ slide.text|nl2br }}</p>
+                        </section>
+
+                        {% if slide.link %}
+                            <div class="link">
+                                <a href="{{ slide.link }}"
+                                   target="_blank">{% if slide.labelLink %}{{ slide.labelLink }}{% else %}{{ slide.link }}{% endif %}</a>
+                            </div>
+                        {% endif %}
+                    </article>
+                {% endfor %}
+            {% endspaceless %}
+        </div>
+
+        {% if article.slides|length > 1 %}
+            <div id="right" class="arrow"></div>{% endif %}
+
+        {% if article.slides|length > 1 %}
+            <nav id="slides">
+                <ul>
+                    {% spaceless %}
                         {% for slide in article.slides %}
                             <li class="{% if loop.index == 1 %}current{% endif %}" data-slide="{{ loop.index }}"></li>
                         {% endfor %}
-                    </ul>
-                </nav>
-            {% endif %}
-        
-        </section>
-        
+                    {% endspaceless %}
+                </ul>
+            </nav>
+        {% endif %}
+
     </section>
+
+    {% if article.ref == "bases" %}
+        {% include "@gospelcenterPage/StaticPage/"~ center.ref ~"/"~ language ~"/bases.html.twig" %}
+    {% endif %}
+
 {% endblock %}

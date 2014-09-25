@@ -3,6 +3,7 @@
 namespace gospelcenter\AccessBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Access
@@ -27,20 +28,26 @@ class Access
      * @ORM\Column(name="service", type="string", length=255)
      */
     private $service;
-
+    
     /**
-     * @var string
-     *
-     * @ORM\Column(name="attribute", type="string", length=255, nullable=true)
+     * is granted to
+     * 
+     * @ORM\OneToMany(targetEntity="gospelcenter\AccessBundle\Entity\AccessLevel", mappedBy="access")
+     * @Assert\Valid()
      */
-    private $attribute;
-
+    private $accessLevels;
+    
     /**
-     * @var string
-     *
-     * @ORM\Column(name="type", type="string", length=255)
+     * Constructor
      */
-    private $type;
+    public function __construct()
+    {
+        $this->accessLevels = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+    
+    /*************************************/
+    /**** Getter setter auto generate ****/
+    /*************************************/
 
 
     /**
@@ -77,48 +84,35 @@ class Access
     }
 
     /**
-     * Set attribute
+     * Add accessLevels
      *
-     * @param string $attribute
+     * @param \gospelcenter\AccessBundle\Entity\AccessLevel $accessLevels
      * @return Access
      */
-    public function setAttribute($attribute)
+    public function addAccessLevel(\gospelcenter\AccessBundle\Entity\AccessLevel $accessLevels)
     {
-        $this->attribute = $attribute;
+        $this->accessLevels[] = $accessLevels;
     
         return $this;
     }
 
     /**
-     * Get attribute
+     * Remove accessLevels
      *
-     * @return string 
+     * @param \gospelcenter\AccessBundle\Entity\AccessLevel $accessLevels
      */
-    public function getAttribute()
+    public function removeAccessLevel(\gospelcenter\AccessBundle\Entity\AccessLevel $accessLevels)
     {
-        return $this->attribute;
+        $this->accessLevels->removeElement($accessLevels);
     }
 
     /**
-     * Set type
+     * Get accessLevels
      *
-     * @param string $type
-     * @return Access
+     * @return \Doctrine\Common\Collections\Collection 
      */
-    public function setType($type)
+    public function getAccessLevels()
     {
-        $this->type = $type;
-    
-        return $this;
-    }
-
-    /**
-     * Get type
-     *
-     * @return string 
-     */
-    public function getType()
-    {
-        return $this->type;
+        return $this->accessLevels;
     }
 }

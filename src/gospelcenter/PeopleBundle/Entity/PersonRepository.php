@@ -62,6 +62,62 @@ class PersonRepository extends EntityRepository
         
         return $qb->getQuery()->getResult();
     }
+
+    public function findForEdit(Person $person)
+    {
+        $qb = $this->createQueryBuilder('p');
+
+        $qb->addSelect('m');
+        $qb->addSelect('s2');
+        $qb->addSelect('s1');
+
+        // Person -> Speaker
+        $qb->leftJoin('p.speaker', 's1');
+
+        // Person -> Role -> Celebration -> Center
+        $qb->leftJoin('p.roles', 'r');
+        $qb->leftJoin('r.celebrations', 'cel2');
+        $qb->leftJoin('cel2.center', 'c2');
+
+        // Person -> Member -> Center
+        $qb->leftJoin('p.member', 'm');
+        $qb->leftJoin('m.centers', 'c3');
+
+        // Person -> Visitor -> Center
+        $qb->leftJoin('p.visitor', 's2');
+        $qb->leftJoin('s2.centers', 'c4');
+
+        // Person -> Center
+        $qb->leftJoin('p.center', 'c5');
+
+        $qb->where('p.id = :person_id')
+            ->setParameter('person_id', $person->getId());
+
+        return $qb->getQuery()->getResult();
+    }
+    
+    public function findAllGlobal()
+    {
+        
+        $query = $this->getEntityManager()
+            ->createQuery('
+                SELECT p
+                FROM gospelcenterPeopleBundle:Person p
+                WHERE p.center IS NULL
+                OR p IN (
+                    SELECT p2
+                    FROM gospelcenterPeopleBundle:Person p2
+                    INNER JOIN p2.speaker s
+                ) 
+                ORDER BY p.lastname ASC, p.firstname ASC'
+             );
+         
+        try {
+            return $query->getResult();
+        } catch (\Doctrine\ORM\NoResultException $e) {
+            return null;
+        }
+    }
     
     public function findAllOrder()
     {

@@ -1,0 +1,70 @@
+<?php
+
+namespace gospelcenter\ArticleBundle\Entity;
+use Symfony\Component\Validator\Constraints as Assert;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Link
+ *
+ * @ORM\Table(name="link")
+ * @ORM\Entity(repositoryClass="gospelcenter\ArticleBundle\Entity\LinkRepository")
+ * @ORM\HasLifecycleCallbacks()
+ */
+class Link
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="name", type="string", length=255, nullable=true)
+     */
+    private $name;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="url", type="string", length=255)
+     */
+    private $url;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="type", type="string", length=255)
+     */
+    private $type;
+
+    /**
+     * supplemented
+     *
+     * @ORM\ManyToOne(targetEntity="gospelcenter\EventBundle\Entity\Event", inversedBy="links")
+     * @Assert\Valid()
+     */
+    private $event;
+
+
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+
+    }
+
+
+    /*************************************/
+    /**** Getter setter auto generate ****/
+    /*************************************/
+
+
+}

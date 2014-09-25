@@ -1,30 +1,16 @@
-{% extends "::admin.html.twig" %}
+{% extends "::adminNew.html.twig" %}
 
 {% block title %}
     {{ parent() }} - People
 {% endblock %}
 
-{% block stylesheets %}
-	{{ parent() }}
-	<link rel="stylesheet" href="{{ asset('css/admin.css') }}" type="text/css" />
+{% block adminTools %}
+    <a href="{{ path('gospelcenterAdmin_persons_add', {'center': center.ref}) }}" class="add">Add a contact</a>
 {% endblock %}
 
-{% block adminBody %}
-    <h1>Contacts</h1>
-    <section class="tools">
-        <a href="{{ path('gospelcenterAdmin_persons_add', {'center': center.ref}) }}">Add a contact</a>
-    </section>
-    
-    <nav class="sub_nav">
-    	<ul>
-    		<li><a href="{{ path('gospelcenterAdmin_persons', {'center': center.ref}) }}" {% if (tab == 'contacts') or (tab == 'contactsAll') %}class="current"{% endif %}>Contacts</a></li>
-    		<li><a href="{{ path('gospelcenterAdmin_speakers', {'center': center.ref}) }}" {% if (tab == 'speakers') or (tab == 'speakersAll') %}class="current"{% endif %}>Speakers</a></li>
-    		<li><a href="{{ path('gospelcenterAdmin_members', {'center': center.ref}) }}" {% if tab == 'members' %}class="current"{% endif %}>Members</a></li>
-    		<li><a href="{{ path('gospelcenterAdmin_visitors', {'center': center.ref}) }}" {% if tab == 'visitors' %}class="current"{% endif %}>Visitors</a></li>
-    	</ul>
-    </nav>
-    
-    {% block gospelcenterAdminPeople_body %}
-    {% endblock %}
-    
+{% block adminSubNav %}
+    <li><a href="{{ path('gospelcenterAdmin_persons', {'center': center.ref}) }}" {% if (tab == 'contacts') or (tab == 'contactsAll') %}class="current focus"{% endif %}>Contacts</a></li>
+    <li><a href="{{ path('gospelcenterAdmin_speakers', {'center': center.ref}) }}" {% if (tab == 'speakers') or (tab == 'speakersAll') %}class="current focus"{% endif %}>Speakers</a></li>
+    <li><a href="{{ path('gospelcenterAdmin_members', {'center': center.ref}) }}" {% if tab == 'members' %}class="current focus"{% endif %}>Members</a></li>
+    <li><a href="{{ path('gospelcenterAdmin_visitors', {'center': center.ref}) }}" {% if tab == 'visitors' %}class="current focus"{% endif %}>Visitors</a></li>
 {% endblock %}

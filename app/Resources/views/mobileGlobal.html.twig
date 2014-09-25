@@ -1,0 +1,24 @@
+{% extends "::mobile.html.twig" %}
+
+{% block pageClass %}global{% endblock %}
+
+{% block mobileAdminNav %}
+    <nav class="social">
+        <h1>Admin</h1>
+    	<ul>
+    		<li><a href="{{ path('gospelcenterAdminGlobal_persons_add') }}">Add a Contact</a></li>
+            <li><a href="{{ path('gospelcenterAdminGlobal_persons') }}">Manage Contacts</a></li>
+            <li><a href="{{ path('gospelcenterAdminGlobal_pages') }}">Dashboard</a></li>
+    	</ul>
+    </nav>
+{% endblock %}
+
+{% block nav %}
+    <li><a href="{{ path('gospelcenterPageGlobal_default', {'page': 'home'}) }}" class="{% if page == 'home' %}current{% endif %}">Home</a></li>
+    <li><a href="{{ path('gospelcenterPageGlobal_default', {'page': 'celebrations'}) }}" class="{% if page == 'celebrations' %}current{% endif %}">Celebrations</a></li>
+    <li><a href="{{ path('gospelcenterPageGlobal_default', {'page': 'vision'}) }}" class="{% if page == 'vision' %}current{% endif %}">Our vision</a></li>
+    <li><a href="{{ path('gospelcenterPageGlobal_default', {'page': 'god'}) }}" class="{% if page == 'god' %}current{% endif %}">God?</a></li>
+    <li><a href="{{ path('gospelcenterPageGlobal_default', {'page': 'television'}) }}" class="{% if page == 'television' %}current{% endif %}">Television</a></li>
+    <li><a href="{{ path('gospelcenterPageGlobal_default', {'page': 'training'}) }}" class="{% if page == 'training' %}current{% endif %}">Training</a></li>
+    <li><a href="{{ path('gospelcenterPageGlobal_default', {'page': 'contact'}) }}" class="{% if page == 'contact' %}current{% endif %}">Contact</a></li>
+{% endblock %}

@@ -1,28 +1,25 @@
-{% extends "::admin.html.twig" %}
+{% extends "::adminNew.html.twig" %}
 
 {% block javascripts %}
     {{ parent() }}
-    <script type="text/javascript" src="{{ asset('js/form.min.js') }}"></script>
     <script type="text/javascript" src="{{ asset('js/addImage.min.js') }}"></script>
 {% endblock %}
 
-{% block stylesheets %}
-	{{ parent() }}
-	<link rel="stylesheet" href="{{ asset('css/admin.css') }}" type="text/css" />
-	<link rel="stylesheet" href="{{ asset('css/form.css') }}" type="text/css" />
-{% endblock %}
+{% block classPage %}{{ parent() }} single{% endblock %}
 
 {% block title %}
     {{ parent() }} - Add a slide
 {% endblock %}
 
+{% block adminTitle %}<h1>Add a slide</h1>{% endblock %}
+
+{% block adminBack %}
+    <a class="back" href="{{ path('gospelcenterAdmin_slides', {'center': center.ref}) }}">Slides</a>
+{% endblock %}
+
 {% block adminBody %}
-    <h1>Add a slide</h1>
     
     <form class="slide" action="{{ path('gospelcenterAdmin_slides_add', {'center': center.ref}) }}" method="post" {{ form_enctype(form) }}>
-        <nav class="tools">
-    		<input type="submit" class="buttonRounded" />
-    	</nav>
     	
     	{{ form_widget(form.image.file) }}
     	{{ form_errors(form.image.file) }}
@@ -43,6 +40,8 @@
         {{ form_errors(form.page) }}
         
         {{ form_rest(form) }}
+
+        <input type="submit" class="buttonLink" value="Add a slide"/>
     </form>
     
     

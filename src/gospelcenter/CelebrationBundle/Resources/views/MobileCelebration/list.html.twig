@@ -23,7 +23,7 @@
             
             <article class="celebration slide" id="{{ loop.index }}">
                 
-                <section class="img" style="background-image: url({{ asset(celebration.image.webPath) }})"></section>
+                <section class="img" {% if celebration.image %}style="background-image: url({{ asset(celebration.image.webPath) }})"{% endif %}></section>
                 
                 <section class="details">
                     <div>
@@ -31,7 +31,7 @@
                         <h2>{{ speakers }}</h2>
                         
                         {% if celebration.description %}<p>{{ celebration.description }}</p>{% endif %}
-                        {% if celebration.kidsProgram %}<a href="#">Program for kids</a>{% endif %}
+                        {% if celebration.kidsProgram %}<a href="{{ path('gospelcenterPage_default', {'center': center.ref, 'page': 'youth'}) }}">Program for kids</a>{% endif %}
                     </div>
                 </section>
                 

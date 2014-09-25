@@ -1,0 +1,142 @@
+@mixin gradient($color: #F5F5F5, $start: #EEE, $stop: #FFF) {
+	background: $color;
+	background: -webkit-gradient(linear, left bottom, left top, color-stop(0, $start), color-stop(1, $stop));
+	background: -ms-linear-gradient(bottom, $start, $stop);
+	background: -moz-linear-gradient(center bottom, $start 0%, $stop 100%);
+	background: -o-linear-gradient($stop, $start);
+	//filter: e(%("progid:DXImageTransform.Microsoft.gradient(startColorstr='%d', endColorstr='%d', GradientType=0)",$stop,$start));
+	filter: progid:DXImageTransform.Microsoft.gradient(enabled='false', startColorstr=$start, endColorstr=$stop);
+
+}
+
+@mixin border-radius($radius) {
+  -webkit-border-radius: $radius;
+     -moz-border-radius: $radius;
+      -ms-border-radius: $radius;
+       -o-border-radius: $radius;
+          border-radius: $radius;
+}
+
+@mixin maintain-ratio($ratio: 1 1) {
+  @if length($ratio) < 2 or length($ratio) > 2 {
+    @warn "$ratio must be a list with two values.";
+  }
+ 
+  $width: 100%;
+  $height: percentage(nth($ratio, 2) / nth($ratio, 1));
+  
+  width: $width;
+  height: 0;
+  padding-bottom: $height;
+}
+
+@mixin vertical-align {
+    position: relative;
+    z-index: 0;
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+}
+
+
+@mixin preserve-3d {
+    -webkit-transform-style: preserve-3d;
+    -moz-transform-style: preserve-3d;
+    transform-style: preserve-3d;
+}
+
+@mixin bannerResp_style($resp) {
+    height: $resp;
+
+    h2 {
+        line-height: $resp;
+    }
+}
+
+@mixin bannerResp($base) {
+
+    @include bannerResp_style($base);
+
+    @media only screen and (min-width: 1000px) {
+
+        @include bannerResp_style($base * 0.95);
+    }
+
+    @media only screen and (min-width: 1100px) {
+
+        @include bannerResp_style($base * 1.00);
+    }
+
+    @media only screen and (min-width: 1200px) {
+
+        @include bannerResp_style($base * 1.05);
+    }
+
+    @media only screen and (min-width: 1300px) {
+
+        @include bannerResp_style($base * 1.1);
+    }
+
+    @media only screen and (min-width: 1400px) {
+
+        @include bannerResp_style($base * 1.15);
+    }
+
+    @media only screen and (min-width: 1500px) {
+
+        @include bannerResp_style($base * 1.2);
+    }
+
+    @media only screen and (min-width: 1600px) {
+
+        @include bannerResp_style($base * 1.25);
+    }
+
+    @media only screen and (min-width: 1700px) {
+
+        @include bannerResp_style($base * 1.3);
+    }
+
+    @media only screen and (min-width: 1800px) {
+
+        @include bannerResp_style($base * 1.35);
+    }
+
+    @media only screen and (min-width: 1900px) {
+
+        @include bannerResp_style($base * 1.4);
+    }
+
+    @media only screen and (min-width: 2000px) {
+
+        @include bannerResp_style($base * 1.45);
+    }
+
+    @media only screen and (min-width: 2100px) {
+
+        @include bannerResp_style($base * 1.5);
+    }
+
+    @media only screen and (min-width: 2200px) {
+
+        @include bannerResp_style($base * 1.6);
+    }
+
+    @media only screen and (min-width: 2300px) {
+
+        @include bannerResp_style($base * 1.65);
+    }
+
+    @media only screen and (min-width: 2400px) {
+
+        @include bannerResp_style($base * 1.7);
+    }
+
+    @media only screen and (min-width: 2500px) {
+
+        @include bannerResp_style($base * 1.75);
+    }
+
+
+}

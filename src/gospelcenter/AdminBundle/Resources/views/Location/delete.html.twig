@@ -1,0 +1,52 @@
+{% extends "::admin.html.twig" %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script type="text/javascript" src="{{ asset('js/form.min.js') }}"></script>
+{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('css/admin.css') }}" type="text/css"/>
+    <link rel="stylesheet" href="{{ asset('css/form.css') }}" type="text/css"/>
+{% endblock %}
+
+{% block title %}
+    {{ parent() }} - Delete a location
+{% endblock %}
+
+{% block adminBody %}
+    <h1>Delete a location</h1>
+
+    <form class="location delete"
+          action="{{ path('gospelcenterAdmin_locations_delete', {'center': center.ref, 'location': location.id}) }}"
+          method="post" {{ form_enctype(form) }}>
+
+        <nav class="tools">
+
+        </nav>
+
+        <p>Are you sure you want to delete the location:</p>
+        <section class="details">
+            <h1>{{ location.name }}</h1>
+
+            <p>{{ location.address1 }}</p>
+
+            <p>{{ location.address2 }}</p>
+
+            <p>{{ location.postalCode }} {{ location.city }}</p>
+
+            <p>{{ location.country }}</p>
+        </section>
+
+        <input type="submit" class="buttonLink" value="Yes"/>
+
+        <a class="buttonLink"
+           href="{{ path('gospelcenterAdmin_locations_edit', {'center': center.ref, 'location': location.id}) }}">No</a>
+
+        {{ form_rest(form) }}
+
+    </form>
+
+
+{% endblock %}

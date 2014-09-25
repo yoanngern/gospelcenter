@@ -3,6 +3,7 @@
 namespace gospelcenter\CelebrationBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use gospelcenter\DateBundle\Entity\Date;
 use Symfony\Component\Validator\Constraints as Assert;
 
 use Doctrine\Common\Collections\ArrayCollection;
@@ -31,22 +32,6 @@ class Celebration
      * @ORM\Column(name="title", type="string", length=255, nullable=true)
      */
     private $title;
-
-    /**
-     * @var \DateTime
-     *
-     * @ORM\Column(name="startingDate", type="datetime")
-     * @Assert\DateTime()
-     */
-    private $startingDate;
-
-    /**
-     * @var \DateTime
-     *
-     * @ORM\Column(name="endingDate", type="datetime")
-     * @Assert\DateTime()
-     */
-    private $endingDate;
 
     /**
      * @var string
@@ -83,7 +68,7 @@ class Celebration
      * @Assert\DateTime()
      */
     private $createdDate;
-    
+
     /**
      * @var \DateTime
      *
@@ -91,15 +76,15 @@ class Celebration
      * @Assert\DateTime()
      */
     private $modifiedDate;
-    
-    
+
+
     private $existingSpeakers;
     private $newSpeakers;
-    private $date;
     private $startingTime;
     private $endingTime;
-    
-    
+    private $dateLocal;
+
+
     /**
      * is composed by
      *
@@ -107,64 +92,71 @@ class Celebration
      * @Assert\Valid()
      */
     private $roles;
-    
-    
+
+
     /**
      * is spreader by
-     * 
+     *
      * @ORM\OneToOne(targetEntity="gospelcenter\MediaBundle\Entity\Audio", mappedBy="celebration", cascade={"persist", "remove"})
-     * @Assert\Valid()
      */
     private $audio;
-    
-    
+
+
     /**
      * is tagged by
-     * 
+     *
      * @ORM\ManyToMany(targetEntity="gospelcenter\CelebrationBundle\Entity\Tag", inversedBy="celebrations")
      * @Assert\Valid()
      */
     private $tags;
-    
-    
+
+
     /**
      * is situated by
-     * 
-     * @ORM\ManyToOne(targetEntity="gospelcenter\LocationBundle\Entity\Location", inversedBy="celebrations", cascade={"persist"})
+     *
+     * @ORM\ManyToOne(targetEntity="gospelcenter\LocationBundle\Entity\Location", inversedBy="celebrations", cascade={"persist", "remove"})
      * @ORM\JoinColumn(nullable=false)
      * @Assert\Valid()
      */
     private $location;
-    
-    
+
+
     /**
      * diffuses
-     * 
-     * @ORM\OneToOne(targetEntity="gospelcenter\MediaBundle\Entity\Video", mappedBy="celebration", cascade={"persist", "remove"})
-     * @Assert\Valid()
+     *
+     * @ORM\OneToOne(targetEntity="gospelcenter\MediaBundle\Entity\Video", inversedBy="celebration", cascade={"persist", "remove"})
      */
     private $video;
-    
-    
+
+
+    /**
+     * is at
+     *
+     * @ORM\OneToOne(targetEntity="gospelcenter\DateBundle\Entity\Date", mappedBy="celebration", cascade={"persist", "remove"})
+     * @Assert\Valid()
+     */
+    private $date;
+
+
     /**
      * is organized by
-     * 
+     *
      * @ORM\ManyToOne(targetEntity="gospelcenter\CenterBundle\Entity\Center", inversedBy="celebrations")
      * @ORM\JoinColumn(nullable=false)
      * @Assert\Valid()
      */
     private $center;
-    
-    
+
+
     /**
      * is imaged by
-     * 
+     *
      * @ORM\ManyToOne(targetEntity="gospelcenter\ImageBundle\Entity\Image", inversedBy="celebrations", cascade={"persist", "detach"})
      * @Assert\Valid()
      */
     private $image;
-    
-    
+
+
     /**
      * is preached by
      *
@@ -172,9 +164,9 @@ class Celebration
      * @Assert\Valid()
      */
     private $speakers;
-    
-    
-    /*
+
+
+    /**
      * Constructor
      */
     public function __construct(\gospelcenter\CenterBundle\Entity\Center $center)
@@ -182,7 +174,7 @@ class Celebration
         $this->status = true;
         $this->createdDate = new \Datetime();
         $this->modifiedDate = new \Datetime();
-        
+
         $this->tags = new \Doctrine\Common\Collections\ArrayCollection();
         $this->speakers = new \Doctrine\Common\Collections\ArrayCollection();
         $this->existingSpeakers = new \Doctrine\Common\Collections\ArrayCollection();
@@ -190,74 +182,77 @@ class Celebration
         $this->roles = new \Doctrine\Common\Collections\ArrayCollection();
         $this->center = $center;
     }
-    
-    
-    
+
+
     public function setExistingSpeakers($existingSpeakers)
     {
         $this->existingSpeakers = $existingSpeakers;
-        
+
         return $this;
     }
-    
-    
+
+
     public function getExistingSpeakers()
     {
         return $this->existingSpeakers;
     }
-    
+
     public function setNewSpeakers($newSpeakers)
     {
         $this->newSpeakers = $newSpeakers;
-        
+
         return $this;
     }
-    
-    
+
+
     public function getNewSpeakers()
     {
         return $this->newSpeakers;
     }
-    
-    public function setDate($date)
-    {
-        $this->date = $date;
-        
-        return $this;
-    }
-    
-    
-    public function getDate()
-    {
-        return $this->date;
-    }
-    
+
+
     public function setStartingTime($startingTime)
     {
         $this->startingTime = $startingTime;
-        
+
         return $this;
     }
-    
-    
+
+
     public function getStartingTime()
     {
         return $this->startingTime;
     }
-    
+
+
     public function setEndingTime($endingTime)
     {
         $this->endingTime = $endingTime;
-        
+
         return $this;
     }
-    
-    
+
+
     public function getEndingTime()
     {
         return $this->endingTime;
     }
-    
+
+
+    public function setDateLocal($dateLocal)
+    {
+        $this->dateLocal = $dateLocal;
+
+        return $this;
+    }
+
+
+    public function getDateLocal()
+    {
+        return $this->dateLocal;
+    }
+
+
     /**
      * Set image
      *
@@ -267,30 +262,30 @@ class Celebration
     public function setImage(\gospelcenter\ImageBundle\Entity\Image $image)
     {
         $this->image = $image;
-        
-        if($image != null) {
+
+        if ($image != null) {
             $title = "Celebration of ";
-            $title .= date_format($this->date, 'j F Y');
-            
+            $title .= date_format($this->dateLocal, 'j F Y');
+
             $speakers = $this->getSpeakers();
-            
-            if($speakers != null) {
+
+            if ($speakers != null) {
                 $title .= " with ";
 
-                foreach($speakers as $speaker) {
+                foreach ($speakers as $speaker) {
                     $title .= $speaker->getPerson()->getFirstname();
                     $title .= " ";
                     $title .= $speaker->getPerson()->getLastname();
                 }
             }
-            
+
             $this->image->setTitle($title);
             $this->image->setType('Celebration');
         }
-    
+
         return $this;
     }
-    
+
     /**
      * Set video
      *
@@ -301,45 +296,31 @@ class Celebration
     {
         $this->video = $video;
         $video->setCelebration($this);
-        
-        if($video != null) {
-            $title = "Celebration of ";
-            $title .= date_format($this->date, 'd m Y');
-            $title .= " with ";
-            
-            $speakers = $this->getSpeakers();
-            
-            foreach($speakers as $speaker) {
-                $title .= $speaker->getPerson()->getFirstname();
-                $title .= " ";
-                $title .= $speaker->getPerson()->getLastname();
-            }
-            
-            $this->video->setOwner('vimeo');
-        }
-    
+
         return $this;
     }
-    
+
     /**
-     * @ORM\PrePersist()
-     * @ORM\PreUpdate()
+     *
      */
-    public function preSave()
+    public function updateDate()
     {
-        
-        $this->modifiedDate = new \Datetime();
-        
-        $startingDate = date_create($this->date->format('Y-m-d'));
+
+        $date = $this->date;;
+
+        $startingDate = date_create($this->dateLocal->format('Y-m-d'));
         $startingDate->setTime($this->startingTime->format('H'), $this->startingTime->format('i'));
-        $this->startingDate = $startingDate;
-        
-        $endingDate = date_create($this->date->format('Y-m-d'));
+
+        $endingDate = date_create($this->dateLocal->format('Y-m-d'));
         $endingDate->setTime($this->endingTime->format('H'), $this->endingTime->format('i'));
-        $this->endingDate = $endingDate;
-        
+
+        $date->setStart($startingDate);
+        $date->setEnd($endingDate);
+
+        //$this->setDate($date);
+
     }
-    
+
     /**
      * Set audio
      *
@@ -350,20 +331,35 @@ class Celebration
     {
         $this->audio = $audio;
         $audio->setCelebration($this);
-    
+
         return $this;
     }
-    
+
+
+    /**
+     * Set date
+     *
+     * @param \gospelcenter\DateBundle\Entity\Date $date
+     * @return Celebration
+     */
+    public function setDate(\gospelcenter\DateBundle\Entity\Date $date = null)
+    {
+        $this->date = $date;
+
+        $date->setCelebration($this);
+
+        return $this;
+    }
+
     /*************************************/
     /**** Getter setter auto generate ****/
     /*************************************/
-    
-    
+
 
     /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId()
     {
@@ -379,64 +375,18 @@ class Celebration
     public function setTitle($title)
     {
         $this->title = $title;
-    
+
         return $this;
     }
 
     /**
      * Get title
      *
-     * @return string 
+     * @return string
      */
     public function getTitle()
     {
         return $this->title;
-    }
-
-    /**
-     * Set startingDate
-     *
-     * @param \DateTime $startingDate
-     * @return Celebration
-     */
-    public function setStartingDate($startingDate)
-    {
-        $this->startingDate = $startingDate;
-    
-        return $this;
-    }
-
-    /**
-     * Get startingDate
-     *
-     * @return \DateTime 
-     */
-    public function getStartingDate()
-    {
-        return $this->startingDate;
-    }
-
-    /**
-     * Set endingDate
-     *
-     * @param \DateTime $endingDate
-     * @return Celebration
-     */
-    public function setEndingDate($endingDate)
-    {
-        $this->endingDate = $endingDate;
-    
-        return $this;
-    }
-
-    /**
-     * Get endingDate
-     *
-     * @return \DateTime 
-     */
-    public function getEndingDate()
-    {
-        return $this->endingDate;
     }
 
     /**
@@ -448,14 +398,14 @@ class Celebration
     public function setDescription($description)
     {
         $this->description = $description;
-    
+
         return $this;
     }
 
     /**
      * Get description
      *
-     * @return string 
+     * @return string
      */
     public function getDescription()
     {
@@ -471,14 +421,14 @@ class Celebration
     public function setStatus($status)
     {
         $this->status = $status;
-    
+
         return $this;
     }
 
     /**
      * Get status
      *
-     * @return boolean 
+     * @return boolean
      */
     public function getStatus()
     {
@@ -494,14 +444,14 @@ class Celebration
     public function setBestOf($bestOf)
     {
         $this->bestOf = $bestOf;
-    
+
         return $this;
     }
 
     /**
      * Get bestOf
      *
-     * @return boolean 
+     * @return boolean
      */
     public function getBestOf()
     {
@@ -517,14 +467,14 @@ class Celebration
     public function setKidsProgram($kidsProgram)
     {
         $this->kidsProgram = $kidsProgram;
-    
+
         return $this;
     }
 
     /**
      * Get kidsProgram
      *
-     * @return boolean 
+     * @return boolean
      */
     public function getKidsProgram()
     {
@@ -540,14 +490,14 @@ class Celebration
     public function setCreatedDate($createdDate)
     {
         $this->createdDate = $createdDate;
-    
+
         return $this;
     }
 
     /**
      * Get createdDate
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getCreatedDate()
     {
@@ -563,14 +513,14 @@ class Celebration
     public function setModifiedDate($modifiedDate)
     {
         $this->modifiedDate = $modifiedDate;
-    
+
         return $this;
     }
 
     /**
      * Get modifiedDate
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getModifiedDate()
     {
@@ -586,7 +536,7 @@ class Celebration
     public function addRole(\gospelcenter\PeopleBundle\Entity\Role $roles)
     {
         $this->roles[] = $roles;
-    
+
         return $this;
     }
 
@@ -603,7 +553,7 @@ class Celebration
     /**
      * Get roles
      *
-     * @return \Doctrine\Common\Collections\Collection 
+     * @return \Doctrine\Common\Collections\Collection
      */
     public function getRoles()
     {
@@ -613,7 +563,7 @@ class Celebration
     /**
      * Get audio
      *
-     * @return \gospelcenter\MediaBundle\Entity\Audio 
+     * @return \gospelcenter\MediaBundle\Entity\Audio
      */
     public function getAudio()
     {
@@ -629,7 +579,7 @@ class Celebration
     public function addTag(\gospelcenter\CelebrationBundle\Entity\Tag $tags)
     {
         $this->tags[] = $tags;
-    
+
         return $this;
     }
 
@@ -646,7 +596,7 @@ class Celebration
     /**
      * Get tags
      *
-     * @return \Doctrine\Common\Collections\Collection 
+     * @return \Doctrine\Common\Collections\Collection
      */
     public function getTags()
     {
@@ -662,14 +612,14 @@ class Celebration
     public function setLocation(\gospelcenter\LocationBundle\Entity\Location $location)
     {
         $this->location = $location;
-    
+
         return $this;
     }
 
     /**
      * Get location
      *
-     * @return \gospelcenter\LocationBundle\Entity\Location 
+     * @return \gospelcenter\LocationBundle\Entity\Location
      */
     public function getLocation()
     {
@@ -679,11 +629,22 @@ class Celebration
     /**
      * Get video
      *
-     * @return \gospelcenter\MediaBundle\Entity\Video 
+     * @return \gospelcenter\MediaBundle\Entity\Video
      */
     public function getVideo()
     {
         return $this->video;
+    }
+
+
+    /**
+     * Get date
+     *
+     * @return \gospelcenter\DateBundle\Entity\Date
+     */
+    public function getDate()
+    {
+        return $this->date;
     }
 
     /**
@@ -695,14 +656,14 @@ class Celebration
     public function setCenter(\gospelcenter\CenterBundle\Entity\Center $center)
     {
         $this->center = $center;
-    
+
         return $this;
     }
 
     /**
      * Get center
      *
-     * @return \gospelcenter\CenterBundle\Entity\Center 
+     * @return \gospelcenter\CenterBundle\Entity\Center
      */
     public function getCenter()
     {
@@ -712,7 +673,7 @@ class Celebration
     /**
      * Get image
      *
-     * @return \gospelcenter\ImageBundle\Entity\Image 
+     * @return \gospelcenter\ImageBundle\Entity\Image
      */
     public function getImage()
     {
@@ -728,7 +689,7 @@ class Celebration
     public function addSpeaker(\gospelcenter\CelebrationBundle\Entity\Speaker $speakers)
     {
         $this->speakers[] = $speakers;
-    
+
         return $this;
     }
 
@@ -745,7 +706,7 @@ class Celebration
     /**
      * Get speakers
      *
-     * @return \Doctrine\Common\Collections\Collection 
+     * @return \Doctrine\Common\Collections\Collection
      */
     public function getSpeakers()
     {

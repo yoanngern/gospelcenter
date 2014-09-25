@@ -1,3 +1,8 @@
-gospelcenter_image_homepage:
-    pattern:  /hello/{name}
-    defaults: { _controller: gospelcenterImageBundle:Default:index }
+gospelcenter_image:
+    pattern:  /{image}
+    defaults: { _controller: gospelcenterImageBundle:Image:image }
+
+
+gospelcenter_image_url:
+    pattern:  /url/{image}
+    defaults: { _controller: gospelcenterImageBundle:Image:imageUrl }

@@ -22,6 +22,10 @@ gospelcenterContact:
     path: /contact
     defaults: { _controller: gospelcenterPageBundle:Page:contact }
 
+gospelcenterGive:
+    path: /give
+    defaults: { _controller: gospelcenterPageBundle:Page:give }
+
 gospelcenterPage_default:
     path: /{page}
     defaults: { _controller: gospelcenterPageBundle:Page:index }

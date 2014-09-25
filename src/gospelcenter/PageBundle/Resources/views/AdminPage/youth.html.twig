@@ -1,38 +1,53 @@
 {% extends "gospelcenterPageBundle::admin.html.twig" %}
 
-{% block stylesheets %}
-	{{ parent() }}
-	<link rel="stylesheet" href="{{ asset('css/admin.css') }}" type="text/css" />
-{% endblock %}
-
 {% block title %}
     {{ parent() }} - Youth
 {% endblock %}
 
-{% block gospelcenterAdminPages_body %}
-    
+{% block adminTitle %}<h1>Youth's pages</h1>{% endblock %}
+
+{% block adminListBody %}
     <table class="main">
         <thead>
-            <tr>
-                <th data-sort="string">Title</th>
-                <th data-sort="string">Slogan</th>
-                <th data-sort="string">Language</th>
-                <th data-sort="int">Sort</th>
-            </tr>
+        <tr>
+            <th data-sort="string">Title<span>Title<div class="arrow"></div></span></th>
+            <th data-sort="string">Slogan<span>Slogan<div class="arrow"></div></span></th>
+            <th data-sort="string">Language<span>Language<div class="arrow"></div></span></th>
+            <th data-sort="int">Sort<span>Sort<div class="arrow"></div></span></th>
+        </tr>
         </thead>
         <tbody>
-            {% for page in pages %}
-                <tr>
-                    <td><a href="{{ path('gospelcenterAdmin_youth_edit', {'page': page.id, 'center': center.ref}) }}">{{ page.title }}</a></td>
-                    <td><a href="{{ path('gospelcenterAdmin_youth_edit', {'page': page.id, 'center': center.ref}) }}">{{ page.slogan }}</a></td>
-                    <td><a href="{{ path('gospelcenterAdmin_youth_edit', {'page': page.id, 'center': center.ref}) }}">{{ page.language.ref }}</a></td>
-                    <td><a href="{{ path('gospelcenterAdmin_youth_edit', {'page': page.id, 'center': center.ref}) }}">{{ page.sort }}</a></td>
-                </tr>
-            {% else %}
-                <tr><td colspan="3">There are no pages.</td></tr>
-            {% endfor %}
+        {% for page in pages %}
+
+            {% set link = path('gospelcenterAdmin_youth_edit', {'page': page.id, 'center': center.ref}) %}
+
+            <tr>
+                <td class="em">
+                    <a href="{{ link }}">
+                        <span>{{ page.title }}</span>
+                    </a>
+                </td>
+                <td class="em">
+                    <a href="{{ link }}">
+                        <span>{{ page.slogan }}</span>
+                    </a>
+                </td>
+                <td>
+                    <a href="{{ link }}">
+                        <span>{{ page.language.ref }}</span>
+                    </a>
+                </td>
+                <td>
+                    <a href="{{ link }}">
+                        <span>{{ page.sort }}</span>
+                    </a>
+                </td>
+            </tr>
+        {% else %}
+            <tr class="empty">
+                <td colspan="3">There are no pages.</td>
+            </tr>
+        {% endfor %}
         </tbody>
     </table>
-    
-    
 {% endblock %}

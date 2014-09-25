@@ -1,0 +1,22 @@
+<footer>
+    <section class="container">
+        <h1>A place where miracles happen!</h1>
+        <nav class="global">
+            <a href="{{ path('gospelcenterPageGlobal_home') }}" class="logo"></a>
+            <ul>
+                {% spaceless %}
+                    {% include "::nav/centers.html.twig" %}
+                {% endspaceless %}
+            </ul>
+        </nav>
+        <nav class="main">
+            <ul>
+                {% spaceless %}
+                    {% include "::nav/local.html.twig" %}
+                    <li><a href="{{ path('gospelcenterPage_default', {'center': center.ref, 'page': 'give'}) }}">Nous
+                            soutenir</a></li>
+                {% endspaceless %}
+            </ul>
+        </nav>
+    </section>
+</footer>

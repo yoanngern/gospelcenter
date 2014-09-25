@@ -40,9 +40,9 @@
             <p>with {{ speakers }}</p>
         </section>
         
-        <input type="submit" class="buttonRounded" value="Yes" />
+        <input type="submit" class="buttonLink" value="Yes" />
         
-        <a class="buttonRounded" href="{{ path('gospelcenterAdmin_celebrations', {'center': center.ref}) }}">No</a>
+        <a class="buttonLink" href="{{ path('gospelcenterAdmin_celebrations', {'center': center.ref}) }}">No</a>
         
         {{ form_rest(form) }}
         

@@ -3,6 +3,9 @@
 namespace gospelcenter\EventBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use gospelcenter\DateBundle\Entity\Date;
+use gospelcenter\DateBundle\gospelcenterDateBundle;
+use gospelcenter\MediaBundle\Entity\Video;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
@@ -32,22 +35,6 @@ class Event
     private $title;
 
     /**
-     * @var \DateTime
-     *
-     * @ORM\Column(name="startingDate", type="datetime")
-     * @Assert\DateTime()
-     */
-    private $startingDate;
-
-    /**
-     * @var \DateTime
-     *
-     * @ORM\Column(name="endingDate", type="datetime")
-     * @Assert\DateTime()
-     */
-    private $endingDate;
-
-    /**
      * @var string
      *
      * @ORM\Column(name="introText", type="text")
@@ -61,12 +48,12 @@ class Event
      * @ORM\Column(name="text", type="text", nullable=true)
      */
     private $text;
-    
+
     /**
      * @ORM\Column(name="status", type="boolean")
      */
     private $status;
-    
+
     /**
      * @var \DateTime
      *
@@ -74,7 +61,7 @@ class Event
      * @Assert\DateTime()
      */
     private $createdDate;
-    
+
     /**
      * @var \DateTime
      *
@@ -82,54 +69,71 @@ class Event
      * @Assert\DateTime()
      */
     private $modifiedDate;
-    
-    
+
+
     /**
      * is presented by
-     * 
+     *
      * @ORM\ManyToMany(targetEntity="gospelcenter\CenterBundle\Entity\Center", mappedBy="events")
      * @Assert\Valid()
      */
     private $centers;
-    
-    
+
+
     /**
      * takes place at
-     * 
-     * @ORM\ManyToOne(targetEntity="gospelcenter\LocationBundle\Entity\Location", inversedBy="events")
+     *
+     * @ORM\ManyToOne(targetEntity="gospelcenter\LocationBundle\Entity\Location", inversedBy="events", cascade={"persist", "remove"})
      * @Assert\Valid()
      */
     private $location;
-    
-    
+
+
     /**
-     * uses
-     * 
-     * @ORM\ManyToOne(targetEntity="gospelcenter\MediaBundle\Entity\Video", inversedBy="events")
+     * is at
+     *
+     * @ORM\OneToMany(targetEntity="gospelcenter\DateBundle\Entity\Date", mappedBy="event", cascade={"persist", "remove"})
      * @Assert\Valid()
      */
+    private $dates;
+
+
+    /**
+     * uses
+     *
+     * @ORM\ManyToOne(targetEntity="gospelcenter\MediaBundle\Entity\Video", inversedBy="events", cascade={"persist", "remove"})
+     */
     private $video;
-    
-    
+
+
+    /**
+     * is supplemented by
+     *
+     * @ORM\OneToMany(targetEntity="gospelcenter\ArticleBundle\Entity\Link", mappedBy="event", cascade={"persist", "remove"})
+     * @Assert\Valid()
+     */
+    private $links;
+
+
     /**
      * is covered by
-     * 
+     *
      * @ORM\ManyToOne(targetEntity="gospelcenter\ImageBundle\Entity\Image", inversedBy="eventsCover", cascade={"persist", "remove"})
      * @ORM\JoinColumn(nullable=false)
      * @Assert\Valid()
      */
     private $cover;
-    
-    
+
+
     /**
      * is illustrated by
-     * 
+     *
      * @ORM\ManyToOne(targetEntity="gospelcenter\ImageBundle\Entity\Image", inversedBy="eventsPicture", cascade={"persist", "remove"})
      * @ORM\JoinColumn(nullable=false)
      * @Assert\Valid()
      */
     private $picture;
-    
+
     /**
      * Constructor
      */
@@ -139,12 +143,14 @@ class Event
         $this->createdDate = new \Datetime();
         $this->modifiedDate = new \Datetime();
         $this->centers = new \Doctrine\Common\Collections\ArrayCollection();
-        
-        if($center != null){
+        $this->dates = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->links = new \Doctrine\Common\Collections\ArrayCollection();
+
+        if ($center != null) {
             $this->centers[] = $center;
         }
     }
-    
+
     /**
      * Set picture
      *
@@ -154,16 +160,16 @@ class Event
     public function setPicture(\gospelcenter\ImageBundle\Entity\Image $picture = null)
     {
         $this->picture = $picture;
-        
-        if($picture != null) {
+
+        if ($picture != null) {
             $title = $this->title . " - Picture";
             $this->picture->setTitle($title);
             $this->picture->setType('Event');
         }
-    
+
         return $this;
     }
-    
+
     /**
      * Set cover
      *
@@ -173,16 +179,16 @@ class Event
     public function setCover(\gospelcenter\ImageBundle\Entity\Image $cover = null)
     {
         $this->cover = $cover;
-        
-        if($cover != null) {
+
+        if ($cover != null) {
             $title = $this->title . " - Cover";
             $this->cover->setTitle($title);
             $this->cover->setType('Event');
         }
-        
+
         return $this;
     }
-    
+
     /**
      * Add centers
      *
@@ -193,32 +199,118 @@ class Event
     {
         $this->centers[] = $centers;
         $centers->addEvent($this);
-    
+
         return $this;
     }
-    
+
     /**
-     * @ORM\PrePersist()
-     * @ORM\PreUpdate()
+     * Set location
+     *
+     * @param \gospelcenter\LocationBundle\Entity\Location $location
+     * @return Event
      */
-    public function preSave()
+    public function setLocation(\gospelcenter\LocationBundle\Entity\Location $location)
     {
-        $this->modifiedDate = new \Datetime();
-        
+
+        $this->location = $location;
+
+        return $this;
     }
-    
-    
+
+
+    /**
+     * Add dates
+     *
+     * @param \gospelcenter\DateBundle\Entity\Date $dates
+     * @return Event
+     */
+    public function addDate(\gospelcenter\DateBundle\Entity\Date $dates)
+    {
+        $this->dates[] = $dates;
+
+        $dates->setEvent($this);
+
+        return $this;
+    }
+
+
+    /**
+     * Set dates
+     *
+     * @param \gospelcenter\DateBundle\Entity\Date $dates
+     * @return Event
+     */
+    public function setDates(\gospelcenter\DateBundle\Entity\Date $dates)
+    {
+        foreach($dates as $date) {
+            $date->setEvent($this);
+        }
+
+        $this->dates = $dates;
+
+        return $this;
+    }
+
+
+    /**
+     * Add links
+     *
+     * @param \gospelcenter\ArticleBundle\Entity\Link $links
+     * @return Event
+     */
+    public function addLink(\gospelcenter\ArticleBundle\Entity\Link $links)
+    {
+
+        $this->links[] = $links;
+
+        $links->setEvent($this);
+
+        return $this;
+    }
+
+
+    /**
+     * Set links
+     *
+     * @param \gospelcenter\ArticleBundle\Entity\Link $links
+     * @return Event
+     */
+    public function setLinks(\gospelcenter\ArticleBundle\Entity\Link $links)
+    {
+        foreach($links as $link) {
+            $link->setEvent($this);
+        }
+
+        $this->links = $links;
+
+        return $this;
+    }
+
+
+    /**
+     * Set video
+     *
+     * @param \gospelcenter\MediaBundle\Entity\Video $video
+     * @return Event
+     */
+    public function setVideo(\gospelcenter\MediaBundle\Entity\Video $video = null)
+    {
+        $this->video = $video;
+        $video->addEvent($this);
+
+        return $this;
+    }
+
+
     /*************************************/
     /**** Getter setter auto generate ****/
     /*************************************/
-    
-
 
 
     /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId()
     {
@@ -234,64 +326,18 @@ class Event
     public function setTitle($title)
     {
         $this->title = $title;
-    
+
         return $this;
     }
 
     /**
      * Get title
      *
-     * @return string 
+     * @return string
      */
     public function getTitle()
     {
         return $this->title;
-    }
-
-    /**
-     * Set startingDate
-     *
-     * @param \DateTime $startingDate
-     * @return Event
-     */
-    public function setStartingDate($startingDate)
-    {
-        $this->startingDate = $startingDate;
-    
-        return $this;
-    }
-
-    /**
-     * Get startingDate
-     *
-     * @return \DateTime 
-     */
-    public function getStartingDate()
-    {
-        return $this->startingDate;
-    }
-
-    /**
-     * Set endingDate
-     *
-     * @param \DateTime $endingDate
-     * @return Event
-     */
-    public function setEndingDate($endingDate)
-    {
-        $this->endingDate = $endingDate;
-    
-        return $this;
-    }
-
-    /**
-     * Get endingDate
-     *
-     * @return \DateTime 
-     */
-    public function getEndingDate()
-    {
-        return $this->endingDate;
     }
 
     /**
@@ -303,14 +349,14 @@ class Event
     public function setIntroText($introText)
     {
         $this->introText = $introText;
-    
+
         return $this;
     }
 
     /**
      * Get introText
      *
-     * @return string 
+     * @return string
      */
     public function getIntroText()
     {
@@ -326,14 +372,14 @@ class Event
     public function setText($text)
     {
         $this->text = $text;
-    
+
         return $this;
     }
 
     /**
      * Get text
      *
-     * @return string 
+     * @return string
      */
     public function getText()
     {
@@ -349,14 +395,14 @@ class Event
     public function setStatus($status)
     {
         $this->status = $status;
-    
+
         return $this;
     }
 
     /**
      * Get status
      *
-     * @return boolean 
+     * @return boolean
      */
     public function getStatus()
     {
@@ -372,14 +418,14 @@ class Event
     public function setCreatedDate($createdDate)
     {
         $this->createdDate = $createdDate;
-    
+
         return $this;
     }
 
     /**
      * Get createdDate
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getCreatedDate()
     {
@@ -395,14 +441,14 @@ class Event
     public function setModifiedDate($modifiedDate)
     {
         $this->modifiedDate = $modifiedDate;
-    
+
         return $this;
     }
 
     /**
      * Get modifiedDate
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getModifiedDate()
     {
@@ -422,7 +468,7 @@ class Event
     /**
      * Get centers
      *
-     * @return \Doctrine\Common\Collections\Collection 
+     * @return \Doctrine\Common\Collections\Collection
      */
     public function getCenters()
     {
@@ -430,22 +476,9 @@ class Event
     }
 
     /**
-     * Set location
-     *
-     * @param \gospelcenter\LocationBundle\Entity\Location $location
-     * @return Event
-     */
-    public function setLocation(\gospelcenter\LocationBundle\Entity\Location $location = null)
-    {
-        $this->location = $location;
-    
-        return $this;
-    }
-
-    /**
      * Get location
      *
-     * @return \gospelcenter\LocationBundle\Entity\Location 
+     * @return \gospelcenter\LocationBundle\Entity\Location
      */
     public function getLocation()
     {
@@ -453,22 +486,29 @@ class Event
     }
 
     /**
-     * Set video
+     * Remove dates
      *
-     * @param \gospelcenter\MediaBundle\Entity\Video $video
-     * @return Event
+     * @param \gospelcenter\DateBundle\Entity\Date $dates
      */
-    public function setVideo(\gospelcenter\MediaBundle\Entity\Video $video = null)
+    public function removeDate(\gospelcenter\DateBundle\Entity\Date $dates)
     {
-        $this->video = $video;
-    
-        return $this;
+        $this->dates->removeElement($dates);
+    }
+
+    /**
+     * Get dates
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getDates()
+    {
+        return $this->dates;
     }
 
     /**
      * Get video
      *
-     * @return \gospelcenter\MediaBundle\Entity\Video 
+     * @return \gospelcenter\MediaBundle\Entity\Video
      */
     public function getVideo()
     {
@@ -476,9 +516,29 @@ class Event
     }
 
     /**
+     * Remove links
+     *
+     * @param \gospelcenter\ArticleBundle\Entity\Link $links
+     */
+    public function removeLink(\gospelcenter\ArticleBundle\Entity\Link $links)
+    {
+        $this->links->removeElement($links);
+    }
+
+    /**
+     * Get links
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getLinks()
+    {
+        return $this->links;
+    }
+
+    /**
      * Get cover
      *
-     * @return \gospelcenter\ImageBundle\Entity\Image 
+     * @return \gospelcenter\ImageBundle\Entity\Image
      */
     public function getCover()
     {
@@ -488,11 +548,10 @@ class Event
     /**
      * Get picture
      *
-     * @return \gospelcenter\ImageBundle\Entity\Image 
+     * @return \gospelcenter\ImageBundle\Entity\Image
      */
     public function getPicture()
     {
         return $this->picture;
     }
-
 }

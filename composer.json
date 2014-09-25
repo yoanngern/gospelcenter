@@ -25,7 +25,8 @@
         "symfony/intl": "2.3.*",
         "coresphere/console-bundle": "dev-master",
         "symfony/locale": "v2.4.2",
-        "friendsofsymfony/user-bundle": "2.0.*@dev"
+        "friendsofsymfony/user-bundle": "2.0.*@dev",
+        "njasm/soundcloud": "dev-master"
     },
     "scripts": {
         "post-install-cmd": [

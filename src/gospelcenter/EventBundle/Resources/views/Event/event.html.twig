@@ -1,8 +1,8 @@
-{% extends "::local.html.twig" %}
+{% extends "::localNew.html.twig" %}
 
 {% block stylesheets %}
-	{{ parent() }}
-	<link rel="stylesheet" href="{{ asset('css/event.css') }}" type="text/css" />
+    {{ parent() }}
+    {#<link rel="stylesheet" href="{{ asset('css/event.css') }}" type="text/css" />#}
 {% endblock %}
 
 
@@ -10,29 +10,94 @@
     {{ parent() }} - {{ event.title }}
 {% endblock %}
 
+{% block local_header %}{% endblock %}
+{% block classPage %}{{ parent() }} simpleHeader{% endblock %}
+
 
 {% block body %}
-    <article class="event">
-        <h1>{{ event.title }}</h1>
-    	<header>
-    		<img src="{{ asset(event.cover.webPath) }}" alt="{{ event.cover.alt }}" />
-    	</header>
-    	<section class="txt">
-	        <sumary>{{ event.introText }}</sumary>
-	        <p>{{ event.text }}</p>
-    	</section>
-    	<section class="details">
-	        <time>{{ event.startingDate|date('d F Y') }}</time>
-            {% if event.location is not null %}
-                <h1>{{ event.location.name }}</h1>
-                <p>{{ event.location.address1 }}</p>
-                {% if event.location.address2 is not null %}
-                    <p>{{ event.location.address2 }}</p>
-                {% endif %}
-                <p>{{ event.location.postalCode }} {{ event.location.city }}</p>
-                <p>{{ event.location.country }}</p>
+    {% spaceless %}
+        <article class="event">
+            <header style="background-image: url({{ asset(event.cover.webPath) }})"></header>
+
+
+            {% if event.video %}
+                <section class="video">
+                    {% if event.video.owner == "youtube" %}
+                        <iframe id="ytplayer" type="text/html" width="100%" height="100%"
+                                src="http://www.youtube.com/embed/{{ event.video.ownerId }}?autoplay=0&autohide=1&color=red&controls=1&iv_load_policy=3&modestbranding=1&theme=light&showinfo=0"
+                                frameborder="0" allowfullscreen></iframe>
+                    {% endif %}
+                    {% if event.video.owner == "vimeo" %}
+                        <iframe src="//player.vimeo.com/video/{{ event.video.ownerId }}?title=0&amp;byline=0&amp;portrait=0&amp;color=89ceb7"
+                                width="100%" height="100%" frameborder="0" webkitallowfullscreen mozallowfullscreen
+                                allowfullscreen></iframe>
+                    {% endif %}
+                    {% if event.video.owner == "dailymotion" %}
+                        <iframe frameborder="0" width="100%" height="100%"
+                                src="//www.dailymotion.com/embed/video/{{ event.video.ownerId }}?logo=0&info=0&foreground=EBEBEB&highlight=89CEB7&background=878787"
+                                allowfullscreen></iframe>
+                    {% endif %}
+                </section>
             {% endif %}
-        </section>
-        
-    </article>
+
+
+            <section class="info">
+                <section class="left">
+                    <article class="details">
+                        <h1><span>Détails</span></h1>
+
+                        <p>{{ event.introText|nl2br }}</p>
+
+                        <p>{{ event.text|nl2br }}</p>
+                    </article>
+                </section>
+                <section class="right">
+                    <article class="dates">
+                        <h1><span>Dates</span></h1>
+                        {% for date in event.dates %}
+                            <article>
+                                <h2>{{ date.start|date('d F Y') }}</h2>
+                                <time>{{ date.start|date('H:i') }} - {{ date.end|date('H:i') }}</time>
+                            </article>
+                        {% endfor %}
+                    </article>
+
+                    {% if event.links|length %}
+                        <article class="links">
+                            <h1><span>Liens</span></h1>
+                            {% for link in event.links %}
+                                <a target="_blank" href="{{ link.url }}">
+                                    <div class="icon" data-type="{{ link.type }}"></div>
+                                    {% if link.name|length %}
+                                        <span>{{ link.name }}</span>
+                                    {% else %}
+                                        <span>{{ link.url }}</span>
+                                    {% endif %}
+                                </a>
+                            {% endfor %}
+                        </article>
+                    {% endif %}
+                </section>
+            </section>
+
+            <section id="map" class="location map_full">
+                <iframe src="http://gc-map.local"></iframe>
+                <article>
+                    <h1>{{ event.location.name }}</h1>
+
+                    <p>{{ event.location.address1 }}<br/>
+                        {% if event.location.address2|length %}
+                            {{ event.location.address2 }}<br/>
+                        {% endif %}
+                        {{ event.location.postalCode }} {{ event.location.city }}<br/>
+                        {{ event.location.country }}</p>
+                </article>
+            </section>
+
+            <form>
+
+            </form>
+
+        </article>
+    {% endspaceless %}
 {% endblock %}

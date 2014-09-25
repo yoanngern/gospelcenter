@@ -1,0 +1,50 @@
+{% set admin = false %}
+
+{% extends "::layoutNew.html.twig" %}
+
+{% block classPage %}local{% endblock %}
+
+{% block local_header %}
+    <div class="gradient_top"></div>
+    <div class="map_bg">
+        <div class="inner"></div>
+    </div>
+    <nav class="top">
+        <section class="container">
+            <a id="get_ruban" href=""></a>
+            <section class="right">
+                <ul class="nav">
+                    <li><a target="_blank" href="{{ path('gospelcenterPageGlobal_home') }}">GCMovement</a></li>
+                    <li><a target="_blank" href="http://www.ministeres.org">Equipe apostolique</a></li>
+                </ul>
+                {% if app.user %}
+                    {% include "::admin/param.html.twig" %}
+                {% endif %}
+            </section>
+
+        </section>
+    </nav>
+    <section class="center">
+        <a class="logo" href="{{ path('gospelcenterPage_home', {'center': center.ref}) }}">
+            {% if center.ref == 'lausanne' %}
+                <img src="{{ asset('images/LogoGCLausanne.svg') }}">
+            {% elseif center.ref == 'montreux' %}
+                <img src="{{ asset('images/LogoGCMontreux.svg') }}">
+            {% elseif center.ref == 'jura' %}
+                <img src="{{ asset('images/LogoGCJura.svg') }}">
+            {% elseif center.ref == 'annecy' %}
+                <img src="{{ asset('images/LogoGCAnnecy.svg') }}">
+            {% endif %}
+        </a>
+    </section>
+    <div class="gradient_bottom"></div>
+{% endblock %}
+
+
+{% block header_nav %}
+    {% include "::nav/local.html.twig" %}
+{% endblock %}
+
+{% block footer %}
+    {% include "::footer_local.html.twig" %}
+{% endblock %}

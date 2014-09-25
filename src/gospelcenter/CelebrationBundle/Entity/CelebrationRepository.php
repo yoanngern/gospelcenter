@@ -22,8 +22,10 @@ class CelebrationRepository extends EntityRepository
         $qb->addSelect('a');
         $qb->addSelect('m');
         $qb->addSelect('vi');
+        $qb->addSelect('d');
         
         $qb->join('cel.center', 'c');
+        $qb->join('cel.date', 'd');
         $qb->leftJoin('cel.speakers', 's');
         $qb->leftJoin('s.person', 'p');
         $qb->leftJoin('p.member', 'm');
@@ -34,7 +36,7 @@ class CelebrationRepository extends EntityRepository
         $qb->where('c.ref = :center')
             ->setParameter('center', $center->getRef());
         
-        $qb->addOrderBy('cel.startingDate', 'DESC');
+        $qb->addOrderBy('d.start', 'DESC');
         
         return $qb->getQuery()->getResult();
     }
@@ -44,14 +46,15 @@ class CelebrationRepository extends EntityRepository
         $qb = $this->createQueryBuilder('cel');
         
         $qb->join('cel.center', 'c');
+        $qb->join('cel.date', 'd');
             
         $qb->where('c.ref = :center')
             ->setParameter('center', $center->getRef());
             
-        $qb->andWhere('cel.startingDate > :now')
+        $qb->andWhere('d.start > :now')
             ->setParameter('now', new \Datetime());
         
-        $qb->orderBy('cel.startingDate', 'ASC');
+        $qb->orderBy('d.start', 'ASC');
         
         if($nb > 0)
         {
@@ -67,14 +70,15 @@ class CelebrationRepository extends EntityRepository
         
         $qb->join('cel.center', 'c');
         $qb->join('cel.video', 'v');
+        $qb->join('cel.date', 'd');
             
         $qb->where('c.ref = :center')
             ->setParameter('center', $center->getRef());
             
-        $qb->andWhere('cel.startingDate < :now')
+        $qb->andWhere('d.start < :now')
             ->setParameter('now', new \Datetime());
         
-        $qb->orderBy('cel.startingDate', 'DESC');
+        $qb->orderBy('d.start', 'DESC');
         
         if($nb > 0)
         {
@@ -89,12 +93,13 @@ class CelebrationRepository extends EntityRepository
         $qb = $this->createQueryBuilder('cel');
         
         $qb->join('cel.video', 'v');
+        $qb->join('cel.date', 'd');
             
         $qb->andWhere('cel.bestOf = 0');
-        $qb->andWhere('cel.startingDate < :now')
+        $qb->andWhere('d.start < :now')
             ->setParameter('now', new \Datetime());
         
-        $qb->orderBy('cel.startingDate', 'DESC');
+        $qb->orderBy('d.start', 'DESC');
         
         if($nb > 0)
         {
@@ -109,12 +114,13 @@ class CelebrationRepository extends EntityRepository
         $qb = $this->createQueryBuilder('cel');
         
         $qb->join('cel.video', 'v');
+        $qb->join('cel.date', 'd');
         
         $qb->andWhere('cel.bestOf = 1');
-        $qb->andWhere('cel.startingDate < :now')
+        $qb->andWhere('d.start < :now')
             ->setParameter('now', new \Datetime());
         
-        $qb->orderBy('cel.startingDate', 'DESC');
+        $qb->orderBy('d.start', 'DESC');
         
         if($nb > 0)
         {
@@ -131,13 +137,14 @@ class CelebrationRepository extends EntityRepository
         $qb->join('cel.center', 'c');
         $qb->join('cel.speakers', 's');
         $qb->join('s.person', 'p');
+        $qb->join('cel.date', 'd');
         $qb->leftJoin('cel.video', 'v');
         $qb->leftJoin('cel.audio', 'a');
             
         $qb->where('p.id = :speaker')
             ->setParameter('speaker', $speaker->getPerson()->getId());
         
-        $qb->addOrderBy('cel.startingDate', 'DESC');
+        $qb->addOrderBy('d.start', 'DESC');
         
         return $qb->getQuery()->getResult();
     }
@@ -147,8 +154,9 @@ class CelebrationRepository extends EntityRepository
         $qb = $this->createQueryBuilder('cel');
         
         $qb->join('cel.video', 'v');
+        $qb->join('cel.date', 'd');
         
-        $qb->addOrderBy('cel.startingDate', 'DESC');
+        $qb->addOrderBy('d.start', 'DESC');
         
         return $qb->getQuery()->getResult();
     }
@@ -159,8 +167,9 @@ class CelebrationRepository extends EntityRepository
         $qb = $this->createQueryBuilder('cel');
         
         $qb->join('cel.audio', 'a');
+        $qb->join('cel.date', 'd');
         
-        $qb->addOrderBy('cel.startingDate', 'DESC');
+        $qb->addOrderBy('d.start', 'DESC');
         
         return $qb->getQuery()->getResult();
     }
@@ -172,13 +181,14 @@ class CelebrationRepository extends EntityRepository
         $qb->join('cel.center', 'c');
         $qb->join('cel.speakers', 's');
         $qb->join('s.person', 'p');
+        $qb->join('cel.date', 'd');
         $qb->leftJoin('cel.video', 'v');
         $qb->leftJoin('cel.audio', 'a');
             
         $qb->where('c.ref = :center')
             ->setParameter('center', $center->getRef());
         
-        $qb->addOrderBy('cel.startingDate', 'DESC');
+        $qb->addOrderBy('d.start', 'DESC');
         
         return $qb->getQuery()->getResult();
     }

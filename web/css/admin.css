@@ -1,3 +1,43 @@
+@font-face {
+  font-family: 'Radikal-Light';
+  src: url("../fonts/2B5662_0_0.eot");
+  src: url("../fonts/2B5662_0_0.eot?#iefix") format("embedded-opentype"), url("../fonts/2B5662_0_0.woff") format("woff"), url("../fonts/2B5662_0_0.ttf") format("truetype"); }
+@font-face {
+  font-family: 'Radikal-Black';
+  src: url("../fonts/2B5662_1_0.eot");
+  src: url("../fonts/2B5662_1_0.eot?#iefix") format("embedded-opentype"), url("../fonts/2B5662_1_0.woff") format("woff"), url("../fonts/2B5662_1_0.ttf") format("truetype"); }
+@font-face {
+  font-family: 'Radikal-Bold';
+  src: url("../fonts/2B5662_2_0.eot");
+  src: url("../fonts/2B5662_2_0.eot?#iefix") format("embedded-opentype"), url("../fonts/2B5662_2_0.woff") format("woff"), url("../fonts/2B5662_2_0.ttf") format("truetype"); }
+@font-face {
+  font-family: 'Radikal';
+  src: url("../fonts/2B5662_3_0.eot");
+  src: url("../fonts/2B5662_3_0.eot?#iefix") format("embedded-opentype"), url("../fonts/2B5662_3_0.woff") format("woff"), url("../fonts/2B5662_3_0.ttf") format("truetype"); }
+@font-face {
+  font-family: 'Radikal-UltraThin';
+  src: url("../fonts/2B5662_4_0.eot");
+  src: url("../fonts/2B5662_4_0.eot?#iefix") format("embedded-opentype"), url("../fonts/2B5662_4_0.woff") format("woff"), url("../fonts/2B5662_4_0.ttf") format("truetype"); }
+@font-face {
+  font-family: 'Radikal-Light';
+  src: url("../fonts/2B5662_0_0.eot");
+  src: url("../fonts/2B5662_0_0.eot?#iefix") format("embedded-opentype"), url("../fonts/2B5662_0_0.woff") format("woff"), url("../fonts/2B5662_0_0.ttf") format("truetype"); }
+@font-face {
+  font-family: 'Radikal-Black';
+  src: url("../fonts/2B5662_1_0.eot");
+  src: url("../fonts/2B5662_1_0.eot?#iefix") format("embedded-opentype"), url("../fonts/2B5662_1_0.woff") format("woff"), url("../fonts/2B5662_1_0.ttf") format("truetype"); }
+@font-face {
+  font-family: 'Radikal-Bold';
+  src: url("../fonts/2B5662_2_0.eot");
+  src: url("../fonts/2B5662_2_0.eot?#iefix") format("embedded-opentype"), url("../fonts/2B5662_2_0.woff") format("woff"), url("../fonts/2B5662_2_0.ttf") format("truetype"); }
+@font-face {
+  font-family: 'Radikal';
+  src: url("../fonts/2B5662_3_0.eot");
+  src: url("../fonts/2B5662_3_0.eot?#iefix") format("embedded-opentype"), url("../fonts/2B5662_3_0.woff") format("woff"), url("../fonts/2B5662_3_0.ttf") format("truetype"); }
+@font-face {
+  font-family: 'Radikal-UltraThin';
+  src: url("../fonts/2B5662_4_0.eot");
+  src: url("../fonts/2B5662_4_0.eot?#iefix") format("embedded-opentype"), url("../fonts/2B5662_4_0.woff") format("woff"), url("../fonts/2B5662_4_0.ttf") format("truetype"); }
 table {
   overflow: auto;
   border: 1px solid #313131;
@@ -29,6 +69,8 @@ table {
         display: inline-block;
         margin-bottom: -4px;
         margin-left: 10px; }
+      table thead tr th.center {
+        text-align: center; }
       table thead tr th[data-sort] {
         cursor: pointer; }
         table thead tr th[data-sort] span {
@@ -52,6 +94,8 @@ table {
       table tbody tr td:first-child {
         padding-left: 5px;
         font-family: "Radikal-Bold", "Radikal", sans-serif; }
+      table tbody tr td input[type=checkbox] {
+        margin: 10px auto !important; }
       table tbody tr td a {
         display: block;
         height: 20px;
@@ -320,7 +364,11 @@ table {
   #container form.celebration ul.speaker {
     width: 311px;
     margin-top: -1px;
-    margin-bottom: 10px; }
+    margin-bottom: 10px;
+    max-height: 100px;
+    overflow: scroll;
+    position: absolute;
+    border-bottom: 1px solid #313131; }
     #container form.celebration ul.location li,
     #container form.celebration ul.speaker li {
       list-style: none;
@@ -329,9 +377,12 @@ table {
       padding: 5px;
       cursor: pointer;
       margin-top: -1px; }
-    #container form.celebration ul.location li:nth-child(even),
-    #container form.celebration ul.speaker li:nth-child(even) {
-      background-color: #ededed; }
+      #container form.celebration ul.location li:nth-child(even),
+      #container form.celebration ul.speaker li:nth-child(even) {
+        background-color: #ededed; }
+      #container form.celebration ul.location li:last-of-type,
+      #container form.celebration ul.speaker li:last-of-type {
+        border-bottom: none; }
   #container form.celebration article {
     height: 70px; }
     #container form.celebration article span.action {
@@ -385,6 +436,15 @@ table {
     #container form.event fieldset.details {
       float: right;
       width: 32%; }
+      #container form.event fieldset.details div {
+        display: block; }
+        #container form.event fieldset.details div input {
+          display: inline-block; }
+          #container form.event fieldset.details div input[type=datetime] {
+            width: 55%; }
+          #container form.event fieldset.details div input[type=time] {
+            width: 30%;
+            margin-left: 3%; }
   #container form.page > input, #container form.page > textarea, #container form.page > select {
     margin-left: 25%; }
   #container form.page > input, #container form.page > textarea {
@@ -496,16 +556,23 @@ table {
     float: right;
     min-height: 200px;
     width: 77%; }
-  #container form.person section fieldset.details fieldset.languages {
+  #container form.person section fieldset.languages,
+  #container form.person section fieldset.unit {
     margin-left: 21%;
     margin-top: 20px; }
-    #container form.person section fieldset.details fieldset.languages label {
+    #container form.person section fieldset.languages label,
+    #container form.person section fieldset.unit label {
       display: block;
       font-family: "Radikal-Bold", "Radikal", sans-serif;
-      margin-bottom: 5px; }
-    #container form.person section fieldset.details fieldset.languages ul {
+      margin-bottom: 5px;
+      text-align: left;
       width: 90%; }
-  #container form.person section fieldset.details fieldset.checkbox {
+    #container form.person section fieldset.languages ul,
+    #container form.person section fieldset.unit ul {
+      width: 90%; }
+  #container form.person section fieldset.languages ul {
+    width: 30%; }
+  #container form.person section fieldset.checkbox {
     margin-left: 21%;
     margin-top: 20px;
     margin-bottom: 20px; }
@@ -536,6 +603,12 @@ table {
       width: 94%;
       margin: 5px 1%;
       padding: 3px 2%; }
+  #container form.person section fieldset.unit {
+    margin-top: 20px;
+    margin-left: 0; }
+    #container form.person section fieldset.unit ul {
+      width: 100%;
+      max-height: 150px; }
   #container form.person section fieldset.image img {
     height: inherit;
     max-height: inherit;

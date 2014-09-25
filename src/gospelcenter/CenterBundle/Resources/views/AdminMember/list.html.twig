@@ -1,26 +1,49 @@
 {% extends "gospelcenterPeopleBundle::layout.html.twig" %}
 
-{% block gospelcenterAdminPeople_body %}
+{% block adminTitle %}<h1>Members</h1>{% endblock %}
+
+{% block adminListBody %}
     <table class="main">
         <thead>
-            <tr>
-                <th data-sort="string">Firstname</th>
-                <th data-sort="string">Lastname</th>
-                <th data-sort="string">Gender</th>
-                <th data-sort="int">Member from</th>
-            </tr>
+        <tr>
+            <th data-sort="string">Firstname<span>Firstname<div class="arrow"></div></span></th>
+            <th data-sort="string">Lastname<span>Lastname<div class="arrow"></div></span></th>
+            <th data-sort="string">Gender<span>Gender<div class="arrow"></div></span></th>
+            <th data-sort="int">Member from<span>Member from<div class="arrow"></div></span></th>
+        </tr>
         </thead>
         <tbody>
-            {% for member in members %}
-                <tr>
-                    <td><a href="{{ path('gospelcenterAdmin_persons_edit', {'person': member.person.id, 'center': center.ref}) }}">{{ member.person.firstname }}</a></td>
-                    <td><a href="{{ path('gospelcenterAdmin_persons_edit', {'person': member.person.id, 'center': center.ref}) }}">{{ member.person.lastname }}</a></td>
-                    <td><a href="{{ path('gospelcenterAdmin_persons_edit', {'person': member.person.id, 'center': center.ref}) }}">{{ member.person.gender }}</a></td>
-                    <td data-sort-default="{{ member.memberFromDate|date('U') }}"><a href="{{ path('gospelcenterAdmin_persons_edit', {'person': member.person.id, 'center': center.ref}) }}">{{ member.memberFromDate|date('d F Y') }}</a></td>
-                </tr>
-            {% else %}
-                <tr><td colspan="4">There are no members.</td></tr>
-            {% endfor %}
+        {% for member in members %}
+
+            {% set link = path('gospelcenterAdmin_persons_edit', {'person': member.person.id, 'center': center.ref}) %}
+
+            <tr>
+                <td class="em">
+                    <a href="{{ link }}">
+                        <span>{{ member.person.firstname }}</span>
+                    </a>
+                </td>
+                <td class="em">
+                    <a href="{{ link }}">
+                        <span>{{ member.person.lastname }}</span>
+                    </a>
+                </td>
+                <td>
+                    <a href="{{ link }}">
+                        <span>{{ member.person.gender }}</span>
+                    </a>
+                </td>
+                <td data-sort-default="{{ member.memberFromDate|date('U') }}">
+                    <a href="{{ link }}">
+                        <span>{{ member.memberFromDate|date('d F Y') }}</span>
+                    </a>
+                </td>
+            </tr>
+        {% else %}
+            <tr class="empty">
+                <td colspan="4">There are no members.</td>
+            </tr>
+        {% endfor %}
         </tbody>
     </table>
 {% endblock %}

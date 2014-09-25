@@ -7,21 +7,26 @@
     {% spaceless %}
 
         {% for celebration in celebrations %}
-                
-            {% if celebration.video %}
-                <a class="bigList" href="{{ path('gospelcenterMedia_video', {'video': celebration.video.id}) }}">
-            {% elseif celebration.audio %}
-                <a class="bigList" href="{{ path('gospelcenterMedia_audio', {'audio': celebration.audio.id}) }}">
+            
+            {% if celebration.video or celebration.audio %}
+            
+                {% if celebration.video %}
+                    <a class="bigList" href="{{ path('gospelcenterMedia_video', {'video': celebration.video.id}) }}">
+                {% elseif celebration.audio %}
+                    <a class="bigList" href="{{ path('gospelcenterMedia_audio', {'audio': celebration.audio.id}) }}">
+                {% endif %}
+                    
+                    {% if celebration.image %}
+                        <img src="{{ asset(celebration.image.webPath) }}" alt="{{ celebration.image.alt }}" />
+                    {% endif %}
+                    
+                    <section class="details">
+        	            <h1>{% if celebration.title|length %}{{ celebration.title }}{% else %}Celebration{% endif %}</h1>
+        	            <span data-time="{{ celebration.startingDate|date('Y-m-d H:i:s') }}">{{ celebration.startingDate|date('d F') }}</span>
+                    </section>
+                    
+                </a>
             {% endif %}
-                
-                <img src="{{ asset(celebration.image.webPath) }}" alt="{{ celebration.image.alt }}" />
-                
-                <section class="details">
-    	            <h1>{% if celebration.title|length %}{{ celebration.title }}{% else %}Celebration{% endif %}</h1>
-    	            <span data-time="{{ celebration.startingDate|date('Y-m-d H:i:s') }}">{{ celebration.startingDate|date('d F') }}</span>
-                </section>
-                
-            </a>
         {% else %}
             <span class="empty">There are no celebrations.</span>
         {% endfor %}

@@ -1,0 +1,17 @@
+h2.slogan.findBase {
+    margin-top: 70px;
+
+    @media only screen and (max-width: $mobileH) {
+        margin-top: 30px;
+    }
+}
+
+
+#page.bases {
+
+    section.formGray {
+        form textarea {
+            height: 146px;
+        }
+    }
+}

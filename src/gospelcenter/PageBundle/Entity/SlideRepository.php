@@ -16,7 +16,9 @@ class SlideRepository extends EntityRepository
     public function findAllByCenter(\gospelcenter\CenterBundle\Entity\Center $center)
     {
         $qb = $this->createQueryBuilder('s');
-        
+
+        $qb->addSelect('p');
+
         $qb->join('s.page', 'p');
         $qb->join('p.language', 'l');
         $qb->join('p.center', 'c');

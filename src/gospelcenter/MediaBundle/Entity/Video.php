@@ -22,23 +22,31 @@ class Video
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
-    
-    /**
-     * @var integer
-     *
-     * @ORM\Column(name="ownerId", type="integer")
-     * @Assert\NotBlank()
-     */
-    private $ownerId;
-    
+
     /**
      * @var string
      *
-     * @ORM\Column(name="Name", type="string", length=255)
+     * @ORM\Column(name="ownerId", type="string", length=255)
+     * @Assert\NotBlank()
+     */
+    private $ownerId;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="owner", type="string", length=255)
      * @Assert\NotBlank()
      */
     private $owner;
-    
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="url", type="string", length=255)
+     * @Assert\Url()
+     */
+    private $url;
+
     /**
      * @var \DateTime
      *
@@ -46,7 +54,7 @@ class Video
      * @Assert\DateTime()
      */
     private $createdDate;
-    
+
     /**
      * @var \DateTime
      *
@@ -54,32 +62,32 @@ class Video
      * @Assert\DateTime()
      */
     private $modifiedDate;
-    
+
+
     /**
      * is shown by
-     * 
+     *
      * @ORM\OneToMany(targetEntity="gospelcenter\ArticleBundle\Entity\Article", mappedBy="video")
      * @Assert\Valid()
      */
     private $articles;
-    
+
     /**
      * is used by
-     * 
+     *
      * @ORM\OneToMany(targetEntity="gospelcenter\EventBundle\Entity\Event", mappedBy="video")
      * @Assert\Valid()
      */
     private $events;
-    
+
     /**
      * is diffused by
-     * 
-     * @ORM\OneToOne(targetEntity="gospelcenter\CelebrationBundle\Entity\Celebration", inversedBy="video")
+     *
+     * @ORM\OneToOne(targetEntity="gospelcenter\CelebrationBundle\Entity\Celebration", mappedBy="video", cascade={"persist", "remove"})
      * @Assert\Valid()
      */
     private $celebration;
-    
-    
+
     /**
      * Constructor
      */
@@ -90,26 +98,68 @@ class Video
         $this->articles = new \Doctrine\Common\Collections\ArrayCollection();
         $this->events = new \Doctrine\Common\Collections\ArrayCollection();
     }
-    
+
     /**
      * @ORM\PrePersist()
      * @ORM\PreUpdate()
      */
     public function preSave()
     {
+
         $this->modifiedDate = new \Datetime();
+
+        $tmp = parse_url($this->url);
+        $hostname = $tmp["host"];
+
+        if (strpos($hostname, "youtube.com") !== false) {
+            $this->owner = "youtube";
+
+            $regExp = "/^.*((youtu.be\/)|(v\/)|(\/u\/\w\/)|(embed\/)|(watch\?))\??v?=?([^#\&\?]*).*/";
+
+            preg_match($regExp, $this->url, $matches);
+
+            $this->ownerId = $matches[7];
+
+        }
+
+        if (strpos($hostname, "vimeo.com") !== false) {
+            $this->owner = "vimeo";
+
+            $regExp = "/https?:\/\/(?:www\.)?vimeo.com\/(?:channels\/(?:\w+\/)?|groups\/([^\/]*)\/videos\/|album\/(\d+)\/video\/|)(\d+)(?:$|\/|\?)/";
+
+            preg_match($regExp, $this->url, $matches);
+
+            $this->ownerId = $matches[3];
+
+        }
+
+
+        if (strpos($hostname, "dailymotion.com") !== false) {
+            $this->owner = "dailymotion";
+
+            $regExp = "/^.+dailymotion.com\/(video|hub)\/([^_]+)[^#]*(#video=([^_&]+))?/";
+
+            preg_match($regExp, $this->url, $matches);
+
+            if (count($matches) > 3) {
+                $this->ownerId = $matches[4];
+            } else {
+                $this->ownerId = $matches[2];
+            }
+        }
+
     }
-    
+
+
     /*************************************/
     /**** Getter setter auto generate ****/
     /*************************************/
 
 
-
     /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId()
     {
@@ -119,20 +169,20 @@ class Video
     /**
      * Set ownerId
      *
-     * @param integer $ownerId
+     * @param string $ownerId
      * @return Video
      */
     public function setOwnerId($ownerId)
     {
         $this->ownerId = $ownerId;
-    
+
         return $this;
     }
 
     /**
      * Get ownerId
      *
-     * @return integer 
+     * @return string
      */
     public function getOwnerId()
     {
@@ -148,18 +198,41 @@ class Video
     public function setOwner($owner)
     {
         $this->owner = $owner;
-    
+
         return $this;
     }
 
     /**
      * Get owner
      *
-     * @return string 
+     * @return string
      */
     public function getOwner()
     {
         return $this->owner;
+    }
+
+    /**
+     * Set url
+     *
+     * @param string $url
+     * @return Video
+     */
+    public function setUrl($url)
+    {
+        $this->url = $url;
+
+        return $this;
+    }
+
+    /**
+     * Get url
+     *
+     * @return string
+     */
+    public function getUrl()
+    {
+        return $this->url;
     }
 
     /**
@@ -171,14 +244,14 @@ class Video
     public function setCreatedDate($createdDate)
     {
         $this->createdDate = $createdDate;
-    
+
         return $this;
     }
 
     /**
      * Get createdDate
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getCreatedDate()
     {
@@ -194,14 +267,14 @@ class Video
     public function setModifiedDate($modifiedDate)
     {
         $this->modifiedDate = $modifiedDate;
-    
+
         return $this;
     }
 
     /**
      * Get modifiedDate
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getModifiedDate()
     {
@@ -217,7 +290,7 @@ class Video
     public function addArticle(\gospelcenter\ArticleBundle\Entity\Article $articles)
     {
         $this->articles[] = $articles;
-    
+
         return $this;
     }
 
@@ -234,7 +307,7 @@ class Video
     /**
      * Get articles
      *
-     * @return \Doctrine\Common\Collections\Collection 
+     * @return \Doctrine\Common\Collections\Collection
      */
     public function getArticles()
     {
@@ -250,7 +323,7 @@ class Video
     public function addEvent(\gospelcenter\EventBundle\Entity\Event $events)
     {
         $this->events[] = $events;
-    
+
         return $this;
     }
 
@@ -267,7 +340,7 @@ class Video
     /**
      * Get events
      *
-     * @return \Doctrine\Common\Collections\Collection 
+     * @return \Doctrine\Common\Collections\Collection
      */
     public function getEvents()
     {
@@ -283,14 +356,14 @@ class Video
     public function setCelebration(\gospelcenter\CelebrationBundle\Entity\Celebration $celebration = null)
     {
         $this->celebration = $celebration;
-    
+
         return $this;
     }
 
     /**
      * Get celebration
      *
-     * @return \gospelcenter\CelebrationBundle\Entity\Celebration 
+     * @return \gospelcenter\CelebrationBundle\Entity\Celebration
      */
     public function getCelebration()
     {

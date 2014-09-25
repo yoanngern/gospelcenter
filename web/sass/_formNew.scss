@@ -1,0 +1,622 @@
+@import "advanced/adminPages";
+@import "advanced/adminEvents";
+@import "advanced/adminCelebrations";
+
+form {
+    border-bottom: 3px solid $greenGC;
+    margin-top: 120px;
+    padding: 10px 30px 30px;
+    max-width: 550px;
+    margin-bottom: 50px;
+
+    input,
+    textarea {
+        border: 1px solid $grayGC;
+        line-height: 22px;
+        vertical-align: center;
+        height: 22px;
+        padding: 10px 10px;
+        font-size: 1.1em;
+        font-family: $font-light;
+        letter-spacing: 0px;
+        background-color: $whiteGC;
+        margin-top: 30px;
+        display: block;
+        width: 528px;
+        max-width: 528px;
+        @include border-radius(0px);
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+
+        &:focus {
+            border: 2px solid $grayDarkGC;
+            outline: none;
+            padding-left: 9px;
+            height: 20px;
+            width: 529px;
+        }
+    }
+
+    ul.selectMultiple {
+        display: block;
+        max-height: 100px;
+        border: 1px solid $grayGC;
+        width: 262px;
+        margin-top: 30px;
+        overflow: scroll;
+        padding: 2px;
+
+        li {
+            display: block;
+            list-style: none;
+            font-size: 1.1em;
+            line-height: 1.1em;
+            font-family: $font-light;
+            color: $grayGC;
+            cursor: pointer;
+            padding: 3px 7px;
+
+            &.selected {
+                color: $grayDarkGC;
+                font-family: $font-regular;
+                padding: 4px 7px 2px;
+                background-color: $grayLightGC;
+            }
+        }
+    }
+
+    fieldset {
+        margin-top: 30px;
+
+        .half {
+            width: 268px;
+            display: inline-block;
+            overflow: auto;
+            vertical-align: top;
+
+            h2 {
+                font-size: 1.2em;
+                line-height: 1.2em;
+                padding-bottom: 5px;
+            }
+
+            &:first-of-type {
+                margin-right: 10px;
+            }
+
+            img {
+                width: 266px;
+            }
+
+            #addImage,
+            #editImage {
+                width: 266px;
+                margin-bottom: 0px;
+                margin-top: 0px;
+            }
+        }
+
+        &.double {
+            margin-top: 0px;
+
+            input,
+            textarea {
+                display: inline-block;
+                width: 246px;
+                vertical-align: top;
+
+                &:focus {
+                    width: 245px;
+                }
+
+                &:first-of-type {
+                    margin-right: 10px;
+                }
+
+            }
+        }
+
+        &.inline {
+            margin-top: 0px;
+
+            & > div,
+            & > input,
+            & > select,
+            & > textarea {
+                display: inline-block;
+                margin-right: 20px;
+            }
+        }
+
+        &.datetime {
+            display: block;
+            width: 100%;
+
+            h2 {
+                color: $grayGC;
+                font-size: 1.1em;
+                font-family: $font-light;
+                padding-left: 10px;
+                display: inline-block;
+                vertical-align: top;
+                line-height: 42px;
+            }
+
+            & > div {
+                float: right;
+            }
+
+            div {
+                display: inline-block;
+                vertical-align: center;
+
+                select {
+                    display: inline-block;
+                    width: 60px;
+                    margin: 0;
+                    margin-left: -1px;
+                }
+            }
+        }
+
+        &.date {
+
+            select {
+
+                &[id*="day"] {
+                    width: 75px;
+                }
+
+                &[id*="month"] {
+                    width: 135px;
+                }
+
+                &[id*="year"] {
+                    width: 85px;
+                }
+            }
+
+        }
+
+        &.times {
+
+            div {
+                margin-right: 10px;
+                margin-left: 10px;
+                color: transparent;
+                font-family: $font-light;
+                font-size: 1.1em;
+
+                &:first-of-type {
+                    margin-left: 0;
+                }
+
+                &:last-of-type {
+                    margin-right: 0;
+                }
+
+                select {
+
+                    &[id*="hour"] {
+                        width: 70px;
+                    }
+
+                    &[id*="minute"] {
+                        width: 70px;
+                        margin-left: -10px;
+                    }
+                }
+            }
+
+            & > div {
+                color: $grayGC;
+            }
+
+        }
+
+    }
+
+    div.error_list {
+        padding-top: 5px;
+        color: $redGC;
+    }
+
+    div.checkbox,
+    div.radio-checkbox {
+        margin-top: 30px;
+        cursor: pointer;
+        display: block;
+
+        input[type="checkbox"],
+        input[type="radio"] {
+            display: none;
+        }
+
+        &[data-checked="true"] {
+            .chip {
+                background-color: $grayDarkGC;
+            }
+        }
+
+        div.box {
+            display: inline-block;
+            width: 18px;
+            height: 18px;
+            margin-top: 0px;
+            border: 1px solid $grayDarkGC;
+            @include border-radius(20px);
+            vertical-align: top;
+
+            .chip {
+                width: 14px;
+                height: 14px;
+                display: block;
+                @include border-radius(16px);
+                margin: 2px;
+            }
+        }
+
+        label {
+            display: inline-block;
+            cursor: pointer;
+            padding-left: 10px;
+            vertical-align: top;
+            padding-top: 4px;
+        }
+
+        &.radio-checkbox {
+            display: inline-block;
+            margin-right: 20px;
+
+            &:last-of-type {
+                margin-right: 0px;
+            }
+        }
+    }
+
+    select {
+        border: 1px solid $grayGC;
+        line-height: 1.1em;
+        height: 44px;
+        padding: 0 10px;
+        font-size: 1.1em;
+        font-family: $font-light;
+        letter-spacing: 0px;
+        background-color: $whiteGC;
+        margin-top: 30px;
+        display: block;
+        width: 268px;
+        @include border-radius(0px);
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+        text-indent: 1px;
+        text-overflow: '';
+        background-image: url('../images/select_arrow.svg');
+        background-position: right center;
+        background-repeat: no-repeat;
+
+        &[multiple="multiple"] {
+            height: 100px;
+            background-image: none;
+
+            option {
+                color: $grayGC;
+                font-size: 2em;
+                font-family: $font-regular;
+
+                &:active {
+                    background-color: $redGC;
+                }
+            }
+        }
+
+        &:focus {
+            outline: none;
+        }
+
+    }
+
+    input {
+        &[type="submit"] {
+            display: block;
+            border: 2px solid $grayDarkGC;
+            padding: 3px;
+            font-family: $font-bold;
+            font-size: 1.2em;
+            text-transform: uppercase;
+            color: $grayDarkGC;
+            margin: 10px 0;
+            width: auto;
+            height: auto;
+            line-height: 1em;
+            margin-top: 30px;
+            cursor: pointer;
+
+            &:hover {
+                text-decoration: none;
+                border: 3px solid $grayDarkGC;
+                padding: 2px;
+            }
+
+        }
+    }
+
+    textarea {
+        min-height: 100px;
+        padding-top: 10px;
+    }
+
+    img {
+        max-width: 550px;
+        max-height: 400px;
+        margin: 30px auto 0;
+        display: block;
+    }
+
+    div.collection {
+        margin-top: 30px;
+
+        label {
+            font-size: 1.1em;
+
+        }
+
+        & > div {
+            border-bottom: 1px solid $greenGC;
+            margin-top: 30px;
+
+            & > div {
+                margin-bottom: 30px;
+            }
+
+            &:last-of-type {
+                border-bottom: none;
+            }
+
+            & > label {
+                display: none;
+            }
+        }
+    }
+
+    div.datetime {
+        display: block;
+        margin-top: 10px;
+        margin-bottom: 30px;
+
+        select {
+            display: inline-block;
+            margin-left: -1px;
+            margin-top: 0px;
+
+            &[id*="day"] {
+                width: 85px;
+            }
+
+            &[id*="month"] {
+                width: 145px;
+            }
+
+            &[id*="year"] {
+                width: 100px;
+            }
+
+            &[id*="hour"] {
+                width: 80px;
+                margin-left: 64px;
+            }
+
+            &[id*="minute"] {
+                width: 80px;
+            }
+        }
+
+    }
+
+    article.tab {
+        & > h2 {
+            font-size: 1.2em;
+            margin-top: 30px;
+            margin-bottom: -20px;
+        }
+    }
+
+    section.tab {
+        margin-top: 30px;
+    }
+
+    #addImage {
+        margin: 30px auto 30px;
+        display: block;
+        width: 300px;
+        border: 2px dashed $grayDarkGC;
+        cursor: pointer;
+
+        &.hover {
+
+            border-color: $greenGC;
+            color: $greenGC;
+
+            .iconImg {
+                background-image: url('../images/add_image_hover.svg');
+            }
+        }
+
+        .iconImg {
+            display: block;
+            margin: 20px auto 10px;
+            height: 64px;
+            width: 64px;
+            background-image: url('../images/add_image.svg');
+            background-size: 100%;
+        }
+
+        .txt {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+    }
+
+    #editImage {
+        margin: 0 auto;
+        cursor: pointer;
+        display: block;
+        max-width: 550px;
+        max-height: 400px;
+        margin-bottom: 30px;
+        margin-top: 30px;
+        overflow: hidden;
+        position: relative;
+
+        img {
+            display: block;
+            width: 100%;
+            margin-top: 0px;
+        }
+
+        &:hover {
+            div.edit {
+                display: block;
+            }
+        }
+
+        div.edit {
+            text-align: center;
+            height: 20px;
+            background-color: $grayDarkGC;
+            color: $whiteGC;
+            display: none;
+            position: absolute;
+            width: 100%;
+            //margin-top: -30px;
+            bottom: 0px;
+            padding-top: 5px;
+            padding-bottom: 5px;
+        }
+    }
+
+    section.selectList {
+        display: block;
+        margin-top: 30px;
+
+        & > header {
+
+            h1 {
+                display: inline-block;
+                font-size: 1.2em;
+                line-height: 1.2em;
+                font-family: $font-regular;
+                margin-left: 10px;
+                vert-align: top;
+                width: 400px;
+            }
+
+            input.search {
+                vert-align: top;
+                margin: 1px 1px 5px 1px;
+                height: 22px;
+                padding: 2px 2px 2px 6px;
+                font-size: 1em;
+                line-height: 22px;
+                width: 120px;
+                display: inline-block;
+
+                &:focus {
+                    margin-left: 0;
+                    margin-right: 0;
+                    height: 20px;
+                }
+            }
+        }
+
+        ul {
+            border-top: 3px solid $greenGC;
+            border-bottom: 3px solid $greenGC;
+            max-height: 250px;
+            overflow: scroll;
+
+            li {
+                display: block;
+                list-style: none;
+                cursor: pointer;
+                border-bottom: 1px solid $greenGC;
+                height: 54px;
+
+                &:last-of-type {
+                    border-bottom: none;
+                }
+
+                &:hover {
+                    background-color: $grayLightGC;
+                }
+
+                &.hide {
+                    display: none;
+                }
+
+                &.selected {
+                    background-color: $greenGC;
+
+                    color: $whiteGC;
+
+                    time {
+                        color: $whiteGC;
+                    }
+                }
+
+                & > div {
+                    display: inline-block;
+                    height: 54px;
+                    vertical-align: top;
+                    @include preserve-3d;
+
+                    &.image {
+                        width: 60px;
+
+                        div.empty {
+                            background-color: rgba($grayGC, 0.3);
+                            height: 40px;
+                            width: 40px;
+                            margin: 6px auto 0;
+                            display: block;
+                        }
+                    }
+
+                    &.title {
+                        width: 330px;
+                    }
+
+                    &.date {
+                        width: 140px;
+                    }
+
+                    img {
+                        height: 40px;
+                        margin: 6px auto 0;
+                        display: block;
+                    }
+
+                    h1 {
+                        font-family: $font-light;
+                        line-height: 1.2em;
+                        @include vertical-align;
+                        margin-right: 10px;
+                    }
+
+                    time {
+                        color: $grayGC;
+                        font-family: $font-light;
+                        letter-spacing: 1px;
+                        font-size: 0.9em;
+                        text-align: right;
+                        @include vertical-align;
+                        display: block;
+                    }
+                }
+
+            }
+        }
+    }
+}

@@ -34,6 +34,14 @@ class User extends BaseUser
     private $person;
     
     /**
+     * is member of
+     * 
+     * @ORM\ManyToMany(targetEntity="gospelcenter\AccessBundle\Entity\Unit", inversedBy="users")
+     * @Assert\Valid()
+     */
+    private $units;
+    
+    /**
      * Constructor
      */
     public function __construct()
@@ -42,6 +50,11 @@ class User extends BaseUser
         $this->units = new \Doctrine\Common\Collections\ArrayCollection();
         $this->enabled = 1;
     }
+
+    /*************************************/
+    /**** Getter setter auto generate ****/
+    /*************************************/
+
 
     /**
      * Get id
@@ -74,5 +87,38 @@ class User extends BaseUser
     public function getPerson()
     {
         return $this->person;
+    }
+
+    /**
+     * Add units
+     *
+     * @param \gospelcenter\AccessBundle\Entity\Unit $units
+     * @return User
+     */
+    public function addUnit(\gospelcenter\AccessBundle\Entity\Unit $units)
+    {
+        $this->units[] = $units;
+    
+        return $this;
+    }
+
+    /**
+     * Remove units
+     *
+     * @param \gospelcenter\AccessBundle\Entity\Unit $units
+     */
+    public function removeUnit(\gospelcenter\AccessBundle\Entity\Unit $units)
+    {
+        $this->units->removeElement($units);
+    }
+
+    /**
+     * Get units
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getUnits()
+    {
+        return $this->units;
     }
 }

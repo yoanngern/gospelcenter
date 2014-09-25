@@ -126,8 +126,7 @@ class Location
     /**
      * hosts
      * 
-     * @ORM\OneToMany(targetEntity="gospelcenter\EventBundle\Entity\Event", mappedBy="location")
-     * @Assert\Valid()
+     * @ORM\OneToMany(targetEntity="gospelcenter\EventBundle\Entity\Event", mappedBy="location", cascade={"persist", "remove"})
      */
     private $events;
     
@@ -135,7 +134,7 @@ class Location
     /**
      * is added by
      * 
-     * @ORM\ManyToOne(targetEntity="gospelcenter\CenterBundle\Entity\Center", inversedBy="location")
+     * @ORM\ManyToOne(targetEntity="gospelcenter\CenterBundle\Entity\Center", inversedBy="locationCreated")
      * @Assert\Valid()
      */
      private $centerCreator;
@@ -153,8 +152,7 @@ class Location
     /**
      * situates
      * 
-     * @ORM\OneToMany(targetEntity="gospelcenter\CelebrationBundle\Entity\Celebration", mappedBy="location")
-     * @Assert\Valid()
+     * @ORM\OneToMany(targetEntity="gospelcenter\CelebrationBundle\Entity\Celebration", mappedBy="location", cascade={"persist", "remove"})
      */
     private $celebrations;
     
@@ -217,10 +215,44 @@ class Location
         return $this;
     }
     
+    /**
+     * Add events
+     *
+     * @param \gospelcenter\EventBundle\Entity\Event $event
+     * @return Location
+     */
+    public function addEvent(\gospelcenter\EventBundle\Entity\Event $event)
+    {
+        $this->events[] = $event;
+    
+        return $this;
+    }
+
+    /**
+     * Remove events
+     *
+     * @param \gospelcenter\EventBundle\Entity\Event $event
+     */
+    public function removeEvent(\gospelcenter\EventBundle\Entity\Event $event)
+    {
+        $this->events->removeElement($event);
+    }
+
+    /**
+     * Get events
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getEvents()
+    {
+        return $this->events;
+    }
+
+
+
     /*************************************/
     /**** Getter setter auto generate ****/
     /*************************************/
-
 
 
     /**
@@ -305,7 +337,7 @@ class Location
     /**
      * Set postalCode
      *
-     * @param integer $postalCode
+     * @param string $postalCode
      * @return Location
      */
     public function setPostalCode($postalCode)
@@ -318,7 +350,7 @@ class Location
     /**
      * Get postalCode
      *
-     * @return integer 
+     * @return string 
      */
     public function getPostalCode()
     {
@@ -542,38 +574,6 @@ class Location
         return $this->bases;
     }
 
-    /**
-     * Add events
-     *
-     * @param \gospelcenter\EventBundle\Entity\Event $events
-     * @return Location
-     */
-    public function addEvent(\gospelcenter\EventBundle\Entity\Event $events)
-    {
-        $this->events[] = $events;
-    
-        return $this;
-    }
-
-    /**
-     * Remove events
-     *
-     * @param \gospelcenter\EventBundle\Entity\Event $events
-     */
-    public function removeEvent(\gospelcenter\EventBundle\Entity\Event $events)
-    {
-        $this->events->removeElement($events);
-    }
-
-    /**
-     * Get events
-     *
-     * @return \Doctrine\Common\Collections\Collection 
-     */
-    public function getEvents()
-    {
-        return $this->events;
-    }
 
     /**
      * Set centerCreator

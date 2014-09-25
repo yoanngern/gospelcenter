@@ -115,6 +115,13 @@ class Person
      * @ORM\Column(name="status", type="integer")
      */
     private $status;
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="isGlobal", type="boolean", nullable=true)
+     */
+    private $isGlobal;
     
     /**
      * @var \DateTime
@@ -652,6 +659,29 @@ class Person
     public function getStatus()
     {
         return $this->status;
+    }
+
+    /**
+     * Set isGlobal
+     *
+     * @param boolean $isGlobal
+     * @return Person
+     */
+    public function setIsGlobal($isGlobal)
+    {
+        $this->isGlobal = $isGlobal;
+    
+        return $this;
+    }
+
+    /**
+     * Get isGlobal
+     *
+     * @return boolean 
+     */
+    public function getIsGlobal()
+    {
+        return $this->isGlobal;
     }
 
     /**

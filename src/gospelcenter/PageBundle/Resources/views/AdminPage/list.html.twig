@@ -1,36 +1,51 @@
 {% extends "gospelcenterPageBundle::admin.html.twig" %}
 
-{% block stylesheets %}
-	{{ parent() }}
-	<link rel="stylesheet" href="{{ asset('css/admin.css') }}" type="text/css" />
-{% endblock %}
-
 {% block title %}
     {{ parent() }} - Pages
 {% endblock %}
 
-{% block gospelcenterAdminPages_body %}
-    
+{% block adminTitle %}<h1>Pages</h1>{% endblock %}
+
+{% block adminTools %}
+    <a href="{{ path('gospelcenterAdmin_pages_add', {'center': center.ref}) }}" class="add">Add a page</a>
+{% endblock %}
+
+{% block adminListBody %}
     <table class="main">
         <thead>
-            <tr>
-                <th data-sort="string">Title</th>
-                <th data-sort="string">Menu</th>
-                <th data-sort="string">Language</th>
-            </tr>
+        <tr>
+            <th data-sort="string">Title<span>Title<div class="arrow"></div></span></th>
+            <th data-sort="string">Menu<span>Menu<div class="arrow"></div></span></th>
+            <th data-sort="string">Language<span>Language<div class="arrow"></div></span></th>
+        </tr>
         </thead>
         <tbody>
-            {% for page in pages %}
-                <tr>
-                    <td><a href="{{ path('gospelcenterAdmin_pages_edit', {'page': page.id, 'center': center.ref}) }}">{{ page.title }}</a></td>
-                    <td><a href="{{ path('gospelcenterAdmin_pages_edit', {'page': page.id, 'center': center.ref}) }}">{{ page.ref }}</a></td>
-                    <td><a href="{{ path('gospelcenterAdmin_pages_edit', {'page': page.id, 'center': center.ref}) }}">{{ page.language.ref }}</a></td>
-                </tr>
-            {% else %}
-                <tr><td colspan="3">There are no pages.</td></tr>
-            {% endfor %}
+        {% for page in pages %}
+
+            {% set link = path('gospelcenterAdmin_pages_edit', {'page': page.id, 'center': center.ref}) %}
+
+            <tr>
+                <td class="em">
+                    <a href="{{ link }}">
+                        <span>{{ page.title }}</span>
+                    </a>
+                </td>
+                <td>
+                    <a href="{{ link }}">
+                        <span>{{ page.ref }}</span>
+                    </a>
+                </td>
+                <td>
+                    <a href="{{ link }}">
+                        <span>{{ page.language.ref }}</span>
+                    </a>
+                </td>
+            </tr>
+        {% else %}
+            <tr class="empty">
+                <td colspan="3">There are no pages.</td>
+            </tr>
+        {% endfor %}
         </tbody>
     </table>
-    
-    
 {% endblock %}

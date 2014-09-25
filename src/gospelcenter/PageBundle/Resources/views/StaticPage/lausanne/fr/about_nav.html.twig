@@ -1,8 +1,0 @@
-<nav class="sub_nav">
-    <ul>
-    	<li><a href="{{ path('gospelcenterAbout', {'center': center.ref}) }}" {% if template == 'about' %}class="current" {% endif %}>A propos</a></li>
-    	<li><a href="{{ path('gospelcenterLeadership', {'center': center.ref}) }}" {% if template == 'leadership' %}class="current" {% endif %}>Direction</a></li>
-    	<li><a href="{{ path('gospelcenterStaff', {'center': center.ref}) }}" {% if template == 'staff' %}class="current" {% endif %}>Staff</a></li>
-    	<li><a href="{{ path('gospelcenterMusic', {'center': center.ref}) }}" {% if template == 'music' %}class="current" {% endif %}>Musique</a></li>
-    </ul>
-</nav>

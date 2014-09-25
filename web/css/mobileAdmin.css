@@ -1,3 +1,23 @@
+@font-face {
+  font-family: 'Radikal-Light';
+  src: url("../fonts/2B5662_0_0.eot");
+  src: url("../fonts/2B5662_0_0.eot?#iefix") format("embedded-opentype"), url("../fonts/2B5662_0_0.woff") format("woff"), url("../fonts/2B5662_0_0.ttf") format("truetype"); }
+@font-face {
+  font-family: 'Radikal-Black';
+  src: url("../fonts/2B5662_1_0.eot");
+  src: url("../fonts/2B5662_1_0.eot?#iefix") format("embedded-opentype"), url("../fonts/2B5662_1_0.woff") format("woff"), url("../fonts/2B5662_1_0.ttf") format("truetype"); }
+@font-face {
+  font-family: 'Radikal-Bold';
+  src: url("../fonts/2B5662_2_0.eot");
+  src: url("../fonts/2B5662_2_0.eot?#iefix") format("embedded-opentype"), url("../fonts/2B5662_2_0.woff") format("woff"), url("../fonts/2B5662_2_0.ttf") format("truetype"); }
+@font-face {
+  font-family: 'Radikal';
+  src: url("../fonts/2B5662_3_0.eot");
+  src: url("../fonts/2B5662_3_0.eot?#iefix") format("embedded-opentype"), url("../fonts/2B5662_3_0.woff") format("woff"), url("../fonts/2B5662_3_0.ttf") format("truetype"); }
+@font-face {
+  font-family: 'Radikal-UltraThin';
+  src: url("../fonts/2B5662_4_0.eot");
+  src: url("../fonts/2B5662_4_0.eot?#iefix") format("embedded-opentype"), url("../fonts/2B5662_4_0.woff") format("woff"), url("../fonts/2B5662_4_0.ttf") format("truetype"); }
 html body > header {
   background: #313131;
   color: #878787;

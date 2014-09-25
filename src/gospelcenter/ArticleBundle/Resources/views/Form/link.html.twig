@@ -1,0 +1,14 @@
+{% extends 'form_div_layout.html.twig' %}
+
+{% block link_widget %}
+    {% spaceless %}
+        {% if widget == 'single_text' %}1
+            {{ block('field_widget') }}
+        {% else %}
+            <div class="link" {{ block('widget_container_attributes') }}>
+                {{ form_errors(form.link.name) }}
+                {{ form_widget(form.link.name) }}
+            </div>
+        {% endif %}
+    {% endspaceless %}
+{% endblock link_widget %}

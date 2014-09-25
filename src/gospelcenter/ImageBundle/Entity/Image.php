@@ -164,6 +164,14 @@ class Image
      * @Assert\Valid()
      */
     private $slides;
+
+    /**
+     * displays
+     *
+     * @ORM\OneToMany(targetEntity="gospelcenter\ArticleBundle\Entity\Ad", mappedBy="image")
+     * @Assert\Valid()
+     */
+    private $ads;
     
     /**
      * Constructor
@@ -178,6 +186,7 @@ class Image
         $this->persons = new \Doctrine\Common\Collections\ArrayCollection();
         $this->celebrations = new \Doctrine\Common\Collections\ArrayCollection();
         $this->articles = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->ads = new \Doctrine\Common\Collections\ArrayCollection();
     }
     
     
@@ -298,7 +307,7 @@ class Image
     /*************************************/
     /**** Getter setter auto generate ****/
     /*************************************/
-    
+
 
     /**
      * Get id
@@ -736,5 +745,38 @@ class Image
     public function getSlides()
     {
         return $this->slides;
+    }
+
+    /**
+     * Add ads
+     *
+     * @param \gospelcenter\ArticleBundle\Entity\Ad $ads
+     * @return Image
+     */
+    public function addAd(\gospelcenter\ArticleBundle\Entity\Ad $ads)
+    {
+        $this->ads[] = $ads;
+    
+        return $this;
+    }
+
+    /**
+     * Remove ads
+     *
+     * @param \gospelcenter\ArticleBundle\Entity\Ad $ads
+     */
+    public function removeAd(\gospelcenter\ArticleBundle\Entity\Ad $ads)
+    {
+        $this->ads->removeElement($ads);
+    }
+
+    /**
+     * Get ads
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getAds()
+    {
+        return $this->ads;
     }
 }

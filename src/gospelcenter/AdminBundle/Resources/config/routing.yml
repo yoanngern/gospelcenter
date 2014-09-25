@@ -282,3 +282,31 @@ gospelcenterAdmin_locations_delete:
     defaults:   { _controller: gospelcenterLocationBundle:Admin:delete }
     requirements:
         location: \d+
+
+##########################
+####### Options ########
+##########################
+
+# Locations
+gospelcenterAdmin_ads:
+    path:       /ad
+    defaults:   { _controller: gospelcenterArticleBundle:AdminAd:list }
+
+# Add a location
+gospelcenterAdmin_ads_add:
+    path:       /ad/add
+    defaults:   { _controller: gospelcenterArticleBundle:AdminAd:add }
+
+# Edit a location
+gospelcenterAdmin_ads_edit:
+    path:       /ad/edit/{ad}
+    defaults:   { _controller: gospelcenterArticleBundle:AdminAd:edit }
+    requirements:
+        location: \d+
+
+# Delete a location
+gospelcenterAdmin_ads_delete:
+    path:       /ad/delete/{ad}
+    defaults:   { _controller: gospelcenterArticleBundle:AdminAd:delete }
+    requirements:
+        location: \d+

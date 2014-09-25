@@ -342,6 +342,10 @@
             	width: 311px;
             	margin-top: -1px;
             	margin-bottom: 10px;
+            	max-height: 100px;
+            	overflow: scroll;
+            	position: absolute;
+            	border-bottom: 1px solid $grayDark;
             	
             	li {
                 	list-style: none;
@@ -350,11 +354,17 @@
                 	padding: 5px;
                 	cursor: pointer;
                 	margin-top: -1px;
+                	
+                	&:nth-child(even) {
+                        background-color: #ededed;
+                    }
+                    
+                    &:last-of-type {
+                        border-bottom: none;
+                    }
             	}
             	
-            	li:nth-child(even) {
-                    background-color: #ededed;
-                }
+            	
         	}
         	
         	article {
@@ -456,6 +466,23 @@
             fieldset.details {
                 float: right;
                 width: 32%;
+                
+                div {
+                    display: block;
+                    
+                    input {
+                        display: inline-block;
+                        
+                        &[type=datetime] {
+                            width: 55%;
+                        }
+                        
+                        &[type=time] {
+                            width: 30%;
+                            margin-left: 3%;
+                        }
+                    }
+                }
             }
     	}
     	
@@ -658,29 +685,35 @@
             	    }
         	    }
         	    
-        	    fieldset.details {
+        	    fieldset.languages,
+        	    fieldset.unit {
+            	    margin-left: 21%;
+            	    margin-top: 20px;
             	    
-            	    fieldset.languages {
-                	    margin-left: 21%;
-                	    margin-top: 20px;
-                	    
-                	    label {
-                    	    display: block;
-                    	    font-family: $font-bold;
-                    	    margin-bottom: 5px;
-                	    }
-                	    
-                	    ul {
-                    	    width: 90%;
-                	    }
+            	    label {
+                	    display: block;
+                	    font-family: $font-bold;
+                	    margin-bottom: 5px;
+                	    text-align: left;
+                	    width: 90%;
             	    }
             	    
-            	    fieldset.checkbox {
-                	    margin-left: 21%;
-                	    margin-top: 20px;
-                	    margin-bottom: 20px;
-                    }
+            	    ul {
+                	    width: 90%;
+            	    }
         	    }
+        	    
+        	    fieldset.languages {
+            	    ul {
+                	    width: 30%;
+            	    }
+        	    }
+        	    
+        	    fieldset.checkbox {
+            	    margin-left: 21%;
+            	    margin-top: 20px;
+            	    margin-bottom: 20px;
+                }
         	    
         	    fieldset.location {
             	    
@@ -720,6 +753,16 @@
                 	    width: 94%;
                 	    margin: 5px 1%;
                 	    padding: 3px 2%;
+            	    }
+        	    }
+        	    
+        	    fieldset.unit {
+            	    margin-top: 20px;
+            	    margin-left: 0;
+            	    
+            	    ul {
+                	    width: 100%;
+                	    max-height: 150px;
             	    }
         	    }
         	    

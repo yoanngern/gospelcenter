@@ -49,9 +49,9 @@ $(document).ready( function() {
             return false;
     });
      
-    $("form").on('dragover', '#addImage', function(e){
-        e.preventDefault();
-        e.stopPropagation();
+    $("form").on('dragover', '#addImage', function(event){
+        event.preventDefault();
+        event.stopPropagation();
         
         $("#addImage").show();
         $("form img").remove();
@@ -60,27 +60,27 @@ $(document).ready( function() {
         return false;
     });
      
-    $("form").on('dragleave', '#addImage', function(e) {
-        e.preventDefault();
-        e.stopPropagation();
+    $("form").on('dragleave', '#addImage', function(event) {
+        event.preventDefault();
+        event.stopPropagation();
         $(this).removeClass("hover");
         return false;
     });
     
     
-    $("form").on('drop', '#addImage', function(e) {
+    $("form").on('drop', '#addImage', function(event) {
         
         var id = $(this).data("input");
         
-        e.stopPropagation();
-        e.preventDefault();
+        event.stopPropagation();
+        event.preventDefault();
         
-        var dt = e.originalEvent.dataTransfer;
+        var dt = event.originalEvent.dataTransfer;
         var files = dt.files;
         
         //handleFiles(files);
         
-        $("input[id="+ id +"]").prop("files", e.originalEvent.dataTransfer.files);
+        $("input[id="+ id +"]").prop("files", event.originalEvent.dataTransfer.files);
     });
 	
 });

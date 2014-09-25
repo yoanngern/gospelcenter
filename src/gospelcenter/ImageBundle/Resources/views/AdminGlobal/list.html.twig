@@ -1,8 +1,8 @@
 {% extends "::adminGlobal.html.twig" %}
 
 {% block stylesheets %}
-	{{ parent() }}
-	<link rel="stylesheet" href="{{ asset('css/admin.css') }}" type="text/css" />
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('css/admin.css') }}" type="text/css"/>
 {% endblock %}
 
 {% block title %}
@@ -11,31 +11,48 @@
 
 {% block adminBody %}
     <h1>Images</h1>
-    
+
     <section class="tools">
         <a href="{{ path('gospelcenterAdminGlobal_images_add') }}">Add an image</a>
     </section>
-    
+
     <table class="main">
         <thead>
-            <tr>
-                <th data-sort="string">Title</th>
-                <th data-sort="int" data-sort-default="desc">Created date</th>
-                <th data-sort="string">Type</th>
-            </tr>
+        <tr>
+            <th data-sort="string">Title</th>
+            <th data-sort="int" data-sort-default="desc">Created date</th>
+            <th data-sort="string">Type</th>
+        </tr>
         </thead>
         <tbody>
-            {% for image in images %}
-                <tr>
-                    <td><a href="{{ path('gospelcenterAdminGlobal_images_edit', {'image': image.id,}) }}">{{ image.title }}</a></td>
-                    <td data-sort-value="{{ image.createdDate|date('U') }}"><a href="{{ path('gospelcenterAdminGlobal_images_edit', {'image': image.id,}) }}">{{ image.createdDate|date('d F Y') }}</a></td>
-                    <td><a href="{{ path('gospelcenterAdminGlobal_images_edit', {'image': image.id,}) }}">{{ image.type }}</a></td>
-                </tr>
-            {% else %}
-                <tr><td colspan="3">There are no image.</td></tr>
-            {% endfor %}
+        {% for image in images %}
+
+            {% set link = path('gospelcenterAdminGlobal_images_edit', {'image': image.id}) %}
+
+            <tr>
+                <td>
+                    <a href="{{ link }}">
+                        <span>{{ image.title }}</span>
+                    </a>
+                </td>
+                <td data-sort-value="{{ image.createdDate|date('U') }}">
+                    <a href="{{ link }}">
+                        <span>{{ image.createdDate|date('d F Y') }}</span>
+                    </a>
+                </td>
+                <td>
+                    <a href="{{ link }}">
+                        <span>{{ image.type }}</span>
+                    </a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="3">There are no image.</td>
+            </tr>
+        {% endfor %}
         </tbody>
     </table>
-    
-    
+
+
 {% endblock %}

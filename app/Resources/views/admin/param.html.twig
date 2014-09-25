@@ -1,0 +1,34 @@
+<a id="get_param" href=""></a>
+<div id="param_nav" class="param_nav">
+    <div class="param_arrow">
+        <div class="arrow_up_border"></div>
+        <div class="arrow_up"></div>
+    </div>
+    <nav>
+        <ul>
+
+            {% if admin %}
+                {% if center %}
+                    {% include "::admin/paramAdminLocal.html.twig" %}
+                {% else %}
+                    {% include "::admin/paramAdminGlobal.html.twig" %}
+                {% endif %}
+
+            {% else %}
+                {% if center %}
+                    {% include "::admin/paramLocal.html.twig" %}
+                {% else %}
+                    {% include "::admin/paramGlobal.html.twig" %}
+                {% endif %}
+            {% endif %}
+
+
+            <li>
+                <a href="{{ path('fos_user_profile_edit') }}">{% if app.user.person %}{{ app.user.person.firstname }} {{ app.user.person.lastname }}{% else %}{{ app.user.username }}{% endif %}</a>
+            </li>
+            <li><a href="{{ path('fos_user_change_password') }}">Change my password</a></li>
+            <li><a href="{{ path('fos_user_security_logout') }}">Sign out</a></li>
+
+        </ul>
+    </nav>
+</div>

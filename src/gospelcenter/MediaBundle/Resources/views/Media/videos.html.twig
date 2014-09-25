@@ -21,9 +21,13 @@
 {% endblock %}
 
 {% block tv_body %}
+    {% spaceless %}
     <section class="wall">
         {% for celebration in celebrations %}<a href="{{ path('gospelcenterMedia_video', {'video': celebration.video.id}) }}">
-                <img src="{{ asset(celebration.image.webPath) }}" alt="{{ celebration.image.alt }}" />
+                <div class="video_image">
+                    <span class="picto_play"></span>
+                    <img src="{{ asset(celebration.image.webPath) }}" alt="{{ celebration.image.alt }}" />
+                </div>
                 <section class="details">
                     {% set speakers = '' %}
             
@@ -44,5 +48,5 @@
                 </section>
             </a>{% endfor %}
     </section>
-    
+    {% endspaceless %}
 {% endblock %}

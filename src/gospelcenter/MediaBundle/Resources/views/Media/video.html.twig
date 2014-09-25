@@ -28,7 +28,7 @@
     <section class="video">
     
         <iframe src="//player.vimeo.com/video/{{ video.ownerId }}?title=0&amp;byline=0&amp;portrait=0&amp;color=d91a15&amp;autoplay=1" width="960" height="540" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
-        <time>{{ video.celebration.startingDate|date('d F Y') }}</time>
+        <time>{{ video.celebration.date.start|date('d F Y') }}</time>
         
         {% for speaker in video.celebration.speakers %}
             <a href="{{ path('gospelcenterMedia_speaker', {'speaker': speaker.person.id}) }}">

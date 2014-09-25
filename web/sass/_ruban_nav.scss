@@ -1,0 +1,96 @@
+#ruban_nav {
+    z-index: 0;
+    background-color: $grayDark;
+    color: $white;
+    width: 220px;
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    height: 100%;
+    display: none;
+
+    @media only screen and (min-width: $L) {
+        & {
+            width: 230px;
+        }
+    }
+
+    @media only screen and (min-width: $XL) {
+        & {
+            width: 240px;
+        }
+    }
+
+    @media only screen and (min-width: $XXL) {
+        & {
+            width: 250px;
+        }
+    }
+
+    & > h1 {
+        text-align: center;
+        font-weight: 100;
+        font-size: 1.2em;
+        border-bottom: 1px solid $grayLight;
+        margin: 0px;
+
+        a {
+            padding-top: 10px;
+            padding-bottom: 10px;
+            display: block;
+            color: $white;
+            text-decoration: none;
+        }
+    }
+
+    nav {
+
+        border-bottom: 1px solid $grayLight;
+
+        h1 {
+            font-weight: 100;
+            font-size: 0.9em;
+            margin: 10px 0px 5px 10px;
+        }
+
+        ul {
+
+            padding-left: 20px;
+
+            li {
+                list-style-type: none;
+                font-size: 0.8em;
+                padding-bottom: 5px;
+                margin: 7px 0px;
+
+                a {
+                    color: $grayLight;
+                    text-decoration: none;
+                }
+            }
+        }
+    }
+
+    nav.social {
+
+        h1 {
+            display: none;
+        }
+
+        ul {
+
+            padding-left: 0px;
+
+            li {
+                font-weight: 100;
+                font-size: 0.9em;
+                margin: 10px 0px 5px 10px;
+
+                a {
+                    color: $white;
+                }
+            }
+        }
+    }
+
+}

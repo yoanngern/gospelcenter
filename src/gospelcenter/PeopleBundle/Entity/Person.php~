@@ -1,0 +1,377 @@
+<?php
+
+namespace gospelcenter\PeopleBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
+
+use gospelcenter\CelebrationBundle\Entity\Speaker;
+
+use FOS\UserBundle\Entity\User;
+
+/**
+ * Person
+ *
+ * @ORM\Entity
+ * @ORM\Table(name="person")
+ * @ORM\Entity(repositoryClass="gospelcenter\PeopleBundle\Entity\PersonRepository")
+ * @ORM\HasLifecycleCallbacks
+ */
+class Person
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="firstname", type="string", length=255)
+     * @Assert\NotBlank(message="Please enter a firstname.")
+     */
+    private $firstname;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="lastname", type="string", length=255)
+     * @Assert\NotBlank(message="Please enter a lastname.")
+     */
+    private $lastname;
+    
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="gender", type="string", length=255)
+     */
+    private $gender;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="dateOfBirth", type="datetime", nullable=true)
+     * @Assert\DateTime()
+     */
+    private $dateOfBirth;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="email", type="string", length=255, nullable=true)
+     * @Assert\Email()
+     */
+    private $email;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="privatePhone", type="string", length=255, nullable=true)
+     */
+    private $privatePhone;
+    
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="mobilePhone", type="string", length=255, nullable=true)
+     */
+    private $mobilePhone;
+    
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="notes", type="text", nullable=true)
+     */
+    private $notes;
+    
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="abroad", type="boolean", nullable=true)
+     */
+    private $abroad;
+    
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="hasChildren", type="boolean", nullable=true)
+     */
+    private $hasChildren;
+    
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="function", type="string", length=255, nullable=true)
+     */
+    private $function;
+    
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="status", type="integer")
+     */
+    private $status;
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="isGlobal", type="boolean", nullable=true)
+     */
+    private $isGlobal;
+    
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="createdDate", type="datetime")
+     * @Assert\DateTime()
+     */
+    private $createdDate;
+    
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="modifiedDate", type="datetime")
+     * @Assert\DateTime()
+     */
+    private $modifiedDate;
+    
+    
+    private $isSpeaker;
+    private $isMember;
+    private $isVisitor;
+    
+    
+    /**
+     * organizes
+     * 
+     * @ORM\ManyToOne(targetEntity="gospelcenter\CenterBundle\Entity\Base", inversedBy="organizers")
+     * @Assert\Valid()
+     */
+    private $baseOrganized;
+    
+    
+    /**
+     * participates
+     * 
+     * @ORM\ManyToOne(targetEntity="gospelcenter\CenterBundle\Entity\Base", inversedBy="participants")
+     * @Assert\Valid()
+     */
+    private $baseParticipated;
+    
+    
+    /**
+     * manages
+     * 
+     * @ORM\ManyToMany(targetEntity="gospelcenter\CenterBundle\Entity\Band", mappedBy="managers")
+     * @Assert\Valid()
+     */
+    private $bandsManaged;
+    
+    
+    /**
+     * is member of
+     * 
+     * @ORM\ManyToMany(targetEntity="gospelcenter\CenterBundle\Entity\Band", mappedBy="members")
+     * @Assert\Valid()
+     */
+    private $bandsPopulated;
+    
+    
+    /**
+     * lives in
+     * 
+     * @ORM\ManyToOne(targetEntity="gospelcenter\LocationBundle\Entity\Location", inversedBy="persons", cascade={"persist", "remove"})
+     * @Assert\Valid()
+     */
+    private $location;
+    
+    
+    /**
+     * plays
+     * 
+     * @ORM\ManyToMany(targetEntity="gospelcenter\PeopleBundle\Entity\Role", mappedBy="persons")
+     * @Assert\Valid()
+     */
+    private $roles;
+    
+    
+    /**
+     * is parent of a Speaker
+     * 
+     * @ORM\OneToOne(targetEntity="gospelcenter\CelebrationBundle\Entity\Speaker", mappedBy="person", cascade={"persist", "remove"})
+     * @Assert\Valid()
+     */
+    private $speaker;
+    
+    
+    /**
+     * is parent of a Member
+     * 
+     * @ORM\OneToOne(targetEntity="gospelcenter\CenterBundle\Entity\Member", mappedBy="person", cascade={"persist", "remove"})
+     * @Assert\Valid()
+     */
+    private $member;
+    
+    
+    /**
+     * is created by
+     * 
+     * @ORM\ManyToOne(targetEntity="gospelcenter\CenterBundle\Entity\Center", inversedBy="persons", cascade={"detach"})
+     * @Assert\Valid()
+     */
+    private $center;
+    
+    
+    /**
+     * is parent of a Visitor
+     * 
+     * @ORM\OneToOne(targetEntity="gospelcenter\CenterBundle\Entity\Visitor", mappedBy="person", cascade={"persist", "remove"})
+     * @Assert\Valid()
+     */
+    private $visitor;
+    
+    
+    /**
+     * is shown by
+     * 
+     * @ORM\ManyToOne(targetEntity="gospelcenter\ImageBundle\Entity\Image", inversedBy="persons", cascade={"persist", "remove"})
+     * @Assert\Valid()
+     */
+    private $image;
+    
+    
+    /**
+     * speaks
+     * 
+     * @ORM\ManyToMany(targetEntity="gospelcenter\LanguageBundle\Entity\Language", inversedBy="persons")
+     */
+    private $languages;
+    
+    
+    /**
+     * can be a
+     * 
+     * @ORM\OneToOne(targetEntity="gospelcenter\UserBundle\Entity\User", inversedBy="person", cascade={"persist", "remove"})
+     * @Assert\Valid()
+     */
+    private $user;
+    
+    
+    /**
+     * Constructor
+     */
+    public function __construct(\gospelcenter\CenterBundle\Entity\Center $center = null)
+    {
+        $this->createdDate = new \Datetime();
+        $this->modifiedDate = new \Datetime();
+        $this->status = 1;
+        $this->bandsManaged = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->bandsPopulated = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->roles = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->languages = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->center = $center;
+        
+    }
+    
+    
+    /**
+     * @ORM\PrePersist()
+     * @ORM\PreUpdate()
+     */
+    public function preSave()
+    {
+        $this->modifiedDate = new \Datetime();
+    }
+    
+    
+    /**
+     * Display a Person
+     * @return String 
+     */
+    public function __toString()
+    {   
+        $id = $this->id;
+        return (string)$id;
+    }
+    
+    public function setIsSpeaker($isSpeaker)
+    {
+        $this->isSpeaker = $isSpeaker;
+        
+    }
+    
+    public function getIsSpeaker()
+    {
+        return $this->isSpeaker;
+    }
+    
+    public function setIsMember($isMember)
+    {
+        $this->isMember = $isMember;
+        
+    }
+    
+    public function getIsMember()
+    {
+        return $this->isMember;
+    }
+    
+    public function setIsVisitor($isVisitor)
+    {
+        $this->isVisitor = $isVisitor;
+        
+    }
+    
+    public function getIsVisitor()
+    {
+        return $this->isVisitor;
+    }
+    
+    /**
+     * Set image
+     *
+     * @param \gospelcenter\ImageBundle\Entity\Image $image
+     * @return Person
+     */
+    public function setImage(\gospelcenter\ImageBundle\Entity\Image $image = null)
+    {
+        $this->image = $image;
+        
+        if($image != null) {
+            $title = $this->firstname ." ". $this->lastname;
+            $this->image->setTitle($title);
+            $this->image->setType('Person');
+        }
+    
+        return $this;
+    }
+    
+    /**
+     * Set location
+     *
+     * @param \gospelcenter\LocationBundle\Entity\Location $location
+     * @return Person
+     */
+    public function setLocation(\gospelcenter\LocationBundle\Entity\Location $location = null)
+    {
+        $this->location = $location;
+    
+        if($location != null) {
+            $name = $this->firstname ." ". $this->lastname;
+            $this->location->setName($name);
+        }
+        
+        return $this;
+    }
+    
+    /*************************************/
+    /**** Getter setter auto generate ****/
+    /*************************************/
+    
+    
+
+}

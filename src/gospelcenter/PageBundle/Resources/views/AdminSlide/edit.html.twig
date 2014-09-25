@@ -1,35 +1,45 @@
-{% extends "::admin.html.twig" %}
+{% extends "::adminNew.html.twig" %}
 
 {% block javascripts %}
     {{ parent() }}
-    <script type="text/javascript" src="{{ asset('js/form.min.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('js/editImage.min.js') }}"></script>
+    
+    {% if slide.image %}
+        <script type="text/javascript" src="{{ asset('js/editImage.min.js') }}"></script>
+    {% else %}
+        <script type="text/javascript" src="{{ asset('js/addImage.min.js') }}"></script>
+    {% endif %}
+    
 {% endblock %}
 
-{% block stylesheets %}
-	{{ parent() }}
-	<link rel="stylesheet" href="{{ asset('css/admin.css') }}" type="text/css" />
-	<link rel="stylesheet" href="{{ asset('css/form.css') }}" type="text/css" />
-{% endblock %}
+{% block classPage %}{{ parent() }} single{% endblock %}
 
 {% block title %}
     {{ parent() }} - Edit a slide
 {% endblock %}
 
+{% block adminTitle %}<h1>Edit a slide</h1>{% endblock %}
+
+{% block adminBack %}
+    <a class="back" href="{{ path('gospelcenterAdmin_slides', {'center': center.ref}) }}">Slides</a>
+{% endblock %}
+
+{% block adminTools %}
+    <a href="{{ path('gospelcenterAdmin_slides_delete', {'center': center.ref, 'slide': slide.id}) }}"
+       class="delete">Delete</a>
+    <a href="{{ path('gospelcenterAdmin_slides', {'center': center.ref}) }}">Cancel</a>
+{% endblock %}
+
 {% block adminBody %}
-    <h1>Edit a slide</h1>
     
     <form class="slide" action="{{ path('gospelcenterAdmin_slides_edit', {'center': center.ref, 'slide': slide.id}) }}" method="post" {{ form_enctype(form) }}>
-        <nav class="tools">
-    		<input type="submit" class="buttonRounded" />
-    		<a href="{{ path('gospelcenterAdmin_slides_delete', {'center': center.ref, 'slide': slide.id}) }}" class="buttonRounded">Delete</a>
-    	</nav>
     	
     	{{ form_widget(form.image.file) }}
-    	{{ form_errors(form.file) }}
-    	<div id="editImage" data-input="{{ form.image.file.vars.id }}">
-    	    <img src="{{ asset(slide.image.webPath) }}" alt="{{ slide.image.alt }}" />
-    	</div>
+        {{ form_errors(form.image.file) }}
+        {% if slide.image %}
+        	<div id="editImage" data-input="{{ form.image.file.vars.id }}">
+        	    <img src="{{ asset(slide.image.webPath) }}" alt="{{ slide.image.alt }}" />
+        	</div>
+        {% endif %}
     	
         {{ form_widget(form.title, {'attr': {'placeholder': 'Title'} }) }}
         {{ form_errors(form.title) }}
@@ -47,6 +57,8 @@
         {{ form_errors(form.page) }}
         
         {{ form_rest(form) }}
+
+        <input type="submit" class="buttonLink" value="Edit a slide"/>
     </form>
     
     

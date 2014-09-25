@@ -120,9 +120,11 @@ function locationSearch(value) {
     
     var html = '';
     
+    value = value.toLowerCase();
+    
     $(locations).each( function() {
         
-        var pos = $.inArray(value, this['text']);
+        var pos = $(this['text']).arrayFind(value);
         
         if(pos >= 0) {
             html += '<li id="'+ this['id'] +'">'+ this['name'] +'</li>';
@@ -264,6 +266,11 @@ function initSpeakerSearch(speakersList) {
 }
 
 
+
+
+
+
+
 /**
  *  show speakers found
  *  @param value of the input search
@@ -272,9 +279,11 @@ function speakerSearch(value) {
     
     var html = '';
     
+    value = value.toLowerCase();
+    
     $(speakers).each( function() {
         
-        var pos = $.inArray(value, this['text']);
+        var pos = $(this['text']).arrayFind(value);
         
         if(pos >= 0) {
             html += '<li id="'+ this['id'] +'">'+ this['name'] +'</li>';
@@ -415,3 +424,15 @@ function whitespaceTokenizer(string) {
     
     return text;
 }
+
+$.fn.arrayFind = function(obj, fromIndex) {
+	if(fromIndex == null) fromIndex = 0;
+	else if(fromIndex < 0) fromIndex = Math.max(0, this.length + fromIndex);
+	
+	arr = $.makeArray(this);
+	for(var i = fromIndex, j = arr.length; i < j; i++) {
+		if(arr[i].indexOf(obj) > -1) return i;
+	}
+	
+	return -1;
+};

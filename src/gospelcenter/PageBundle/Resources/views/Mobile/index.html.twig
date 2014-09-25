@@ -8,39 +8,12 @@
     {{ parent() }}
 {% endblock %}
 
+{% block pageClass %}{{ parent() }} sliderFull{% endblock %}
+
 {% block headerCenter %}{{ article.title }}{% endblock %}
 
 {% block body %}
 
-    <h2>{{ article.slogan }}</h2>
-        
-    <section class="slider" id="1">
-        {% for slide in article.slides %}
-            <article class="slide" id="{{ loop.index }}">
-                {% if slide.image %}
-                    <section class="img" style="background-image: url({{ asset(slide.image.webPath) }})"></section>
-                {% endif %}
-                
-                <section class="details">
-                    <div>
-                        <h1>{{ slide.title }}</h1>
-                        <p>{{ slide.text }}</p>
-                        {% if slide.link %}<p class="link"><a href="{{ slide.link }}" target="_blank">{% if slide.labelLink %}{{ slide.labelLink }}{% else %}{{ slide.link }}{% endif %}</a></p>{% endif %}
-                    </div>
-                </section>
-                
-            </article>
-        {% endfor %}
-        
-        {% if article.slides|length > 1 %}
-            <nav id="slides">
-                <ul>
-                    {% for slide in article.slides %}
-                        <li class="{% if loop.index == 1 %}current{% endif %}" data-slide="{{ loop.index }}" data-slider="1"></li>
-                    {% endfor %}
-                </ul>
-            </nav>
-        {% endif %}
-    </section>
-    
+    {% include "@gospelcenterPage/Mobile/slider.html.twig" %}
+
 {% endblock %}

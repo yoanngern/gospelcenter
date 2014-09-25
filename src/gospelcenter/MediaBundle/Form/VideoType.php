@@ -8,17 +8,23 @@ use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
 class VideoType extends AbstractType
 {
-        /**
+    /**
      * @param FormBuilderInterface $builder
      * @param array $options
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('ownerId',    'text')
-        ;
+
+            ->add('url', 'text', array(
+                'attr' => array(
+                    'placeholder' => 'Video url',
+                    'class' => 'video_url'
+                ),
+                'label' => false,
+            ));
     }
-    
+
     /**
      * @param OptionsResolverInterface $resolver
      */

@@ -26,7 +26,7 @@ var XXL = 1921;
 
 $(document).ready( function() {
 	
-	$('header').on('click', '#get_ruban', function() {
+	$('header').on('click', '#get_ruban', function(event) {
 		
 		event.preventDefault();
 		toggleRuban();
@@ -69,7 +69,7 @@ $(document).ready( function() {
         setWindow();
 	});
 	
-	$('header').on('click', '#get_param', function() {
+	$('header').on('click', '#get_param', function(event) {
 		event.preventDefault();	
 		event.stopPropagation();
 		toggleParam();
@@ -544,15 +544,21 @@ function openRuban() {
 	    rubanVisible = true;
         rubanProcess = true;
     	$('#ruban_nav').show();
-    	
+
     	var width = $('#ruban_nav').width();
-    	
+
     	$('#page').animate({
     		left: width,
     		marginRight: width
     	}, 200, function() {
         	rubanProcess = false;
     	});
+
+    	$('#page.about .sub_nav').animate({
+    		left: width,
+    		marginRight: width
+    	}, 200);
+
     	$('body').css('overflow', 'hidden');
     }
 }
@@ -568,6 +574,12 @@ function closeRuban() {
         	$('#ruban_nav').hide();
         	rubanProcess = false;
     	});
+
+    	$('#page.about .sub_nav').animate({
+    		left: "0px",
+    		marginRight: "0px"
+    	}, 200);
+
     	$('body').css('overflow', 'scroll');
     }
 }

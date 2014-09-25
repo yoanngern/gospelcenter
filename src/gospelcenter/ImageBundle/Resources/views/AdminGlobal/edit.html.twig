@@ -23,7 +23,7 @@
     
     <form class="image" action="{{ path('gospelcenterAdminGlobal_images_edit', {'image': image.id}) }}" method="post" {{ form_enctype(form) }}>
         <nav class="tools">
-    		<input type="submit" class="buttonRounded" />
+    		<input type="submit" class="buttonLink" />
     	</nav>
     	
     	{{ form_widget(form.file) }}

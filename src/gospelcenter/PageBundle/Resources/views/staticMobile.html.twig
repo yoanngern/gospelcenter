@@ -1,0 +1,32 @@
+{% extends "::mobileLocal.html.twig" %}
+
+{% set title = '' %}
+
+{% if customTitle is defined %}
+    {% set title = customTitle %}
+{% else %}
+    {% set title = 'Gospel Center ' ~ center.name %}
+{% endif %}
+
+{% block headerCenter %}{{ title }}{% endblock %}
+
+{% block pageClass %}{{ parent() }} static{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('css/static.css') }}" type="text/css" />
+{% endblock %}
+
+{% block body %}
+    
+    {% if folder is defined %}
+        
+        {% include "@gospelcenterPage/StaticPage/"~ center.ref ~"/"~ language ~"/"~ folder ~"Mobile.html.twig" %}
+        
+    {% else %}
+
+        {% include "@gospelcenterPage/StaticPage/"~ center.ref ~"/"~ language ~"/"~ template ~"Mobile.html.twig" %}
+        
+    {% endif %}
+    
+{% endblock %}

@@ -3,7 +3,13 @@
 {% block javascripts %}
     {{ parent() }}
     <script type="text/javascript" src="{{ asset('js/form.min.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('js/addImage.min.js') }}"></script>
+    
+    {% if slide.image %}
+        <script type="text/javascript" src="{{ asset('js/editImage.min.js') }}"></script>
+    {% else %}
+        <script type="text/javascript" src="{{ asset('js/addImage.min.js') }}"></script>
+    {% endif %}
+    
 {% endblock %}
 
 {% block stylesheets %}
@@ -21,14 +27,16 @@
     
     <form class="slide" action="{{ path('gospelcenterAdminGlobal_slides_edit', {'slide': slide.id}) }}" method="post" {{ form_enctype(form) }}>
         <nav class="tools">
-    		<input type="submit" class="buttonRounded" />
+    		<input type="submit" class="buttonLink" />
     	</nav>
     	
     	{{ form_widget(form.image.file) }}
-    	{{ form_errors(form.file) }}
-    	<div id="editImage" data-input="{{ form.image.file.vars.id }}">
-    	    <img src="{{ asset(slide.image.webPath) }}" alt="{{ slide.image.alt }}" />
-    	</div>
+        {{ form_errors(form.image.file) }}
+        {% if slide.image %}
+        	<div id="editImage" data-input="{{ form.image.file.vars.id }}">
+        	    <img src="{{ asset(slide.image.webPath) }}" alt="{{ slide.image.alt }}" />
+        	</div>
+        {% endif %}
     	
         {{ form_widget(form.title, {'attr': {'placeholder': 'Title'} }) }}
         {{ form_errors(form.title) }}

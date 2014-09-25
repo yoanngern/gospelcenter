@@ -12,8 +12,59 @@ use Doctrine\ORM\EntityRepository;
  */
 class CenterRepository extends EntityRepository
 {
-    
+
+    public function getHomeData(\gospelcenter\CenterBundle\Entity\Center $center)
+    {
+        $qb = $this->createQueryBuilder('c');
+
+        $qb->addSelect('a');
+        $qb->addSelect('i1');
+
+        $qb->addSelect('e');
+        $qb->addSelect('d');
+        $qb->addSelect('i2');
+
+        $qb->leftJoin('c.ads', 'a');
+        $qb->leftJoin('a.image', 'i1');
+
+        $qb->leftJoin('c.events', 'e');
+        $qb->leftJoin('e.dates', 'd');
+        $qb->leftJoin('e.picture', 'i2');
+
+        $qb->where('c.ref = :center')
+            ->setParameter('center', $center->getRef());
+
+        return $qb->getQuery()->getSingleResult();
+
+    }
+
     public function findAllLocationOfCenter(\gospelcenter\CenterBundle\Entity\Center $center)
+    {
+        $qb = $this->createQueryBuilder('c');
+        
+        $qb->join('c.events', 'e')
+            ->addSelect('e');
+        
+        $qb->join('c.celebrations', 'cel')
+            ->addSelect('cel');
+            
+        $qb->where('c.ref = :center')
+            ->setParameter('center', $center->getRef());
+            
+        $qb->andWhere('e.startingDate > :now')
+            ->setParameter('now', new \Datetime());
+            
+        $qb->andWhere('cel.startingDate > :now')
+            ->setParameter('now', new \Datetime());
+            
+        $qb->addOrderBy('e.startingDate', 'ASC');
+        $qb->addOrderBy('cel.startingDate', 'ASC');
+            
+        return $qb->getQuery()->getSingleResult();
+        
+    }
+    
+    public function findNextDates(\gospelcenter\CenterBundle\Entity\Center $center)
     {
         $qb = $this->createQueryBuilder('c');
         
@@ -23,7 +74,7 @@ class CenterRepository extends EntityRepository
         $qb->where('c.ref = :center')
             ->setParameter('center', $center->getRef());
             
-        return $qb->getQuery()->getSingleResult();
+        return $qb->getQuery()->getResult();
         
     }
     

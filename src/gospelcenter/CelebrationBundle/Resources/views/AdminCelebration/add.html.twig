@@ -1,108 +1,147 @@
-{% extends "::admin.html.twig" %}
+{% extends "::adminNew.html.twig" %}
+
+{% block classPage %}{{ parent() }} single{% endblock %}
 
 {% block javascripts %}
     {{ parent() }}
-    <script type="text/javascript" src="{{ asset('js/addCelebration.min.js') }}"></script>
     <script type="text/javascript" src="{{ asset('js/addImage.min.js') }}"></script>
-{% endblock %}
 
-{% block stylesheets %}
-	{{ parent() }}
-	<link rel="stylesheet" href="{{ asset('css/admin.css') }}" type="text/css" />
-	<link rel="stylesheet" href="{{ asset('css/form.css') }}" type="text/css" />
+    <script type="text/javascript" src="{{ asset('js/addVideo.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('js/addCelebrationNew.min.js') }}"></script>
 {% endblock %}
 
 {% block title %}
     {{ parent() }} - Add a celebration
 {% endblock %}
 
+{% block adminTitle %}<h1>Add a celebration</h1>{% endblock %}
+
+{% block adminBack %}
+    <a class="back" href="{{ path('gospelcenterAdmin_celebrations', {'center': center.ref}) }}">Celebrations</a>
+{% endblock %}
+
 {% block adminBody %}
-    <h1>Add a celebration</h1>
-    
-    <form class="celebration" action="{{ path('gospelcenterAdmin_celebrations_add', {'center': center.ref}) }}" method="post" {{ form_enctype(form) }}>
-    
-        <nav class="tools">
-    		<input type="submit" class="buttonRounded" />
-    	</nav>
-    	
-    	{{ form_errors(form) }}
-    	<fieldset class="header">
-        	<h1>Celebration of {{ form_widget(form.date, {'attr': {'data-structure': 'day/month/year', 'class': 'resize'} }) }}</h1>
-        	{{ form_errors(form.date) }}
-        	
-            <time>from {{ form_widget(form.startingTime) }} to {{ form_widget(form.endingTime) }}</time>
-            {{ form_errors(form.startingTime) }}{{ form_errors(form.endingTime) }}
-    	</fieldset>
-    	
-        <fieldset class="page">
-            <legend>General</legend>
-            
-            <fieldset class="full">
-                <fieldset class="column">
-                    <h2>Speakers</h2>
-                    {{ form_widget(form.existingSpeakers) }}
-                    {{ form_errors(form.existingSpeakers) }}
-                </fieldset>
-                
-                <fieldset class="column image">
-                    <h2>Image</h2>
+    {% spaceless %}
+        <form class="celebration" action="{{ path('gospelcenterAdmin_celebrations_add', {'center': center.ref}) }}"
+              method="post" {{ form_enctype(form) }}>
+
+            <section class="tab">
+
+                <nav class="sub_nav">
+
+                    <ul>
+                        <li><a href="#general" class="current focus">General</a></li>
+                        <li><a href="#preaching">Preaching</a></li>
+                        <li><a href="#media">Media</a></li>
+                    </ul>
+                </nav>
+
+                <article class="tab active" id="general">
+
+                    <fieldset class="datetime date">
+                        <h2>Date of the celebration</h2>
+
+                        {{ form_widget(form.dateLocal) }}
+                        {{ form_errors(form.dateLocal) }}
+                    </fieldset>
+
+                    <fieldset class="datetime times">
+                        <h2>Hours</h2>
+
+                        <div>
+                            {{ form_widget(form.startingTime) }}
+                            {{ form_errors(form.startingTime) }}
+
+                            -
+
+                            {{ form_widget(form.endingTime) }}
+                            {{ form_errors(form.endingTime) }}
+                        </div>
+                    </fieldset>
+
+                    <fieldset class="inline">
+
+                        {{ form_widget(form.status) }}
+                        {{ form_errors(form.status) }}
+
+                        {{ form_widget(form.bestOf) }}
+                        {{ form_errors(form.bestOf) }}
+
+                        {{ form_widget(form.kidsProgram) }}
+                        {{ form_errors(form.kidsProgram) }}
+
+                    </fieldset>
+
                     {{ form_widget(form.image.file) }}
                     {{ form_errors(form.image.file) }}
-                </fieldset>
-            </fieldset>
-            
-            <fieldset class="full">
-                <fieldset class="column">
-                    <h2>Status</h2>
-                    {{ form_widget(form.status, {'attr': {'data-icon': 'status'} }) }}
-                    {{ form_errors(form.status) }}
-                    
-                    {{ form_widget(form.bestOf, {'attr': {'data-icon': 'best'} }) }}
-                    {{ form_errors(form.bestOf) }}
-                    
-                    {{ form_widget(form.kidsProgram, {'attr': {'data-icon': 'kids'} }) }}
-                    {{ form_errors(form.kidsProgram) }}
-                </fieldset>
-                
-                <fieldset class="column">
-                    <h2>Location</h2>
+
                     {{ form_widget(form.location) }}
                     {{ form_errors(form.location) }}
-                </fieldset>
-            </fieldset>
-            
-            
-            <fieldset class="full">
-                <h2>Preaching</h2>
-                
-                {{ form_widget(form.title, {'attr': {'placeholder': 'Title'} }) }}
-                {{ form_errors(form.title) }}
-                
-                {{ form_widget(form.description, {'attr': {'placeholder': 'Description'} }, {'attr': {'class': 'elastic'} }) }}
-                {{ form_errors(form.description) }}
-            </fieldset>
-            
-            
-        </fieldset>
-        
-        <fieldset class="page">
-            <legend>Staff</legend>
-        </fieldset>
-        
-        <fieldset class="page">
-            <legend>Media</legend>
-            {{ form_widget(form.video) }}
-            {{ form_errors(form.video) }}
-            
-            {{ form_widget(form.audio) }}
-            {{ form_errors(form.audio) }}
-            
-            {{ form_widget(form.tags) }}
-            {{ form_errors(form.tags) }}
-        </fieldset>
-        
-        {{ form_rest(form) }}
-    </form>
-    
-    
+
+                    <section class="selectList" id="speakerSearch" data-title="Select speakers" data-center="{{ center.ref }}"></section>
+
+                    {{ form_widget(form.existingSpeakers) }}
+                    {{ form_errors(form.existingSpeakers) }}
+
+                </article>
+
+                <article class="tab" id="preaching">
+                    {{ form_widget(form.title) }}
+                    {{ form_errors(form.title) }}
+
+                    {{ form_widget(form.description) }}
+                    {{ form_errors(form.description) }}
+                </article>
+
+                <article class="tab" id="media">
+                    <div id="videoContainer"></div>
+                    {{ form_widget(form.video) }}
+                    {{ form_errors(form.video) }}
+
+                    <section class="selectList" id="soundCloudSearch" data-title="Select an audio" data-center="{{ center.ref }}"></section>
+
+                    {{ form_widget(form.audio) }}
+                    {{ form_errors(form.audio) }}
+
+                    {#
+                    {{ form_widget(form.tags) }}
+                    {{ form_errors(form.tags) }}
+                    #}
+
+                </article>
+            </section>
+
+            {{ form_rest(form) }}
+
+            <input type="submit" class="buttonLink" value="Add a celebration"/>
+
+        </form>
+    {% endspaceless %}
+
+{% endblock %}
+
+{% block jsTemplating %}
+    {{ parent() }}
+    <script id="videoIframe" type="text/x-handlebars-template">
+        {% raw %}
+        {{#if youtube }}
+        <iframe id="ytplayer" type="text/html" width="550" height="309"
+                src="http://www.youtube.com/embed/{{ id }}?autoplay=0&autohide=1&color=red&controls=1&iv_load_policy=3&modestbranding=1&theme=light&showinfo=0"
+                frameborder="0" allowfullscreen></iframe>
+        {{/if}}
+
+        {{#if vimeo }}
+        <iframe src="//player.vimeo.com/video/{{ id }}?title=0&amp;byline=0&amp;portrait=0&amp;color=89ceb7"
+                width="550" height="309" frameborder="0" webkitallowfullscreen mozallowfullscreen
+                allowfullscreen></iframe>
+        {{/if}}
+
+        {{#if dailymotion }}
+        <iframe frameborder="0" width="550" height="309"
+                src="//www.dailymotion.com/embed/video/{{ id }}?logo=0&info=0&foreground=EBEBEB&highlight=89CEB7&background=878787"
+                allowfullscreen></iframe>
+        {{/if}}
+
+        {% endraw %}
+    </script>
 {% endblock %}

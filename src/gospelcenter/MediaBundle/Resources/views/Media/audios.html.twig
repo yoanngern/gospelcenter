@@ -23,7 +23,12 @@
 {% block tv_body %}
     <section class="wall">
         {% for celebration in celebrations %}<a href="{{ path('gospelcenterMedia_audio', {'audio': celebration.audio.id}) }}">
-                <img src="{{ asset(celebration.image.webPath) }}" alt="{{ celebration.image.alt }}" />
+                <div class="video_image">
+                    <span class="picto_play"></span>
+                    {% if celebration.image %}
+                    <img src="{{ asset(celebration.image.webPath) }}" alt="{{ celebration.image.alt }}" />
+                        {% endif %}
+                </div>
                 <section class="details">
                     {% set speakers = '' %}
             
@@ -40,7 +45,7 @@
                     {% endfor %}
                     
                     <h1>{{ speakers }}</h1>
-                    <span data-time="{{ celebration.startingDate|date('Y-m-d H:i:s') }}">{{ celebration.startingDate|date('d F') }}</span>
+                    <span data-time="{{ celebration.date.start|date('Y-m-d H:i:s') }}">{{ celebration.date.start|date('d F') }}</span>
                 </section>
             </a>{% endfor %}
     </section>

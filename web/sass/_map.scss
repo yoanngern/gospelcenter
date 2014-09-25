@@ -1,0 +1,89 @@
+section.map_full {
+    display: block;
+    position: relative;
+
+    @include bannerResp(345px);
+
+    iframe {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        z-index: 7;
+        background-color: $grayLightGC;
+    }
+
+    article {
+        z-index: 10;
+        position: absolute;
+        right: 0;
+        width: 400px;
+        height: 100%;
+        background-color: rgba($whiteGC, 0.85);
+
+        h1 {
+            font-family: $font-light;
+            padding-top: 55px;
+            padding-left: 30px;
+            font-size: 1.9em;
+            line-height: 1.9em;
+        }
+
+        p {
+            padding-left: 30px;
+            font-size: 1.2em;
+            font-family: $font-light;
+            line-height: 1.2em;
+            margin-bottom: 15px;
+
+            a {
+                padding-left: 0;
+            }
+        }
+
+        a {
+            padding-left: 30px;
+            font-size: 1.2em;
+            font-family: $font-light;
+            line-height: 1.2em;
+            margin-bottom: 15px;
+
+            &.buttonLink {
+                padding: 3px;
+                font-family: $font-bold;
+                margin-top: 20px;
+                font-size: 1em;
+                line-height: 1em;
+            }
+        }
+    }
+
+    @media only screen and (max-width: 960px) {
+        article {
+            width: 300px;
+
+            h1 {
+                font-size: 1.5em;
+            }
+
+            p {
+                font-size: 1.05em;
+            }
+
+            a {
+                font-size: 1.05em;
+            }
+        }
+    }
+
+    @media only screen and (max-width: $mobileH) {
+        article {
+            width: 100%;
+            display: none;
+
+            &.active {
+                display: block;
+            }
+        }
+    }
+
+}

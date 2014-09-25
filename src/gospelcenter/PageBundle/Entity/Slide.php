@@ -90,8 +90,7 @@ class Slide
     /**
      * is contained by
      * 
-     * @ORM\ManyToOne(targetEntity="gospelcenter\PageBundle\Entity\Page", inversedBy="slides")
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\ManyToOne(targetEntity="gospelcenter\PageBundle\Entity\Page", inversedBy="slides", cascade={"persist", "remove"})
      * @Assert\Valid()
      */
     private $page;
@@ -104,6 +103,7 @@ class Slide
     {
         $this->modifiedDate = new \Datetime();
         $this->createdDate = new \Datetime();
+        $this->sort = 999;
     }
     
     /**

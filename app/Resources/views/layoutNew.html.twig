@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="utf-8">
+    <title>{% block title %}Gospel Center{% endblock %}</title>
+    <meta name="viewport"
+          content="initial-scale=1, minimum-scale=1, user-scalable=no, maximum-scale=1, width=device-width, minimal-ui">
+    <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
+    <link rel="icon" type="image/png" href="images/favicon.png"/>
+
+    {% block stylesheets %}
+        <link rel="stylesheet" href="{{ asset('css/layoutNew.css') }}" type="text/css"/>
+    {% endblock %}
+
+
+    {% block javascripts %}
+        <script type="text/javascript" src="{{ asset('js/mainNew.min.js') }}"></script>
+    {% endblock %}
+
+    {% block jsTemplating %}
+
+    {% endblock %}
+
+
+</head>
+<body>
+<section id="ruban_nav">
+    {% include "::ruban_nav.html.twig" %}
+    {% include "::login.html.twig" %}
+</section>
+<section id="page" class="{#headerFixed#} {{ page }} {% block classPage %}{% endblock %}">
+    <header>
+
+        {% block local_header %}
+        {% endblock %}
+
+
+        {% for type in ['info', 'success', 'error'] %}
+            {% for message in app.session.flashbag.get(type) %}
+                <section id="message" class="{{ type }}">
+                    {{ message }}
+                </section>
+            {% endfor %}
+        {% endfor %}
+
+        <nav class="main">
+            <a id="get_ruban" href=""></a>
+            <a id="logo" href="{{ path('gospelcenterPage_home', {'center': center.ref}) }}"></a>
+            <ul class="nav">
+                {% spaceless %}
+                    {% block header_nav %}
+                    {% endblock %}
+                {% endspaceless %}
+            </ul>
+            {% if app.user %}
+                {% include "::admin/param.html.twig" %}
+            {% endif %}
+            <a id="get_nav" href=""></a>
+        </nav>
+
+        <nav class="language">
+            <ul>
+                <li>Français</li>
+                <li>English</li>
+            </ul>
+        </nav>
+
+    </header>
+    <section id="container" class="{{ page }}">
+        {% block body %}
+        {% endblock %}
+    </section>
+
+    {% block footer %}{% endblock %}
+</section>
+</body>
+</html>

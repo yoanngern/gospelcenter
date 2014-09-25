@@ -1,0 +1,435 @@
+@mixin adsResp($resp) {
+    padding-bottom: $resp;
+
+    div.container {
+        height: $resp;
+
+        h1 {
+            font-size: $resp * 0.16;
+            line-height: $resp * 0.18;
+            bottom: $resp * 0.4;
+        }
+
+        span {
+            font-size: $resp * 0.08;
+            line-height: $resp * 0.1;
+            bottom: $resp * 0.1;
+        }
+    }
+}
+
+@mixin adsMobileResp($resp) {
+    section.ads div.container {
+
+        & > div {
+            height: $resp;
+
+            a div {
+                h1 {
+                    font-size: $resp * 0.15;
+                    line-height: $resp * 0.17;
+                    bottom: $resp * 0.4;
+                }
+
+                span {
+                    font-size: $resp * 0.08;
+                    line-height: $resp * 0.1;
+                    bottom: $resp * 0.1;
+                }
+            }
+        }
+
+    }
+}
+
+@mixin homeMobileResp($base) {
+    & > header {
+        padding-bottom: $base;
+
+        div.map_bg {
+            height: $base;
+        }
+
+        section.center {
+            padding-top: 58px;
+        }
+
+        nav.mobile {
+            top: ($base - 48px) * 0.95;
+            z-index: 100;
+        }
+
+        div.gradient_bottom {
+            top: $base - 20px;
+        }
+    }
+
+}
+
+#page.home {
+
+    & > header {
+        height: 690px;
+
+        div.map_bg {
+            height: 700px;
+
+            div.inner {
+                height: 770px;
+            }
+        }
+
+        section.center {
+            top: 20px;
+
+            a.logo {
+                height: 480px;
+
+                img {
+                    opacity: 1 !important;
+                }
+            }
+
+        }
+
+        div.gradient_bottom {
+            top: 630px;
+        }
+
+        nav.main {
+            top: 645px;
+        }
+    }
+
+    section.ads {
+        margin: 50px auto 70px;
+        width: 100%;
+        max-width: 1440px;
+        position: relative;
+        overflow: hidden;
+
+        div.container {
+            position: absolute;
+            left: -3px;
+            right: -6px;
+
+            div {
+                width: 33.333%;
+                display: inline-block;
+                vertical-align: top;
+                height: 100%;
+
+                a {
+                    margin-left: 3px;
+                    margin-right: 3px;
+                    height: 100%;
+                    display: block;
+                    color: $whiteGC;
+                    position: relative;
+
+                    &:hover {
+                        text-decoration: none;
+                    }
+
+                    div {
+
+                        width: 100%;
+                        height: 100%;
+                        position: relative;
+                        background-position: center;
+                        background-size: cover;
+                        background-color: rgba($grayGC, 0.5);
+                        background-repeat: no-repeat;
+
+                        h1 {
+                            font-family: $font-thin;
+                            text-align: center;
+                            text-transform: uppercase;
+                            position: absolute;
+                            width: 90%;
+                            left: 5%;
+                        }
+
+                        span {
+                            font-family: $font-thin;
+                            text-align: center;
+                            display: block;
+                            position: absolute;
+                            width: 90%;
+                            left: 5%;
+                        }
+                    }
+                }
+            }
+
+        }
+
+        $base: 250px;
+
+        @include adsResp($base * 1);
+
+        @media only screen and (max-width: 1400px) {
+            @include adsResp($base * 0.9);
+        }
+
+        @media only screen and (max-width: 1300px) {
+            @include adsResp($base * 0.85);
+        }
+
+        @media only screen and (max-width: 1200px) {
+            @include adsResp($base * 0.8);
+        }
+
+        @media only screen and (max-width: 1100px) {
+            @include adsResp($base * 0.75);
+        }
+
+        @media only screen and (max-width: 1000px) {
+            @include adsResp($base * 0.7);
+        }
+
+        @media only screen and (max-width: 900px) {
+            @include adsResp($base * 0.65);
+        }
+
+        @media only screen and (max-width: 800px) {
+
+            padding-bottom: 200px;
+
+            div.container {
+                height: 200px;
+                left: -1px;
+                right: -2px;
+
+                div {
+                    a {
+                        margin-right: 1px;
+                        margin-left: 1px;
+
+                        div {
+
+                            h1 {
+                                font-size: 24px;
+                                line-height: 27px;
+                                bottom: 80px;
+                            }
+
+                            span {
+                                font-family: $font-light;
+                                font-size: 14px;
+                                line-height: 15px;
+                                bottom: 20px;
+                            }
+                        }
+                    }
+                }
+
+            }
+        }
+
+    }
+
+    section#nextEvents {
+        margin-top: 70px;
+        margin-bottom: 70px;
+
+        & > h1 {
+            font-family: $font-light;
+            font-size: 1.2em;
+            line-height: 1.2em;
+            text-align: center;
+        }
+
+        @media only screen and (max-width: 980px) {
+
+            section.mediaList {
+                .more {
+                    display: none;
+                }
+            }
+
+        }
+    }
+
+    @media only screen and (max-width: $mobileH) {
+
+        & > header {
+            height: 48px;
+            z-index: 0;
+
+            nav.main {
+                top: 0;
+            }
+
+            div.gradient_top {
+                display: block;
+                top: 48px;
+                @include gradient4pt(rgba($whiteGC, 0.8), 0%, rgba($whiteGC, 0.8), 20%, rgba($whiteGC, 0.6), 56%, rgba($whiteGC, 0), 100%);
+            }
+
+            div.map_bg {
+                position: absolute;
+                top: 48px;
+                display: block;
+                width: 100%;
+                left: 0;
+                right: 0;
+
+                div.inner {
+                    height: 120%;
+                }
+            }
+
+            section.center {
+                display: block;
+                padding-left: 10px;
+                padding-right: 10px;
+                padding-bottom: 0;
+                width: auto;
+                top: 0;
+
+                a.logo {
+                    display: block;
+                    height: inherit;
+
+                    img {
+                        width: 100%;
+                        opacity: 1 !important;
+                    }
+
+                }
+            }
+
+            nav.mobile {
+                display: block;
+                position: absolute;
+                width: 100%;
+
+                ul {
+                    padding: 0 2%;
+                    margin-top: 30px;
+
+                    li {
+                        margin: 0px;
+                        display: inline-block;
+                        width: 33%;
+
+                        &.home {
+                            display: none;
+                        }
+
+                        a {
+                            text-align: center;
+                            display: block;
+                            border: 2px solid $grayDarkGC;
+                            margin: 4px 4%;
+                            line-height: 25px;
+                            font-size: 1.3em;
+                            font-family: $font-bold;
+                            text-transform: uppercase;
+                        }
+                    }
+                }
+            }
+
+            div.gradient_bottom {
+                display: block;
+            }
+        }
+
+        section.ads {
+            padding: 0;
+            margin-top: 0px;
+            margin-bottom: 50px;
+
+            div.container {
+                position: relative;
+                height: auto;
+                left: inherit;
+                right: inherit;
+
+                & > div {
+                    width: 100%;
+                    display: block;
+                    height: 170px;
+
+                    a {
+                        margin: 0;
+                    }
+                }
+            }
+        }
+
+        section#nextEvents {
+            margin-top: 50px;
+            margin-bottom: 50px;
+
+            & > h1 {
+                font-size: 1.4em;
+            }
+
+        }
+    }
+
+    @media only screen and (max-width: $mobileH) {
+        @include homeMobileResp(500px);
+
+        @include adsMobileResp(270px);
+    }
+
+    @media only screen and (max-width: 600px) {
+        @include homeMobileResp(470px);
+
+        @include adsMobileResp(250px);
+    }
+
+    @media only screen and (max-width: 550px) {
+        @include homeMobileResp(425px);
+
+        @include adsMobileResp(230px);
+    }
+
+    @media only screen and (max-width: 500px) {
+        @include homeMobileResp(390px);
+
+        @include adsMobileResp(200px);
+    }
+
+    @media only screen and (max-width: 450px) {
+        @include homeMobileResp(400px);
+
+        @include adsMobileResp(190px);
+
+
+        & > header {
+            nav.mobile {
+                ul {
+                    margin-top: -10px;
+
+                    li {
+                        width: 50%;
+                    }
+                }
+            }
+        }
+    }
+
+    @media only screen and (max-width: 400px) {
+        @include homeMobileResp(380px);
+
+        @include adsMobileResp(180px);
+    }
+
+    @media only screen and (max-width: 360px) {
+        @include homeMobileResp(350px);
+
+        @include adsMobileResp(180px);
+    }
+
+    @media only screen and (max-width: 320px) {
+        @include homeMobileResp(325px);
+
+        @include adsMobileResp(170px);
+    }
+
+}

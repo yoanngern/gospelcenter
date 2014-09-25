@@ -1,0 +1,354 @@
+<?php
+
+namespace gospelcenter\CelebrationBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
+
+use Doctrine\Common\Collections\ArrayCollection;
+
+/**
+ * Celebration
+ *
+ * @ORM\Table(name="celebration")
+ * @ORM\Entity(repositoryClass="gospelcenter\CelebrationBundle\Entity\CelebrationRepository")
+ * @ORM\HasLifecycleCallbacks
+ */
+class Celebration
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="title", type="string", length=255, nullable=true)
+     */
+    private $title;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="description", type="text", nullable=true)
+     */
+    private $description;
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="status", type="boolean")
+     */
+    private $status;
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="bestOf", type="boolean")
+     */
+    private $bestOf;
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="kidsProgram", type="boolean")
+     */
+    private $kidsProgram;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="createdDate", type="datetime")
+     * @Assert\DateTime()
+     */
+    private $createdDate;
+    
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="modifiedDate", type="datetime")
+     * @Assert\DateTime()
+     */
+    private $modifiedDate;
+    
+    
+    private $existingSpeakers;
+    private $newSpeakers;
+    private $dateLocal;
+    private $startingTime;
+    private $endingTime;
+    
+    
+    /**
+     * is composed by
+     *
+     * @ORM\ManyToMany(targetEntity="gospelcenter\PeopleBundle\Entity\Role", inversedBy="celebrations")
+     * @Assert\Valid()
+     */
+    private $roles;
+    
+    
+    /**
+     * is spreader by
+     * 
+     * @ORM\OneToOne(targetEntity="gospelcenter\MediaBundle\Entity\Audio", mappedBy="celebration", cascade={"persist", "remove"})
+     * @Assert\Valid()
+     */
+    private $audio;
+    
+    
+    /**
+     * is tagged by
+     * 
+     * @ORM\ManyToMany(targetEntity="gospelcenter\CelebrationBundle\Entity\Tag", inversedBy="celebrations")
+     * @Assert\Valid()
+     */
+    private $tags;
+    
+    
+    /**
+     * is situated by
+     * 
+     * @ORM\ManyToOne(targetEntity="gospelcenter\LocationBundle\Entity\Location", inversedBy="celebrations", cascade={"persist"})
+     * @ORM\JoinColumn(nullable=false)
+     * @Assert\Valid()
+     */
+    private $location;
+    
+    
+    /**
+     * diffuses
+     * 
+     * @ORM\OneToOne(targetEntity="gospelcenter\MediaBundle\Entity\Video", mappedBy="celebration", cascade={"persist", "remove"})
+     * @Assert\Valid()
+     */
+    private $video;
+
+
+    /**
+     * is at
+     *
+     * @ORM\OneToOne(targetEntity="gospelcenter\DateBundle\Entity\Date", mappedBy="celebration")
+     * @Assert\Valid()
+     */
+    private $date;
+    
+    
+    /**
+     * is organized by
+     * 
+     * @ORM\ManyToOne(targetEntity="gospelcenter\CenterBundle\Entity\Center", inversedBy="celebrations")
+     * @ORM\JoinColumn(nullable=false)
+     * @Assert\Valid()
+     */
+    private $center;
+    
+    
+    /**
+     * is imaged by
+     * 
+     * @ORM\ManyToOne(targetEntity="gospelcenter\ImageBundle\Entity\Image", inversedBy="celebrations", cascade={"persist", "detach"})
+     * @Assert\Valid()
+     */
+    private $image;
+    
+    
+    /**
+     * is preached by
+     *
+     * @ORM\ManyToMany(targetEntity="gospelcenter\CelebrationBundle\Entity\Speaker", inversedBy="celebrations", cascade={"persist"})
+     * @Assert\Valid()
+     */
+    private $speakers;
+    
+    
+    /*
+     * Constructor
+     */
+    public function __construct(\gospelcenter\CenterBundle\Entity\Center $center)
+    {
+        $this->status = true;
+        $this->createdDate = new \Datetime();
+        $this->modifiedDate = new \Datetime();
+        
+        $this->tags = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->speakers = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->existingSpeakers = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->newSpeakers = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->roles = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->center = $center;
+    }
+    
+    
+    
+    public function setExistingSpeakers($existingSpeakers)
+    {
+        $this->existingSpeakers = $existingSpeakers;
+        
+        return $this;
+    }
+    
+    
+    public function getExistingSpeakers()
+    {
+        return $this->existingSpeakers;
+    }
+    
+    public function setNewSpeakers($newSpeakers)
+    {
+        $this->newSpeakers = $newSpeakers;
+        
+        return $this;
+    }
+    
+    
+    public function getNewSpeakers()
+    {
+        return $this->newSpeakers;
+    }
+    
+    public function setDateLocal($dateLocal)
+    {
+        $this->dateLocal = $dateLocal;
+        
+        return $this;
+    }
+    
+    
+    public function getDateLocal()
+    {
+        return $this->dateLocal;
+    }
+    
+    public function setStartingTime($startingTime)
+    {
+        $this->startingTime = $startingTime;
+        
+        return $this;
+    }
+    
+    
+    public function getStartingTime()
+    {
+        return $this->startingTime;
+    }
+    
+    public function setEndingTime($endingTime)
+    {
+        $this->endingTime = $endingTime;
+        
+        return $this;
+    }
+    
+    
+    public function getEndingTime()
+    {
+        return $this->endingTime;
+    }
+    
+    /**
+     * Set image
+     *
+     * @param \gospelcenter\ImageBundle\Entity\Image $image
+     * @return Celebration
+     */
+    public function setImage(\gospelcenter\ImageBundle\Entity\Image $image)
+    {
+        $this->image = $image;
+        
+        if($image != null) {
+            $title = "Celebration of ";
+            $title .= date_format($this->dateLocal, 'j F Y');
+            
+            $speakers = $this->getSpeakers();
+            
+            if($speakers != null) {
+                $title .= " with ";
+
+                foreach($speakers as $speaker) {
+                    $title .= $speaker->getPerson()->getFirstname();
+                    $title .= " ";
+                    $title .= $speaker->getPerson()->getLastname();
+                }
+            }
+            
+            $this->image->setTitle($title);
+            $this->image->setType('Celebration');
+        }
+    
+        return $this;
+    }
+    
+    /**
+     * Set video
+     *
+     * @param \gospelcenter\MediaBundle\Entity\Video $video
+     * @return Celebration
+     */
+    public function setVideo(\gospelcenter\MediaBundle\Entity\Video $video = null)
+    {
+        $this->video = $video;
+        $video->setCelebration($this);
+        
+        if($video != null) {
+            $title = "Celebration of ";
+            $title .= date_format($this->dateLocal, 'd m Y');
+            $title .= " with ";
+            
+            $speakers = $this->getSpeakers();
+            
+            foreach($speakers as $speaker) {
+                $title .= $speaker->getPerson()->getFirstname();
+                $title .= " ";
+                $title .= $speaker->getPerson()->getLastname();
+            }
+            
+            $this->video->setOwner('vimeo');
+        }
+    
+        return $this;
+    }
+    
+    /**
+     * @ORM\PrePersist()
+     * @ORM\PreUpdate()
+     */
+    public function preSave()
+    {
+        
+        $this->modifiedDate = new \Datetime();
+        
+        $startingDate = date_create($this->dateLocal->format('Y-m-d'));
+        $startingDate->setTime($this->startingTime->format('H'), $this->startingTime->format('i'));
+        $this->startingDate = $startingDate;
+        
+        $endingDate = date_create($this->dateLocal->format('Y-m-d'));
+        $endingDate->setTime($this->endingTime->format('H'), $this->endingTime->format('i'));
+        $this->endingDate = $endingDate;
+        
+    }
+    
+    /**
+     * Set audio
+     *
+     * @param \gospelcenter\MediaBundle\Entity\Audio $audio
+     * @return Celebration
+     */
+    public function setAudio(\gospelcenter\MediaBundle\Entity\Audio $audio = null)
+    {
+        $this->audio = $audio;
+        $audio->setCelebration($this);
+    
+        return $this;
+    }
+    
+    /*************************************/
+    /**** Getter setter auto generate ****/
+    /*************************************/
+
+}

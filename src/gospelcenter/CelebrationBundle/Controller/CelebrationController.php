@@ -29,16 +29,6 @@ class CelebrationController extends Controller {
         $nextCelebrations = $em->getRepository('gospelcenterCelebrationBundle:Celebration')->findNext($center, 4);
         $lastCelebrations = $em->getRepository('gospelcenterCelebrationBundle:Celebration')->findLast($center, 3);
         
-        $mobileDetector = $this->get('mobile_detect.mobile_detector');
-        if($mobileDetector->isMobile()) {
-            return $this->render('gospelcenterCelebrationBundle:MobileCelebration:list.html.twig', array(
-                'nextCelebrations' => $nextCelebrations,
-                'lastCelebrations' => $lastCelebrations,
-                'center' => $center,
-                'page' => 'celebrations'
-            ));
-        }
-        
         return $this->render('gospelcenterCelebrationBundle:Celebration:list.html.twig', array(
             'nextCelebrations' => $nextCelebrations,
             'lastCelebrations' => $lastCelebrations,

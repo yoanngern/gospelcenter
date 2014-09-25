@@ -57,6 +57,7 @@ class AdminSlideGlobalController extends Controller {
             
             if($form->isValid())
             {
+                
                 $em = $this->getDoctrine()->getManager();
                 $em->persist($slide);
                 $em->flush();

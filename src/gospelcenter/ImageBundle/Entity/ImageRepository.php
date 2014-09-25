@@ -15,7 +15,9 @@ class ImageRepository extends EntityRepository
     public function findAllByCenter(\gospelcenter\CenterBundle\Entity\Center $center)
     {
         $qb = $this->createQueryBuilder('i');
-    
+
+        $qb->addSelect('c6');
+
         $qb->leftJoin('i.celebrations', 'cel');
         $qb->leftJoin('cel.center', 'c1');
         
@@ -32,6 +34,8 @@ class ImageRepository extends EntityRepository
         
         $qb->leftJoin('i.eventsCover', 'e2');
         $qb->leftJoin('e2.centers', 'c5');
+
+        $qb->leftJoin('i.center', 'c6');
         
         $qb->where('c1.ref = :center')
             ->setParameter('center', $center->getRef());
@@ -47,6 +51,12 @@ class ImageRepository extends EntityRepository
         
         $qb->orWhere('c5.ref = :center')
             ->setParameter('center', $center->getRef());
+
+        $qb->orWhere('c6.ref = :center')
+            ->setParameter('center', $center->getRef());
+
+        $qb->orWhere('i.centerCreator = :center')
+            ->setParameter('center', $center->getRef());
             
         $qb->addOrderBy('i.modifiedDate', 'DESC');
         
@@ -56,6 +66,10 @@ class ImageRepository extends EntityRepository
     public function findAllOrder()
     {
         $qb = $this->createQueryBuilder('i');
+
+        $qb->addSelect('c');
+
+        $qb->leftJoin('i.center', 'c');
             
         $qb->addOrderBy('i.modifiedDate', 'DESC');
         

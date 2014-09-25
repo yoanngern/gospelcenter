@@ -22,6 +22,7 @@ use gospelcenter\CelebrationBundle\Form\SpeakerType;
 
 // People
 use gospelcenter\PeopleBundle\Entity\Person;
+use gospelcenter\PeopleBundle\Form\PersonWithAccountType;
 use gospelcenter\PeopleBundle\Form\PersonType;
 
 // Member
@@ -34,25 +35,17 @@ use gospelcenter\CenterBundle\Form\VisitorType;
 
 
 class AdminPersonController extends Controller {
-    
-    /*
-     *   List of person
+
+    /**
+     * List of person
+     * @param Center $center
+     * @return Response
      */
     public function listAction(Center $center)
     {
         $em = $this->getDoctrine()->getManager();
         
         $persons = $em->getRepository('gospelcenterPeopleBundle:Person')->findAllByCenter($center);
-        
-        $mobileDetector = $this->get('mobile_detect.mobile_detector');
-        if($mobileDetector->isMobile() && !$mobileDetector->isTablet()) {
-            return $this->render('gospelcenterPeopleBundle:AdminMobile:list.html.twig', array(
-                'center' => $center,
-                'persons' => $persons,
-                'page' => 'people',
-                'tab' => 'contacts'
-            ));
-        }
         
         return $this->render('gospelcenterPeopleBundle:AdminPerson:list.html.twig', array(
             'center' => $center,
@@ -61,11 +54,13 @@ class AdminPersonController extends Controller {
             'tab' => 'contacts'
         ));
     }
-    
-    
-    /*
-    *   Add a person
-    */
+
+
+    /**
+     * Add a person
+     * @param Center $center
+     * @return Response
+     */
     public function addAction(Center $center)
     {
         
@@ -144,16 +139,6 @@ class AdminPersonController extends Controller {
         
         $session->set('previousUrl', $previousUrl);
         
-        $mobileDetector = $this->get('mobile_detect.mobile_detector');
-        if($mobileDetector->isMobile() && !$mobileDetector->isTablet()) {
-            return $this->render('gospelcenterPeopleBundle:AdminMobile:add.html.twig', array(
-                'center' => $center,
-                'form' => $form->createView(),
-                'page' => 'people',
-                'person' => $person
-            ));
-        }
-        
         return $this->render('gospelcenterPeopleBundle:AdminPerson:add.html.twig', array(
             'center' => $center,
             'form' => $form->createView(),
@@ -161,14 +146,19 @@ class AdminPersonController extends Controller {
             'person' => $person
         ));
     }
-    
-    /*
-    *   Edit a person
-    */
+
+    /**
+     * Edit a person
+     * @param Center $center
+     * @param Person $person
+     * @return Response
+     */
     public function editAction(Center $center, Person $person)
     {
         $session = $this->get('session');
-        
+
+        $em = $this->getDoctrine()->getManager();
+
         if($person->getSpeaker() != null) {
             $person->setIsSpeaker(true);
         }
@@ -180,8 +170,12 @@ class AdminPersonController extends Controller {
         if($person->getMember() != null) {
             $person->setIsMember(true);
         }
-        
-        $form = $this->createForm(new PersonType, $person);
+
+        if($person->getUser()) {
+            $form = $this->createForm(new PersonWithAccountType, $person);
+        } else {
+            $form = $this->createForm(new PersonType, $person);
+        }
         
         $request = $this->get('request');
         
@@ -221,7 +215,7 @@ class AdminPersonController extends Controller {
                     $wasVisitor = false;
                 }
                 
-                $em = $this->getDoctrine()->getManager();
+
                 $em->persist($person);
                 $em->flush();
                 
@@ -279,27 +273,20 @@ class AdminPersonController extends Controller {
         
         $session->set('previousUrl', $previousUrl);
         
-        $mobileDetector = $this->get('mobile_detect.mobile_detector');
-        if($mobileDetector->isMobile() && !$mobileDetector->isTablet()) {
-            return $this->render('gospelcenterPeopleBundle:AdminMobile:edit.html.twig', array(
-                'center' => $center,
-                'person' => $person,
-                'form' => $form->createView(),
-                'page' => 'people'
-            ));
-        }
-        
         return $this->render('gospelcenterPeopleBundle:AdminPerson:edit.html.twig', array(
             'center' => $center,
             'person' => $person,
             'form' => $form->createView(),
             'page' => 'people'
         ));
-    }    
-    
-    
-    /*
-     *   Delete a person
+    }
+
+
+    /**
+     * Delete a person
+     * @param Center $center
+     * @param Person $person
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse|Response
      */
     public function deleteAction(Center $center, Person $person)
     {   

@@ -1,0 +1,37 @@
+{% block body %}
+
+    <h1 class="titlePage"><span>Contact</span></h1>
+
+    <section id="map" class="map_full">
+        <iframe src="http://gc-map.local"></iframe>
+        <article>
+            <h1>Gospel Center Jura</h1>
+
+            <p>Rue St-Georges 5<br/>
+                2800 Delémont<br/>
+                Suisse</p>
+
+            <p>032 422 88 31</p>
+            <a href="mailto:info@gc-lausanne.org">info@gc-jura.org</a>
+
+            <p><a href="{{ path('gospelcenterPage_default', {'center': center.ref, 'page': 'give'}) }}"
+                  class="buttonLink">Nous soutenir</a></p>
+        </article>
+    </section>
+
+    <section class="formGray">
+        <h1>Ecrivez nous un message</h1>
+
+        <form>
+            <fieldset class="left width1_3">
+                <input placeholder="Nom">
+                <input placeholder="E-mail">
+                <input placeholder="Téléphone">
+            </fieldset>
+            <fieldset class="right width2_3">
+                <textarea placeholder="Message"></textarea>
+            </fieldset>
+            <input type="submit" class="buttonLink"/>
+        </form>
+    </section>
+{% endblock %}

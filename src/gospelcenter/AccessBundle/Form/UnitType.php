@@ -6,16 +6,22 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
+use gospelcenter\AccessBundle\Form\AccessLevelType;
+
 class UnitType extends AbstractType
 {
-        /**
+    /**
      * @param FormBuilderInterface $builder
      * @param array $options
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('name',       'text')
+            ->add('name',           'text', array('required' => true))
+            ->add('accessLevels',   'collection', array('type'         => new AccessLevelType(),
+                                                        'allow_add'    => true,
+                                                        'allow_delete' => true))
+            
         ;
     }
     

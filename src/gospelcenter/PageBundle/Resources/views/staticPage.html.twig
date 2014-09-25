@@ -1,7 +1,15 @@
-{% extends "gospelcenterPageBundle::layout.html.twig" %}
-
-
+{% extends "::localNew.html.twig" %}
 
 {% block body %}
-    {% include "@gospelcenterPage/StaticPage/"~ center.ref ~"/"~ language ~"/"~ template ~".html.twig" %}
+
+    {% if folder is defined %}
+        
+        {% include "@gospelcenterPage/StaticPage/"~ center.ref ~"/"~ language ~"/"~ folder ~".html.twig" %}
+        
+    {% else %}
+
+        {% include "@gospelcenterPage/StaticPage/"~ center.ref ~"/"~ language ~"/"~ template ~".html.twig" %}
+        
+    {% endif %}
+
 {% endblock %}

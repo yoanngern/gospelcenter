@@ -13,11 +13,11 @@ use gospelcenter\LocationBundle\Form\LocationSimpleType;
 use gospelcenter\PeopleBundle\Form\Type\TelType;
 use gospelcenter\PeopleBundle\Form\Type\ErrorType;
 
-use FOS\UserBundle\Form\Type\RegistrationFormType;
+use gospelcenter\UserBundle\Form\Type\RegistrationWithUnitFormType;
 
 class PersonType extends AbstractType
 {
-        /**
+    /**
      * @param FormBuilderInterface $builder
      * @param array $options
      */
@@ -26,7 +26,7 @@ class PersonType extends AbstractType
         $builder
             ->add('firstname',      'text')
             ->add('lastname',       'text')
-            ->add('user',           new RegistrationFormType('gospelcenter\UserBundle\Entity\User'), array('required' => false))
+            ->add('user',           new RegistrationWithUnitFormType('gospelcenter\UserBundle\Entity\User'), array('required' => false))
             ->add('gender',         'choice', array(
                                         'choices'   => array(
                                             'man'     => 'Man',
@@ -34,8 +34,9 @@ class PersonType extends AbstractType
                                         ),
                                         'multiple'  => false,
                                         'expanded'  => true))
-            ->add('dateOfBirth',    'birthday', array('required' => false,
-                                                      'widget'    => 'single_text'))
+            ->add('dateOfBirth', 'birthday', array('empty_value' => array(
+                'year' => 'Year', 'month' => 'Month', 'day' => 'Day'),
+                'format' => 'd MMMM yyyy'))
             ->add('email',          'email', array('required' => false))
             ->add('privatePhone',   new TelType(), array('required' => false))
             ->add('mobilePhone',    new TelType(), array('required' => false))
@@ -51,6 +52,7 @@ class PersonType extends AbstractType
             ->add('function',       'text', array('required' => false))
             ->add('isSpeaker',      'checkbox', array('required' => false))
             ->add('isVisitor',      'checkbox', array('required' => false))
+            ->add('isGlobal',      'checkbox', array('required' => false))
             ->add('isMember',       'checkbox', array('required' => false))
             ->add('image',          new ImageSimpleType(), array('required' => false))
             ->add('location',       new LocationSimpleType(), array('required' => false))

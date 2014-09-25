@@ -1,16 +1,9 @@
 {% extends "::layout.html.twig" %}
 
-{% block classPage %}admin{% endblock %}
+{% block classPage %}admin headerFixed{% endblock %}
 
 {% block title %}
     {{ parent() }} - Admin
-{% endblock %}
-
-{% block param %}
-    <li><a href="{{ path('fos_user_registration_register') }}">Register a user</a></li>
-    <li><a href="{{ path('gospelcenterPageGlobal_home') }}">Back to website</a></li>
-    <li class="line"></li>
-    {{ parent() }}
 {% endblock %}
 
 {% block body %}

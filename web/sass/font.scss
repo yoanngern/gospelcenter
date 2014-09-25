@@ -1,6 +1,50 @@
-$font-regular: 'Radikal', sans-serif;
-$font-light: 'Radikal-Light', 'Radikal', sans-serif;
-$font-thin: 'Radikal-UltraThin', 'Radikal-Light', 'Radikal', sans-serif;
-$font-medium: 'Radikal-Medium', 'Radikal', sans-serif;
-$font-bold: 'Radikal-Bold', 'Radikal', sans-serif;
-$font-black: 'Radikal-Black', 'Radikal-Bold', 'Radikal', sans-serif;
+$font-regular:  'Radikal',                                              sans-serif;
+$font-light:    'Radikal-Light',                            'Radikal',  sans-serif;
+$font-thin:     'Radikal-UltraThin',    'Radikal-Light',    'Radikal',  sans-serif;
+$font-bold:     'Radikal-Bold',                             'Radikal',  sans-serif;
+$font-black:    'Radikal-Black',        'Radikal-Bold',     'Radikal',  sans-serif;
+
+@font-face {
+    font-family: 'Radikal-Light';
+    src: url('../fonts/2B5662_0_0.eot');
+    src: url('../fonts/2B5662_0_0.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/2B5662_0_0.woff') format('woff'),
+         url('../fonts/2B5662_0_0.ttf') format('truetype');
+}
+ 
+  
+@font-face {
+    font-family: 'Radikal-Black';
+    src: url('../fonts/2B5662_1_0.eot');
+    src: url('../fonts/2B5662_1_0.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/2B5662_1_0.woff') format('woff'),
+         url('../fonts/2B5662_1_0.ttf') format('truetype');
+}
+ 
+  
+@font-face {
+    font-family: 'Radikal-Bold';
+    src: url('../fonts/2B5662_2_0.eot');
+    src: url('../fonts/2B5662_2_0.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/2B5662_2_0.woff') format('woff'),
+         url('../fonts/2B5662_2_0.ttf') format('truetype');
+}
+ 
+  
+@font-face {
+    font-family: 'Radikal';
+    src: url('../fonts/2B5662_3_0.eot');
+    src: url('../fonts/2B5662_3_0.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/2B5662_3_0.woff') format('woff'),
+         url('../fonts/2B5662_3_0.ttf') format('truetype');
+}
+ 
+  
+@font-face {
+    font-family: 'Radikal-UltraThin';
+    src: url('../fonts/2B5662_4_0.eot');
+    src: url('../fonts/2B5662_4_0.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/2B5662_4_0.woff') format('woff'),
+         url('../fonts/2B5662_4_0.ttf') format('truetype');
+}
+

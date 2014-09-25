@@ -1,144 +1,317 @@
-{% extends "::admin.html.twig" %}
+{% extends "::adminNew.html.twig" %}
+
+{% block classPage %}{{ parent() }} single{% endblock %}
 
 {% block javascripts %}
     {{ parent() }}
-    <script type="text/javascript" src="{{ asset('js/form.min.js') }}"></script>
-    
     {% if person.image %}
         <script type="text/javascript" src="{{ asset('js/editImage.min.js') }}"></script>
     {% else %}
         <script type="text/javascript" src="{{ asset('js/addImage.min.js') }}"></script>
     {% endif %}
-    
-{% endblock %}
-
-{% block stylesheets %}
-	{{ parent() }}
-	<link rel="stylesheet" href="{{ asset('css/admin.css') }}" type="text/css" />
-	<link rel="stylesheet" href="{{ asset('css/form.css') }}" type="text/css" />
 {% endblock %}
 
 {% block title %}
     {{ parent() }} - Edit a person
 {% endblock %}
 
+{% block adminTitle %}<h1>Edit a contact</h1>{% endblock %}
+
+{% block adminBack %}
+    <a class="back" href="{{ path('gospelcenterAdmin_persons', {'center': center.ref}) }}">Contacts</a>
+{% endblock %}
+
+{% block adminTools %}
+    <a href="{{ path('gospelcenterAdmin_persons_delete', {'center': center.ref, 'person': person.id}) }}"
+       class="delete">Delete</a>
+    <a href="{{ path('gospelcenterAdmin_persons', {'center': center.ref}) }}">Cancel</a>
+{% endblock %}
+
 {% block adminBody %}
-    <h1>Edit a contact</h1>
-    
-    <form class="person" action="{{ path('gospelcenterAdmin_persons_edit', {'center': center.ref, 'person': person.id}) }}" method="post" {{ form_enctype(form) }}>
-        
-        <nav class="tools">
-    		<input type="submit" class="buttonRounded" />
-    		<a href="{{ path('gospelcenterAdmin_persons_delete', {'center': center.ref, 'person': person.id}) }}" class="buttonRounded">Delete</a>
-    	</nav>
-    	
-    	{{ form_errors(form) }}
-        
-        <fieldset class="image">
-            {{ form_widget(form.image.file) }}
-            {{ form_errors(form.image.file) }}
-            {% if person.image %}
-            	<div id="editImage" data-input="{{ form.image.file.vars.id }}">
-            	    <img src="{{ asset(person.image.webPath) }}" alt="{{ person.image.alt }}" />
-            	</div>
-            {% endif %}
-        </fieldset>
-        
-        <fieldset class="header">
-            {{ form_widget(form.firstname, {'attr': {'placeholder': 'Firstname', 'class': 'resize'} }) }}
-            {{ form_errors(form.firstname) }}
-            
-            {{ form_widget(form.lastname, {'attr': {'placeholder': 'Lastname', 'class': 'resize'} }) }}
-            {{ form_errors(form.lastname) }}
-            
-            {{ form_widget(form.gender, {'attr': {'placeholder': 'Gender', 'data-icon': 'gender'} }) }}
-            {{ form_errors(form.gender) }}
-        </fieldset>
-        
-        <fieldset class="phone">
-            {{ form_label(form.privatePhone, "private") }}
-            {{ form_widget(form.privatePhone, {'attr': {'placeholder': 'Phone'} }) }}
-            {{ form_errors(form.privatePhone) }}
-            
-            {{ form_label(form.mobilePhone, "mobile") }}
-            {{ form_widget(form.mobilePhone, {'attr': {'placeholder': 'Phone'} }) }}
-            {{ form_errors(form.mobilePhone) }}
-        </fieldset>
-        
-        <fieldset class="email">
-            {{ form_label(form.email, "private") }}
-            {{ form_widget(form.email, {'attr': {'placeholder': 'Email'} }) }}
-            {{ form_errors(form.email) }}
-        </fieldset>
-        
-        <fieldset class="birthday">
-            {{ form_label(form.dateOfBirth, "birthday") }}
-            {{ form_widget(form.dateOfBirth, {'attr': {'placeholder': 'Birthday'} }) }}
-            {{ form_errors(form.dateOfBirth) }}
-        </fieldset>
-        
-        <fieldset class="location">
-            {{ form_label(form.location, "home") }}
-            {{ form_widget(form.location.address1, {'attr': {'placeholder': 'address'} }) }}
-            {{ form_errors(form.location.address1) }}
+    {% spaceless %}
 
-            {{ form_widget(form.location.address2, {'attr': {'placeholder': 'address'} }) }}
-            {{ form_errors(form.location.address2) }}
+        <form class="person"
+              action="{{ path('gospelcenterAdmin_persons_edit', {'center': center.ref, 'person': person.id}) }}"
+              method="post" {{ form_enctype(form) }}>
 
-            {{ form_widget(form.location.postalCode, {'attr': {'placeholder': 'Postal code', 'class': 'resize'} }) }}
-            {{ form_errors(form.location.postalCode) }}
 
-            {{ form_widget(form.location.city, {'attr': {'placeholder': 'City', 'class': 'resize'} }) }}
-            {{ form_errors(form.location.city) }}
-            
-            {{ form_widget(form.location.country, {'attr': {'placeholder': 'Country'} }) }}
-            {{ form_errors(form.location.country) }}
-        </fieldset>
-        
-        <fieldset class="details">
-        
-            <fieldset class="languages">
-                {{ form_label(form.languages, "languages") }}
+        <section class="tab">
+
+            <nav class="sub_nav">
+                <ul>
+                    <li><a href="#general" class="current focus">General</a></li>
+                    <li><a href="#user">User account</a></li>
+                    <li><a href="#notes">Notes</a></li>
+                </ul>
+            </nav>
+
+            <article class="tab active" id="general">
+
+                {{ form_widget(form.gender, {'attr': {'placeholder': 'Gender', 'class':'radio'} }) }}
+                {{ form_errors(form.gender) }}
+
+                <fieldset class="double">
+                    {{ form_widget(form.firstname, {'attr': {'placeholder': 'Firstname'} }) }}
+                    {{ form_errors(form.firstname) }}
+
+                    {{ form_widget(form.lastname, {'attr': {'placeholder': 'Lastname'} }) }}
+                    {{ form_errors(form.lastname) }}
+                </fieldset>
+
+                {{ form_widget(form.image.file) }}
+                {{ form_errors(form.image.file) }}
+                {% if person.image %}
+                    <div id="editImage" data-input="{{ form.image.file.vars.id }}">
+                        <img src="{{ asset(person.image.webPath) }}" alt="{{ person.image.alt }}"/>
+                    </div>
+                {% endif %}
+
+                {{ form_widget(form.privatePhone, {'attr': {'placeholder': 'Private phone'} }) }}
+                {{ form_errors(form.privatePhone) }}
+
+                {{ form_widget(form.mobilePhone, {'attr': {'placeholder': 'Mobile phone'} }) }}
+                {{ form_errors(form.mobilePhone) }}
+
+                {{ form_widget(form.email, {'attr': {'placeholder': 'Email'} }) }}
+                {{ form_errors(form.email) }}
+
+                <fieldset class="datetime date">
+                    <h2>Birthday</h2>
+
+                    {{ form_widget(form.dateOfBirth) }}
+                    {{ form_errors(form.dateOfBirth) }}
+                </fieldset>
+
+                {{ form_widget(form.location.address1, {'attr': {'placeholder': 'address line 1'} }) }}
+                {{ form_errors(form.location.address1) }}
+
+                {{ form_widget(form.location.address2, {'attr': {'placeholder': 'address line 2'} }) }}
+                {{ form_errors(form.location.address2) }}
+
+                <fieldset class="double">
+                    {{ form_widget(form.location.postalCode, {'attr': {'placeholder': 'Postal code', 'class': 'resize'} }) }}
+                    {{ form_errors(form.location.postalCode) }}
+
+                    {{ form_widget(form.location.city, {'attr': {'placeholder': 'City', 'class': 'resize'} }) }}
+                    {{ form_errors(form.location.city) }}
+                </fieldset>
+
+                {{ form_widget(form.location.country, {'attr': {'placeholder': 'Country'} }) }}
+                {{ form_errors(form.location.country) }}
+
                 {{ form_widget(form.languages, {'attr': {'class': 'selectMultiple'} }) }}
                 {{ form_errors(form.languages) }}
-            </fieldset>
-            
-            <fieldset class="checkbox">
-                {{ form_widget(form.abroad, {'attr': {'data-icon': 'abroad'} }) }}
-                {{ form_errors(form.abroad) }}
-                
-                {{ form_widget(form.hasChildren, {'attr': {'data-icon': 'hasChildren'} }) }}
-                {{ form_errors(form.hasChildren) }}
-            </fieldset>
-            
-            <fieldset>
-                {{ form_label(form.function, "Function") }}
-                {{ form_widget(form.function, {'attr': {'placeholder': '. . .'} }) }}
+
+                <fieldset class="inline">
+                    {{ form_widget(form.abroad, {'attr': {'placeholder': 'is he abroad'} }) }}
+                    {{ form_errors(form.abroad) }}
+
+                    {{ form_widget(form.hasChildren, {'attr': {'placeholder': 'has children'} }) }}
+                    {{ form_errors(form.hasChildren) }}
+                </fieldset>
+
+                {{ form_widget(form.function, {'attr': {'placeholder': 'Function'} }) }}
                 {{ form_errors(form.function) }}
+
+                <fieldset class="inline">
+                    {{ form_widget(form.isSpeaker, {'attr': {'placeholder': 'is speaker'} }) }}
+                    {{ form_errors(form.isSpeaker) }}
+
+                    {{ form_widget(form.isMember, {'attr': {'placeholder': 'is member'} }) }}
+                    {{ form_errors(form.isMember) }}
+
+                    {{ form_widget(form.isVisitor, {'attr': {'placeholder': 'is visitor'} }) }}
+                    {{ form_errors(form.isVisitor) }}
+
+                    {{ form_widget(form.isGlobal, {'attr': {'placeholder': 'is Global'} }) }}
+                    {{ form_errors(form.isGlobal) }}
+                </fieldset>
+            </article>
+
+            <article class="tab" id="user">
+                {{ form_widget(form.user.username, {'attr': {'placeholder': 'Username'} }) }}
+                {{ form_errors(form.user.username) }}
+
+                {{ form_widget(form.user.email, {'attr': {'placeholder': 'Email'} }) }}
+                {{ form_errors(form.user.email) }}
+
+                {% if not person.user %}
+                    {{ form_widget(form.user.plainPassword.first, {'attr': {'placeholder': 'Password'} }) }}
+                    {{ form_errors(form.user.plainPassword.first) }}
+
+                    {{ form_widget(form.user.plainPassword.second, {'attr': {'placeholder': 'Confirmation'} }) }}
+                    {{ form_errors(form.user.plainPassword.second) }}
+                {% endif %}
+
+                {{ form_widget(form.user.units, {'attr': {'class': 'selectMultiple'} }) }}
+                {{ form_errors(form.user.units) }}
+            </article>
+
+            <article class="tab" id="notes">
+
+                {{ form_widget(form.notes, {'attr': {placeholder: 'Notes'} }) }}
+                {{ form_errors(form.notes) }}
+
+                {{ form_rest(form) }}
+            </article>
+        </section>
+
+        {#
+
+        <nav class="tools">
+            <input type="submit" class="buttonLink" />
+            <a href="{{ path('gospelcenterAdmin_persons_delete', {'center': center.ref, 'person': person.id}) }}" class="buttonLink">Delete</a>
+        </nav>
+
+        {{ form_errors(form) }}
+
+
+        <section class="right">
+            <fieldset class="image">
+                {{ form_widget(form.image.file) }}
+                {{ form_errors(form.image.file) }}
+                {% if person.image %}
+                    <div id="editImage" data-input="{{ form.image.file.vars.id }}">
+                        <img src="{{ asset(person.image.webPath) }}" alt="{{ person.image.alt }}" />
+                    </div>
+                {% endif %}
             </fieldset>
-            
-            <fieldset class="checkbox">
-                {{ form_widget(form.isSpeaker, {'attr': {'data-icon': 'isSpeaker'} }) }}
-                {{ form_errors(form.isSpeaker) }}
-                
-                {{ form_widget(form.isMember, {'attr': {'data-icon': 'isMember'} }) }}
-                {{ form_errors(form.isMember) }}
-                
-                {{ form_widget(form.isVisitor, {'attr': {'data-icon': 'isVisitor'} }) }}
-                {{ form_errors(form.isVisitor) }}
+
+            <fieldset class="account">
+                <h2>User account</h2>
+                {{ form_widget(form.user.username, {'attr': {'placeholder': 'Username'} }) }}
+                {{ form_errors(form.user.username) }}
+
+                {{ form_widget(form.user.email, {'attr': {'placeholder': 'Email'} }) }}
+                {{ form_errors(form.user.email) }}
+
+                {% if person.user %}
+
+                {% else %}
+                    {{ form_widget(form.user.plainPassword.first, {'attr': {'placeholder': 'Password'} }) }}
+                    {{ form_errors(form.user.plainPassword.first) }}
+
+                    {{ form_widget(form.user.plainPassword.second, {'attr': {'placeholder': 'Confirmation'} }) }}
+                    {{ form_errors(form.user.plainPassword.second) }}
+                {% endif %}
             </fieldset>
-        </fieldset>
-        
-        <fieldset class="notes">
-            {{ form_label(form.notes, "notes") }}
-            {{ form_widget(form.notes, {'attr': {'class': 'elastic', 'placeholder': '. . .'} }) }}
-            {{ form_errors(form.notes) }}
-        </fieldset>
-        
-        <fieldset class="more">
-            {{ form_rest(form) }}
-        </fieldset>
-        
-    </form>    
-    
+
+            <fieldset class="unit">
+                {{ form_label(form.user.units, "Unit") }}
+                {{ form_widget(form.user.units, {'attr': {'class': 'selectMultiple'} }) }}
+                {{ form_errors(form.user.units) }}
+            </fieldset>
+
+        </section>
+
+        <section class="left">
+
+            <fieldset class="header">
+                {{ form_widget(form.firstname, {'attr': {'placeholder': 'Firstname', 'class': 'resize'} }) }}
+                {{ form_errors(form.firstname) }}
+
+                {{ form_widget(form.lastname, {'attr': {'placeholder': 'Lastname', 'class': 'resize'} }) }}
+                {{ form_errors(form.lastname) }}
+
+                {{ form_widget(form.gender, {'attr': {'placeholder': 'Gender', 'data-icon': 'gender'} }) }}
+                {{ form_errors(form.gender) }}
+            </fieldset>
+
+
+
+            <fieldset class="phone">
+                {{ form_label(form.privatePhone, "private") }}
+                {{ form_widget(form.privatePhone, {'attr': {'placeholder': 'Phone'} }) }}
+                {{ form_errors(form.privatePhone) }}
+
+                {{ form_label(form.mobilePhone, "mobile") }}
+                {{ form_widget(form.mobilePhone, {'attr': {'placeholder': 'Phone'} }) }}
+                {{ form_errors(form.mobilePhone) }}
+            </fieldset>
+
+            <fieldset class="email">
+                {{ form_label(form.email, "private") }}
+                {{ form_widget(form.email, {'attr': {'placeholder': 'Email'} }) }}
+                {{ form_errors(form.email) }}
+            </fieldset>
+
+            <fieldset class="birthday">
+                {{ form_label(form.dateOfBirth, "birthday") }}
+                {{ form_widget(form.dateOfBirth, {'attr': {'placeholder': 'Birthday'} }) }}
+                {{ form_errors(form.dateOfBirth) }}
+            </fieldset>
+
+            <fieldset class="location">
+                {{ form_label(form.location, "home") }}
+                {{ form_widget(form.location.address1, {'attr': {'placeholder': 'address'} }) }}
+                {{ form_errors(form.location.address1) }}
+
+                {{ form_widget(form.location.address2, {'attr': {'placeholder': 'address'} }) }}
+                {{ form_errors(form.location.address2) }}
+
+                {{ form_widget(form.location.postalCode, {'attr': {'placeholder': 'Postal code', 'class': 'resize'} }) }}
+                {{ form_errors(form.location.postalCode) }}
+
+                {{ form_widget(form.location.city, {'attr': {'placeholder': 'City', 'class': 'resize'} }) }}
+                {{ form_errors(form.location.city) }}
+
+                {{ form_widget(form.location.country, {'attr': {'placeholder': 'Country'} }) }}
+                {{ form_errors(form.location.country) }}
+            </fieldset>
+
+            <fieldset class="details">
+
+                <fieldset class="languages">
+                    {{ form_label(form.languages, "languages") }}
+                    {{ form_widget(form.languages, {'attr': {'class': 'selectMultiple'} }) }}
+                    {{ form_errors(form.languages) }}
+                </fieldset>
+
+                <fieldset class="checkbox">
+                    {{ form_widget(form.abroad, {'attr': {'data-icon': 'abroad'} }) }}
+                    {{ form_errors(form.abroad) }}
+
+                    {{ form_widget(form.hasChildren, {'attr': {'data-icon': 'hasChildren'} }) }}
+                    {{ form_errors(form.hasChildren) }}
+                </fieldset>
+
+                <fieldset>
+                    {{ form_label(form.function, "Function") }}
+                    {{ form_widget(form.function, {'attr': {'placeholder': '. . .'} }) }}
+                    {{ form_errors(form.function) }}
+                </fieldset>
+
+                <fieldset class="checkbox">
+                    {{ form_widget(form.isSpeaker, {'attr': {'data-icon': 'isSpeaker'} }) }}
+                    {{ form_errors(form.isSpeaker) }}
+
+                    {{ form_widget(form.isMember, {'attr': {'data-icon': 'isMember'} }) }}
+                    {{ form_errors(form.isMember) }}
+
+                    {{ form_widget(form.isVisitor, {'attr': {'data-icon': 'isVisitor'} }) }}
+                    {{ form_errors(form.isVisitor) }}
+
+                </fieldset>
+            </fieldset>
+
+            <fieldset class="notes">
+                {{ form_label(form.notes, "notes") }}
+                {{ form_widget(form.notes, {'attr': {'class': 'elastic', 'placeholder': '. . .'} }) }}
+                {{ form_errors(form.notes) }}
+            </fieldset>
+
+            <fieldset class="more">
+                {{ form_rest(form) }}
+            </fieldset>
+        </section>
+
+        #}
+
+        {{ form_rest(form) }}
+
+        <input type="submit" class="buttonLink" value="Save changes"/>
+
+        </form>
+    {% endspaceless %}
+
 {% endblock %}

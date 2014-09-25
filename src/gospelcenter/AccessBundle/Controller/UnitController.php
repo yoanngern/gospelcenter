@@ -41,6 +41,10 @@ class UnitController extends Controller
         $unit = new Unit();
         $form = $this->createForm(new UnitType, $unit);
         
+        $em = $this->getDoctrine()->getManager();
+        
+        $accesses = $em->getRepository('gospelcenterAccessBundle:Access')->findAll();
+        
         $request = $this->get('request');
         
         if($request->getMethod() == 'POST')
@@ -60,6 +64,7 @@ class UnitController extends Controller
         }
         
         return $this->render('gospelcenterAccessBundle:Unit:add.html.twig', array(
+            'accesses' => $accesses,
             'form' => $form->createView(),
             'page' => 'options',
             'tab' => 'units'
@@ -74,6 +79,10 @@ class UnitController extends Controller
     public function editAction(Unit $unit)
     {   
         $form = $this->createForm(new UnitType, $unit);
+        
+        $em = $this->getDoctrine()->getManager();
+        
+        $accesses = $em->getRepository('gospelcenterAccessBundle:Access')->findAll();
         
         $request = $this->get('request');
         
@@ -95,6 +104,7 @@ class UnitController extends Controller
         
         return $this->render('gospelcenterAccessBundle:Unit:edit.html.twig', array(
             'unit' => $unit,
+            'accesses' => $accesses,
             'form' => $form->createView(),
             'page' => 'options',
             'tab' => 'units'

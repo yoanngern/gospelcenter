@@ -33,13 +33,13 @@
             {% endfor %}
             
             <a href="{{ path('gospelcenterMedia_video', {'video': celebration.video.id}) }}" class="slide" id="{{ loop.index }}">
-                <section class="picture">
+                <section class="picture">                
                     <img src="{{ asset(celebration.image.webPath) }}" alt="{{ celebration.image.alt }}" />
                 </section>
                 <section class="details content">
                     <h1>{{ speakers }}</h1>
                     {% if celebration.title|length %}<h2>{{ celebration.title }}</h2>{% endif %}
-                    <time data-time="{{ celebration.startingDate|date('Y-m-d H:i:s') }}">{{ celebration.startingDate|date('d F') }}</time>
+                    <time data-time="{{ celebration.date.start|date('Y-m-d H:i:s') }}">{{ celebration.date.start|date('d F') }}</time>
                     
                     {% if celebration.description %}<p>{{ celebration.description }}</p>{% endif %}
                 </section>
@@ -85,7 +85,7 @@
                     <img src="{{ asset(celebration.image.webPath) }}" alt="{{ celebration.image.alt }}" />
                     <section class="details">
                         <h1>{{ speakers }}</h1>
-                        <span data-time="{{ celebration.startingDate|date('Y-m-d H:i:s') }}">{{ celebration.startingDate|date('d F') }}</span>
+                        <span data-time="{{ celebration.date.start|date('Y-m-d H:i:s') }}">{{ celebration.date.start|date('d F') }}</span>
                     </section>
                 </a>
                 

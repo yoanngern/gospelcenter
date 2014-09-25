@@ -61,7 +61,6 @@ class Center
      * is located by
      * 
      * @ORM\ManyToOne(targetEntity="gospelcenter\LocationBundle\Entity\Location", inversedBy="centers", cascade={"persist", "remove"})
-     * @ORM\JoinColumn(nullable=false)
      * @Assert\Valid()
      */
     private $location;
@@ -107,7 +106,6 @@ class Center
      * presents
      * 
      * @ORM\ManyToMany(targetEntity="gospelcenter\EventBundle\Entity\Event", inversedBy="centers")
-     * @Assert\Valid()
      */
     private $events;
     
@@ -119,6 +117,15 @@ class Center
      * @Assert\Valid()
      */
     private $pages;
+
+
+    /**
+     * is advertised by
+     *
+     * @ORM\OneToMany(targetEntity="gospelcenter\ArticleBundle\Entity\Ad", mappedBy="center")
+     * @Assert\Valid()
+     */
+    private $ads;
     
     
     /**
@@ -183,6 +190,7 @@ class Center
         $this->articles = new \Doctrine\Common\Collections\ArrayCollection();
         $this->images = new \Doctrine\Common\Collections\ArrayCollection();
         $this->persons = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->ads = new \Doctrine\Common\Collections\ArrayCollection();
     }
     
     /**
@@ -234,7 +242,7 @@ class Center
     /*************************************/
     /**** Getter setter auto generate ****/
     /*************************************/
-    
+
 
     /**
      * Set ref
@@ -567,6 +575,39 @@ class Center
     public function getPages()
     {
         return $this->pages;
+    }
+
+    /**
+     * Add ads
+     *
+     * @param \gospelcenter\ArticleBundle\Entity\Ad $ads
+     * @return Center
+     */
+    public function addAd(\gospelcenter\ArticleBundle\Entity\Ad $ads)
+    {
+        $this->ads[] = $ads;
+    
+        return $this;
+    }
+
+    /**
+     * Remove ads
+     *
+     * @param \gospelcenter\ArticleBundle\Entity\Ad $ads
+     */
+    public function removeAd(\gospelcenter\ArticleBundle\Entity\Ad $ads)
+    {
+        $this->ads->removeElement($ads);
+    }
+
+    /**
+     * Get ads
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getAds()
+    {
+        return $this->ads;
     }
 
     /**

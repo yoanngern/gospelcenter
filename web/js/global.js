@@ -320,18 +320,18 @@ function logoResize() {
 /**
  *  Mouse wheel event
  */
-$('html').bind('mousewheel', function(e){
-	e.preventDefault();
+$('html').bind('mousewheel', function(event){
+	event.preventDefault();
 	
-	if(e.deltaY > 2) {
+	if(event.deltaY > 2) {
     	$(document).trigger("screenScroll", "up");
-	} else if(e.deltaY < -2) {
+	} else if(event.deltaY < -2) {
     	$(document).trigger("screenScroll", "down");
 	}
 	
-	if(e.deltaX > 2) {
+	if(event.deltaX > 2) {
     	$(document).trigger("screenScroll", "right");
-	} else if(e.deltaX < -2) {
+	} else if(event.deltaX < -2) {
     	$(document).trigger("screenScroll", "left");
 	}
 });

@@ -18,7 +18,7 @@ $(document).ready( function() {
     
     
     // init checkbox
-	$("input[type=checkbox]").each( function() {
+	$("input[type=checkbox][data-icon]").each( function() {
     	initCheckBox(this);
 	});
 	
@@ -49,7 +49,7 @@ $(document).ready( function() {
     	$(this).autoGrowInput();
 	});
 	
-	$("form").on("click", "nav.sub_nav a", function() {
+	$("form").on("click", "nav.sub_nav a", function(event) {
     	event.preventDefault();
     	var id = $(this).attr("id");
     	switchFieldset(id);
@@ -59,9 +59,9 @@ $(document).ready( function() {
     	setDateTime(this);
 	});
 	
-	$("form fieldset[data-prototype]").on("click", "#add", function(e) {
+	$("form fieldset[data-prototype]").on("click", "#add", function(event) {
     	
-    	e.preventDefault();
+    	event.preventDefault();
     	
     	var id = $(this).data("id");
     	
@@ -113,7 +113,10 @@ function setDateTime(input) {
 	}
 	
 	$(input).val(value);
-	$(input).autoGrowInput();
+	
+	if($(input).hasClass("resize")) {
+    	$(input).autoGrowInput();
+	}
 }
 
 

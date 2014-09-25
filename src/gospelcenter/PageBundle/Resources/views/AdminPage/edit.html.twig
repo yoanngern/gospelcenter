@@ -1,71 +1,72 @@
-{% extends "::admin.html.twig" %}
+{% extends "::adminNew.html.twig" %}
+
+{% block classPage %}{{ parent() }} single{% endblock %}
 
 {% block javascripts %}
     {{ parent() }}
     <script type="text/javascript" src="{{ asset('js/addPage.min.js') }}"></script>
 {% endblock %}
 
-{% block stylesheets %}
-	{{ parent() }}
-	<link rel="stylesheet" href="{{ asset('css/admin.css') }}" type="text/css" />
-	<link rel="stylesheet" href="{{ asset('css/form.css') }}" type="text/css" />
-{% endblock %}
-
 {% block title %}
     {{ parent() }} - Edit a page
 {% endblock %}
 
+{% block adminTitle %}<h1>Edit a page</h1>{% endblock %}
+
+{% block adminBack %}
+    <a class="back" href="{{ path('gospelcenterAdmin_pages', {'center': center.ref}) }}">Pages</a>
+{% endblock %}
+
+{% block adminTools %}
+    <a href="{{ path('gospelcenterAdmin_pages_delete', {'center': center.ref, 'page': objPage.id}) }}"
+       class="delete">Delete</a>
+    <a href="{{ path('gospelcenterAdmin_pages', {'center': center.ref}) }}">Cancel</a>
+{% endblock %}
+
 {% block adminBody %}
-    <h1>Edit a page</h1>
-    
-    <form class="page" action="{{ path('gospelcenterAdmin_pages_edit', {'center': center.ref, 'page': objPage.id}) }}" method="post" {{ form_enctype(form) }}>
-        <nav class="tools">
-    		<input type="submit" class="buttonRounded" />
-    		<a href="{{ path('gospelcenterAdmin_pages_delete', {'center': center.ref, 'page': objPage.id}) }}" class="buttonRounded">Delete</a>
-    	</nav>
-    	
-    	{{ form_widget(form.ref) }}
+
+    <form class="page" action="{{ path('gospelcenterAdmin_pages_edit', {'center': center.ref, 'page': objPage.id}) }}"
+          method="post" {{ form_enctype(form) }}>
+
+        {{ form_widget(form.ref) }}
         {{ form_errors(form.ref) }}
-        
+
         {{ form_widget(form.title, {'attr': {'placeholder': 'Title'} }) }}
         {{ form_errors(form.title) }}
-        
+
         {{ form_widget(form.slogan, {'attr': {'placeholder': 'Slogan', 'class': 'elastic'} }) }}
         {{ form_errors(form.slogan) }}
-        
-        {{ form_widget(form.template) }}
-        {{ form_errors(form.template) }}
-        
+
         {{ form_widget(form.language) }}
         {{ form_errors(form.language) }}
-        
+
         <fieldset id="slides">
             <legend>Slides</legend>
             {{ form_widget(form.slides) }}
             {{ form_errors(form.slides) }}
         </fieldset>
-        
+
         {{ form_rest(form) }}
+
+        <input type="submit" class="buttonLink" value="Save changes"/>
     </form>
-    
-    
+
+
 {% endblock %}
 
 {% block jsTemplating %}
     {{ parent() }}
     <script id="slide" type="text/x-handlebars-template">
         {% for slide in article.slides %}
-            <article id="{{ slide.id }}" class="slide">
-                <div class="arrow">
-                    <div id="up"></div>
-                    <div id="down"></div>
-                </div>
-                <section>
-                    <img src="{{ asset(slide.image.webPath) }}" alt="{{ slide.image.alt }}" />
-                    <h1>{{ slide.title }}</h1>
-                    <p>{{ slide.text }}</p>
-                </section>
-            </article>
+        <article id="{{ slide.id }}" class="slide">
+            <section style="background-image: url({{ asset(slide.image.webPath) }})">
+                <h1>{{ slide.title }}</h1>
+            </section>
+            <div class="arrow">
+                <div id="up"></div>
+                <div id="down"></div>
+            </div>
+        </article>
         {% endfor %}
     </script>
 {% endblock %}

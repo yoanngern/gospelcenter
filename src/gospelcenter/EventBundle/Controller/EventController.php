@@ -11,52 +11,41 @@ use gospelcenter\CenterBundle\Entity\Center;
 use gospelcenter\EventBundle\Form\EventType;
 
 class EventController extends Controller {
-    
-   /*
-    *   Draw the list of all next events
-    *
-    */
+
+    /**
+     * Draw the list of all next events
+     * @param Center $center
+     * @return Response
+     */
     public function listAction(Center $center)
     {    
         $em = $this->getDoctrine()->getManager();
         
         $events = $em->getRepository('gospelcenterEventBundle:Event')->findUpcoming($center);
-        
-        $mobileDetector = $this->get('mobile_detect.mobile_detector');
-        if($mobileDetector->isMobile()) {
-            return $this->render('gospelcenterEventBundle:Mobile:list.html.twig', array(
-                'events' => $events,
-                'center' => $center,
-                'page' => 'events'
-            ));   
-        }
+
+        $dates = $em->getRepository('gospelcenterDateBundle:Date')->findNext($center);
         
         return $this->render('gospelcenterEventBundle:Event:list.html.twig', array(
             'events' => $events,
+            'dates' => $dates,
             'center' => $center,
-            'page' => 'events'
+            'page' => 'events',
+            'tab' => 'events'
         ));   
     }
-    
-    
-   /*
-    *   Draw the Event received in parameter
-    *   @param the id of the event
-    */
+
+
+    /**
+     * Draw the Event received in parameter
+     * @param Center $center
+     * @param Event $event
+     * @return Response
+     */
     public function eventAction(Center $center, Event $event)
     {    
         $em = $this->getDoctrine()->getManager();
         
         $event = $em->getRepository('gospelcenterEventBundle:Event')->findWithAll($event, $center);
-        
-        $mobileDetector = $this->get('mobile_detect.mobile_detector');
-        if($mobileDetector->isMobile()) {
-            return $this->render('gospelcenterEventBundle:Mobile:event.html.twig', array(
-                'event' => $event,
-                'center' => $center,
-                'page' => 'events'
-            ));  
-        }
         
         return $this->render('gospelcenterEventBundle:Event:event.html.twig', array(
             'event' => $event,
@@ -64,18 +53,19 @@ class EventController extends Controller {
             'page' => 'events'
         ));   
     }
-    
-    
-   /*
-    *   Add a new event
-    *
-    */
+
+
+    /**
+     * Add a new event
+     * @param Center $center
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse|Response
+     */
     public function addAction(Center $center)
     {    
         
         $event = new Event();
-        $event->setStartingDate(new \Datetime());
-        $event->setEndingDate(new \Datetime());
+        //$event->setStartingDate(new \Datetime());
+        //$event->setEndingDate(new \Datetime());
         $form = $this->createForm(new EventType, $event);
                      
         $request = $this->get('request');
@@ -103,12 +93,14 @@ class EventController extends Controller {
             'page' => 'events'
         ));   
     }
-    
-    
-   /*
-    *   Edit the event received in parameter
-    *   @param the id of the event
-    */
+
+
+    /**
+     * Edit the event received in parameter
+     * @param Center $center
+     * @param Event $event
+     * @return Response
+     */
     public function editAction(Center $center, Event $event)
     {    
         $em = $this->getDoctrine()->getManager();
@@ -121,12 +113,14 @@ class EventController extends Controller {
             'page' => 'events'
         ));   
     }
-    
-    
-   /*
-    *   Remove the event received in parameter
-    *   @param the id of the event
-    */
+
+
+    /**
+     * Remove the event received in parameter
+     * @param Center $center
+     * @param Event $event
+     * @return Response
+     */
     public function deleteAction(Center $center, Event $event)
     {
         return $this->render('gospelcenterEventBundle:Event:delete.html.twig', array(
@@ -135,13 +129,14 @@ class EventController extends Controller {
             'page' => 'events'
         ));
     }
-    
-    
-   /*
-    *   Get next events
-    *   @param the number of event
-    *   @return next events in JSON
-    */
+
+
+    /**
+     * Get next events
+     * @param Center $center
+     * @param $nb
+     * @return Response
+     */
     public function jsonAction(Center $center, $nb)
     {   
         $em = $this->getDoctrine()->getManager();
@@ -158,13 +153,14 @@ class EventController extends Controller {
         
         return $response;
     }
-    
-    
-   /*
-    *   Get next star events
-    *   @param the number of star event
-    *   @return next star events in HTML
-    */
+
+
+    /**
+     * Get next star events
+     * @param Center $center
+     * @param $nb
+     * @return Response
+     */
     public function starEventsAction(Center $center, $nb)
     {   
         $list = array(

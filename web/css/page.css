@@ -1,3 +1,23 @@
+@font-face {
+  font-family: 'Radikal-Light';
+  src: url("../fonts/2B5662_0_0.eot");
+  src: url("../fonts/2B5662_0_0.eot?#iefix") format("embedded-opentype"), url("../fonts/2B5662_0_0.woff") format("woff"), url("../fonts/2B5662_0_0.ttf") format("truetype"); }
+@font-face {
+  font-family: 'Radikal-Black';
+  src: url("../fonts/2B5662_1_0.eot");
+  src: url("../fonts/2B5662_1_0.eot?#iefix") format("embedded-opentype"), url("../fonts/2B5662_1_0.woff") format("woff"), url("../fonts/2B5662_1_0.ttf") format("truetype"); }
+@font-face {
+  font-family: 'Radikal-Bold';
+  src: url("../fonts/2B5662_2_0.eot");
+  src: url("../fonts/2B5662_2_0.eot?#iefix") format("embedded-opentype"), url("../fonts/2B5662_2_0.woff") format("woff"), url("../fonts/2B5662_2_0.ttf") format("truetype"); }
+@font-face {
+  font-family: 'Radikal';
+  src: url("../fonts/2B5662_3_0.eot");
+  src: url("../fonts/2B5662_3_0.eot?#iefix") format("embedded-opentype"), url("../fonts/2B5662_3_0.woff") format("woff"), url("../fonts/2B5662_3_0.ttf") format("truetype"); }
+@font-face {
+  font-family: 'Radikal-UltraThin';
+  src: url("../fonts/2B5662_4_0.eot");
+  src: url("../fonts/2B5662_4_0.eot?#iefix") format("embedded-opentype"), url("../fonts/2B5662_4_0.woff") format("woff"), url("../fonts/2B5662_4_0.ttf") format("truetype"); }
 html.js #page > h1 {
   display: none; }
 html.js #page > h2 {
@@ -132,24 +152,25 @@ html.js #page article.slide {
       font-weight: 100;
       font-family: "Radikal-Light", "Radikal", sans-serif; }
     #container #page.about nav.sub_nav {
-      position: absolute;
-      bottom: 75px; }
-    #container #page.about.leadership article {
+      position: fixed;
+      left: 0;
+      bottom: 70px;
+      padding-bottom: 5px;
+      background-color: #fdfdfc; }
+    #container #page.about.leadership article.people {
       display: inline-block;
-      margin: 1% 1% 1% 0;
-      height: 15%;
-      min-height: 150px;
-      width: auto; }
-      #container #page.about.leadership article img {
+      margin: 2%;
+      width: 16%; }
+      #container #page.about.leadership article.people:last-of-type {
+        margin-bottom: 120px; }
+      #container #page.about.leadership article.people img {
         display: block;
         margin: 0 auto;
-        height: 100%; }
-      #container #page.about.leadership article span {
+        width: 100%; }
+      #container #page.about.leadership article.people span {
         display: block;
-        font-family: "Radikal-Bold", "Radikal", sans-serif;
-        font-size: 0.9em;
-        padding-top: 5px;
         width: 100%;
+        padding-top: 10px;
         text-align: center; }
     #container #page.complex {
       margin: 0 auto;

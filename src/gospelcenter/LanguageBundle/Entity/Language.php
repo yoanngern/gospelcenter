@@ -50,7 +50,7 @@ class Language
     /**
      * specifies
      * 
-     * @ORM\OneToMany(targetEntity="gospelcenter\PageBundle\Entity\Page", mappedBy="languages")
+     * @ORM\OneToMany(targetEntity="gospelcenter\PageBundle\Entity\Page", mappedBy="language")
      * @ORM\JoinColumn(nullable=true)
      */
     private $pages;
