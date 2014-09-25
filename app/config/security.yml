@@ -16,11 +16,11 @@ security:
         ROLE_SUPER_ADMIN:   [ROLE_ADMIN, ROLE_ALLOWED_TO_SWITCH]
 
     providers:
-        in_memory:
-            memory:
-                users:
-                    user:  { password: userpass, roles: [ 'ROLE_LOCAL' ] }
-                    admin: { password: adminpass, roles: [ 'ROLE_ADMIN' ] }
+        #in_memory:
+        #    memory:
+        #        users:
+        #            user:  { password: userpass, roles: [ 'ROLE_LOCAL' ] }
+        #            admin: { password: adminpass, roles: [ 'ROLE_ADMIN' ] }
         main:
             #entity: {class: gospelcenter\UserBundle\Entity\User, property: username }
             id: fos_user.user_provider.username
