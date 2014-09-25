@@ -1,0 +1,123 @@
+@import 'color';
+@import 'reset';
+@import "size";
+@import "font";
+@import "_header";
+
+body {
+    margin: 0px;
+    color: $grayDarkGC;
+    font-family: $font-regular;
+    background-color: $whiteGC;
+    width: 100%;
+    position: relative;
+}
+
+@mixin base($base) {
+
+    body {
+        font-size: $base;
+        line-height: $base;
+    }
+
+    h1 {
+        font-size: $base;
+        line-height: $base;
+    }
+
+    h2 {
+        font-size: $base;
+        line-height: $base;
+    }
+
+    h3 {
+        font-size: $base;
+        line-height: $base;
+    }
+
+    p {
+        font-size: $base;
+        line-height: $base;
+    }
+
+    summary {
+        font-size: $base;
+        line-height: $base;
+    }
+
+    img {
+        line-height: $base;
+    }
+}
+
+@include base(16px);
+
+@media only screen and (max-width: $mobileH) {
+    @include base(12px);
+    font-family: $font-light;
+}
+
+h1 {
+
+    &.titlePage {
+        padding-top: 68px;
+        text-align: center;
+        text-transform: uppercase;
+        font-size: 2.25em;
+        font-family: $font-black;
+        margin-bottom: 68px;
+
+        span {
+            border: 3px solid $grayDarkGC;
+            padding: 8px 12px 0px 12px;
+            display: inline-block;
+            line-height: 1.1em;
+        }
+
+        @media only screen and (max-width: $mobileH) {
+            padding-top: 25px;
+            margin-bottom: 30px;
+
+            span {
+                padding: 6px 8px 0px 8px;
+                line-height: 1.3em;
+            }
+
+        }
+    }
+}
+
+h2 {
+
+    &.slogan {
+        font-size: 1.2em;
+        line-height: 1.2em;
+        text-align: center;
+        font-family: $font-light;
+        max-width: 500px;
+        margin: 70px auto;
+
+        @media only screen and (max-width: $mobileH) {
+            max-width: 60%;
+            font-size: 1.4em;
+            margin: 20px auto;
+        }
+
+        @media only screen and (max-width: $mobileW) {
+            max-width: inherit;
+            margin: 20px 10px;
+        }
+    }
+}
+
+a {
+    color: $grayGC;
+    text-decoration: none;
+    text-align: center;
+    display: block;
+    cursor: pointer;
+
+    &:hover {
+        text-decoration: underline;
+    }
+}
