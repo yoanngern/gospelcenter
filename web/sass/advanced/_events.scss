@@ -91,7 +91,7 @@
                 @include preserve-3d;
 
                 &.date {
-                    width: 160px;
+                    width: 170px;
                     text-align: right;
                     margin-top: 10px;
 
@@ -468,10 +468,12 @@
 
                     &.date {
                         margin-top: 6px;
+                        width: 25%;
 
                         time.date,
                         time.day {
                             display: none;
+                            padding-right: 5px;
                         }
 
                         time.mobile {
@@ -489,13 +491,14 @@
 
                     &.title {
                         margin-top: 6px;
-                        width: 82%;
+                        width: 75%;
 
                         div.container {
                             height: 42px;
 
                             h1 {
                                 font-size: 1.25em;
+                                padding-left: 5px;
                             }
                         }
                     }

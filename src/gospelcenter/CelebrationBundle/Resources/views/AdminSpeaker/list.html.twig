@@ -43,10 +43,10 @@
                 {% if key != 0 and key != (speaker.person.languages|length -1) %}
                     {% set languages = languages ~ ', ' %}
                 {% elseif key != 0 and key == (speaker.person.languages|length -1) %}
-                    {% set languages = languages ~ ' et ' %}
+                    {% set languages = languages ~ 'gc.generic.and'|trans %}
                 {% endif %}
 
-                {% set languages = languages ~ language.ref %}
+                {% set languages = languages ~ language.ref|trans({}, 'lang') %}
 
             {% endfor %}
 

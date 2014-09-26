@@ -84,9 +84,7 @@ class Language
         
         $ref = $this->ref;
         
-        //$language = Locale::getDisplayLanguages('de');
-        
-        return (string)$ref;
+        return $ref;
     }
     
     

@@ -4,7 +4,7 @@ imports:
 
 framework:
     #esi:             ~
-    #translator:      { fallback: %locale% }
+    translator:      { fallback: %locale% }
     secret:          %secret%
     router:
         resource: "%kernel.root_dir%/config/routing.yml"
@@ -69,10 +69,11 @@ swiftmailer:
     username:  %mailer_user%
     password:  %mailer_password%
     spool:     { type: memory }
-    
+
 services:
     twig.extension.debug:
-        class: Twig_Extensions_Extension_Debug
+        class: Twig_Extension_Debug
+        class: Twig_Extensions_Extension_Intl
         tags:
             - { name: 'twig.extension' } 
             
@@ -94,3 +95,8 @@ fos_user:
     db_driver:     orm                        
     firewall_name: main                       
     user_class:    gospelcenter\UserBundle\Entity\User
+
+jms_i18n_routing:
+    default_locale: fr
+    locales: [fr, en]
+    strategy: prefix_except_default

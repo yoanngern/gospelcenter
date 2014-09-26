@@ -69,10 +69,103 @@
                 border-top: 1px solid $whiteGC;
                 border-bottom: 1px solid $whiteGC;
 
+                ul {
+                    display: inline-block;
+                    vert-align: top;
+                }
+
                 li {
                     a {
                         padding-right: 20px;
                         line-height: 37px;
+                    }
+                }
+
+                div.lang-nav {
+                    display: inline-block;
+                    vert-align: top;
+                    float: right;
+
+                    span {
+                        display: block;
+                        font-size: 0.9em;
+                        font-family: $font-light;
+                        line-height: 37px;
+                        padding-right: 20px;
+                        cursor: pointer;
+                        background-image: url('../images/select_arrow_white.svg');
+                        background-size: normal;
+                        background-position: right top;
+                        background-repeat: no-repeat;
+
+                        &:hover {
+                            color: $grayGC;
+                            background-position: right bottom;
+                        }
+                    }
+
+                    div.param_arrow {
+                        z-index: 1001;
+                        position: absolute;
+                        right: 27px;
+                        bottom: 35px;
+                        display: none;
+                    }
+
+                    div.arrow_up_border {
+                        width: 0;
+                        height: 0;
+                    }
+
+                    div.arrow_up {
+                        width: 0;
+                        height: 0;
+                        border-left: 11px solid transparent;
+                        border-right: 11px solid transparent;
+                        border-top: 10px solid $whiteGC;
+                        margin-left: 0px;
+                        margin-top: -9px;
+                    }
+
+                    &.actived {
+                        ul {
+                            display: block;
+                        }
+
+                        div.param_arrow {
+                            display: block;
+                        }
+                    }
+
+                    ul {
+                        display: none;
+                        position: absolute;
+                        background-color: $whiteGC;
+                        border: 1px solid $whiteGC;
+                        vert-align: bottom;
+                        bottom: 44px;
+                        right: 5px;
+                        width: 150px;
+
+                        li {
+                            display: block;
+                            margin: 0;
+
+                            a {
+                                display: block;
+                                line-height: 1.6em;
+                                color: $grayDarkGC;
+                                font-family: $font-light;
+                                font-size: 1em;
+                                padding: 4px 0 0 8px;
+                                background-color: $whiteGC;
+
+                                &:hover {
+                                    background-color: $grayDarkGC;
+                                    color: $whiteGC;
+                                }
+                            }
+                        }
                     }
                 }
             }
@@ -100,6 +193,45 @@
         .container {
             width: auto;
             margin: 0 16px;
+        }
+    }
+
+    @media only screen and (max-width: 800px) {
+        .container {
+            nav {
+                &.main {
+                    div.lang-nav {
+                        display: block;
+                        float: none;
+                        border-top: 1px solid $whiteGC;
+                        text-align: center;
+
+                        span {
+                            display: inline-block;
+
+                        }
+
+                        div.param_arrow {
+                            right: 50%;
+                            margin-right: -10px;
+                            bottom: 28px;
+                        }
+
+                        ul {
+                            right: 50%;
+                            padding: 0;
+                            bottom: 37px;
+                            margin-right: -75px;
+
+                            li {
+                                a {
+                                    padding-left: 0;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
         }
     }
 
@@ -145,6 +277,27 @@
                 &.main {
                     ul li a {
                         padding: 0 10px;
+                    }
+
+                    div.lang-nav {
+
+                        span {
+                            font-size: 1.2em;
+                        }
+
+                        ul {
+                            left: 0px;
+                            right: 0px;
+                            width: auto;
+                            margin-right: 0;
+
+                            li {
+                                a {
+                                    font-size: 1.4em;
+                                    line-height: 2em;
+                                }
+                            }
+                        }
                     }
                 }
             }

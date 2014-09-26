@@ -1,0 +1,14 @@
+gc:
+    page:
+        home:
+            nextEvent: Prochains events
+            moreEvents: Plus d'events
+        about:
+            positive: "Encourager un style de vie chrétien qui motive, construit et développe les capacités et les dons de chacun."
+            practice: "Des activités, des enseignements qui rejoignent votre réalité."
+            powerful: "Le Gospel Center a le désir de vivre l'évangile de la façon la plus complète possible, aussi dans la dimension de la guérison et du miraculeux."
+        bases:
+            findBase: TROUVEZ UNE BASE PRÈS DE CHEZ VOUS
+            moreInfos: Pour plus d'infos, contactez-nous
+        contact:
+            writeMessage: Écrivez nous un message

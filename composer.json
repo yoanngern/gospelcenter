@@ -26,7 +26,7 @@
         "coresphere/console-bundle": "dev-master",
         "symfony/locale": "v2.4.2",
         "friendsofsymfony/user-bundle": "2.0.*@dev",
-        "njasm/soundcloud": "dev-master"
+        "jms/i18n-routing-bundle": "dev-master"
     },
     "scripts": {
         "post-install-cmd": [

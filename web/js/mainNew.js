@@ -18,6 +18,7 @@ $(document).ready(function () {
     nav.navVisible = false;
     nav.paramVisible = false;
     nav.rubanProcess = false;
+    nav.langVisible = false;
 
     window.intervalMessage = 0;
 
@@ -35,6 +36,12 @@ $(document).ready(function () {
         event.preventDefault();
         event.stopPropagation();
         toggleParam();
+    });
+
+    $('footer').on('click', '#get_lang', function(event) {
+        event.preventDefault();
+        event.stopPropagation();
+        toggleLanguage();
     });
 
 
@@ -352,4 +359,33 @@ function openParam() {
 function closeParam() {
     nav.paramVisible = false;
     $('div.param_nav').removeClass("actived");
+}
+
+/**
+ * toggleParam
+ */
+function toggleLanguage() {
+    if (nav.langVisible) {
+        closeLanguage();
+    } else {
+        openLanguage();
+    }
+}
+
+
+/**
+ * openParam
+ */
+function openLanguage() {
+    nav.langVisible = true;
+    $('div.lang-nav').addClass("actived");
+}
+
+
+/**
+ * closeParam
+ */
+function closeLanguage() {
+    nav.langVisible = false;
+    $('div.lang-nav').removeClass("actived");
 }

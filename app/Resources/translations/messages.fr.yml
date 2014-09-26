@@ -1,0 +1,26 @@
+gc:
+    nav:
+        home: Home
+        celebrations: Célébrations
+        about: About
+        bases: Les Bases
+        youth: Jeunesse
+        events: Events
+        contact: Contact
+        give: Nous soutenir
+        apostolicTeam: Équipe apostolique
+        gcmovement: GCMovement
+    title:
+        celebrations: Célébrations
+        positive: Positif
+        practice: Pratique
+        powerful: Puissant
+        bases: Les Bases
+        youth: Jeunesse
+        events: Events
+        contact: Contact
+        give: Nous soutenir
+    generic:
+        with: avec
+        and: " et "
+        celebrationWith: Célébration avec

@@ -13,7 +13,7 @@
 {% endblock %}
 
 {% block body %}
-    <h1 class="titlePage"><span>Célébrations</span></h1>
+    <h1 class="titlePage"><span>{{ 'gc.title.celebrations'|trans }}</span></h1>
 
     <section class="allSunday">
         <h2>All sunday evening at 6pm</h2>
@@ -21,7 +21,7 @@
 
     {% if nextCelebrations|length %}
 
-        <h2 class="slogan">Next speakers</h2>
+        <h2 class="slogan">{{ 'gc.celebration.nextSpeakers'|trans }}</h2>
 
         <section id="speakers">
 
@@ -37,7 +37,7 @@
                             {% if key != 0 and key != (celebration.speakers|length -1) %}
                                 {% set speakers = speakers ~ ', ' %}
                             {% elseif key != 0 and key == (celebration.speakers|length -1) %}
-                                {% set speakers = speakers ~ ' et ' %}
+                                {% set speakers = speakers ~ 'gc.generic.and'|trans %}
                             {% endif %}
 
                             {% set speakers = speakers ~ speaker.person.firstname ~ ' ' ~ speaker.person.lastname %}
@@ -52,7 +52,7 @@
                             </div>
 
                             <h1>{{ speakers }}</h1>
-                            <time>{{ celebration.date.start|date('j F') }}</time>
+                            <time>{{ celebration.date.start|localizeddate('medium', 'none') }}</time>
                         </a>
 
                     {% endfor %}
@@ -70,7 +70,7 @@
                         {% if key != 0 and key != (celebration.speakers|length -1) %}
                             {% set speakers = speakers ~ ', ' %}
                         {% elseif key != 0 and key == (celebration.speakers|length -1) %}
-                            {% set speakers = speakers ~ ' et ' %}
+                            {% set speakers = speakers ~ 'gc.generic.and'|trans %}
                         {% endif %}
 
                         {% set speakers = speakers ~ speaker.person.firstname ~ ' ' ~ speaker.person.lastname %}
@@ -82,11 +82,11 @@
                         <div class="arrow"></div>
 
                         <section class="info">
-                            <h1>Celebration with {{ speakers }}</h1>
+                            <h1>{{ 'gc.generic.celebrationWith'|trans }} {{ speakers }}</h1>
 
-                            <span>{{ celebration.date.start|date('j F Y') }}</span>
-                            <time>{{ celebration.date.start|date('H:i') }}
-                                - {{ celebration.date.end|date('H:i') }}</time>
+                            <span>{{ celebration.date.start|localizeddate('long', 'none') }}</span>
+                            <time>{{ celebration.date.start|localizeddate('none', 'short') }}
+                                - {{ celebration.date.end|localizeddate('none', 'short') }}</time>
 
                             <a class="location" href="#map" data-link="moveTo">
                                 <div class="icon"></div>
@@ -99,7 +99,7 @@
                                 <a class="kids"
                                    href="{{ path('gospelcenterPage_default', {'center': center.ref, 'page': 'youth'}) }}">
                                     <div class="icon"></div>
-                                    <span>Special program for kids</span>
+                                    <span>{{ 'gc.celebration.kidsProgram'|trans }}</span>
 
                                     <div class="arrow"></div>
                                 </a>
@@ -117,9 +117,7 @@
     {% endif %}
 
     <section id="description" class="gray">
-        <h2>Centrées sur la manifestation de la puissance de Dieu, les célébrations sont composées de musique live, d’un
-            message percutant, de contacts et plein d’autres surprises. L’accent y est mis sur la foi et la réalité de
-            Dieu aujourd’hui.</h2>
+        <h2>{{ 'gc.celebration.desc'|trans }}</h2>
     </section>
 
     <section id="map" class="map_full">
@@ -136,7 +134,7 @@
 
     {% if lastCelebrations|length %}
         <section id="pastCelebrations" class="gray">
-            <h1>Watch our last celebrations</h1>
+            <h1>{{ 'gc.celebration.watchLast'|trans }}</h1>
 
             <section class="mediaList">
                 {% spaceless %}
@@ -149,7 +147,7 @@
                             {% if key != 0 and key != (celebration.speakers|length -1) %}
                                 {% set speakers = speakers ~ ', ' %}
                             {% elseif key != 0 and key == (celebration.speakers|length -1) %}
-                                {% set speakers = speakers ~ ' et ' %}
+                                {% set speakers = speakers ~ 'gc.generic.and'|trans %}
                             {% endif %}
 
                             {% set speakers = speakers ~ speaker.person.firstname ~ ' ' ~ speaker.person.lastname %}
@@ -163,7 +161,7 @@
                             </div>
                             <section class="details">
                                 <h1>{{ speakers }}</h1>
-                                <span>{{ celebration.date.start|date('d F') }}</span>
+                                <span>{{ celebration.date.start|localizeddate('medium', 'none') }}</span>
                             </section>
                         </a>
 
@@ -171,7 +169,7 @@
 
                     <a class="more" href="{{ path('gospelcenterMedia_center', {'center': center.ref}) }}">
                         <div class="photo">
-                            <span>More</span>
+                            <span>{{ 'gc.celebration.more'|trans }}</span>
                         </div>
                     </a>
                 {% endspaceless %}

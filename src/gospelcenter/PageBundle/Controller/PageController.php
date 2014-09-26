@@ -7,51 +7,74 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 class PageController extends Controller
 {
-    public function indexAction(Center $center, $page = 'home')
+    public function indexAction(Center $center, $_locale, $page = 'home')
     {
-
-        $language = 'fr';
+        $default_language = "fr";
+        $language = $_locale;
 
         $em = $this->getDoctrine()->getManager();
 
         if ($page == "youth") {
-            $pages = $em->getRepository('gospelcenterPageBundle:Page')->findYouthPages($center);
+            $pages = $em->getRepository('gospelcenterPageBundle:Page')->findYouthPages($center, $page, $language);
 
-            $page = $pages[0]->getAlias();
+            if(sizeof($pages) == 0) {
+                $language = $default_language;
+                $pages = $em->getRepository('gospelcenterPageBundle:Page')->findYouthPages($center, $page, $language);
+            }
 
-            if (!$page) {
-                $page = $pages[0]->getTitle();
+            if(sizeof($pages) != 0) {
+
+                $page = $pages[0]->getAlias();
+
+                return $this->render(
+                    'gospelcenterPageBundle:Page:youth.html.twig',
+                    array(
+                        'center' => $center,
+                        'page' => 'youth',
+                        'pages' => $pages,
+                        'group' => $page
+                    )
+                );
             }
         }
 
-        $aPage = $em->getRepository('gospelcenterPageBundle:Page')->findAPage($center, $page);
+        $aPage = $em->getRepository('gospelcenterPageBundle:Page')->findAPage($center, $page, $language);
+
+        if (!$aPage) {
+            $aPage = $em->getRepository('gospelcenterPageBundle:Page')->findAPage($center, $page, $default_language);
+        }
 
         if (!$aPage) {
 
-            $pages = $em->getRepository('gospelcenterPageBundle:Page')->findYouthPages($center);
+            $pages = $em->getRepository('gospelcenterPageBundle:Page')->findYouthPages($center, "youth", $language);
 
+            if(sizeof($pages) != 0) {
+                return $this->render(
+                    'gospelcenterPageBundle:Page:youth.html.twig',
+                    array(
+                        'center' => $center,
+                        'page' => 'youth',
+                        'pages' => $pages,
+                        'group' => $page
+                    )
+                );
+            } else {
+                throw $this->createNotFoundException('This page doesn\'t exist');
+            }
+
+
+        } else {
             return $this->render(
-                'gospelcenterPageBundle:Page:youth.html.twig',
+                'gospelcenterPageBundle:Page:index.html.twig',
                 array(
                     'center' => $center,
-                    'page' => 'youth',
-                    'pages' => $pages,
-                    'group' => $page
+                    'page' => $aPage->getRef(),
+                    'language' => $language,
+                    'article' => $aPage
                 )
             );
-
         }
 
-
-        return $this->render(
-            'gospelcenterPageBundle:Page:index.html.twig',
-            array(
-                'center' => $center,
-                'page' => $aPage->getRef(),
-                'language' => $language,
-                'article' => $aPage
-            )
-        );
     }
 
     public function homeAction(Center $center)
@@ -93,10 +116,10 @@ class PageController extends Controller
         );
     }
 
-    public function aboutAction(Center $center)
+    public function aboutAction(Center $center, $_locale)
     {
 
-        $language = 'fr';
+        $language = $_locale;
 
 
         return $this->render(
@@ -112,10 +135,10 @@ class PageController extends Controller
         );
     }
 
-    public function contactAction(Center $center)
+    public function contactAction(Center $center, $_locale)
     {
 
-        $language = 'fr';
+        $language = $_locale;
 
 
         return $this->render(
@@ -129,10 +152,10 @@ class PageController extends Controller
         );
     }
 
-    public function giveAction(Center $center)
+    public function giveAction(Center $center, $_locale)
     {
 
-        $language = 'fr';
+        $language = $_locale;
 
         return $this->render(
             'gospelcenterPageBundle::staticPage.html.twig',

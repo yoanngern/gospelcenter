@@ -10,13 +10,31 @@
             </ul>
         </nav>
         <nav class="main">
-            <ul>
+            <ul class="local">
                 {% spaceless %}
                     {% include "::nav/local.html.twig" %}
-                    <li><a href="{{ path('gospelcenterPage_default', {'center': center.ref, 'page': 'give'}) }}">Nous
-                            soutenir</a></li>
+                    <li>
+                        <a href="{{ path('gospelcenterPage_default', {'center': center.ref, 'page': 'give'}) }}">{{ 'gc.nav.give'|trans }}</a>
+                    </li>
                 {% endspaceless %}
             </ul>
+            <div class="lang-nav">
+                <span id="get_lang">{{ app.request.locale|trans({}, 'lang') }}</span>
+
+                <div class="param_arrow">
+                    <div class="arrow_up_border"></div>
+                    <div class="arrow_up"></div>
+                </div>
+                <ul>
+                    <li>
+                        <a href="{{ path(app.request.get('_route'), app.request.get('_route_params')|merge({'_locale': 'fr'})) }}">Français</a>
+                    </li>
+                    <li>
+                        <a href="{{ path(app.request.get('_route'), app.request.get('_route_params')|merge({'_locale': 'en'})) }}">English</a>
+                    </li>
+                </ul>
+            </div>
         </nav>
+
     </section>
 </footer>

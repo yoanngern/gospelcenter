@@ -141,6 +141,7 @@
                     height: 67px;
                     position: relative;
                     cursor: pointer;
+                    @include preserve-3d;
 
                     &:hover {
                         background-color: rgba($grayLightGC, 0.5);
@@ -163,9 +164,11 @@
                         font-size: 1.2em;
                         line-height: 1.2em;
                         padding-left: 5px;
-                        padding-top: 22px;
                         display: inline-block;
                         vertical-align: top;
+                        width: 290px;
+                        @include vertical-align;
+                        padding-top: 0;
                     }
 
                     div.arrow {
@@ -360,7 +363,11 @@
                             }
 
                             span {
-                                margin-top: 10px;
+                                padding-top: 0;
+                                position: absolute;
+                                left: 50px;
+                                right: 30px;
+                                width: auto;
                             }
                         }
                     }

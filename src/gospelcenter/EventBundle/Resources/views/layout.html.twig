@@ -8,7 +8,7 @@
 
 {% block body %}
 
-    <h1 class="titlePage"><span>Events</span></h1>
+    <h1 class="titlePage"><span>{{ 'gc.title.events'|trans }}</span></h1>
 
 
     <section class="gray" id="events">
@@ -26,7 +26,7 @@
                         <section class="detail">
                             <h1>{{ event.title }}</h1>
                             {% if event.dates|length %}
-                                <time class="date">{{ event.dates[0].start|date('d F Y') }}</time>
+                                <time class="date">{{ event.dates[0].start|localizeddate('long', 'none') }}</time>
                             {% endif %}
                         </section>
                     </a>
@@ -59,10 +59,10 @@
                     <a href="{{ path('gospelcenterEvents_event', {'event': event.id, 'center': center.ref}) }}"
                        class="date">
                         <section class="date">
-                            <time class="day">{{ date.start|date('d F') }}</time>
-                            <time class="date">{{ date.start|date('H:i') }} - {{ date.end|date('H:i') }}</time>
-                            <time class="day mobile">{{ date.start|date('d M') }}</time>
-                            <time class="date mobile">{{ date.start|date('H:i') }}</time>
+                            <time class="day">{{ date.start|localizeddate('medium', 'none') }}</time>
+                            <time class="date">{{ date.start|localizeddate('none', 'short') }} - {{ date.end|localizeddate('none', 'short') }}</time>
+                            <time class="day mobile">{{ date.start|localizeddate('short', 'none') }}</time>
+                            <time class="date mobile">{{ date.start|localizeddate('none', 'short') }}</time>
                         </section>
                         <section class="title">
                             <div class="container">
@@ -86,7 +86,7 @@
                         {% if key != 0 and key != (celebration.speakers|length -1) %}
                             {% set speakers = speakers ~ ', ' %}
                         {% elseif key != 0 and key == (celebration.speakers|length -1) %}
-                            {% set speakers = speakers ~ ' et ' %}
+                            {% set speakers = speakers ~ 'gc.generic.and'|trans %}
                         {% endif %}
 
                         {% set speakers = speakers ~ speaker.person.firstname ~ ' ' ~ speaker.person.lastname %}
@@ -95,14 +95,14 @@
 
                     <a href="{{ path('gospelcenterCelebrations_list', {'center': center.ref}) }}" class="date">
                         <section class="date">
-                            <time class="day">{{ date.start|date('d F') }}</time>
-                            <time class="date">{{ date.start|date('H:i') }} - {{ date.end|date('H:i') }}</time>
-                            <time class="day mobile">{{ date.start|date('d M') }}</time>
-                            <time class="date mobile">{{ date.start|date('H:i') }}</time>
+                            <time class="day">{{ date.start|localizeddate('medium', 'none') }}</time>
+                            <time class="date">{{ date.start|localizeddate('none', 'short') }} - {{ date.end|localizeddate('none', 'short') }}</time>
+                            <time class="day mobile">{{ date.start|localizeddate('short', 'none') }}</time>
+                            <time class="date mobile">{{ date.start|localizeddate('none', 'short') }}</time>
                         </section>
                         <section class="title">
                             <div class="container">
-                                <h1>Celebration with {{ speakers }}</h1>
+                                <h1> {{ 'gc.generic.celebrationWith'|trans }} {{ speakers }}</h1>
                             </div>
                         </section>
                         <section class="location">

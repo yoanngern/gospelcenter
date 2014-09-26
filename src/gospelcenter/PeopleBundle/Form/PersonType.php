@@ -46,7 +46,8 @@ class PersonType extends AbstractType
                                                     'empty_value'   => 'Select languages',
                                                     'multiple'      => true,
                                                     'query_builder' => function(\gospelcenter\LanguageBundle\Entity\LanguageRepository $r) {
-                                                        return $r->getSelectList();}))
+                                                        return $r->getSelectList();},
+                                                    'translation_domain' => 'lang'))
             ->add('abroad',         'checkbox', array('required' => false))
             ->add('hasChildren',    'checkbox', array('required' => false))
             ->add('function',       'text', array('required' => false))

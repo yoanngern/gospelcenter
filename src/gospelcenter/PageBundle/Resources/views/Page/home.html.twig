@@ -24,8 +24,8 @@
             <a id="get_ruban" href=""></a>
             <section class="right">
                 <ul class="nav">
-                    <li><a target="_blank" href="{{ path('gospelcenterPageGlobal_home') }}">GCMovement</a></li>
-                    <li><a target="_blank" href="http://www.ministeres.org">Equipe apostolique</a></li>
+                    <li><a target="_blank" href="{{ path('gospelcenterPageGlobal_home') }}">{{ 'gc.nav.gcmovement'|trans }}</a></li>
+                    <li><a target="_blank" href="http://www.ministeres.org">{{ 'gc.nav.apostolicTeam'|trans }}</a></li>
                 </ul>
                 {% if app.user %}
                     {% include "::admin/param.html.twig" %}
@@ -98,7 +98,7 @@
 
     {% if center.events|length %}
         <section id="nextEvents" class="gray">
-            <h1>Next events</h1>
+            <h1>{{ 'gc.page.home.nextEvent'|trans }}</h1>
 
             <section class="mediaList">
                 {% spaceless %}
@@ -110,7 +110,7 @@
                             </div>
                             <section class="details">
                                 <h1>{{ event.title }}</h1>
-                                <span>{{ event.dates[0].start|date('d F') }}</span>
+                                <span>{{ event.dates[0].start|localizeddate('medium', 'none') }}</span>
                             </section>
                         </a>
 
@@ -118,7 +118,7 @@
 
                     <a class="more" href="{{ path('gospelcenterEvents_list', {'center': center.ref}) }}">
                         <div class="photo">
-                            <span>More events</span>
+                            <span>{{ 'gc.page.home.moreEvents'|trans }}</span>
                         </div>
                     </a>
                 {% endspaceless %}

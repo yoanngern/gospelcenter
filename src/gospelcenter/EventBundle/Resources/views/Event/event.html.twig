@@ -44,7 +44,7 @@
             <section class="info">
                 <section class="left">
                     <article class="details">
-                        <h1><span>Détails</span></h1>
+                        <h1><span>{{ 'gc.event.details'|trans }}</span></h1>
 
                         <p>{{ event.introText|nl2br }}</p>
 
@@ -53,18 +53,18 @@
                 </section>
                 <section class="right">
                     <article class="dates">
-                        <h1><span>Dates</span></h1>
+                        <h1><span>{{ 'gc.event.dates'|trans }}</span></h1>
                         {% for date in event.dates %}
                             <article>
-                                <h2>{{ date.start|date('d F Y') }}</h2>
-                                <time>{{ date.start|date('H:i') }} - {{ date.end|date('H:i') }}</time>
+                                <h2>{{ date.start|localizeddate('long', 'none') }}</h2>
+                                <time>{{ date.start|localizeddate('none', 'short') }} - {{ date.end|localizeddate('none', 'short') }}</time>
                             </article>
                         {% endfor %}
                     </article>
 
                     {% if event.links|length %}
                         <article class="links">
-                            <h1><span>Liens</span></h1>
+                            <h1><span>{{ 'gc.event.links'|trans }}</span></h1>
                             {% for link in event.links %}
                                 <a target="_blank" href="{{ link.url }}">
                                     <div class="icon" data-type="{{ link.type }}"></div>
@@ -81,7 +81,7 @@
             </section>
 
             <section id="map" class="location map_full">
-                <iframe src="http://gc-map.local"></iframe>
+                <iframe src="http://map.gospel-center.com"></iframe>
                 <article>
                     <h1>{{ event.location.name }}</h1>
 

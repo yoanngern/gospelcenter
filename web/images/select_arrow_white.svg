@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="18px" height="74px" viewBox="0 0 18 74" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+    <!-- Generator: Sketch 3.0.4 (8054) - http://www.bohemiancoding.com/sketch -->
+    <title>select_arrow_white</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Icon" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" sketch:type="MSPage">
+        <g id="select_arrow_white" sketch:type="MSArtboardGroup">
+            <polygon id="Triangle-3" fill="#FDFDFC" sketch:type="MSShapeGroup" transform="translate(8.000000, 18.000000) scale(1, -1) translate(-8.000000, -18.000000) " points="8 15 13 21 3 21 "></polygon>
+            <polygon id="Triangle-4" fill="#878787" sketch:type="MSShapeGroup" transform="translate(8.000000, 55.000000) scale(1, -1) translate(-8.000000, -55.000000) " points="8 52 13 58 3 58 "></polygon>
+        </g>
+    </g>
+</svg>
