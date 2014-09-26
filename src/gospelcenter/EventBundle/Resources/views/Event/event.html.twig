@@ -56,8 +56,12 @@
                         <h1><span>{{ 'gc.event.dates'|trans }}</span></h1>
                         {% for date in event.dates %}
                             <article>
-                                <h2>{{ date.start|localizeddate('long', 'none') }}</h2>
-                                <time>{{ date.start|localizeddate('none', 'short') }} - {{ date.end|localizeddate('none', 'short') }}</time>
+
+
+                                <h2>{{ date|dates(app.request.locale) }}</h2>
+
+                                <time>{{ date.start|localizeddate('none', 'short') }}
+                                    - {{ date.end|localizeddate('none', 'short') }}</time>
                             </article>
                         {% endfor %}
                     </article>

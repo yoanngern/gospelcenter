@@ -48,25 +48,7 @@
             {% set hours = "" %}
 
             {% if event.dates|length %}
-                {% if event.dates[0].start|date('Y-m-d') == event.dates[0].end|date('Y-m-d') %}
-                    {% set date = event.dates[0].start|date('j F Y') %}
-
-                {% else %}
-
-                    {% if event.dates[0].start|date('Y-m') == event.dates[0].end|date('Y-m') %}
-                        {% set date = event.dates[0].start|date('j') ~ ' - ' ~ event.dates[0].end|date('j F Y') %}
-                    {% else %}
-
-                        {% if event.dates[0].start|date('Y') == event.dates[0].end|date('Y') %}
-                            {% set date = event.dates[0].start|date('j F') ~ ' - ' ~ event.dates[0].end|date('j F Y') %}
-                        {% else %}
-
-                            {% set date = event.dates[0].start|date('j F Y') ~ ' - ' ~ event.dates[0].end|date('j F Y') %}
-
-                        {% endif %}
-                    {% endif %}
-
-                {% endif %}
+                {% set date = event.dates[0]|dates(app.request.locale) %}
                 {% set hours = event.dates[0].start|date('H:i') ~ ' - ' ~ event.dates[0].end|date('H:i') %}
             {% endif %}
 

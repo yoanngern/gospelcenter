@@ -59,7 +59,9 @@
                     <a href="{{ path('gospelcenterEvents_event', {'event': event.id, 'center': center.ref}) }}"
                        class="date">
                         <section class="date">
-                            <time class="day">{{ date.start|localizeddate('medium', 'none') }}</time>
+                            {#<time class="day">{{ date.start|localizeddate('medium', 'none') }}</time>#}
+                            <time class="day">{{ date|datesShort(app.request.locale) }}</time>
+                            {#<time class="day">{{ date.start|datetime('%e %B', app.request.locale) }}</time>#}
                             <time class="date">{{ date.start|localizeddate('none', 'short') }} - {{ date.end|localizeddate('none', 'short') }}</time>
                             <time class="day mobile">{{ date.start|localizeddate('short', 'none') }}</time>
                             <time class="date mobile">{{ date.start|localizeddate('none', 'short') }}</time>

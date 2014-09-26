@@ -2,6 +2,15 @@ parameters:
 #    gospelcenter_date.example.class: gospelcenter\DateBundle\Example
 
 services:
-#    gospelcenter_date.example:
-#        class: %gospelcenter_date.example.class%
-#        arguments: [@service_id, "plain_value", %parameter%]
+    gospelcenter_date.datetime:
+        class: gospelcenter\DateBundle\Twig\Extension\HelperExtension
+        tags:
+            - { name: twig.extension }
+    gospelcenter_date.dates:
+            class: gospelcenter\DateBundle\Twig\Extension\HelperExtension
+            tags:
+                - { name: twig.extension }
+    gospelcenter_date.datesShort:
+            class: gospelcenter\DateBundle\Twig\Extension\HelperExtension
+            tags:
+                - { name: twig.extension }
