@@ -2,6 +2,8 @@ parameters:
 #    gospelcenter_image.example.class: gospelcenter\ImageBundle\Example
 
 services:
-#    gospelcenter_image.example:
-#        class: %gospelcenter_image.example.class%
-#        arguments: [@service_id, "plain_value", %parameter%]
+    gospelcenter_imagine.filter.media_list_filter:
+        class: gospelcenter\ImageBundle\Imagine\Filter\Loader\MediaListFilterLoader
+        tag:
+            - { name: liip_imagine.filter.loader }
+            - { loader: media_list_filter }

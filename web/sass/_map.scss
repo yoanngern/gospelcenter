@@ -10,14 +10,16 @@ section.map_full {
         position: absolute;
         z-index: 7;
         background-color: $grayLightGC;
+        overflow: hidden;
     }
 
     article {
         z-index: 10;
         position: absolute;
         right: 0;
+        top: -1px;
+        bottom: 0px;
         width: 400px;
-        height: 100%;
         background-color: rgba($whiteGC, 0.85);
 
         h1 {
@@ -77,11 +79,38 @@ section.map_full {
 
     @media only screen and (max-width: $mobileH) {
         article {
-            width: 100%;
-            display: none;
+            width: 50%;
 
-            &.active {
-                display: block;
+            h1 {
+                padding-top: 20px;
+            }
+        }
+    }
+
+    @media only screen and (max-width: 400px) {
+        height: auto;
+        background-color: $grayLightGC;
+
+        iframe {
+            position: relative;
+            height: 200px;
+        }
+
+        article {
+            width: 100%;
+            position: relative;
+            height: auto;
+            background-color: transparent;
+            margin-bottom: 30px;
+            top: inherit;
+
+            h1 {
+                padding: 10px 0 0 20px;
+            }
+
+            p {
+                padding: 0 0 20px 20px;
+                margin: 0;
             }
         }
     }

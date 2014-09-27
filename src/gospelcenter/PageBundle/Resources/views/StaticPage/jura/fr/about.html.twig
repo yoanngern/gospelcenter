@@ -3,23 +3,21 @@
     <article>
         {% spaceless %}
             <div>
-                <h1>Positif</h1>
+                <h1>{{ 'gc.title.positive'|trans }}</h1>
 
-                <p>Encourager un style de vie chrétien qui motive, construit et développe les capacités, les dons de
-                    chacun.</p>
+                <p>{{ 'gc.page.about.positive'|trans }}</p>
             </div>
 
             <div>
-                <h1>Pratique</h1>
+                <h1>{{ 'gc.title.practice'|trans }}</h1>
 
-                <p>Des activités, des enseignements qui rejoignent votre réalité.</p>
+                <p>{{ 'gc.page.about.practice'|trans }}</p>
             </div>
 
             <div>
-                <h1>Puissant</h1>
+                <h1>{{ 'gc.title.powerful'|trans }}</h1>
 
-                <p>Le Gospel Center a le désir de vivre l'évangile de la façon la plus complète possible, aussi dans la
-                    dimension de la guérison et du miraculeux.</p>
+                <p>{{ 'gc.page.about.powerful'|trans }}</p>
             </div>
         {% endspaceless %}
     </article>
@@ -44,11 +42,24 @@
 
     <h1>A place where miracles happen!</h1>
 
-    <img class="big" src="{{ asset('bundles/gospelcenterpage/images/a-propos.jpg') }}">
+    {% set aboutImg = 'bundles/gospelcenterpage/images/a-propos.jpg' %}
+
+    <img class="big"
+         src="{{ asset(aboutImg)| imagine_filter('blog_big_low') }}"
+         srcset="{{ asset(aboutImg)| imagine_filter('blog_big_2x') }} 2x"
+         data-img="{{ asset(aboutImg)| imagine_filter('blog_big') }}"
+         data-img_2x="{{ asset(aboutImg)| imagine_filter('blog_big_2x') }}"
+         data-img_tablet="{{ asset(aboutImg)| imagine_filter('blog_big_tablet') }}"
+         data-img_tablet_2x="{{ asset(aboutImg)| imagine_filter('blog_big_tablet_2x') }}"
+         data-img_mobile="{{ asset(aboutImg)| imagine_filter('blog_big_mobile') }}"
+         data-img_mobile_2x="{{ asset(aboutImg)| imagine_filter('blog_big_mobile_2x') }}">
+
 
     <h2 class="underline"><span>Qui</span></h2>
 
-    <p>Le Gospel Center Jura est membre du Réseau évangélique suisse (<a target="_blank" href="http://www.evangelique.ch">RES</a>), et de la Fédération romande des Églises
+    <p>Le Gospel Center Lausanne est membre du Réseau évangélique suisse (<a target="_blank"
+                                                                             href="http://www.evangelique.ch">RES</a>),
+        et de la Fédération romande des Églises
         évangéliques (<a target="_blank" href="http://www.lafree.ch">FREE</a>).</p>
 
     <h2 class="underline"><span>Comment</span></h2>
@@ -86,7 +97,7 @@
 
     <h2 class="underline"><span>Finances</span></h2>
 
-    <p>Le Gospel Center Jura ne bénéficie d’aucun soutien de l’État. C’est une association à but non lucratif.
+    <p>Le Gospel Center Lausanne ne bénéficie d’aucun soutien de l’État. C’est une association à but non lucratif.
         L’ensemble des frais de fonctionnement est assumé par l’engagement libre de chacun. Nos comptes sont approuvés
         par l’Assemblée générale après vérification par une fiduciaire.</p>
 
@@ -243,7 +254,17 @@
 
     <h1>Ce que nous croyons</h1>
 
-    <img class="big" src="{{ asset('bundles/gospelcenterpage/images/confession.jpg') }}">
+    {% set believeImg = 'bundles/gospelcenterpage/images/confession.jpg' %}
+
+    <img class="big"
+         src="{{ asset(believeImg)| imagine_filter('blog_big_low') }}"
+         srcset="{{ asset(believeImg)| imagine_filter('blog_big_2x') }} 2x"
+         data-img="{{ asset(believeImg)| imagine_filter('blog_big') }}"
+         data-img_2x="{{ asset(believeImg)| imagine_filter('blog_big_2x') }}"
+         data-img_tablet="{{ asset(believeImg)| imagine_filter('blog_big_tablet') }}"
+         data-img_tablet_2x="{{ asset(believeImg)| imagine_filter('blog_big_tablet_2x') }}"
+         data-img_mobile="{{ asset(believeImg)| imagine_filter('blog_big_mobile') }}"
+         data-img_mobile_2x="{{ asset(believeImg)| imagine_filter('blog_big_mobile_2x') }}">
 
     <p>Nous croyons que la Bible est inspirée par Dieu. La Parole de Dieu est la base unique de notre foi, de notre
         doctrine, et conduit nos actions.</p>

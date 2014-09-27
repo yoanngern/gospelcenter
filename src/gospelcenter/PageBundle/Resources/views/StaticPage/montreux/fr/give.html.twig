@@ -1,6 +1,6 @@
 {% block body %}
 
-    <h1 class="titlePage"><span>Nous soutenir</span></h1>
+    <h1 class="titlePage"><span>{{ 'gc.title.give'|trans }}</span></h1>
     <h2 class="slogan">Le Gospel Center Lausanne est une association à but non lucratif,
         qui ne reçoit aucun soutien financier de l’État.</h2>
 
@@ -8,7 +8,17 @@
 
         <h1>Devenez des partenaires</h1>
 
-        <img class="big" src="{{ asset('bundles/gospelcenterpage/images/nous-soutenir.jpg') }}">
+        {% set giveImg = 'bundles/gospelcenterpage/images/nous-soutenir.jpg' %}
+
+        <img class="big"
+             src="{{ asset(giveImg)| imagine_filter('blog_big_low') }}"
+             srcset="{{ asset(giveImg)| imagine_filter('blog_big_2x') }} 2x"
+             data-img="{{ asset(giveImg)| imagine_filter('blog_big') }}"
+             data-img_2x="{{ asset(giveImg)| imagine_filter('blog_big_2x') }}"
+             data-img_tablet="{{ asset(giveImg)| imagine_filter('blog_big_tablet') }}"
+             data-img_tablet_2x="{{ asset(giveImg)| imagine_filter('blog_big_tablet_2x') }}"
+             data-img_mobile="{{ asset(giveImg)| imagine_filter('blog_big_mobile') }}"
+             data-img_mobile_2x="{{ asset(giveImg)| imagine_filter('blog_big_mobile_2x') }}">
 
         <p>La Parole de Dieu nous encourage à devenir partenaire de l’œuvre de Dieu en donnant. Ce don peut se
             manifester de différentes manières :</p>

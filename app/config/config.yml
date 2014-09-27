@@ -100,3 +100,144 @@ jms_i18n_routing:
     default_locale: fr
     locales: [fr, en]
     strategy: prefix_except_default
+
+liip_imagine:
+
+    resolvers:
+        default:
+            web_path:
+              web_root: %kernel.root_dir%/../web
+              cache_prefix: /cache
+
+
+    loaders:
+        default:
+            filesystem:
+                data_root:  %kernel.root_dir%/../web/
+
+    driver:               gd
+    cache:                default
+    data_loader:          default
+    controller:
+        filter_action:         liip_imagine.controller:filterAction
+        filter_runtime_action: liip_imagine.controller:filterRuntimeAction
+    filter_sets:
+
+
+        #######################
+        ###  thumb_200_200  ###
+        #######################
+        next_celebration_low:
+            quality: 60
+            filters:
+                thumbnail: { size: [200, 200], mode: outbound, allow_upscale: true }
+
+        next_celebration:
+            quality: 90
+            filters:
+                thumbnail: { size: [200, 200], mode: outbound, allow_upscale: true }
+
+        next_celebration_2x:
+            quality: 90
+            filters:
+                thumbnail: { size: [400, 400], mode: outbound, allow_upscale: true }
+
+        next_celebration_tablet:
+            quality: 90
+            filters:
+                thumbnail: { size: [170, 170], mode: outbound, allow_upscale: true }
+
+        next_celebration_tablet_2x:
+            quality: 90
+            filters:
+                thumbnail: { size: [340, 340], mode: outbound, allow_upscale: true }
+
+        next_celebration_mobile:
+            quality: 90
+            filters:
+                thumbnail: { size: [90, 90], mode: outbound, allow_upscale: true }
+
+        next_celebration_mobile_2x:
+            quality: 90
+            filters:
+                thumbnail: { size: [180, 180], mode: outbound, allow_upscale: true }
+
+
+
+        ####################
+        ###  media_list  ###
+        ####################
+        media_list_low:
+            quality: 60
+            filters:
+                thumbnail: { size: [300, 169], mode: outbound, allow_upscale: true }
+
+        media_list:
+            quality: 90
+            filters:
+                thumbnail: { size: [300, 169], mode: outbound, allow_upscale: true }
+
+        media_list_2x:
+            quality: 90
+            filters:
+                thumbnail: { size: [600, 338], mode: outbound, allow_upscale: true }
+
+        media_list_tablet:
+            quality: 90
+            filters:
+                thumbnail: { size: [300, 169], mode: outbound, allow_upscale: true }
+
+        media_list_tablet_2x:
+            quality: 90
+            filters:
+                thumbnail: { size: [600, 338], mode: outbound, allow_upscale: true }
+
+        media_list_mobile:
+            quality: 90
+            filters:
+                thumbnail: { size: [620, 349], mode: outbound, allow_upscale: true }
+
+        media_list_mobile_2x:
+            quality: 90
+            filters:
+                thumbnail: { size: [1240, 698], mode: outbound, allow_upscale: true }
+
+
+
+        ##################
+        ###  blog_big  ###
+        ##################
+        blog_big_low:
+            quality: 60
+            filters:
+                thumbnail: { size: [800, 450], mode: outbound, allow_upscale: true }
+
+        blog_big:
+            quality: 90
+            filters:
+                thumbnail: { size: [800, 450], mode: outbound, allow_upscale: true }
+
+        blog_big_2x:
+            quality: 90
+            filters:
+                thumbnail: { size: [1600, 900], mode: outbound, allow_upscale: true }
+
+        blog_big_tablet:
+            quality: 90
+            filters:
+                thumbnail: { size: [800, 450], mode: outbound, allow_upscale: true }
+
+        blog_big_tablet_2x:
+            quality: 90
+            filters:
+                thumbnail: { size: [800, 450], mode: outbound, allow_upscale: true }
+
+        blog_big_mobile:
+            quality: 90
+            filters:
+                thumbnail: { size: [640, 360], mode: outbound, allow_upscale: true }
+
+        blog_big_mobile_2x:
+            quality: 90
+            filters:
+                thumbnail: { size: [1280, 720], mode: outbound, allow_upscale: true }

@@ -131,28 +131,6 @@
 		"outputPathIsSetByUser": 0,
 		"processed": 0
 		},
-	"\/bundles\/gospelcenterpage\/images\/a-propos@2x.jpg": {
-		"fileType": 16384,
-		"ignore": 0,
-		"ignoreWasSetByUser": 0,
-		"initialSize": 215813,
-		"inputAbbreviatedPath": "\/bundles\/gospelcenterpage\/images\/a-propos@2x.jpg",
-		"outputAbbreviatedPath": "\/bundles\/gospelcenterpage\/images\/a-propos@2x.jpg",
-		"outputPathIsOutsideProject": 0,
-		"outputPathIsSetByUser": 0,
-		"processed": 0
-		},
-	"\/bundles\/gospelcenterpage\/images\/a-propos_2x.jpg": {
-		"fileType": 16384,
-		"ignore": 0,
-		"ignoreWasSetByUser": 0,
-		"initialSize": 220258,
-		"inputAbbreviatedPath": "\/bundles\/gospelcenterpage\/images\/a-propos_2x.jpg",
-		"outputAbbreviatedPath": "\/bundles\/gospelcenterpage\/images\/a-propos_2x.jpg",
-		"outputPathIsOutsideProject": 0,
-		"outputPathIsSetByUser": 0,
-		"processed": 0
-		},
 	"\/bundles\/gospelcenterpage\/images\/AlixBingle.png": {
 		"fileType": 32768,
 		"ignore": 0,
@@ -193,28 +171,6 @@
 		"initialSize": 142983,
 		"inputAbbreviatedPath": "\/bundles\/gospelcenterpage\/images\/confession.jpg",
 		"outputAbbreviatedPath": "\/bundles\/gospelcenterpage\/images\/confession.jpg",
-		"outputPathIsOutsideProject": 0,
-		"outputPathIsSetByUser": 0,
-		"processed": 0
-		},
-	"\/bundles\/gospelcenterpage\/images\/confession@2x.jpg": {
-		"fileType": 16384,
-		"ignore": 0,
-		"ignoreWasSetByUser": 0,
-		"initialSize": 139966,
-		"inputAbbreviatedPath": "\/bundles\/gospelcenterpage\/images\/confession@2x.jpg",
-		"outputAbbreviatedPath": "\/bundles\/gospelcenterpage\/images\/confession@2x.jpg",
-		"outputPathIsOutsideProject": 0,
-		"outputPathIsSetByUser": 0,
-		"processed": 0
-		},
-	"\/bundles\/gospelcenterpage\/images\/confession_2x.jpg": {
-		"fileType": 16384,
-		"ignore": 0,
-		"ignoreWasSetByUser": 0,
-		"initialSize": 139966,
-		"inputAbbreviatedPath": "\/bundles\/gospelcenterpage\/images\/confession_2x.jpg",
-		"outputAbbreviatedPath": "\/bundles\/gospelcenterpage\/images\/confession_2x.jpg",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"processed": 0
@@ -296,28 +252,6 @@
 		"outputPathIsSetByUser": 0,
 		"processed": 0
 		},
-	"\/bundles\/gospelcenterpage\/images\/nous-soutenir@2x.jpg": {
-		"fileType": 16384,
-		"ignore": 0,
-		"ignoreWasSetByUser": 0,
-		"initialSize": 0,
-		"inputAbbreviatedPath": "\/bundles\/gospelcenterpage\/images\/nous-soutenir@2x.jpg",
-		"outputAbbreviatedPath": "\/bundles\/gospelcenterpage\/images\/nous-soutenir@2x.jpg",
-		"outputPathIsOutsideProject": 0,
-		"outputPathIsSetByUser": 0,
-		"processed": 0
-		},
-	"\/bundles\/gospelcenterpage\/images\/nous-soutenir_2x.jpg": {
-		"fileType": 16384,
-		"ignore": 0,
-		"ignoreWasSetByUser": 0,
-		"initialSize": 241160,
-		"inputAbbreviatedPath": "\/bundles\/gospelcenterpage\/images\/nous-soutenir_2x.jpg",
-		"outputAbbreviatedPath": "\/bundles\/gospelcenterpage\/images\/nous-soutenir_2x.jpg",
-		"outputPathIsOutsideProject": 0,
-		"outputPathIsSetByUser": 0,
-		"processed": 0
-		},
 	"\/bundles\/gospelcenterpage\/images\/PatrickBigler.png": {
 		"fileType": 32768,
 		"ignore": 0,
@@ -361,6 +295,35 @@
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"processed": 0
+		},
+	"\/bundles\/jmstranslation\/css\/bootstrap.css": {
+		"fileType": 16,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/bundles\/jmstranslation\/css\/bootstrap.css",
+		"outputAbbreviatedPath": "No Output Path",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0
+		},
+	"\/bundles\/jmstranslation\/css\/layout.css": {
+		"fileType": 16,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/bundles\/jmstranslation\/css\/layout.css",
+		"outputAbbreviatedPath": "No Output Path",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0
+		},
+	"\/bundles\/jmstranslation\/js\/jquery.js": {
+		"fileType": 64,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/bundles\/jmstranslation\/js\/jquery.js",
+		"outputAbbreviatedPath": "\/bundles\/jmstranslation\/js\/jquery-min.js",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"outputStyle": 1,
+		"syntaxCheckerStyle": 1
 		},
 	"\/bundles\/sensiodistribution\/webconfigurator\/css\/configurator.css": {
 		"fileType": 16,
@@ -1252,6 +1215,17 @@
 		"ignoreWasSetByUser": 0,
 		"inputAbbreviatedPath": "\/js\/_date.js",
 		"outputAbbreviatedPath": "\/js\/_date.min.js",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"outputStyle": 1,
+		"syntaxCheckerStyle": 1
+		},
+	"\/js\/_image.js": {
+		"fileType": 64,
+		"ignore": 1,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/js\/_image.js",
+		"outputAbbreviatedPath": "\/js\/_image-min.js",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"outputStyle": 1,

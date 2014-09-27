@@ -47,7 +47,15 @@
                         <a class="speaker" data-link="{{ celebration.id }}" data-link-elem="celebrationInfo">
 
                             <div class="photo"
-                                 {% if celebration.image %}style="background-image: url('{{ asset(celebration.image.webPath) }}')"{% endif %}>
+                                    {% if celebration.image %}
+                                style="background-image: url('{{ asset(celebration.image.webPath)| imagine_filter('next_celebration_low') }}')"
+                                data-bg="{{ asset(celebration.image.webPath)| imagine_filter('next_celebration') }}"
+                                data-bg_2x="{{ asset(celebration.image.webPath)| imagine_filter('next_celebration_2x') }}"
+                                data-bg_tablet="{{ asset(celebration.image.webPath)| imagine_filter('next_celebration_tablet') }}"
+                                data-bg_tablet_2x="{{ asset(celebration.image.webPath)| imagine_filter('next_celebration_tablet_2x') }}"
+                                data-bg_mobile="{{ asset(celebration.image.webPath)| imagine_filter('next_celebration_mobile') }}"
+                                data-bg_mobile_2x="{{ asset(celebration.image.webPath)| imagine_filter('next_celebration_mobile_2x') }}"
+                                    {% endif %}>
                                 <div class="hover"></div>
                             </div>
 
@@ -121,15 +129,17 @@
     </section>
 
     <section id="map" class="map_full">
-        <iframe src="http://map.gospel-center.com"></iframe>
-        <article>
-            <h1>Gare de Lausanne</h1>
+        {% spaceless %}
+            <iframe src="http://map.gospel-center.com"></iframe>
+            <article>
+                <h1>Gare de Lausanne</h1>
 
-            <p>Place de la Gare 11<br/>
-                Salle des cantons<br/>
-                1003 Lausanne<br/>
-                Suisse</p>
-        </article>
+                <p>Place de la Gare 11<br/>
+                    Salle des cantons<br/>
+                    1003 Lausanne<br/>
+                    Suisse</p>
+            </article>
+        {% endspaceless %}
     </section>
 
     {% if lastCelebrations|length %}
@@ -156,7 +166,15 @@
 
                         <a href="{{ path('gospelcenterMedia_video', {'video': celebration.video.id}) }}">
                             <div class="photo"
-                                 {% if celebration.image %}style="background-image: url('{{ asset(celebration.image.webPath) }}')"{% endif %}>
+                                    {% if celebration.image %}
+                                style="background-image: url('{{ asset(celebration.image.webPath)| imagine_filter('media_list_low') }}')"
+                                data-bg="{{ asset(celebration.image.webPath)| imagine_filter('media_list') }}"
+                                data-bg_2x="{{ asset(celebration.image.webPath)| imagine_filter('media_list_2x') }}"
+                                data-bg_tablet="{{ asset(celebration.image.webPath)| imagine_filter('media_list_tablet') }}"
+                                data-bg_tablet_2x="{{ asset(celebration.image.webPath)| imagine_filter('media_list_tablet_2x') }}"
+                                data-bg_mobile="{{ asset(celebration.image.webPath)| imagine_filter('media_list_mobile') }}"
+                                data-bg_mobile_2x="{{ asset(celebration.image.webPath)| imagine_filter('media_list_mobile_2x') }}"
+                                    {% endif %}>
                                 <div class="playButton"></div>
                             </div>
                             <section class="details">

@@ -23,6 +23,7 @@ class AppKernel extends Kernel
             new JMS\I18nRoutingBundle\JMSI18nRoutingBundle(),
             new JMS\TranslationBundle\JMSTranslationBundle(),
             new FOS\UserBundle\FOSUserBundle(),
+            new Liip\ImagineBundle\LiipImagineBundle(),
             new gospelcenter\EventBundle\gospelcenterEventBundle(),
             new gospelcenter\CenterBundle\gospelcenterCenterBundle(),
             new gospelcenter\PageBundle\gospelcenterPageBundle(),

@@ -1048,13 +1048,15 @@ section.map_full {
     height: 100%;
     position: absolute;
     z-index: 7;
-    background-color: #EBEBEB; }
+    background-color: #EBEBEB;
+    overflow: hidden; }
   section.map_full article {
     z-index: 10;
     position: absolute;
     right: 0;
+    top: -1px;
+    bottom: 0px;
     width: 400px;
-    height: 100%;
     background-color: rgba(253, 253, 252, 0.85); }
     section.map_full article h1 {
       font-family: "Radikal-Light", "Radikal", sans-serif;
@@ -1093,10 +1095,28 @@ section.map_full {
         font-size: 1.05em; } }
   @media only screen and (max-width: 640px) {
     section.map_full article {
-      width: 100%;
-      display: none; }
-      section.map_full article.active {
-        display: block; } }
+      width: 50%; }
+      section.map_full article h1 {
+        padding-top: 20px; } }
+  @media only screen and (max-width: 400px) {
+    section.map_full {
+      height: auto;
+      background-color: #EBEBEB; }
+      section.map_full iframe {
+        position: relative;
+        height: 200px; }
+      section.map_full article {
+        width: 100%;
+        position: relative;
+        height: auto;
+        background-color: transparent;
+        margin-bottom: 30px;
+        top: inherit; }
+        section.map_full article h1 {
+          padding: 10px 0 0 20px; }
+        section.map_full article p {
+          padding: 0 0 20px 20px;
+          margin: 0; } }
 
 #page.home > header {
   height: 690px; }
@@ -2113,6 +2133,9 @@ section.map_full {
       #page.events article.event section.info section.left > article,
       #page.events article.event section.info section.right > article {
         margin-top: 30px; }
+        #page.events article.event section.info section.left > article.details p,
+        #page.events article.event section.info section.right > article.details p {
+          font-size: 1.3em; }
         #page.events article.event section.info section.left > article.dates,
         #page.events article.event section.info section.right > article.dates {
           margin-bottom: 0; }

@@ -6,6 +6,7 @@
 // @codekit-append "formNew.js"
 // @codekit-append "_scroll.js"
 // @codekit-append "_slider.js"
+// @codekit-append "_image.js"
 // @codekit-append "advanced/_celebrations.js"
 
 $(document).ready(function () {
