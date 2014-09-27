@@ -9,9 +9,11 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 
 class AdminSpeakerController extends Controller {
-    
-    /*
-     *   List of speakers
+
+
+    /**
+     * @param Center $center
+     * @return \Symfony\Component\HttpFoundation\Response
      */
     public function listAction(Center $center)
     {
@@ -26,9 +28,11 @@ class AdminSpeakerController extends Controller {
             'tab' => 'speakers'
         ));
     }
-    
-    /*
-     *   List of all speakers
+
+
+    /**
+     * @param Center $center
+     * @return \Symfony\Component\HttpFoundation\Response
      */
     public function allAction(Center $center)
     {
@@ -43,9 +47,11 @@ class AdminSpeakerController extends Controller {
             'tab' => 'speakersAll'
         ));
     }
-    
-    /*
-     *   Add a location
+
+
+    /**
+     * @param Center $center
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
      */
     public function addAction(Center $center)
     {
@@ -77,9 +83,12 @@ class AdminSpeakerController extends Controller {
             'page' => 'speakers'
         ));
     }
-    
-    /*
-     *   Edit a speaker
+
+
+    /**
+     * @param Center $center
+     * @param Speaker $speaker
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
      */
     public function editAction(Center $center, Speaker $speaker)
     {

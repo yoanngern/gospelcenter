@@ -11,9 +11,11 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 
 class AdminPageController extends Controller {
-    
-    /*
-     *   List of all pages
+
+
+    /**
+     * @param Center $center
+     * @return \Symfony\Component\HttpFoundation\Response
      */
     public function listAction(Center $center)
     {
@@ -28,10 +30,11 @@ class AdminPageController extends Controller {
             'tab' => 'pages'
         ));
     }
-    
-    
-    /*
-     *   Add a page
+
+
+    /**
+     * @param Center $center
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
      */
     public function addAction(Center $center)
     {
@@ -65,12 +68,12 @@ class AdminPageController extends Controller {
             'article' => $page
         ));
     }
-    
-    
-    /*
-     *   Edit a page
-     *   @param $page = Page
-     *          $center = Center
+
+
+    /**
+     * @param Center $center
+     * @param Page $page
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
      */
     public function editAction(Center $center, Page $page)
     {   
@@ -104,10 +107,12 @@ class AdminPageController extends Controller {
             'article' => $page
         ));
     }
-    
-    
-    /*
-     *   Delete a page
+
+
+    /**
+     * @param Center $center
+     * @param Page $page
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
      */
     public function deleteAction(Center $center, Page $page)
     {   
@@ -137,10 +142,11 @@ class AdminPageController extends Controller {
               'page' => 'pages'
         ));
     }
-    
-    
-    /*
-     *   List of all youth pages
+
+
+    /**
+     * @param Center $center
+     * @return \Symfony\Component\HttpFoundation\Response
      */
     public function youthAction(Center $center)
     {
@@ -155,12 +161,12 @@ class AdminPageController extends Controller {
             'tab' => 'youth'
         ));
     }
-    
-    
-    /*
-     *   Edit a youth page
-     *   @param $page = Page
-     *          $center = Center
+
+
+    /**
+     * @param Center $center
+     * @param Page $page
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
      */
     public function youthEditAction(Center $center, Page $page)
     {   

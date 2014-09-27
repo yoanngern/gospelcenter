@@ -16,9 +16,10 @@ use FOS\UserBundle\Controller\GroupController as BaseController;
 
 class GroupController extends BaseController
 {
-    
+
+
     /**
-     * Show all groups
+     * @return mixed
      */
     public function listAction()
     {
@@ -31,8 +32,10 @@ class GroupController extends BaseController
         ));
     }
 
+
     /**
-     * Show one group
+     * @param $groupName
+     * @return mixed
      */
     public function showAction($groupName)
     {
@@ -45,8 +48,11 @@ class GroupController extends BaseController
         ));
     }
 
+
     /**
-     * Edit one group, show the edit form
+     * @param Request $request
+     * @param $groupName
+     * @return null|RedirectResponse|\Symfony\Component\HttpFoundation\Response
      */
     public function editAction(Request $request, $groupName)
     {
@@ -99,8 +105,10 @@ class GroupController extends BaseController
         ));
     }
 
+
     /**
-     * Show the new form
+     * @param Request $request
+     * @return null|RedirectResponse|\Symfony\Component\HttpFoundation\Response
      */
     public function newAction(Request $request)
     {
@@ -146,8 +154,11 @@ class GroupController extends BaseController
         ));
     }
 
+
     /**
-     * Delete one group
+     * @param Request $request
+     * @param $groupName
+     * @return RedirectResponse
      */
     public function deleteAction(Request $request, $groupName)
     {

@@ -12,7 +12,7 @@ use Doctrine\ORM\EntityRepository;
  */
 class MemberRepository extends EntityRepository
 {
-    public function findAllByCenter(\gospelcenter\CenterBundle\Entity\Center $center)
+    public function findAllByCenter(Center $center)
     {
         $qb = $this->createQueryBuilder('m');
         

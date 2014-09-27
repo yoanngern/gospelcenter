@@ -12,8 +12,10 @@ use Symfony\Component\HttpFoundation\Response;
 class AdminSlideController extends Controller
 {
 
-    /*
-     *   List of slides
+
+    /**
+     * @param Center $center
+     * @return Response
      */
     public function listAction(Center $center)
     {
@@ -33,8 +35,9 @@ class AdminSlideController extends Controller
     }
 
 
-    /*
-     *   Add a slide
+    /**
+     * @param Center $center
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse|Response
      */
     public function addAction(Center $center)
     {
@@ -119,8 +122,10 @@ class AdminSlideController extends Controller
     }
 
 
-    /*
-     *   Delete a slide
+    /**
+     * @param Center $center
+     * @param Slide $slide
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse|Response
      */
     public function deleteAction(Center $center, Slide $slide)
     {

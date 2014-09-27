@@ -9,6 +9,10 @@ use FOS\UserBundle\Controller\SecurityController as BaseController;
 
 class SecurityController extends BaseController
 {
+    /**
+     * @param Request $request
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
     public function loginAction(Request $request)
     {
         /** @var $session \Symfony\Component\HttpFoundation\Session\Session */

@@ -3,6 +3,7 @@
 namespace gospelcenter\CelebrationBundle\Entity;
 
 use Doctrine\ORM\EntityRepository;
+use gospelcenter\CenterBundle\Entity\Center;
 
 /**
  * SpeakerRepository
@@ -12,7 +13,7 @@ use Doctrine\ORM\EntityRepository;
  */
 class SpeakerRepository extends EntityRepository
 {
-    public function findAllByCenter(\gospelcenter\CenterBundle\Entity\Center $center)
+    public function findAllByCenter(Center $center)
     {
         $qb = $this->createQueryBuilder('s');
 

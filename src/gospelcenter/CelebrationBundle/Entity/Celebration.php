@@ -3,10 +3,7 @@
 namespace gospelcenter\CelebrationBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use gospelcenter\DateBundle\Entity\Date;
 use Symfony\Component\Validator\Constraints as Assert;
-
-use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * Celebration

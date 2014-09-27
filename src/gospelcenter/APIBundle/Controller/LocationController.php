@@ -7,17 +7,18 @@ use Symfony\Component\HttpFoundation\Response;
 
 class LocationController extends Controller
 {
-    
+
+
     /**
-     *  GET - list all locations
+     * @return Response
      */
     public function getLocationsAction()
     {
         $em = $this->getDoctrine()->getManager();
         $request = $this->get('request');
         
-        $centerId = $request->query->get('center');
-        $center = $em->getRepository('gospelcenterCenterBundle:Center')->findByRef($centerId);
+        //$centerId = $request->query->get('center');
+        //$center = $em->getRepository('gospelcenterCenterBundle:Center')->findByRef($centerId);
         
         $locations = $em->getRepository('gospelcenterLocationBundle:Location')->findAllJSON();
         
@@ -27,18 +28,19 @@ class LocationController extends Controller
         
         return $response;
     }
-    
-    
+
+
     /**
-     *  GET - get location details
+     * @param $location
+     * @return Response
      */
     public function getLocationAction($location)
     {
         $em = $this->getDoctrine()->getManager();
-        $request = $this->get('request');
+        //$request = $this->get('request');
         
-        $centerId = $request->query->get('center');
-        $center = $em->getRepository('gospelcenterCenterBundle:Center')->findByRef($centerId);
+        //$centerId = $request->query->get('center');
+        //$center = $em->getRepository('gospelcenterCenterBundle:Center')->findByRef($centerId);
         
         $location = $em->getRepository('gospelcenterLocationBundle:Location')->findOne($location);
         

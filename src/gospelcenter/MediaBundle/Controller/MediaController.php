@@ -113,11 +113,11 @@ class MediaController extends Controller
             'page' => 'speakers'
         ));
     }
-    
-    /*
-    *   All Videos
-    *
-    */
+
+
+    /**
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
     public function videosAction()
     {
         
@@ -145,12 +145,11 @@ class MediaController extends Controller
             'page' => 'videos'
         ));
     }
-    
-    
-    /*
-    *   All Audios
-    *
-    */
+
+
+    /**
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
     public function audiosAction()
     {
         
@@ -178,11 +177,11 @@ class MediaController extends Controller
             'page' => 'audios'
         ));
     }
-    
-    /*
-    *   All centers
-    *
-    */
+
+
+    /**
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
     public function centersAction()
     {
         
@@ -210,12 +209,12 @@ class MediaController extends Controller
             'page' => 'centers'
         ));
     }
-    
-    
-    /*
-    *   One center
-    *
-    */
+
+
+    /**
+     * @param Center $center
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
     public function centerAction(Center $center)
     {
         
@@ -245,12 +244,12 @@ class MediaController extends Controller
             'page' => 'centers'
         ));
     }
-    
-    
-    /*
-    *   One video
-    *
-    */
+
+
+    /**
+     * @param Video $video
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
     public function videoAction(Video $video)
     {
         
@@ -274,11 +273,12 @@ class MediaController extends Controller
             'page' => $this->previousTag()
         ));
     }
-    
-   /*
-    *   One audio
-    *
-    */
+
+
+    /**
+     * @param Audio $audio
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
     public function audioAction(Audio $audio)
     {
         
@@ -304,10 +304,9 @@ class MediaController extends Controller
     }
 
 
-   /*
-    *   Previous URL
-    *   @return previousUrl
-    */
+    /**
+     * @return null
+     */
     private function previousUrl() {
         $session = $this->get('session');
         
@@ -322,13 +321,12 @@ class MediaController extends Controller
         
         return $previousUrl;
     }
-    
-    
-   /*
-    *   Previous tag
-    *   @param currentTag
-    *   @return previousTag
-    */
+
+
+    /**
+     * @param null $currentTag
+     * @return null
+     */
     private function previousTag($currentTag = null) {
         $session = $this->get('session');
         
@@ -346,13 +344,12 @@ class MediaController extends Controller
         
         return $previousTag;
     }
-    
-    
-   /*
-    *   Previous label
-    *   @param currentLabel
-    *   @return previousLabel
-    */
+
+
+    /**
+     * @param null $currentLabel
+     * @return null
+     */
     private function previousLabel($currentLabel = null) {
         $session = $this->get('session');
         

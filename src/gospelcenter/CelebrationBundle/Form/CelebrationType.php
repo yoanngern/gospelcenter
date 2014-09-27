@@ -2,23 +2,13 @@
 
 namespace gospelcenter\CelebrationBundle\Form;
 
-use gospelcenter\DateBundle\Form\DateOneDayType;
-use gospelcenter\DateBundle\Form\DateType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
-
-// FormType
-use gospelcenter\CenterBundle\Form\CenterType;
 use gospelcenter\ImageBundle\Form\ImageSimpleType;
-use gospelcenter\LocationBundle\Form\LocationType;
 use gospelcenter\MediaBundle\Form\VideoType;
 use gospelcenter\MediaBundle\Form\AudioType;
-use gospelcenter\CelebrationBundle\Form\TagType;
-use gospelcenter\CelebrationBundle\Form\SpeakerType;
 use gospelcenter\PeopleBundle\Form\RoleType;
-use gospelcenter\DateBundle\Form\DateFullType;
-
 
 class CelebrationType extends AbstractType
 {

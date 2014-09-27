@@ -8,9 +8,10 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 
 class AdminGlobalController extends Controller {
-    
-    /*
-     *   List of all images
+
+
+    /**
+     * @return \Symfony\Component\HttpFoundation\Response
      */
     public function listAction()
     {
@@ -23,10 +24,10 @@ class AdminGlobalController extends Controller {
             'page' => 'images'
         ));
     }
-    
-    
-    /*
-     *   Add an image
+
+
+    /**
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
      */
     public function addAction()
     {
@@ -57,11 +58,11 @@ class AdminGlobalController extends Controller {
             'page' => 'images'
         ));
     }
-    
-    
-    /*
-     *   Edit an image
-     *   @param $image = Image
+
+
+    /**
+     * @param Image $image
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
      */
     public function editAction(Image $image)
     {   

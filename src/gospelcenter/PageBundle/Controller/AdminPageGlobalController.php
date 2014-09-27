@@ -12,9 +12,10 @@ use Symfony\Component\HttpFoundation\Response;
 
 
 class AdminPageGlobalController extends Controller {
-    
-    /*
-     *   List of global pages
+
+
+    /**
+     * @return Response
      */
     public function listAction()
     {
@@ -28,10 +29,10 @@ class AdminPageGlobalController extends Controller {
             'tab' => 'pages'
         ));
     }
-    
-    
-    /*
-     *   Add a global page
+
+
+    /**
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse|Response
      */
     public function addAction()
     {
@@ -62,11 +63,11 @@ class AdminPageGlobalController extends Controller {
             'article' => $page
         ));
     }
-    
-    
-    /*
-     *   Edit a global page
-     *   @param $page = Page
+
+
+    /**
+     * @param Page $page
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse|Response
      */
     public function editAction(Page $page)
     {   
@@ -97,25 +98,25 @@ class AdminPageGlobalController extends Controller {
             'article' => $page
         ));
     }
-    
-    
-    /*
-     *   Delete a location
+
+
+    /**
+     * @param Center $center
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse
      */
-    public function deleteAction(Center $center, Location $location)
+    public function deleteAction(Center $center)
     {      
         return $this->redirect( $this->generateUrl('gospelcenterAdmin_locations', array(
             'center' => $center->getRef()
         )));
     }
-    
-    
-    /*
-     *   Get JSON location
-     *   @param $location = location id
-     *          $center = Center
+
+
+    /**
+     * @param $location
+     * @return Response
      */
-    public function singleJSONAction(Center $center, $location)
+    public function singleJSONAction($location)
     {   
         
         $em = $this->getDoctrine()->getManager();

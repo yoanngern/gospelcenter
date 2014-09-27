@@ -9,9 +9,10 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 
 class AdminCenterController extends Controller {
-    
-    /*
-     *   List of centers
+
+
+    /**
+     * @return \Symfony\Component\HttpFoundation\Response
      */
     public function listAction()
     {
@@ -24,10 +25,11 @@ class AdminCenterController extends Controller {
             'page' => 'centers'
         ));
     }
-    
-    /*
-    *   Add a center
-    */
+
+
+    /**
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
+     */
     public function addAction()
     {
         
@@ -59,10 +61,12 @@ class AdminCenterController extends Controller {
             'page' => 'centers'
         ));
     }
-    
-    /*
-    *   Edit a center
-    */
+
+
+    /**
+     * @param Center $center
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
+     */
     public function editAction(Center $center)
     {
         $form = $this->createForm(new CenterEditType, $center);

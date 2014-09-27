@@ -2,12 +2,8 @@
 
 namespace gospelcenter\CenterBundle\Form;
 
-use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
-
-// FormType
-use gospelcenter\CenterBundle\Form\CenterType;
 
 class CenterEditType extends CenterType
 {

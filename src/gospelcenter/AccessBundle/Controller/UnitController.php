@@ -8,9 +8,9 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 class UnitController extends Controller
 {
-    
-    /*
-     *   List of all units
+
+    /**
+     * @return \Symfony\Component\HttpFoundation\Response
      */
     public function listAction()
     {
@@ -25,10 +25,10 @@ class UnitController extends Controller
             'tab' => 'units'
         ));
     }
-    
-    
-    /*
-     *   Add a unit
+
+
+    /**
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
      */
     public function addAction()
     {
@@ -64,11 +64,11 @@ class UnitController extends Controller
             'tab' => 'units'
         ));
     }
-    
-    
-    /*
-     *   Edit a unit
-     *   @param $unit = Unit
+
+
+    /**
+     * @param Unit $unit
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
      */
     public function editAction(Unit $unit)
     {   

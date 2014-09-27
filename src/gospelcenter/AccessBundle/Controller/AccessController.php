@@ -8,9 +8,10 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 class AccessController extends Controller
 {
-    
-    /*
-     *   List of all accesses
+
+
+    /**
+     * @return \Symfony\Component\HttpFoundation\Response
      */
     public function listAction()
     {
@@ -25,10 +26,10 @@ class AccessController extends Controller
             'tab' => 'accesses'
         ));
     }
-    
-    
-    /*
-     *   Add an access
+
+
+    /**
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
      */
     public function addAction()
     {
@@ -59,11 +60,11 @@ class AccessController extends Controller
             'tab' => 'accesses'
         ));
     }
-    
-    
-    /*
-     *   Edit an access
-     *   @param $access = Access
+
+
+    /**
+     * @param Access $access
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
      */
     public function editAction(Access $access)
     {   

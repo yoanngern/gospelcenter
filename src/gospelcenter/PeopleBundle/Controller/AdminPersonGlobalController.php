@@ -9,9 +9,10 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 
 class AdminPersonGlobalController extends Controller {
-    
-    /*
-     *   List of all persons
+
+
+    /**
+     * @return \Symfony\Component\HttpFoundation\Response
      */
     public function listAction()
     {
@@ -25,11 +26,11 @@ class AdminPersonGlobalController extends Controller {
             'tab' => 'contacts'
         ));
     }
-    
-    
-    /*
-    *   Add a person
-    */
+
+
+    /**
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
+     */
     public function addAction()
     {
         
@@ -50,11 +51,11 @@ class AdminPersonGlobalController extends Controller {
             
             $form->bind($request);
             
-            $firstname = $person->getFirstname();
-            $lastname = $person->getLastname();
+            //$firstname = $person->getFirstname();
+            //$lastname = $person->getLastname();
             
-            $imageTitle = $firstname. " " .$lastname;
-            $imageType = "person";
+            //$imageTitle = $firstname. " " .$lastname;
+            //$imageType = "person";
             
             if($form->isValid())
             {
@@ -79,10 +80,12 @@ class AdminPersonGlobalController extends Controller {
             'person' => $person
         ));
     }
-    
-    /*
-    *   Edit a person
-    */
+
+
+    /**
+     * @param Person $person
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
+     */
     public function editAction(Person $person)
     {
         $session = $this->get('session');

@@ -2,7 +2,7 @@
 
 namespace gospelcenter\UserBundle\Controller;
 
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+
 use Symfony\Component\Security\Core\SecurityContext;
 use FOS\UserBundle\Controller\ProfileController as BaseController;
 
@@ -18,10 +18,10 @@ use Symfony\Component\Security\Core\Exception\AccessDeniedException;
 
 class ProfileController extends BaseController
 {
-    
-    
+
+
     /**
-     * Show the user
+     * @return mixed
      */
     public function showAction()
     {
@@ -35,10 +35,11 @@ class ProfileController extends BaseController
                 'page' => 'profile'
             ));
     }
-    
-    
+
+
     /**
-     * Edit the user
+     * @param Request $request
+     * @return null|RedirectResponse|\Symfony\Component\HttpFoundation\Response
      */
     public function editAction(Request $request)
     {

@@ -11,9 +11,10 @@ use Symfony\Component\HttpFoundation\Response;
 
 
 class AdminSlideGlobalController extends Controller {
-    
-    /*
-     *   List of global slides
+
+
+    /**
+     * @return Response
      */
     public function listAction()
     {
@@ -27,10 +28,10 @@ class AdminSlideGlobalController extends Controller {
             'tab' => 'slides'
         ));
     }
-    
-    
-    /*
-     *   Add a global slide
+
+
+    /**
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse|Response
      */
     public function addAction()
     {
@@ -61,11 +62,11 @@ class AdminSlideGlobalController extends Controller {
             'page' => 'pages'
         ));
     }
-    
-    
-    /*
-     *   Edit a global slide
-     *   @param $slide = Slide
+
+
+    /**
+     * @param Slide $slide
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse|Response
      */
     public function editAction(Slide $slide)
     {   
@@ -95,25 +96,25 @@ class AdminSlideGlobalController extends Controller {
             'page' => 'pages'
         ));
     }
-    
-    
-    /*
-     *   Delete a location
+
+
+    /**
+     * @param Center $center
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse
      */
-    public function deleteAction(Center $center, Location $location)
+    public function deleteAction(Center $center)
     {      
         return $this->redirect( $this->generateUrl('gospelcenterAdmin_locations', array(
             'center' => $center->getRef()
         )));
     }
-    
-    
-    /*
-     *   Get JSON location
-     *   @param $location = location id
-     *          $center = Center
+
+
+    /**
+     * @param $location
+     * @return Response
      */
-    public function singleJSONAction(Center $center, $location)
+    public function singleJSONAction($location)
     {   
         
         $em = $this->getDoctrine()->getManager();

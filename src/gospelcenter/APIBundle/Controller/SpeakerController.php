@@ -10,15 +10,11 @@ class SpeakerController extends Controller
 {
 
     /**
-     *  GET - list all speakers
+     * @return Response
      */
     public function getSpeakersAction()
     {
         $em = $this->getDoctrine()->getManager();
-        $request = $this->get('request');
-
-        //$centerId = $request->query->get('center');
-        //$center = $em->getRepository('gospelcenterCenterBundle:Center')->findByRef($centerId);
 
         $speakers = $em->getRepository('gospelcenterCelebrationBundle:Speaker')->findAllJSON();
 
@@ -51,15 +47,16 @@ class SpeakerController extends Controller
 
 
     /**
-     *  GET - get speaker details
+     * @param $speaker
+     * @return Response
      */
     public function getSpeakerAction($speaker)
     {
         $em = $this->getDoctrine()->getManager();
-        $request = $this->get('request');
+        //$request = $this->get('request');
 
-        $centerId = $request->query->get('center');
-        $center = $em->getRepository('gospelcenterCenterBundle:Center')->findByRef($centerId);
+        //$centerId = $request->query->get('center');
+        //$center = $em->getRepository('gospelcenterCenterBundle:Center')->findByRef($centerId);
 
         $speaker = $em->getRepository('gospelcenterCelebrationBundle:Speaker')->findOne($speaker);
 

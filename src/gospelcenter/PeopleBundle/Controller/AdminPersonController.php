@@ -62,11 +62,11 @@ class AdminPersonController extends Controller {
             
             $form->bind($request);
             
-            $firstname = $person->getFirstname();
-            $lastname = $person->getLastname();
+            //$firstname = $person->getFirstname();
+            //$lastname = $person->getLastname();
             
-            $imageTitle = $firstname. " " .$lastname;
-            $imageType = "person";
+            //$imageTitle = $firstname. " " .$lastname;
+            //$imageType = "person";
             
             if($form->isValid())
             {

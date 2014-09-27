@@ -16,8 +16,11 @@ use FOS\UserBundle\Controller\ProfileController as BaseController;
 
 class ChangePasswordController extends BaseController
 {
+
+
     /**
-     * Change user password
+     * @param Request $request
+     * @return null|RedirectResponse|\Symfony\Component\HttpFoundation\Response
      */
     public function changePasswordAction(Request $request)
     {

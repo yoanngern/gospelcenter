@@ -8,11 +8,12 @@ use gospelcenter\EventBundle\Form\EventType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 class CelebrationController extends Controller {
-    
-   /*
-    *   Next celebrations
-    *
-    */
+
+
+    /**
+     * @param Center $center
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
     public function listAction(Center $center)
     {    
         $em = $this->getDoctrine()->getManager();
@@ -27,12 +28,12 @@ class CelebrationController extends Controller {
             'page' => 'celebrations'
         ));
     }
-    
-    
-   /*
-    *   Add a new event
-    *
-    */
+
+
+    /**
+     * @param Center $center
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
+     */
     public function addAction(Center $center)
     {    
         
@@ -66,12 +67,13 @@ class CelebrationController extends Controller {
             'page' => 'events'
         ));   
     }
-    
-    
-   /*
-    *   Edit the event received in parameter
-    *   @param the id of the event
-    */
+
+
+    /**
+     * @param Center $center
+     * @param Event $event
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
     public function editAction(Center $center, Event $event)
     {    
         $em = $this->getDoctrine()->getManager();
@@ -84,14 +86,13 @@ class CelebrationController extends Controller {
             'page' => 'events'
         ));   
     }
-    
-    
-   /*
-    *   Get next star events
-    *   @param the number of star event
-    *   @return next star events in HTML
-    */
-    public function starEventsAction(Center $center, $nb)
+
+
+    /**
+     * @param Center $center
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function starEventsAction(Center $center)
     {   
         $list = array(
             array('id' => 2, 'title' => 'Prayer Impact'),

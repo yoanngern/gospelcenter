@@ -164,12 +164,15 @@ class AdminController extends Controller
 
     /**
      * Publish event
+     * @param Center $center
+     * @param Event $event
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse
      */
     public function publishAction(Center $center, Event $event)
     {
-        $em = $this->getDoctrine()->getManager();
+        //$em = $this->getDoctrine()->getManager();
 
-        $event = $em->getRepository('gospelcenterEventBundle:Event')->findWithAll($event, $center);
+        //$event = $em->getRepository('gospelcenterEventBundle:Event')->findWithAll($event, $center);
 
         return $this->redirect(
             $this->generateUrl(

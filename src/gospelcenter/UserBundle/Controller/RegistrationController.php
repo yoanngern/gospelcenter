@@ -22,6 +22,11 @@ use FOS\UserBundle\Form\Type\RegistrationFormType;
 
 class RegistrationController extends BaseController
 {
+
+    /**
+     * @param Request $request
+     * @return null|RedirectResponse|\Symfony\Component\HttpFoundation\Response
+     */
     public function registerAction(Request $request)
     {
         /** @var $formFactory \FOS\UserBundle\Form\Factory\FactoryInterface */
@@ -69,9 +74,10 @@ class RegistrationController extends BaseController
             'page' => 'register'
         ));
     }
-    
+
+
     /**
-     * Tell the user to check his email provider
+     * @return mixed
      */
     public function checkEmailAction()
     {
@@ -88,9 +94,12 @@ class RegistrationController extends BaseController
             'page' => 'checkEmail'
         ));
     }
-    
+
+
     /**
-     * Receive the confirmation token from user email provider, login the user
+     * @param Request $request
+     * @param $token
+     * @return null|RedirectResponse|\Symfony\Component\HttpFoundation\Response
      */
     public function confirmAction(Request $request, $token)
     {
@@ -124,8 +133,9 @@ class RegistrationController extends BaseController
         return $response;
     }
 
+
     /**
-     * Tell the user his account is now confirmed
+     * @return mixed
      */
     public function confirmedAction()
     {
@@ -139,7 +149,10 @@ class RegistrationController extends BaseController
             'page' => 'confirmed'
         ));
     }
-    
+
+    /**
+     * @return mixed
+     */
     protected function getEngine()
     {
         return $this->container->getParameter('fos_user.template.engine');
