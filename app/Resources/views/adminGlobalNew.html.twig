@@ -1,0 +1,30 @@
+{% extends "::adminNew.html.twig" %}
+
+{% set local = false %}
+
+{% block header_logo %}
+    <a id="logo"
+       href="{{ path('gospelcenterPageGlobal_home') }}"></a>
+{% endblock %}
+
+{% block header_nav %}
+    <li>
+        <a href="{{ path('gospelcenterAdminGlobal_persons') }}"
+           {% if page == 'people' %}class="current focus"{% endif %}>Contacts</a>
+    </li>
+    <li>
+        <a href="{{ path('gospelcenterAdminGlobal_pages') }}"
+           {% if page == 'pages' %}class="current focus"{% endif %}>Pages</a></li>
+    <li>
+        <a href="{{ path('gospelcenterAdminGlobal_images') }}"
+           {% if page == 'images' %}class="current focus"{% endif %}>Images</a>
+    </li>
+    <li>
+        <a href="{{ path('gospelcenterAdminGlobal_centers') }}"
+           {% if page == 'centers' %}class="current focus"{% endif %}>Centers</a>
+    </li>
+    <li>
+        <a href="{{ path('gospelcenterAdminGlobal_accesses') }}"
+           {% if page == 'options' %}class="current focus"{% endif %}>Options</a>
+    </li>
+{% endblock %}

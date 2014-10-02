@@ -74,7 +74,7 @@ $(document).ready(function () {
     });
 
 
-    $("form").on('click', 'div.checkbox',function () {
+    $("form").on('click', 'div.checkbox', function () {
 
         var input = $(this).find("input[type='checkbox']");
 
@@ -136,7 +136,7 @@ function setCollection(elem) {
         var addItemLink = $('<a href="#" id="addItem" class="button">' + addLabel + '</a>');
 
         $(elem).children('div').each(function () {
-            addRemoveLink(elem);
+            addRemoveLink(this);
         });
     }
 
@@ -157,15 +157,31 @@ function addItem(elem) {
 
     var prototype = $(elem).attr('data-prototype').replace(/__name__label__/g, labelName + ' ' + nbItem).replace(/__name__/g, nbItem);
 
-    addRemoveLink(elem);
-
     $("#addItem", elem).before(prototype);
+
+    var newElem = $("> div", elem).last();
+
+    addRemoveLink(newElem);
 
     $(elem).attr("data-nbItem", nbItem + 1);
 }
 
 
 function addRemoveLink(elem) {
+
+    var container = $(elem).parent();
+
+    var deleteLabel = $(container).attr("data-remove");
+
+    $removeLink = $('<a href="#" class="delete">' + deleteLabel + '</a>');
+
+    $(elem).prepend($removeLink);
+
+    $removeLink.click(function (event) {
+        elem.remove();
+        event.preventDefault();
+        return false;
+    });
 }
 
 /**
@@ -181,7 +197,7 @@ function stringToText(string) {
 
     var text = whitespaceTokenizer(string);
 
-    text = jQuery.grep(text, function(value) {
+    text = jQuery.grep(text, function (value) {
         return value != '';
     });
 
@@ -203,13 +219,13 @@ function whitespaceTokenizer(string) {
     return text;
 }
 
-$.fn.arrayFind = function(obj, fromIndex) {
-    if(fromIndex == null) fromIndex = 0;
-    else if(fromIndex < 0) fromIndex = Math.max(0, this.length + fromIndex);
+$.fn.arrayFind = function (obj, fromIndex) {
+    if (fromIndex == null) fromIndex = 0;
+    else if (fromIndex < 0) fromIndex = Math.max(0, this.length + fromIndex);
 
     arr = $.makeArray(this);
-    for(var i = fromIndex, j = arr.length; i < j; i++) {
-        if(arr[i].indexOf(obj) > -1) return i;
+    for (var i = fromIndex, j = arr.length; i < j; i++) {
+        if (arr[i].indexOf(obj) > -1) return i;
     }
 
     return -1;

@@ -3,7 +3,6 @@
 namespace gospelcenter\PageBundle\Controller;
 
 use gospelcenter\CenterBundle\Entity\Center;
-use gospelcenter\LocationBundle\Entity\Location;
 use gospelcenter\PageBundle\Entity\Page;
 use gospelcenter\PageBundle\Form\PageGlobalAddType;
 use gospelcenter\PageBundle\Form\PageGlobalType;

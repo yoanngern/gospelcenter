@@ -7,24 +7,31 @@ use gospelcenter\CelebrationBundle\Form\CelebrationType;
 use gospelcenter\CenterBundle\Entity\Center;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Response;
+use JMS\SecurityExtraBundle\Annotation\Secure;
+use Symfony\Component\Security\Core\Exception\AccessDeniedException;
 
 
 class AdminCelebrationController extends Controller
 {
 
     /**
-     * List of all celebrations
      * @param Center $center
+     * @Secure(roles="ROLE_USER")
      * @return Response
+     * @throws AccessDeniedException
      */
     public function listAction(Center $center)
     {
+        if (false === $this->get('security.context')->isGranted("VIEW", new Celebration($center))) {
+            throw new AccessDeniedException('Unauthorised access!');
+        }
+
         $em = $this->getDoctrine()->getManager();
 
         $celebrations = $em->getRepository('gospelcenterCelebrationBundle:Celebration')->findAllByCenter($center);
 
         return $this->render(
-            'gospelcenterCelebrationBundle:AdminCelebration:list.html.twig',
+            'gospelcenterAdminBundle:Celebration:list.html.twig',
             array(
                 'center' => $center,
                 'celebrations' => $celebrations,
@@ -36,12 +43,17 @@ class AdminCelebrationController extends Controller
 
     /**
      * Add a celebration
+     * @Secure(roles="ROLE_USER")
      * @param Center $center
      * @return \Symfony\Component\HttpFoundation\RedirectResponse|Response
      */
     public function addAction(Center $center)
     {
         $celebration = new Celebration($center);
+
+        if (false === $this->get('security.context')->isGranted("CREATE", $celebration)) {
+            throw new AccessDeniedException('Unauthorised access!');
+        }
 
         $form = $this->createForm(new CelebrationType($center), $celebration);
 
@@ -83,7 +95,7 @@ class AdminCelebrationController extends Controller
         }
 
         return $this->render(
-            'gospelcenterCelebrationBundle:AdminCelebration:add.html.twig',
+            'gospelcenterAdminBundle:Celebration:add.html.twig',
             array(
                 'center' => $center,
                 'form' => $form->createView(),
@@ -94,13 +106,18 @@ class AdminCelebrationController extends Controller
 
 
     /**
-     *  Edit a celebration
+     * Edit a celebration
+     * @Secure(roles="ROLE_USER")
      * @param $celebration = Celebration
      * @param $center = Center
      * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
      */
     public function editAction(Center $center, Celebration $celebration)
     {
+
+        if (false === $this->get('security.context')->isGranted("EDIT", $celebration)) {
+            throw new AccessDeniedException('Unauthorised access!');
+        }
 
         $celebration->setStartingTime($celebration->getDate()->getStart());
         $celebration->setEndingTime($celebration->getDate()->getEnd());
@@ -162,7 +179,7 @@ class AdminCelebrationController extends Controller
         }
 
         return $this->render(
-            'gospelcenterCelebrationBundle:AdminCelebration:edit.html.twig',
+            'gospelcenterAdminBundle:Celebration:edit.html.twig',
             array(
                 'center' => $center,
                 'celebration' => $celebration,
@@ -175,12 +192,17 @@ class AdminCelebrationController extends Controller
 
     /**
      * Delete a celebration
+     * @Secure(roles="ROLE_USER")
      * @param Center $center
      * @param Celebration $celebration
      * @return \Symfony\Component\HttpFoundation\RedirectResponse|Response
      */
     public function deleteAction(Center $center, Celebration $celebration)
     {
+        if (false === $this->get('security.context')->isGranted("REMOVE", $celebration)) {
+            throw new AccessDeniedException('Unauthorised access!');
+        }
+
         $form = $this->createFormBuilder()->getForm();
 
         $request = $this->getRequest();
@@ -206,7 +228,7 @@ class AdminCelebrationController extends Controller
         }
 
         return $this->render(
-            'gospelcenterCelebrationBundle:AdminCelebration:delete.html.twig',
+            'gospelcenterAdminBundle:Celebration:delete.html.twig',
             array(
                 'center' => $center,
                 'celebration' => $celebration,

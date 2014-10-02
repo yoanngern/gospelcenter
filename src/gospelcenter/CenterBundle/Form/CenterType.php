@@ -12,28 +12,49 @@ use gospelcenter\ImageBundle\Form\ImageSimpleType;
 
 class CenterType extends AbstractType
 {
-        /**
+    /**
      * @param FormBuilderInterface $builder
      * @param array $options
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('ref',        'text')
-            ->add('name',       'text')
-            ->add('location',   new LocationSimpleType(), array('required' => false))
-            ->add('image',      new ImageSimpleType(), array('required' => false))
-        ;
+            ->add(
+                'ref',
+                'text',
+                array(
+                    'attr' => array(
+                        'placeholder' => 'Ref',
+                    ),
+                    'required' => true,
+                    'label' => false,
+                )
+            )
+            ->add(
+                'name',
+                'text',
+                array(
+                    'attr' => array(
+                        'placeholder' => 'Name',
+                    ),
+                    'required' => true,
+                    'label' => false,
+                )
+            )
+            ->add('location', new LocationSimpleType(), array('required' => false))
+            ->add('image', new ImageSimpleType(), array('required' => false));
     }
-    
+
     /**
      * @param OptionsResolverInterface $resolver
      */
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
-        $resolver->setDefaults(array(
-            'data_class' => 'gospelcenter\CenterBundle\Entity\Center'
-        ));
+        $resolver->setDefaults(
+            array(
+                'data_class' => 'gospelcenter\CenterBundle\Entity\Center'
+            )
+        );
     }
 
     /**

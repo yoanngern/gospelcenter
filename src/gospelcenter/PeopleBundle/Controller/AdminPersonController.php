@@ -8,20 +8,27 @@ use gospelcenter\CenterBundle\Entity\Member;
 use gospelcenter\CenterBundle\Entity\Visitor;
 use gospelcenter\PeopleBundle\Entity\Person;
 use gospelcenter\PeopleBundle\Form\PersonType;
+use JMS\SecurityExtraBundle\Annotation\Secure;
 use gospelcenter\PeopleBundle\Form\PersonWithAccountType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Security\Core\Exception\AccessDeniedException;
 
 
 class AdminPersonController extends Controller {
 
     /**
      * List of person
+     * @Secure(roles="ROLE_USER")
      * @param Center $center
      * @return Response
      */
     public function listAction(Center $center)
     {
+        if (false === $this->get('security.context')->isGranted("VIEW", new Person())) {
+            throw new AccessDeniedException('Unauthorised access!');
+        }
+
         $em = $this->getDoctrine()->getManager();
         
         $persons = $em->getRepository('gospelcenterPeopleBundle:Person')->findAllByCenter($center);
@@ -37,15 +44,20 @@ class AdminPersonController extends Controller {
 
     /**
      * Add a person
+     * @Secure(roles="ROLE_USER")
      * @param Center $center
      * @return Response
      */
     public function addAction(Center $center)
     {
-        
         $session = $this->get('session');
         
         $person = new Person();
+
+        if (false === $this->get('security.context')->isGranted("CREATE", $person)) {
+            throw new AccessDeniedException('Unauthorised access!');
+        }
+
         $form = $this->createForm(new PersonType, $person);
         
         $request = $this->get('request');
@@ -128,12 +140,17 @@ class AdminPersonController extends Controller {
 
     /**
      * Edit a person
+     * @Secure(roles="ROLE_USER")
      * @param Center $center
      * @param Person $person
      * @return Response
      */
     public function editAction(Center $center, Person $person)
     {
+        if (false === $this->get('security.context')->isGranted("EDIT", $person)) {
+            throw new AccessDeniedException('Unauthorised access!');
+        }
+
         $session = $this->get('session');
 
         $em = $this->getDoctrine()->getManager();
@@ -263,12 +280,17 @@ class AdminPersonController extends Controller {
 
     /**
      * Delete a person
+     * @Secure(roles="ROLE_USER")
      * @param Center $center
      * @param Person $person
      * @return \Symfony\Component\HttpFoundation\RedirectResponse|Response
      */
     public function deleteAction(Center $center, Person $person)
-    {   
+    {
+        if (false === $this->get('security.context')->isGranted("REMOVE", $person)) {
+            throw new AccessDeniedException('Unauthorised access!');
+        }
+
         $form = $this->createFormBuilder()->getForm();
         
         $request = $this->getRequest();

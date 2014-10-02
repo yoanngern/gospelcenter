@@ -26,10 +26,34 @@ class SlideType extends AbstractType
         $center = $this->center;
 
         $builder
-            ->add('title', 'text')
-            ->add('text', 'textarea')
-            ->add('link', 'url', array('required' => false))
-            ->add('labelLink', 'text', array('required' => false))
+            ->add('title', 'text', array(
+                    'attr' => array(
+                        'placeholder' => 'Title',
+                    ),
+                    'required' => true,
+                    'label' => false,
+                ))
+            ->add('text', 'textarea', array(
+                    'attr' => array(
+                        'placeholder' => 'Text',
+                    ),
+                    'required' => true,
+                    'label' => false,
+                ))
+            ->add('link', 'url', array(
+                    'attr' => array(
+                        'placeholder' => 'Link',
+                    ),
+                    'required' => false,
+                    'label' => false,
+                ))
+            ->add('labelLink', 'text', array(
+                    'attr' => array(
+                        'placeholder' => 'Link label',
+                    ),
+                    'required' => false,
+                    'label' => false,
+                ))
             ->add('image', new ImageSimpleType(), array('required' => false))
             ->add(
                 'page',

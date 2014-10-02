@@ -4,24 +4,31 @@ namespace gospelcenter\CelebrationBundle\Controller;
 
 use gospelcenter\CelebrationBundle\Entity\Speaker;
 use gospelcenter\CelebrationBundle\Form\SpeakerType;
+use JMS\SecurityExtraBundle\Annotation\Secure;
 use gospelcenter\CenterBundle\Entity\Center;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\Security\Core\Exception\AccessDeniedException;
 
 
 class AdminSpeakerController extends Controller {
 
 
     /**
+     * @Secure(roles="ROLE_USER")
      * @param Center $center
      * @return \Symfony\Component\HttpFoundation\Response
      */
     public function listAction(Center $center)
     {
+        if (false === $this->get('security.context')->isGranted("VIEW", new Speaker())) {
+            throw new AccessDeniedException('Unauthorised access!');
+        }
+
         $em = $this->getDoctrine()->getManager();
         
         $speakers = $em->getRepository('gospelcenterCelebrationBundle:Speaker')->findAllByCenter($center);
         
-        return $this->render('gospelcenterCelebrationBundle:AdminSpeaker:list.html.twig', array(
+        return $this->render('gospelcenterAdminBundle:Speaker:list.html.twig', array(
             'center' => $center,
             'speakers' => $speakers,
             'page' => 'people',
@@ -31,6 +38,7 @@ class AdminSpeakerController extends Controller {
 
 
     /**
+     * @Secure(roles="ROLE_USER")
      * @param Center $center
      * @return \Symfony\Component\HttpFoundation\Response
      */
@@ -39,84 +47,16 @@ class AdminSpeakerController extends Controller {
         $em = $this->getDoctrine()->getManager();
         
         $speakers = $em->getRepository('gospelcenterCelebrationBundle:Speaker')->findAllOrder();
+
+        if (false === $this->get('security.context')->isGranted("VIEW", $speakers[0])) {
+            throw new AccessDeniedException('Unauthorised access!');
+        }
         
-        return $this->render('gospelcenterCelebrationBundle:AdminSpeaker:list.html.twig', array(
+        return $this->render('gospelcenterAdminBundle:Speaker:list.html.twig', array(
             'center' => $center,
             'speakers' => $speakers,
             'page' => 'people',
             'tab' => 'speakersAll'
-        ));
-    }
-
-
-    /**
-     * @param Center $center
-     * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
-     */
-    public function addAction(Center $center)
-    {
-        
-        $speaker = new Speaker();
-        $form = $this->createForm(new SpeakerType, $speaker);
-        
-        $request = $this->get('request');
-        
-        if($request->getMethod() == 'POST')
-        {
-            $form->bind($request);
-            
-            if($form->isValid())
-            {
-                $em = $this->getDoctrine()->getManager();
-                $em->persist($speaker);
-                $em->flush();
-                
-                return $this->redirect( $this->generateUrl('gospelcenterAdmin_speakers', array(
-                    'center' => $center->getRef()
-                )));
-            }
-        }
-        
-        return $this->render('gospelcenterCelebrationBundle:AdminSpeaker:add.html.twig', array(
-            'center' => $center,
-            'form' => $form->createView(),
-            'page' => 'speakers'
-        ));
-    }
-
-
-    /**
-     * @param Center $center
-     * @param Speaker $speaker
-     * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
-     */
-    public function editAction(Center $center, Speaker $speaker)
-    {
-        $form = $this->createForm(new SpeakerType, $speaker);
-        
-        $request = $this->get('request');
-        
-        if($request->getMethod() == 'POST')
-        {
-            $form->bind($request);
-            
-            if($form->isValid())
-            {
-                $em = $this->getDoctrine()->getManager();
-                $em->persist($speaker);
-                $em->flush();
-                
-                return $this->redirect( $this->generateUrl('gospelcenterAdmin_speakers', array(
-                    'center' => $center->getRef()
-                )));
-            }
-        }
-        
-        return $this->render('gospelcenterCelebrationBundle:AdminSpeaker:edit.html.twig', array(
-            'center' => $center,
-            'speaker' => $speaker,
-            'form' => $form->createView(),
-            'page' => 'speakers'
         ));
     }
 }

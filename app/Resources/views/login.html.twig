@@ -1,10 +1,13 @@
+{% set currentPath = path(app.request.attributes.get('_route'),
+app.request.attributes.get('_route_params')) %}
+
 <nav class="social">
     <h1>Login</h1>
 	<ul> 
 	    {% if app.user %}
 	        <li><a href="{{ path('fos_user_security_logout') }}">Sign out</a></li>
 		{% else %}
-		    <li><a href="{{ path('fos_user_security_login') }}">Sign in</a></li>
+		    <li><a href="{{ path('fos_user_security_login', {'continue': currentPath}) }}">Sign in</a></li>
 		{% endif %}
 	</ul>
 </nav>

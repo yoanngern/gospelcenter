@@ -15,18 +15,29 @@ class AccessType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('service',    'text')
-        ;
+            ->add(
+                'service',
+                'text',
+                array(
+                    'attr' => array(
+                        'placeholder' => 'Service',
+                    ),
+                    'required' => true,
+                    'label' => false,
+                )
+            );
     }
-    
+
     /**
      * @param OptionsResolverInterface $resolver
      */
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
-        $resolver->setDefaults(array(
-            'data_class' => 'gospelcenter\AccessBundle\Entity\Access'
-        ));
+        $resolver->setDefaults(
+            array(
+                'data_class' => 'gospelcenter\AccessBundle\Entity\Access'
+            )
+        );
     }
 
     /**

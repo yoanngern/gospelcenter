@@ -1,34 +1,6 @@
-{% extends "::adminGlobal.html.twig" %}
+{% extends "::adminGlobalNew.html.twig" %}
 
-{% block title %}
-    {{ parent() }} - Pages
-{% endblock %}
-
-{% block stylesheets %}
-	{{ parent() }}
-	<link rel="stylesheet" href="{{ asset('css/admin.css') }}" type="text/css" />
-{% endblock %}
-
-{% block adminBody %}
-    <h1>Pages</h1>
-    <section class="tools">
-        {% if tab == 'pages' %}
-            <a href="{{ path('gospelcenterAdminGlobal_pages_add') }}">Add a page</a>
-        {% endif %}
-        
-        {% if tab == 'slides' %}
-            <a href="{{ path('gospelcenterAdminGlobal_slides_add') }}">Add a slide</a>
-        {% endif %}
-    </section>
-    
-    <nav class="sub_nav">
-    	<ul>
-    		<li><a href="{{ path('gospelcenterAdminGlobal_pages') }}" {% if tab == 'pages' %}class="current"{% endif %}>Pages</a></li>
-    		<li><a href="{{ path('gospelcenterAdminGlobal_slides') }}" {% if tab == 'slides' %}class="current"{% endif %}>Slides</a></li>
-    	</ul>
-    </nav>
-    
-    {% block gospelcenterAdminPages_body %}
-    {% endblock %}
-    
+{% block adminSubNav %}
+    <li><a href="{{ path('gospelcenterAdminGlobal_pages') }}" {% if tab == 'pages' %}class="current focus"{% endif %}>Pages</a></li>
+    <li><a href="{{ path('gospelcenterAdminGlobal_slides') }}" {% if tab == 'slides' %}class="current focus"{% endif %}>Slides</a></li>
 {% endblock %}

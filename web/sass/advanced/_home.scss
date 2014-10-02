@@ -110,8 +110,9 @@
 
         div.container {
             position: absolute;
-            left: -3px;
-            right: -6px;
+            left: -2px;
+            right: -4px;
+            text-align: center;
 
             div {
                 width: 33.333%;
@@ -120,8 +121,8 @@
                 height: 100%;
 
                 a {
-                    margin-left: 3px;
-                    margin-right: 3px;
+                    margin-left: 2px;
+                    margin-right: 2px;
                     height: 100%;
                     display: block;
                     color: $whiteGC;
@@ -238,16 +239,6 @@
             font-size: 1.2em;
             line-height: 1.2em;
             text-align: center;
-        }
-
-        @media only screen and (max-width: 980px) {
-
-            section.mediaList {
-                .more {
-                    display: none;
-                }
-            }
-
         }
     }
 

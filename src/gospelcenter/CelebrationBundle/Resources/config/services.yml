@@ -6,3 +6,8 @@ services:
         class: gospelcenter\CelebrationBundle\Listener\CelebrationListener
         tags:
             - { name: doctrine.event_listener, event: onFlush }
+
+    gospelcenter_celebration.speakers:
+        class: gospelcenter\CelebrationBundle\Twig\Extension\HelperExtension
+        tags:
+            - { name: twig.extension }

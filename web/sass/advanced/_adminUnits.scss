@@ -1,0 +1,20 @@
+form.unit {
+
+    div.collection.accessesLevel {
+        margin-top: 0;
+
+        & > div {
+            display: block;
+
+            div {
+                display: inline-block;
+                vertical-align: top;
+
+                div:first-of-type {
+                    margin-right: 12px;
+                }
+            }
+        }
+    }
+
+}

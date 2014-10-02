@@ -1,0 +1,37 @@
+{% extends "gospelcenterAdminBundle::more.html.twig" %}
+
+{% block title %}
+    {{ parent() }} - Units
+{% endblock %}
+
+{% block adminTitle %}<h1>Units</h1>{% endblock %}
+
+{% block adminTools %}
+    <a href="{{ path('gospelcenterAdmin_units_add', {'center': center.ref}) }}" class="add">Add a unit</a>
+{% endblock %}
+
+{% block adminListBody %}
+    <table class="main">
+        <thead>
+        <tr>
+            <th data-sort="string">Name<span>Name<div class="arrow"></div></span></th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for unit in units %}
+
+            {% set link = path('gospelcenterAdmin_units_edit', {'unit': unit.id, 'center': center.ref}) %}
+
+            <tr>
+                <td class="em">
+                    <a href="{{ link }}"><span>{{ unit.name }}</span></a>
+                </td>
+            </tr>
+        {% else %}
+            <tr class="empty">
+                <td colspan="1">There are no unit.</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

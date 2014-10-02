@@ -1,0 +1,52 @@
+{% extends "::adminLocalNew.html.twig" %}
+
+{% block title %}
+    {{ parent() }} - Celebrations
+{% endblock %}
+
+{% block adminTitle %}<h1>Celebrations</h1>{% endblock %}
+
+{% block adminTools %}
+    <a href="{{ path('gospelcenterAdmin_celebrations_add', {'center': center.ref}) }}" class="add">Add a celebration</a>
+{% endblock %}
+
+{% block adminListBody %}
+    <table class="main">
+        <thead>
+        <tr>
+            <th data-sort="int" data-sort-default="desc">Date<span>Date<div class="arrow"></div></span></th>
+            <th data-sort="int">Time<span>Time<div class="arrow"></div></span></th>
+            <th data-sort="string">Speaker<span>Speaker<div class="arrow"></div></span></th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for celebration in celebrations %}
+
+            {% set link = path('gospelcenterAdmin_celebrations_edit', {'celebration': celebration.id, 'center': center.ref}) %}
+
+            <tr {% if date(celebration.date.start) < date("now") %}class="old"
+                {% endif %}{% if date(celebration.date.start) < date("+6days") %}class="today"{% endif %}>
+                <td class="em" data-sort-value="{{ celebration.date.start|date('U') }}">
+                    <a href="{{ link }}">
+                        <span>{{ celebration.date.start|date('d F Y') }}</span>
+                    </a>
+                </td>
+                <td data-sort-value="{{ celebration.date.start|date('Hi') }}{{ celebration.date.start|date('U') }}">
+                    <a href="{{ link }}">
+                        <span>{{ celebration.date.start|date('H:i') }} - {{ celebration.date.end|date('H:i') }}</span>
+                    </a>
+                </td>
+                <td>
+                    <a href="{{ link }}">
+                        <span>{{ celebration|speakers(app.request.locale) }}</span>
+                    </a>
+                </td>
+            </tr>
+        {% else %}
+            <tr class="empty">
+                <td colspan="4">There are no celebrations.</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

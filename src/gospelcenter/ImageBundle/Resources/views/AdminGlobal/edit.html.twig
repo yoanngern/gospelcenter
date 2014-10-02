@@ -1,48 +1,52 @@
-{% extends "::adminGlobal.html.twig" %}
+{% extends "::adminGlobalNew.html.twig" %}
+
+{% block classPage %}{{ parent() }} single{% endblock %}
 
 {% block javascripts %}
     {{ parent() }}
-    <script type="text/javascript" src="{{ asset('js/form.min.js') }}"></script>
     <script type="text/javascript" src="{{ asset('js/editImage.min.js') }}"></script>
-{% endblock %}
-
-{% block stylesheets %}
-	{{ parent() }}
-	<link rel="stylesheet" href="{{ asset('css/admin.css') }}" type="text/css" />
-	<link rel="stylesheet" href="{{ asset('css/form.css') }}" type="text/css" />
 {% endblock %}
 
 {% block title %}
     {{ parent() }} - Edit an image
 {% endblock %}
 
+{% block adminTitle %}<h1>Edit an image</h1>{% endblock %}
+
+{% block adminBack %}
+    <a class="back" href="{{ path('gospelcenterAdminGlobal_images') }}">Images</a>
+{% endblock %}
+
+{% block adminTools %}
+    <a href="{{ path('gospelcenterAdminGlobal_images_delete', { 'image': image.id}) }}"
+       class="delete">Delete</a>
+    <a href="{{ path('gospelcenterAdminGlobal_images') }}">Cancel</a>
+{% endblock %}
+
 {% block adminBody %}
-    <h1>Edit an image</h1>
-    
-    
-    
+
     <form class="image" action="{{ path('gospelcenterAdminGlobal_images_edit', {'image': image.id}) }}" method="post" {{ form_enctype(form) }}>
-        <nav class="tools">
-    		<input type="submit" class="buttonLink" />
-    	</nav>
-    	
-    	{{ form_widget(form.file) }}
-    	{{ form_errors(form.file) }}
-    	<div id="editImage" data-input="{{ form.file.vars.id }}">
-    	    <img src="{{ asset(image.webPath) }}" alt="{{ image.alt }}" />
-    	</div>
-    	
-        {{ form_widget(form.title, {'attr': {'placeholder': 'Title'} }) }}
+
+        {{ form_widget(form.file) }}
+        {{ form_errors(form.file) }}
+        <div id="editImage" data-input="{{ form.file.vars.id }}">
+            <img src="{{ asset(image.webPath) }}" alt="{{ image.alt }}" />
+        </div>
+
+        {{ form_widget(form.title) }}
         {{ form_errors(form.title) }}
-        
-        {{ form_widget(form.type, {'attr': {'placeholder': 'Type'} }) }}
+
+        {{ form_widget(form.type) }}
         {{ form_errors(form.type) }}
-        
-        {{ form_widget(form.description, {'attr': {'placeholder': 'Description'} }) }}
+
+        {{ form_widget(form.description) }}
         {{ form_errors(form.description) }}
-        
+
         {{ form_rest(form) }}
+
+        <input type="submit" class="buttonLink" value="Save changes"/>
+
     </form>
-    
-    
+
+
 {% endblock %}

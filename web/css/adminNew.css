@@ -67,8 +67,7 @@
 #page.admin.events div.collection.links {
   margin-top: 0; }
   #page.admin.events div.collection.links > div {
-    display: block;
-    margin-top: 0; }
+    display: block; }
     #page.admin.events div.collection.links > div div {
       display: inline-block;
       vertical-align: top; }
@@ -83,6 +82,16 @@
 #page.admin.events #video #videoContainer {
   margin-top: 30px; }
 
+form.unit div.collection.accessesLevel {
+  margin-top: 0; }
+  form.unit div.collection.accessesLevel > div {
+    display: block; }
+    form.unit div.collection.accessesLevel > div div {
+      display: inline-block;
+      vertical-align: top; }
+      form.unit div.collection.accessesLevel > div div div:first-of-type {
+        margin-right: 12px; }
+
 form {
   border-bottom: 3px solid #89CEB7;
   margin-top: 120px;
@@ -91,33 +100,10 @@ form {
   margin-bottom: 50px; }
   form input,
   form textarea {
-    border: 1px solid #878787;
-    line-height: 22px;
-    vertical-align: center;
-    height: 22px;
-    padding: 10px 10px;
-    font-size: 1.1em;
-    font-family: "Radikal-Light", "Radikal", sans-serif;
-    letter-spacing: 0px;
-    background-color: #FDFDFC;
-    margin-top: 30px;
-    display: block;
     width: 528px;
-    max-width: 528px;
-    -webkit-border-radius: 0px;
-    -moz-border-radius: 0px;
-    -ms-border-radius: 0px;
-    -o-border-radius: 0px;
-    border-radius: 0px;
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    appearance: none; }
+    max-width: 528px; }
     form input:focus,
     form textarea:focus {
-      border: 2px solid #363331;
-      outline: none;
-      padding-left: 9px;
-      height: 20px;
       width: 529px; }
   form ul.selectMultiple {
     display: block;
@@ -226,57 +212,6 @@ form {
   form div.error_list {
     padding-top: 5px;
     color: #D91A15; }
-  form div.checkbox,
-  form div.radio-checkbox {
-    margin-top: 30px;
-    cursor: pointer;
-    display: block; }
-    form div.checkbox input[type="checkbox"],
-    form div.checkbox input[type="radio"],
-    form div.radio-checkbox input[type="checkbox"],
-    form div.radio-checkbox input[type="radio"] {
-      display: none; }
-    form div.checkbox[data-checked="true"] .chip,
-    form div.radio-checkbox[data-checked="true"] .chip {
-      background-color: #363331; }
-    form div.checkbox div.box,
-    form div.radio-checkbox div.box {
-      display: inline-block;
-      width: 18px;
-      height: 18px;
-      margin-top: 0px;
-      border: 1px solid #363331;
-      -webkit-border-radius: 20px;
-      -moz-border-radius: 20px;
-      -ms-border-radius: 20px;
-      -o-border-radius: 20px;
-      border-radius: 20px;
-      vertical-align: top; }
-      form div.checkbox div.box .chip,
-      form div.radio-checkbox div.box .chip {
-        width: 14px;
-        height: 14px;
-        display: block;
-        -webkit-border-radius: 16px;
-        -moz-border-radius: 16px;
-        -ms-border-radius: 16px;
-        -o-border-radius: 16px;
-        border-radius: 16px;
-        margin: 2px; }
-    form div.checkbox label,
-    form div.radio-checkbox label {
-      display: inline-block;
-      cursor: pointer;
-      padding-left: 10px;
-      vertical-align: top;
-      padding-top: 4px; }
-    form div.checkbox.radio-checkbox,
-    form div.radio-checkbox.radio-checkbox {
-      display: inline-block;
-      margin-right: 20px; }
-      form div.checkbox.radio-checkbox:last-of-type,
-      form div.radio-checkbox.radio-checkbox:last-of-type {
-        margin-right: 0px; }
   form select {
     border: 1px solid #878787;
     line-height: 1.1em;
@@ -316,7 +251,7 @@ form {
   form input[type="submit"] {
     display: block;
     border: 2px solid #363331;
-    padding: 3px;
+    padding: 4px 3px 3px 3px;
     font-family: "Radikal-Bold", "Radikal", sans-serif;
     font-size: 1.2em;
     text-transform: uppercase;
@@ -324,13 +259,13 @@ form {
     margin: 10px 0;
     width: auto;
     height: auto;
-    line-height: 1em;
+    line-height: 16px;
     margin-top: 30px;
     cursor: pointer; }
     form input[type="submit"]:hover {
       text-decoration: none;
       border: 3px solid #363331;
-      padding: 2px; }
+      padding: 3px 2px 2px 2px; }
   form textarea {
     min-height: 100px;
     padding-top: 10px; }
@@ -341,13 +276,18 @@ form {
     display: block; }
   form div.collection {
     margin-top: 30px; }
+    form div.collection a.delete {
+      float: right; }
     form div.collection label {
       font-size: 1.1em; }
+    form div.collection input,
+    form div.collection select {
+      margin-top: 10px; }
     form div.collection > div {
       border-bottom: 1px solid #89CEB7;
-      margin-top: 30px; }
+      margin-top: 40px; }
       form div.collection > div > div {
-        margin-bottom: 30px; }
+        margin-bottom: 20px; }
       form div.collection > div:last-of-type {
         border-bottom: none; }
       form div.collection > div > label {
@@ -517,6 +457,15 @@ form {
             -ms-transform: translateY(-50%);
             transform: translateY(-50%);
             display: block; }
+  form.delete {
+    padding-top: 30px; }
+    form.delete section.details {
+      margin-left: 20px;
+      margin-top: 20px; }
+    form.delete a.buttonLink,
+    form.delete input.buttonLink {
+      display: inline-block;
+      margin-right: 20px; }
 
 #page.admin.single #container {
   max-width: 610px; }
@@ -735,24 +684,11 @@ form {
             text-decoration: none; }
       #page.admin #container table.main tbody tr:last-of-type {
         border-bottom: 3px solid #89CEB7; }
-@media only screen and (max-width: 1024px) {
-  #page.admin.single #container {
-    width: 610px;
-    margin: auto; }
-    #page.admin.single #container header {
-      padding-top: 90px;
-      padding-bottom: 0px; }
-      #page.admin.single #container header section.container {
-        width: 610px;
-        margin: 0 auto; }
-        #page.admin.single #container header section.container a.back {
-          display: none; }
-    #page.admin.single #container div.tableHeaderBG {
-      top: 170px; }
-  #page.admin #container header {
-    padding-top: 70px; }
-  #page.admin #container div.tableHeaderBG {
-    top: 200px; }
+@media only screen and (max-width: 1440px) {
+  #page.admin #container nav.sub_nav {
+    left: 20px;
+    margin-left: 0; } }
+@media only screen and (max-width: 1280px) {
   #page.admin #container nav.sub_nav {
     top: 90px;
     position: fixed;
@@ -781,8 +717,26 @@ form {
             border-bottom: 2px solid #363331;
             border-left: none;
             padding: 0px 5px; }
+  #page.admin #container header {
+    padding-top: 70px; }
+  #page.admin #container div.tableHeaderBG {
+    top: 200px; }
   #page.admin #container table.main {
     margin-top: 140px; } }
+@media only screen and (max-width: 1024px) {
+  #page.admin.single #container {
+    width: 610px;
+    margin: auto; }
+    #page.admin.single #container header {
+      padding-top: 90px;
+      padding-bottom: 0px; }
+      #page.admin.single #container header section.container {
+        width: 610px;
+        margin: 0 auto; }
+        #page.admin.single #container header section.container a.back {
+          display: none; }
+    #page.admin.single #container div.tableHeaderBG {
+      top: 170px; } }
 @media only screen and (max-width: 960px) {
   #page.admin #container {
     width: 98%;

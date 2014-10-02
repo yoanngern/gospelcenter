@@ -13,6 +13,33 @@ use Doctrine\ORM\EntityRepository;
 class AdRepository extends EntityRepository
 {
 
+    public function findAllForHome(\gospelcenter\CenterBundle\Entity\Center $center)
+    {
+
+        $query = $this->getEntityManager()
+            ->createQuery(
+                '
+                SELECT a, i, c, c2
+                FROM gospelcenterArticleBundle:Ad a
+                LEFT JOIN a.center c
+                LEFT JOIN a.image i
+                LEFT JOIN i.center c2
+                WHERE c.ref = :center AND a.status = 1
+                '
+            )->setParameters(
+                array(
+                    'center' => $center->getRef()
+                )
+            )->setMaxResults(3);
+
+        try {
+            return $query->getResult();
+        } catch (\Doctrine\ORM\NoResultException $e) {
+            return null;
+        }
+
+    }
+
     public function findAllByCenter(\gospelcenter\CenterBundle\Entity\Center $center)
     {
         $qb = $this->createQueryBuilder('a');

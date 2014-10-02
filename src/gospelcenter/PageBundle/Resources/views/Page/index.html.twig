@@ -18,7 +18,17 @@
             {% spaceless %}
                 {% for slide in article.slides %}
                     <article id="{{ loop.index }}" class="slide {% if loop.index == 1 %}current{% endif %}"
-                             {% if slide.image %}style="background-image: url('{{ asset(slide.image.webPath) }}')"{% endif %}>
+
+                            {% if slide.image %}
+                        style="background-image: url('{{ slide.image.webPath| imagine_filter('slide_low') }}')"
+                        data-bg="{{ slide.image.webPath| imagine_filter('slide') }}"
+                        data-bg_2x="{{ slide.image.webPath| imagine_filter('slide_2x') }}"
+                        data-bg_tablet="{{ slide.image.webPath| imagine_filter('slide_tablet') }}"
+                        data-bg_tablet_2x="{{ slide.image.webPath| imagine_filter('slide_tablet_2x') }}"
+                        data-bg_mobile="{{ slide.image.webPath| imagine_filter('slide_mobile') }}"
+                        data-bg_mobile_2x="{{ slide.image.webPath| imagine_filter('slide_mobile_2x') }}"
+                            {% endif %}>
+
                         <section class="content">
                             <h1>{{ slide.title }}</h1>
 

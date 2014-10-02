@@ -35,7 +35,6 @@ class PageType extends AbstractType
                     'empty_value' => 'Select a menu'
                 )
             )
-
             ->add(
                 'title',
                 'text',
@@ -44,7 +43,6 @@ class PageType extends AbstractType
                     'attr' => array('placeholder' => 'Title')
                 )
             )
-
             ->add(
                 'slogan',
                 'textarea',
@@ -53,21 +51,24 @@ class PageType extends AbstractType
                     'attr' => array('placeholder' => 'Slogan')
                 )
             )
-
             ->add(
                 'language',
                 'entity',
                 array(
+                    'attr' => array(
+                        'placeholder' => 'Language',
+                    ),
                     'class' => 'gospelcenterLanguageBundle:Language',
                     'required' => true,
+                    'label' => false,
                     'empty_value' => 'Select a language',
                     'query_builder' => function (\gospelcenter\LanguageBundle\Entity\LanguageRepository $r) {
-                            return $r->getSelectList();
-                        }
+                        return $r->getSelectList();
+                    },
+                    'translation_domain' => 'lang'
                 )
             )
             ->add('slides', new SlideSimpleType($center), array('required' => false))
-
             ->add(
                 'slides',
                 "collection",

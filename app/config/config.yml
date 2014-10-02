@@ -1,6 +1,7 @@
 imports:
     - { resource: parameters.yml }
     - { resource: security.yml }
+    - { resource: "@gospelcenterUserBundle/Resources/config/services.yml" }
 
 framework:
     #esi:             ~
@@ -213,7 +214,7 @@ liip_imagine:
                 thumbnail: { size: [800, 450], mode: outbound, allow_upscale: true }
 
         blog_big:
-            quality: 90
+            quality: 100
             filters:
                 thumbnail: { size: [800, 450], mode: outbound, allow_upscale: true }
 
@@ -223,7 +224,7 @@ liip_imagine:
                 thumbnail: { size: [1600, 900], mode: outbound, allow_upscale: true }
 
         blog_big_tablet:
-            quality: 90
+            quality: 100
             filters:
                 thumbnail: { size: [800, 450], mode: outbound, allow_upscale: true }
 
@@ -233,7 +234,7 @@ liip_imagine:
                 thumbnail: { size: [800, 450], mode: outbound, allow_upscale: true }
 
         blog_big_mobile:
-            quality: 90
+            quality: 100
             filters:
                 thumbnail: { size: [640, 360], mode: outbound, allow_upscale: true }
 
@@ -241,3 +242,160 @@ liip_imagine:
             quality: 90
             filters:
                 thumbnail: { size: [1280, 720], mode: outbound, allow_upscale: true }
+
+
+        #######################
+        ###  event_picture  ###
+        #######################
+        event_picture_low:
+            quality: 60
+            filters:
+                thumbnail: { size: [260, 136], mode: outbound, allow_upscale: true }
+
+        event_picture:
+            quality: 100
+            filters:
+                thumbnail: { size: [260, 136], mode: outbound, allow_upscale: true }
+
+        event_picture_2x:
+            quality: 90
+            filters:
+                thumbnail: { size: [520, 272], mode: outbound, allow_upscale: true }
+
+        event_picture_tablet:
+            quality: 100
+            filters:
+                thumbnail: { size: [260, 136], mode: outbound, allow_upscale: true }
+
+        event_picture_tablet_2x:
+            quality: 90
+            filters:
+                thumbnail: { size: [520, 272], mode: outbound, allow_upscale: true }
+
+        event_picture_mobile:
+            quality: 100
+            filters:
+                thumbnail: { size: [620, 349], mode: outbound, allow_upscale: true }
+
+        event_picture_mobile_2x:
+            quality: 90
+            filters:
+                thumbnail: { size: [1240, 698], mode: outbound, allow_upscale: true }
+
+
+        #####################
+        ###  event_cover  ###
+        #####################
+        event_cover_low:
+            quality: 60
+            filters:
+                thumbnail: { size: [1700, 384], mode: outbound, allow_upscale: true }
+
+        event_cover:
+            quality: 100
+            filters:
+                thumbnail: { size: [1700, 384], mode: outbound, allow_upscale: true }
+
+        event_cover_2x:
+            quality: 90
+            filters:
+                thumbnail: { size: [1700, 384], mode: outbound, allow_upscale: true }
+
+        event_cover_tablet:
+            quality: 100
+            filters:
+                thumbnail: { size: [1024, 232], mode: outbound, allow_upscale: true }
+
+        event_cover_tablet_2x:
+            quality: 90
+            filters:
+                thumbnail: { size: [2048, 464], mode: outbound, allow_upscale: true }
+
+        event_cover_mobile:
+            quality: 100
+            filters:
+                thumbnail: { size: [640, 145], mode: outbound, allow_upscale: true }
+
+        event_cover_mobile_2x:
+            quality: 90
+            filters:
+                thumbnail: { size: [1280, 290], mode: outbound, allow_upscale: true }
+
+
+
+        ##################
+        ###  ads_home  ###
+        ##################
+        ads_home_low:
+            quality: 60
+            filters:
+                thumbnail: { size: [480, 250], mode: outbound, allow_upscale: true }
+
+        ads_home:
+            quality: 100
+            filters:
+                thumbnail: { size: [480, 250], mode: outbound, allow_upscale: true }
+
+        ads_home_2x:
+            quality: 90
+            filters:
+                thumbnail: { size: [960, 500], mode: outbound, allow_upscale: true }
+
+        ads_home_tablet:
+            quality: 100
+            filters:
+                thumbnail: { size: [480, 250], mode: outbound, allow_upscale: true }
+
+        ads_home_tablet_2x:
+            quality: 90
+            filters:
+                thumbnail: { size: [960, 500], mode: outbound, allow_upscale: true }
+
+        ads_home_mobile:
+            quality: 100
+            filters:
+                thumbnail: { size: [640, 270], mode: outbound, allow_upscale: true }
+
+        ads_home_mobile_2x:
+            quality: 90
+            filters:
+                thumbnail: { size: [1280, 540], mode: outbound, allow_upscale: true }
+
+
+        ###############
+        ###  slide  ###
+        ###############
+        slide_low:
+            quality: 60
+            filters:
+                thumbnail: { size: [1040, 500], mode: outbound, allow_upscale: true }
+
+        slide:
+            quality: 100
+            filters:
+                thumbnail: { size: [1040, 500], mode: outbound, allow_upscale: true }
+
+        slide_2x:
+            quality: 90
+            filters:
+                thumbnail: { size: [1040, 500], mode: outbound, allow_upscale: true }
+
+        slide_tablet:
+            quality: 100
+            filters:
+                thumbnail: { size: [1040, 500], mode: outbound, allow_upscale: true }
+
+        slide_tablet_2x:
+            quality: 90
+            filters:
+                thumbnail: { size: [1040, 500], mode: outbound, allow_upscale: true }
+
+        slide_mobile:
+            quality: 100
+            filters:
+                thumbnail: { size: [640, 444], mode: outbound, allow_upscale: true }
+
+        slide_mobile_2x:
+            quality: 90
+            filters:
+                thumbnail: { size: [1280, 888], mode: outbound, allow_upscale: true }

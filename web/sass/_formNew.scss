@@ -1,6 +1,7 @@
 @import "advanced/adminPages";
 @import "advanced/adminEvents";
 @import "advanced/adminCelebrations";
+@import "advanced/adminUnits";
 
 form {
     border-bottom: 3px solid $greenGC;
@@ -11,29 +12,10 @@ form {
 
     input,
     textarea {
-        border: 1px solid $grayGC;
-        line-height: 22px;
-        vertical-align: center;
-        height: 22px;
-        padding: 10px 10px;
-        font-size: 1.1em;
-        font-family: $font-light;
-        letter-spacing: 0px;
-        background-color: $whiteGC;
-        margin-top: 30px;
-        display: block;
         width: 528px;
         max-width: 528px;
-        @include border-radius(0px);
-        -webkit-appearance: none;
-        -moz-appearance: none;
-        appearance: none;
 
         &:focus {
-            border: 2px solid $grayDarkGC;
-            outline: none;
-            padding-left: 9px;
-            height: 20px;
             width: 529px;
         }
     }
@@ -222,58 +204,7 @@ form {
         color: $redGC;
     }
 
-    div.checkbox,
-    div.radio-checkbox {
-        margin-top: 30px;
-        cursor: pointer;
-        display: block;
 
-        input[type="checkbox"],
-        input[type="radio"] {
-            display: none;
-        }
-
-        &[data-checked="true"] {
-            .chip {
-                background-color: $grayDarkGC;
-            }
-        }
-
-        div.box {
-            display: inline-block;
-            width: 18px;
-            height: 18px;
-            margin-top: 0px;
-            border: 1px solid $grayDarkGC;
-            @include border-radius(20px);
-            vertical-align: top;
-
-            .chip {
-                width: 14px;
-                height: 14px;
-                display: block;
-                @include border-radius(16px);
-                margin: 2px;
-            }
-        }
-
-        label {
-            display: inline-block;
-            cursor: pointer;
-            padding-left: 10px;
-            vertical-align: top;
-            padding-top: 4px;
-        }
-
-        &.radio-checkbox {
-            display: inline-block;
-            margin-right: 20px;
-
-            &:last-of-type {
-                margin-right: 0px;
-            }
-        }
-    }
 
     select {
         border: 1px solid $grayGC;
@@ -322,7 +253,7 @@ form {
         &[type="submit"] {
             display: block;
             border: 2px solid $grayDarkGC;
-            padding: 3px;
+            padding: 4px 3px 3px 3px;
             font-family: $font-bold;
             font-size: 1.2em;
             text-transform: uppercase;
@@ -330,14 +261,14 @@ form {
             margin: 10px 0;
             width: auto;
             height: auto;
-            line-height: 1em;
+            line-height: 16px;
             margin-top: 30px;
             cursor: pointer;
 
             &:hover {
                 text-decoration: none;
                 border: 3px solid $grayDarkGC;
-                padding: 2px;
+                padding: 3px 2px 2px 2px;
             }
 
         }
@@ -358,17 +289,26 @@ form {
     div.collection {
         margin-top: 30px;
 
+        a.delete {
+            float: right;
+        }
+
         label {
             font-size: 1.1em;
 
         }
 
+        input,
+        select {
+            margin-top: 10px;
+        }
+
         & > div {
             border-bottom: 1px solid $greenGC;
-            margin-top: 30px;
+            margin-top: 40px;
 
             & > div {
-                margin-bottom: 30px;
+                margin-bottom: 20px;
             }
 
             &:last-of-type {
@@ -617,6 +557,21 @@ form {
                 }
 
             }
+        }
+    }
+
+    &.delete {
+        padding-top: 30px;
+
+        section.details {
+            margin-left: 20px;
+            margin-top: 20px;
+        }
+
+        a.buttonLink,
+        input.buttonLink {
+            display: inline-block;
+            margin-right: 20px;
         }
     }
 }

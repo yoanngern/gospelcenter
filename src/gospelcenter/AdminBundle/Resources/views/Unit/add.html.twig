@@ -1,0 +1,32 @@
+{% extends "::adminLocalNew.html.twig" %}
+
+{% block classPage %}{{ parent() }} single{% endblock %}
+
+{% block title %}
+    {{ parent() }} - Add a unit
+{% endblock %}
+
+{% block adminTitle %}<h1>Add a unit</h1>{% endblock %}
+
+{% block adminBack %}
+    <a class="back" href="{{ path('gospelcenterAdmin_units', {'center': center.ref}) }}">Units</a>
+{% endblock %}
+
+{% block adminBody %}
+
+    <form class="unit" action="{{ path('gospelcenterAdmin_units_add', {'center': center.ref}) }}"
+          method="post" {{ form_enctype(form) }}>
+
+        {{ form_widget(form.name) }}
+        {{ form_errors(form.name) }}
+
+        {{ form_widget(form.accessLevels) }}
+        {{ form_errors(form.accessLevels) }}
+
+        {{ form_rest(form) }}
+
+        <input type="submit" class="buttonLink" value="Create a unit"/>
+
+    </form>
+
+{% endblock %}

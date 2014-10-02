@@ -1,4 +1,4 @@
-{% extends "::adminNew.html.twig" %}
+{% extends "::adminLocalNew.html.twig" %}
 
 {% block classPage %}{{ parent() }} single{% endblock %}
 
@@ -16,6 +16,12 @@
 
 {% block adminBack %}
     <a class="back" href="{{ path('gospelcenterAdmin_ads', {'center': center.ref}) }}">Ads</a>
+{% endblock %}
+
+{% block adminTools %}
+    <a href="{{ path('gospelcenterAdmin_ads_delete', {'center': center.ref, 'ad': ad.id}) }}"
+       class="delete">Delete</a>
+    <a href="{{ path('gospelcenterAdmin_ads', {'center': center.ref}) }}">Cancel</a>
 {% endblock %}
 
 {% block adminBody %}

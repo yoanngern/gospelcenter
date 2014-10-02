@@ -30,20 +30,6 @@
                 {% spaceless %}
                     {% for celebration in nextCelebrations %}
 
-                        {% set speakers = '' %}
-
-                        {% for key, speaker in celebration.speakers %}
-
-                            {% if key != 0 and key != (celebration.speakers|length -1) %}
-                                {% set speakers = speakers ~ ', ' %}
-                            {% elseif key != 0 and key == (celebration.speakers|length -1) %}
-                                {% set speakers = speakers ~ 'gc.generic.and'|trans %}
-                            {% endif %}
-
-                            {% set speakers = speakers ~ speaker.person.firstname ~ ' ' ~ speaker.person.lastname %}
-
-                        {% endfor %}
-
                         <a class="speaker" data-link="{{ celebration.id }}" data-link-elem="celebrationInfo">
 
                             <div class="photo"
@@ -59,7 +45,7 @@
                                 <div class="hover"></div>
                             </div>
 
-                            <h1>{{ speakers }}</h1>
+                            <h1>{{ celebration|speakers(app.request.locale) }}</h1>
                             <time>{{ celebration.date.start|localizeddate('medium', 'none') }}</time>
                         </a>
 
@@ -71,26 +57,12 @@
             <article class="celebrationInfos">
                 {% for celebration in nextCelebrations %}
 
-                    {% set speakers = '' %}
-
-                    {% for key, speaker in celebration.speakers %}
-
-                        {% if key != 0 and key != (celebration.speakers|length -1) %}
-                            {% set speakers = speakers ~ ', ' %}
-                        {% elseif key != 0 and key == (celebration.speakers|length -1) %}
-                            {% set speakers = speakers ~ 'gc.generic.and'|trans %}
-                        {% endif %}
-
-                        {% set speakers = speakers ~ speaker.person.firstname ~ ' ' ~ speaker.person.lastname %}
-
-                    {% endfor %}
-
                     <article class="celebrationInfo" id="{{ celebration.id }}">
 
                         <div class="arrow"></div>
 
                         <section class="info">
-                            <h1>{{ 'gc.generic.celebrationWith'|trans }} {{ speakers }}</h1>
+                            <h1>{{ 'gc.generic.celebrationWith'|trans }} {{ celebration|speakers(app.request.locale) }}</h1>
 
                             <span>{{ celebration.date.start|localizeddate('long', 'none') }}</span>
                             <time>{{ celebration.date.start|localizeddate('none', 'short') }}
@@ -146,23 +118,9 @@
         <section id="pastCelebrations" class="gray">
             <h1>{{ 'gc.celebration.watchLast'|trans }}</h1>
 
-            <section class="mediaList">
+            <section class="mediaList" data-nb="{{ lastCelebrations|length +1 }}">
                 {% spaceless %}
                     {% for celebration in lastCelebrations %}
-
-                        {% set speakers = '' %}
-
-                        {% for key, speaker in celebration.speakers %}
-
-                            {% if key != 0 and key != (celebration.speakers|length -1) %}
-                                {% set speakers = speakers ~ ', ' %}
-                            {% elseif key != 0 and key == (celebration.speakers|length -1) %}
-                                {% set speakers = speakers ~ 'gc.generic.and'|trans %}
-                            {% endif %}
-
-                            {% set speakers = speakers ~ speaker.person.firstname ~ ' ' ~ speaker.person.lastname %}
-
-                        {% endfor %}
 
                         <a href="{{ path('gospelcenterMedia_video', {'video': celebration.video.id}) }}">
                             <div class="photo"
@@ -178,7 +136,7 @@
                                 <div class="playButton"></div>
                             </div>
                             <section class="details">
-                                <h1>{{ speakers }}</h1>
+                                <h1>{{ celebration|speakers(app.request.locale) }}</h1>
                                 <span>{{ celebration.date.start|localizeddate('medium', 'none') }}</span>
                             </section>
                         </a>

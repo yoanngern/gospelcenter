@@ -1,38 +1,41 @@
-{% extends "::admin.html.twig" %}
+{% extends "::adminLocalNew.html.twig" %}
 
-{% block javascripts %}
-    {{ parent() }}
-    <script type="text/javascript" src="{{ asset('js/form.min.js') }}"></script>
-{% endblock %}
-
-{% block stylesheets %}
-	{{ parent() }}
-	<link rel="stylesheet" href="{{ asset('css/admin.css') }}" type="text/css" />
-	<link rel="stylesheet" href="{{ asset('css/form.css') }}" type="text/css" />
-{% endblock %}
+{% block classPage %}{{ parent() }} single{% endblock %}
 
 {% block title %}
-    {{ parent() }} - Delete a celebration
+    {{ parent() }} - Delete an image
 {% endblock %}
 
+{% block adminTitle %}<h1>Delete an image</h1>{% endblock %}
+
+{% block adminBack %}
+    <a class="back" href="{{ path('gospelcenterAdmin_images', {'center': center.ref}) }}">Images</a>
+{% endblock %}
+
+{% block adminTools %}
+    <a href="{{ path('gospelcenterAdmin_images', {'center': center.ref}) }}">Cancel</a>
+{% endblock %}
+
+
 {% block adminBody %}
-    <h1>Delete a celebration</h1>
-    
-    <form class="delete" action="{{ path('gospelcenterAdmin_images_delete', {'center': center.ref, 'image': image.id}) }}" method="post" {{ form_enctype(form) }}>
-    	
-    	<p>Are you sure you want to delete the image:</p>
-    	<section class="details">
+
+    <form class="delete"
+          action="{{ path('gospelcenterAdmin_images_delete', {'center': center.ref, 'image': image.id}) }}"
+          method="post" {{ form_enctype(form) }}>
+
+        <p>Are you sure you want to delete the image:</p>
+        <section class="details">
             <h1>{{ image.title }}</h1>
-            <img src="{{ asset(image.webPath) }}" alt="{{ image.alt }}" />
+            <img src="{{ asset(image.webPath) }}" alt="{{ image.alt }}"/>
         </section>
-        
-        <input type="submit" class="buttonLink" value="Yes" />
-        
+
+        <input type="submit" class="buttonLink" value="Yes"/>
+
         <a class="buttonLink" href="{{ path('gospelcenterAdmin_images', {'center': center.ref}) }}">No</a>
-        
+
         {{ form_rest(form) }}
-        
+
     </form>
-    
-    
+
+
 {% endblock %}

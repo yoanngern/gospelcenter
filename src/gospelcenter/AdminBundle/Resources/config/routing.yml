@@ -287,26 +287,48 @@ gospelcenterAdmin_locations_delete:
 ####### Options ########
 ##########################
 
-# Locations
+# Ads
 gospelcenterAdmin_ads:
-    path:       /ad
+    path:       /ads
     defaults:   { _controller: gospelcenterArticleBundle:AdminAd:list }
 
-# Add a location
+# Add an ad
 gospelcenterAdmin_ads_add:
-    path:       /ad/add
+    path:       /ads/add
     defaults:   { _controller: gospelcenterArticleBundle:AdminAd:add }
 
-# Edit a location
+# Edit an ad
 gospelcenterAdmin_ads_edit:
-    path:       /ad/edit/{ad}
+    path:       /ads/edit/{ad}
     defaults:   { _controller: gospelcenterArticleBundle:AdminAd:edit }
     requirements:
-        location: \d+
+        ad: \d+
 
-# Delete a location
+# Delete an ads
 gospelcenterAdmin_ads_delete:
-    path:       /ad/delete/{ad}
+    path:       /ads/delete/{ad}
     defaults:   { _controller: gospelcenterArticleBundle:AdminAd:delete }
     requirements:
-        location: \d+
+        ad: \d+
+
+# Units
+gospelcenterAdmin_units:
+    path:       /units
+    defaults:   { _controller: gospelcenterAccessBundle:Unit:list }
+
+# Add a unit
+gospelcenterAdmin_units_add:
+    path:       /units/add
+    defaults:   { _controller: gospelcenterAccessBundle:Unit:add }
+
+# Edit a unit
+gospelcenterAdmin_units_edit:
+    path:       /units/edit/{unit}
+    defaults:   { _controller: gospelcenterAccessBundle:Unit:edit }
+
+# Delete a unit
+gospelcenterAdmin_units_delete:
+    path:       /units/delete/{unit}
+    defaults:   { _controller: gospelcenterAccessBundle:Unit:delete }
+    requirements:
+        unit: \d+

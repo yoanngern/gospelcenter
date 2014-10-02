@@ -1,8 +1,13 @@
 {% set admin = false %}
+{% set local = true %}
 
 {% extends "::layoutNew.html.twig" %}
 
 {% block classPage %}local{% endblock %}
+
+{% block header_logo %}
+    <a id="logo" href="{{ path('gospelcenterPage_home', {'center': center.ref}) }}"></a>
+{% endblock %}
 
 {% block local_header %}
     <div class="gradient_top"></div>

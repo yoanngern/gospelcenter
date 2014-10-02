@@ -1,34 +1,47 @@
 {% extends "gospelcenterPageBundle::adminGlobal.html.twig" %}
 
-{% block stylesheets %}
-	{{ parent() }}
-	<link rel="stylesheet" href="{{ asset('css/admin.css') }}" type="text/css" />
-{% endblock %}
-
 {% block title %}
     {{ parent() }} - Slides
 {% endblock %}
 
-{% block gospelcenterAdminPages_body %}
-    
+{% block adminTitle %}<h1>Slides</h1>{% endblock %}
+
+{% block adminTools %}
+    <a href="{{ path('gospelcenterAdminGlobal_slides_add') }}" class="add">Add a slide</a>
+{% endblock %}
+
+{% block adminListBody %}
     <table class="main">
         <thead>
-            <tr>
-                <th data-sort="string">Title</th>
-                <th data-sort="string">Page</th>
-            </tr>
+        <tr>
+            <th data-sort="string">Title<span>Title<div class="arrow"></div></span></th>
+            <th data-sort="string">Page<span>Page<div class="arrow"></div></span></th>
+        </tr>
         </thead>
         <tbody>
-            {% for slide in slides %}
-                <tr>
-                    <td><a href="{{ path('gospelcenterAdminGlobal_slides_edit', {'slide': slide.id}) }}">{{ slide.title }}</a></td>
-                    <td><a href="{{ path('gospelcenterAdminGlobal_slides_edit', {'slide': slide.id}) }}">{% if slide.page.title %}{{ slide.page.title }}{% endif %}</a></td>
-                </tr>
-            {% else %}
-                <tr><td colspan="2">There are no slides.</td></tr>
-            {% endfor %}
+        {% for slide in slides %}
+
+            {% set link = path('gospelcenterAdminGlobal_slides_edit', {'slide': slide.id}) %}
+
+            <tr>
+                <td class="em">
+                    <a href="{{ link }}">
+                        <span>{{ slide.title }}</span>
+                    </a>
+                </td>
+                <td class="em">
+                    <a href="{{ link }}">
+                        {% if slide.page.title %}
+                            <span>{{ slide.page.title }}</span>
+                        {% endif %}
+                    </a>
+                </td>
+            </tr>
+        {% else %}
+            <tr class="empty">
+                <td colspan="2">There are no slides.</td>
+            </tr>
+        {% endfor %}
         </tbody>
     </table>
-    
-    
 {% endblock %}

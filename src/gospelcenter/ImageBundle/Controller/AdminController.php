@@ -5,8 +5,10 @@ namespace gospelcenter\ImageBundle\Controller;
 use gospelcenter\CenterBundle\Entity\Center;
 use gospelcenter\ImageBundle\Entity\Image;
 use gospelcenter\ImageBundle\Form\ImageType;
+use JMS\SecurityExtraBundle\Annotation\Secure;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Security\Core\Exception\AccessDeniedException;
 
 
 class AdminController extends Controller
@@ -14,11 +16,16 @@ class AdminController extends Controller
 
     /**
      * List of images
+     * @Secure(roles="ROLE_USER")
      * @param Center $center
      * @return Response
      */
     public function listAction(Center $center)
     {
+        if (false === $this->get('security.context')->isGranted("VIEW", new Image())) {
+            throw new AccessDeniedException('Unauthorised access!');
+        }
+
         $em = $this->getDoctrine()->getManager();
 
         $images = $em->getRepository('gospelcenterImageBundle:Image')->findAllByCenter($center);
@@ -26,19 +33,24 @@ class AdminController extends Controller
         return $this->render('gospelcenterAdminBundle:Image:list.html.twig', array(
             'center' => $center,
             'images' => $images,
-            'page' => 'images',
+            'page' => 'options',
             'tab' => 'images'
         ));
     }
 
 
     /**
-     * List of all images+
+     * List of all images
+     * @Secure(roles="ROLE_USER")
      * @param Center $center
      * @return Response
      */
     public function allAction(Center $center)
     {
+        if (false === $this->get('security.context')->isGranted("VIEW", new Image())) {
+            throw new AccessDeniedException('Unauthorised access!');
+        }
+
         $em = $this->getDoctrine()->getManager();
 
         $images = $em->getRepository('gospelcenterImageBundle:Image')->findAllOrder();
@@ -46,7 +58,7 @@ class AdminController extends Controller
         return $this->render('gospelcenterAdminBundle:Image:list.html.twig', array(
             'center' => $center,
             'images' => $images,
-            'page' => 'images',
+            'page' => 'options',
             'tab' => 'imagesAll'
         ));
     }
@@ -54,12 +66,18 @@ class AdminController extends Controller
 
     /**
      * Add an image
+     * @Secure(roles="ROLE_USER")
      * @param Center $center
      * @return \Symfony\Component\HttpFoundation\RedirectResponse|Response
      */
     public function addAction(Center $center)
     {
         $image = new Image();
+
+        if (false === $this->get('security.context')->isGranted("CREATE", $image)) {
+            throw new AccessDeniedException('Unauthorised access!');
+        }
+
         $form = $this->createForm(new ImageType, $image);
 
         $request = $this->get('request');
@@ -84,19 +102,24 @@ class AdminController extends Controller
         return $this->render('gospelcenterAdminBundle:Image:add.html.twig', array(
             'center' => $center,
             'form' => $form->createView(),
-            'page' => 'images'
+            'page' => 'options'
         ));
     }
 
 
     /**
      * Edit an image
+     * @Secure(roles="ROLE_USER")
      * @param Center $center
      * @param Image $image
      * @return \Symfony\Component\HttpFoundation\RedirectResponse|Response
      */
     public function editAction(Center $center, Image $image)
     {
+        if (false === $this->get('security.context')->isGranted("EDIT", $image)) {
+            throw new AccessDeniedException('Unauthorised access!');
+        }
+
         $form = $this->createForm(new ImageType, $image);
 
         $request = $this->get('request');
@@ -121,19 +144,24 @@ class AdminController extends Controller
             'center' => $center,
             'image' => $image,
             'form' => $form->createView(),
-            'page' => 'images'
+            'page' => 'options'
         ));
     }
 
 
     /**
      * Delete a slide
+     * @Secure(roles="ROLE_USER")
      * @param Center $center
      * @param Image $image
      * @return \Symfony\Component\HttpFoundation\RedirectResponse|Response
      */
     public function deleteAction(Center $center, Image $image)
     {
+        if (false === $this->get('security.context')->isGranted("REMOVE", $image)) {
+            throw new AccessDeniedException('Unauthorised access!');
+        }
+
         $form = $this->createFormBuilder()->getForm();
 
         $request = $this->getRequest();
@@ -157,7 +185,7 @@ class AdminController extends Controller
             'center' => $center,
             'image' => $image,
             'form' => $form->createView(),
-            'page' => 'images'
+            'page' => 'options'
         ));
     }
 }

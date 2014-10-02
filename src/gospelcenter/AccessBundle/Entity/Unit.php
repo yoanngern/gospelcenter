@@ -55,10 +55,25 @@ class Unit
         $this->users = new \Doctrine\Common\Collections\ArrayCollection();
         $this->accessLevels = new \Doctrine\Common\Collections\ArrayCollection();
     }
+
+    /**
+     * Add accessLevels
+     *
+     * @param \gospelcenter\AccessBundle\Entity\AccessLevel $accessLevels
+     * @return Unit
+     */
+    public function addAccessLevel(\gospelcenter\AccessBundle\Entity\AccessLevel $accessLevels)
+    {
+        $this->accessLevels[] = $accessLevels;
+        $accessLevels->setUnit($this);
+
+        return $this;
+    }
     
     /*************************************/
     /**** Getter setter auto generate ****/
     /*************************************/
+
 
     /**
      * Get id
@@ -124,52 +139,6 @@ class Unit
     public function getUsers()
     {
         return $this->users;
-    }
-
-    /**
-     * Add accesses
-     *
-     * @param \gospelcenter\AccessBundle\Entity\Access $accesses
-     * @return Unit
-     */
-    public function addAccesse(\gospelcenter\AccessBundle\Entity\Access $accesses)
-    {
-        $this->accesses[] = $accesses;
-    
-        return $this;
-    }
-
-    /**
-     * Remove accesses
-     *
-     * @param \gospelcenter\AccessBundle\Entity\Access $accesses
-     */
-    public function removeAccesse(\gospelcenter\AccessBundle\Entity\Access $accesses)
-    {
-        $this->accesses->removeElement($accesses);
-    }
-
-    /**
-     * Get accesses
-     *
-     * @return \Doctrine\Common\Collections\Collection 
-     */
-    public function getAccesses()
-    {
-        return $this->accesses;
-    }
-
-    /**
-     * Add accessLevels
-     *
-     * @param \gospelcenter\AccessBundle\Entity\AccessLevel $accessLevels
-     * @return Unit
-     */
-    public function addAccessLevel(\gospelcenter\AccessBundle\Entity\AccessLevel $accessLevels)
-    {
-        $this->accessLevels[] = $accessLevels;
-    
-        return $this;
     }
 
     /**

@@ -1,3 +1,7 @@
+{% if local is not defined %}
+    {% set local = true %}
+{% endif %}
+
 <a id="get_param" href=""></a>
 <div id="param_nav" class="param_nav">
     <div class="param_arrow">
@@ -8,14 +12,14 @@
         <ul>
 
             {% if admin %}
-                {% if center %}
+                {% if local %}
                     {% include "::admin/paramAdminLocal.html.twig" %}
                 {% else %}
                     {% include "::admin/paramAdminGlobal.html.twig" %}
                 {% endif %}
 
             {% else %}
-                {% if center %}
+                {% if local %}
                     {% include "::admin/paramLocal.html.twig" %}
                 {% else %}
                     {% include "::admin/paramGlobal.html.twig" %}

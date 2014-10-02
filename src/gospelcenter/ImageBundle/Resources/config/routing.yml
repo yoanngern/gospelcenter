@@ -1,8 +1,0 @@
-gospelcenter_image:
-    pattern:  /{image}
-    defaults: { _controller: gospelcenterImageBundle:Image:image }
-
-
-gospelcenter_image_url:
-    pattern:  /url/{image}
-    defaults: { _controller: gospelcenterImageBundle:Image:imageUrl }

@@ -12,6 +12,40 @@ use Doctrine\ORM\EntityRepository;
  */
 class EventRepository extends EntityRepository
 {
+
+    public function findAllForHome(\gospelcenter\CenterBundle\Entity\Center $center)
+    {
+
+        $query = $this->getEntityManager()
+            ->createQuery(
+                '
+                SELECT d, e, c, pic, cov, c2, c3
+                FROM gospelcenterDateBundle:Date d
+                JOIN d.event e
+                LEFT JOIN e.centers c
+                LEFT JOIN e.picture pic
+                LEFT JOIN e.cover cov
+                LEFT JOIN pic.center c2
+                LEFT JOIN cov.center c3
+                WHERE c.ref = :center AND e.status = 1 AND d.end >= :now
+                GROUP BY e
+                ORDER BY d.start ASC
+                '
+            )->setParameters(
+                array(
+                    'center' => $center->getRef(),
+                    'now' => new \Datetime()
+                )
+            )->setMaxResults(3);
+
+        try {
+            return $query->getResult();
+        } catch (\Doctrine\ORM\NoResultException $e) {
+            return null;
+        }
+
+    }
+
     public function findUpcoming(\gospelcenter\CenterBundle\Entity\Center $center)
     {
         $qb = $this->createQueryBuilder('e');
@@ -86,7 +120,7 @@ class EventRepository extends EntityRepository
                 JOIN e.picture pic
                 JOIN e.cover cov
                 JOIN e.centers c
-                LEFT JOIN e.dates d
+                JOIN e.dates d
                 WHERE c.ref = :center AND (d.end >= :now OR d IS NULL)
                 ORDER BY d.start ASC'
             )->setParameters(

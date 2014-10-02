@@ -1,0 +1,7 @@
+{% extends "::adminGlobalNew.html.twig" %}
+
+{% block adminSubNav %}
+    <li><a href="{{ path('gospelcenterAdminGlobal_accesses') }}"
+           {% if tab == 'accesses' %}class="current focus"{% endif %}>Accesses</a></li>
+
+{% endblock %}

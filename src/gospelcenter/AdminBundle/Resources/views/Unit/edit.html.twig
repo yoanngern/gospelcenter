@@ -1,0 +1,49 @@
+{% extends "::adminLocalNew.html.twig" %}
+
+{% block classPage %}{{ parent() }} single{% endblock %}
+
+{% block title %}
+    {{ parent() }} - Edit a unit
+{% endblock %}
+
+{% block adminTitle %}<h1>Edit a unit</h1>{% endblock %}
+
+{% block adminTools %}
+    <a href="{{ path('gospelcenterAdmin_units_delete', {'center': center.ref, 'unit': unit.id}) }}"
+       class="delete">Delete</a>
+    <a href="{{ path('gospelcenterAdmin_units', {'center': center.ref}) }}">Cancel</a>
+{% endblock %}
+
+{% block adminBack %}
+    <a class="back" href="{{ path('gospelcenterAdmin_units', {'center': center.ref}) }}">Units</a>
+{% endblock %}
+
+{% block adminBody %}
+
+    <form class="unit" action="{{ path('gospelcenterAdmin_units_edit', {'center': center.ref, 'unit': unit.id}) }}"
+          method="post" {{ form_enctype(form) }}>
+
+        {{ form_widget(form.name) }}
+        {{ form_errors(form.name) }}
+
+        {{ form_widget(form.accessLevels) }}
+        {{ form_errors(form.accessLevels) }}
+
+        {{ form_rest(form) }}
+
+        <input type="submit" class="buttonLink" value="Save changes"/>
+
+    </form>
+
+{% endblock %}
+
+{% block jsTemplating %}
+    {{ parent() }}
+    <script id="accessLevel" type="text/x-handlebars-template">
+        {% raw %}
+
+
+
+        {% endraw %}
+    </script>
+{% endblock %}

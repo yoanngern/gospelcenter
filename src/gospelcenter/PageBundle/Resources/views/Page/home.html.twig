@@ -24,7 +24,8 @@
             <a id="get_ruban" href=""></a>
             <section class="right">
                 <ul class="nav">
-                    <li><a target="_blank" href="{{ path('gospelcenterPageGlobal_home') }}">{{ 'gc.nav.gcmovement'|trans }}</a></li>
+                    <li><a target="_blank"
+                           href="{{ path('gospelcenterPageGlobal_home') }}">{{ 'gc.nav.gcmovement'|trans }}</a></li>
                     <li><a target="_blank" href="http://www.ministeres.org">{{ 'gc.nav.apostolicTeam'|trans }}</a></li>
                 </ul>
                 {% if app.user %}
@@ -69,17 +70,27 @@
 
 {% block body %}
 
-    {% if center.ads|length %}
+    {% if ads|length %}
         <section class="ads">
             {% spaceless %}
 
                 <div class="container">
 
-                    {% for ad in center.ads %}
+                    {% for ad in ads %}
 
                         <div>
                             <a href="{{ ad.url }}">
-                                <div style="background-image: url('{{ asset(ad.image.webPath) }}')">
+                                <div
+                                        {% if ad.image %}
+                                    style="background-image: url('{{ ad.image.webPath| imagine_filter('ads_home_low') }}')"
+                                    data-bg="{{ ad.image.webPath| imagine_filter('ads_home') }}"
+                                    data-bg_2x="{{ ad.image.webPath| imagine_filter('ads_home_2x') }}"
+                                    data-bg_tablet="{{ ad.image.webPath| imagine_filter('ads_home_tablet') }}"
+                                    data-bg_tablet_2x="{{ ad.image.webPath| imagine_filter('ads_home_tablet_2x') }}"
+                                    data-bg_mobile="{{ ad.image.webPath| imagine_filter('ads_home_mobile') }}"
+                                    data-bg_mobile_2x="{{ ad.image.webPath| imagine_filter('ads_home_mobile_2x') }}"
+                                        {% endif %}>
+
                                     <h1>{{ ad.title }}</h1>
                                     <span>{{ ad.subtitle }}</span>
                                 </div>
@@ -96,21 +107,33 @@
     {% endif %}
 
 
-    {% if center.events|length %}
+    {% if dates|length %}
         <section id="nextEvents" class="gray">
             <h1>{{ 'gc.page.home.nextEvent'|trans }}</h1>
 
-            <section class="mediaList">
+            <section class="mediaList" data-nb="{{ dates|length + 1 }}">
                 {% spaceless %}
-                    {% for event in center.events %}
+                    {% for date in dates %}
+
+                        {% set event = date.event %}
 
                         <a href="{{ path('gospelcenterEvents_event', {'center': center.ref, 'event': event.id}) }}">
-                            <div class="photo" style="background-image: url('{{ asset(event.picture.webPath) }}')">
+                            <div class="photo"
+                                    {% if event.picture %}
+                                style="background-image: url('{{ event.picture.webPath| imagine_filter('media_list_low') }}')"
+                                data-bg="{{ event.picture.webPath| imagine_filter('media_list') }}"
+                                data-bg_2x="{{ event.picture.webPath| imagine_filter('media_list_2x') }}"
+                                data-bg_tablet="{{ event.picture.webPath| imagine_filter('media_list_tablet') }}"
+                                data-bg_tablet_2x="{{ event.picture.webPath| imagine_filter('media_list_tablet_2x') }}"
+                                data-bg_mobile="{{ event.picture.webPath| imagine_filter('media_list_mobile') }}"
+                                data-bg_mobile_2x="{{ event.picture.webPath| imagine_filter('media_list_mobile_2x') }}"
+                                    {% endif %}>
+
                                 {#<img src="{{ asset(event.picture.webPath) }}" alt="{{ event.title }}"/>#}
                             </div>
                             <section class="details">
                                 <h1>{{ event.title }}</h1>
-                                <span>{{ event.dates[0].start|localizeddate('medium', 'none') }}</span>
+                                <span>{{ date.start|localizeddate('medium', 'none') }}</span>
                             </section>
                         </a>
 

@@ -14,7 +14,8 @@ class HelperExtension extends Twig_Extension
         return array(
             'datetime' => new Twig_Filter_Method($this, 'datetime'),
             'dates' => new Twig_Filter_Method($this, 'dates'),
-            'datesShort' => new Twig_Filter_Method($this, 'datesShort')
+            'datesShort' => new Twig_Filter_Method($this, 'datesShort'),
+            'month' => new Twig_Filter_Method($this, 'month')
         );
     }
 
@@ -114,14 +115,14 @@ class HelperExtension extends Twig_Extension
                     if (strftime("%Y", $start) != strftime("%Y", $end)) {
                         $string = strftime("%e %b %y - ", $start) . strftime("%e %b %y", $end);
                     } else {
-                        $string = strftime("%e %b - ", $start) . strftime("%e %b %Y", $end);
+                        $string = strftime("%e %b - ", $start) . strftime("%e %b", $end);
                     }
 
                 } else {
-                    $string = strftime("%e - ", $start) . strftime("%e %b %Y", $end);
+                    $string = strftime("%e - ", $start) . strftime("%e %B", $end);
                 }
             } else {
-                $string = strftime("%e %b %Y", $start);
+                $string = strftime("%e %B", $start);
             }
 
         } else {
@@ -136,17 +137,41 @@ class HelperExtension extends Twig_Extension
                         $string = strftime("%e %b %y - ", $start) . strftime("%e %b %y", $end);
 
                     } else {
-                        $string = strftime("%b %e - ", $start) . strftime("%b %e, %Y", $end);
+                        $string = strftime("%b %e - ", $start) . strftime("%b %e", $end);
                     }
 
                 } else {
-                    $string = strftime("%b %e - ", $start) . strftime("%e, %Y", $end);
+                    $string = strftime("%B %e - ", $start) . strftime("%e", $end);
                 }
             } else {
-                $string = strftime("%b %e, %Y", $start);
+                $string = strftime("%B %e", $start);
             }
         }
 
+
+        return $string;
+    }
+
+
+    public function month($date, $locale)
+    {
+
+        $string = "";
+
+        $date = $date->getTimestamp();
+
+
+        if ($locale == 'fr') {
+            setLocale(LC_TIME, "fr_FR");
+
+            $string = strftime("%B", $date);
+
+
+        } else {
+            setLocale(LC_TIME, "en_US");
+
+            $string = strftime("%B", $date);
+        }
 
         return $string;
     }

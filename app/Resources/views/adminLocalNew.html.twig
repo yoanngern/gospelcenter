@@ -1,0 +1,24 @@
+{% extends "::adminNew.html.twig" %}
+
+{% set local = true %}
+
+{% block header_logo %}
+    <a id="logo" href="{{ path('gospelcenterPage_home', {'center': center.ref}) }}"></a>
+{% endblock %}
+
+{% block header_nav %}
+    <li><a href="{{ path('gospelcenterAdmin_celebrations', {'center': center.ref}) }}"
+           {% if page == 'celebrations' %}class="current focus"{% endif %}>Celebrations</a></li>
+    <li><a href="{{ path('gospelcenterAdmin_persons', {'center': center.ref}) }}"
+           {% if page == 'people' %}class="current focus"{% endif %}>Contacts</a></li>
+    <li><a href="{{ path('gospelcenterAdmin_events', {'center': center.ref}) }}"
+           {% if page == 'events' %}class="current focus"{% endif %}>Events</a></li>
+    <li><a href="{{ path('gospelcenterAdmin_pages', {'center': center.ref}) }}"
+           {% if page == 'pages' %}class="current focus"{% endif %}>Pages</a></li>
+
+    <li><a href="{{ path('gospelcenterAdmin_ads', {'center': center.ref}) }}"
+           {% if page == 'ads' %}class="current focus"{% endif %}>Ads</a></li>
+
+    <li><a href="{{ path('gospelcenterAdmin_locations', {'center': center.ref}) }}"
+           {% if page == 'options' %}class="current focus"{% endif %}>Other</a></li>
+{% endblock %}

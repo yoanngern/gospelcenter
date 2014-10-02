@@ -1,38 +1,42 @@
-{% extends "::admin.html.twig" %}
+{% extends "::adminLocalNew.html.twig" %}
 
-{% block javascripts %}
-    {{ parent() }}
-    <script type="text/javascript" src="{{ asset('js/form.min.js') }}"></script>
-{% endblock %}
-
-{% block stylesheets %}
-	{{ parent() }}
-	<link rel="stylesheet" href="{{ asset('css/admin.css') }}" type="text/css" />
-	<link rel="stylesheet" href="{{ asset('css/form.css') }}" type="text/css" />
-{% endblock %}
+{% block classPage %}{{ parent() }} single{% endblock %}
 
 {% block title %}
     {{ parent() }} - Delete a contact
 {% endblock %}
 
+{% block adminTitle %}<h1>Delete a contact</h1>{% endblock %}
+
+{% block adminBack %}
+    <a class="back" href="{{ path('gospelcenterAdmin_persons', {'center': center.ref}) }}">Contacts</a>
+{% endblock %}
+
+{% block adminTools %}
+    <a href="{{ path('gospelcenterAdmin_persons', {'center': center.ref}) }}">Cancel</a>
+{% endblock %}
+
 {% block adminBody %}
     <h1>Delete a contact</h1>
-    
-    <form class="delete" action="{{ path('gospelcenterAdmin_persons_delete', {'center': center.ref, 'person': person.id}) }}" method="post" {{ form_enctype(form) }}>
-    	
-    	<p>Are you sure you want to delete the contact:</p>
-    	<section class="details">
+
+    <form class="delete"
+          action="{{ path('gospelcenterAdmin_persons_delete', {'center': center.ref, 'person': person.id}) }}"
+          method="post" {{ form_enctype(form) }}>
+
+        <p>Are you sure you want to delete the contact:</p>
+        <section class="details">
             <h1>{{ person.firstname }} {{ person.lastname }}</h1>
+
             <p>{{ person.function }}</p>
         </section>
-        
-        <input type="submit" class="buttonLink" value="Yes" />
-        
+
+        <input type="submit" class="buttonLink" value="Yes"/>
+
         <a class="buttonLink" href="{{ path('gospelcenterAdmin_persons', {'center': center.ref}) }}">No</a>
-        
+
         {{ form_rest(form) }}
-        
+
     </form>
-    
-    
+
+
 {% endblock %}

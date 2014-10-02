@@ -1,33 +1,117 @@
-{% extends "gospelcenterEventBundle::layout.html.twig" %}
-
-{% block stylesheets %}
-    {{ parent() }}
-    {#<link rel="stylesheet" href="{{ asset('css/events.css') }}" type="text/css" />#}
-{% endblock %}
+{% extends "::localNew.html.twig" %}
 
 {% block title %}
-    {{ parent() }}
+    {{ parent() }} - Events
 {% endblock %}
 
-{% block gospelcenterEvents_body %}
-    {% spaceless %}
-        {% for event in events %}
-            <article class="events">
-                <section class="picture">
-                    <img src="{{ asset(event.picture.webPath) }}" alt="{{ event.picture.alt }}"/>
-                </section>
-                <section class="detail">
-                    <h1>{{ event.title }}</h1>
-                    <time>{{ event.startingDate|date('d F Y') }}</time>
-                    <sumary>{{ event.introText }}</sumary>
-                    <p>
-                        <a href="{{ path('gospelcenterEvents_event', {'event': event.id, 'center': center.ref}) }}"
-                           class="buttonLink">More infos</a>
-                    </p>
-                </section>
-            </article>
-        {% else %}
-            <span class="empty">There are no events to come.</span>
-        {% endfor %}
-    {% endspaceless %}
+
+
+{% block body %}
+
+    <h1 class="titlePage"><span>{{ 'gc.title.events'|trans }}</span></h1>
+
+
+    <section class="gray" id="events">
+
+        <section class="default">
+
+            {% spaceless %}
+                {% for event in events %}
+                    <a href="{{ path('gospelcenterEvents_event', {'event': event.id, 'center': center.ref}) }}"
+                       class="events">
+                        <section class="picture">
+                            {% if event.picture %}
+                                <img alt="{{ event.picture.alt }}"
+                                     src="{{ asset(event.picture.webPath)| imagine_filter('event_picture_low') }}"
+                                     srcset="{{ asset(event.picture.webPath)| imagine_filter('event_picture_low') }} 2x"
+                                     data-img="{{ asset(event.picture.webPath)| imagine_filter('event_picture') }}"
+                                     data-img_2x="{{ asset(event.picture.webPath)| imagine_filter('event_picture_2x') }}"
+                                     data-img_tablet="{{ asset(event.picture.webPath)| imagine_filter('event_picture_tablet') }}"
+                                     data-img_tablet_2x="{{ asset(event.picture.webPath)| imagine_filter('event_picture_tablet_2x') }}"
+                                     data-img_mobile="{{ asset(event.picture.webPath)| imagine_filter('event_picture_mobile') }}"
+                                     data-img_mobile_2x="{{ asset(event.picture.webPath)| imagine_filter('event_picture_mobile_2x') }}">
+
+                            {% endif %}
+                        </section>
+                        <section class="detail">
+                            <h1>{{ event.title }}</h1>
+                            {% if event.dates|length %}
+                                <time class="date">{{ event.dates[0].start|localizeddate('long', 'none') }}</time>
+                            {% endif %}
+                        </section>
+                    </a>
+                {% else %}
+                    <span class="empty">There are no events to come.</span>
+                {% endfor %}
+            {% endspaceless %}
+        </section>
+    </section>
+
+    <section class="default" id="agenda">
+        {% spaceless %}
+
+            {% set month = null %}
+
+            {% for date in dates %}
+
+                {% if month == null or month != date.start|month(app.request.locale) %}
+
+                    {% set month = date.start|month(app.request.locale) %}
+
+                    <h2><span>{{ month }}</span></h2>
+
+                {% endif %}
+
+                {% if date.event %}
+
+                    {% set event = date.event %}
+
+                    <a href="{{ path('gospelcenterEvents_event', {'event': event.id, 'center': center.ref}) }}"
+                       class="date">
+                        <section class="date">
+                            <time class="day">{{ date|datesShort(app.request.locale) }}</time>
+                            <time class="date">{{ date.start|localizeddate('none', 'short') }}
+                                - {{ date.end|localizeddate('none', 'short') }}</time>
+                            <time class="day mobile">{{ date.start|localizeddate('short', 'none') }}</time>
+                            <time class="date mobile">{{ date.start|localizeddate('none', 'short') }}</time>
+                        </section>
+                        <section class="title">
+                            <div class="container">
+                                <h1>{{ event.title }}</h1>
+                            </div>
+                        </section>
+                        <section class="location">
+                            <span>{{ event.location.name }}</span>
+                        </section>
+                    </a>
+                {% endif %}
+
+                {% if date.celebration %}
+
+                    {% set celebration = date.celebration %}
+
+                    <a href="{{ path('gospelcenterCelebrations_list', {'center': center.ref}) }}" class="date">
+                        <section class="date">
+                            <time class="day">{{ date|datesShort(app.request.locale) }}</time>
+                            <time class="date">{{ date.start|localizeddate('none', 'short') }}
+                                - {{ date.end|localizeddate('none', 'short') }}</time>
+                            <time class="day mobile">{{ date.start|localizeddate('short', 'none') }}</time>
+                            <time class="date mobile">{{ date.start|localizeddate('none', 'short') }}</time>
+                        </section>
+                        <section class="title">
+                            <div class="container">
+                                <h1> {{ 'gc.generic.celebrationWith'|trans }} {{ celebration|speakers(app.request.locale) }}</h1>
+                            </div>
+                        </section>
+                        <section class="location">
+                            <span>{{ celebration.location.name }}</span>
+                        </section>
+                    </a>
+                {% endif %}
+            {% else %}
+                <span class="empty">There are no events to come.</span>
+            {% endfor %}
+        {% endspaceless %}
+    </section>
+
 {% endblock %}

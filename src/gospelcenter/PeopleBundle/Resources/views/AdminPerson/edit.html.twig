@@ -1,4 +1,4 @@
-{% extends "::adminNew.html.twig" %}
+{% extends "::adminLocalNew.html.twig" %}
 
 {% block classPage %}{{ parent() }} single{% endblock %}
 
@@ -47,16 +47,19 @@
 
             <article class="tab active" id="general">
 
-                {{ form_widget(form.gender, {'attr': {'placeholder': 'Gender', 'class':'radio'} }) }}
+                {{ form_widget(form.gender) }}
                 {{ form_errors(form.gender) }}
 
                 <fieldset class="double">
-                    {{ form_widget(form.firstname, {'attr': {'placeholder': 'Firstname'} }) }}
+                    {{ form_widget(form.firstname) }}
                     {{ form_errors(form.firstname) }}
 
-                    {{ form_widget(form.lastname, {'attr': {'placeholder': 'Lastname'} }) }}
+                    {{ form_widget(form.lastname) }}
                     {{ form_errors(form.lastname) }}
                 </fieldset>
+
+                {{ form_widget(form.function) }}
+                {{ form_errors(form.function) }}
 
                 {{ form_widget(form.image.file) }}
                 {{ form_errors(form.image.file) }}
@@ -66,13 +69,13 @@
                     </div>
                 {% endif %}
 
-                {{ form_widget(form.privatePhone, {'attr': {'placeholder': 'Private phone'} }) }}
+                {{ form_widget(form.privatePhone) }}
                 {{ form_errors(form.privatePhone) }}
 
-                {{ form_widget(form.mobilePhone, {'attr': {'placeholder': 'Mobile phone'} }) }}
+                {{ form_widget(form.mobilePhone) }}
                 {{ form_errors(form.mobilePhone) }}
 
-                {{ form_widget(form.email, {'attr': {'placeholder': 'Email'} }) }}
+                {{ form_widget(form.email) }}
                 {{ form_errors(form.email) }}
 
                 <fieldset class="datetime date">
@@ -82,48 +85,45 @@
                     {{ form_errors(form.dateOfBirth) }}
                 </fieldset>
 
-                {{ form_widget(form.location.address1, {'attr': {'placeholder': 'address line 1'} }) }}
+                {{ form_widget(form.location.address1) }}
                 {{ form_errors(form.location.address1) }}
 
-                {{ form_widget(form.location.address2, {'attr': {'placeholder': 'address line 2'} }) }}
+                {{ form_widget(form.location.address2) }}
                 {{ form_errors(form.location.address2) }}
 
                 <fieldset class="double">
-                    {{ form_widget(form.location.postalCode, {'attr': {'placeholder': 'Postal code', 'class': 'resize'} }) }}
+                    {{ form_widget(form.location.postalCode) }}
                     {{ form_errors(form.location.postalCode) }}
 
-                    {{ form_widget(form.location.city, {'attr': {'placeholder': 'City', 'class': 'resize'} }) }}
+                    {{ form_widget(form.location.city) }}
                     {{ form_errors(form.location.city) }}
                 </fieldset>
 
-                {{ form_widget(form.location.country, {'attr': {'placeholder': 'Country'} }) }}
+                {{ form_widget(form.location.country) }}
                 {{ form_errors(form.location.country) }}
 
-                {{ form_widget(form.languages, {'attr': {'class': 'selectMultiple'} }) }}
+                {{ form_widget(form.languages) }}
                 {{ form_errors(form.languages) }}
 
                 <fieldset class="inline">
-                    {{ form_widget(form.abroad, {'attr': {'placeholder': 'is he abroad'} }) }}
+                    {{ form_widget(form.abroad) }}
                     {{ form_errors(form.abroad) }}
 
-                    {{ form_widget(form.hasChildren, {'attr': {'placeholder': 'has children'} }) }}
+                    {{ form_widget(form.hasChildren) }}
                     {{ form_errors(form.hasChildren) }}
                 </fieldset>
 
-                {{ form_widget(form.function, {'attr': {'placeholder': 'Function'} }) }}
-                {{ form_errors(form.function) }}
-
                 <fieldset class="inline">
-                    {{ form_widget(form.isSpeaker, {'attr': {'placeholder': 'is speaker'} }) }}
+                    {{ form_widget(form.isSpeaker) }}
                     {{ form_errors(form.isSpeaker) }}
 
-                    {{ form_widget(form.isMember, {'attr': {'placeholder': 'is member'} }) }}
+                    {{ form_widget(form.isMember) }}
                     {{ form_errors(form.isMember) }}
 
-                    {{ form_widget(form.isVisitor, {'attr': {'placeholder': 'is visitor'} }) }}
+                    {{ form_widget(form.isVisitor) }}
                     {{ form_errors(form.isVisitor) }}
 
-                    {{ form_widget(form.isGlobal, {'attr': {'placeholder': 'is Global'} }) }}
+                    {{ form_widget(form.isGlobal) }}
                     {{ form_errors(form.isGlobal) }}
                 </fieldset>
             </article>
@@ -149,7 +149,7 @@
 
             <article class="tab" id="notes">
 
-                {{ form_widget(form.notes, {'attr': {placeholder: 'Notes'} }) }}
+                {{ form_widget(form.notes) }}
                 {{ form_errors(form.notes) }}
 
                 {{ form_rest(form) }}

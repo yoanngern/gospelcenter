@@ -1,0 +1,41 @@
+{% extends "::adminGlobalNew.html.twig" %}
+
+{% block classPage %}{{ parent() }} single{% endblock %}
+
+{% block title %}
+    {{ parent() }} - Delete an access
+{% endblock %}
+
+{% block adminTitle %}<h1>Delete an access</h1>{% endblock %}
+
+{% block adminBack %}
+    <a class="back" href="{{ path('gospelcenterAdminGlobal_accesses') }}">Accesses</a>
+{% endblock %}
+
+{% block adminTools %}
+    <a href="{{ path('gospelcenterAdminGlobal_accesses') }}">Cancel</a>
+{% endblock %}
+
+
+{% block adminBody %}
+
+    <form class="delete"
+          action="{{ path('gospelcenterAdminGlobal_accesses_delete', {'access': access.id}) }}"
+          method="post" {{ form_enctype(form) }}>
+
+        <p>Are you sure you want to delete the access:</p>
+        <section class="details">
+            <h1>{{ access.service }}</h1>
+        </section>
+
+        <input type="submit" class="buttonLink" value="Yes"/>
+
+        <a class="buttonLink"
+           href="{{ path('gospelcenterAdminGlobal_accesses') }}">No</a>
+
+        {{ form_rest(form) }}
+
+    </form>
+
+
+{% endblock %}

@@ -228,7 +228,7 @@ nav.sub_nav {
       height: 500px;
       width: 100%;
       background-image: url("../images/header_bg.gif");
-      background-position: center;
+      background-position: right top;
       background-size: cover;
       background-repeat: no-repeat;
       position: absolute;
@@ -1118,6 +1118,105 @@ section.map_full {
           padding: 0 0 20px 20px;
           margin: 0; } }
 
+form input,
+form textarea {
+  border: 1px solid #878787;
+  line-height: 22px;
+  vertical-align: center;
+  height: 22px;
+  padding: 10px 10px;
+  font-size: 1.1em;
+  font-family: "Radikal-Light", "Radikal", sans-serif;
+  letter-spacing: 0px;
+  background-color: #FDFDFC;
+  margin-top: 30px;
+  display: block;
+  width: 100%;
+  -webkit-border-radius: 0px;
+  -moz-border-radius: 0px;
+  -ms-border-radius: 0px;
+  -o-border-radius: 0px;
+  border-radius: 0px;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none; }
+  form input:focus,
+  form textarea:focus {
+    border: 2px solid #363331;
+    outline: none;
+    padding-left: 9px;
+    height: 20px;
+    width: 100%; }
+form div.checkbox,
+form div.radio-checkbox {
+  margin-top: 30px;
+  cursor: pointer;
+  display: block; }
+  form div.checkbox input[type="checkbox"],
+  form div.checkbox input[type="radio"],
+  form div.radio-checkbox input[type="checkbox"],
+  form div.radio-checkbox input[type="radio"] {
+    display: none; }
+  form div.checkbox[data-checked="true"] .chip,
+  form div.radio-checkbox[data-checked="true"] .chip {
+    background-color: #363331; }
+  form div.checkbox div.box,
+  form div.radio-checkbox div.box {
+    display: inline-block;
+    width: 18px;
+    height: 18px;
+    margin-top: 0px;
+    border: 1px solid #363331;
+    -webkit-border-radius: 20px;
+    -moz-border-radius: 20px;
+    -ms-border-radius: 20px;
+    -o-border-radius: 20px;
+    border-radius: 20px;
+    vertical-align: top; }
+    form div.checkbox div.box .chip,
+    form div.radio-checkbox div.box .chip {
+      width: 14px;
+      height: 14px;
+      display: block;
+      -webkit-border-radius: 16px;
+      -moz-border-radius: 16px;
+      -ms-border-radius: 16px;
+      -o-border-radius: 16px;
+      border-radius: 16px;
+      margin: 2px; }
+  form div.checkbox label,
+  form div.radio-checkbox label {
+    display: inline-block;
+    cursor: pointer;
+    padding-left: 10px;
+    vertical-align: top;
+    padding-top: 4px; }
+  form div.checkbox.radio-checkbox,
+  form div.radio-checkbox.radio-checkbox {
+    display: inline-block;
+    margin-right: 20px; }
+    form div.checkbox.radio-checkbox:last-of-type,
+    form div.radio-checkbox.radio-checkbox:last-of-type {
+      margin-right: 0px; }
+form input[type="submit"] {
+  display: block;
+  border: 2px solid #363331;
+  padding: 4px 3px 3px 3px;
+  font-family: "Radikal-Bold", "Radikal", sans-serif;
+  font-size: 1.2em;
+  text-transform: uppercase;
+  color: #363331;
+  margin: 10px 0;
+  width: auto;
+  height: auto;
+  line-height: 16px;
+  margin-top: 30px;
+  cursor: pointer; }
+  form input[type="submit"]:hover {
+    text-decoration: none;
+    border: 3px solid #363331;
+    padding: 3px 2px 2px 2px; }
+
 #page.home > header {
   height: 690px; }
   #page.home > header div.map_bg {
@@ -1143,16 +1242,17 @@ section.map_full {
   padding-bottom: 250px; }
   #page.home section.ads div.container {
     position: absolute;
-    left: -3px;
-    right: -6px; }
+    left: -2px;
+    right: -4px;
+    text-align: center; }
     #page.home section.ads div.container div {
       width: 33.333%;
       display: inline-block;
       vertical-align: top;
       height: 100%; }
       #page.home section.ads div.container div a {
-        margin-left: 3px;
-        margin-right: 3px;
+        margin-left: 2px;
+        margin-right: 2px;
         height: 100%;
         display: block;
         color: #FDFDFC;
@@ -1296,9 +1396,6 @@ section.map_full {
     font-size: 1.2em;
     line-height: 1.2em;
     text-align: center; }
-  @media only screen and (max-width: 980px) {
-    #page.home section#nextEvents section.mediaList .more {
-      display: none; } }
 @media only screen and (max-width: 800px) {
   #page.home > header section.center a.logo {
     height: auto;
@@ -1843,94 +1940,13 @@ section.map_full {
         width: 24%; } }
 #page.events article.event header {
   width: 100%;
+  max-width: 1700px;
   display: block;
-  margin-top: 0;
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
-  height: 320px; }
-  #page.events article.event header h2 {
-    line-height: 320px; }
-  @media only screen and (min-width: 1000px) {
-    #page.events article.event header {
-      height: 304px; }
-      #page.events article.event header h2 {
-        line-height: 304px; } }
-  @media only screen and (min-width: 1100px) {
-    #page.events article.event header {
-      height: 320px; }
-      #page.events article.event header h2 {
-        line-height: 320px; } }
-  @media only screen and (min-width: 1200px) {
-    #page.events article.event header {
-      height: 336px; }
-      #page.events article.event header h2 {
-        line-height: 336px; } }
-  @media only screen and (min-width: 1300px) {
-    #page.events article.event header {
-      height: 352px; }
-      #page.events article.event header h2 {
-        line-height: 352px; } }
-  @media only screen and (min-width: 1400px) {
-    #page.events article.event header {
-      height: 368px; }
-      #page.events article.event header h2 {
-        line-height: 368px; } }
-  @media only screen and (min-width: 1500px) {
-    #page.events article.event header {
-      height: 384px; }
-      #page.events article.event header h2 {
-        line-height: 384px; } }
-  @media only screen and (min-width: 1600px) {
-    #page.events article.event header {
-      height: 400px; }
-      #page.events article.event header h2 {
-        line-height: 400px; } }
-  @media only screen and (min-width: 1700px) {
-    #page.events article.event header {
-      height: 416px; }
-      #page.events article.event header h2 {
-        line-height: 416px; } }
-  @media only screen and (min-width: 1800px) {
-    #page.events article.event header {
-      height: 432px; }
-      #page.events article.event header h2 {
-        line-height: 432px; } }
-  @media only screen and (min-width: 1900px) {
-    #page.events article.event header {
-      height: 448px; }
-      #page.events article.event header h2 {
-        line-height: 448px; } }
-  @media only screen and (min-width: 2000px) {
-    #page.events article.event header {
-      height: 464px; }
-      #page.events article.event header h2 {
-        line-height: 464px; } }
-  @media only screen and (min-width: 2100px) {
-    #page.events article.event header {
-      height: 480px; }
-      #page.events article.event header h2 {
-        line-height: 480px; } }
-  @media only screen and (min-width: 2200px) {
-    #page.events article.event header {
-      height: 512px; }
-      #page.events article.event header h2 {
-        line-height: 512px; } }
-  @media only screen and (min-width: 2300px) {
-    #page.events article.event header {
-      height: 528px; }
-      #page.events article.event header h2 {
-        line-height: 528px; } }
-  @media only screen and (min-width: 2400px) {
-    #page.events article.event header {
-      height: 544px; }
-      #page.events article.event header h2 {
-        line-height: 544px; } }
-  @media only screen and (min-width: 2500px) {
-    #page.events article.event header {
-      height: 560px; }
-      #page.events article.event header h2 {
-        line-height: 560px; } }
+  margin: 0 auto;
+  padding-bottom: 20%; }
 #page.events article.event section.video {
   width: 100%;
   max-width: 960px;
@@ -2021,8 +2037,6 @@ section.map_full {
 #page.events article.event #map {
   margin-top: 70px; }
 @media only screen and (max-width: 960px) {
-  #page.events article.event header {
-    height: 263px; }
   #page.events article.event section.video {
     width: 100%;
     max-width: 960px;
@@ -2116,49 +2130,49 @@ section.map_full {
             padding-left: 5px; }
       #page.events section#agenda a.date > section.location {
         display: none; }
-  #page.events article.event header {
-    height: 110px; }
-  #page.events article.event section.video {
-    margin-top: 30px;
-    margin-bottom: 30px; }
-  #page.events article.event section.info {
-    padding-left: 10px;
-    padding-right: 10px;
-    margin-top: 40px; }
-    #page.events article.event section.info section.left,
-    #page.events article.event section.info section.right {
-      display: block;
-      width: 100%;
-      margin: 0; }
-      #page.events article.event section.info section.left > article,
-      #page.events article.event section.info section.right > article {
-        margin-top: 30px; }
-        #page.events article.event section.info section.left > article.details p,
-        #page.events article.event section.info section.right > article.details p {
-          font-size: 1.3em; }
-        #page.events article.event section.info section.left > article.dates,
-        #page.events article.event section.info section.right > article.dates {
-          margin-bottom: 0; }
-          #page.events article.event section.info section.left > article.dates article,
-          #page.events article.event section.info section.right > article.dates article {
-            margin-top: 10px;
-            border-left-width: 3px;
-            padding-left: 8px; }
-            #page.events article.event section.info section.left > article.dates article h2,
-            #page.events article.event section.info section.right > article.dates article h2 {
-              margin-bottom: 5px; }
-        #page.events article.event section.info section.left > article.links a div.icon,
-        #page.events article.event section.info section.right > article.links a div.icon {
-          margin-left: 0; }
-      #page.events article.event section.info section.left h1,
-      #page.events article.event section.info section.right h1 {
-        border-bottom-width: 2px;
-        padding-bottom: 4px; }
-        #page.events article.event section.info section.left h1 span,
-        #page.events article.event section.info section.right h1 span {
-          border-width: 2px; }
-  #page.events article.event #map {
-    margin-top: 30px; } }
+  #page.events article.event {
+    overflow: hidden; }
+    #page.events article.event section.video {
+      margin-top: 30px;
+      margin-bottom: 30px; }
+    #page.events article.event section.info {
+      padding-left: 10px;
+      padding-right: 10px;
+      margin-top: 40px; }
+      #page.events article.event section.info section.left,
+      #page.events article.event section.info section.right {
+        display: block;
+        width: 100%;
+        margin: 0; }
+        #page.events article.event section.info section.left > article,
+        #page.events article.event section.info section.right > article {
+          margin-top: 30px; }
+          #page.events article.event section.info section.left > article.details p,
+          #page.events article.event section.info section.right > article.details p {
+            font-size: 1.3em; }
+          #page.events article.event section.info section.left > article.dates,
+          #page.events article.event section.info section.right > article.dates {
+            margin-bottom: 0; }
+            #page.events article.event section.info section.left > article.dates article,
+            #page.events article.event section.info section.right > article.dates article {
+              margin-top: 10px;
+              border-left-width: 3px;
+              padding-left: 8px; }
+              #page.events article.event section.info section.left > article.dates article h2,
+              #page.events article.event section.info section.right > article.dates article h2 {
+                margin-bottom: 5px; }
+          #page.events article.event section.info section.left > article.links a div.icon,
+          #page.events article.event section.info section.right > article.links a div.icon {
+            margin-left: 0; }
+        #page.events article.event section.info section.left h1,
+        #page.events article.event section.info section.right h1 {
+          border-bottom-width: 2px;
+          padding-bottom: 4px; }
+          #page.events article.event section.info section.left h1 span,
+          #page.events article.event section.info section.right h1 span {
+            border-width: 2px; }
+    #page.events article.event #map {
+      margin-top: 30px; } }
 
 #page.celebrations section.allSunday {
   width: 100%;
@@ -2261,7 +2275,8 @@ section.map_full {
 #page.celebrations #speakers {
   margin: 46px auto; }
   #page.celebrations #speakers article.default {
-    margin: 0 auto; }
+    margin: 0 auto;
+    text-align: center; }
     #page.celebrations #speakers article.default a.speaker {
       display: inline-block;
       width: 200px;
@@ -2527,6 +2542,25 @@ h2.slogan.findBase {
 #page.bases section.formGray form textarea {
   height: 146px; }
 
+#page.login article.error {
+  width: 300px;
+  margin: -35px auto 20px;
+  color: #D91A15;
+  text-align: center; }
+#page.login form {
+  width: 300px;
+  margin: 0 auto; }
+  #page.login form input {
+    width: 278px;
+    margin-top: 10px; }
+    #page.login form input:focus {
+      width: 277px; }
+  #page.login form div.checkbox {
+    margin-top: 20px; }
+  #page.login form input[type="submit"] {
+    width: auto;
+    margin-top: 30px; }
+
 body {
   margin: 0px;
   color: #363331;
@@ -2597,14 +2631,16 @@ a {
   a.buttonLink {
     display: inline-block;
     border: 2px solid #363331;
-    padding: 3px;
+    padding: 4px 3px 3px 3px;
     font-family: "Radikal-Bold", "Radikal", sans-serif;
     font-size: 1.2em;
     text-transform: uppercase;
     color: #363331;
     margin: 10px 0; }
     a.buttonLink:hover {
-      text-decoration: none; }
+      text-decoration: none;
+      border: 3px solid #363331;
+      padding: 3px 2px 2px 2px; }
   a:hover {
     text-decoration: underline; }
 
@@ -2970,12 +3006,10 @@ section.mediaList {
   text-align: center; }
   section.mediaList a {
     display: inline-block;
-    margin-right: 30px;
+    margin: 0 10px 20px;
     vertical-align: top;
     text-align: left;
     color: #363331; }
-    section.mediaList a:last-of-type {
-      margin-right: 0; }
     section.mediaList a:hover {
       text-decoration: none; }
       section.mediaList a:hover div.photo {
@@ -3024,11 +3058,63 @@ section.mediaList {
         color: #878787;
         font-family: "Radikal-Light", "Radikal", sans-serif;
         letter-spacing: 1px; }
+  section.mediaList[data-nb="4"] a:nth-child(2n),
+  section.mediaList[data-nb="4"] a:nth-child(2n +1) {
+    margin-right: 30px;
+    margin-left: 30px; }
+  @media only screen and (max-width: 1440px) {
+    section.mediaList[data-nb="4"] a:nth-child(2n),
+    section.mediaList[data-nb="4"] a:nth-child(2n +1) {
+      margin-right: 10px;
+      margin-left: 10px; } }
+  @media only screen and (max-width: 1300px) {
+    section.mediaList[data-nb="4"] a:nth-child(2n) {
+      margin-right: 160px;
+      margin-left: 20px; }
+    section.mediaList[data-nb="4"] a:nth-child(2n +1) {
+      margin-left: 160px;
+      margin-right: 20px; } }
+  @media only screen and (max-width: 970px) {
+    section.mediaList[data-nb="4"] a:nth-child(2n),
+    section.mediaList[data-nb="4"] a:nth-child(2n +1) {
+      margin-right: 20px;
+      margin-left: 20px; } }
+  @media only screen and (max-width: 900px) {
+    section.mediaList[data-nb="4"] a:nth-child(2n),
+    section.mediaList[data-nb="4"] a:nth-child(2n +1) {
+      margin-right: 10px;
+      margin-left: 10px; } }
+  section.mediaList[data-nb="3"] a {
+    margin-right: 40px;
+    margin-left: 40px; }
+  @media only screen and (max-width: 1150px) {
+    section.mediaList[data-nb="3"] a {
+      margin-right: 20px;
+      margin-left: 20px; } }
+  @media only screen and (max-width: 1020px) {
+    section.mediaList[data-nb="3"] a {
+      margin-right: 10px;
+      margin-left: 10px; } }
+  @media only screen and (max-width: 960px) {
+    section.mediaList[data-nb="3"] a {
+      margin-right: 10px;
+      margin-left: 10px; }
+    section.mediaList[data-nb="3"] a:last-of-type {
+      margin-right: 330px; } }
+  section.mediaList[data-nb="2"] a {
+    margin-right: 40px;
+    margin-left: 40px; }
+  @media only screen and (max-width: 870px) {
+    section.mediaList[data-nb="2"] a {
+      margin-right: 10px;
+      margin-left: 10px; } }
   @media only screen and (max-width: 640px) {
     section.mediaList {
       padding: 0 10px;
       margin-top: 20px;
       margin-bottom: 0px; }
+      section.mediaList[data-nb="3"] a:last-of-type {
+        margin-right: 10px; }
       section.mediaList a {
         margin: 0;
         display: block;

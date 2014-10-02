@@ -15,30 +15,61 @@ class ImageType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('title',          'text')
-            ->add('file',           'file')
-            ->add('type',           'choice', array(
-                                        'choices'   => array(
-                                            'Celebration'   => 'Celebration',
-                                            'Center'        => 'Center',
-                                            'Slide'         => 'Slide',
-                                            'Person'        => 'Person',
-                                            'Event'         => 'Event'
-                                        ),  
-                                        'multiple'  => false,
-                                        'empty_value'   => 'Select a type',))
-            ->add('description',    'textarea', array('required' => false))
-        ;
+            ->add(
+                'title',
+                'text',
+                array(
+                    'attr' => array(
+                        'placeholder' => 'Title',
+                    ),
+                    'required' => true,
+                    'label' => false,
+                )
+            )
+            ->add('file', 'file')
+            ->add(
+                'type',
+                'choice',
+                array(
+                    'attr' => array(
+                        'placeholder' => 'Name',
+                    ),
+                    'choices' => array(
+                        'Celebration' => 'Celebration',
+                        'Center' => 'Center',
+                        'Slide' => 'Slide',
+                        'Person' => 'Person',
+                        'Event' => 'Event'
+                    ),
+                    'multiple' => false,
+                    'required' => true,
+                    'label' => false,
+                    'empty_value' => 'Select a type',
+                )
+            )
+            ->add(
+                'description',
+                'textarea',
+                array(
+                    'attr' => array(
+                        'placeholder' => 'Description',
+                    ),
+                    'required' => false,
+                    'label' => false,
+                )
+            );
     }
-    
+
     /**
      * @param OptionsResolverInterface $resolver
      */
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
-        $resolver->setDefaults(array(
-            'data_class' => 'gospelcenter\ImageBundle\Entity\Image'
-        ));
+        $resolver->setDefaults(
+            array(
+                'data_class' => 'gospelcenter\ImageBundle\Entity\Image'
+            )
+        );
     }
 
     /**

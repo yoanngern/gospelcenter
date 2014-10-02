@@ -1,0 +1,42 @@
+{% extends "::adminLocalNew.html.twig" %}
+
+{% block classPage %}{{ parent() }} single{% endblock %}
+
+{% block title %}
+    {{ parent() }} - Delete a celebration
+{% endblock %}
+
+{% block adminTitle %}<h1>Delete a celebration</h1>{% endblock %}
+
+{% block adminBack %}
+    <a class="back" href="{{ path('gospelcenterAdmin_celebrations', {'center': center.ref}) }}">Celebrations</a>
+{% endblock %}
+
+{% block adminTools %}
+    <a href="{{ path('gospelcenterAdmin_celebrations', {'center': center.ref}) }}">Cancel</a>
+{% endblock %}
+
+{% block adminBody %}
+    <h1>Delete a celebration</h1>
+
+    <form class="delete"
+          action="{{ path('gospelcenterAdmin_persons_delete', {'center': center.ref, 'person': celebration.id}) }}"
+          method="post" {{ form_enctype(form) }}>
+
+        <p>Are you sure you want to delete the celebration:</p>
+        <section class="details">
+            <h1>Celebration of {{ celebration.date.start|date("d F Y") }}</h1>
+
+            <p>with {{ celebration|speakers(app.request.locale) }}</p>
+        </section>
+
+        <input type="submit" class="buttonLink" value="Yes"/>
+
+        <a class="buttonLink" href="{{ path('gospelcenterAdmin_celebrations', {'center': center.ref}) }}">No</a>
+
+        {{ form_rest(form) }}
+
+    </form>
+
+
+{% endblock %}

@@ -92,12 +92,15 @@ class PageController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $centerFound = $em->getRepository('gospelcenterCenterBundle:Center')->getHomeData($center);
+        $ads = $em->getRepository('gospelcenterArticleBundle:Ad')->findAllForHome($center);
+        $dates = $em->getRepository('gospelcenterEventBundle:Event')->findAllForHome($center);
 
         return $this->render(
             'gospelcenterPageBundle:Page:home.html.twig',
             array(
-                'center' => $centerFound,
+                'center' => $center,
+                'dates' => $dates,
+                'ads' => $ads,
                 'page' => 'home'
             )
         );

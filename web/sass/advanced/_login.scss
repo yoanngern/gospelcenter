@@ -1,0 +1,33 @@
+#page.login {
+
+    article.error {
+        width: 300px;
+        margin: -35px auto 20px;
+        color: $redGC;
+        text-align: center;
+    }
+
+    form {
+        width: 300px;
+        margin: 0 auto;
+
+        input {
+            width: 278px;
+            margin-top: 10px;
+
+            &:focus {
+                width: 277px;
+            }
+        }
+
+        div.checkbox {
+            margin-top: 20px;
+        }
+
+        input[type="submit"] {
+            width: auto;
+            margin-top: 30px;
+        }
+    }
+
+}

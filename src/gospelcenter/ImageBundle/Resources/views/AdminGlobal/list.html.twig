@@ -1,27 +1,22 @@
-{% extends "::adminGlobal.html.twig" %}
-
-{% block stylesheets %}
-    {{ parent() }}
-    <link rel="stylesheet" href="{{ asset('css/admin.css') }}" type="text/css"/>
-{% endblock %}
+{% extends "::adminGlobalNew.html.twig" %}
 
 {% block title %}
     {{ parent() }} - Images
 {% endblock %}
 
-{% block adminBody %}
-    <h1>Images</h1>
+{% block adminTitle %}<h1>Images</h1>{% endblock %}
 
-    <section class="tools">
-        <a href="{{ path('gospelcenterAdminGlobal_images_add') }}">Add an image</a>
-    </section>
+{% block adminTools %}
+    <a href="{{ path('gospelcenterAdminGlobal_images_add') }}" class="add">Add an image</a>
+{% endblock %}
 
+{% block adminListBody %}
     <table class="main">
         <thead>
         <tr>
-            <th data-sort="string">Title</th>
-            <th data-sort="int" data-sort-default="desc">Created date</th>
-            <th data-sort="string">Type</th>
+            <th data-sort="string">Title<span>Title<div class="arrow"></div></span></th>
+            <th data-sort="string">Modified date<span>Modified date<div class="arrow"></div></span></th>
+            <th data-sort="string">Type<span>Type<div class="arrow"></div></span></th>
         </tr>
         </thead>
         <tbody>
@@ -30,29 +25,21 @@
             {% set link = path('gospelcenterAdminGlobal_images_edit', {'image': image.id}) %}
 
             <tr>
-                <td>
-                    <a href="{{ link }}">
-                        <span>{{ image.title }}</span>
-                    </a>
+                <td class="em">
+                    <a href="{{ link }}"><span>{{ image.title }}</span></a>
                 </td>
                 <td data-sort-value="{{ image.createdDate|date('U') }}">
-                    <a href="{{ link }}">
-                        <span>{{ image.createdDate|date('d F Y') }}</span>
-                    </a>
+                    <a href="{{ link }}"><span>{{ image.modifiedDate|date('d F Y') }}</span></a>
                 </td>
                 <td>
-                    <a href="{{ link }}">
-                        <span>{{ image.type }}</span>
-                    </a>
+                    <a href="{{ link }}"><span>{{ image.type }}</span></a>
                 </td>
             </tr>
         {% else %}
-            <tr>
+            <tr class="empty">
                 <td colspan="3">There are no image.</td>
             </tr>
         {% endfor %}
         </tbody>
     </table>
-
-
 {% endblock %}

@@ -1,69 +1,49 @@
-{% extends "::adminGlobal.html.twig" %}
+{% extends "::adminGlobalNew.html.twig" %}
+
+{% block classPage %}{{ parent() }} single{% endblock %}
 
 {% block javascripts %}
     {{ parent() }}
-    <script type="text/javascript" src="{{ asset('js/form.min.js') }}"></script>
-    
+
     {% if center.image %}
         <script type="text/javascript" src="{{ asset('js/editImage.min.js') }}"></script>
     {% else %}
         <script type="text/javascript" src="{{ asset('js/addImage.min.js') }}"></script>
     {% endif %}
-    
 {% endblock %}
 
-{% block stylesheets %}
-	{{ parent() }}
-	<link rel="stylesheet" href="{{ asset('css/admin.css') }}" type="text/css" />
-	<link rel="stylesheet" href="{{ asset('css/form.css') }}" type="text/css" />
-{% endblock %}
 
 {% block title %}
     {{ parent() }} - Edit a center
 {% endblock %}
 
-{% block adminBody %}
-    <h1>Edit a center</h1>
-    
-    <form class="center" action="{{ path('gospelcenterAdminGlobal_centers_edit', {'center': center.ref}) }}" method="post" {{ form_enctype(form) }}>
-        
-        <nav class="tools">
-    		<input type="submit" class="buttonLink" />
-    	</nav>
-        
-        {{ form_errors(form) }}
-        
+{% block adminTitle %}<h1>Edit a center</h1>{% endblock %}
 
-        {{ form_widget(form.name, {'attr': {'placeholder': 'Name'} }) }}
+{% block adminBack %}
+    <a class="back" href="{{ path('gospelcenterAdminGlobal_centers') }}">Centers</a>
+{% endblock %}
+
+{% block adminBody %}
+
+    <form class="center" action="{{ path('gospelcenterAdminGlobal_centers_add') }}" method="post" {{ form_enctype(form) }}>
+
+        {{ form_widget(form.name) }}
         {{ form_errors(form.name) }}
 
-        <h2>Location</h2>
-        {{ form_widget(form.location.address1, {'attr': {'placeholder': 'Address 1'} }) }}
-        {{ form_errors(form.location.address1) }}
-        
-        {{ form_widget(form.location.address2, {'attr': {'placeholder': 'Address 2'} }) }}
-        {{ form_errors(form.location.address2) }}
-        
-        {{ form_widget(form.location.postalCode, {'attr': {'placeholder': 'Postal code'} }) }}
-        {{ form_errors(form.location.postalCode) }}
-        
-        {{ form_widget(form.location.city, {'attr': {'placeholder': 'City'} }) }}
-        {{ form_errors(form.location.city) }}
-        
-        {{ form_widget(form.location.country, {'attr': {'placeholder': 'Country'} }) }}
-        {{ form_errors(form.location.country) }}
-        
-        <h2>Image</h2>
         {{ form_widget(form.image.file) }}
         {{ form_errors(form.image.file) }}
         {% if center.image %}
-        	<div id="editImage" data-input="{{ form.image.file.vars.id }}">
-        	    <img src="{{ asset(center.image.webPath) }}" alt="{{ center.image.alt }}" />
-        	</div>
+            <div id="editImage" data-input="{{ form.image.file.vars.id }}">
+                <img src="{{ asset(center.image.webPath) }}" alt="{{ center.image.alt }}" />
+            </div>
         {% endif %}
-        
+
+        {{ form_widget(form.location) }}
+        {{ form_errors(form.location) }}
+
         {{ form_rest(form) }}
+
+        <input type="submit" class="buttonLink" value="Add a center"/>
     </form>
-    
-    
+
 {% endblock %}

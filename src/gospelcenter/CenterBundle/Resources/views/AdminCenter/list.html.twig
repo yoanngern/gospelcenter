@@ -1,48 +1,50 @@
-{% extends "::adminGlobal.html.twig" %}
-
-{% block stylesheets %}
-    {{ parent() }}
-    <link rel="stylesheet" href="{{ asset('css/admin.css') }}" type="text/css"/>
-{% endblock %}
+{% extends "::adminGlobalNew.html.twig" %}
 
 {% block title %}
     {{ parent() }} - Centers
 {% endblock %}
 
-{% block adminBody %}
-    <h1>Centers</h1>
+{% block adminTitle %}<h1>Centers</h1>{% endblock %}
 
-    <section class="tools">
-        <a href="{{ path('gospelcenterAdminGlobal_centers_add') }}">Add a center</a>
-    </section>
+{% block adminTools %}
+    <a href="{{ path('gospelcenterAdminGlobal_centers_add') }}" class="add">Add a center</a>
+{% endblock %}
 
+{% block adminListBody %}
     <table class="main">
         <thead>
         <tr>
-            <th data-sort="string">Name</th>
-            <th data-sort="string">City</th>
-            <th data-sort="string">Country</th>
+            <th data-sort="string">Name<span>Name<div class="arrow"></div></span></th>
+            <th data-sort="string">City<span>City<div class="arrow"></div></span></th>
+            <th data-sort="string">Country<span>Country<div class="arrow"></div></span></th>
         </tr>
         </thead>
         <tbody>
         {% for center in centers %}
+
+            {% set link = path('gospelcenterAdminGlobal_centers_edit', {'center': center.ref}) %}
+
             <tr>
-                <td>
-                    <a href="{{ path('gospelcenterAdminGlobal_centers_edit', {'center': center.ref}) }}">
-                        <span>Gospel Center {{ center.name }}</span>
+                <td class="em">
+                    <a href="{{ link }}">
+                        <span>{{ center.name }}</span>
                     </a>
                 </td>
                 <td>
-                    <a href="{{ path('gospelcenterAdminGlobal_centers_edit', {'center': center.ref}) }}">
+                    <a href="{{ link }}">
                         {% if center.location %}
                             <span>{{ center.location.city }}</span>
+                        {% else %}
+                            <span>--</span>
                         {% endif %}
                     </a>
                 </td>
                 <td>
-                    <a href="{{ path('gospelcenterAdminGlobal_centers_edit', {'center': center.ref}) }}">
+                    <a href="{{ link }}">
                         {% if center.location %}
                             <span>{{ center.location.country }}</span>
+                        {% else %}
+                            <span>--</span>
                         {% endif %}
                     </a>
                 </td>
@@ -54,6 +56,4 @@
         {% endfor %}
         </tbody>
     </table>
-
-
 {% endblock %}

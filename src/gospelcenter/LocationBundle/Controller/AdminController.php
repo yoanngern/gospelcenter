@@ -5,8 +5,10 @@ namespace gospelcenter\LocationBundle\Controller;
 use gospelcenter\CenterBundle\Entity\Center;
 use gospelcenter\LocationBundle\Entity\Location;
 use gospelcenter\LocationBundle\Form\LocationType;
+use JMS\SecurityExtraBundle\Annotation\Secure;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Security\Core\Exception\AccessDeniedException;
 
 
 class AdminController extends Controller
@@ -14,11 +16,16 @@ class AdminController extends Controller
 
     /**
      * List of all locations
+     * @Secure(roles="ROLE_USER")
      * @param Center $center
      * @return Response
      */
     public function listAction(Center $center)
     {
+        if (false === $this->get('security.context')->isGranted("VIEW", new Location())) {
+            throw new AccessDeniedException('Unauthorised access!');
+        }
+
         $em = $this->getDoctrine()->getManager();
 
         $locations = $em->getRepository('gospelcenterLocationBundle:Location')->findAllByCenter($center);
@@ -28,7 +35,7 @@ class AdminController extends Controller
             array(
                 'center' => $center,
                 'locations' => $locations,
-                'page' => 'locations',
+                'page' => 'options',
                 'tab' => 'locations'
             )
         );
@@ -37,12 +44,18 @@ class AdminController extends Controller
 
     /**
      * Add a location
+     * @Secure(roles="ROLE_USER")
      * @param Center $center
      * @return \Symfony\Component\HttpFoundation\RedirectResponse|Response
      */
     public function addAction(Center $center)
     {
         $location = new Location();
+
+        if (false === $this->get('security.context')->isGranted("CREATE", $location)) {
+            throw new AccessDeniedException('Unauthorised access!');
+        }
+
         $form = $this->createForm(new LocationType, $location);
 
         $request = $this->get('request');
@@ -76,7 +89,7 @@ class AdminController extends Controller
             array(
                 'center' => $center,
                 'form' => $form->createView(),
-                'page' => 'locations'
+                'page' => 'options'
             )
         );
     }
@@ -84,12 +97,17 @@ class AdminController extends Controller
 
     /**
      * Edit a location
+     * @Secure(roles="ROLE_USER")
      * @param Center $center
      * @param Location $location
      * @return \Symfony\Component\HttpFoundation\RedirectResponse|Response
      */
     public function editAction(Center $center, Location $location)
     {
+        if (false === $this->get('security.context')->isGranted("EDIT", $location)) {
+            throw new AccessDeniedException('Unauthorised access!');
+        }
+
         $form = $this->createForm(new LocationType, $location);
 
         $request = $this->get('request');
@@ -122,7 +140,7 @@ class AdminController extends Controller
                 'center' => $center,
                 'location' => $location,
                 'form' => $form->createView(),
-                'page' => 'locations'
+                'page' => 'options'
             )
         );
     }
@@ -130,12 +148,17 @@ class AdminController extends Controller
 
     /**
      * Delete a location
+     * @Secure(roles="ROLE_USER")
      * @param Center $center
      * @param Location $location
      * @return \Symfony\Component\HttpFoundation\RedirectResponse|Response
      */
     public function deleteAction(Center $center, Location $location)
     {
+        if (false === $this->get('security.context')->isGranted("REMOVE", $location)) {
+            throw new AccessDeniedException('Unauthorised access!');
+        }
+
         $form = $this->createFormBuilder()->getForm();
 
         $request = $this->getRequest();
@@ -166,7 +189,7 @@ class AdminController extends Controller
                 'center' => $center,
                 'location' => $location,
                 'form' => $form->createView(),
-                'page' => 'locations'
+                'page' => 'options'
             )
         );
     }

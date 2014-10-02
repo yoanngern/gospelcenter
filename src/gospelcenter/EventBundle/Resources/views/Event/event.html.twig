@@ -17,7 +17,16 @@
 {% block body %}
     {% spaceless %}
         <article class="event">
-            <header style="background-image: url({{ asset(event.cover.webPath) }})"></header>
+            <header
+                    {% if event.cover %}
+                style="background-image: url('{{ event.cover.webPath| imagine_filter('event_cover_low') }}')"
+                data-bg="{{ event.cover.webPath| imagine_filter('event_cover') }}"
+                data-bg_2x="{{ event.cover.webPath| imagine_filter('event_cover_2x') }}"
+                data-bg_tablet="{{ event.cover.webPath| imagine_filter('event_cover_tablet') }}"
+                data-bg_tablet_2x="{{ event.cover.webPath| imagine_filter('event_cover_tablet_2x') }}"
+                data-bg_mobile="{{ event.cover.webPath| imagine_filter('event_cover_mobile') }}"
+                data-bg_mobile_2x="{{ event.cover.webPath| imagine_filter('event_cover_mobile_2x') }}"
+                    {% endif %}></header>
 
 
             {% if event.video %}

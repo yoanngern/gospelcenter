@@ -1,9 +1,17 @@
-parameters:
-#    gospelcenter_people.example.class: gospelcenter\PUserBundle\Example
-
 services:
     gospelcenter.group.form.type:
         class: gospelcenter\UserBundle\Form\Type\GroupWithRolesFormType
         arguments: [%fos_user.model.user.class%]
         tags:
             - { name: form.type, alias: gospelcenter_userbundle_groupwithrolesformtype }
+
+    security.access.accessLevel_voter:
+        class:      gospelcenter\UserBundle\Security\Authorization\Voter\AccessLevelVoter
+        public:     false
+        tags:
+            - { name: security.voter }
+
+    gc.success_handler:
+        class: gospelcenter\UserBundle\Authentication\SuccessHandler
+        public: false
+        arguments:  ['@router']

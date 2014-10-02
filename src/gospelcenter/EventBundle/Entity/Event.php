@@ -251,6 +251,18 @@ class Event
         return $this;
     }
 
+    /**
+     * Remove dates
+     *
+     * @param \gospelcenter\DateBundle\Entity\Date $dates
+     */
+    public function removeDate(\gospelcenter\DateBundle\Entity\Date $dates)
+    {
+        $this->dates->removeElement($dates);
+
+        $dates->setEvent();
+    }
+
 
     /**
      * Add links
@@ -284,6 +296,18 @@ class Event
         $this->links = $links;
 
         return $this;
+    }
+
+    /**
+     * Remove links
+     *
+     * @param \gospelcenter\ArticleBundle\Entity\Link $links
+     */
+    public function removeLink(\gospelcenter\ArticleBundle\Entity\Link $links)
+    {
+        $this->links->removeElement($links);
+
+        $links->setEvent();
     }
 
 
@@ -486,16 +510,6 @@ class Event
     }
 
     /**
-     * Remove dates
-     *
-     * @param \gospelcenter\DateBundle\Entity\Date $dates
-     */
-    public function removeDate(\gospelcenter\DateBundle\Entity\Date $dates)
-    {
-        $this->dates->removeElement($dates);
-    }
-
-    /**
      * Get dates
      *
      * @return \Doctrine\Common\Collections\Collection
@@ -515,15 +529,7 @@ class Event
         return $this->video;
     }
 
-    /**
-     * Remove links
-     *
-     * @param \gospelcenter\ArticleBundle\Entity\Link $links
-     */
-    public function removeLink(\gospelcenter\ArticleBundle\Entity\Link $links)
-    {
-        $this->links->removeElement($links);
-    }
+
 
     /**
      * Get links

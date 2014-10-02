@@ -1,31 +1,74 @@
 window.connection = "good";
 
+window.responsive = {
+    device: "desktop"
+};
+
 $(document).ready(function () {
 
+    resize();
+    initImg();
+
+    /**
+     * window is resised
+     */
+    $(window).resize(function () {
+        resize();
+    });
+
+    $(responsive).on("deviceChange", function (device) {
+        initImg();
+    });
+
+
+});
+
+function initImg() {
     $("[data-bg]").each(function () {
 
-        if(connection != "low") {
+        if (connection != "low") {
             initImageBg(this);
         }
-
     });
 
     $("[data-img]").each(function () {
 
-        if(connection != "low") {
+        if (connection != "low") {
             initImageImg(this);
         }
-
     });
-});
+}
 
 $.ajaxSetup({
     timeout: 1, // Microseconds, for the laughs.  Guaranteed timeout.
-    error: function(request, status, maybe_an_exception_object) {
-        if(status == 'timeout')
+    error: function (request, status, maybe_an_exception_object) {
+        if (status == 'timeout')
             connection = "low";
     }
 });
+
+function resize() {
+    var windowW = $(window).width();
+
+    var oldDevice = responsive.device;
+
+    if (windowW > 1024) {
+        responsive.device = "desktop";
+    }
+
+    if (windowW <= 1024 && windowW > 640) {
+        responsive.device = "tablet";
+    }
+
+    if (windowW <= 640) {
+        responsive.device = "mobile";
+    }
+
+    if(oldDevice != responsive.device) {
+
+        $(responsive).trigger("deviceChange", responsive.device);
+    }
+}
 
 
 function isHighDensity() {
@@ -34,8 +77,6 @@ function isHighDensity() {
 
 
 function initImageBg(elem) {
-
-    var windowW = $(window).width();
 
     var src = $(elem).attr("data-bg");
     var src_2x = $(elem).attr("data-bg_2x");
@@ -51,7 +92,7 @@ function initImageBg(elem) {
     }
 
     // Tablet device ?
-    if(windowW <= 1024 && windowW > 640) {
+    if (responsive.device == "tablet") {
 
         if (isHighDensity() && src_tablet_2x != "") {
             src = src_tablet_2x;
@@ -60,7 +101,7 @@ function initImageBg(elem) {
         }
     }
 
-    if(windowW <= 640) {
+    if (responsive.device == "mobile") {
         if (isHighDensity() && src_mobile_2x != "") {
             src = src_mobile_2x;
         } else {
@@ -75,7 +116,7 @@ function initImageBg(elem) {
 }
 
 function initImageImg(elem) {
-    var windowW = $(window).width();
+    var srcset = "";
 
     var src = $(elem).attr("data-img");
     var src_2x = $(elem).attr("data-img_2x");
@@ -87,26 +128,33 @@ function initImageImg(elem) {
     var src_mobile_2x = $(elem).attr("data-img_mobile_2x");
 
     if (isHighDensity() && src_2x != "") {
-        src = src_2x;
+        srcset = src_2x;
     }
 
     // Tablet device ?
-    if(windowW <= 1024 && windowW > 640) {
+    if (responsive.device == "tablet") {
 
         if (isHighDensity() && src_tablet_2x != "") {
-            src = src_tablet_2x;
+            srcset = src_tablet_2x;
+            src = src_tablet;
         } else {
             src = src_tablet;
         }
     }
 
-    if(windowW <= 640) {
+    if (responsive.device == "mobile") {
         if (isHighDensity() && src_mobile_2x != "") {
-            src = src_mobile_2x;
+            srcset = src_mobile_2x;
+            src = src_mobile;
         } else {
             src = src_mobile;
         }
     }
 
+
     $(elem).attr("src", src);
+
+    if (srcset != "") {
+        $(elem).attr("srcset", srcset + " 2x");
+    }
 }

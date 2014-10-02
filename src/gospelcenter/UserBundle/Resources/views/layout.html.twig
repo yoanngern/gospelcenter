@@ -1,22 +1,17 @@
-{% extends "::layout.html.twig" %}
+{% extends "::layoutNew.html.twig" %}
 
-{% block stylesheets %}
-	{{ parent() }}
-	<link rel="stylesheet" href="{{ asset('css/layout.css') }}" type="text/css" />
+{% block header_nav %}
+    <li class="home"><a href="/">Gospel Center</a></li>
+    <li>
+        <a href="/lausanne">Lausanne</a>
+    </li>
+    <li>
+        <a href="/montreux">Montreux</a>
+    </li>
+    <li>
+        <a href="/jura">Jura</a>
+    </li>
+    <li>
+        <a href="/annecy">Annecy</a>
+    </li>
 {% endblock %}
-
-{% block param %}
-    <li><a href="{{ path('fos_user_registration_register') }}">Register a user</a></li>
-    <li><a href="{{ path('gospelcenterAdminGlobal_pages') }}">Dashboard</a></li>
-    <li class="line"></li>
-    {{ parent() }}
-{% endblock %}
-
-{% block javascripts %}
-    {{ parent() }}
-{% endblock %}
-
-{% block title %}
-    {{ parent() }}
-{% endblock %}
-

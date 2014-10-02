@@ -54,7 +54,7 @@ article, aside, footer, header, hgroup, nav, section, figure, figcaption {
       height: 500px;
       width: 100%;
       background-image: url("../images/header_bg.gif");
-      background-position: center;
+      background-position: right top;
       background-size: cover;
       background-repeat: no-repeat;
       position: absolute;

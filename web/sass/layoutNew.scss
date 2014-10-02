@@ -7,12 +7,14 @@
 @import "_header";
 @import "_footer";
 @import "_map";
+@import "_formSimple";
 @import "advanced/_home";
 @import "advanced/_about";
 @import "advanced/_events";
 @import "advanced/_celebrations";
 @import "advanced/_contact";
 @import "advanced/_bases";
+@import "advanced/_login";
 
 body {
     margin: 0px;
@@ -74,7 +76,7 @@ a {
     &.buttonLink {
         display: inline-block;
         border: 2px solid $grayDarkGC;
-        padding: 3px;
+        padding: 4px 3px 3px 3px;
         font-family: $font-bold;
         font-size: 1.2em;
         text-transform: uppercase;
@@ -83,6 +85,8 @@ a {
 
         &:hover {
             text-decoration: none;
+            border: 3px solid $grayDarkGC;
+            padding: 3px 2px 2px 2px;
         }
     }
 
@@ -510,14 +514,10 @@ section {
 
         a {
             display: inline-block;
-            margin-right: 30px;
+            margin: 0 10px 20px;
             vertical-align: top;
             text-align: left;
             color: $grayDarkGC;
-
-            &:last-of-type {
-                margin-right: 0;
-            }
 
             &:hover {
                 text-decoration: none;
@@ -587,15 +587,115 @@ section {
             }
         }
 
+        &[data-nb="4"] {
+
+            a:nth-child(2n),
+            a:nth-child(2n +1) {
+                margin-right: 30px;
+                margin-left: 30px;
+            }
+
+            @media only screen and (max-width: 1440px) {
+                a:nth-child(2n),
+                a:nth-child(2n +1) {
+                    margin-right: 10px;
+                    margin-left: 10px;
+                }
+            }
+
+            @media only screen and (max-width: 1300px) {
+                a:nth-child(2n) {
+                    margin-right: 160px;
+                    margin-left: 20px;
+                }
+
+                a:nth-child(2n +1) {
+                    margin-left: 160px;
+                    margin-right: 20px;
+                }
+            }
+
+            @media only screen and (max-width: 970px) {
+                a:nth-child(2n),
+                a:nth-child(2n +1) {
+                    margin-right: 20px;
+                    margin-left: 20px;
+                }
+            }
+
+            @media only screen and (max-width: 900px) {
+                a:nth-child(2n),
+                a:nth-child(2n +1) {
+                    margin-right: 10px;
+                    margin-left: 10px;
+                }
+            }
+        }
+
+        &[data-nb="3"] {
+
+            a {
+                margin-right: 40px;
+                margin-left: 40px;
+            }
+
+            @media only screen and (max-width: 1150px) {
+                a {
+                    margin-right: 20px;
+                    margin-left: 20px;
+                }
+            }
+
+            @media only screen and (max-width: 1020px) {
+                a {
+                    margin-right: 10px;
+                    margin-left: 10px;
+                }
+            }
+
+            @media only screen and (max-width: 960px) {
+                a {
+                    margin-right: 10px;
+                    margin-left: 10px;
+                }
+
+                a:last-of-type {
+                    margin-right: 330px;
+                }
+            }
+        }
+
+        &[data-nb="2"] {
+            a {
+                margin-right: 40px;
+                margin-left: 40px;
+            }
+
+            @media only screen and (max-width: 870px) {
+                a {
+                    margin-right: 10px;
+                    margin-left: 10px;
+                }
+            }
+        }
+
         @media only screen and (max-width: $mobileH) {
             padding: 0 10px;
             margin-top: 20px;
             margin-bottom: 0px;
 
+            &[data-nb="3"] {
+                a:last-of-type {
+                    margin-right: 10px;
+                }
+            }
+
             a {
                 margin: 0;
                 display: block;
                 margin-bottom: 20px;
+
+
 
                 div.photo {
                     width: 100%;

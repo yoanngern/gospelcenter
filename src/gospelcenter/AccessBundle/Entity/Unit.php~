@@ -1,0 +1,63 @@
+<?php
+
+namespace gospelcenter\AccessBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
+
+use gospelcenter\UserBundle\Entity\User;
+
+/**
+ * Unit
+ *
+ * @ORM\Table(name="unit")
+ * @ORM\Entity(repositoryClass="gospelcenter\AccessBundle\Entity\UnitRepository")
+ */
+class Unit
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="name", type="string", length=255)
+     */
+    private $name;
+    
+    /**
+     * groups
+     * 
+     * @ORM\ManyToMany(targetEntity="gospelcenter\UserBundle\Entity\User", mappedBy="units")
+     * @Assert\Valid()
+     */
+    private $users;
+    
+    /**
+     * is given
+     * 
+     * @ORM\OneToMany(targetEntity="gospelcenter\AccessBundle\Entity\AccessLevel", mappedBy="unit", cascade={"persist", "remove"})
+     * @Assert\Valid()
+     */
+    private $accessLevels;
+
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->users = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->accessLevels = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+    
+    /*************************************/
+    /**** Getter setter auto generate ****/
+    /*************************************/
+
+}

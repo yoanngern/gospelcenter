@@ -1,0 +1,29 @@
+{% extends "::adminGlobalNew.html.twig" %}
+
+{% block classPage %}{{ parent() }} single{% endblock %}
+
+{% block title %}
+    {{ parent() }} - Add an access
+{% endblock %}
+
+{% block adminTitle %}<h1>Add an access</h1>{% endblock %}
+
+{% block adminBack %}
+    <a class="back" href="{{ path('gospelcenterAdminGlobal_accesses') }}">Accesses</a>
+{% endblock %}
+
+{% block adminBody %}
+
+    <form class="unit" action="{{ path('gospelcenterAdminGlobal_accesses_add') }}"
+          method="post" {{ form_enctype(form) }}>
+
+        {{ form_widget(form.service) }}
+        {{ form_errors(form.service) }}
+
+        {{ form_rest(form) }}
+
+        <input type="submit" class="buttonLink" value="Save changes"/>
+
+    </form>
+
+{% endblock %}
