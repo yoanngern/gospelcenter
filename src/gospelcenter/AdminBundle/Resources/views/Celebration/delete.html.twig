@@ -20,7 +20,7 @@
     <h1>Delete a celebration</h1>
 
     <form class="delete"
-          action="{{ path('gospelcenterAdmin_persons_delete', {'center': center.ref, 'person': celebration.id}) }}"
+          action="{{ path('gospelcenterAdmin_celebrations_delete', {'center': center.ref, 'celebration': celebration.id}) }}"
           method="post" {{ form_enctype(form) }}>
 
         <p>Are you sure you want to delete the celebration:</p>

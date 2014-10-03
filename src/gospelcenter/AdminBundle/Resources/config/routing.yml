@@ -332,3 +332,13 @@ gospelcenterAdmin_units_delete:
     defaults:   { _controller: gospelcenterAccessBundle:Unit:delete }
     requirements:
         unit: \d+
+
+
+######################
+####### Guide ########
+######################
+
+# Guides
+gospelcenterAdmin_guides:
+    path:       /guides
+    defaults:   { _controller: gospelcenterAdminBundle:Guide:list }

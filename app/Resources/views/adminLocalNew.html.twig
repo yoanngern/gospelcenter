@@ -21,4 +21,7 @@
 
     <li><a href="{{ path('gospelcenterAdmin_locations', {'center': center.ref}) }}"
            {% if page == 'options' %}class="current focus"{% endif %}>Other</a></li>
+
+    <li><a href="{{ path('gospelcenterAdmin_guides', {'center': center.ref}) }}"
+           {% if page == 'guides' %}class="current focus"{% endif %}>Guide</a></li>
 {% endblock %}

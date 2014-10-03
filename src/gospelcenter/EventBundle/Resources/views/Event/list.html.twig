@@ -11,41 +11,41 @@
     <h1 class="titlePage"><span>{{ 'gc.title.events'|trans }}</span></h1>
 
 
-    <section class="gray" id="events">
+    {% if events|length %}
+        <section class="gray" id="events">
 
-        <section class="default">
+            <section class="default">
 
-            {% spaceless %}
-                {% for event in events %}
-                    <a href="{{ path('gospelcenterEvents_event', {'event': event.id, 'center': center.ref}) }}"
-                       class="events">
-                        <section class="picture">
-                            {% if event.picture %}
-                                <img alt="{{ event.picture.alt }}"
-                                     src="{{ asset(event.picture.webPath)| imagine_filter('event_picture_low') }}"
-                                     srcset="{{ asset(event.picture.webPath)| imagine_filter('event_picture_low') }} 2x"
-                                     data-img="{{ asset(event.picture.webPath)| imagine_filter('event_picture') }}"
-                                     data-img_2x="{{ asset(event.picture.webPath)| imagine_filter('event_picture_2x') }}"
-                                     data-img_tablet="{{ asset(event.picture.webPath)| imagine_filter('event_picture_tablet') }}"
-                                     data-img_tablet_2x="{{ asset(event.picture.webPath)| imagine_filter('event_picture_tablet_2x') }}"
-                                     data-img_mobile="{{ asset(event.picture.webPath)| imagine_filter('event_picture_mobile') }}"
-                                     data-img_mobile_2x="{{ asset(event.picture.webPath)| imagine_filter('event_picture_mobile_2x') }}">
+                {% spaceless %}
+                    {% for event in events %}
+                        <a href="{{ path('gospelcenterEvents_event', {'event': event.id, 'center': center.ref}) }}"
+                           class="events">
+                            <section class="picture">
+                                {% if event.picture %}
+                                    <img alt="{{ event.picture.alt }}"
+                                         src="{{ asset(event.picture.webPath)| imagine_filter('event_picture_low') }}"
+                                         srcset="{{ asset(event.picture.webPath)| imagine_filter('event_picture_low') }} 2x"
+                                         data-img="{{ asset(event.picture.webPath)| imagine_filter('event_picture') }}"
+                                         data-img_2x="{{ asset(event.picture.webPath)| imagine_filter('event_picture_2x') }}"
+                                         data-img_tablet="{{ asset(event.picture.webPath)| imagine_filter('event_picture_tablet') }}"
+                                         data-img_tablet_2x="{{ asset(event.picture.webPath)| imagine_filter('event_picture_tablet_2x') }}"
+                                         data-img_mobile="{{ asset(event.picture.webPath)| imagine_filter('event_picture_mobile') }}"
+                                         data-img_mobile_2x="{{ asset(event.picture.webPath)| imagine_filter('event_picture_mobile_2x') }}">
 
-                            {% endif %}
-                        </section>
-                        <section class="detail">
-                            <h1>{{ event.title }}</h1>
-                            {% if event.dates|length %}
-                                <time class="date">{{ event.dates[0].start|localizeddate('long', 'none') }}</time>
-                            {% endif %}
-                        </section>
-                    </a>
-                {% else %}
-                    <span class="empty">There are no events to come.</span>
-                {% endfor %}
-            {% endspaceless %}
+                                {% endif %}
+                            </section>
+                            <section class="detail">
+                                <h1>{{ event.title }}</h1>
+                                {% if event.dates|length %}
+                                    <time class="date">{{ event.dates[0].start|localizeddate('long', 'none') }}</time>
+                                {% endif %}
+                            </section>
+                        </a>
+                    {% endfor %}
+                {% endspaceless %}
+            </section>
         </section>
-    </section>
+    {% endif %}
 
     <section class="default" id="agenda">
         {% spaceless %}

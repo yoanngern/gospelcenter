@@ -1,0 +1,339 @@
+{% extends "::adminLocalNew.html.twig" %}
+
+{% block title %}
+    {{ parent() }} - Guide
+{% endblock %}
+
+{% block body %}
+
+    <section class="tab autoScroll">
+
+    <nav class="sub_nav">
+        {% spaceless %}
+            <ul>
+                <li><a href="#celebrations" class="current focus">Célébrations</a></li>
+                <li><a href="#events">Events</a></li>
+                <li><a href="#contacts">Contacts</a></li>
+                <li><a href="#pages">Pages</a></li>
+                <li><a href="#slides">Slides</a></li>
+                <li><a href="#ads">Pubs</a></li>
+                <li><a href="#images">Images</a></li>
+            </ul>
+        {% endspaceless %}
+    </nav>
+
+    <article class="tab blog-style active" id="celebrations">
+
+        <h1>Gestion des célébrations</h1>
+
+        <p>Les célébrations sont misent en avant sur le site, c'est la raison pour laquelle il est primordiale que
+            les célébrations soit en permanence à jour. Dans la rubrique <a target="_blank"
+                                                                            href="{{ path('gospelcenterAdmin_celebrations', {'center': center.ref}) }}">Célébrations</a>,
+            vous pourrez créer, gérer et archiver vos célébrations. Cet outils n'est pas dédié uniquement à la
+            publication sur le site mais il offre un outil de gestion de vos célébrations.</p>
+
+        <h2 class="underline"><span>Créer une célébration</span></h2>
+
+        <p>Pour ce faire, rien de plus compliqué. Vous trouverez un lien d'ajout dans la partie supérieure de la
+            rubrique <a target="_blank"
+                        href="{{ path('gospelcenterAdmin_celebrations', {'center': center.ref}) }}">Célébrations</a>.
+        </p>
+
+        <p>Une fois que vous vous trouvez sur la page d'ajout, vous devez rentrer les informations (obligatoires)
+            suivantes :</p>
+        <ul>
+            <li>Date de la célébration</li>
+            <li>Heures de début et de fin de la célébration</li>
+            <li>Le lieux de la célébration</li>
+        </ul>
+
+        <h2 class="underline"><span>Le status</span></h2>
+
+        <p>Le status définit si la célébration est visible sur le site (publique) ou non.</p>
+
+        <p>Grâce à ce paramètre, vous pouvez créer une célébration sans pour autant avoir l'ensemble des
+            informations.</p>
+
+        <p>Dans un deuxième temps, si vous voulez activer ce réglage, il sera important que vous remplissiez les
+            informations suivantes :</p>
+
+        <ul>
+            <li>Le(s) orateur(s)</li>
+            <li>La photo de l'orateur</li>
+            <li>Le programme de l'enfance</li>
+        </ul>
+
+        <h2 class="underline"><span>Après la célébration</span></h2>
+
+        <p>Une fois que la célébration est terminée, vous pourrez ajouter certaines informations complémentaires
+            :</p>
+
+        <ul>
+            <li>Le titre du message</li>
+            <li>Une description du message (si le titre ne suffit pas)</li>
+            <li>La vidéo du message</li>
+            <li>L'audio du message</li>
+        </ul>
+
+        <h2 class="underline"><span>Video</span></h2>
+
+        <p>Cette section est en cours de rédaction.</p>
+
+        <h2 class="underline"><span>Audio</span></h2>
+
+        <p>Cette section est en cours de rédaction.</p>
+
+        <h2 class="underline"><span>Supprimer une célébration</span></h2>
+
+        <p>Avant de supprimer une célébration, il est important de bien réfléchir aux conséquences. Supprimez une
+            célébration uniquement si vous avez fait une erreur en la créant.</p>
+
+        <p>Si vous désirez la supprimer afin de diminuer la liste ou pour des questions de nettoyage de
+            printemps, veuillez considérer les points suivants :</p>
+
+        <ul>
+            <li>Il n'y a pas de corbeille. Si vous supprimez une célébration, il n'y a aucun moyen de la
+                restaurer.
+            </li>
+            <li>Vous perdrez la grande valeur d'archive que cette gestion des célébrations considère.</li>
+            <li>La vidéo et l'audio de la célébration sera également supprimée.</li>
+        </ul>
+
+        <p>Si toute fois, vous désirez tout de même supprimer une célébration, vous trouverez un lien dans la partie
+            supérieure droit de l'édition d'une célébration.</p>
+
+
+    </article>
+
+    <article class="tab blog-style" id="events">
+
+        <h1>Gestion des events</h1>
+
+        <p>Dans la rubrique <a target="_blank"
+                               href="{{ path('gospelcenterAdmin_events', {'center': center.ref}) }}">Events</a>,
+            vous pourrez gérer tous les événements de votre centre.</p>
+
+        <h2 class="underline"><span>Créer un event</span></h2>
+
+        <p>Afin de créer un événement, vous pouvez vous rendre dans la rubrique <a target="_blank"
+                                                                                   href="{{ path('gospelcenterAdmin_events', {'center': center.ref}) }}">Events</a>.
+            Vous trouverez ensuite un lien d'ajout dans la partie supérieure de la page.</p>
+
+        <p>Une fois que vous vous trouvez sur la page d'ajout, vous devez rentrer les informations (obligatoires)
+            suivantes :</p>
+        <ul>
+            <li>Le titre de l'événement</li>
+            <li>Un texte d'introduction</li>
+            <li>L'image de l'événement (Picture)</li>
+            <li>Le banner de l'événement (Cover)</li>
+        </ul>
+
+        <h2 class="underline"><span>Le status</span></h2>
+
+        <p>Le status définit si l'événement est visible sur le site (publique) ou non.</p>
+
+        <p>Grâce à ce paramètre, vous pouvez créer un event sans pour autant avoir l'ensemble des
+            informations.</p>
+
+        <p>Dans un deuxième temps, si vous voulez activer ce réglage, il sera important que vous remplissiez les
+            informations suivantes :</p>
+
+        <ul>
+            <li>Les dates de l'event</li>
+            <li>Des liens pour proposer du contenu supplémentaire</li>
+            <li>Le lieux de l'event</li>
+            <li>Une vidéo de promotion de l'événement</li>
+        </ul>
+
+        <h2 class="underline"><span>Supprimer un event</span></h2>
+
+        <p>Il est bien entendu possible de supprimer un event, mais est ce que ce choix est judicieux?</p>
+
+        <p>La liste des events propose un filtre qui permet de cacher un événement terminé. Vous pouvez donc
+            simplement garder tous vos événement et ainsi avoir une archive de vos events précédent.</p>
+
+    </article>
+
+
+    <article class="tab blog-style" id="contacts">
+
+        <h1>Gestion des contacts</h1>
+
+        <p>Dans la rubrique <a target="_blank"
+                               href="{{ path('gospelcenterAdmin_persons', {'center': center.ref}) }}">Contacts</a>,
+            vous pourrez gérer tous les contacts de votre centre.</p>
+
+        <h2 class="underline"><span>Créer un contact</span></h2>
+
+        <p>Cette plateforme, vous propose une gestion de votre carnet d'adresses. Vous pourrez donc ajouter, à tout
+            moment, un nouveau contact. Pour cela, vous pouvez vous rendre dans la rubrique <a target="_blank"
+                                                                                               href="{{ path('gospelcenterAdmin_persons', {'center': center.ref}) }}">Contacts</a>
+            et ajouter un nouveau contact à l'aide du lien d'ajout dans la partie supérieure droite.</p>
+
+        <p>Afin de pouvoir ajouter le contact, vous devrez remplir les informations (obligatoires) suivantes :</p>
+
+        <ul>
+            <li>Le genre</li>
+            <li>Le prénom</li>
+            <li>Le nom</li>
+        </ul>
+
+        <h2 class="underline"><span>Orateurs</span></h2>
+
+        <p>Afin de créer une célébration, vous avez besoin d'orateurs. Dans la rubrique <a target="_blank"
+                                                                                           href="{{ path('gospelcenterAdmin_persons', {'center': center.ref}) }}">Contacts</a>,
+            vous pourrez créer un contact et sélectionner le champ "est orateur". Grâce à cette valeur, le contact
+            se retrouvera dans la liste des orateurs qui se trouve dans le formulaire d'ajout d'une célébration.</p>
+
+        <h2 class="underline"><span>Situation actuelle</span></h2>
+
+        <p>Actuellement, la gestion des contacts n'est pas complètement terminée. Il est donc conseillé de
+            l'utiliser uniquement pour gérer les orateurs.</p>
+
+    </article>
+
+
+    <article class="tab blog-style" id="pages">
+
+        <h1>Gestion des pages</h1>
+
+        <p>Dans la rubrique <a target="_blank"
+                               href="{{ path('gospelcenterAdmin_pages', {'center': center.ref}) }}">Pages</a>,
+            vous pourrez gérer certaines pages de votre centre.</p>
+
+        <h2 class="underline"><span>Créer une page</span></h2>
+
+        <p>Vous pouvez créer (actuellement) la page des bases et celles de la jeunesse.</p>
+
+        <p>Lorsque vous créez une page, vous devez remplir les informations (obligatoires) suivantes :</p>
+
+        <ul>
+            <li>Le menu dans le quel la page apparaitra</li>
+            <li>Le titre</li>
+            <li>Le slogan de la page</li>
+            <li>La langue</li>
+        </ul>
+
+        <h2 class="underline"><span>Page Jeunesse</span></h2>
+
+        <p>Chaque groupe de la jeunesse est représenté par une page. Le titre désigne le nom du groupe alors que le
+            slogan désigne la tranche d'âge du groupe.</p>
+
+    </article>
+
+
+    <article class="tab blog-style" id="slides">
+
+        <h1>Gestion des slides</h1>
+
+        <p>Dans la rubrique <a target="_blank"
+                               href="{{ path('gospelcenterAdmin_slides', {'center': center.ref}) }}">Slides</a>,
+            vous pourrez gérer les slides qui se trouve dans certaines pages.</p>
+
+        <h2 class="underline"><span>Créer un slide</span></h2>
+
+        <p>Chaque page (générée par la rubriques <a target="_blank"
+                                                    href="{{ path('gospelcenterAdmin_pages', {'center': center.ref}) }}">Pages</a>)
+            peut contenir une infinité de slides.</p>
+
+        <p>Lorsque vous créez un slide, vous devez remplir les informations (obligatoires) suivantes :</p>
+
+        <ul>
+            <li>L'image de fond</li>
+            <li>Le titre</li>
+            <li>Le texte</li>
+            <li>La page sur laquelle le slide apparaitra</li>
+        </ul>
+
+        <h2 class="underline"><span>Ajouter un liens</span></h2>
+
+        <p>Il est également possible d'ajouter un lien en bas d'un slide. Pour cela, remplissez les informations
+            suivantes :</p>
+
+        <ul>
+            <li>L'url du lien</li>
+            <li>Le nom du lien (nom du bouton)</li>
+        </ul>
+
+    </article>
+
+
+    <article class="tab blog-style" id="ads">
+
+        <h1>Gestion des pubs</h1>
+
+        <p>Dans la rubrique <a target="_blank"
+                               href="{{ path('gospelcenterAdmin_ads', {'center': center.ref}) }}">Pubs</a>,
+            vous pourrez gérer les pubs qui se trouve .</p>
+
+        <p>Si vous avez quelque chose à communiquer d'important, c'est ici que ça se passe. La Home page offre un espace
+            de pub en plus de la liste des trois prochains events.</p>
+
+        <h2 class="underline"><span>Créer une pub</span></h2>
+
+        <p>Vous trouverez un lien d'ajout dans la partie supérieure de la
+            rubrique <a target="_blank"
+                        href="{{ path('gospelcenterAdmin_ads', {'center': center.ref}) }}">Pubs</a>.
+        </p>
+
+        <p>Lorsque vous créez une pub, vous devez remplir les informations (obligatoires) suivantes :</p>
+
+        <ul>
+            <li>Le titre</li>
+            <li>Le sous-titre</li>
+            <li>L'url du lien (une pub est simplement un lien)</li>
+            <li>La page où la pub s'affichera</li>
+            <li>L'image de fond</li>
+        </ul>
+
+        <h2 class="underline"><span>L'image de fond</span></h2>
+
+        <p>L'image en arrière plan doit être sans texte. Il faut une image qui puisse être rognée. Selon la taille de
+            l'écran de l'utilisateur, cette image sera redimensionnée.</p>
+
+        <p>Il est conseillé d'avoir une image sobre afin que le texte soit lisible. Un simple dégradé peut être une
+            bonne solution si vous n'avez pas d'image adéquate.</p>
+
+        <h2 class="underline"><span>Le status</span></h2>
+
+        <p>Le status définit si la pub est visible sur le site (publique) ou non.</p>
+
+        <p>Grâce à ce paramètre, vous pouvez créer une pub sans pour autant la publier. Vous pouvez dépublier une pub à
+            tout moment à l'aide de ce paramètre.</p>
+
+    </article>
+
+
+    <article class="tab blog-style" id="images">
+
+        <h1>Gestion des images</h1>
+
+        <p>Afin d'avoir des images de bonne qualité sur votre site, il est important de suivre ces instructions :</p>
+
+        <h2 class="underline"><span>Célébrations</span></h2>
+
+        <p>Cette section est en cours de rédaction.</p>
+
+        <h2 class="underline"><span>Events</span></h2>
+
+        <h3>Picture</h3>
+        <p>Cette section est en cours de rédaction.</p>
+
+        <h3>Cover</h3>
+        <p>Cette section est en cours de rédaction.</p>
+
+
+        <h2 class="underline"><span>Slides</span></h2>
+
+        <p>Cette section est en cours de rédaction.</p>
+
+        <h2 class="underline"><span>Pubs</span></h2>
+
+        <p>Cette section est en cours de rédaction.</p>
+
+    </article>
+
+
+    </section>
+
+{% endblock %}
