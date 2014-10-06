@@ -2,10 +2,10 @@
 
 {% block adminSubNav %}
     <li><a href="{{ path('gospelcenterAdmin_locations', {'center': center.ref}) }}"
-           {% if tab == 'locations' %}class="current focus"{% endif %}>Locations</a></li>
+           {% if tab == 'locations' %}class="current focus"{% endif %}>{{ 'gc.admin.nav.locations'|trans }}</a></li>
     <li><a href="{{ path('gospelcenterAdmin_images', {'center': center.ref}) }}"
-           {% if tab == 'images' or tab == 'imagesAll' %}class="current focus"{% endif %}>Images</a></li>
+           {% if tab == 'images' or tab == 'imagesAll' %}class="current focus"{% endif %}>{{ 'gc.admin.nav.images'|trans }}</a></li>
     <li><a href="{{ path('gospelcenterAdmin_units', {'center': center.ref}) }}"
-           {% if tab == 'units' %}class="current focus"{% endif %}>Units</a></li>
+           {% if tab == 'units' %}class="current focus"{% endif %}>{{ 'gc.admin.nav.units'|trans }}</a></li>
 
 {% endblock %}

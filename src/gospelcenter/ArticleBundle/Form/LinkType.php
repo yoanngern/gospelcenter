@@ -16,13 +16,13 @@ class LinkType extends AbstractType
     {
         $builder
             ->add('url', 'url', array(
-                'attr' => array('placeholder' => 'Url'),
+                'attr' => array('placeholder' => 'gc.admin.link.url'),
                 'label' => false,
             ))
 
             ->add('name', 'text', array(
                 'attr' => array(
-                    'placeholder' => 'Name',
+                    'placeholder' => 'gc.admin.link.name',
                     'class' => 'name'
                 ),
                 'label' => false,
@@ -38,7 +38,7 @@ class LinkType extends AbstractType
                 ),
                 'multiple' => false,
                 'label' => false,
-                'empty_value' => 'Select a type'
+                'empty_value' => 'gc.admin.link.select_type'
             ));
     }
 

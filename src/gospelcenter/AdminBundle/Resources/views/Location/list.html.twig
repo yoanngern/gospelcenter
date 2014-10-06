@@ -4,7 +4,7 @@
     {{ parent() }} - Locations
 {% endblock %}
 
-{% block adminTitle %}<h1>Locations</h1>{% endblock %}
+{% block adminTitle %}<h1>{{ 'gc.admin.title.locations'|trans }}</h1>{% endblock %}
 
 {% block adminTools %}
     <a href="{{ path('gospelcenterAdmin_locations_add', {'center': center.ref}) }}" class="add">Add a location</a>

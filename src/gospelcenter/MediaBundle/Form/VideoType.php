@@ -18,7 +18,7 @@ class VideoType extends AbstractType
 
             ->add('url', 'text', array(
                 'attr' => array(
-                    'placeholder' => 'Video url',
+                    'placeholder' => 'gc.admin.video.url',
                     'class' => 'video_url'
                 ),
                 'label' => false,

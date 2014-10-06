@@ -29,7 +29,7 @@ class PersonType extends AbstractType
                 'text',
                 array(
                     'attr' => array(
-                        'placeholder' => 'Firstname',
+                        'placeholder' => 'gc.admin.contacts.firstname',
                     ),
                     'required' => true,
                     'label' => false,
@@ -40,7 +40,7 @@ class PersonType extends AbstractType
                 'text',
                 array(
                     'attr' => array(
-                        'placeholder' => 'Lastname',
+                        'placeholder' => 'gc.admin.contacts.lastname',
                     ),
                     'required' => true,
                     'label' => false,
@@ -56,12 +56,12 @@ class PersonType extends AbstractType
                 'choice',
                 array(
                     'attr' => array(
-                        'placeholder' => 'Title',
+                        'placeholder' => 'gc.admin.contacts.gender',
                         'class' => 'radio'
                     ),
                     'choices' => array(
-                        'man' => 'Man',
-                        'woman' => 'Woman',
+                        'man' => 'gc.generic.man',
+                        'woman' => 'gc.generic.woman',
                     ),
                     'required' => true,
                     'label' => false,
@@ -74,9 +74,9 @@ class PersonType extends AbstractType
                 'birthday',
                 array(
                     'empty_value' => array(
-                        'year' => 'Year',
-                        'month' => 'Month',
-                        'day' => 'Day'
+                        'year' => 'gc.generic.year',
+                        'month' => 'gc.generic.month',
+                        'day' => 'gc.generic.day'
                     ),
                     'format' => 'd MMMM yyyy'
                 )
@@ -86,7 +86,7 @@ class PersonType extends AbstractType
                 'email',
                 array(
                     'attr' => array(
-                        'placeholder' => 'Email',
+                        'placeholder' => 'gc.admin.contacts.email',
                     ),
                     'required' => false,
                     'label' => false,
@@ -97,7 +97,7 @@ class PersonType extends AbstractType
                 new TelType(),
                 array(
                     'attr' => array(
-                        'placeholder' => 'Private phone',
+                        'placeholder' => 'gc.admin.contacts.private_phone',
                     ),
                     'required' => false,
                     'label' => false,
@@ -108,7 +108,7 @@ class PersonType extends AbstractType
                 new TelType(),
                 array(
                     'attr' => array(
-                        'placeholder' => 'Mobile phone',
+                        'placeholder' => 'gc.admin.contacts.mobile_phone',
                     ),
                     'required' => false,
                     'label' => false,
@@ -119,7 +119,7 @@ class PersonType extends AbstractType
                 'textarea',
                 array(
                     'attr' => array(
-                        'placeholder' => 'Notes',
+                        'placeholder' => 'gc.admin.contacts.notes',
                     ),
                     'required' => false,
                     'label' => false,
@@ -130,7 +130,7 @@ class PersonType extends AbstractType
                 'entity',
                 array(
                     'attr' => array(
-                        'placeholder' => 'Language',
+                        'placeholder' => 'gc.admin.contacts.language',
                         'class' => 'selectMultiple'
                     ),
                     'class' => 'gospelcenterLanguageBundle:Language',
@@ -149,7 +149,7 @@ class PersonType extends AbstractType
                 'checkbox',
                 array(
                     'attr' => array(
-                        'placeholder' => 'is he abroad',
+                        'placeholder' => 'gc.admin.contacts.is_abroad',
                     ),
                     'required' => false,
                     'label' => false,
@@ -160,7 +160,7 @@ class PersonType extends AbstractType
                 'checkbox',
                 array(
                     'attr' => array(
-                        'placeholder' => 'has children',
+                        'placeholder' => 'gc.admin.contacts.has_children',
                     ),
                     'required' => false,
                     'label' => false,
@@ -171,7 +171,7 @@ class PersonType extends AbstractType
                 'text',
                 array(
                     'attr' => array(
-                        'placeholder' => 'Function',
+                        'placeholder' => 'gc.admin.contacts.function',
                     ),
                     'required' => false,
                     'label' => false,
@@ -182,7 +182,7 @@ class PersonType extends AbstractType
                 'checkbox',
                 array(
                     'attr' => array(
-                        'placeholder' => 'is speaker',
+                        'placeholder' => 'gc.admin.contacts.is_speaker',
                     ),
                     'required' => false,
                     'label' => false,
@@ -193,7 +193,7 @@ class PersonType extends AbstractType
                 'checkbox',
                 array(
                     'attr' => array(
-                        'placeholder' => 'is visitor',
+                        'placeholder' => 'gc.admin.contacts.is_visitor',
                     ),
                     'required' => false,
                     'label' => false,
@@ -204,7 +204,7 @@ class PersonType extends AbstractType
                 'checkbox',
                 array(
                     'attr' => array(
-                        'placeholder' => 'is global',
+                        'placeholder' => 'gc.admin.contacts.is_global',
                     ),
                     'required' => false,
                     'label' => false,
@@ -215,7 +215,7 @@ class PersonType extends AbstractType
                 'checkbox',
                 array(
                     'attr' => array(
-                        'placeholder' => 'is member',
+                        'placeholder' => 'gc.admin.contacts.is_member',
                     ),
                     'required' => false,
                     'label' => false,
@@ -226,7 +226,7 @@ class PersonType extends AbstractType
                 new ImageSimpleType(),
                 array(
                     'attr' => array(
-                        'placeholder' => 'Image',
+                        'placeholder' => 'gc.admin.contacts.image',
                     ),
                     'required' => false,
                     'label' => false,

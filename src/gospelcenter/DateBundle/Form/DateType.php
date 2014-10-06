@@ -16,10 +16,10 @@ class DateType extends AbstractType
     {
         $builder
             ->add('start', 'datetime', array('empty_value' => array(
-                'year' => 'Year', 'month' => 'Month', 'day' => 'Day'),
+                'year' => 'gc.generic.year', 'month' => 'gc.generic.month', 'day' => 'gc.generic.day'),
                 'widget' => 'choice',
                 'date_format' => 'd MMMM yyyy',
-                'label' => 'Start date',
+                'label' => 'gc.admin.date.start_date',
                 'minutes' => array(
                     '00' => '00',
                     '05' => '05',
@@ -34,10 +34,10 @@ class DateType extends AbstractType
                     '50' => '50',
                     '55' => '55')))
             ->add('end', 'datetime', array('empty_value' => array(
-                'year' => 'Year', 'month' => 'Month', 'day' => 'Day'),
+                'year' => 'gc.generic.year', 'month' => 'gc.generic.month', 'day' => 'gc.generic.day'),
                 'widget' => 'choice',
                 'date_format' => 'd MMMM yyyy',
-                'label' => 'End date',
+                'label' => 'gc.admin.date.end_date',
                 'minutes' => array(
                     '00' => '00',
                     '05' => '05',

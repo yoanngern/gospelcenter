@@ -17,9 +17,12 @@ use gospelcenter\ArticleBundle\Form\LinkType;
 class EventType extends AbstractType
 {
 
-    public function __construct($options = null)
+    protected $container;
+
+    public function __construct($options = null, $container)
     {
         $this->center = $options;
+        $this->container = $container;
     }
 
     /**
@@ -30,27 +33,29 @@ class EventType extends AbstractType
     {
         $center = $this->center;
 
+        $translator = $this->container->get('translator');
+
         $builder
             ->add(
                 'status',
                 'checkbox',
                 array(
                     'required' => false,
-                    'attr' => array('placeholder' => 'Status')
+                    'attr' => array('placeholder' => 'gc.admin.events.status')
                 )
             )
             ->add(
                 'title',
                 'text',
                 array(
-                    'attr' => array('placeholder' => 'Title')
+                    'attr' => array('placeholder' => 'gc.admin.events.title')
                 )
             )
             ->add(
                 'introText',
                 'textarea',
                 array(
-                    'attr' => array('placeholder' => 'Intro text')
+                    'attr' => array('placeholder' => 'gc.admin.events.intro_text')
                 )
             )
             ->add(
@@ -58,7 +63,7 @@ class EventType extends AbstractType
                 'textarea',
                 array(
                     'required' => false,
-                    'attr' => array('placeholder' => 'Full text')
+                    'attr' => array('placeholder' => 'gc.admin.events.full_text')
                 )
             )
             ->add(
@@ -67,7 +72,7 @@ class EventType extends AbstractType
                 array(
                     'class' => 'gospelcenterLocationBundle:Location',
                     'required' => false,
-                    'empty_value' => 'Choose a location',
+                    'empty_value' => 'gc.admin.events.choose_location',
                     'property' => 'name',
                     'query_builder' => function (EntityRepository $r) use (
                         $center
@@ -96,10 +101,10 @@ class EventType extends AbstractType
                 array(
                     'attr' => array(
                         'class' => 'collection',
-                        'data-add' => 'Add another date',
-                        'data-add_first' => 'Add a date',
-                        'data-remove' => 'Remove this date',
-                        'data-label' => 'Date'
+                        'data-add' => $translator->trans('gc.admin.events.date.add_another'),
+                        'data-add_first' => $translator->trans('gc.admin.events.date.add'),
+                        'data-remove' => $translator->trans('gc.admin.events.date.remove'),
+                        'data-label' => $translator->trans('gc.admin.events.date.title')
                     ),
                     'required' => false,
                     'type' => new DateType(),
@@ -114,10 +119,10 @@ class EventType extends AbstractType
                 array(
                     'attr' => array(
                         'class' => 'collection links',
-                        'data-add' => 'Add another link',
-                        'data-add_first' => 'Add a link',
-                        'data-remove' => 'Remove this link',
-                        'data-label' => 'Link'
+                        'data-add' => $translator->trans('gc.admin.events.links.add_another'),
+                        'data-add_first' => $translator->trans('gc.admin.events.links.add'),
+                        'data-remove' => $translator->trans('gc.admin.events.links.remove'),
+                        'data-label' => $translator->trans('gc.admin.events.link')
                     ),
                     'required' => false,
                     'type' => new LinkType(),

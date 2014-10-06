@@ -24,3 +24,10 @@ gc:
         with: with
         and: " and "
         celebrationWith: Celebration with
+
+    security:
+        login: Sign in
+        logout: Sign out
+        username: Username
+        password: Password
+        keepMe: Keep me logged in

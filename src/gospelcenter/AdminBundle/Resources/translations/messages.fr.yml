@@ -1,0 +1,130 @@
+gc:
+    admin:
+        nav:
+            celebrations: Célébrations
+            contacts: Contacts
+            events: Events
+            pages: Pages
+            ads: Pubs
+            other: Autres
+            guide: Guide
+            units: Groupes
+            locations: Lieux
+            images: Images
+            speakers: Orateurs
+            slides: Slides
+            youth: Jeunesse
+        title:
+            celebrations: Célébrations
+            contacts: Contacts
+            events: Events
+            upcoming_events: Prochains events
+            past_events: Anciens events
+            pages: Pages
+            ads: Pubs
+            other: Autres
+            guide: Guide
+            center_speakers: Orateurs de %center%
+            all_speakers: Tous les orateurs
+            speakers: Orateurs
+            slides: Slides
+            youth_pages: Pages de la jeunesse
+            locations: Lieux
+            center_images: Images de %center%
+            all_images: Toutes les images
+            units: Groupes d'utilisateurs
+        generic:
+            cancel: Annuler
+            save: Enregistrer les modifications
+            delete: Supprimer
+        celebrations:
+            date: Date
+            time: Heures
+            speakers: Orateurs
+            add: Créer une célébration
+            edit: Modifier une célébration
+            date_of: Date de la célébration
+            title: Titre du message
+            description: Description du message
+            status: Status
+            best_of: Best of
+            kids_program: Programme pour les enfants
+            location: Lieu
+            choose_location: Choisissez un lieu
+            tab:
+                general: Général
+                preaching: Message
+                media: Médias
+        contacts:
+            add: Créer un contact
+            edit: Modifier un contact
+            firstname: Prénom
+            lastname: Nom
+            gender: Genre
+            languages: Langues
+            birth: Né le
+            function: Fonction
+            private_phone: Téléphone privé
+            mobile_phone: Téléphone portable
+            email: E-mail
+            is_abroad: est à l'étranger
+            has_children: a des enfants
+            is_speaker: est orateur
+            is_member: est membre
+            is_visitor: est visiteur
+            is_global: est global
+            notes: Notes
+            tab:
+                general: Général
+                user: Compte utilisateur
+                notes: Notes
+        user:
+            username: Nom d'utilisateur
+            email: E-mail
+            password: Mot de passe
+            confirmation: Confirmation
+        location:
+            name: Nom
+            address1: Adresse 1
+            address2: Adresse 2
+            postal_code: Code postale
+            city: Ville
+            country: Pays
+        events:
+            add: Créer un event
+            edit: Modifier un event
+            title: Titre
+            dates: Dates
+            times: Heures
+            location: Lieu
+            no_upcoming: Il n'y a pas d'events à venir.
+            no_past: Il n'y a pas d'anciens events.
+            intro_text: Texte d'intro
+            full_text: Texte
+            status: Status
+            date:
+                add_another: Ajouter une autre date
+                add: Ajouter une date
+                remove: Supprimer une date
+                title: Date
+            link: Lien
+            links:
+                add_another: Ajouter un autre lien
+                add: Ajouter un lien
+                remove: Supprimer un lien
+            choose_location: Choisissez un lieu
+            tab:
+                general: Général
+                dates: Dates
+                images: Images
+                links: Liens
+                video: Vidéo
+        link:
+            url: Url du lien
+            name: Nom
+            select_type: Sélectionnez un type
+        date:
+            start_date: Commence
+            end_date: Se termine
+        video:
+            url: Url de la vidéo

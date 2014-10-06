@@ -7,20 +7,20 @@
 {% block adminTitle %}
 
     {% if tab == 'images' %}
-        <h1 class="switch">{{ center.name }}'s images</h1>
+        <h1 class="switch">{{ 'gc.admin.title.center_images'|trans({'%center%': center.name}) }}</h1>
     {% endif %}
 
     {% if tab == 'imagesAll' %}
-        <h1 class="switch">All images</h1>
+        <h1 class="switch">{{ 'gc.admin.title.all_images'|trans }}</h1>
     {% endif %}
 
     <ul class="adminTitle">
 
         <li {% if tab == 'images' %}class="current"{% endif %}>
-            <a href="{{ path('gospelcenterAdmin_images', {'center': center.ref}) }}">{{ center.name }}'s images</a>
+            <a href="{{ path('gospelcenterAdmin_images', {'center': center.ref}) }}">{{ 'gc.admin.title.center_images'|trans({'%center%': center.name}) }}</a>
         </li>
         <li {% if tab == 'imagesAll' %}class="current"{% endif %}>
-            <a href="{{ path('gospelcenterAdmin_images_all', {'center': center.ref}) }}">All images</a>
+            <a href="{{ path('gospelcenterAdmin_images_all', {'center': center.ref}) }}">{{ 'gc.admin.title.all_images'|trans }}</a>
         </li>
 
     </ul>

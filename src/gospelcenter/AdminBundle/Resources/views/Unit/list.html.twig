@@ -4,7 +4,7 @@
     {{ parent() }} - Units
 {% endblock %}
 
-{% block adminTitle %}<h1>Units</h1>{% endblock %}
+{% block adminTitle %}<h1>{{ 'gc.admin.title.units'|trans }}</h1>{% endblock %}
 
 {% block adminTools %}
     <a href="{{ path('gospelcenterAdmin_units_add', {'center': center.ref}) }}" class="add">Add a unit</a>

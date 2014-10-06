@@ -2,6 +2,4 @@ parameters:
 #    gospelcenter_people.example.class: gospelcenter\PeopleBundle\Example
 
 services:
-#    gospelcenter_people.example:
-#        class: %gospelcenter_people.example.class%
-#        arguments: [@service_id, "plain_value", %parameter%]
+

@@ -32,7 +32,7 @@ class CelebrationType extends AbstractType
                 'text',
                 array(
                     'attr' => array(
-                        'placeholder' => 'Title',
+                        'placeholder' => 'gc.admin.celebrations.title',
                     ),
                     'required' => false,
                     'label' => false,
@@ -43,9 +43,9 @@ class CelebrationType extends AbstractType
                 'date',
                 array(
                     'empty_value' => array(
-                        'year' => 'Year',
-                        'month' => 'Month',
-                        'day' => 'Day'
+                        'year' => 'gc.generic.year',
+                        'month' => 'gc.generic.month',
+                        'day' => 'gc.generic.day'
                     ),
                     'format' => 'd MMMM yyyy',
                     'label' => false,
@@ -106,7 +106,7 @@ class CelebrationType extends AbstractType
                 'textarea',
                 array(
                     'attr' => array(
-                        'placeholder' => 'Description',
+                        'placeholder' => 'gc.admin.celebrations.description',
                     ),
                     'required' => false,
                     'label' => false,
@@ -117,7 +117,7 @@ class CelebrationType extends AbstractType
                 'checkbox',
                 array(
                     'attr' => array(
-                        'placeholder' => 'Status',
+                        'placeholder' => 'gc.admin.celebrations.status',
                     ),
                     'required' => false,
                     'label' => false,
@@ -128,7 +128,7 @@ class CelebrationType extends AbstractType
                 'checkbox',
                 array(
                     'attr' => array(
-                        'placeholder' => 'Best of',
+                        'placeholder' => 'gc.admin.celebrations.best_of',
                     ),
                     'required' => false,
                     'label' => false,
@@ -139,7 +139,7 @@ class CelebrationType extends AbstractType
                 'checkbox',
                 array(
                     'attr' => array(
-                        'placeholder' => 'Kids program',
+                        'placeholder' => 'gc.admin.celebrations.kids_program',
                     ),
                     'required' => false,
                     'label' => false,
@@ -151,11 +151,11 @@ class CelebrationType extends AbstractType
                 'entity',
                 array(
                     'attr' => array(
-                        'placeholder' => 'Location',
+                        'placeholder' => 'gc.admin.celebrations.location',
                     ),
                     'class' => 'gospelcenterLocationBundle:Location',
                     'required' => false,
-                    'empty_value' => 'Choose a location',
+                    'empty_value' => 'gc.admin.celebrations.choose_location',
                     'query_builder' => function (\gospelcenter\LocationBundle\Entity\LocationRepository $r) use (
                         $center
                     ) {

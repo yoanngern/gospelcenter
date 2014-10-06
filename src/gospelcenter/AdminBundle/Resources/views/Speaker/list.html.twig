@@ -3,11 +3,11 @@
 {% block adminTitle %}
 
     {% if tab == 'speakers' %}
-        <h1 class="switch">{{ center.name }}'s speakers</h1>
+        <h1 class="switch">{{ 'gc.admin.title.center_speakers'|trans({'%center%': center.name}) }}</h1>
     {% endif %}
 
     {% if tab == 'speakersAll' %}
-        <h1 class="switch">All speakers</h1>
+        <h1 class="switch">{{ 'gc.admin.title.all_speakers'|trans }}</h1>
     {% endif %}
 
     <ul class="adminTitle">
@@ -16,7 +16,7 @@
             <a href="{{ path('gospelcenterAdmin_speakers', {'center': center.ref}) }}">{{ center.name }}'s speakers</a>
         </li>
         <li {% if tab == 'speakersAll' %}class="current"{% endif %}>
-            <a href="{{ path('gospelcenterAdmin_speakers_all', {'center': center.ref}) }}">All speakers</a>
+            <a href="{{ path('gospelcenterAdmin_speakers_all', {'center': center.ref}) }}">{{ 'gc.admin.title.all_speakers'|trans }}</a>
         </li>
 
     </ul>
@@ -27,10 +27,10 @@
     <table class="main">
         <thead>
         <tr>
-            <th data-sort="string">Firstname<span>Firstname<div class="arrow"></div></span></th>
-            <th data-sort="string">Lastname<span>Lastname<div class="arrow"></div></span></th>
-            <th data-sort="string">Function<span>Function<div class="arrow"></div></span></th>
-            <th data-sort="string">Language<span>Language<div class="arrow"></div></span></th>
+            <th data-sort="string">{{ 'gc.admin.contacts.firstname'|trans }}<span>{{ 'gc.admin.contacts.firstname'|trans }}<div class="arrow"></div></span></th>
+            <th data-sort="string">{{ 'gc.admin.contacts.lastname'|trans }}<span>{{ 'gc.admin.contacts.lastname'|trans }}<div class="arrow"></div></span></th>
+            <th data-sort="string">{{ 'gc.admin.contacts.function'|trans }}<span>{{ 'gc.admin.contacts.function'|trans }}<div class="arrow"></div></span></th>
+            <th data-sort="string">{{ 'gc.admin.contacts.languages'|trans }}<span>{{ 'gc.admin.contacts.languages'|trans }}<div class="arrow"></div></span></th>
         </tr>
         </thead>
         <tbody>

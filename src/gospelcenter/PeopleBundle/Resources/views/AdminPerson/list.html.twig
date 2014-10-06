@@ -1,16 +1,16 @@
 {% extends "gospelcenterPeopleBundle::layout.html.twig" %}
 
-{% block adminTitle %}<h1>Contacts</h1>{% endblock %}
+{% block adminTitle %}<h1>{{ 'gc.admin.title.contacts'|trans }}</h1>{% endblock %}
 
 {% block adminListBody %}
 
     <table class="main">
         <thead>
         <tr>
-            <th data-sort="string">Firstname<span>Firstname<div class="arrow"></div></span></th>
-            <th data-sort="string">Lastname<span>Lastname<div class="arrow"></div></span></th>
-            <th data-sort="string">Gender<span>Gender<div class="arrow"></div></span></th>
-            <th data-sort="int">Date of birth<span>Date of birth<div class="arrow"></div></span></th>
+            <th data-sort="string">{{ 'gc.admin.contacts.firstname'|trans }}<span>{{ 'gc.admin.contacts.firstname'|trans }}<div class="arrow"></div></span></th>
+            <th data-sort="string">{{ 'gc.admin.contacts.lastname'|trans }}<span>{{ 'gc.admin.contacts.lastname'|trans }}<div class="arrow"></div></span></th>
+            <th data-sort="string">{{ 'gc.admin.contacts.gender'|trans }}<span>{{ 'gc.admin.contacts.gender'|trans }}<div class="arrow"></div></span></th>
+            <th data-sort="int">{{ 'gc.admin.contacts.birth'|trans }}<span>{{ 'gc.admin.contacts.birth'|trans }}<div class="arrow"></div></span></th>
         </tr>
         </thead>
         <tbody>

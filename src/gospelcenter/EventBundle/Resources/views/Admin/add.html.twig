@@ -9,10 +9,10 @@
 {% endblock %}
 
 {% block title %}
-    {{ parent() }} - Add an event
+    {{ parent() }} - {{ 'gc.admin.events.add'|trans }}
 {% endblock %}
 
-{% block adminTitle %}<h1>Add an event</h1>{% endblock %}
+{% block adminTitle %}<h1>{{ 'gc.admin.events.add'|trans }}</h1>{% endblock %}
 
 {% block adminBack %}
     <a class="back" href="{{ path('gospelcenterAdmin_events', {'center': center.ref}) }}">Events</a>
@@ -32,11 +32,11 @@
                 <nav class="sub_nav">
 
                     <ul>
-                        <li><a href="#general" class="current focus">General</a></li>
-                        <li><a href="#dates" class="">Dates</a></li>
-                        <li><a href="#images">Images</a></li>
-                        <li><a href="#links">Links</a></li>
-                        <li><a href="#video">Video</a></li>
+                        <li><a href="#general" class="current focus">{{ 'gc.admin.events.tab.general'|trans }}</a></li>
+                        <li><a href="#dates" class="">{{ 'gc.admin.events.tab.dates'|trans }}</a></li>
+                        <li><a href="#images">{{ 'gc.admin.events.tab.images'|trans }}</a></li>
+                        <li><a href="#links">{{ 'gc.admin.events.tab.links'|trans }}</a></li>
+                        <li><a href="#video">{{ 'gc.admin.events.tab.video'|trans }}</a></li>
                     </ul>
                 </nav>
 
@@ -87,7 +87,7 @@
 
             {{ form_rest(form) }}
 
-            <input type="submit" class="buttonLink" value="Add an event"/>
+            <input type="submit" class="buttonLink" value="{{ 'gc.admin.events.add'|trans }}"/>
 
         </form>
 

@@ -1,7 +1,7 @@
 {% extends "::adminLocalNew.html.twig" %}
 
 {% block title %}
-    {{ parent() }} - People
+    {{ parent() }} - {{ 'gc.admin.title.contacts'|trans }}
 {% endblock %}
 
 {% block adminTools %}
@@ -9,8 +9,8 @@
 {% endblock %}
 
 {% block adminSubNav %}
-    <li><a href="{{ path('gospelcenterAdmin_persons', {'center': center.ref}) }}" {% if (tab == 'contacts') or (tab == 'contactsAll') %}class="current focus"{% endif %}>Contacts</a></li>
-    <li><a href="{{ path('gospelcenterAdmin_speakers', {'center': center.ref}) }}" {% if (tab == 'speakers') or (tab == 'speakersAll') %}class="current focus"{% endif %}>Speakers</a></li>
+    <li><a href="{{ path('gospelcenterAdmin_persons', {'center': center.ref}) }}" {% if (tab == 'contacts') or (tab == 'contactsAll') %}class="current focus"{% endif %}>{{ 'gc.admin.nav.contacts'|trans }}</a></li>
+    <li><a href="{{ path('gospelcenterAdmin_speakers', {'center': center.ref}) }}" {% if (tab == 'speakers') or (tab == 'speakersAll') %}class="current focus"{% endif %}>{{ 'gc.admin.nav.speakers'|trans }}</a></li>
     {#
     <li><a href="{{ path('gospelcenterAdmin_members', {'center': center.ref}) }}" {% if tab == 'members' %}class="current focus"{% endif %}>Members</a></li>
     <li><a href="{{ path('gospelcenterAdmin_visitors', {'center': center.ref}) }}" {% if tab == 'visitors' %}class="current focus"{% endif %}>Visitors</a></li>

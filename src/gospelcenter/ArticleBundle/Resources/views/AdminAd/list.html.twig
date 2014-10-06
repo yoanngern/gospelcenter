@@ -1,10 +1,10 @@
 {% extends "::adminLocalNew.html.twig" %}
 
 {% block title %}
-    {{ parent() }} - Celebrations
+    {{ parent() }} - {{ 'gc.admin.title.ads'|trans }}
 {% endblock %}
 
-{% block adminTitle %}<h1>Ad</h1>{% endblock %}
+{% block adminTitle %}<h1>{{ 'gc.admin.title.ads'|trans }}</h1>{% endblock %}
 
 {% block adminTools %}
     <a href="{{ path('gospelcenterAdmin_ads_add', {'center': center.ref}) }}" class="add">Add an ad</a>

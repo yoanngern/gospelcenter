@@ -8,140 +8,145 @@
 {% endblock %}
 
 {% block title %}
-    {{ parent() }} - Add a contact
+    {{ parent() }} - {{ 'gc.admin.contacts.add'|trans }}
 {% endblock %}
 
-{% block adminTitle %}<h1>Add a contact</h1>{% endblock %}
+{% block adminTitle %}<h1>{{ 'gc.admin.contacts.add'|trans }}</h1>{% endblock %}
 
 {% block adminBack %}
-    <a class="back" href="{{ path('gospelcenterAdmin_persons', {'center': center.ref}) }}">Contacts</a>
+    <a class="back"
+       href="{{ path('gospelcenterAdmin_persons', {'center': center.ref}) }}">{{ 'gc.admin.title.contacts'|trans }}</a>
 {% endblock %}
 
 {% block adminBody %}
+    {% spaceless %}
 
-    <form class="person" action="{{ path('gospelcenterAdmin_persons_add', {'center': center.ref}) }}"
-          method="post" {{ form_enctype(form) }}>
+        <form class="person" action="{{ path('gospelcenterAdmin_persons_add', {'center': center.ref}) }}"
+              method="post" {{ form_enctype(form) }}>
 
 
-    <section class="tab">
+            <section class="tab">
 
-        <nav class="sub_nav">
-            {% spaceless %}
-                <ul>
-                    <li><a href="#general" class="current focus">General</a></li>
-                    <li><a href="#user">User account</a></li>
-                    <li><a href="#notes">Notes</a></li>
-                </ul>
-            {% endspaceless %}
-        </nav>
+                <nav class="sub_nav">
+                    <ul>
+                        <li><a href="#general" class="current focus">{{ 'gc.admin.contacts.tab.general'|trans }}</a>
+                        </li>
+                        <li><a href="#user">{{ 'gc.admin.contacts.tab.user'|trans }}</a></li>
+                        <li><a href="#notes">{{ 'gc.admin.contacts.tab.notes'|trans }}</a></li>
+                    </ul>
+                </nav>
 
-        <article class="tab active" id="general">
+                <article class="tab active" id="general">
 
-            {{ form_widget(form.gender) }}
-            {{ form_errors(form.gender) }}
+                    {{ form_widget(form.gender) }}
+                    {{ form_errors(form.gender) }}
 
-            <fieldset class="double">
-                {{ form_widget(form.firstname) }}
-                {{ form_errors(form.firstname) }}
+                    <fieldset class="double">
+                        {{ form_widget(form.firstname) }}
+                        {{ form_errors(form.firstname) }}
 
-                {{ form_widget(form.lastname) }}
-                {{ form_errors(form.lastname) }}
-            </fieldset>
+                        {{ form_widget(form.lastname) }}
+                        {{ form_errors(form.lastname) }}
+                    </fieldset>
 
-            {{ form_widget(form.function) }}
-            {{ form_errors(form.function) }}
+                    {{ form_widget(form.function) }}
+                    {{ form_errors(form.function) }}
 
-            {{ form_widget(form.image.file) }}
-            {{ form_errors(form.image.file) }}
+                    {{ form_widget(form.image.file) }}
+                    {{ form_errors(form.image.file) }}
 
-            {{ form_widget(form.privatePhone) }}
-            {{ form_errors(form.privatePhone) }}
+                    {{ form_widget(form.privatePhone) }}
+                    {{ form_errors(form.privatePhone) }}
 
-            {{ form_widget(form.mobilePhone) }}
-            {{ form_errors(form.mobilePhone) }}
+                    {{ form_widget(form.mobilePhone) }}
+                    {{ form_errors(form.mobilePhone) }}
 
-            {{ form_widget(form.email) }}
-            {{ form_errors(form.email) }}
+                    {{ form_widget(form.email) }}
+                    {{ form_errors(form.email) }}
 
-            {{ form_widget(form.dateOfBirth) }}
-            {{ form_errors(form.dateOfBirth) }}
+                    <fieldset class="datetime date">
+                        <h2>{{ 'gc.admin.contacts.birth'|trans }}</h2>
 
-            {{ form_widget(form.location.address1) }}
-            {{ form_errors(form.location.address1) }}
+                        {{ form_widget(form.dateOfBirth) }}
+                        {{ form_errors(form.dateOfBirth) }}
+                    </fieldset>
 
-            {{ form_widget(form.location.address2) }}
-            {{ form_errors(form.location.address2) }}
+                    {{ form_widget(form.location.address1) }}
+                    {{ form_errors(form.location.address1) }}
 
-            <fieldset class="double">
-                {{ form_widget(form.location.postalCode) }}
-                {{ form_errors(form.location.postalCode) }}
+                    {{ form_widget(form.location.address2) }}
+                    {{ form_errors(form.location.address2) }}
 
-                {{ form_widget(form.location.city) }}
-                {{ form_errors(form.location.city) }}
-            </fieldset>
+                    <fieldset class="double">
+                        {{ form_widget(form.location.postalCode) }}
+                        {{ form_errors(form.location.postalCode) }}
 
-            {{ form_widget(form.location.country) }}
-            {{ form_errors(form.location.country) }}
+                        {{ form_widget(form.location.city) }}
+                        {{ form_errors(form.location.city) }}
+                    </fieldset>
 
-            {{ form_widget(form.languages) }}
-            {{ form_errors(form.languages) }}
+                    {{ form_widget(form.location.country) }}
+                    {{ form_errors(form.location.country) }}
 
-            <fieldset class="inline">
-                {{ form_widget(form.abroad) }}
-                {{ form_errors(form.abroad) }}
+                    {{ form_widget(form.languages) }}
+                    {{ form_errors(form.languages) }}
 
-                {{ form_widget(form.hasChildren) }}
-                {{ form_errors(form.hasChildren) }}
-            </fieldset>
+                    <fieldset class="inline">
+                        {{ form_widget(form.abroad) }}
+                        {{ form_errors(form.abroad) }}
 
-            <fieldset class="inline">
-                {{ form_widget(form.isSpeaker) }}
-                {{ form_errors(form.isSpeaker) }}
+                        {{ form_widget(form.hasChildren) }}
+                        {{ form_errors(form.hasChildren) }}
+                    </fieldset>
 
-                {{ form_widget(form.isMember) }}
-                {{ form_errors(form.isMember) }}
+                    <fieldset class="inline">
+                        {{ form_widget(form.isSpeaker) }}
+                        {{ form_errors(form.isSpeaker) }}
 
-                {{ form_widget(form.isVisitor) }}
-                {{ form_errors(form.isVisitor) }}
+                        {{ form_widget(form.isMember) }}
+                        {{ form_errors(form.isMember) }}
 
-                {{ form_widget(form.isGlobal) }}
-                {{ form_errors(form.isGlobal) }}
-            </fieldset>
-        </article>
+                        {{ form_widget(form.isVisitor) }}
+                        {{ form_errors(form.isVisitor) }}
 
-        <article class="tab" id="user">
-            {{ form_widget(form.user.username, {'attr': {'placeholder': 'Username'} }) }}
-            {{ form_errors(form.user.username) }}
+                        {{ form_widget(form.isGlobal) }}
+                        {{ form_errors(form.isGlobal) }}
+                    </fieldset>
+                </article>
 
-            {{ form_widget(form.user.email, {'attr': {'placeholder': 'Email'} }) }}
-            {{ form_errors(form.user.email) }}
+                <article class="tab" id="user">
+                    {{ form_widget(form.user.username, {'attr': {'placeholder': 'gc.admin.user.username'|trans} }) }}
+                    {{ form_errors(form.user.username) }}
 
-            <fieldset class="double">
-                {{ form_widget(form.user.plainPassword.first, {'attr': {'placeholder': 'Password'} }) }}
-                {{ form_errors(form.user.plainPassword.first) }}
+                    {{ form_widget(form.user.email, {'attr': {'placeholder': 'gc.admin.user.email'|trans} }) }}
+                    {{ form_errors(form.user.email) }}
 
-                {{ form_widget(form.user.plainPassword.second, {'attr': {'placeholder': 'Confirmation'} }) }}
-                {{ form_errors(form.user.plainPassword.second) }}
-            </fieldset>
+                    <fieldset class="double">
+                        {{ form_widget(form.user.plainPassword.first, {'attr': {'placeholder': 'gc.admin.user.password'|trans} }) }}
+                        {{ form_errors(form.user.plainPassword.first) }}
 
-            {{ form_widget(form.user.units, {'attr': {'class': 'selectMultiple'} }) }}
-            {{ form_errors(form.user.units) }}
-        </article>
+                        {{ form_widget(form.user.plainPassword.second, {'attr': {'placeholder': 'gc.admin.user.confirmation'|trans} }) }}
+                        {{ form_errors(form.user.plainPassword.second) }}
+                    </fieldset>
 
-        <article class="tab" id="notes">
+                    {{ form_widget(form.user.units, {'attr': {'class': 'selectMultiple'} }) }}
+                    {{ form_errors(form.user.units) }}
+                </article>
 
-            {{ form_widget(form.notes) }}
-            {{ form_errors(form.notes) }}
+                <article class="tab" id="notes">
+
+                    {{ form_widget(form.notes) }}
+                    {{ form_errors(form.notes) }}
+
+                    {{ form_rest(form) }}
+                </article>
+            </section>
 
             {{ form_rest(form) }}
-        </article>
-    </section>
 
-    {{ form_rest(form) }}
+            <input type="submit" class="buttonLink" value="{{ 'gc.admin.contacts.add'|trans }}"/>
 
-    <input type="submit" class="buttonLink" value="Add a contact"/>
-
-    </form>
-
+        </form>
+    {% endspaceless %}
 
 {% endblock %}

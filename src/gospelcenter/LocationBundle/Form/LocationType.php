@@ -20,7 +20,7 @@ class LocationType extends AbstractType
                 'text',
                 array(
                     'attr' => array(
-                        'placeholder' => 'Name',
+                        'placeholder' => 'gc.admin.location.name',
                     ),
                     'required' => true,
                     'label' => false,
@@ -31,7 +31,7 @@ class LocationType extends AbstractType
                 'text',
                 array(
                     'attr' => array(
-                        'placeholder' => 'Address 1',
+                        'placeholder' => 'gc.admin.location.address1',
                     ),
                     'required' => true,
                     'label' => false,
@@ -42,7 +42,7 @@ class LocationType extends AbstractType
                 'text',
                 array(
                     'attr' => array(
-                        'placeholder' => 'Address 2',
+                        'placeholder' => 'gc.admin.location.address2',
                     ),
                     'required' => false,
                     'label' => false,
@@ -53,7 +53,7 @@ class LocationType extends AbstractType
                 'text',
                 array(
                     'attr' => array(
-                        'placeholder' => 'Postal code',
+                        'placeholder' => 'gc.admin.location.postal_code',
                     ),
                     'required' => true,
                     'label' => false,
@@ -64,7 +64,7 @@ class LocationType extends AbstractType
                 'text',
                 array(
                     'attr' => array(
-                        'placeholder' => 'City',
+                        'placeholder' => 'gc.admin.location.city',
                     ),
                     'required' => true,
                     'label' => false,
@@ -75,7 +75,7 @@ class LocationType extends AbstractType
                 'text',
                 array(
                     'attr' => array(
-                        'placeholder' => 'Country',
+                        'placeholder' => 'gc.admin.location.country',
                     ),
                     'required' => true,
                     'label' => false,

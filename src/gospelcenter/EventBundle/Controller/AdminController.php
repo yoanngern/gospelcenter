@@ -83,7 +83,7 @@ class AdminController extends Controller
             throw new AccessDeniedException('Unauthorised access!');
         }
 
-        $form = $this->createForm(new EventType($center), $event);
+        $form = $this->createForm(new EventType($center, $this), $event);
 
         $request = $this->get('request');
 
@@ -140,7 +140,7 @@ class AdminController extends Controller
             throw new AccessDeniedException('Unauthorised access!');
         }
 
-        $form = $this->createForm(new EventType($center), $event);
+        $form = $this->createForm(new EventType($center, $this), $event);
 
         $request = $this->get('request');
 

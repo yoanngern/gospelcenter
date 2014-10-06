@@ -5,9 +5,9 @@ app.request.attributes.get('_route_params')) %}
     <h1>Login</h1>
 	<ul> 
 	    {% if app.user %}
-	        <li><a href="{{ path('fos_user_security_logout') }}">Sign out</a></li>
+	        <li><a href="{{ path('fos_user_security_logout') }}">{{ 'gc.security.logout'|trans }}</a></li>
 		{% else %}
-		    <li><a href="{{ path('fos_user_security_login', {'continue': currentPath}) }}">Sign in</a></li>
+		    <li><a href="{{ path('fos_user_security_login', {'continue': currentPath}) }}">{{ 'gc.security.login'|trans }}</a></li>
 		{% endif %}
 	</ul>
 </nav>

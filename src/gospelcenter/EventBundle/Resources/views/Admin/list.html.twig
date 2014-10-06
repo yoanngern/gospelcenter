@@ -1,31 +1,31 @@
 {% extends "::adminLocalNew.html.twig" %}
 
 {% block title %}
-    {{ parent() }} - Events
+    {{ parent() }} - {{ 'gc.admin.title.events'|trans }}
 {% endblock %}
 
 {% block adminTitle %}
 
     {% if tab == 'nextEvents' %}
-        <h1 class="switch">Upcoming events</h1>
+        <h1 class="switch">{{ 'gc.admin.title.upcoming_events'|trans }}</h1>
     {% endif %}
 
     {% if tab == 'pastEvents' %}
-        <h1 class="switch">Past events</h1>
+        <h1 class="switch">{{ 'gc.admin.title.past_events'|trans }}</h1>
     {% endif %}
 
     <ul class="adminTitle">
         <li {% if tab == 'nextEvents' %}class="current"{% endif %}>
-            <a href="{{ path('gospelcenterAdmin_events', {'center': center.ref}) }}">Upcoming events</a>
+            <a href="{{ path('gospelcenterAdmin_events', {'center': center.ref}) }}">{{ 'gc.admin.title.upcoming_events'|trans }}</a>
         </li>
         <li {% if tab == 'pastEvents' %}class="current"{% endif %}>
-            <a href="{{ path('gospelcenterAdmin_events_past', {'center': center.ref}) }}">Past events</a>
+            <a href="{{ path('gospelcenterAdmin_events_past', {'center': center.ref}) }}">{{ 'gc.admin.title.past_events'|trans }}</a>
         </li>
     </ul>
 {% endblock %}
 
 {% block adminTools %}
-    <a href="{{ path('gospelcenterAdmin_events_add', {'center': center.ref}) }}" class="add">Add an event</a>
+    <a href="{{ path('gospelcenterAdmin_events_add', {'center': center.ref}) }}" class="add">{{ 'gc.admin.events.add'|trans }}</a>
 {% endblock %}
 
 {% block adminListBody %}
@@ -33,10 +33,10 @@
     <table class="main">
         <thead>
         <tr>
-            <th data-sort="string">Title<span>Title<div class="arrow"></div></span></th>
-            <th data-sort="string">Dates<span>Dates<div class="arrow"></div></span></th>
-            <th data-sort="string">Hours<span>Hours<div class="arrow"></div></span></th>
-            <th data-sort="string">Location<span>Location<div class="arrow"></div></span></th>
+            <th data-sort="string">{{ 'gc.admin.events.title'|trans }}<span>{{ 'gc.admin.events.title'|trans }}<div class="arrow"></div></span></th>
+            <th data-sort="string">{{ 'gc.admin.events.dates'|trans }}<span>{{ 'gc.admin.events.dates'|trans }}<div class="arrow"></div></span></th>
+            <th data-sort="string">{{ 'gc.admin.events.times'|trans }}<span>{{ 'gc.admin.events.times'|trans }}<div class="arrow"></div></span></th>
+            <th data-sort="string">{{ 'gc.admin.events.location'|trans }}<span>{{ 'gc.admin.events.location'|trans }}<div class="arrow"></div></span></th>
         </tr>
         </thead>
         <tbody>
@@ -79,9 +79,9 @@
         {% else %}
             <tr class="empty">
                 {% if tab == 'nextEvents' %}
-                    <td colspan="4">There are no events to come.</td>
+                    <td colspan="4">There are no events to come.{{ 'gc.admin.events.no_upcoming'|trans }}</td>
                 {% else %}
-                    <td colspan="4">There are no past events.</td>
+                    <td colspan="4">There are no past events.{{ 'gc.admin.events.no_past'|trans }}</td>
                 {% endif %}
             </tr>
         {% endfor %}

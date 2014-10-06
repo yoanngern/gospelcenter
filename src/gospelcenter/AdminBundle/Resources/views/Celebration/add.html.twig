@@ -11,13 +11,13 @@
 {% endblock %}
 
 {% block title %}
-    {{ parent() }} - Add a celebration
+    {{ parent() }} - {{ 'gc.admin.celebrations.add'|trans }}
 {% endblock %}
 
-{% block adminTitle %}<h1>Add a celebration</h1>{% endblock %}
+{% block adminTitle %}<h1>{{ 'gc.admin.celebrations.add'|trans }}</h1>{% endblock %}
 
 {% block adminBack %}
-    <a class="back" href="{{ path('gospelcenterAdmin_celebrations', {'center': center.ref}) }}">Celebrations</a>
+    <a class="back" href="{{ path('gospelcenterAdmin_celebrations', {'center': center.ref}) }}">{{ 'gc.admin.title.celebrations'|trans }}</a>
 {% endblock %}
 
 {% block adminBody %}
@@ -30,23 +30,23 @@
                 <nav class="sub_nav">
 
                     <ul>
-                        <li><a href="#general" class="current focus">General</a></li>
-                        <li><a href="#preaching">Preaching</a></li>
-                        <li><a href="#media">Media</a></li>
+                        <li><a href="#general" class="current focus">{{ 'gc.admin.celebrations.tab.general'|trans }}</a></li>
+                        <li><a href="#preaching">{{ 'gc.admin.celebrations.tab.preaching'|trans }}</a></li>
+                        <li><a href="#media">{{ 'gc.admin.celebrations.tab.media'|trans }}</a></li>
                     </ul>
                 </nav>
 
                 <article class="tab active" id="general">
 
                     <fieldset class="datetime date">
-                        <h2>Date of the celebration</h2>
+                        <h2>{{ 'gc.admin.celebrations.date_of'|trans }}</h2>
 
                         {{ form_widget(form.dateLocal) }}
                         {{ form_errors(form.dateLocal) }}
                     </fieldset>
 
                     <fieldset class="datetime times">
-                        <h2>Hours</h2>
+                        <h2>{{ 'gc.admin.celebrations.time'|trans }}</h2>
 
                         <div>
                             {{ form_widget(form.startingTime) }}
@@ -113,7 +113,7 @@
 
             {{ form_rest(form) }}
 
-            <input type="submit" class="buttonLink" value="Add a celebration"/>
+            <input type="submit" class="buttonLink" value="{{ 'gc.admin.celebrations.add'|trans }}"/>
 
         </form>
     {% endspaceless %}
