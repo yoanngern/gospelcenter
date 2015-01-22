@@ -84,6 +84,12 @@
             color: $grayDarkGC;
             cursor: pointer;
 
+            &:hover {
+                h1 {
+                    text-decoration: underline;
+                }
+            }
+
             & > section {
                 display: inline-block;
                 vertical-align: top;
