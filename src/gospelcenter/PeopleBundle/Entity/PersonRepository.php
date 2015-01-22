@@ -12,55 +12,40 @@ use Doctrine\ORM\EntityRepository;
  */
 class PersonRepository extends EntityRepository
 {
-    
+
     public function findAllByCenter(\gospelcenter\CenterBundle\Entity\Center $center)
     {
-    
-        $qb = $this->createQueryBuilder('p');
-        
-        $qb->addSelect('m');
-        $qb->addSelect('s2');
-        $qb->addSelect('s1');
-        
-        
-        // Person -> Speaker
-        $qb->leftJoin('p.speaker', 's1');
-        
-        // Person -> Role -> Celebration -> Center
-        $qb->leftJoin('p.roles', 'r');
-        $qb->leftJoin('r.celebrations', 'cel2');
-        $qb->leftJoin('cel2.center', 'c2');
-        
-        // Person -> Member -> Center
-        $qb->leftJoin('p.member', 'm');
-        $qb->leftJoin('m.centers', 'c3');
-        
-        // Person -> Visitor -> Center
-        $qb->leftJoin('p.visitor', 's2');
-        $qb->leftJoin('s2.centers', 'c4');
-        
-        // Person -> Center
-        $qb->leftJoin('p.center', 'c5');
-        
-        $qb->where('s1.speakerFromDate < :now')
-            ->setParameter('now', new \DateTime('now'));
-            
-        $qb->orWhere('c2.ref = :center')
-            ->setParameter('center', $center->getRef());
-            
-        $qb->orWhere('c3.ref = :center')
-            ->setParameter('center', $center->getRef());
-            
-        $qb->orWhere('c4.ref = :center')
-            ->setParameter('center', $center->getRef());
-            
-        $qb->orWhere('c5.ref = :center')
-            ->setParameter('center', $center->getRef());
-        
-        $qb->addOrderBy('p.lastname', 'ASC')
-            ->addOrderBy('p.firstname', 'ASC');
-        
-        return $qb->getQuery()->getResult();
+
+        $query = $this->getEntityManager()
+            ->createQuery(
+                '
+                SELECT p, m, s2, s1
+                FROM gospelcenterPeopleBundle:Person p
+                LEFT JOIN p.speaker s1
+                LEFT JOIN p.roles r
+                LEFT JOIN r.celebrations cel
+                LEFT JOIN cel.center c1
+                LEFT JOIN p.member m
+                LEFT JOIN m.centers c2
+                LEFT JOIN p.visitor s2
+                LEFT JOIN s2.centers c3
+                LEFT JOIN p.center c4
+                WHERE (s1.speakerFromDate <= :now AND (
+                c1.ref = :center OR c2.ref = :center OR c3.ref = :center OR c4.ref = :center
+                )) OR p.isGlobal = 1 OR c4.ref = :center
+                ORDER BY p.lastname ASC, p.firstname ASC'
+            )->setParameters(
+                array(
+                    'center' => $center->getRef(),
+                    'now' => new \Datetime()
+                )
+            );
+
+        try {
+            return $query->getResult();
+        } catch (\Doctrine\ORM\NoResultException $e) {
+            return null;
+        }
     }
 
     public function findForEdit(Person $person)
@@ -95,12 +80,13 @@ class PersonRepository extends EntityRepository
 
         return $qb->getQuery()->getResult();
     }
-    
+
     public function findAllGlobal()
     {
-        
+
         $query = $this->getEntityManager()
-            ->createQuery('
+            ->createQuery(
+                '
                 SELECT p
                 FROM gospelcenterPeopleBundle:Person p
                 WHERE p.center IS NULL
@@ -110,30 +96,30 @@ class PersonRepository extends EntityRepository
                     INNER JOIN p2.speaker s
                 ) 
                 ORDER BY p.lastname ASC, p.firstname ASC'
-             );
-         
+            );
+
         try {
             return $query->getResult();
         } catch (\Doctrine\ORM\NoResultException $e) {
             return null;
         }
     }
-    
+
     public function findAllOrder()
     {
         $qb = $this->createQueryBuilder('p');
-        
+
         $qb->addSelect('m');
         $qb->addSelect('v');
         $qb->addSelect('s');
-        
+
         $qb->leftJoin('p.member', 'm');
         $qb->leftJoin('p.visitor', 'v');
         $qb->leftJoin('p.speaker', 's');
-            
+
         $qb->addOrderBy('p.lastname', 'ASC')
             ->addOrderBy('p.firstname', 'ASC');
-        
+
         return $qb->getQuery()->getResult();
     }
 }

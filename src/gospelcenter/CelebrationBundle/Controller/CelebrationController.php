@@ -18,7 +18,7 @@ class CelebrationController extends Controller {
     {    
         $em = $this->getDoctrine()->getManager();
         
-        $nextCelebrations = $em->getRepository('gospelcenterCelebrationBundle:Celebration')->findNext($center, 4);
+        $nextCelebrations = $em->getRepository('gospelcenterCelebrationBundle:Celebration')->findNext($center, 3);
         $lastCelebrations = $em->getRepository('gospelcenterCelebrationBundle:Celebration')->findLast($center, 3);
         
         return $this->render('gospelcenterCelebrationBundle:Celebration:list.html.twig', array(

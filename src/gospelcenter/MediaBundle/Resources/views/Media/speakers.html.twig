@@ -1,55 +1,28 @@
 {% extends "gospelcenterMediaBundle::layout.html.twig" %}
 
-{% block stylesheets %}
-	{{ parent() }}
-{% endblock %}
+{% block body %}
+    {% spaceless %}
+        <section class="wallSpeaker">
+            <h1>Nos orateurs</h1>
 
-{% block javascripts %}
-    {{ parent() }}
-{% endblock %}
-
-{% block headerTitle %}Our speakers{% endblock %}
-
-{% block tvHeader %}
-
-    <nav class="left"></nav>
-    
-    <h1>Our speakers</h1>
-    
-    <nav class="right"></nav>
-    
-{% endblock %}
-
-{% block tv_body %}    
-    <section class="wall">
-        {% spaceless %}
             {% for speaker in speakers %}
-                
-                {% set hasMedia = false %}
-                {% for celebration in speaker.celebrations %}
-                    {% if celebration.video or celebration.audio %}
-                        {% set hasMedia = true %}
-                    {% endif %}
-                {% endfor %}
-                
-                {% if hasMedia %}
-                    <a href="{{ path('gospelcenterMedia_speaker', {'speaker': speaker.person.id}) }}">
-                        {% set hasImage = false %}
-                        {% for celebration in speaker.celebrations %}                
-                            {% if not hasImage and celebration.image %}
-                                {% set hasImage = true %}
-                                <img src="{{ asset(celebration.image.webPath) }}" alt="{{ celebration.image.alt }}" />
-                            {% endif %}
-                        {% endfor %}
-                        <section class="details">
+
+                <a href="{{ path('gospelcenterMedia_speaker', {'speaker': speaker.person.id}) }}">
+                    <div class="container">
+                        {% if speaker.person.image %}
+                            <div class="image"
+                                 style="background-image: url('{{ asset(speaker.person.image.webPath) }}')"></div>
+                        {% else %}
+                            <div class="bg"></div>
+                        {% endif %}
+                        <div class="details">
                             <h1>{{ speaker.person.firstname }} {{ speaker.person.lastname }}</h1>
-                            <span>{{ speaker.celebrations|length }} {% if speaker.celebrations|length > 1 %}videos{% else %}video{% endif %}</span>
-                        </section>
-                    </a>
-                {% endif %}
-                
-            {% endfor %}   
-        {% endspaceless %}
-    </section>
-    
+                            <span>{{ speaker.person.function }}</span>
+                        </div>
+                    </div>
+                </a>
+            {% endfor %}
+            <div class="clear"></div>
+        </section>
+    {% endspaceless %}
 {% endblock %}

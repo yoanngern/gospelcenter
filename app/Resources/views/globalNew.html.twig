@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="utf-8">
+    <title>{% block title %}Gospel Center{% endblock %}</title>
+    <meta name="viewport"
+          content="initial-scale=1, minimum-scale=1, user-scalable=no, maximum-scale=1, width=device-width, minimal-ui">
+    <link rel="apple-touch-icon" href="{{ asset('apple-touch-icon.png') }}"/>
+    <link rel="shortcut icon" href="{{ asset('favicon.ico') }}" type="image/x-icon">
+    <link rel="icon" type="image/png" href="{{ asset('favicon.png') }}"/>
+
+    {% block stylesheets %}
+        <link rel="stylesheet" href="{{ asset('css/globalNew.css') }}" type="text/css"/>
+    {% endblock %}
+
+
+    {% block javascripts %}
+        {% if is_mobile_view() %}
+            <script type="text/javascript" src="{{ asset('js/processed/globalMobile.min.js') }}"></script>
+        {% else %}
+            <script type="text/javascript" src="{{ asset('js/processed/globalNew.min.js') }}"></script>
+        {% endif %}
+    {% endblock %}
+
+    {% block jsTemplating %}
+
+    {% endblock %}
+
+
+</head>
+<body>
+<section id="ruban_nav">
+    {% include "::ruban_nav.html.twig" %}
+    {% include "::login.html.twig" %}
+</section>
+<section id="page" class="{{ page }}" data-startPage="{{ page }}">
+    <header>
+
+        <nav class="main">
+            <a id="get_ruban" href=""></a>
+
+            <a id="logo" href="{{ path('gospelcenterPageGlobal_home') }}"></a>
+
+            <ul class="nav">
+                {% block nav %}{% endblock %}
+            </ul>
+            {% if app.user %}
+                {% include "::admin/param.html.twig" %}
+            {% endif %}
+            <a id="get_nav" href=""></a>
+        </nav>
+
+    </header>
+    <section id="container" class="followRubanNav">
+        {% block body %}
+        {% endblock %}
+    </section>
+</section>
+</body>
+</html>

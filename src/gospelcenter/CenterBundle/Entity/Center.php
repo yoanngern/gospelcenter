@@ -234,6 +234,8 @@ class Center
         if($image != null) {
             $this->image->setTitle("Gospel Center ".$this->name);
             $this->image->setType('Center');
+
+            $image->setCenter($this);
         }
     
         return $this;

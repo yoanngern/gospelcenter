@@ -3,6 +3,7 @@
 namespace gospelcenter\CelebrationBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use gospelcenter\PeopleBundle\Entity\Person;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
@@ -47,8 +48,11 @@ class Speaker
     /**
      * Constructor
      */
-    public function __construct()
+    public function __construct(Person $person)
     {
+
+        $this->setPerson($person);
+
         $this->celebrations = new \Doctrine\Common\Collections\ArrayCollection();
         $this->speakerFromDate = new \Datetime();
     }
@@ -61,6 +65,20 @@ class Speaker
         $name = $firstname. " " .$lastname;
         
         return $name;
+    }
+
+    /**
+     * Set person
+     *
+     * @param \gospelcenter\PeopleBundle\Entity\Person $person
+     * @return Speaker
+     */
+    public function setPerson(\gospelcenter\PeopleBundle\Entity\Person $person)
+    {
+        $this->person = $person;
+        $person->setSpeaker($this);
+
+        return $this;
     }
     
     
@@ -93,18 +111,7 @@ class Speaker
         return $this->speakerFromDate;
     }
 
-    /**
-     * Set person
-     *
-     * @param \gospelcenter\PeopleBundle\Entity\Person $person
-     * @return Speaker
-     */
-    public function setPerson(\gospelcenter\PeopleBundle\Entity\Person $person)
-    {
-        $this->person = $person;
-    
-        return $this;
-    }
+
 
     /**
      * Get person

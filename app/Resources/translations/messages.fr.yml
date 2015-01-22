@@ -20,6 +20,7 @@ gc:
         events: Events
         contact: Contact
         give: Nous soutenir
+        about: A propos
     generic:
         with: avec
         and: " et "

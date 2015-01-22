@@ -1,33 +1,69 @@
-{% extends "::layout.html.twig" %}
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="utf-8">
+    <title>{% block title %}Gospel Center TV{% endblock %}</title>
+    <meta name="viewport"
+          content="initial-scale=1, minimum-scale=1, user-scalable=no, maximum-scale=1, width=device-width, minimal-ui">
+    <link rel="apple-touch-icon" href="{{ asset('apple-touch-icon.png') }}"/>
+    <link rel="shortcut icon" href="{{ asset('favicon.ico') }}" type="image/x-icon">
+    <link rel="icon" type="image/png" href="{{ asset('favicon.png') }}"/>
 
-{% block param %}
-    {{ parent() }}
-{% endblock %}
+    {% block stylesheets %}
+        <link rel="stylesheet" href="{{ asset('css/tv.css') }}" type="text/css"/>
+    {% endblock %}
 
-{% block classPage %}tv{% endblock %}
 
-{% block javascripts %}
-    {{ parent() }}
-    <script type="text/javascript" src="{{ asset('js/tv.min.js') }}"></script>
-{% endblock %}
+    {% block javascripts %}
+        <script type="text/javascript" src="{{ asset('js/processed/mainNew.min.js') }}"></script>
+    {% endblock %}
 
-{% block body %}
-    <header class="tv">
-        <a href="{{ path('gospelcenterMedia') }}"><span>Gospel Center</span> <em>TV</em></a>
-        <div>
-            {% block tvHeader %}{% endblock %}
-        </div>
+    {% block jsTemplating %}
+
+    {% endblock %}
+
+
+</head>
+<body>
+<section id="ruban_nav">
+    {% include "::ruban_nav.html.twig" %}
+    {% include "::login.html.twig" %}
+</section>
+<section id="page" class="{{ page }} {% block classPage %}{% endblock %}">
+    <header>
+
+        <a id="get_ruban" href=""></a>
+        <a id="logo_mobile" class="mobile" href="{{ path('gospelcenterMedia') }}"></a>
+        <a id="get_nav" class="mobile" href=""></a>
+
+        <nav class="main">
+            <ul class="nav">
+                <li>
+                    <a href="{{ path('gospelcenterMedia_speakers') }}">Orateurs</a>
+                </li>
+                <li>
+                    <a href="{{ path('gospelcenterMedia_centers') }}">Villes</a>
+                </li>
+                <li class="logo">
+                    <a href="{{ path('gospelcenterMedia') }}" id="logo_mini"></a>
+                </li>
+                <li>
+                    <a href="{{ path('gospelcenterMedia_videos') }}">Vidéos</a>
+                </li>
+                <li>
+                    <a href="{{ path('gospelcenterMedia_audios') }}">Audios</a>
+                </li>
+            </ul>
+        </nav>
+
     </header>
-    
-    {% block tv_body %}{% endblock %}
+    {% block home_title %}{% endblock %}
+    <section id="container" class="{{ page }}">
+        {% block body %}
+        {% endblock %}
+    </section>
 
-{% endblock %}
-
-
-{% block footer %}
-    <li><a href="{{ path('gospelcenterMedia') }}" {% if page == 'selections' %}class="current"{% endif %}>Selection</a></li>
-    <li><a href="{{ path('gospelcenterMedia_speakers') }}" {% if page == 'speakers' %}class="current"{% endif %}>Speakers</a></li>
-    <li><a href="{{ path('gospelcenterMedia_centers') }}" {% if page == 'centers' %}class="current"{% endif %}>Cities</a></li>
-    <li><a href="{{ path('gospelcenterMedia_videos') }}" {% if page == 'videos' %}class="current"{% endif %}>Video</a></li>
-    <li><a href="{{ path('gospelcenterMedia_audios') }}" {% if page == 'audios' %}class="current"{% endif %}>Audio</a></li>
-{% endblock %}
+    {% block footer %}{% endblock %}
+</section>
+</body>
+</html>

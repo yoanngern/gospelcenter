@@ -1,0 +1,89 @@
+{% set admin = false %}
+{% set local = false %}
+{% set center = false %}
+
+{% extends "::globalNew.html.twig" %}
+
+{% block nav %}
+    <li><a href="{{ path('gospelcenterPageGlobal_home') }}" data-link="#home" class="current focus">Gospel Center</a>
+    </li>
+    <li><a href="{{ path('gospelcenterPageGlobal_celebrations') }}" data-link="#celebrations">Celebrations</a></li>
+    <li><a href="{{ path('gospelcenterPageGlobal_vision') }}" data-link="#vision"><span
+                    class="classic">Our vision</span><span class="mini">Vision</span></a></li>
+    <li><a href="{{ path('gospelcenterPageGlobal_god') }}" data-link="#god">God ?</a></li>
+    <li><a href="{{ path('gospelcenterPageGlobal_tv') }}" data-link="#tv">Television</a></li>
+    <li><a href="{{ path('gospelcenterPageGlobal_ea') }}" data-link="#ea"><span
+                    class="classic">Apostolic Team</span><span class="mini">Aposto. Team</span></a></li>
+    <li><a href="{{ path('gospelcenterPageGlobal_contact') }}" data-link="#contact">Contact</a></li>
+{% endblock %}
+
+{% block body %}
+
+    {% if is_mobile_view() %}
+        <article id="{{ page }}" class="screen">
+            <div class="container">
+                <div class="content">
+                    {% include "gospelcenterPageBundle::PageGlobal/" ~ template ~ "New.html.twig"  %}
+                </div>
+            </div>
+        </article>
+    {% else %}
+
+        <article id="home" class="screen">
+            <div class="container">
+                <div class="content">
+
+                </div>
+            </div>
+        </article>
+
+        <article id="celebrations" class="screen">
+            <div class="container">
+                <div class="content">
+
+                </div>
+            </div>
+        </article>
+
+        <article id="vision" class="screen">
+            <div class="container">
+                <div class="content">
+
+                </div>
+            </div>
+        </article>
+
+        <article id="god" class="screen">
+            <div class="container">
+                <div class="content">
+
+                </div>
+            </div>
+        </article>
+
+        <article id="tv" class="screen">
+            <div class="container">
+                <div class="content">
+
+                </div>
+            </div>
+        </article>
+
+        <article id="ea" class="screen">
+            <div class="container">
+                <div class="content">
+
+                </div>
+            </div>
+        </article>
+
+        <article id="contact" class="screen">
+            <div class="container">
+                <div class="content">
+
+                </div>
+            </div>
+        </article>
+    {% endif %}
+
+{% endblock %}

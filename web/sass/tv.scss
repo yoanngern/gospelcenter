@@ -1,187 +1,930 @@
-@import 'functions';
+@import "basic";
 
-section.video,
-section.audio {
-    width: 960px;
-    margin: 0 auto 70px;
-    display: block;
-    
-    iframe {
-        display: block;
-        margin-bottom: 10px;
-        margin-top: 20px;
-    }
-    
-    a {
-        text-decoration: none;
-        color: $black;
-        display: block;
-        margin-bottom: 20px;
-        
-        h2, p {
-            margin-left: 1%;
-            position: relative;
+@mixin itemWall($width) {
+    width: $width;
+    display: inline-block;
+    vert-align: top;
+    float: left;
+
+    &:hover div.container {
+        div.image {
+            @include desaturate();
+        }
+
+        div.hover {
             display: block;
-            width: auto;
         }
-        
-        h2 {
-            font-size: 1.5em;
+
+        div.details {
+            display: none;
+        }
+
+        div.bg {
+            background-color: rgba($grayDarkGC, 0.8);
         }
     }
-    
-    
-    
-    time {
-        float: right;
-        color: $grayDark;
-        font-size: 1.1em;
-        margin-right: 1%;
-    }
-    
-}
 
+    div.container {
+        margin: 1px;
+        position: relative;
+        overflow: hidden;
 
-
-#page.tv {
-    
-    #container {
-    
-        &.selections {
-            & > a.title {
-                width: 100%;
-        		text-align: center;
-                margin: 0;
-        		font-weight: 100;
-        		font-family: $font-light;
-        		font-size: 2em;
-        		text-decoration: none;
-        		display: block;
-        		position: absolute;
-        		margin-top: 40px;
-        		        		
-        		em {
-            		font-family: $font-black;
-            		font-size: 1.5em;
-            		color: $redTop;
-        		}
-        		
-        		span {
-            		font-family: $font-light;
-            		color: lighten($grayDark, 20%);
-            		font-size: 1.5em;
-        		}
-            }
-        }
-        
-        header.tv {
+        div.image {
             display: block;
             width: 100%;
-            background: $white;
-            
-            & > a {
-                width: 90%;
-                min-width: 1024px;
-                max-width: 1280px;
-        		text-align: left;
-                margin: 40px auto 0px;
-        		font-weight: 100;
-        		font-family: $font-light;
-        		font-size: 2em;
-        		text-decoration: none;
-        		display: block;
-        		border-bottom: 4px solid $red;
-        		        		
-        		em {
-            		font-family: $font-black;
-            		font-size: 1.5em;
-            		color: $redTop;
-        		}
-        		
-        		span {
-            		font-family: $font-light;
-            		color: lighten($grayDark, 20%);
-            		font-size: 1.5em;
-        		}
-        	}
-            
-            div {
-                width: 100%;
-                max-width: 1280px;
-                margin: 0 auto;
-                margin-top: 10px;
-                margin-bottom: 10px;
-                height: 50px;
-            }
-            
-            nav {
-                display: inline-block;
+            padding-bottom: 56.2%;
+            background-position: center center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+
+        div.bg {
+            display: block;
+            width: 100%;
+            padding-bottom: 56.2%;
+            background-color: $grayGC;
+        }
+
+        div.hover {
+            display: none;
+            position: absolute;
+            z-index: 100;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            color: $whiteGC;
+            font-family: $font-light;
+            line-height: 0.9em;
+            font-size: 0.9em;
+            text-align: center;
+
+            div.picto_play {
+                width: $width * 0.22;
+                height: $width * 0.22;
+                background-image: url('../images/playButton.svg');
+                background-size: 100%;
+                background-repeat: no-repeat;
+                background-position: center center;
+                display: block;
+                top: 45%;
+                left: 50%;
+                margin-left: -$width * 0.11;
+                margin-top: -$width * 0.11;
                 position: absolute;
-                z-index: 100;
-                
-                &.left {
-                    float: left;
-                }
-                
-                &.right {
-                    float: right;
-                }
-                
-                #back {
-                    width: 100%;
-                    margin-top: 5px;
-                    padding-left: 30px;
-                    padding-top: 6px;
-                    display: block;
-                    background-image: url('../images/back.svg');
-                    background-size: contain;
-                    background-repeat: no-repeat;
-                    background-position: left top;
-                    font-family: $font-bold;
-                    font-size: 1.1em;
-                    color: $black;
-                    text-decoration: none;
-                    
-                    @media only screen and (min-width: $L) {
-                        & {
-                            padding-left: 32px;
-                        }
-                    }
-                    
-                    @media only screen and (min-width: $XL) {
-                        & {
-                            padding-left: 34px;
-                        }
-                    }
-                    
-                    @media only screen and (min-width: $XXL) {
-                        & {
-                            padding-left: 36px;
-                        }
-                    }
-                }
-            
             }
-            
-            h1 {
-                width: 100%;
-                z-index: 50;
+
+            span {
+                position: absolute;
+                bottom: 15%;
                 left: 0;
-                position: absolute;
-                text-align: center;
-                font-family: $font-light;
-                font-size: 2em;
-                display: inline-block;
+                right: 0;
+                display: block;
             }
-        }    
+        }
+
+        div.gradient {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            z-index: 10;
+            @include gradient4pt(rgba(#000, 0.1), 0%, rgba(#000, 0.1), 50%, rgba(#000, 0.56), 80%, rgba(#000, 0.76), 100%);
+            top: 0;
+        }
+
+        div.details {
+            display: block;
+            position: absolute;
+            bottom: 10px;
+            left: 10px;
+            right: 10px;
+            color: $whiteGC;
+            z-index: 11;
+
+            h1 {
+                font-family: $font-bold;
+                line-height: 0.9em;
+                font-size: 0.9em;
+                text-transform: uppercase;
+                letter-spacing: 1px;
+            }
+
+            span {
+                margin-top: 7px;
+                font-family: $font-light;
+                line-height: 0.9em;
+                font-size: 0.9em;
+                display: block;
+            }
+        }
+    }
+
+}
+
+#page {
+    position: absolute;
+    width: 100%;
+    display: block;
+    z-index: 10;
+    background-color: $whiteGC;
+    height: auto;
+
+    #container {
+        margin-bottom: 70px;
+        z-index: 10;
+        position: relative;
+    }
+
+    @media only screen and (max-width: $mobileH) {
+        #container {
+            margin-bottom: 30px;
+        }
+    }
+
+    header {
+        height: 74px;
+        border-bottom: 3px solid $redGC;
+
+        #get_ruban {
+            display: inline-block;
+            height: 30px;
+            width: 36px;
+            background-image: url('../images/burger_black.svg');
+            background-position: center;
+            background-size: contain;
+            background-repeat: no-repeat;
+            margin-top: 22px;
+            position: relative;
+            vertical-align: top;
+            margin-left: 22px;
+            z-index: 11;
+        }
+
+        #get_nav {
+            display: none;
+            position: absolute;
+            right: 10px;
+            top: 9px;
+            height: 30px;
+            width: 36px;
+            background-image: url('../images/getNav_black.svg');
+            background-position: top;
+            background-repeat: no-repeat;
+            background-size: 100% auto;
+
+            &.close {
+                background-position: bottom;
+            }
+        }
+
+        #logo_mobile {
+            display: none;
+            position: absolute;
+            top: 2px;
+            height: 45px;
+            width: 138px;
+            left: 50%;
+            margin-left: -69px;
+            background-image: url('../images/logoTV_mobile.svg');
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: auto;
+        }
+
+        nav {
+            display: block;
+            margin: 0 auto;
+            top: 0;
+            height: 74px;
+            text-align: center;
+            width: 100%;
+            position: absolute;
+            z-index: 10;
+
+            ul {
+                display: inline-block;
+                margin: 0 auto;
+
+                li {
+                    display: inline-block;
+                    padding: 0 15px;
+                    vertical-align: top;
+                    height: 74px;
+
+                    a {
+                        color: $grayDarkGC;
+                        cursor: pointer;
+                        display: block;
+                        padding-top: 25px;
+                        line-height: 30px;
+
+                        &:hover {
+                            color: $grayGC;
+                            text-decoration: none;
+                        }
+                    }
+
+                    &.logo {
+                        padding: 0 20px;
+
+                        a {
+                            background-image: url('../images/logoTV_mini.svg');
+                            background-repeat: no-repeat;
+                            background-position: center center;
+                            width: 140px;
+                            height: 74px;
+                            display: block;
+                            padding-top: 0;
+                        }
+                    }
+                }
+            }
+        }
+
+    }
+
+    &.selections {
+        header {
+            border-bottom: none;
+            nav {
+                text-align: left;
+                left: 70px;
+                width: auto;
+                ul {
+                    li {
+
+                        &.logo {
+                            display: none;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    section.home_title {
+        display: block;
+        width: 100%;
+        height: 0;
+        padding-bottom: 22.7%;
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+        margin: 0 auto;
+        position: relative;
+        border-bottom: 3px solid $redGC;
+
+        a#logo_tv {
+            display: block;
+            width: 100%;
+            height: 70%;
+            margin: 0 auto;
+            background-image: url('../images/logoTV.svg');
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+            top: 15%;
+            position: absolute;
+            left: 0;
+        }
+    }
+
+    #container {
+
+        section.wall {
+            margin: 60px auto 40px;
+            width: 100%;
+            max-width: 1200px;
+
+            & > h1 {
+                font-family: $font-light;
+                font-size: 1.9em;
+                line-height: 1.9em;
+                text-transform: uppercase;
+            }
+
+            a {
+                @include itemWall(300px);
+
+                @media only screen and (max-width: 1200px) {
+                    width: 25%;
+                }
+
+                @media only screen and (max-width: 960px) {
+                    width: 33.333333%;
+                }
+
+                @media only screen and (max-width: $mobileH) {
+                    width: 50%;
+
+                    &:nth-of-type(odd) div.container {
+                        margin: 1px 1px 1px 0px;
+                    }
+
+                    &:nth-of-type(even) div.container {
+                        margin: 1px 0px 1px 1px;
+                    }
+
+                    div.container {
+                        div.details {
+                            h1 {
+                                font-size: 1.2em;
+                            }
+
+                            span {
+                                font-size: 1.2em;
+                            }
+                        }
+                    }
+
+                }
+
+                @media only screen and (max-width: $mobileW) {
+                    width: 100%;
+
+                    &:nth-of-type(odd) div.container,
+                    &:nth-of-type(even) div.container {
+                        margin: 0px;
+                    }
+                }
+            }
+
+        }
+
+        section.wallSpeaker {
+            margin: 70px auto 40px;
+            width: auto;
+            max-width: 1200px;
+            text-align: left;
+
+            & > h1 {
+                font-family: $font-light;
+                font-size: 1.9em;
+                line-height: 1.9em;
+                text-transform: uppercase;
+            }
+
+            a {
+                position: relative;
+                vertical-align: top;
+                margin: 0;
+                padding: 0;
+                display: inline-block;
+
+                div.container {
+                    width: 200px;
+                    display: block;
+                    overflow: hidden;
+                    padding: 0;
+                    margin: 0 50px 40px 0;
+                }
+
+                &:nth-of-type(5n) div.container {
+                    margin-right: 0;
+                }
+
+                &:hover {
+                    text-decoration: none;
+                }
+
+                div.image {
+                    display: block;
+                    width: 200px;
+                    height: 200px;
+                    background-position: center center;
+                    background-repeat: no-repeat;
+                    background-size: cover;
+                    @include desaturate();
+                }
+
+                div.bg {
+                    display: block;
+                    width: 100%;
+                    height: 200px;
+                    background-color: $grayGC;
+                }
+
+                div.details {
+                    display: block;
+                    z-index: 11;
+                    color: $grayDarkGC;
+                    margin-top: 10px;
+
+                    h1 {
+                        font-family: $font-bold;
+                        line-height: 1.15em;
+                        font-size: 1.15em;
+                        text-transform: uppercase;
+                        letter-spacing: 1px;
+                    }
+
+                    span {
+                        margin-top: 7px;
+                        font-family: $font-light;
+                        line-height: 16px;
+                        font-size: 0.9em;
+                        display: block;
+                    }
+                }
+            }
+
+        }
+
+        section.video {
+            section.player {
+                width: 100%;
+                background-color: #000;
+
+                div.container {
+                    width: 100%;
+                    max-width: 960px;
+                    margin: 0 auto;
+                    position: relative;
+                    height: 540px;
+
+                    iframe {
+                        margin: 0 auto;
+                        display: block;
+                        width: 100%;
+                        height: 100%;
+                        position: absolute;
+                    }
+                }
+            }
+        }
+
+        section.audio {
+            section.player {
+                width: 100%;
+
+                div.container {
+                    width: 100%;
+                    max-width: 960px;
+                    margin: 20px auto;
+                    position: relative;
+                    height: 160px;
+
+                    iframe {
+                        margin: 0 auto;
+                        display: block;
+                        width: 100%;
+                        height: 100%;
+                        position: absolute;
+                    }
+                }
+            }
+        }
+
+        section.video,
+        section.audio {
+
+            section.bottom {
+                width: 100%;
+                max-width: 960px;
+                margin: 30px auto 40px;
+                vertical-align: top;
+
+                section.desc {
+                    width: 58%;
+                    display: inline-block;
+                    vertical-align: top;
+                    margin-right: 7%;
+
+                    & > h1 {
+                        text-transform: uppercase;
+                        border-bottom: 4px solid $grayDarkGC;
+                        margin-bottom: 10px;
+                        font-size: 1.9em;
+                        line-height: 1.2em;
+                        font-family: $font-light;
+                        padding-bottom: 10px;
+                    }
+
+                    time {
+                        text-align: right;
+                        display: block;
+                        color: $grayGC;
+                        font-family: $font-light;
+                        text-transform: uppercase;
+                        font-size: 0.9em;
+                        letter-spacing: 1px;
+                    }
+
+                    & > h3 {
+                        text-transform: uppercase;
+                        font-family: $font-bold;
+                        margin-top: 15px;
+                        font-size: 1.2em;
+                        line-height: 1.2em;
+                    }
+
+                    p {
+                        font-family: $font-light;
+
+                        &.function {
+                            margin-bottom: 10px;
+                        }
+
+                        &.desc {
+                            margin-top: 30px;
+                            font-size: 1.2em;
+                            line-height: 1.2em;
+                        }
+                    }
+                }
+
+                section.right {
+                    width: 35%;
+                    display: inline-block;
+                    vertical-align: top;
+
+                    & > h2 {
+                        text-transform: uppercase;
+                        font-size: 1.4em;
+                        font-family: $font-black;
+                        margin-top: 28px;
+                        margin-bottom: 10px;
+                        border-bottom: 3px solid $grayDarkGC;
+                        max-width: 560px;
+                        display: block;
+
+                        span {
+                            border: 3px solid $grayDarkGC;
+                            padding: 4px 8px 0px 8px;
+                            display: inline-block;
+                            margin-bottom: -3px;
+                            line-height: 24px;
+                        }
+                    }
+
+                    a {
+                        @include itemWall(159px);
+                    }
+
+                }
+            }
+
+            @media only screen and (max-width: 960px) {
+                section.bottom {
+                    margin-left: 32px;
+                    width: auto;
+
+                    section.desc {
+                        width: 560px;
+                        display: block;
+                        margin-bottom: 60px;
+                    }
+
+                    section.right {
+                        width: 340px;
+                        display: block;
+                    }
+                }
+            }
+
+            @media only screen and (max-width: $mobileH) {
+                section.bottom {
+                    width: 100%;
+                    margin: 20px 0 0;
+
+                    section.desc {
+                        padding-left: 10px;
+                        padding-right: 10px;
+                        width: auto;
+                        display: block;
+                        margin: 0 0 40px;
+
+                        & > h1 {
+                            font-size: 1.6em;
+                            line-height: 1.6em;
+                            padding-bottom: 5px;
+                        }
+                    }
+
+                    section.right {
+                        padding-left: 10px;
+                        padding-right: 10px;
+                        width: auto;
+                        display: block;
+                        margin: 0;
+
+                        & > h2 {
+                            span {
+                                padding-bottom: 3px;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media only screen and (min-width: 1380px) {
+    #page {
+        section.home_title {
+            a#logo_tv {
+                top: 50%;
+                margin-top: -110px;
+                height: 220px;
+            }
+        }
+    }
+}
+
+@media only screen and (max-width: 1250px) {
+    #page {
+        #container {
+            section.wall {
+                margin-top: 50px;
+
+                & > h1 {
+                    padding-left: 20px;
+                }
+            }
+
+            section.wallSpeaker {
+                margin: 50px 10px 20px;
+
+                & > h1 {
+                    margin-left: 1%;
+                }
+
+                a {
+                    width: 20%;
+
+
+                    div.container {
+                        margin: 0 auto 30px;
+                    }
+
+                    &:nth-of-type(5n) div.container {
+                        margin: 0 auto;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media only screen and (max-width: 1130px) {
+    #page {
+        #container {
+
+            section.wallSpeaker {
+
+                & > h1 {
+                    margin-left: 3%;
+                }
+
+                a {
+                    width: 25%;
+                }
+            }
+        }
+    }
+}
+
+@media only screen and (max-width: 960px) {
+    #page {
+        #container {
+            section.wall {
+                margin-top: 30px;
+            }
+
+            section.wallSpeaker {
+
+                & > h1 {
+                    margin-left: 5%;
+                }
+
+                a {
+                    width: 33.333333%;
+                }
+            }
+
+            section.video {
+                section.player {
+
+                    div.container {
+                        height: 0;
+                        padding-bottom: 56.2%;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media only screen and (max-width: $tabletH) {
+    #page {
+        #container {
+
+        }
+    }
+}
+
+@media only screen and (max-width: $mobileH) {
+    #page,
+    #page.selections {
+        header {
+            height: 48px;
+
+            #get_ruban {
+                margin: 9px 0 0 10px;
+            }
+
+            #logo_mobile {
+                display: block;
+            }
+
+            #get_nav {
+                display: block;
+            }
+
+            nav {
+                left: 0;
+                top: 48px;
+                z-index: 50;
+                width: 100%;
+
+                ul {
+                    display: none;
+                    left: 0;
+                    right: 0;
+                    width: 100%;
+                    margin-top: 0px;
+                    z-index: 5000;
+                    height: auto;
+                    border-bottom: none;
+                    background-color: $whiteGC;
+                    border-bottom: 3px solid $redGC;
+
+                    &.actived {
+                        display: block;
+                    }
+
+                    li {
+                        display: block;
+                        line-height: 48px;
+                        width: 100%;
+                        height: auto;
+                        margin: 0 auto;
+                        padding: 0;
+
+                        &.logo {
+                            display: none;
+                        }
+
+                        a {
+                            line-height: 40px;
+                            text-align: center;
+                            display: block;
+                            width: 100%;
+                            font-size: 1.5em;
+                            font-family: $font-light;
+                            margin: 0;
+                            color: $grayDarkGC;
+                            padding: 0;
+
+                            &.focus {
+                                border: none;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        section.home_title {
+            a#logo_tv {
+                background-image: url('../images/television_mobile.svg');
+                background-size: 75%;
+                height: 100%;
+                top: 0;
+            }
+        }
+
+
+        #container {
+            section.wall {
+                margin-bottom: -1px;
+
+                & > h1 {
+                    font-size: 1.6em;
+                    padding-left: 10px;
+                }
+            }
+
+            section.wallSpeaker {
+                margin: 30px 10px 20px;
+
+                & > h1 {
+                    margin-left: 5%;
+                }
+
+                a {
+                    width: 33.333333%;
+
+                    div.container {
+                        width: 160px;
+
+                        div.image,
+                        div.bg {
+                            width: 160px;
+                            height: 160px;
+                        }
+
+                        div.details {
+                            width: 160px;
+                        }
+                    }
+                }
+            }
+
+        }
+    }
+}
+
+@media only screen and (max-width: 560px) {
+    #page {
+        #container {
+            section.wallSpeaker {
+
+                a {
+                    width: 50%;
+
+                    div.container {
+                        width: 200px;
+
+                        div.image,
+                        div.bg {
+                            width: 200px;
+                            height: 200px;
+                        }
+
+                        div.details {
+                            width: 200px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media only screen and (max-width: 450px) {
+    #page {
+        #container {
+            section.wallSpeaker {
+
+                a {
+                    width: 50%;
+
+                    div.container {
+                        width: 150px;
+
+                        div.image,
+                        div.bg {
+                            width: 150px;
+                            height: 150px;
+                        }
+
+                        div.details {
+                            width: 150px;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
 
 
+@media only screen and (max-width: 350px) {
+    #page {
+        #container {
+            section.wallSpeaker {
 
+                a {
+                    width: 50%;
 
-section.wall,
-section.video,
-section.audio {
-    //margin-top: 180px !important;
+                    div.container {
+                        width: 120px;
+
+                        div.image,
+                        div.bg {
+                            width: 120px;
+                            height: 120px;
+                        }
+
+                        div.details {
+                            width: 120px;
+                        }
+                    }
+                }
+            }
+        }
+    }
 }

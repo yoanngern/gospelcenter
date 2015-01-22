@@ -7,6 +7,12 @@ gc:
             positive: "Encouraging a christian lifestyle that motivates, builds and develops the abilities and gifts of everyone."
             practice: "Activities, teachings that will impact your everyday life."
             powerful: "The Gospel Center has the desire to live the Gospel in the most relevant way, also in the area of healing and miracles."
+            nav:
+                about: About
+                leadership: Leadership
+                staff: Staff
+                believe: What we believe
+                music: Music
         bases:
             findBase: FIND A BASE NEAR YOU
             moreInfos: For more info, contact us

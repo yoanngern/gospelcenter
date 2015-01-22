@@ -3,6 +3,8 @@
 namespace gospelcenter\PeopleBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use gospelcenter\CenterBundle\Entity\Member;
+use gospelcenter\CenterBundle\Entity\Visitor;
 use Symfony\Component\Validator\Constraints as Assert;
 
 use gospelcenter\CelebrationBundle\Entity\Speaker;
@@ -43,7 +45,7 @@ class Person
      * @Assert\NotBlank(message="Please enter a lastname.")
      */
     private $lastname;
-    
+
     /**
      * @var string
      *
@@ -73,42 +75,42 @@ class Person
      * @ORM\Column(name="privatePhone", type="string", length=255, nullable=true)
      */
     private $privatePhone;
-    
+
     /**
      * @var string
      *
      * @ORM\Column(name="mobilePhone", type="string", length=255, nullable=true)
      */
     private $mobilePhone;
-    
+
     /**
      * @var string
      *
      * @ORM\Column(name="notes", type="text", nullable=true)
      */
     private $notes;
-    
+
     /**
      * @var boolean
      *
      * @ORM\Column(name="abroad", type="boolean", nullable=true)
      */
     private $abroad;
-    
+
     /**
      * @var boolean
      *
      * @ORM\Column(name="hasChildren", type="boolean", nullable=true)
      */
     private $hasChildren;
-    
+
     /**
      * @var string
      *
      * @ORM\Column(name="function", type="string", length=255, nullable=true)
      */
     private $function;
-    
+
     /**
      * @var integer
      *
@@ -122,7 +124,7 @@ class Person
      * @ORM\Column(name="isGlobal", type="boolean", nullable=true)
      */
     private $isGlobal;
-    
+
     /**
      * @var \DateTime
      *
@@ -130,7 +132,7 @@ class Person
      * @Assert\DateTime()
      */
     private $createdDate;
-    
+
     /**
      * @var \DateTime
      *
@@ -138,129 +140,129 @@ class Person
      * @Assert\DateTime()
      */
     private $modifiedDate;
-    
-    
+
+
     private $isSpeaker;
     private $isMember;
     private $isVisitor;
-    
-    
+
+
     /**
      * organizes
-     * 
+     *
      * @ORM\ManyToOne(targetEntity="gospelcenter\CenterBundle\Entity\Base", inversedBy="organizers")
      * @Assert\Valid()
      */
     private $baseOrganized;
-    
-    
+
+
     /**
      * participates
-     * 
+     *
      * @ORM\ManyToOne(targetEntity="gospelcenter\CenterBundle\Entity\Base", inversedBy="participants")
      * @Assert\Valid()
      */
     private $baseParticipated;
-    
-    
+
+
     /**
      * manages
-     * 
+     *
      * @ORM\ManyToMany(targetEntity="gospelcenter\CenterBundle\Entity\Band", mappedBy="managers")
      * @Assert\Valid()
      */
     private $bandsManaged;
-    
-    
+
+
     /**
      * is member of
-     * 
+     *
      * @ORM\ManyToMany(targetEntity="gospelcenter\CenterBundle\Entity\Band", mappedBy="members")
      * @Assert\Valid()
      */
     private $bandsPopulated;
-    
-    
+
+
     /**
      * lives in
-     * 
+     *
      * @ORM\ManyToOne(targetEntity="gospelcenter\LocationBundle\Entity\Location", inversedBy="persons", cascade={"persist", "remove"})
      * @Assert\Valid()
      */
     private $location;
-    
-    
+
+
     /**
      * plays
-     * 
+     *
      * @ORM\ManyToMany(targetEntity="gospelcenter\PeopleBundle\Entity\Role", mappedBy="persons")
      * @Assert\Valid()
      */
     private $roles;
-    
-    
+
+
     /**
      * is parent of a Speaker
-     * 
+     *
      * @ORM\OneToOne(targetEntity="gospelcenter\CelebrationBundle\Entity\Speaker", mappedBy="person", cascade={"persist", "remove"})
      * @Assert\Valid()
      */
     private $speaker;
-    
-    
+
+
     /**
      * is parent of a Member
-     * 
+     *
      * @ORM\OneToOne(targetEntity="gospelcenter\CenterBundle\Entity\Member", mappedBy="person", cascade={"persist", "remove"})
      * @Assert\Valid()
      */
     private $member;
-    
-    
+
+
     /**
      * is created by
-     * 
+     *
      * @ORM\ManyToOne(targetEntity="gospelcenter\CenterBundle\Entity\Center", inversedBy="persons", cascade={"detach"})
      * @Assert\Valid()
      */
     private $center;
-    
-    
+
+
     /**
      * is parent of a Visitor
-     * 
+     *
      * @ORM\OneToOne(targetEntity="gospelcenter\CenterBundle\Entity\Visitor", mappedBy="person", cascade={"persist", "remove"})
      * @Assert\Valid()
      */
     private $visitor;
-    
-    
+
+
     /**
      * is shown by
-     * 
-     * @ORM\ManyToOne(targetEntity="gospelcenter\ImageBundle\Entity\Image", inversedBy="persons", cascade={"persist", "remove"})
+     *
+     * @ORM\ManyToOne(targetEntity="gospelcenter\ImageBundle\Entity\Image", inversedBy="persons", cascade={"persist", "detach"})
      * @Assert\Valid()
      */
     private $image;
-    
-    
+
+
     /**
      * speaks
-     * 
+     *
      * @ORM\ManyToMany(targetEntity="gospelcenter\LanguageBundle\Entity\Language", inversedBy="persons")
      */
     private $languages;
-    
-    
+
+
     /**
      * can be a
-     * 
+     *
      * @ORM\OneToOne(targetEntity="gospelcenter\UserBundle\Entity\User", inversedBy="person", cascade={"persist", "remove"})
      * @Assert\Valid()
      */
     private $user;
-    
-    
+
+
     /**
      * Constructor
      */
@@ -274,10 +276,10 @@ class Person
         $this->roles = new \Doctrine\Common\Collections\ArrayCollection();
         $this->languages = new \Doctrine\Common\Collections\ArrayCollection();
         $this->center = $center;
-        
+
     }
-    
-    
+
+
     /**
      * @ORM\PrePersist()
      * @ORM\PreUpdate()
@@ -285,52 +287,54 @@ class Person
     public function preSave()
     {
         $this->modifiedDate = new \Datetime();
+
     }
-    
-    
+
+
     /**
      * Display a Person
-     * @return String 
+     * @return String
      */
     public function __toString()
-    {   
+    {
         $id = $this->id;
+
         return (string)$id;
     }
-    
+
     public function setIsSpeaker($isSpeaker)
     {
         $this->isSpeaker = $isSpeaker;
-        
+
     }
-    
+
     public function getIsSpeaker()
     {
         return $this->isSpeaker;
     }
-    
+
     public function setIsMember($isMember)
     {
         $this->isMember = $isMember;
-        
+
     }
-    
+
     public function getIsMember()
     {
         return $this->isMember;
     }
-    
+
     public function setIsVisitor($isVisitor)
     {
         $this->isVisitor = $isVisitor;
-        
+
     }
-    
+
     public function getIsVisitor()
     {
         return $this->isVisitor;
     }
-    
+
     /**
      * Set image
      *
@@ -340,16 +344,18 @@ class Person
     public function setImage(\gospelcenter\ImageBundle\Entity\Image $image = null)
     {
         $this->image = $image;
-        
-        if($image != null) {
-            $title = $this->firstname ." ". $this->lastname;
+
+        if ($image != null) {
+            $title = $this->firstname . " " . $this->lastname;
             $this->image->setTitle($title);
             $this->image->setType('Person');
+
+            $image->addPerson($this);
         }
-    
+
         return $this;
     }
-    
+
     /**
      * Set location
      *
@@ -359,26 +365,39 @@ class Person
     public function setLocation(\gospelcenter\LocationBundle\Entity\Location $location = null)
     {
         $this->location = $location;
-    
-        if($location != null) {
-            $name = $this->firstname ." ". $this->lastname;
+
+        if ($location != null) {
+            $name = $this->firstname . " " . $this->lastname;
             $this->location->setName($name);
         }
-        
+
         return $this;
     }
-    
+
+    /**
+     * Set visitor
+     *
+     * @param \gospelcenter\CenterBundle\Entity\Visitor $visitor
+     * @return Person
+     */
+    public function setVisitor(\gospelcenter\CenterBundle\Entity\Visitor $visitor = null)
+    {
+        $this->visitor = $visitor;
+
+        return $this;
+    }
+
+
+
     /*************************************/
     /**** Getter setter auto generate ****/
     /*************************************/
-    
-    
 
 
     /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId()
     {
@@ -394,14 +413,14 @@ class Person
     public function setFirstname($firstname)
     {
         $this->firstname = $firstname;
-    
+
         return $this;
     }
 
     /**
      * Get firstname
      *
-     * @return string 
+     * @return string
      */
     public function getFirstname()
     {
@@ -417,14 +436,14 @@ class Person
     public function setLastname($lastname)
     {
         $this->lastname = $lastname;
-    
+
         return $this;
     }
 
     /**
      * Get lastname
      *
-     * @return string 
+     * @return string
      */
     public function getLastname()
     {
@@ -440,14 +459,14 @@ class Person
     public function setGender($gender)
     {
         $this->gender = $gender;
-    
+
         return $this;
     }
 
     /**
      * Get gender
      *
-     * @return string 
+     * @return string
      */
     public function getGender()
     {
@@ -463,14 +482,14 @@ class Person
     public function setDateOfBirth($dateOfBirth)
     {
         $this->dateOfBirth = $dateOfBirth;
-    
+
         return $this;
     }
 
     /**
      * Get dateOfBirth
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getDateOfBirth()
     {
@@ -486,14 +505,14 @@ class Person
     public function setEmail($email)
     {
         $this->email = $email;
-    
+
         return $this;
     }
 
     /**
      * Get email
      *
-     * @return string 
+     * @return string
      */
     public function getEmail()
     {
@@ -509,14 +528,14 @@ class Person
     public function setPrivatePhone($privatePhone)
     {
         $this->privatePhone = $privatePhone;
-    
+
         return $this;
     }
 
     /**
      * Get privatePhone
      *
-     * @return string 
+     * @return string
      */
     public function getPrivatePhone()
     {
@@ -532,14 +551,14 @@ class Person
     public function setMobilePhone($mobilePhone)
     {
         $this->mobilePhone = $mobilePhone;
-    
+
         return $this;
     }
 
     /**
      * Get mobilePhone
      *
-     * @return string 
+     * @return string
      */
     public function getMobilePhone()
     {
@@ -555,14 +574,14 @@ class Person
     public function setNotes($notes)
     {
         $this->notes = $notes;
-    
+
         return $this;
     }
 
     /**
      * Get notes
      *
-     * @return string 
+     * @return string
      */
     public function getNotes()
     {
@@ -578,14 +597,14 @@ class Person
     public function setAbroad($abroad)
     {
         $this->abroad = $abroad;
-    
+
         return $this;
     }
 
     /**
      * Get abroad
      *
-     * @return boolean 
+     * @return boolean
      */
     public function getAbroad()
     {
@@ -601,14 +620,14 @@ class Person
     public function setHasChildren($hasChildren)
     {
         $this->hasChildren = $hasChildren;
-    
+
         return $this;
     }
 
     /**
      * Get hasChildren
      *
-     * @return boolean 
+     * @return boolean
      */
     public function getHasChildren()
     {
@@ -624,14 +643,14 @@ class Person
     public function setFunction($function)
     {
         $this->function = $function;
-    
+
         return $this;
     }
 
     /**
      * Get function
      *
-     * @return string 
+     * @return string
      */
     public function getFunction()
     {
@@ -647,14 +666,14 @@ class Person
     public function setStatus($status)
     {
         $this->status = $status;
-    
+
         return $this;
     }
 
     /**
      * Get status
      *
-     * @return integer 
+     * @return integer
      */
     public function getStatus()
     {
@@ -670,14 +689,14 @@ class Person
     public function setIsGlobal($isGlobal)
     {
         $this->isGlobal = $isGlobal;
-    
+
         return $this;
     }
 
     /**
      * Get isGlobal
      *
-     * @return boolean 
+     * @return boolean
      */
     public function getIsGlobal()
     {
@@ -693,14 +712,14 @@ class Person
     public function setCreatedDate($createdDate)
     {
         $this->createdDate = $createdDate;
-    
+
         return $this;
     }
 
     /**
      * Get createdDate
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getCreatedDate()
     {
@@ -716,14 +735,14 @@ class Person
     public function setModifiedDate($modifiedDate)
     {
         $this->modifiedDate = $modifiedDate;
-    
+
         return $this;
     }
 
     /**
      * Get modifiedDate
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getModifiedDate()
     {
@@ -739,14 +758,14 @@ class Person
     public function setBaseOrganized(\gospelcenter\CenterBundle\Entity\Base $baseOrganized = null)
     {
         $this->baseOrganized = $baseOrganized;
-    
+
         return $this;
     }
 
     /**
      * Get baseOrganized
      *
-     * @return \gospelcenter\CenterBundle\Entity\Base 
+     * @return \gospelcenter\CenterBundle\Entity\Base
      */
     public function getBaseOrganized()
     {
@@ -762,14 +781,14 @@ class Person
     public function setBaseParticipated(\gospelcenter\CenterBundle\Entity\Base $baseParticipated = null)
     {
         $this->baseParticipated = $baseParticipated;
-    
+
         return $this;
     }
 
     /**
      * Get baseParticipated
      *
-     * @return \gospelcenter\CenterBundle\Entity\Base 
+     * @return \gospelcenter\CenterBundle\Entity\Base
      */
     public function getBaseParticipated()
     {
@@ -785,7 +804,7 @@ class Person
     public function addBandsManaged(\gospelcenter\CenterBundle\Entity\Band $bandsManaged)
     {
         $this->bandsManaged[] = $bandsManaged;
-    
+
         return $this;
     }
 
@@ -802,7 +821,7 @@ class Person
     /**
      * Get bandsManaged
      *
-     * @return \Doctrine\Common\Collections\Collection 
+     * @return \Doctrine\Common\Collections\Collection
      */
     public function getBandsManaged()
     {
@@ -818,7 +837,7 @@ class Person
     public function addBandsPopulated(\gospelcenter\CenterBundle\Entity\Band $bandsPopulated)
     {
         $this->bandsPopulated[] = $bandsPopulated;
-    
+
         return $this;
     }
 
@@ -835,7 +854,7 @@ class Person
     /**
      * Get bandsPopulated
      *
-     * @return \Doctrine\Common\Collections\Collection 
+     * @return \Doctrine\Common\Collections\Collection
      */
     public function getBandsPopulated()
     {
@@ -845,7 +864,7 @@ class Person
     /**
      * Get location
      *
-     * @return \gospelcenter\LocationBundle\Entity\Location 
+     * @return \gospelcenter\LocationBundle\Entity\Location
      */
     public function getLocation()
     {
@@ -861,7 +880,7 @@ class Person
     public function addRole(\gospelcenter\PeopleBundle\Entity\Role $roles)
     {
         $this->roles[] = $roles;
-    
+
         return $this;
     }
 
@@ -878,7 +897,7 @@ class Person
     /**
      * Get roles
      *
-     * @return \Doctrine\Common\Collections\Collection 
+     * @return \Doctrine\Common\Collections\Collection
      */
     public function getRoles()
     {
@@ -894,14 +913,14 @@ class Person
     public function setSpeaker(\gospelcenter\CelebrationBundle\Entity\Speaker $speaker = null)
     {
         $this->speaker = $speaker;
-    
+
         return $this;
     }
 
     /**
      * Get speaker
      *
-     * @return \gospelcenter\CelebrationBundle\Entity\Speaker 
+     * @return \gospelcenter\CelebrationBundle\Entity\Speaker
      */
     public function getSpeaker()
     {
@@ -917,14 +936,14 @@ class Person
     public function setMember(\gospelcenter\CenterBundle\Entity\Member $member = null)
     {
         $this->member = $member;
-    
+
         return $this;
     }
 
     /**
      * Get member
      *
-     * @return \gospelcenter\CenterBundle\Entity\Member 
+     * @return \gospelcenter\CenterBundle\Entity\Member
      */
     public function getMember()
     {
@@ -940,14 +959,14 @@ class Person
     public function setCenter(\gospelcenter\CenterBundle\Entity\Center $center = null)
     {
         $this->center = $center;
-    
+
         return $this;
     }
 
     /**
      * Get center
      *
-     * @return \gospelcenter\CenterBundle\Entity\Center 
+     * @return \gospelcenter\CenterBundle\Entity\Center
      */
     public function getCenter()
     {
@@ -955,22 +974,9 @@ class Person
     }
 
     /**
-     * Set visitor
-     *
-     * @param \gospelcenter\CenterBundle\Entity\Visitor $visitor
-     * @return Person
-     */
-    public function setVisitor(\gospelcenter\CenterBundle\Entity\Visitor $visitor = null)
-    {
-        $this->visitor = $visitor;
-    
-        return $this;
-    }
-
-    /**
      * Get visitor
      *
-     * @return \gospelcenter\CenterBundle\Entity\Visitor 
+     * @return \gospelcenter\CenterBundle\Entity\Visitor
      */
     public function getVisitor()
     {
@@ -980,7 +986,7 @@ class Person
     /**
      * Get image
      *
-     * @return \gospelcenter\ImageBundle\Entity\Image 
+     * @return \gospelcenter\ImageBundle\Entity\Image
      */
     public function getImage()
     {
@@ -996,7 +1002,7 @@ class Person
     public function addLanguage(\gospelcenter\LanguageBundle\Entity\Language $languages)
     {
         $this->languages[] = $languages;
-    
+
         return $this;
     }
 
@@ -1013,7 +1019,7 @@ class Person
     /**
      * Get languages
      *
-     * @return \Doctrine\Common\Collections\Collection 
+     * @return \Doctrine\Common\Collections\Collection
      */
     public function getLanguages()
     {
@@ -1029,14 +1035,14 @@ class Person
     public function setUser(\gospelcenter\UserBundle\Entity\User $user = null)
     {
         $this->user = $user;
-    
+
         return $this;
     }
 
     /**
      * Get user
      *
-     * @return \gospelcenter\UserBundle\Entity\User 
+     * @return \gospelcenter\UserBundle\Entity\User
      */
     public function getUser()
     {

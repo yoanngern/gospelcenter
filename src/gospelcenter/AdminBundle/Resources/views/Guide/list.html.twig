@@ -10,14 +10,14 @@
 
     <nav class="sub_nav">
         {% spaceless %}
-            <ul>
+            <ul class="classic">
                 <li><a href="#celebrations" class="current focus">Célébrations</a></li>
                 <li><a href="#events">Events</a></li>
                 <li><a href="#contacts">Contacts</a></li>
                 <li><a href="#pages">Pages</a></li>
                 <li><a href="#slides">Slides</a></li>
                 <li><a href="#ads">Pubs</a></li>
-                <li><a href="#images">Images</a></li>
+                <li><a href="#graphic">Graphisme</a></li>
             </ul>
         {% endspaceless %}
     </nav>
@@ -59,7 +59,6 @@
 
         <ul>
             <li>Le(s) orateur(s)</li>
-            <li>La photo de l'orateur</li>
             <li>Le programme de l'enfance</li>
         </ul>
 
@@ -71,6 +70,7 @@
         <ul>
             <li>Le titre du message</li>
             <li>Une description du message (si le titre ne suffit pas)</li>
+            <li>La photo de l'orateur</li>
             <li>La vidéo du message</li>
             <li>L'audio du message</li>
         </ul>
@@ -184,6 +184,18 @@
                                                                                            href="{{ path('gospelcenterAdmin_persons', {'center': center.ref}) }}">Contacts</a>,
             vous pourrez créer un contact et sélectionner le champ "est orateur". Grâce à cette valeur, le contact
             se retrouvera dans la liste des orateurs qui se trouve dans le formulaire d'ajout d'une célébration.</p>
+
+        <h3>Photo de l'orateur</h3>
+
+        <p>La photo de l'orateur sera affichée sur la page des prochains orateurs. Cette photo est visible uniquement
+            avant la célébration.</p>
+
+        <p>Pour ajouter la photo se trouvant dans les anciennes célébrations, veuillez vous référer à la section
+            célébrations.</p>
+
+        <p><em>Résolution: </em>300 x 300 px</p>
+
+        <p><em>Format: </em>JPEG</p>
 
         <h2 class="underline"><span>Situation actuelle</span></h2>
 
@@ -303,33 +315,83 @@
 
     </article>
 
+    <article class="tab blog-style" id="graphic">
 
-    <article class="tab blog-style" id="images">
+        <h1>Graphisme</h1>
 
-        <h1>Gestion des images</h1>
-
-        <p>Afin d'avoir des images de bonne qualité sur votre site, il est important de suivre ces instructions :</p>
-
-        <h2 class="underline"><span>Célébrations</span></h2>
-
-        <p>Cette section est en cours de rédaction.</p>
+        <p>Cette section décris les tâches que la personne en charge du graphisme de votre Gospel Center doit accomplir
+            pour le site.</p>
 
         <h2 class="underline"><span>Events</span></h2>
 
-        <h3>Picture</h3>
-        <p>Cette section est en cours de rédaction.</p>
+        <p>Réaliser les images "Cover" et "Picture".</p>
 
         <h3>Cover</h3>
-        <p>Cette section est en cours de rédaction.</p>
 
+        <p>Cette image est utilisée pour le bandeau en haut de chaque event.</p>
 
-        <h2 class="underline"><span>Slides</span></h2>
+        <p><em>Résolution: </em>1700 x 384 px</p>
 
-        <p>Cette section est en cours de rédaction.</p>
+        <p><em>Format: </em>JPEG</p>
+
+        <h3>Picture</h3>
+
+        <p>Cette image est au format 16/9. Si un autre format est chargé, l'image sera redimensionnée automatiquement
+            pour garder un format 16/9.</p>
+
+        <p><em>Résolution: </em>1920 x 1080 px</p>
+
+        <p><em>Format: </em>JPEG</p>
+
+        <h3>Vidéo (si possible)</h3>
+
+        <p>Ajouter la vidéo de l’event. La vidéo peux se trouver sur <a target="_blank" href="http://www.youtube.com">YouTube</a>,
+            <a target="_blank" href="http://www.vimeo.com">Vimeo</a> ou <a target="_blank"
+                                                                           href="http://www.dailymotion.com">Dailymotion</a>.
+        </p>
 
         <h2 class="underline"><span>Pubs</span></h2>
 
-        <p>Cette section est en cours de rédaction.</p>
+        <p>Chaque pub (sur homepage) est composée d'un titre, d'un sous-titre et d'une image de fond. Il est donc
+            important qu'elle ne comporte aucun texte.</p>
+
+        <p><em>Résolution: </em>640 x 360 px</p>
+
+        <p><em>Format: </em>JPEG</p>
+
+        <h2 class="underline"><span>Photo de l'orateur</span></h2>
+
+        <h3>Avant la célébration</h3>
+
+        <p>Cette image est utilisée pour la liste des prochains orateurs. Cette image n'est visible qu'avant la
+            célébration.</p>
+
+        <p>Cette image est au format carré.</p>
+
+        <p><em>Résolution: </em>300 x 300 px</p>
+
+        <p><em>Format: </em>JPEG</p>
+
+        <h3>Après la célébration</h3>
+
+        <p>Cette image est utilisée pour les anciennes célébrations vidéo ou audio. Il est conseillé de prendre en photo
+            l'orateur lors de son passage dans votre centre.</p>
+
+        <p>Cette image est au format 16/9. Si un autre format est chargé, l'image sera redimensionnée automatiquement
+            pour garder un format 16/9.</p>
+
+        <p><em>Résolution: </em>1920 x 1080 px</p>
+
+        <p><em>Format: </em>JPEG</p>
+
+        <h2 class="underline"><span>Slides</span></h2>
+
+        <p>Vous pouvez être amené à devoir modifier les slides des pages "Jeunesse" ou "Les Bases". Dans ce cas, vous
+            aurez besoin de réaliser une image de fond pour un slide.</p>
+
+        <p>Afin de vous aider à réaliser cette image, nous vous proposons de télécharger le modèle suivant:</p>
+
+        <a class="file" href="{{ asset("documents/slide_default.psd.zip") }}">Modèle Photoshop</a>
 
     </article>
 

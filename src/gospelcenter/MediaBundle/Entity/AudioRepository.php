@@ -12,4 +12,34 @@ use Doctrine\ORM\EntityRepository;
  */
 class AudioRepository extends EntityRepository
 {
+    public function findAudiosSameSpeaker(Audio $audio, $speakers)
+    {
+
+        $dql = '
+                SELECT a
+                FROM gospelcenterMediaBundle:Audio a
+                JOIN a.celebration cel
+                JOIN cel.speakers s
+                JOIN s.person p
+                JOIN cel.date d
+                WHERE a.id != :audio_id';
+
+        foreach($speakers as $speaker) {
+            $dql .= ' AND p.id = ' . $speaker;
+        }
+        $dql .= 'ORDER BY d.start DESC';
+
+        $query = $this->getEntityManager()
+            ->createQuery($dql)->setParameters(
+                array(
+                    'audio_id' => $audio->getId()
+                )
+            );
+
+        try {
+            return $query->getResult();
+        } catch (\Doctrine\ORM\NoResultException $e) {
+            return null;
+        }
+    }
 }

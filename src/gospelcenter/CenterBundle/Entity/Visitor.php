@@ -3,6 +3,7 @@
 namespace gospelcenter\CenterBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use gospelcenter\PeopleBundle\Entity\Person;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
@@ -51,8 +52,10 @@ class Visitor
     /**
      * Constructor
      */
-    public function __construct()
+    public function __construct(Person $person)
     {
+        $this->setPerson($person);
+
         $this->centers = new \Doctrine\Common\Collections\ArrayCollection();
     }
     
@@ -69,7 +72,32 @@ class Visitor
     
         return $this;
     }
-    
+
+    /**
+     * Remove centers
+     *
+     * @param \gospelcenter\CenterBundle\Entity\Center $centers
+     */
+    public function removeCenter(\gospelcenter\CenterBundle\Entity\Center $centers)
+    {
+        $this->centers->removeElement($centers);
+        $centers->removeVisitor($this);
+    }
+
+    /**
+     * Set person
+     *
+     * @param \gospelcenter\PeopleBundle\Entity\Person $person
+     * @return Visitor
+     */
+    public function setPerson(\gospelcenter\PeopleBundle\Entity\Person $person)
+    {
+        $this->person = $person;
+        $person->setVisitor($this);
+
+        return $this;
+    }
+
     /*************************************/
     /**** Getter setter auto generate ****/
     /*************************************/
@@ -122,19 +150,6 @@ class Visitor
     }
 
     /**
-     * Set person
-     *
-     * @param \gospelcenter\PeopleBundle\Entity\Person $person
-     * @return Visitor
-     */
-    public function setPerson(\gospelcenter\PeopleBundle\Entity\Person $person)
-    {
-        $this->person = $person;
-    
-        return $this;
-    }
-
-    /**
      * Get person
      *
      * @return \gospelcenter\PeopleBundle\Entity\Person 
@@ -144,17 +159,6 @@ class Visitor
         return $this->person;
     }
 
-    
-
-    /**
-     * Remove centers
-     *
-     * @param \gospelcenter\CenterBundle\Entity\Center $centers
-     */
-    public function removeCenter(\gospelcenter\CenterBundle\Entity\Center $centers)
-    {
-        $this->centers->removeElement($centers);
-    }
 
     /**
      * Get centers

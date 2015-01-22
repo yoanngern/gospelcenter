@@ -1,23 +1,35 @@
 gospelcenterPageGlobal_home:
     path: /
-    defaults: { _controller: gospelcenterPageBundle:PageGlobal:home }
+    defaults: { _controller: gospelcenterPageBundle:PageGlobal:index, page: home, template: custom }
     
 gospelcenterPageGlobal_home2:
     path: /home
-    defaults: { _controller: gospelcenterPageBundle:PageGlobal:home }
-    
+    defaults: { _controller: gospelcenterPageBundle:PageGlobal:index, page: home, template: custom }
+
+gospelcenterPageGlobal_celebrations:
+    path: /celebrations
+    defaults: { _controller: gospelcenterPageBundle:PageGlobal:index, page: celebrations, template: custom }
+
+gospelcenterPageGlobal_vision:
+    path: /vision
+    defaults: { _controller: gospelcenterPageBundle:PageGlobal:index, page: vision, template: slider }
+
 gospelcenterPageGlobal_god:
     path: /god
-    defaults: { _controller: gospelcenterPageBundle:PageGlobal:god }
+    defaults: { _controller: gospelcenterPageBundle:PageGlobal:index, page: god, template: custom }
     
 gospelcenterPageGlobal_tv:
     path: /television
-    defaults: { _controller: gospelcenterPageBundle:PageGlobal:tv }
+    defaults: { _controller: gospelcenterPageBundle:PageGlobal:index, page: tv, template: custom }
+
+gospelcenterPageGlobal_ea:
+    path: /ea
+    defaults: { _controller: gospelcenterPageBundle:PageGlobal:index, page: ea, template: slider }
     
 gospelcenterPageGlobal_contact:
     path: /contact
-    defaults: { _controller: gospelcenterPageBundle:PageGlobal:contact }
+    defaults: { _controller: gospelcenterPageBundle:PageGlobal:index, page: contact, template: custom }
 
-gospelcenterPageGlobal_default:
-    path: /{page}
-    defaults: { _controller: gospelcenterPageBundle:PageGlobal:index }
+gospelcenterPageGlobal_ajax:
+    path:     /ajax/{page}
+    defaults: { _controller: gospelcenterPageBundle:PageGlobal:ajax }

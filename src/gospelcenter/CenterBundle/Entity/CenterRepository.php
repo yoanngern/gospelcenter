@@ -89,15 +89,23 @@ class CenterRepository extends EntityRepository
     
     public function findAllWithMedia()
     {
-        $qb = $this->createQueryBuilder('c');
-        
-        $qb->join('c.celebrations', 'cel');
-        $qb->leftJoin('cel.video', 'v');
-        $qb->leftJoin('cel.audio', 'a');
-        
-        $qb->addOrderBy('c.name', 'ASC');
-            
-        return $qb->getQuery()->getResult();
+        $query = $this->getEntityManager()
+            ->createQuery(
+                '
+                SELECT c, cel, v, a
+                FROM gospelcenterCenterBundle:Center c
+                JOIN c.celebrations cel
+                LEFT JOIN cel.video v
+                LEFT JOIN cel.audio a
+                WHERE v.id > 0 OR a.id > 0
+                ORDER BY c.name ASC'
+            );
+
+        try {
+            return $query->getResult();
+        } catch (\Doctrine\ORM\NoResultException $e) {
+            return null;
+        }
         
     }
     

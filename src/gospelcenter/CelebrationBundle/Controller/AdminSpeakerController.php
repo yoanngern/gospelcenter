@@ -4,6 +4,7 @@ namespace gospelcenter\CelebrationBundle\Controller;
 
 use gospelcenter\CelebrationBundle\Entity\Speaker;
 use gospelcenter\CelebrationBundle\Form\SpeakerType;
+use gospelcenter\PeopleBundle\Entity\Person;
 use JMS\SecurityExtraBundle\Annotation\Secure;
 use gospelcenter\CenterBundle\Entity\Center;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -20,7 +21,7 @@ class AdminSpeakerController extends Controller {
      */
     public function listAction(Center $center)
     {
-        if (false === $this->get('security.context')->isGranted("VIEW", new Speaker())) {
+        if (false === $this->get('security.context')->isGranted("VIEW", new Speaker(new Person()))) {
             throw new AccessDeniedException('Unauthorised access!');
         }
 

@@ -1,0 +1,566 @@
+@import 'basic';
+
+header {
+    position: fixed;
+    background-color: $grayDarkGC;
+    height: 64px;
+    top: 0;
+    left: 0;
+    right: 0;
+    color: $whiteGC;
+    z-index: 9998;
+    width: 100%;
+
+    nav.main {
+        margin: 0 auto;
+        max-width: 1200px;
+        position: relative;
+        display: block;
+
+        a#get_ruban {
+            display: block;
+            height: 30px;
+            width: 36px;
+            background-image: url('../images/burger.svg');
+            background-position: center;
+            background-size: contain;
+            background-repeat: no-repeat;
+            top: 17px;
+            position: absolute;
+            vertical-align: top;
+            margin-left: 22px;
+        }
+
+        a#logo {
+            display: none;
+        }
+
+        a#get_nav {
+            display: none;
+        }
+
+        ul.nav {
+            display: block;
+            vertical-align: top;
+            width: 960px;
+            margin: 0 auto;
+            padding-top: 18px;
+
+            li {
+                display: inline-block;
+                text-align: center;
+
+                a {
+                    margin-left: 23px;
+                    margin-right: 23px;
+                    padding: 5px 7px 3px 7px;
+                    color: $whiteGC;
+                    display: block;
+
+                    &:hover {
+                        text-decoration: none;
+                    }
+
+                    &.focus {
+                        border: 2px solid $whiteGC;
+                        padding-left: 5px;
+                        padding-right: 5px;
+                    }
+
+                    span.mini {
+                        display: none;
+                    }
+
+                    span.classic {
+                        display: block;
+                    }
+                }
+
+                &:first-of-type a {
+                    margin-left: 0;
+                }
+
+                &:last-of-type a {
+                    margin-right: 0;
+                }
+            }
+        }
+
+        #param_nav {
+            display: none;
+        }
+    }
+
+    @media only screen and (max-width: 1200px) {
+        nav.main {
+
+            ul.nav {
+                position: absolute;
+                left: 85px;
+                right: 0px;
+                width: auto;
+                overflow: scroll;
+                white-space: nowrap;
+                text-align: center;
+                padding-right: 85px;
+
+                li {
+
+                    a {
+                        margin-left: 20px;
+                        margin-right: 20px;
+                    }
+                }
+            }
+        }
+    }
+
+    @media only screen and (max-width: $tabletH) {
+
+        nav.main {
+
+            a#get_ruban {
+                margin-left: 13px;
+            }
+
+            ul.nav {
+                left: 66px;
+                padding-right: 66px;
+
+                li {
+
+                    a {
+
+                        span.mini {
+                            display: block;
+                        }
+
+                        span.classic {
+                            display: none;
+                        }
+                    }
+                }
+            }
+        }
+
+    }
+
+    @media only screen and (max-width: 960px) {
+        nav.main {
+            ul.nav {
+                li {
+                    a {
+                        margin-left: 15px;
+                        margin-right: 15px;
+                    }
+                }
+            }
+        }
+    }
+
+    @media only screen and (max-width: 850px) {
+        nav.main {
+            ul.nav {
+                li {
+                    a {
+                        margin-left: 10px;
+                        margin-right: 10px;
+                    }
+                }
+            }
+        }
+    }
+
+    @media only screen and (max-width: $mobileH) {
+        height: 48px;
+
+        nav.main {
+
+            a#get_ruban {
+                margin-left: 10px;
+                top: 9px;
+            }
+
+            a#logo {
+                display: block;
+                position: relative;
+                width: 110px;
+                left: 50%;
+                margin-left: -55px;
+                background-image: url("../images/logoWhite.svg");
+                background-size: contain;
+                background-position: center;
+                background-repeat: no-repeat;
+                height: 30px;
+                top: 9px;
+            }
+
+            a#get_nav {
+                display: block;
+                position: absolute;
+                right: 10px;
+                top: 9px;
+                height: 30px;
+                width: 36px;
+                background-image: url('../images/getNav.svg');
+                background-position: top;
+                background-repeat: no-repeat;
+                background-size: 100% auto;
+
+                &.close {
+                    background-position: bottom;
+                }
+            }
+
+            ul.nav {
+                display: none;
+                position: absolute;
+                left: 0;
+                right: 0;
+                width: 100%;
+                margin-top: 0px;
+                top: 48px;
+                z-index: 5000;
+                height: auto;
+                border-bottom: none;
+                background-color: $grayDarkGC;
+                overflow: inherit;
+
+                &.actived {
+                    display: block;
+                }
+
+                li {
+                    display: block;
+                    line-height: 36px;
+                    width: 100%;
+
+                    &:first-of-type {
+                        display: none;
+                    }
+
+                    a {
+                        line-height: 32px;
+                        text-align: center;
+                        display: block;
+                        width: 100%;
+                        font-size: 1.5em;
+                        font-family: $font-light;
+                        margin-left: 0;
+                        color: $white;
+
+                        &.focus {
+                            border: none;
+                        }
+
+                        span.mini {
+                            display: none;
+                        }
+
+                        span.classic {
+                            display: block;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+#container {
+    display: block;
+    height: 100vh;
+    //min-height: 500px;
+    width: 100%;
+    position: relative;
+
+    article.screen {
+        height: 100%;
+        width: 100%;
+        display: block;
+        position: relative;
+        overflow: hidden;
+
+        & > div.container {
+            display: block;
+            position: absolute;
+            top: 63px;
+            width: 100%;
+            bottom: 0;
+            padding-top: 1px;
+
+            div.content {
+                display: block;
+                height: 100%;
+                position: relative;
+            }
+        }
+
+        section.slider {
+            top: 225px;
+            bottom: 3%;
+            height: auto;
+            position: absolute;
+            padding-bottom: 36px;
+            left: 0;
+            right: 0;
+
+            .slides {
+                height: 100%;
+
+                article.slide {
+                    height: 100%;
+                }
+            }
+
+        }
+
+        &#home {
+
+            .container {
+                background-image: url('../images/home.jpg');
+                background-repeat: no-repeat;
+                background-position: 5% 10%;
+                background-size: cover;
+
+                #logo_home {
+                    background-image: url('../images/logo_home.svg');
+                    background-repeat: no-repeat;
+                    background-position: top center;
+                    background-size: contain;
+                    width: 50%;
+                    max-width: 1000px;
+                    height: 0;
+                    padding-bottom: 17%;
+                    display: block;
+                    position: absolute;
+                    top: 33%;
+                    left: 25%;
+                }
+
+                ul.centers {
+                    position: absolute;
+                    bottom: 12%;
+                    text-align: center;
+                    width: 100%;
+
+                    li {
+                        display: inline-block;
+                        padding: 0 30px;
+
+                        a {
+                            color: $whiteGC;
+                            font-size: 2.5em;
+                            line-height: 2.5em;
+                            font-family: $font-light;
+                            padding: 0 10px;
+                        }
+                    }
+                }
+
+                article.arrow {
+                    position: absolute;
+                    bottom: -10%;
+                    display: none;
+                    width: 100%;
+
+                    a {
+                        text-align: center;
+                        margin: 0 auto;
+                        width: 80px;
+                        height: 80px;
+                        display: block;
+                        cursor: pointer;
+                        background-image: url('../images/goDown.svg');
+                        background-size: 100%;
+                        background-position: center center;
+                        position: relative;
+                    }
+                }
+            }
+        }
+
+        &#celebrations {
+
+        }
+
+        &#vision {
+
+        }
+
+        &#god {
+
+            nav.sub_nav {
+                margin-bottom: 50px;
+            }
+
+            section.player {
+                width: 100%;
+
+                div.container {
+                    width: 100%;
+                    max-width: 960px;
+                    margin: 0 auto;
+                    position: relative;
+                    height: 540px;
+
+                    iframe {
+                        margin: 0 auto;
+                        display: block;
+                        width: 100%;
+                        height: 100%;
+                        position: absolute;
+                    }
+                }
+            }
+
+            article#how {
+
+                div.link {
+                    margin-top: 50px;
+                    margin-bottom: 20px;
+                    display: block;
+                    text-align: center;
+
+                    a {
+                        font-size: 1.2em;
+                        line-height: 1.2em;
+                        font-family: $font-light;
+                        color: $grayDarkGC;
+                        display: inline;
+                        background-image: url('../images/linkArrow.svg');
+                        background-position: center right;
+                        background-repeat: no-repeat;
+                        padding-right: 20px;
+                        background-size: normal;
+                    }
+                }
+            }
+
+            article#askPray {
+                & > p {
+                    font-size: 1.2em;
+                    line-height: 1.6em;
+                    font-family: $font-light;
+                    text-align: center;
+
+                    a {
+                        font-family: $font-bold;
+                        color: $grayDarkGC;
+                    }
+                }
+
+                #phone {
+                    width: 640px;
+                    margin: 0 auto;
+
+                    article.frame {
+                        p {
+                            text-transform: inherit;
+                            max-width: 300px;
+                        }
+                    }
+                }
+
+                #mail {
+                    section.formGray {
+                        padding: 0;
+                        background-color: transparent;
+                        width: 800px;
+                        margin: 50px auto 0;
+
+                        input,
+                        textarea {
+                            border-color: transparent;
+                        }
+
+                        input[type="submit"] {
+                            margin-top: 10px;
+                            border-color: $grayDarkGC;
+                            background-color: transparent;
+                        }
+                    }
+                }
+            }
+
+
+        }
+
+        &#tv {
+
+        }
+
+        &#ea {
+
+        }
+
+        &#contact {
+
+        }
+    }
+
+    @media only screen and (min-width: 2000px) {
+        article.screen {
+            &#home {
+                .container {
+                    #logo_home {
+                        left: 50%;
+                        margin-left: -500px;
+                    }
+                }
+            }
+        }
+    }
+
+    @media only screen and (max-width: 1440px) {
+        article.screen {
+            &#home {
+                .container {
+                    #logo_home {
+                        padding-bottom: 30%;
+                    }
+
+                    article.arrow {
+                        a {
+                            width: 60px;
+                            height: 60px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    @media only screen and (max-width: $mobileH) {
+        article.screen {
+            div.container {
+                top: 47px;
+            }
+
+            &#home {
+                .container {
+                    #logo_home {
+                        width: 70%;
+                        left: 15%;
+                        padding-bottom: 30%;
+                    }
+
+                    ul.centers {
+                        bottom: 5%;
+
+                        li {
+                            width: 49%;
+                            padding: 0;
+
+                            a {
+                                font-size: 2em;
+                                line-height: 2em;
+                                padding: 0 3px;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

@@ -1,50 +1,70 @@
 {% extends "gospelcenterMediaBundle::layout.html.twig" %}
 
-{% block stylesheets %}
-	{{ parent() }}
-{% endblock %}
+{% block body %}
+    {% spaceless %}
+        <section class="wall">
+            <h1>Nos Vidéos</h1>
 
-{% block javascripts %}
-    {{ parent() }}
-{% endblock %}
-
-{% block headerTitle %}Gospel Center {{ center.name }}{% endblock %}
-
-{% block tvHeader %}
-
-    <nav class="left">
-        {% if previousUrl %}<a id="back" href="{{ previousUrl }}">{{ previousLabel }}</a>{% endif %}
-    </nav>
-    
-    <h1>Gospel Center {{ center.name }}</h1>
-    
-    <nav class="right">
-    
-    </nav>
-    
-{% endblock %}
-
-{% block tv_body %}    
-    <section class="wall">
-        {% spaceless %}
             {% for celebration in celebrations %}
-            
-                {% if celebration.video or celebration.audio %}
-                    <a href="{% if celebration.video %}{{ path('gospelcenterMedia_video', {'video': celebration.video.id}) }}{% elseif celebration.audio %}{{ path('gospelcenterMedia_audio', {'audio': celebration.audio.id}) }}{% endif %}">
-                        <div class="video_image">
-                            <span class="picto_play"></span>
-                            <img src="{{ asset(celebration.image.webPath) }}" alt="{{ celebration.image.alt }}" />
+                {% if celebration.video %}
+                    <a href="{{ path('gospelcenterMedia_video', {'video': celebration.video.id}) }}">
+                        <div class="container">
+                            {% if celebration.image %}
+                                {% set tvImg = celebration.image.webPath %}
+                                <div class="image"
+                                     style="background-image: url('{{ asset(tvImg) }}')"
+                                     data-bg="{{ asset(tvImg)| imagine_filter('tv_wall') }}"
+                                     data-bg_2x="{{ asset(tvImg)| imagine_filter('tv_wall_2x') }}"
+                                     data-bg_tablet="{{ asset(tvImg)| imagine_filter('tv_wall_tablet') }}"
+                                     data-bg_tablet_2x="{{ asset(tvImg)| imagine_filter('tv_wall_tablet_2x') }}"
+                                     data-bg_mobile="{{ asset(tvImg)| imagine_filter('tv_wall_mobile') }}"
+                                     data-bg_mobile_2x="{{ asset(tvImg)| imagine_filter('tv_wall_mobile_2x') }}"
+                                        ></div>
+                                <div class="gradient"></div>
+                            {% else %}
+                                <div class="bg"></div>
+                            {% endif %}
+                            <div class="hover">
+                                <div class="picto_play"></div>
+                                <span>Regarder la vidéo</span>
+                            </div>
+                            <div class="details">
+                                <h1>{{ celebration|speakers(app.request.locale) }}</h1>
+                                <span>{{ celebration.title }}</span>
+                            </div>
                         </div>
-                        <section class="details">
-                            <h1>{% if celebration.title|length %}{{ celebration.title }}{% else %}Celebration{% endif %}</h1>
-                            <span data-time="{{ celebration.startingDate|date('Y-m-d H:i:s') }}">{{ celebration.startingDate|date('d F') }}</span>
-                        </section>
+                    </a>
+                {% else %}
+                    <a href="{{ path('gospelcenterMedia_audio', {'audio': celebration.audio.id}) }}">
+                        <div class="container">
+                            {% if celebration.image %}
+                                {% set tvImg = celebration.image.webPath %}
+                                <div class="image"
+                                     style="background-image: url('{{ asset(tvImg) }}')"
+                                     data-bg="{{ asset(tvImg)| imagine_filter('tv_wall') }}"
+                                     data-bg_2x="{{ asset(tvImg)| imagine_filter('tv_wall_2x') }}"
+                                     data-bg_tablet="{{ asset(tvImg)| imagine_filter('tv_wall_tablet') }}"
+                                     data-bg_tablet_2x="{{ asset(tvImg)| imagine_filter('tv_wall_tablet_2x') }}"
+                                     data-bg_mobile="{{ asset(tvImg)| imagine_filter('tv_wall_mobile') }}"
+                                     data-bg_mobile_2x="{{ asset(tvImg)| imagine_filter('tv_wall_mobile_2x') }}"
+                                        ></div>
+                                <div class="gradient"></div>
+                            {% else %}
+                                <div class="bg"></div>
+                            {% endif %}
+                            <div class="hover">
+                                <div class="picto_play"></div>
+                                <span>Regarder la vidéo</span>
+                            </div>
+                            <div class="details">
+                                <h1>{{ celebration|speakers(app.request.locale) }}</h1>
+                                <span>{{ celebration.title }}</span>
+                            </div>
+                        </div>
                     </a>
                 {% endif %}
-            {% else %}
-                <span class="empty">There are no events to come.</span>
             {% endfor %}
-        {% endspaceless %}
-    </section>
-    
+            <div class="clear"></div>
+        </section>
+    {% endspaceless %}
 {% endblock %}

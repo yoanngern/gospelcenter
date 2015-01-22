@@ -1,96 +1,58 @@
 {% extends "gospelcenterMediaBundle::layout.html.twig" %}
 
-{% block stylesheets %}
-	{{ parent() }}
+{% block home_title %}
+    {% set homeImg = 'bundles/gospelcentermedia/images/media_home.jpg' %}
+    <section class="home_title"
+             style="background-image: url('{{ asset(homeImg)| imagine_filter('media_home_low') }}')"
+             data-bg="{{ asset(homeImg)| imagine_filter('media_home') }}"
+             data-bg_2x="{{ asset(homeImg)| imagine_filter('media_home_2x') }}"
+             data-bg_tablet="{{ asset(homeImg)| imagine_filter('media_home_tablet') }}"
+             data-bg_tablet_2x="{{ asset(homeImg)| imagine_filter('media_home_tablet_2x') }}"
+             data-bg_mobile="{{ asset(homeImg)| imagine_filter('media_home_mobile') }}"
+             data-bg_mobile_2x="{{ asset(homeImg)| imagine_filter('media_home_mobile_2x') }}"
+            >
+        <a id="logo_tv" href="{{ path('gospelcenterMedia') }}"></a>
+    </section>
 {% endblock %}
-
-{% block javascripts %}
-    {{ parent() }}
-{% endblock %}
-
 {% block body %}
+    {% spaceless %}
+        <section class="wall">
+            <h1>Nos dernières célébrations</h1>
 
-    <a class="title" href="{{ path('gospelcenterMedia') }}"><span>Gospel Center</span> <em>TV</em></a>
-    
-    <section class="sliderTop slider" id="1">
-        
-        {% if starsVideos|length > 1 %}<div id="left" class="arrow black"></div>{% endif %}
-    
-        {% for celebration in starsVideos %}
-            
-            {% set speakers = '' %}
-        
-            {% for key, speaker in celebration.speakers %}
-                
-                {% if key != 0 and key != (celebration.speakers|length -1) %}
-                    {% set speakers = speakers ~ ', '%}
-                {% elseif key != 0 and key == (celebration.speakers|length -1) %}
-                    {% set speakers = speakers ~ ' et '%}
-                {% endif %}
-                
-                {% set speakers = speakers ~ speaker.person.firstname ~ ' ' ~ speaker.person.lastname %}
-                
-            {% endfor %}
-            
-            <a href="{{ path('gospelcenterMedia_video', {'video': celebration.video.id}) }}" class="slide" id="{{ loop.index }}">
-                <section class="picture">                
-                    <img src="{{ asset(celebration.image.webPath) }}" alt="{{ celebration.image.alt }}" />
-                </section>
-                <section class="details content">
-                    <h1>{{ speakers }}</h1>
-                    {% if celebration.title|length %}<h2>{{ celebration.title }}</h2>{% endif %}
-                    <time data-time="{{ celebration.date.start|date('Y-m-d H:i:s') }}">{{ celebration.date.start|date('d F') }}</time>
-                    
-                    {% if celebration.description %}<p>{{ celebration.description }}</p>{% endif %}
-                </section>
-            </a>
-            
-        {% endfor %}
-        
-        {% if starsVideos|length > 1 %}<div id="right" class="arrow black"></div>{% endif %}
-        
-        {% if starsVideos|length > 1 %}
-            <nav id="slides" class="redRound">
-                <ul>
-                    {% for celebration in starsVideos %}
-                        <li class="{% if loop.index == 1 %}current{% endif %}" data-slide="{{ loop.index }}" data-slider="1"></li>
-                    {% endfor %}
-                </ul>
-            </nav>
-        {% endif %}
-    </section>
-    
-    
-    <section class="sliderDown">
-        <h1>Our last videos</h1>
-        
-        <section class="clip">
-            {% for celebration in lastVideos %}
-                
-                {% set speakers = '' %}
-            
-                {% for key, speaker in celebration.speakers %}
-                    
-                    {% if key != 0 and key != (celebration.speakers|length -1) %}
-                        {% set speakers = speakers ~ ', '%}
-                    {% elseif key != 0 and key == (celebration.speakers|length -1) %}
-                        {% set speakers = speakers ~ ' et '%}
-                    {% endif %}
-                    
-                    {% set speakers = speakers ~ speaker.person.firstname ~ ' ' ~ speaker.person.lastname %}
-                    
-                {% endfor %}
-                
+            {% for celebration in celebrations %}
                 <a href="{{ path('gospelcenterMedia_video', {'video': celebration.video.id}) }}">
-                    <img src="{{ asset(celebration.image.webPath) }}" alt="{{ celebration.image.alt }}" />
-                    <section class="details">
-                        <h1>{{ speakers }}</h1>
-                        <span data-time="{{ celebration.date.start|date('Y-m-d H:i:s') }}">{{ celebration.date.start|date('d F') }}</span>
-                    </section>
+                    <div class="container">
+                        {% if celebration.image %}
+                            {% set tvImg = celebration.image.webPath %}
+                            <div class="image"
+                                 style="background-image: url('{{ asset(tvImg) }}')"
+                                 data-bg="{{ asset(tvImg)| imagine_filter('tv_wall') }}"
+                                 data-bg_2x="{{ asset(tvImg)| imagine_filter('tv_wall_2x') }}"
+                                 data-bg_tablet="{{ asset(tvImg)| imagine_filter('tv_wall_tablet') }}"
+                                 data-bg_tablet_2x="{{ asset(tvImg)| imagine_filter('tv_wall_tablet_2x') }}"
+                                 data-bg_mobile="{{ asset(tvImg)| imagine_filter('tv_wall_mobile') }}"
+                                 data-bg_mobile_2x="{{ asset(tvImg)| imagine_filter('tv_wall_mobile_2x') }}"
+                                    ></div>
+                            <div class="gradient"></div>
+                        {% else %}
+                            <div class="bg"></div>
+                        {% endif %}
+                        <div class="hover">
+                            <div class="picto_play"></div>
+                            <span>Regarder la vidéo</span>
+                        </div>
+                        <div class="details">
+                            <h1>{{ celebration|speakers(app.request.locale) }}</h1>
+                            {% if celebration.title != "" %}
+                                <span>{{ celebration.title }}</span>
+                            {% else %}
+                                <span>{{ celebration.date|oneDate(app.request.locale) }}</span>
+                            {% endif %}
+                        </div>
+                    </div>
                 </a>
-                
             {% endfor %}
+            <div class="clear"></div>
         </section>
-            
-    </section>
+    {% endspaceless %}
 {% endblock %}

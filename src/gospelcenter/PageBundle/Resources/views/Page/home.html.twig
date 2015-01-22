@@ -10,9 +10,7 @@
     {{ parent() }}
 {% endblock %}
 
-{% block title %}
-    {{ parent() }}
-{% endblock %}
+{% block title %}{{ parent() }} {{ center.name }}{% endblock %}
 
 {% block local_header %}
     <div class="gradient_top"></div>
@@ -79,7 +77,7 @@
                     {% for ad in ads %}
 
                         <div>
-                            <a href="{{ ad.url }}">
+                            <a {% if ad.url|isexternal(ad.url) %}target="_blank"{% endif %} href="{{ ad.url }}">
                                 <div
                                         {% if ad.image %}
                                     style="background-image: url('{{ ad.image.webPath| imagine_filter('ads_home_low') }}')"
@@ -133,7 +131,7 @@
                             </div>
                             <section class="details">
                                 <h1>{{ event.title }}</h1>
-                                <span>{{ date.start|localizeddate('medium', 'none') }}</span>
+                                <span>{{ date|oneDate(app.request.locale) }}</span>
                             </section>
                         </a>
 

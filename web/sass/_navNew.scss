@@ -1,5 +1,4 @@
 
-
 #ruban_nav {
     background-color: $grayDarkGC;
     width: 250px;
@@ -134,42 +133,90 @@ nav.sub_nav {
     margin-bottom: 70px;
 
     ul {
-        display: inline-block;
-        border-bottom: 2px solid $grayDarkGC;
 
-        li {
+        &.classic,
+        &.complex {
             display: inline-block;
-            margin-bottom: 2px;
+            border-bottom: 2px solid $grayDarkGC;
 
-            &:last-of-type a {
-                margin-right: 0px;
+            li {
+                display: inline-block;
+                margin-bottom: 2px;
+
+                &:last-of-type a {
+                    margin-right: 0px;
+                }
+
+                a {
+                    color: $grayGC;
+                    font-size: 1.4em;
+                    line-height: 1.4em;
+                    font-family: $font-light;
+                    margin-right: 35px;
+
+                    &:hover {
+                        text-decoration: none;
+                    }
+
+                    &.current {
+                        color: $grayDarkGC;
+                    }
+
+                    &.focus {
+                        border-bottom: 5px solid $grayDarkGC;
+                    }
+                }
+
             }
-
-            a {
-                color: $grayGC;
-                font-size: 1.4em;
-                line-height: 1.4em;
-                font-family: $font-light;
-                margin-right: 35px;
-
-                &:hover {
-                    text-decoration: none;
-                }
-
-                &.current {
-                    color: $grayDarkGC;
-                }
-
-                &.focus {
-                    border-bottom: 5px solid $grayDarkGC;
-                }
-            }
-
         }
-    }
 
-    &.complex {
-        ul {
+        &.switch-style {
+            display: block;
+            margin: 30px auto 20px;
+            text-align: center;
+
+            li {
+                display: inline-block;
+                list-style: none;
+                min-width: 200px;
+                border: 3px solid $grayDarkGC;
+                margin-right: -3px;
+                vertical-align: top;
+
+                &:last-of-type {
+                    margin-right: 0;
+                }
+
+                a {
+                    color: $grayDarkGC;
+                    background-color: $whiteGC;
+                    font-family: $font-black;
+                    padding: 4px 10px 0;
+                    font-size: 1.2em;
+                    line-height: 36px;
+                    text-transform: uppercase;
+                    display: block;
+                    text-align: center;
+
+                    &:hover {
+                        text-decoration: none;
+                    }
+
+                    &.focus {
+                        background-color: $grayLightGC;
+                    }
+
+                    &.current {
+                        color: $whiteGC;
+                        background-color: $grayDarkGC;
+                        font-family: $font-regular;
+
+                    }
+                }
+            }
+        }
+
+        &.complex {
             border-bottom: none;
 
             li {
@@ -217,41 +264,44 @@ nav.sub_nav {
         margin-bottom: 40px;
 
         ul {
-            margin-left: 15px;
-            border-bottom: none;
-            border-left: 2px solid $grayDarkGC;
-            margin-top: 0px;
 
-            li {
-                display: block;
-                line-height: 32px;
-                margin: 0 0 10px;
+            &.classic,
+            &.complex {
+                margin-left: 15px;
+                border-bottom: none;
+                border-left: 2px solid $grayDarkGC;
+                margin-top: 0px;
 
-                &:last-of-type {
-                    margin-bottom: 0px;
-                }
-
-                a {
-                    padding-left: 10px;
-                    margin-top: 0;
-                    font-family: $font-regular;
-                    font-size: 1.6em;
-                    line-height: 32px;
+                li {
                     display: block;
+                    line-height: 32px;
+                    margin: 0 0 10px;
 
-                    &.focus {
-                        border-left: 2px solid $grayDarkGC;
-                        border-bottom: none;
-                        padding-left: 8px;
+                    &:last-of-type {
+                        margin-bottom: 0px;
+                    }
+
+                    a {
+                        padding-left: 10px;
+                        margin-top: 0;
+                        font-family: $font-regular;
+                        font-size: 1.6em;
+                        line-height: 32px;
+                        display: block;
+
+                        &.focus {
+                            border-left: 2px solid $grayDarkGC;
+                            border-bottom: none;
+                            padding-left: 8px;
+                        }
                     }
                 }
             }
-        }
 
-        &.complex {
-            ul {
+            &.complex {
                 li {
                     a {
+                        font-size: 1em;
                         h1 {
                             border-bottom: none;
                             padding: 0;

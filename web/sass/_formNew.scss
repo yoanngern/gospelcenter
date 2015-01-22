@@ -412,7 +412,7 @@ form {
 
         img {
             display: block;
-            width: 100%;
+            max-width: 100%;
             margin-top: 0px;
         }
 
@@ -430,7 +430,6 @@ form {
             display: none;
             position: absolute;
             width: 100%;
-            //margin-top: -30px;
             bottom: 0px;
             padding-top: 5px;
             padding-bottom: 5px;

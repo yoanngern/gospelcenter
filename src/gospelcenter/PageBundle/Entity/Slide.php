@@ -90,7 +90,7 @@ class Slide
     /**
      * is contained by
      * 
-     * @ORM\ManyToOne(targetEntity="gospelcenter\PageBundle\Entity\Page", inversedBy="slides", cascade={"persist", "remove"})
+     * @ORM\ManyToOne(targetEntity="gospelcenter\PageBundle\Entity\Page", inversedBy="slides", cascade={"persist"})
      * @Assert\Valid()
      */
     private $page;
@@ -120,6 +120,8 @@ class Slide
             $title = $this->title;
             $this->image->setTitle($title);
             $this->image->setType('Slide');
+
+            $image->addSlide($this);
         }
     
         return $this;

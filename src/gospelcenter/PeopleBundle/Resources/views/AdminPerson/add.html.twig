@@ -4,7 +4,7 @@
 
 {% block javascripts %}
     {{ parent() }}
-    <script type="text/javascript" src="{{ asset('js/addImage.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('js/processed/addImage.min.js') }}"></script>
 {% endblock %}
 
 {% block title %}
@@ -28,7 +28,7 @@
             <section class="tab">
 
                 <nav class="sub_nav">
-                    <ul>
+                    <ul class="classic">
                         <li><a href="#general" class="current focus">{{ 'gc.admin.contacts.tab.general'|trans }}</a>
                         </li>
                         <li><a href="#user">{{ 'gc.admin.contacts.tab.user'|trans }}</a></li>

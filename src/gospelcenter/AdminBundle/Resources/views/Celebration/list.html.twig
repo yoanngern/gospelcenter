@@ -28,12 +28,12 @@
                 {% endif %}{% if date(celebration.date.start) < date("+6days") %}class="today"{% endif %}>
                 <td class="em" data-sort-value="{{ celebration.date.start|date('U') }}">
                     <a href="{{ link }}">
-                        <span>{{ celebration.date.start|localizeddate('long', 'none') }}</span>
+                        <span>{{ celebration.date|oneDate(app.request.locale) }}</span>
                     </a>
                 </td>
                 <td data-sort-value="{{ celebration.date.start|date('Hi') }}{{ celebration.date.start|date('U') }}">
                     <a href="{{ link }}">
-                        <span>{{ celebration.date.start|localizeddate('none', 'short') }} - {{ celebration.date.end|localizeddate('none', 'short') }}</span>
+                        <span>{{ celebration.date|times(app.request.locale) }}</span>
                     </a>
                 </td>
                 <td>

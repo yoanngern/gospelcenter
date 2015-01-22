@@ -78,7 +78,9 @@ class PersonType extends AbstractType
                         'month' => 'gc.generic.month',
                         'day' => 'gc.generic.day'
                     ),
-                    'format' => 'd MMMM yyyy'
+                    'format' => 'd MMMM yyyy',
+                    'required' => false,
+                    'label' => false,
                 )
             )
             ->add(

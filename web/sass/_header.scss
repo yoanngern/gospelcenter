@@ -1,14 +1,3 @@
-@mixin gradient4pt($color1: $whiteGC, $pos1: 0%, $color2: $whiteGC, $pos2: 33%, $color3: $whiteGC, $pos3: 66%, $color4: $white, $pos4: 100%) {
-    background: -moz-linear-gradient(top, $color1 $pos1, $color2 $pos2, $color3 $pos3, $color4 $pos4);
-    background: -webkit-gradient(linear, left top, left bottom, color-stop($pos1, $color1), color-stop($pos2, $color2), color-stop($pos3, $color3), color-stop($pos4, $color4));
-    background: -webkit-linear-gradient(top, $color1 $pos1, $color2 $pos2, $color3 $pos3, $color4 $pos4);
-    background: -o-linear-gradient(top, $color1 $pos1, $color2 $pos2, $color3 $pos3, $color4 $pos4);
-    background: -ms-linear-gradient(top, $color1 $pos1, $color2 $pos2, $color3 $pos3, $color4 $pos4);
-    background: linear-gradient(to bottom, top, $color1 $pos1, $color2 $pos2, $color3 $pos3, $color4 $pos4);
-    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#fdfdfc', endColorstr='#00fdfdfc', GradientType=0);
-
-}
-
 #page > header {
     height: 440px;
     z-index: 0;

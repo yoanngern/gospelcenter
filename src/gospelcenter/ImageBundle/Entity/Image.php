@@ -2,6 +2,7 @@
 
 namespace gospelcenter\ImageBundle\Entity;
 
+use Doctrine\ORM\Event\LifecycleEventArgs;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 
@@ -227,6 +228,7 @@ class Image
         $this->alt = $this->title;
         
         $this->modifiedDate = new \Datetime();
+
     }
     
     
@@ -262,6 +264,8 @@ class Image
             $this->getUploadRootDir(),
             $createdDate.'_'.$this->id.'.'.$this->extension
         );
+
+        $this->file = null;
     }
     
     
@@ -285,6 +289,8 @@ class Image
             unlink($this->tempFilename);
         }
     }
+
+
     
     
     public function getUploadDir()

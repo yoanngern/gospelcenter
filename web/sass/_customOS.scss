@@ -1,0 +1,348 @@
+@mixin os_apple() {
+
+    h1 {
+
+        &.titlePage {
+            span {
+                padding: 8px 12px 0px 12px;
+            }
+
+            @media only screen and (max-width: $mobileH) {
+                span {
+                    padding: 8px 8px 0px 8px;
+                }
+            }
+        }
+    }
+
+    section.slider {
+        article.slide {
+            div.link {
+                a {
+                    padding: 5px;
+                }
+            }
+        }
+    }
+
+    article.blog-style {
+        & > h2 {
+            span {
+                padding: 4px 8px 0px 8px;
+            }
+        }
+
+        @media only screen and (max-width: $mobileH) {
+            h2 {
+                span {
+                    padding: 4px 6px 0px 6px;
+                }
+            }
+        }
+    }
+
+    #page.about {
+        section.header {
+            article {
+                div {
+                    h1 {
+                        padding: 8px 8px 0px 8px;
+                    }
+                }
+            }
+
+            @media only screen and (max-width: $tabletH) {
+                article {
+                    div {
+                        h1 {
+                            padding: 8px 6px 2px 6px;
+                        }
+                    }
+                }
+            }
+
+            @media only screen and (max-width: $mobileH) {
+                article {
+                    div {
+                        h1 {
+                            padding: 7px 6px 2px 6px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    #page.events {
+        article.event {
+            section {
+                &.info article {
+                    h1 {
+                        span {
+                            padding: 4px 8px 0px 8px;
+                        }
+                    }
+                }
+            }
+        }
+
+        @media only screen and (max-width: $mobileH) {
+            article.event {
+                section.info {
+                    section.left,
+                    section.right {
+                        h1 {
+                            span {
+                                padding: 4px 6px 0px 6px;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    #page {
+        #container {
+            section.video,
+            section.audio {
+                section.bottom {
+                    section.right {
+                        & > h2 {
+                            span {
+                                padding: 4px 8px 0px 8px;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+@mixin os_microsoft() {
+
+    h1 {
+
+        &.titlePage {
+            span {
+                padding: 2px 12px 6px 12px;
+            }
+
+            @media only screen and (max-width: $mobileH) {
+                span {
+                    padding: 2px 8px 6px 8px;
+                }
+            }
+        }
+    }
+
+    section.slider {
+        article.slide {
+            div.link {
+                a {
+                    padding: 8px 5px 2px;
+                }
+            }
+        }
+    }
+
+    article.blog-style {
+        & > h2 {
+            span {
+                padding: 0px 8px 4px 8px;
+            }
+        }
+
+        @media only screen and (max-width: $mobileH) {
+            h2 {
+                span {
+                    padding: 2px 6px 2px 6px;
+                }
+            }
+        }
+    }
+
+    #page.about {
+        section.header {
+            article {
+                div {
+                    h1 {
+                        padding: 0px 8px 5px 8px;
+                    }
+                }
+            }
+
+            @media only screen and (max-width: $tabletH) {
+                article {
+                    div {
+                        h1 {
+                            padding: 2px 6px 6px 6px;
+                        }
+                    }
+                }
+            }
+
+            @media only screen and (max-width: $mobileH) {
+                article {
+                    div {
+                        h1 {
+                            padding: 2px 6px 5px 6px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    #page.events {
+        article.event {
+            section {
+                &.info article {
+                    h1 {
+                        span {
+                            padding: 0px 8px 4px 8px;
+                        }
+                    }
+                }
+            }
+        }
+
+        @media only screen and (max-width: $mobileH) {
+            article.event {
+                section.info {
+                    section.left,
+                    section.right {
+                        h1 {
+                            span {
+                                padding: 0px 6px 4px 6px;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    #page {
+        #container {
+            section.video,
+            section.audio {
+                section.bottom {
+                    section.right {
+                        & > h2 {
+                            span {
+                                padding: 0px 8px 4px 8px;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+}
+
+html {
+
+    /** Apple **/
+    &[data-platform="MacIntel"],
+    &[data-platform="MacPPC"],
+    &[data-platform="Mac68K"],
+    &[data-platform="iPhone"],
+    &[data-platform="iPod"],
+    &[data-platform="iPad"],
+    &[data-platform="Pike v7.6 release 92"],
+    &[data-platform="Pike v7.8 release 517"],
+    &[data-platform="Macintosh"] {
+
+        @include os_apple();
+
+    }
+
+    /** Microsoft **/
+    &[data-platform="SunOS"],
+    &[data-platform="Win64"],
+    &[data-platform="Win32"],
+    &[data-platform="Win16"],
+    &[data-platform="WinCE"],
+    &[data-platform="OS/2"],
+    &[data-platform="Pocket PC"],
+    &[data-platform="Windows"] {
+
+        @include os_microsoft();
+
+    }
+
+    /** Linux **/
+    &[data-platform="Linux"],
+    &[data-platform="Linux i686"],
+    &[data-platform="Linux i686 X11"],
+    &[data-platform="Linux armv7l"],
+    &[data-platform="Linux x86_64 X11"] {
+
+        @include os_apple();
+
+    }
+
+    /** BlackBerry **/
+    &[data-platform="BlackBerry"] {
+
+        @include os_apple();
+
+    }
+
+    /** FreeBSD **/
+    &[data-platform="FreeBSD i386"],
+    &[data-platform="FreeBSD amd64"] {
+
+        @include os_apple();
+
+    }
+
+    /** Symbian / S40 **/
+    &[data-platform="Nokia_Series_40"],
+    &[data-platform="S60"],
+    &[data-platform="Symbian"] {
+
+        @include os_apple();
+
+    }
+
+    /** Palm **/
+    &[data-platform="PalmOS"],
+    &[data-platform="webOS"] {
+
+        @include os_microsoft();
+
+    }
+
+    /** Solaris **/
+    &[data-platform="SunOS"],
+    &[data-platform="SunOS i86pc"],
+    &[data-platform="SunOS sun4u"] {
+
+        @include os_apple();
+
+    }
+
+    /** Sony **/
+    &[data-platform="PLAYSTATION 3"],
+    &[data-platform="PLAYSTATION 3"],
+    &[data-platform="PlayStation 4"],
+    &[data-platform="PSP"] {
+
+        @include os_apple();
+
+    }
+
+    /** Nintendo **/
+    &[data-platform="Nintendo DSi"],
+    &[data-platform="Nintendo 3DS"],
+    &[data-platform="Nintendo Wii"],
+    &[data-platform="Nintendo WiiU"] {
+
+        @include os_apple();
+
+    }
+}

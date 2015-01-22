@@ -1,43 +1,64 @@
 {% extends "gospelcenterMediaBundle::layout.html.twig" %}
 
-{% block stylesheets %}
-    {{ parent() }}
-{% endblock %}
-
-{% block javascripts %}
-    {{ parent() }}
-{% endblock %}
-
-{% block headerTitle %}{% if audio.celebration.title|length %}{{ audio.celebration.title }}{% else %}Celebration{% endif %}{% endblock %}
-
-{% block tvHeader %}
-
-    <nav class="left">
-        {% if previousUrl %}<a id="back" href="{{ previousUrl }}">{{ previousLabel }}</a>{% endif %}
-    </nav>
-
-    <h1>{% if audio.celebration.title|length %}{{ audio.celebration.title }}{% else %}Celebration{% endif %}</h1>
-
-    <nav class="right">
-
-    </nav>
-
-{% endblock %}
-
-{% block tv_body %}
+{% block body %}
     <section class="audio">
+        <section class="player">
+            <div class="container">
+                <iframe width="100%" height="166" scrolling="no" frameborder="no"
+                        src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/{{ audio.ownerId }}&amp;color=d91a15&amp;auto_play=true&amp;hide_related=false&amp;show_artwork=true"></iframe>
+            </div>
+        </section>
+        <section class="bottom">
+            {% spaceless %}
+                <section class="desc">
+                    <h1>{% if audio.celebration.title %}{{ audio.celebration.title }}{% else %}Celebration{% endif %}</h1>
+                    <time>{{ audio.celebration.date|oneDate(app.request.locale) }}</time>
 
-        <iframe width="100%" height="166" scrolling="no" frameborder="no"
-                src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/{{ audio.ownerId }}&amp;color=d91a15&amp;auto_play=true&amp;hide_related=false&amp;show_artwork=true"></iframe>
-        <time>{{ audio.celebration.date.start|date('d F Y') }}</time>
+                    {% for speaker in audio.celebration.speakers %}
+                        <h3>{{ speaker.person.firstname }} {{ speaker.person.lastname }}</h3>
+                        <p class="function">{{ speaker.person.function }}</p>
+                    {% endfor %}
 
-        {% for speaker in audio.celebration.speakers %}
-            <a href="{{ path('gospelcenterMedia_speaker', {'speaker': speaker.person.id}) }}">
-                <h2>{{ speaker.person.firstname }} {{ speaker.person.lastname }}</h2>
+                    <p class="desc">{{ audio.celebration.description }}</p>
+                </section>
+                {% if audios|length %}
+                    <section class="right">
+                        <h2><span>Du même orateur</span></h2>
 
-                <p>{{ speaker.person.function }}</p>
-            </a>
-        {% endfor %}
-
+                        {% for audio in audios %}
+                            <a href="{{ path('gospelcenterMedia_audio', {'audio': audio.celebration.audio.id}) }}">
+                                <div class="container">
+                                    {% if audio.celebration.image %}
+                                        {% set tvImg = audio.celebration.image.webPath %}
+                                        <div class="image"
+                                             style="background-image: url('{{ asset(tvImg) }}')"
+                                             data-bg="{{ asset(tvImg)| imagine_filter('tv_wall') }}"
+                                             data-bg_2x="{{ asset(tvImg)| imagine_filter('tv_wall_2x') }}"
+                                             data-bg_tablet="{{ asset(tvImg)| imagine_filter('tv_wall_tablet') }}"
+                                             data-bg_tablet_2x="{{ asset(tvImg)| imagine_filter('tv_wall_tablet_2x') }}"
+                                             data-bg_mobile="{{ asset(tvImg)| imagine_filter('tv_wall_mobile') }}"
+                                             data-bg_mobile_2x="{{ asset(tvImg)| imagine_filter('tv_wall_mobile_2x') }}"
+                                                ></div>
+                                        <div class="gradient"></div>
+                                    {% else %}
+                                        <div class="bg"></div>
+                                    {% endif %}
+                                    <div class="hover">
+                                        <div class="picto_play"></div>
+                                        <span>Regarder la vidéo</span>
+                                    </div>
+                                    <div class="details">
+                                        <span>{{ audio.celebration.title }}</span>
+                                    </div>
+                                </div>
+                            </a>
+                        {% endfor %}
+                        <div class="clear"></div>
+                    </section>
+                {% endif %}
+            {% endspaceless %}
+        </section>
     </section>
 {% endblock %}
+
+

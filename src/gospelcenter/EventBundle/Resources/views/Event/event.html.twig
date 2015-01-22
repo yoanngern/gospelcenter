@@ -6,9 +6,7 @@
 {% endblock %}
 
 
-{% block title %}
-    {{ parent() }} - {{ event.title }}
-{% endblock %}
+{% block title %}{{ parent() }} - {{ event.title }}{% endblock %}
 
 {% block local_header %}{% endblock %}
 {% block classPage %}{{ parent() }} simpleHeader{% endblock %}
@@ -69,8 +67,7 @@
 
                                 <h2>{{ date|dates(app.request.locale) }}</h2>
 
-                                <time>{{ date.start|localizeddate('none', 'short') }}
-                                    - {{ date.end|localizeddate('none', 'short') }}</time>
+                                <time>{{ date|times(app.request.locale) }}</time>
                             </article>
                         {% endfor %}
                     </article>

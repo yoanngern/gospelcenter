@@ -50,11 +50,15 @@ section.map_full {
             margin-bottom: 15px;
 
             &.buttonLink {
-                padding: 3px;
+                padding: 5px 3px 2px;
                 font-family: $font-bold;
                 margin-top: 20px;
                 font-size: 1em;
                 line-height: 1em;
+
+                &:hover {
+                    padding: 4px 2px 1px;
+                }
             }
         }
     }

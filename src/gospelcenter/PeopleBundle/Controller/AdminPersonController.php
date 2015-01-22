@@ -15,7 +15,8 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Security\Core\Exception\AccessDeniedException;
 
 
-class AdminPersonController extends Controller {
+class AdminPersonController extends Controller
+{
 
     /**
      * List of person
@@ -30,15 +31,18 @@ class AdminPersonController extends Controller {
         }
 
         $em = $this->getDoctrine()->getManager();
-        
+
         $persons = $em->getRepository('gospelcenterPeopleBundle:Person')->findAllByCenter($center);
-        
-        return $this->render('gospelcenterPeopleBundle:AdminPerson:list.html.twig', array(
-            'center' => $center,
-            'persons' => $persons,
-            'page' => 'people',
-            'tab' => 'contacts'
-        ));
+
+        return $this->render(
+            'gospelcenterPeopleBundle:AdminPerson:list.html.twig',
+            array(
+                'center' => $center,
+                'persons' => $persons,
+                'page' => 'people',
+                'tab' => 'contacts'
+            )
+        );
     }
 
 
@@ -51,91 +55,62 @@ class AdminPersonController extends Controller {
     public function addAction(Center $center)
     {
         $session = $this->get('session');
-        
-        $person = new Person();
+
+        $person = new Person($center);
 
         if (false === $this->get('security.context')->isGranted("CREATE", $person)) {
             throw new AccessDeniedException('Unauthorised access!');
         }
 
         $form = $this->createForm(new PersonType, $person);
-        
+
         $request = $this->get('request');
-        
-        if($request->getMethod() == 'POST')
-        {
-            if($session->get('previousUrl') != null) {
+
+        if ($request->getMethod() == 'POST') {
+            if ($session->get('previousUrl') != null) {
                 $previousUrl = $session->get('previousUrl');
             } else {
-                $previousUrl = $this->generateUrl('gospelcenterAdmin_persons', array(
-                                    'center' => $center->getRef()
-                                ));
+                $previousUrl = $this->generateUrl(
+                    'gospelcenterAdmin_persons',
+                    array(
+                        'center' => $center->getRef()
+                    )
+                );
             }
-            
+
             $form->bind($request);
-            
-            //$firstname = $person->getFirstname();
-            //$lastname = $person->getLastname();
-            
-            //$imageTitle = $firstname. " " .$lastname;
-            //$imageType = "person";
-            
-            if($form->isValid())
-            {
-                
+
+            if ($form->isValid()) {
+
                 $em = $this->getDoctrine()->getManager();
+
                 $em->persist($person);
                 $em->flush();
-                
-                
-                // If the person is a Speaker
-                if($person->getIsSpeaker() == 1) {
-                    $speaker = new Speaker();
-                    $speaker->setPerson($person);
-                    
-                    $em->persist($speaker);
-                    $em->flush();
-                }
-                
-                
-                // If the person is a Visitor
-                if($person->getIsVisitor() == 1) {
-                    $visitor = new Visitor();
-                    $visitor->setPerson($person);
-                    $visitor->addCenter($center);
-                    
-                    $em->persist($center);
-                    $em->persist($visitor);
-                    $em->flush();
-                }
-                
-                // If the person is a Member
-                if($person->getIsMember() == 1) {
-                    $member = new Member();
-                    $member->setPerson($person);
-                    $member->addCenter($center);
-                    
-                    $em->persist($member);
-                    $em->flush();
-                }
-                
-                
+
+                $this->setSpeaker($person);
+                $this->setMember($person, $center);
+                $this->setVisitor($person, $center);
+                $em->flush();
+
                 $this->get('session')->getFlashBag()->add('info', 'The contact has been added.');
-                
+
                 return $this->redirect($previousUrl);
             }
         }
-        
+
         $previousUrl = $this->get('request')->server->get('HTTP_REFERER');
-        
+
         $session->set('previousUrl', $previousUrl);
-        
-        return $this->render('gospelcenterPeopleBundle:AdminPerson:add.html.twig', array(
-            'center' => $center,
-            'form' => $form->createView(),
-            'page' => 'people',
-            'person' => $person
-        ));
+
+        return $this->render(
+            'gospelcenterPeopleBundle:AdminPerson:add.html.twig',
+            array(
+                'center' => $center,
+                'form' => $form->createView(),
+                'page' => 'people',
+                'person' => $person
+            )
+        );
     }
 
     /**
@@ -155,126 +130,79 @@ class AdminPersonController extends Controller {
 
         $em = $this->getDoctrine()->getManager();
 
-        if($person->getSpeaker() != null) {
+        if ($person->getSpeaker() != null) {
             $person->setIsSpeaker(true);
         }
-        
-        if($person->getVisitor() != null) {
-            $person->setIsVisitor(true);
-        }
-        
-        if($person->getMember() != null) {
-            $person->setIsMember(true);
+
+        if ($person->getVisitor() != null) {
+
+            foreach($person->getVisitor()->getCenters() as $localCenter) {
+                if($localCenter->getRef() == $center->getRef()) {
+                    $person->setIsVisitor(true);
+                }
+            }
         }
 
-        if($person->getUser()) {
+        if ($person->getMember() != null) {
+
+            foreach($person->getMember()->getCenters() as $localCenter) {
+                if($localCenter->getRef() == $center->getRef()) {
+                    $person->setIsMember(true);
+                }
+            }
+        }
+
+        if ($person->getUser()) {
             $form = $this->createForm(new PersonWithAccountType, $person);
         } else {
             $form = $this->createForm(new PersonType, $person);
         }
-        
+
         $request = $this->get('request');
-        
-        if($request->getMethod() == 'POST')
-        {
-            
-            if($session->get('previousUrl') != null) {
+
+        if ($request->getMethod() == 'POST') {
+
+            if ($session->get('previousUrl') != null) {
                 $previousUrl = $session->get('previousUrl');
             } else {
-                $previousUrl = $this->generateUrl('gospelcenterAdmin_persons', array(
-                                    'center' => $center->getRef()
-                                ));
+                $previousUrl = $this->generateUrl(
+                    'gospelcenterAdmin_persons',
+                    array(
+                        'center' => $center->getRef()
+                    )
+                );
             }
-            
+
             $form->bind($request);
-            
-            if($form->isValid())
-            {
-                // If the person was a speaker
-                if($person->getSpeaker() != null) {
-                    $wasSpeaker = true;
-                } else {
-                    $wasSpeaker = false;
-                }
-                
-                // If the person was a member
-                if($person->getMember() != null) {
-                    $wasMember = true;
-                } else {
-                    $wasMember = false;
-                }
-                
-                // If the person was a visitor
-                if($person->getVisitor() != null) {
-                    $wasVisitor = true;
-                } else {
-                    $wasVisitor = false;
-                }
-                
+
+            if ($form->isValid()) {
+
+                $this->setSpeaker($person);
+                $this->setMember($person, $center);
+                $this->setVisitor($person, $center);
 
                 $em->persist($person);
                 $em->flush();
-                
-                
-                // If the person is a Speaker
-                if($person->getIsSpeaker() && !$wasSpeaker) {
-                    $speaker = new Speaker();
-                    $speaker->setPerson($person);
-                    
-                    $em->persist($speaker);
-                    $em->flush();
-                } elseif(!$person->getIsSpeaker() && $wasSpeaker) {
-                    $speaker = $person->getSpeaker();
-                    $em->remove($speaker);
-                    $em->flush();
-                }
-                
-                
-                // If the person is a Member
-                if($person->getIsMember() && !$wasMember) {
-                    $member = new Member();
-                    $member->setPerson($person);
-                    $member->addCenter($center);
-                    
-                    $em->persist($member);
-                    $em->flush();
-                } elseif(!$person->getIsMember() && $wasMember) {
-                    $member = $person->getMember();
-                    $em->remove($member);
-                    $em->flush();
-                }
-                
-                
-                // If the person is a Visitor
-                if($person->getIsVisitor() && !$wasVisitor) {
-                    $visitor = new Visitor();
-                    $visitor->setPerson($person);
-                    $visitor->addCenter($center);
-                    
-                    $em->persist($visitor);
-                    $em->flush();
-                } elseif(!$person->getIsVisitor() && $wasVisitor) {
-                    $visitor = $person->getVisitor();
-                    $em->remove($visitor);
-                    $em->flush();
-                }
-                
+
                 $this->get('session')->getFlashBag()->add('info', 'The contact has been edited.');
-                
+
                 return $this->redirect($previousUrl);
             }
         }
-        
+
         $previousUrl = $this->get('request')->server->get('HTTP_REFERER');
-        
+
         $session->set('previousUrl', $previousUrl);
-        
-        return $this->render('gospelcenterPeopleBundle:AdminPerson:edit.html.twig', array(
-            'center' => $center,
-            'person' => $person,
-            'form' => $form->createView(),
-            'page' => 'people'
-        ));
+
+        return $this->render(
+            'gospelcenterPeopleBundle:AdminPerson:edit.html.twig',
+            array(
+                'center' => $center,
+                'person' => $person,
+                'form' => $form->createView(),
+                'page' => 'people'
+            )
+        );
     }
 
 
@@ -292,29 +220,129 @@ class AdminPersonController extends Controller {
         }
 
         $form = $this->createFormBuilder()->getForm();
-        
+
         $request = $this->getRequest();
         if ($request->getMethod() == 'POST') {
             $form->bind($request);
-            
+
             if ($form->isValid()) {
                 $em = $this->getDoctrine()->getManager();
                 $em->remove($person);
                 $em->flush();
-                
+
                 $this->get('session')->getFlashBag()->add('info', 'Contact deleted.');
-        
-                return $this->redirect( $this->generateUrl('gospelcenterAdmin_persons', array(
-                    'center' => $center->getRef()
-                )));
+
+                return $this->redirect(
+                    $this->generateUrl(
+                        'gospelcenterAdmin_persons',
+                        array(
+                            'center' => $center->getRef()
+                        )
+                    )
+                );
             }
         }
-        
-        return $this->render('gospelcenterPeopleBundle:AdminPerson:delete.html.twig', array(
-              'center' => $center,
-              'person' => $person,
-              'form'    => $form->createView(),
-              'page' => 'people'
-        ));
+
+        return $this->render(
+            'gospelcenterPeopleBundle:AdminPerson:delete.html.twig',
+            array(
+                'center' => $center,
+                'person' => $person,
+                'form' => $form->createView(),
+                'page' => 'people'
+            )
+        );
+    }
+
+    /**
+     * Set a speaker
+     * @param Person $person
+     */
+    protected function setSpeaker(Person $person)
+    {
+
+        $em = $this->getDoctrine()->getManager();
+
+        if ($person->getIsSpeaker() && !$person->getSpeaker()) {
+            $speaker = new Speaker($person);
+            $em->persist($speaker);
+        }
+
+        if (!$person->getIsSpeaker() && $person->getSpeaker()) {
+            $speaker = $person->getSpeaker();
+            $em->remove($speaker);
+        }
+
+    }
+
+
+    /**
+     * Set a member
+     * @param Person $person
+     * @param Center $center
+     */
+    protected function setMember(Person $person, Center $center)
+    {
+
+        $em = $this->getDoctrine()->getManager();
+
+        if ($person->getIsMember() && !$person->getMember()) {
+            $member = new Member($person);
+            $member->addCenter($center);
+            $em->persist($member);
+        }
+
+        if($person->getIsMember() && $person->getMember()) {
+            $member = $person->getMember();
+            $member->addCenter($center);
+            $em->persist($member);
+        }
+
+        if (!$person->getIsMember() && $person->getMember()) {
+            $member = $person->getMember();
+            $member->removeCenter($center);
+            $em->persist($member);
+
+            if($member->getCenters()->count() == 0) {
+                $em->remove($member);
+            }
+        }
+
+    }
+
+    /**
+     * Set a visitor
+     * @param Person $person
+     * @param Center $center
+     */
+    protected function setVisitor(Person $person, Center $center)
+    {
+
+        $em = $this->getDoctrine()->getManager();
+
+        if ($person->getIsVisitor() && !$person->getVisitor()) {
+            $visitor = new Visitor($person);
+            $visitor->addCenter($center);
+            $em->persist($visitor);
+        }
+
+        if($person->getIsVisitor() && $person->getVisitor()) {
+            $visitor = $person->getVisitor();
+            $visitor->addCenter($center);
+            $em->persist($visitor);
+        }
+
+        if (!$person->getIsVisitor() && $person->getVisitor()) {
+            $visitor = $person->getVisitor();
+            $visitor->removeCenter($center);
+            $em->persist($visitor);
+
+            if($visitor->getCenters()->count() == 0) {
+                $em->remove($visitor);
+            }
+        }
+
+
+
     }
 }

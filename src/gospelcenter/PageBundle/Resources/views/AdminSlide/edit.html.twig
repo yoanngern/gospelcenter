@@ -4,9 +4,9 @@
     {{ parent() }}
     
     {% if slide.image %}
-        <script type="text/javascript" src="{{ asset('js/editImage.min.js') }}"></script>
+        <script type="text/javascript" src="{{ asset('js/processed/editImage.min.js') }}"></script>
     {% else %}
-        <script type="text/javascript" src="{{ asset('js/addImage.min.js') }}"></script>
+        <script type="text/javascript" src="{{ asset('js/processed/addImage.min.js') }}"></script>
     {% endif %}
     
 {% endblock %}

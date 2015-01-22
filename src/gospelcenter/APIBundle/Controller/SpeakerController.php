@@ -3,6 +3,7 @@
 namespace gospelcenter\APIBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Response;
 
 
@@ -37,11 +38,11 @@ class SpeakerController extends Controller
         }
 
 
+        $request = $this->get('request');
+        $callback = $request->get('callback');
 
-        $response = new Response(json_encode($speakersCustom));
-
-        $response->headers->set('Content-Type', 'application/json');
-
+        $response = new JsonResponse($speakersCustom, 200, array('content-type' => 'application/json'));
+        $response->setCallback($callback);
         return $response;
     }
 

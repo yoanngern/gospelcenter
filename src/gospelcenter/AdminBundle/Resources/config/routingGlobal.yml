@@ -58,7 +58,14 @@ gospelcenterAdminGlobal_pages_edit:
     defaults:   { _controller: gospelcenterPageBundle:AdminPageGlobal:edit }
     requirements:
         page: \d+
-        
+
+# Remove a page
+gospelcenterAdminGlobal_pages_delete:
+    path:       /pages/delete/{page}
+    defaults:   { _controller: gospelcenterPageBundle:AdminPageGlobal:delete }
+    requirements:
+        page: \d+
+
 # Slides
 gospelcenterAdminGlobal_slides:
     path:       /slides
@@ -73,6 +80,13 @@ gospelcenterAdminGlobal_slides_add:
 gospelcenterAdminGlobal_slides_edit:
     path:       /slides/edit/{slide}
     defaults:   { _controller: gospelcenterPageBundle:AdminSlideGlobal:edit }
+    requirements:
+        slide: \d+
+
+# Remove a slide
+gospelcenterAdminGlobal_slides_delete:
+    path:       /slides/delete/{slide}
+    defaults:   { _controller: gospelcenterPageBundle:AdminSlideGlobal:delete }
     requirements:
         slide: \d+
 

@@ -144,6 +144,8 @@ class Ad
 
             $this->image->setTitle($this->title);
             $this->image->setType('Ad');
+
+            $image->addAd($this);
         }
 
         return $this;

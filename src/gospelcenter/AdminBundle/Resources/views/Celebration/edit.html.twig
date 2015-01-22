@@ -5,13 +5,14 @@
 {% block javascripts %}
     {{ parent() }}
     {% if celebration.image %}
-        <script type="text/javascript" src="{{ asset('js/editImage.min.js') }}"></script>
+        <script type="text/javascript" src="{{ asset('js/processed/editImage.min.js') }}"></script>
     {% else %}
-        <script type="text/javascript" src="{{ asset('js/addImage.min.js') }}"></script>
+        <script type="text/javascript" src="{{ asset('js/processed/addImage.min.js') }}"></script>
     {% endif %}
 
-    <script type="text/javascript" src="{{ asset('js/addVideo.min.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('js/addCelebrationNew.min.js') }}"></script>
+    <script src="//connect.soundcloud.com/sdk.js"></script>
+    <script type="text/javascript" src="{{ asset('js/processed/addVideo.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('js/processed/addCelebrationNew.min.js') }}"></script>
 {% endblock %}
 
 {% block title %}
@@ -41,7 +42,7 @@
 
                 <nav class="sub_nav">
 
-                    <ul>
+                    <ul class="classic">
                         <li><a href="#general" class="current focus">{{ 'gc.admin.celebrations.tab.general'|trans }}</a></li>
                         <li><a href="#preaching">{{ 'gc.admin.celebrations.tab.preaching'|trans }}</a></li>
                         <li><a href="#media">{{ 'gc.admin.celebrations.tab.media'|trans }}</a></li>

@@ -11,38 +11,40 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 class MediaController extends Controller
 {
 
+    public function closeAction()
+    {
+
+
+        if(true) {
+            throw $this->createNotFoundException('The Gospel Center TV is closed!');
+
+        }
+
+
+    }
+
+
     /**
      * Home
      * @return \Symfony\Component\HttpFoundation\Response
      */
     public function homeAction()
     {
-        
+
         $em = $this->getDoctrine()->getManager();
-        
-        $starsVideos = $em->getRepository('gospelcenterCelebrationBundle:Celebration')->findStarVideo(4);
-        $lastVideos = $em->getRepository('gospelcenterCelebrationBundle:Celebration')->findLastVideo(4);
-        
-        $mobileDetector = $this->get('mobile_detect.mobile_detector');
-        if($mobileDetector->isMobile()) {
-            return $this->render('gospelcenterMediaBundle:Mobile:home.html.twig', array(
-                'starsVideos' => $starsVideos,
-                'lastVideos' => $lastVideos,
+
+        $celebrations = $em->getRepository('gospelcenterCelebrationBundle:Celebration')->findLastVideo(4);
+
+        return $this->render(
+            'gospelcenterMediaBundle:Media:home.html.twig',
+            array(
+                'celebrations' => $celebrations,
                 'previousUrl' => $this->previousUrl(),
                 'previousTag' => $this->previousTag("selections"),
                 'previousLabel' => $this->previousLabel('Selection'),
                 'page' => 'selections'
-            ));  
-        }
-        
-        return $this->render('gospelcenterMediaBundle:Media:home.html.twig', array(
-            'starsVideos' => $starsVideos,
-            'lastVideos' => $lastVideos,
-            'previousUrl' => $this->previousUrl(),
-            'previousTag' => $this->previousTag("selections"),
-            'previousLabel' => $this->previousLabel('Selection'),
-            'page' => 'selections'
-        ));
+            )
+        );
     }
 
 
@@ -52,30 +54,21 @@ class MediaController extends Controller
      */
     public function speakersAction()
     {
-        
+
         $em = $this->getDoctrine()->getManager();
-        
+
         $speakers = $em->getRepository('gospelcenterCelebrationBundle:Speaker')->findAllWithMedia();
-        
-        $mobileDetector = $this->get('mobile_detect.mobile_detector');
-        if($mobileDetector->isMobile()) {
-            return $this->render('gospelcenterMediaBundle:Mobile:speakers.html.twig', array(
+
+        return $this->render(
+            'gospelcenterMediaBundle:Media:speakers.html.twig',
+            array(
                 'speakers' => $speakers,
                 'previousUrl' => $this->previousUrl(),
                 'previousTag' => $this->previousTag("speakers"),
                 'previousLabel' => $this->previousLabel('Speakers'),
                 'page' => 'speakers'
-            ));
- 
-        }
-        
-        return $this->render('gospelcenterMediaBundle:Media:speakers.html.twig', array(
-            'speakers' => $speakers,
-            'previousUrl' => $this->previousUrl(),
-            'previousTag' => $this->previousTag("speakers"),
-            'previousLabel' => $this->previousLabel('Speakers'),
-            'page' => 'speakers'
-        ));
+            )
+        );
     }
 
 
@@ -86,32 +79,26 @@ class MediaController extends Controller
      */
     public function speakerAction(Speaker $speaker)
     {
-        
+
         $em = $this->getDoctrine()->getManager();
-        
-        $celebrations = $em->getRepository('gospelcenterCelebrationBundle:Celebration')->findAllBySpeakerWithMedia($speaker);
-        
-        $mobileDetector = $this->get('mobile_detect.mobile_detector');
-        if($mobileDetector->isMobile()) {
-            return $this->render('gospelcenterMediaBundle:Mobile:speaker.html.twig', array(
+
+        $celebrations = $em->getRepository('gospelcenterCelebrationBundle:Celebration')->findAllBySpeakerWithMedia(
+            $speaker
+        );
+
+        return $this->render(
+            'gospelcenterMediaBundle:Media:speaker.html.twig',
+            array(
                 'speaker' => $speaker,
                 'celebrations' => $celebrations,
                 'previousUrl' => $this->previousUrl(),
                 'previousTag' => $this->previousTag("speakers"),
-                'previousLabel' => $this->previousLabel($speaker->getPerson()->getFirstname()." ".$speaker->getPerson()->getLastname()),
+                'previousLabel' => $this->previousLabel(
+                    $speaker->getPerson()->getFirstname() . " " . $speaker->getPerson()->getLastname()
+                ),
                 'page' => 'speakers'
-            ));
- 
-        }
-        
-        return $this->render('gospelcenterMediaBundle:Media:speaker.html.twig', array(
-            'speaker' => $speaker,
-            'celebrations' => $celebrations,
-            'previousUrl' => $this->previousUrl(),
-            'previousTag' => $this->previousTag("speakers"),
-            'previousLabel' => $this->previousLabel($speaker->getPerson()->getFirstname()." ".$speaker->getPerson()->getLastname()),
-            'page' => 'speakers'
-        ));
+            )
+        );
     }
 
 
@@ -120,30 +107,21 @@ class MediaController extends Controller
      */
     public function videosAction()
     {
-        
+
         $em = $this->getDoctrine()->getManager();
-        
+
         $celebrations = $em->getRepository('gospelcenterCelebrationBundle:Celebration')->findAllWithVideo();
-        
-        $mobileDetector = $this->get('mobile_detect.mobile_detector');
-        if($mobileDetector->isMobile()) {
-            return $this->render('gospelcenterMediaBundle:Mobile:videos.html.twig', array(
+
+        return $this->render(
+            'gospelcenterMediaBundle:Media:videos.html.twig',
+            array(
                 'celebrations' => $celebrations,
                 'previousUrl' => $this->previousUrl(),
                 'previousTag' => $this->previousTag("videos"),
                 'previousLabel' => $this->previousLabel('Videos'),
                 'page' => 'videos'
-            ));
- 
-        }
-        
-        return $this->render('gospelcenterMediaBundle:Media:videos.html.twig', array(
-            'celebrations' => $celebrations,
-            'previousUrl' => $this->previousUrl(),
-            'previousTag' => $this->previousTag("videos"),
-            'previousLabel' => $this->previousLabel('Videos'),
-            'page' => 'videos'
-        ));
+            )
+        );
     }
 
 
@@ -152,30 +130,21 @@ class MediaController extends Controller
      */
     public function audiosAction()
     {
-        
+
         $em = $this->getDoctrine()->getManager();
-        
+
         $celebrations = $em->getRepository('gospelcenterCelebrationBundle:Celebration')->findAllWithAudio();
-        
-        $mobileDetector = $this->get('mobile_detect.mobile_detector');
-        if($mobileDetector->isMobile()) {
-            return $this->render('gospelcenterMediaBundle:Mobile:audios.html.twig', array(
+
+        return $this->render(
+            'gospelcenterMediaBundle:Media:audios.html.twig',
+            array(
                 'celebrations' => $celebrations,
                 'previousUrl' => $this->previousUrl(),
                 'previousTag' => $this->previousTag("audios"),
                 'previousLabel' => $this->previousLabel('Audios'),
                 'page' => 'audios'
-            ));
- 
-        }
-        
-        return $this->render('gospelcenterMediaBundle:Media:audios.html.twig', array(
-            'celebrations' => $celebrations,
-            'previousUrl' => $this->previousUrl(),
-            'previousTag' => $this->previousTag("audios"),
-            'previousLabel' => $this->previousLabel('Audios'),
-            'page' => 'audios'
-        ));
+            )
+        );
     }
 
 
@@ -184,30 +153,21 @@ class MediaController extends Controller
      */
     public function centersAction()
     {
-        
+
         $em = $this->getDoctrine()->getManager();
-        
+
         $centers = $em->getRepository('gospelcenterCenterBundle:Center')->findAllWithMedia();
-        
-        $mobileDetector = $this->get('mobile_detect.mobile_detector');
-        if($mobileDetector->isMobile()) {
-            return $this->render('gospelcenterMediaBundle:Mobile:centers.html.twig', array(
+
+        return $this->render(
+            'gospelcenterMediaBundle:Media:centers.html.twig',
+            array(
                 'centers' => $centers,
                 'previousUrl' => $this->previousUrl(),
                 'previousTag' => $this->previousTag("centers"),
                 'previousLabel' => $this->previousLabel('Cities'),
                 'page' => 'centers'
-            ));
- 
-        }
-        
-        return $this->render('gospelcenterMediaBundle:Media:centers.html.twig', array(
-            'centers' => $centers,
-            'previousUrl' => $this->previousUrl(),
-            'previousTag' => $this->previousTag("centers"),
-            'previousLabel' => $this->previousLabel('Cities'),
-            'page' => 'centers'
-        ));
+            )
+        );
     }
 
 
@@ -217,32 +177,24 @@ class MediaController extends Controller
      */
     public function centerAction(Center $center)
     {
-        
+
         $em = $this->getDoctrine()->getManager();
-        
-        $celebrations = $em->getRepository('gospelcenterCelebrationBundle:Celebration')->findAllByCenterWithMedia($center);
-        
-        $mobileDetector = $this->get('mobile_detect.mobile_detector');
-        if($mobileDetector->isMobile()) {
-            return $this->render('gospelcenterMediaBundle:Mobile:center.html.twig', array(
+
+        $celebrations = $em->getRepository('gospelcenterCelebrationBundle:Celebration')->findAllByCenterWithMedia(
+            $center
+        );
+
+        return $this->render(
+            'gospelcenterMediaBundle:Media:center.html.twig',
+            array(
                 'center' => $center,
                 'celebrations' => $celebrations,
                 'previousUrl' => $this->previousUrl(),
                 'previousTag' => $this->previousTag("centers"),
-                'previousLabel' => $this->previousLabel("Gospel Center ".$center->getName()),
+                'previousLabel' => $this->previousLabel("Gospel Center " . $center->getName()),
                 'page' => 'centers'
-            ));
- 
-        }
-        
-        return $this->render('gospelcenterMediaBundle:Media:center.html.twig', array(
-            'center' => $center,
-            'celebrations' => $celebrations,
-            'previousUrl' => $this->previousUrl(),
-            'previousTag' => $this->previousTag("centers"),
-            'previousLabel' => $this->previousLabel("Gospel Center ".$center->getName()),
-            'page' => 'centers'
-        ));
+            )
+        );
     }
 
 
@@ -252,26 +204,27 @@ class MediaController extends Controller
      */
     public function videoAction(Video $video)
     {
-        
-        $mobileDetector = $this->get('mobile_detect.mobile_detector');
-        if($mobileDetector->isMobile()) {
-            return $this->render('gospelcenterMediaBundle:Mobile:video.html.twig', array(
+        $em = $this->getDoctrine()->getManager();
+
+        $speakers = Array();
+
+        foreach($video->getCelebration()->getSpeakers() as $speaker) {
+            $speakers[] = $speaker->getPerson()->getId();
+        }
+
+        $videos = $em->getRepository('gospelcenterMediaBundle:Video')->findVideosSameSpeaker($video, $speakers);
+
+        return $this->render(
+            'gospelcenterMediaBundle:Media:video.html.twig',
+            array(
                 'video' => $video,
+                'videos' => $videos,
                 'previousUrl' => $this->previousUrl(),
                 'previousTag' => $this->previousTag(),
                 'previousLabel' => $this->previousLabel($video->getCelebration()->getTitle()),
                 'page' => $this->previousTag()
-            ));
- 
-        }
-        
-        return $this->render('gospelcenterMediaBundle:Media:video.html.twig', array(
-            'video' => $video,
-            'previousUrl' => $this->previousUrl(),
-            'previousTag' => $this->previousTag(),
-            'previousLabel' => $this->previousLabel($video->getCelebration()->getTitle()),
-            'page' => $this->previousTag()
-        ));
+            )
+        );
     }
 
 
@@ -281,44 +234,47 @@ class MediaController extends Controller
      */
     public function audioAction(Audio $audio)
     {
-        
-        $mobileDetector = $this->get('mobile_detect.mobile_detector');
-        if($mobileDetector->isMobile()) {
-            return $this->render('gospelcenterMediaBundle:Mobile:audio.html.twig', array(
+
+        $em = $this->getDoctrine()->getManager();
+
+        $speakers = Array();
+
+        foreach($audio->getCelebration()->getSpeakers() as $speaker) {
+            $speakers[] = $speaker->getPerson()->getId();
+        }
+
+        $audios = $em->getRepository('gospelcenterMediaBundle:Audio')->findAudiosSameSpeaker($audio, $speakers);
+
+        return $this->render(
+            'gospelcenterMediaBundle:Media:audio.html.twig',
+            array(
                 'audio' => $audio,
+                'audios' => $audios,
                 'previousUrl' => $this->previousUrl(),
                 'previousTag' => $this->previousTag(),
                 'previousLabel' => $this->previousLabel($audio->getCelebration()->getTitle()),
                 'page' => $this->previousTag()
-            ));
- 
-        }
-        
-        return $this->render('gospelcenterMediaBundle:Media:audio.html.twig', array(
-            'audio' => $audio,
-            'previousUrl' => $this->previousUrl(),
-            'previousTag' => $this->previousTag(),
-            'previousLabel' => $this->previousLabel($audio->getCelebration()->getTitle()),
-            'page' => $this->previousTag()
-        ));
+            )
+        );
     }
 
 
     /**
      * @return null
      */
-    private function previousUrl() {
+    private function previousUrl()
+    {
         $session = $this->get('session');
-        
-        if($session->get('previousUrl') != null) {
+
+        if ($session->get('previousUrl') != null) {
             $previousUrl = $session->get('previousUrl');
         } else {
             $previousUrl = null;
         }
-        
+
         $currentUrl = $this->get('request')->server->get('HTTP_REFERER');
         $session->set('previousUrl', $currentUrl);
-        
+
         return $previousUrl;
     }
 
@@ -327,21 +283,22 @@ class MediaController extends Controller
      * @param null $currentTag
      * @return null
      */
-    private function previousTag($currentTag = null) {
+    private function previousTag($currentTag = null)
+    {
         $session = $this->get('session');
-        
-        if($session->get('previousTag') != null) {
+
+        if ($session->get('previousTag') != null) {
             $previousTag = $session->get('previousTag');
         } else {
             $previousTag = null;
         }
-        
-        if($currentTag == null) {
+
+        if ($currentTag == null) {
             $currentTag = $previousTag;
         }
-        
+
         $session->set('previousTag', $currentTag);
-        
+
         return $previousTag;
     }
 
@@ -350,21 +307,22 @@ class MediaController extends Controller
      * @param null $currentLabel
      * @return null
      */
-    private function previousLabel($currentLabel = null) {
+    private function previousLabel($currentLabel = null)
+    {
         $session = $this->get('session');
-        
-        if($session->get('previousLabel') != null) {
+
+        if ($session->get('previousLabel') != null) {
             $previousLabel = $session->get('previousLabel');
         } else {
             $previousLabel = null;
         }
-        
-        if($currentLabel == null) {
+
+        if ($currentLabel == null) {
             $currentLabel = $previousLabel;
         }
-        
+
         $session->set('previousLabel', $currentLabel);
-        
+
         return $previousLabel;
     }
 

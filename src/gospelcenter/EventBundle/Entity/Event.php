@@ -165,7 +165,11 @@ class Event
             $title = $this->title . " - Picture";
             $this->picture->setTitle($title);
             $this->picture->setType('Event');
+
+            $picture->addEventsPicture($this);
         }
+
+
 
         return $this;
     }
@@ -184,6 +188,8 @@ class Event
             $title = $this->title . " - Cover";
             $this->cover->setTitle($title);
             $this->cover->setType('Event');
+
+            $cover->addEventsCover($this);
         }
 
         return $this;

@@ -15,7 +15,12 @@ class HelperExtension extends Twig_Extension
             'datetime' => new Twig_Filter_Method($this, 'datetime'),
             'dates' => new Twig_Filter_Method($this, 'dates'),
             'datesShort' => new Twig_Filter_Method($this, 'datesShort'),
-            'month' => new Twig_Filter_Method($this, 'month')
+            'month' => new Twig_Filter_Method($this, 'month'),
+            'oneDate' => new Twig_Filter_Method($this, 'oneDate'),
+            'oneDate_short' => new Twig_Filter_Method($this, 'oneDate_short'),
+            'oneDate_mini' => new Twig_Filter_Method($this, 'oneDate_mini'),
+            'times' => new Twig_Filter_Method($this, 'times'),
+            'startTime' => new Twig_Filter_Method($this, 'startTime')
         );
     }
 
@@ -46,7 +51,7 @@ class HelperExtension extends Twig_Extension
 
 
         if ($locale == 'fr') {
-            setLocale(LC_TIME, "fr_FR");
+            setLocale(LC_TIME, "fr_FR.UTF8");
 
             if (strftime("%d%m%Y", $start) != strftime("%d%m%Y", $end)) {
 
@@ -106,7 +111,7 @@ class HelperExtension extends Twig_Extension
 
 
         if ($locale == 'fr') {
-            setLocale(LC_TIME, "fr_FR");
+            setLocale(LC_TIME, "fr_FR.UTF8");
 
             if (strftime("%d%m%Y", $start) != strftime("%d%m%Y", $end)) {
 
@@ -162,7 +167,7 @@ class HelperExtension extends Twig_Extension
 
 
         if ($locale == 'fr') {
-            setLocale(LC_TIME, "fr_FR");
+            setLocale(LC_TIME, "fr_FR.UTF8");
 
             $string = strftime("%B", $date);
 
@@ -175,6 +180,149 @@ class HelperExtension extends Twig_Extension
 
         return $string;
     }
+
+
+    public function oneDate($date, $locale)
+    {
+
+        $string = "";
+
+
+        if (!$date instanceof Date) {
+            return "";
+        }
+
+        $start = $date->getStart()->getTimestamp();
+
+
+        if ($locale == 'fr') {
+            setLocale(LC_TIME, "fr_FR.UTF8");
+
+            $string = strftime("%e %B %Y", $start);
+
+
+        } else {
+            setLocale(LC_TIME, "en_US");
+
+            $string = strftime("%B %e, %Y", $start);
+        }
+
+        return $string;
+    }
+
+
+    public function oneDate_short($date, $locale)
+    {
+
+        $string = "";
+
+        if (!$date instanceof Date) {
+            return "";
+        }
+
+        $start = $date->getStart()->getTimestamp();
+
+
+        if ($locale == 'fr') {
+            setLocale(LC_TIME, "fr_FR.UTF8");
+
+            $string = strftime("%e %B", $start);
+
+
+        } else {
+            setLocale(LC_TIME, "en_US");
+
+            $string = strftime("%B %e", $start);
+        }
+
+        return $string;
+    }
+
+
+    public function oneDate_mini($date, $locale)
+    {
+
+        $string = "";
+
+        if (!$date instanceof Date) {
+            return "";
+        }
+
+        $start = $date->getStart()->getTimestamp();
+
+
+        if ($locale == 'fr') {
+            setLocale(LC_TIME, "fr_FR.UTF8");
+
+            $string = strftime("%e/%m/%Y", $start);
+
+
+        } else {
+            setLocale(LC_TIME, "en_US");
+
+            $string = strftime("%m/%e/%Y", $start);
+        }
+
+        return $string;
+    }
+
+
+    public function times($date, $locale)
+    {
+
+        $string = "";
+
+        if (!$date instanceof Date) {
+            return "";
+        }
+
+        $start = $date->getStart()->getTimestamp();
+        $end = $date->getEnd()->getTimestamp();
+
+
+        if ($locale == 'fr') {
+            setLocale(LC_TIME, "fr_FR.UTF8");
+
+            $string = strftime("%k:%M", $start) . " - " . strftime("%k:%M", $end);
+
+
+        } else {
+            setLocale(LC_TIME, "en_US");
+
+            $string = strftime("%l:%M %p", $start) . " - " . strftime("%l:%M %p", $end);
+        }
+
+        return $string;
+    }
+
+
+    public function startTime($date, $locale)
+    {
+
+        $string = "";
+
+        if (!$date instanceof Date) {
+            return "";
+        }
+
+        $start = $date->getStart()->getTimestamp();
+
+
+        if ($locale == 'fr') {
+            setLocale(LC_TIME, "fr_FR.UTF8");
+
+            $string = strftime("%k:%M", $start);
+
+
+        } else {
+            setLocale(LC_TIME, "en_US");
+
+            $string = strftime("%l:%M %p", $start);
+        }
+
+        return $string;
+    }
+
 
     public function getName()
     {

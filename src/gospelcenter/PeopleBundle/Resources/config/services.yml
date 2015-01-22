@@ -2,4 +2,3 @@ parameters:
 #    gospelcenter_people.example.class: gospelcenter\PeopleBundle\Example
 
 services:
-

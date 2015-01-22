@@ -7,3 +7,9 @@ services:
         tag:
             - { name: liip_imagine.filter.loader }
             - { loader: media_list_filter }
+
+    gospelcenter.cacheimage_listener:
+        class: gospelcenter\ImageBundle\Listener\CacheImageListener
+        arguments: ["@liip_imagine.cache.manager"]
+        tags:
+            - { name: doctrine.event_listener, event: postUpdate }

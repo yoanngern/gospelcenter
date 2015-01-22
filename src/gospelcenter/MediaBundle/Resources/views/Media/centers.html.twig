@@ -1,49 +1,32 @@
 {% extends "gospelcenterMediaBundle::layout.html.twig" %}
 
-{% block stylesheets %}
-	{{ parent() }}
-{% endblock %}
+{% block body %}
+    {% spaceless %}
+        <section class="wall">
+            <h1>Nos Villes</h1>
 
-{% block javascripts %}
-    {{ parent() }}
-{% endblock %}
-
-{% block headerTitle %}Our cities{% endblock %}
-
-{% block tvHeader %}
-
-    <nav class="left"></nav>
-    
-    <h1>Our cities</h1>
-    
-    <nav class="right"></nav>
-    
-{% endblock %}
-
-{% block tv_body %}
-    <section class="wall">
-        {% spaceless %}
             {% for center in centers %}
-            
-                {% set hasMedia = false %}
-                {% for celebration in center.celebrations %}
-                    {% if celebration.video or celebration.audio %}
-                        {% set hasMedia = true %}
-                    {% endif %}
-                {% endfor %}
-                
-                {% if hasMedia %}
-                    <a class="{% if not center.image %}empty{% endif %} resize16_9width centers" href="{{ path('gospelcenterMedia_center', {'center': center.ref}) }}">
+
+                <a href="{{ path('gospelcenterMedia_center', {'center': center.ref}) }}">
+                    <div class="container">
                         {% if center.image %}
-                            <img src="{{ asset(center.image.webPath) }}" alt="{{ center.image.alt }}" />
+                            {% set tvImg = center.image.webPath %}
+                            <div class="image"
+                                 style="background-image: url('{{ asset(tvImg) }}')"
+                                 data-bg="{{ asset(tvImg)| imagine_filter('tv_wall') }}"
+                                 data-bg_2x="{{ asset(tvImg)| imagine_filter('tv_wall_2x') }}"
+                                 data-bg_tablet="{{ asset(tvImg)| imagine_filter('tv_wall_tablet') }}"
+                                 data-bg_tablet_2x="{{ asset(tvImg)| imagine_filter('tv_wall_tablet_2x') }}"
+                                 data-bg_mobile="{{ asset(tvImg)| imagine_filter('tv_wall_mobile') }}"
+                                 data-bg_mobile_2x="{{ asset(tvImg)| imagine_filter('tv_wall_mobile_2x') }}"
+                                    ></div>
+                        {% else %}
+                            <div class="bg"></div>
                         {% endif %}
-                        <section class="details">
-                            <h1>{{ center.name }}</h1>
-                        </section>
-                    </a>
-                {% endif %}
+                    </div>
+                </a>
             {% endfor %}
-        {% endspaceless %}
-    </section>
-    
+            <div class="clear"></div>
+        </section>
+    {% endspaceless %}
 {% endblock %}

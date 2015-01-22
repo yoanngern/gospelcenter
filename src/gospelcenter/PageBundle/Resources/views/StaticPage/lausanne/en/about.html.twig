@@ -29,12 +29,12 @@
 
 <nav class="sub_nav">
     {% spaceless %}
-        <ul>
-            <li><a href="#about" class="current focus">About</a></li>
-            <li><a href="#leadership">Leadership</a></li>
-            <li><a href="#staff">Staff</a></li>
-            <li><a href="#what-we-believe">Statement of Faith</a></li>
-            <li><a href="#music">Music</a></li>
+        <ul class="classic">
+            <li><a href="#about" class="current focus">{{ 'gc.page.about.nav.about'|trans }}</a></li>
+            <li><a href="#leadership">{{ 'gc.page.about.nav.leadership'|trans }}</a></li>
+            <li><a href="#staff">{{ 'gc.page.about.nav.staff'|trans }}</a></li>
+            <li><a href="#what-we-believe">{{ 'gc.page.about.nav.believe'|trans }}</a></li>
+            <li><a href="#music">{{ 'gc.page.about.nav.music'|trans }}</a></li>
         </ul>
     {% endspaceless %}
 </nav>
@@ -55,16 +55,19 @@
          data-img_mobile="{{ asset(aboutImg)| imagine_filter('blog_big_mobile') }}"
          data-img_mobile_2x="{{ asset(aboutImg)| imagine_filter('blog_big_mobile_2x') }}">
 
+
     <h2 class="underline"><span>Qui</span></h2>
 
     <p>Le Gospel Center Lausanne est membre du Réseau évangélique suisse (<a target="_blank"
                                                                              href="http://www.evangelique.ch">RES</a>),
-        et de la Fédération romande des Églises
-        évangéliques (<a target="_blank" href="http://www.lafree.ch">FREE</a>).</p>
+        de la Fédération romande des Églises évangéliques
+        évangéliques (<a target="_blank" href="http://www.lafree.ch">FREE</a>) et dépend du mouvement <a target="_blank"
+                                                                                                         href="http://www.gospel-wave.org">Gospel
+            Wave.</a></p>
 
     <h2 class="underline"><span>Comment</span></h2>
 
-    <p>Le Gospel Center a le désir de vivre l’évangile de la façon la plus complète possible, y compris dans la
+    <p>Le Gospel Center a le désir de vivre l’Evangile de la façon la plus complète possible, y compris dans la
         dimension de la guérison divine et du miraculeux.</p>
 
     <p>Le Gospel Center a comme vision de communiquer avec des moyens modernes qui rejoignent les personnes dans leur
@@ -77,9 +80,9 @@
     <h2 class="underline"><span>Pourquoi</span></h2>
 
     <p>Le Gospel Center existe dans le but de stimuler, développer et faire découvrir un mode de vie positif, pratique,
-        puissant, basé sur Jésus au travers de la Bible. Nous croyons que la vie d’un chrétien ne s’arrête pas aux
-        dimanches mais se vit aussi le reste de la semaine dans des activités diverses, dans nos lieux de vie respectifs
-        comme dans les programmes offerts par l’église.</p>
+        puissant, fondé sur Jésus au travers de la Bible. Nous croyons que la vie d’un chrétien ne s’arrête pas aux
+        dimanches ou aux programmes offerts par l’église mais se vit aussi le reste de la semaine dans des activités
+        diverses, dans nos lieux de vie respectifs et nos lieux de travail.</p>
 
     <p>Le Gospel Center souhaite offrir un espace où la dimension de la communion fraternelle est un élément central. Un
         espace où la foi de chacun peut grandir de manière saine et équilibrée, aussi bien dans la dimension du faire
@@ -87,13 +90,13 @@
 
     <h2 class="underline"><span>Structure</span></h2>
 
-    <p>Le Gospel Center fonctionne pour et par ses « bases », qui sont le regroupement de 4 à 7 personnes par centre
-        d’intérêts. Le but est de proposer un lieu de taille accessible sur le plan relationnel où il est possible
-        d’avancer régulièrement et de manière personnelle dans sa maturité spirituelle. Les ”bases” mettent l’accent
-        aussi bien sur les moments de vie partagés (sport, sorties, activités culturelles, etc.) que sur les temps
-        d’échange autour de la Bible. Le Gospel Center veut offrir la possibilité à chaque personne de s’investir selon
-        ses capacités, son temps et sa motivation dans la vie de sa ”base” et par prolongement dans celle de
-        l’Eglise.</p>
+    <p>Le Gospel Center fonctionne pour et par ses « bases », qui sont le regroupement de 4 à 7 personnes par région et
+        centres d’intérêt. Le but est de proposer un lieu de taille accessible sur le plan relationnel où il est
+        possible d’avancer régulièrement et de manière personnelle dans sa maturité spirituelle. Les ”bases” mettent
+        l’accent aussi bien sur les moments de vie partagés (sport, sorties, activités culturelles, etc.) que sur les
+        temps d’échange autour de la Bible. Le Gospel Center veut offrir la possibilité à chaque personne de s’investir
+        selon ses capacités, son temps et sa motivation dans la vie de sa ”base” et par prolongement dans ses diverses
+        activités, dont la célébration du dimanche soir.</p>
 
     <h2 class="underline"><span>Finances</span></h2>
 
@@ -108,7 +111,8 @@
     {% spaceless %}
 
         <article class="people">
-            <img src="{{ asset('bundles/gospelcenterpage/images/MarcGallay.png') }}" alt="Marc Gallay"/>
+            <img src="{{ asset('bundles/gospelcenterpage/images/leadership/lausanne/MarcGallay.jpg') }}"
+                 alt="Marc Gallay"/>
             <section>
                 <h1>Marc Gallay</h1>
 
@@ -120,26 +124,18 @@
         </article>
 
         <article class="people">
-            <img src="{{ asset('bundles/gospelcenterpage/images/SimonMoser.png') }}" alt="Simon Moser"/>
+            <img src="{{ asset('bundles/gospelcenterpage/images/leadership/lausanne/PatrickBigler.jpg') }}"
+                 alt="Patrick Bigler"/>
             <section>
-                <h1>Simon Moser</h1>
+                <h1>Patrick Bigler</h1>
 
                 <p>Membre du conseil de direction</p>
             </section>
         </article>
 
         <article class="people">
-            <img src="{{ asset('bundles/gospelcenterpage/images/Pierre-AndreDinatale.png') }}"
-                 alt="Pierre-André Dinatale"/>
-            <section>
-                <h1>Pierre-André Dinatale</h1>
-
-                <p>Membre du conseil de direction</p>
-            </section>
-        </article>
-
-        <article class="people">
-            <img src="{{ asset('bundles/gospelcenterpage/images/AlixBingle.png') }}" alt="Alix Bingle"/>
+            <img src="{{ asset('bundles/gospelcenterpage/images/leadership/lausanne/AlixBingle.jpg') }}"
+                 alt="Alix Bingle"/>
             <section>
                 <h1>Alix Bingle</h1>
 
@@ -148,9 +144,30 @@
         </article>
 
         <article class="people">
-            <img src="{{ asset('bundles/gospelcenterpage/images/PatrickBigler.png') }}" alt="Patrick Bigler"/>
+            <img src="{{ asset('bundles/gospelcenterpage/images/leadership/lausanne/YannickHeiniger.jpg') }}"
+                 alt="Yannick Heiniger"/>
             <section>
-                <h1>Patrick Bigler</h1>
+                <h1>Yannick Heiniger</h1>
+
+                <p>Membre du conseil de direction</p>
+            </section>
+        </article>
+
+        <article class="people">
+            <img src="{{ asset('bundles/gospelcenterpage/images/leadership/lausanne/MarcRapelli.jpg') }}"
+                 alt="Marc Rapelli"/>
+            <section>
+                <h1>Marc Rapelli</h1>
+
+                <p>Membre du conseil de direction</p>
+            </section>
+        </article>
+
+        <article class="people">
+            <img src="{{ asset('bundles/gospelcenterpage/images/leadership/lausanne/TimotheeRochat.jpg') }}"
+                 alt="Timothée Rochat"/>
+            <section>
+                <h1>Timothée Rochat</h1>
 
                 <p>Membre du conseil de direction</p>
             </section>
@@ -161,71 +178,76 @@
 
 <article class="tab default" id="staff">
 
-    <h2 class="slogan">The staff of the Gospel Center Lausanne is a dynamic team that wishes to perform quality
-        work.</h2>
+    <h2 class="slogan">Le staff du Gospel Center Lausanne est une équipe
+        dynamique qui désire effectuer un travail de qualité.</h2>
 
     <article class="frame">
         <h1>Coord. de l'équipe pastorale</h1>
 
-        <p>Blaise Steffen</p>
+        <p>Marc Gallay</p>
     </article>
 
     <article class="frame">
         <h1>Coord. des Bases</h1>
 
         <p>Marc Gallay</p>
+
+        <a href="mailto:bases@gc-lausanne.org">bases@gc-lausanne.org</a>
     </article>
 
     <article class="frame">
-        <h1>Gospel Center Band</h1>
+        <h1>Worship</h1>
 
         <p>Marc Gallay</p>
+
+        <a href="mailto:worship@gc-lausanne.org">worship@gc-lausanne.org</a>
     </article>
 
     <article class="frame">
-        <h1>Technique son</h1>
+        <h1>Technique</h1>
 
-        <p>Marc Rapelli</p>
+        <p>David van der Maas</p>
+
+        <a href="mailto:...@gc-lausanne.org">...@gc-lausanne.org</a>
     </article>
 
     <article class="frame">
-        <h1>Responsable jeunesse</h1>
+        <h1>Responsable Enfance</h1>
 
-        <p>Loïc Marsh</p>
+        <p>Fiona Bland</p>
+
+        <a href="mailto:gospelkids@gc-lausanne.org">gospelkids@gc-lausanne.org</a>
     </article>
 
     <article class="frame">
         <h1>Gospel Minis (0-3 ans)</h1>
 
-        <p>Laetitia Crelier</p>
+        <a href="mailto:...@gc-lausanne.org">...@gc-lausanne.org</a>
 
-        <p>Fabienne Grisoni</p>
     </article>
 
     <article class="frame">
         <h1>Gospel Kids (4-7 ans)</h1>
 
         <p>Francine Gerber</p>
+
+        <a href="mailto:...@gc-lausanne.org">...@gc-lausanne.org</a>
     </article>
 
     <article class="frame">
         <h1>Gospel Teens (7-13 ans)</h1>
 
         <p>Fiona Bland</p>
+
+        <a href="mailto:gospelkids@gc-lausanne.org">gospelkids@gc-lausanne.org</a>
     </article>
 
     <article class="frame">
         <h1>Gospel Youth</h1>
 
-        <p>Alix Bingle</p>
-
         <p>Fiona Bland</p>
-    </article>
 
-    <article class="frame">
-        <h1>Technique visuelle</h1>
-
-        <p>Timothée Weiss</p>
+        <a href="mailto:...@gc-lausanne.org">...@gc-lausanne.org</a>
     </article>
 
     <article class="frame">
@@ -233,26 +255,34 @@
 
         <p>Vincent Spycher</p>
 
-        <p>Héloïse Monod</p>
+        <p>Héloïse Denham</p>
+
+        <a href="mailto:...@gc-lausanne.org">...@gc-lausanne.org</a>
     </article>
 
     <article class="frame">
         <h1>Resp. équipiers de prière</h1>
 
-        <p>Blaise Steffen</p>
+        <p>Nathalie Pecorini</p>
+
+        <a href="mailto:...@gc-lausanne.org">...@gc-lausanne.org</a>
     </article>
 
     <article class="frame">
-        <h1>Resp. du bar</h1>
+        <h1>New christians</h1>
 
-        <p>Mireille Steffen</p>
+        <p>David Klopfenstein</p>
+
+        <p>Laetitia Uwimbabazi</p>
+
+        <a href="mailto:...@gc-lausanne.org">...@gc-lausanne.org</a>
     </article>
 
 </article>
 
 <article class="tab blog-style" id="what-we-believe">
 
-    <h1>What we believe</h1>
+    <h1>Ce que nous croyons</h1>
 
     {% set believeImg = 'bundles/gospelcenterpage/images/confession.jpg' %}
 
@@ -267,20 +297,19 @@
          data-img_mobile_2x="{{ asset(believeImg)| imagine_filter('blog_big_mobile_2x') }}">
 
     <p>Nous croyons que la Bible est inspirée par Dieu. La Parole de Dieu est la base unique de notre foi, de notre
-        doctrine, et conduit nos actions.</p>
+        doctrine et conduit nos actions.</p>
 
     <p>Nous croyons au Dieu unique qui existe en trois identités distinctes : le Père, Son fils Jésus-Christ et le
         Saint-Esprit.</p>
 
     <p>Nous croyons que tous les hommes ont péché et sont séparés de la gloire de Dieu. Nous croyons au salut des
-        pécheurs par la grâce, au travers de la repentance et de la foi en l’œuvre parfaite et suffisante du
-        sacrifice de Jésus à la croix.</p>
+        pécheurs par la grâce, au travers de la repentance et de la foi en l’œuvre parfaite et suffisante du sacrifice
+        de Jésus à la croix.</p>
 
-    <p>Nous croyons en l’Eglise, non en tant qu’institution humaine mais comme le rassemblement des croyants autour
-        du chef de celle-ci: Jésus-Christ.</p>
+    <p>Nous croyons en l’Eglise, non en tant qu’institution humaine mais comme le rassemblement des croyants autour du
+        chef de celle-ci: Jésus-Christ.</p>
 
 </article>
-
 
 <article class="tab" id="music">
 

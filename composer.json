@@ -3,9 +3,7 @@
     "license": "MIT",
     "type": "project",
     "description": "The \"Symfony Standard Edition\" distribution",
-    "autoload": {
-        "psr-0": { "": "src/" }
-    },
+    "autoload": {"psr-0": {"": "src/"}},
     "require": {
         "php": ">=5.3.3",
         "symfony/symfony": "2.3.*",
@@ -46,18 +44,12 @@
             "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::installRequirementsFile"
         ]
     },
-    "config": {
-        "bin-dir": "bin"
-    },
+    "config": {"bin-dir": "bin"},
     "minimum-stability": "stable",
     "extra": {
         "symfony-app-dir": "app",
         "symfony-web-dir": "web",
-        "incenteev-parameters": {
-            "file": "app/config/parameters.yml"
-        },
-        "branch-alias": {
-            "dev-master": "2.3-dev"
-        }
+        "incenteev-parameters": {"file": "app/config/parameters.yml"},
+        "branch-alias": {"dev-master": "2.3-dev"}
     }
 }

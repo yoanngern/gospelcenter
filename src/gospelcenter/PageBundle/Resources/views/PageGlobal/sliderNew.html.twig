@@ -1,0 +1,57 @@
+<h1 class="titlePage"><span>{{ article.title }}</span></h1>
+<h2 class="slogan">{{ article.slogan }}</h2>
+
+<section class="slider" id="1">
+
+    {% if article.slides|length > 1 %}
+        <div id="left" class="arrow"></div>
+    {% endif %}
+
+    <div class="slides">
+        {% spaceless %}
+            {% for slide in article.slides %}
+                <article id="{{ loop.index }}" class="slide {% if loop.index == 1 %}current{% endif %}"
+
+                        {% if slide.image %}
+                    style="background-image: url('{{ slide.image.webPath| imagine_filter('slide_low') }}')"
+                    data-bg="{{ slide.image.webPath| imagine_filter('slide') }}"
+                    data-bg_2x="{{ slide.image.webPath| imagine_filter('slide_2x') }}"
+                    data-bg_tablet="{{ slide.image.webPath| imagine_filter('slide_tablet') }}"
+                    data-bg_tablet_2x="{{ slide.image.webPath| imagine_filter('slide_tablet_2x') }}"
+                    data-bg_mobile="{{ slide.image.webPath| imagine_filter('slide_mobile') }}"
+                    data-bg_mobile_2x="{{ slide.image.webPath| imagine_filter('slide_mobile_2x') }}"
+                        {% endif %}>
+
+                    <section class="content">
+                        <h1>{{ slide.title }}</h1>
+
+                        <p>{{ slide.text|nl2br }}</p>
+                    </section>
+
+                    {% if slide.link %}
+                        <div class="link">
+                            <a href="{{ slide.link }}"
+                               target="_blank">{% if slide.labelLink %}{{ slide.labelLink }}{% else %}{{ slide.link }}{% endif %}</a>
+                        </div>
+                    {% endif %}
+                </article>
+            {% endfor %}
+        {% endspaceless %}
+    </div>
+
+    {% if article.slides|length > 1 %}
+        <div id="right" class="arrow"></div>{% endif %}
+
+    {% if article.slides|length > 1 %}
+        <nav id="slides">
+            <ul>
+                {% spaceless %}
+                    {% for slide in article.slides %}
+                        <li class="{% if loop.index == 1 %}current{% endif %}" data-slide="{{ loop.index }}"></li>
+                    {% endfor %}
+                {% endspaceless %}
+            </ul>
+        </nav>
+    {% endif %}
+
+</section>

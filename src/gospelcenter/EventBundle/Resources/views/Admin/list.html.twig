@@ -79,9 +79,9 @@
         {% else %}
             <tr class="empty">
                 {% if tab == 'nextEvents' %}
-                    <td colspan="4">There are no events to come.{{ 'gc.admin.events.no_upcoming'|trans }}</td>
+                    <td colspan="4">{{ 'gc.admin.events.no_upcoming'|trans }}</td>
                 {% else %}
-                    <td colspan="4">There are no past events.{{ 'gc.admin.events.no_past'|trans }}</td>
+                    <td colspan="4">{{ 'gc.admin.events.no_past'|trans }}</td>
                 {% endif %}
             </tr>
         {% endfor %}

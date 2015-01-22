@@ -399,3 +399,81 @@ liip_imagine:
             quality: 90
             filters:
                 thumbnail: { size: [1280, 888], mode: outbound, allow_upscale: true }
+
+
+        ####################
+        ###  media_home  ###
+        ####################
+        media_home_low:
+            quality: 60
+            filters:
+                thumbnail: { size: [1700, 384], mode: outbound, allow_upscale: true }
+
+        media_home:
+            quality: 100
+            filters:
+                thumbnail: { size: [1700, 384], mode: outbound, allow_upscale: true }
+
+        media_home_2x:
+            quality: 90
+            filters:
+                thumbnail: { size: [1700, 384], mode: outbound, allow_upscale: true }
+
+        media_home_tablet:
+            quality: 100
+            filters:
+                thumbnail: { size: [1024, 232], mode: outbound, allow_upscale: true }
+
+        media_home_tablet_2x:
+            quality: 90
+            filters:
+                thumbnail: { size: [2048, 464], mode: outbound, allow_upscale: true }
+
+        media_home_mobile:
+            quality: 100
+            filters:
+                thumbnail: { size: [640, 145], mode: outbound, allow_upscale: true }
+
+        media_home_mobile_2x:
+            quality: 90
+            filters:
+                thumbnail: { size: [1280, 290], mode: outbound, allow_upscale: true }
+
+
+        #################
+        ###  tv_wall  ###
+        #################
+        tv_wall_low:
+            quality: 60
+            filters:
+                thumbnail: { size: [298, 168], mode: outbound, allow_upscale: true }
+
+        tv_wall:
+            quality: 100
+            filters:
+                thumbnail: { size: [298, 168], mode: outbound, allow_upscale: true }
+
+        tv_wall_2x:
+            quality: 90
+            filters:
+                thumbnail: { size: [596, 336], mode: outbound, allow_upscale: true }
+
+        tv_wall_tablet:
+            quality: 100
+            filters:
+                thumbnail: { size: [320, 180], mode: outbound, allow_upscale: true }
+
+        tv_wall_tablet_2x:
+            quality: 90
+            filters:
+                thumbnail: { size: [640, 360], mode: outbound, allow_upscale: true }
+
+        tv_wall_mobile:
+            quality: 100
+            filters:
+                thumbnail: { size: [320, 180], mode: outbound, allow_upscale: true }
+
+        tv_wall_mobile_2x:
+            quality: 90
+            filters:
+                thumbnail: { size: [640, 360], mode: outbound, allow_upscale: true }

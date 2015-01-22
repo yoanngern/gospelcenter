@@ -2,7 +2,7 @@
 
 {% block javascripts %}
     {{ parent() }}
-    <script type="text/javascript" src="{{ asset('js/editImage.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('js/processed/editImage.min.js') }}"></script>
 {% endblock %}
 
 {% block classPage %}{{ parent() }} single{% endblock %}
@@ -18,7 +18,7 @@
 {% endblock %}
 
 {% block adminTools %}
-    <a href="{{ path('gospelcenterAdminGlobal_slides_delete', { 'page': slide.id}) }}"
+    <a href="{{ path('gospelcenterAdminGlobal_slides_delete', { 'slide': slide.id}) }}"
        class="delete">Delete</a>
     <a href="{{ path('gospelcenterAdminGlobal_slides') }}">Cancel</a>
 {% endblock %}

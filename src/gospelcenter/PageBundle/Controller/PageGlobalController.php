@@ -6,82 +6,75 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 class PageGlobalController extends Controller
 {
+
     /**
-     * @param string $page
+     * @param $page
+     * @param $template
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function indexAction($page = 'home')
+    public function indexAction($page, $template)
     {
-        $em = $this->getDoctrine()->getManager();
-        
-        if($page == 'celebrations') {
-            $centers = $em->getRepository('gospelcenterCenterBundle:Center')->findAll();
+
+        if($template == "slider") {
+
+            $em = $this->getDoctrine()->getManager();
+
+            $aPage = $em->getRepository('gospelcenterPageBundle:Page')->findAGlobalPage($page);
+
+            if (!$page) {
+                throw $this->createNotFoundException('This page doesn\'t exist');
+            }
+
         } else {
-            $centers = null;
+            $template = $page;
+            $aPage = null;
         }
-        
-        $page = $em->getRepository('gospelcenterPageBundle:Page')->findAGlobalPage($page);
-        
-        if (!$page) {
-            throw $this->createNotFoundException('This page doesn\'t exist');
+
+        return $this->render(
+            'gospelcenterPageBundle::global.html.twig',
+            array(
+                'page' => $page,
+                'template' => $template,
+                'article' => $aPage
+            )
+        );
+    }
+
+
+    /**
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function ajaxAction($page)
+    {
+
+        if($page == "ea" || $page == "vision") {
+            $template = "slider";
+        } else {
+            $template = $page;
         }
-        
-        return $this->render('gospelcenterPageBundle:PageGlobal:index.html.twig', array(
-            'page' => $page->getRef(),
-            'article' => $page,
-            'centers' => $centers
-        ));
+
+        if($template == "slider") {
+
+            $em = $this->getDoctrine()->getManager();
+
+            $aPage = $em->getRepository('gospelcenterPageBundle:Page')->findAGlobalPage($page);
+
+            if (!$page) {
+                throw $this->createNotFoundException('This page doesn\'t exist');
+            }
+
+        } else {
+            $template = $page;
+            $aPage = null;
+        }
+
+        return $this->render(
+            'gospelcenterPageBundle:PageGlobal:' . $template . 'New.html.twig',
+            array(
+                'page' => $page,
+                'article' => $aPage
+            )
+        );
     }
 
-
-    /**
-     * @return \Symfony\Component\HttpFoundation\Response
-     */
-    public function homeAction()
-    {
-        
-        return $this->render('gospelcenterPageBundle:PageGlobal:home.html.twig', array(
-            'page' => 'home'
-        ));
-    }
-
-
-    /**
-     * @return \Symfony\Component\HttpFoundation\Response
-     */
-    public function godAction()
-    {
-        
-        return $this->render('gospelcenterPageBundle:PageGlobal:god.html.twig', array(
-            'page' => 'god'
-        ));
-    }
-
-
-    /**
-     * @return \Symfony\Component\HttpFoundation\Response
-     */
-    public function tvAction()
-    {
-        $em = $this->getDoctrine()->getManager();
-        
-        $starsVideos = $em->getRepository('gospelcenterCelebrationBundle:Celebration')->findStarVideo(4);
-
-        return $this->render('gospelcenterPageBundle:PageGlobal:tv.html.twig', array(
-            'starsVideos' => $starsVideos,
-            'page' => 'television'
-        ));
-    }
-
-
-    /**
-     * @return \Symfony\Component\HttpFoundation\Response
-     */
-    public function contactAction()
-    {
-        
-        return $this->render('gospelcenterPageBundle:PageGlobal:contact.html.twig', array(
-            'page' => 'contact'
-        ));
-    }
 }

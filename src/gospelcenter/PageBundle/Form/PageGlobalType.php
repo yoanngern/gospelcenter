@@ -19,9 +19,8 @@ class PageGlobalType extends PageType
         $builder->remove('ref');
         $builder->add('ref',            'choice', array(
                                         'choices'   => array(
-                                            'celebrations'  => 'Celebrations',
                                             'vision'        => 'Vision',
-                                            'training'      => 'Training'
+                                            'ea'            => 'Apostolic Team'
                                         ),
                                         'multiple'  => false,
                                         'empty_value'   => 'Select a menu'));

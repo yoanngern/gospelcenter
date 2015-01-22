@@ -1,0 +1,231 @@
+/* RESET */
+html, body, div, ul, ol, li, dl, dt, dd, h1, h2, h3, h4, h5, h6, pre, form, p, blockquote, fieldset, input, abbr, article, aside, command, details, figcaption, figure, footer, header, hgroup, mark, meter, nav, output, progress, section, summary, time {
+  margin: 0;
+  padding: 0; }
+
+h1, h2, h3, h4, h5, h6, pre, code, address, caption, cite, code, em, strong, th, figcaption {
+  font-size: 1em;
+  font-weight: normal;
+  font-style: normal; }
+
+fieldset, iframe {
+  border: none; }
+
+caption, th {
+  text-align: left; }
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0; }
+
+article, aside, footer, header, hgroup, nav, section, figure, figcaption {
+  display: block; }
+
+@font-face {
+  font-family: 'Radikal-Light';
+  src: url("../fonts/2B5662_0_0.eot");
+  src: url("../fonts/2B5662_0_0.eot?#iefix") format("embedded-opentype"), url("../fonts/2B5662_0_0.woff") format("woff"), url("../fonts/2B5662_0_0.ttf") format("truetype"); }
+@font-face {
+  font-family: 'Radikal-Black';
+  src: url("../fonts/2B5662_1_0.eot");
+  src: url("../fonts/2B5662_1_0.eot?#iefix") format("embedded-opentype"), url("../fonts/2B5662_1_0.woff") format("woff"), url("../fonts/2B5662_1_0.ttf") format("truetype"); }
+@font-face {
+  font-family: 'Radikal-Bold';
+  src: url("../fonts/2B5662_2_0.eot");
+  src: url("../fonts/2B5662_2_0.eot?#iefix") format("embedded-opentype"), url("../fonts/2B5662_2_0.woff") format("woff"), url("../fonts/2B5662_2_0.ttf") format("truetype"); }
+@font-face {
+  font-family: 'Radikal';
+  src: url("../fonts/2B5662_3_0.eot");
+  src: url("../fonts/2B5662_3_0.eot?#iefix") format("embedded-opentype"), url("../fonts/2B5662_3_0.woff") format("woff"), url("../fonts/2B5662_3_0.ttf") format("truetype"); }
+@font-face {
+  font-family: 'Radikal-UltraThin';
+  src: url("../fonts/2B5662_4_0.eot");
+  src: url("../fonts/2B5662_4_0.eot?#iefix") format("embedded-opentype"), url("../fonts/2B5662_4_0.woff") format("woff"), url("../fonts/2B5662_4_0.ttf") format("truetype"); }
+#ruban_nav {
+  background-color: #363331;
+  width: 250px;
+  z-index: 0;
+  color: #fdfdfc;
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  height: 100%;
+  display: none;
+  overflow: scroll;
+  -webkit-overflow-scrolling: touch; }
+  #ruban_nav > h1 {
+    width: 100%;
+    height: 64px;
+    line-height: 64px;
+    text-align: center;
+    font-size: 1.5em;
+    font-family: "Radikal-Light", "Radikal", sans-serif;
+    border-bottom: 1px solid #878787; }
+    #ruban_nav > h1 a {
+      color: #FDFDFC;
+      display: block; }
+      #ruban_nav > h1 a:hover {
+        text-decoration: none;
+        background-color: rgba(135, 135, 135, 0.3); }
+  #ruban_nav nav {
+    margin-bottom: 10px;
+    border-bottom: 1px solid #878787; }
+    #ruban_nav nav h1 {
+      margin-top: 4px;
+      padding-left: 10px;
+      font-size: 1.1em;
+      font-family: "Radikal-Light", "Radikal", sans-serif;
+      line-height: 30px; }
+    #ruban_nav nav ul {
+      padding-left: 10px;
+      padding-right: 10px; }
+      #ruban_nav nav ul li {
+        list-style: none;
+        line-height: 24px; }
+        #ruban_nav nav ul li a {
+          font-family: "Radikal-Light", "Radikal", sans-serif;
+          font-size: 0.9em;
+          line-height: 24px;
+          margin-bottom: 1px;
+          display: block;
+          padding-left: 10px; }
+          #ruban_nav nav ul li a:hover {
+            text-decoration: none;
+            background-color: rgba(135, 135, 135, 0.3); }
+  @media only screen and (max-width: 640px) {
+    #ruban_nav {
+      width: 80%; }
+      #ruban_nav > h1 {
+        font-size: 1.7em;
+        line-height: 48px;
+        height: 48px;
+        border-bottom: none; }
+      #ruban_nav nav {
+        border-bottom: none;
+        margin-bottom: 0; }
+        #ruban_nav nav h1 {
+          background-color: #878787;
+          color: #363331;
+          line-height: 24px;
+          margin-top: 0;
+          font-family: "Radikal", sans-serif; }
+        #ruban_nav nav ul li {
+          line-height: 46px; }
+          #ruban_nav nav ul li a {
+            line-height: 46px;
+            font-size: 1.5em;
+            margin-bottom: none; } }
+
+body.rubanOpen {
+  overflow: hidden; }
+  body.rubanOpen #page {
+    height: auto;
+    overflow: hidden;
+    -webkit-overflow-scrolling: hidden; }
+    body.rubanOpen #page #container {
+      overflow: hidden;
+      -webkit-overflow-scrolling: hidden; }
+
+nav.sub_nav {
+  display: block;
+  margin: 20px auto 10px;
+  text-align: center;
+  margin-bottom: 70px; }
+  nav.sub_nav ul {
+    display: inline-block;
+    border-bottom: 2px solid #363331; }
+    nav.sub_nav ul li {
+      display: inline-block;
+      margin-bottom: 2px; }
+      nav.sub_nav ul li:last-of-type a {
+        margin-right: 0px; }
+      nav.sub_nav ul li a {
+        color: #878787;
+        font-size: 1.4em;
+        line-height: 1.4em;
+        font-family: "Radikal-Light", "Radikal", sans-serif;
+        margin-right: 35px; }
+        nav.sub_nav ul li a:hover {
+          text-decoration: none; }
+        nav.sub_nav ul li a.current {
+          color: #363331; }
+        nav.sub_nav ul li a.focus {
+          border-bottom: 5px solid #363331; }
+  nav.sub_nav.complex ul {
+    border-bottom: none; }
+    nav.sub_nav.complex ul li {
+      max-width: 200px;
+      vertical-align: top; }
+      nav.sub_nav.complex ul li a {
+        font-size: 1em;
+        line-height: 1em;
+        display: block;
+        margin-right: 0px; }
+        nav.sub_nav.complex ul li a h1 {
+          font-size: 1.55em;
+          line-height: 1.55em;
+          font-family: "Radikal", sans-serif;
+          border-bottom: 2px solid #363331;
+          padding: 0 20px 5px; }
+        nav.sub_nav.complex ul li a h2 {
+          font-size: 1.45em;
+          line-height: 1.45em;
+          font-family: "Radikal-Light", "Radikal", sans-serif;
+          display: block;
+          padding: 7px 20px 0; }
+        nav.sub_nav.complex ul li a.focus {
+          border-bottom: 0px; }
+          nav.sub_nav.complex ul li a.focus h1 {
+            border-bottom: 5px solid #363331;
+            padding-bottom: 2px; }
+  @media only screen and (max-width: 640px) {
+    nav.sub_nav {
+      text-align: left;
+      margin-bottom: 40px; }
+      nav.sub_nav ul {
+        margin-left: 15px;
+        border-bottom: none;
+        border-left: 2px solid #363331;
+        margin-top: 0px; }
+        nav.sub_nav ul li {
+          display: block;
+          line-height: 32px;
+          margin: 0 0 10px; }
+          nav.sub_nav ul li:last-of-type {
+            margin-bottom: 0px; }
+          nav.sub_nav ul li a {
+            padding-left: 10px;
+            margin-top: 0;
+            font-family: "Radikal", sans-serif;
+            font-size: 1.6em;
+            line-height: 32px;
+            display: block; }
+            nav.sub_nav ul li a.focus {
+              border-left: 2px solid #363331;
+              border-bottom: none;
+              padding-left: 8px; }
+      nav.sub_nav.complex ul li a h1 {
+        border-bottom: none;
+        padding: 0;
+        margin-bottom: -5px; }
+      nav.sub_nav.complex ul li a h2 {
+        padding: 0;
+        font-size: 1.1em; }
+      nav.sub_nav.complex ul li a.focus h1 {
+        border-bottom: none;
+        padding-bottom: 0; } }
+
+body {
+  margin: 0px;
+  color: #363331;
+  font-family: "Radikal", sans-serif;
+  background-color: #FDFDFC;
+  width: 100%;
+  position: relative; }
+
+div.clear {
+  display: block;
+  position: relative;
+  overflow: hidden;
+  height: 0px;
+  width: 100%; }

@@ -15,28 +15,31 @@ class SpeakerRepository extends EntityRepository
 {
     public function findAllByCenter(Center $center)
     {
-        $qb = $this->createQueryBuilder('s');
 
-        $qb->addSelect('p');
-        $qb->addSelect('m');
-        $qb->addSelect('v');
-        $qb->addSelect('l');
+        $query = $this->getEntityManager()
+            ->createQuery(
+                '
+                SELECT s, p, m, v, l
+                FROM gospelcenterCelebrationBundle:Speaker s
+                JOIN s.person p
+                LEFT JOIN s.celebrations cel
+                JOIN cel.center c
+                LEFT JOIN p.member m
+                LEFT JOIN p.visitor v
+                LEFT JOIN p.languages l
+                WHERE c.ref = :center OR p.isGlobal = 1 OR p.center = :center
+                ORDER BY p.lastname ASC, p.firstname ASC'
+            )->setParameters(
+                array(
+                    'center' => $center->getRef()
+                )
+            );
 
-        $qb->join('s.person', 'p');
-        $qb->join('s.celebrations', 'cel');
-        $qb->join('cel.center', 'c');
-        $qb->leftJoin('p.member', 'm');
-        $qb->leftJoin('p.visitor', 'v');
-        $qb->leftJoin('p.languages', 'l');
-
-
-        $qb->where('c.ref = :center')
-            ->setParameter('center', $center->getRef());
-
-        $qb->addOrderBy('p.lastname', 'ASC')
-            ->addOrderBy('p.firstname', 'ASC');
-
-        return $qb->getQuery()->getResult();
+        try {
+            return $query->getResult();
+        } catch (\Doctrine\ORM\NoResultException $e) {
+            return null;
+        }
     }
 
     public function findAllOrder()
@@ -113,22 +116,26 @@ class SpeakerRepository extends EntityRepository
 
     public function findAllWithMedia()
     {
-        $qb = $this->createQueryBuilder('s');
 
-        $qb->addSelect('p');
-        $qb->addSelect('cel');
-        $qb->addSelect('v');
-        $qb->addSelect('a');
-        $qb->addSelect('d');
+        $query = $this->getEntityManager()
+            ->createQuery(
+                '
+                SELECT s, p, cel, v, a, d, i
+                FROM gospelcenterCelebrationBundle:Speaker s
+                JOIN s.person p
+                JOIN s.celebrations cel
+                LEFT JOIN cel.video v
+                LEFT JOIN cel.audio a
+                LEFT JOIN cel.date d
+                LEFT JOIN p.image i
+                WHERE v.id > 0 OR a.id > 0
+                ORDER BY d.start DESC'
+            );
 
-        $qb->join('s.person', 'p');
-        $qb->join('s.celebrations', 'cel');
-        $qb->leftJoin('cel.video', 'v');
-        $qb->leftJoin('cel.audio', 'a');
-        $qb->leftJoin('cel.date', 'd');
-
-        $qb->addOrderBy('d.start', 'DESC');
-
-        return $qb->getQuery()->getResult();
+        try {
+            return $query->getResult();
+        } catch (\Doctrine\ORM\NoResultException $e) {
+            return null;
+        }
     }
 }

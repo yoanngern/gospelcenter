@@ -111,7 +111,7 @@ class Celebration
     /**
      * is situated by
      *
-     * @ORM\ManyToOne(targetEntity="gospelcenter\LocationBundle\Entity\Location", inversedBy="celebrations", cascade={"persist", "remove"})
+     * @ORM\ManyToOne(targetEntity="gospelcenter\LocationBundle\Entity\Location", inversedBy="celebrations", cascade={"persist", "detach"})
      * @ORM\JoinColumn(nullable=false)
      * @Assert\Valid()
      */
@@ -278,6 +278,8 @@ class Celebration
 
             $this->image->setTitle($title);
             $this->image->setType('Celebration');
+
+            $image->addCelebration($this);
         }
 
         return $this;

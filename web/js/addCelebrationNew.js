@@ -1,9 +1,10 @@
 window.soundCloud = {
     'client_id': '1fa026842e083e9a1e2821fd1808b204',
+    'redirect_uri': 'http://beta.gospel-center.com',
     'lausanne_id': '52004530',
     'montreux_id': '14516848',
     'jura_id': '',
-    'annecy_id': ''
+    'annecy_id': '54350620'
 };
 
 window.selectList = [{
@@ -15,7 +16,13 @@ window.selectList = [{
 }];
 
 
+
 $(document).ready(function () {
+
+    SC.initialize({
+        client_id: soundCloud.client_id,
+        redirect_uri: soundCloud.redirect_uri
+    });
 
     getSoundCloudCList("gospelcenter_celebrationbundle_celebration_audio_ownerId");
 
@@ -70,10 +77,16 @@ function getSpeakerList(input_id) {
 
     var url = "/api/speakers.json";
 
+
+
     $.ajax({
         type: "GET",
-        dataType: "json",
         url: url,
+        async: true,
+        jsonpCallback: 'callback',
+        contentType: "application/json",
+        dataType: 'json',
+        'timeout': 1000,
         error: function () {
             console.log("error");
         },
@@ -114,42 +127,35 @@ function getSoundCloudCList(input_id) {
     var url = "https://api.soundcloud.com/playlists/" + getSCPlaylistId() + ".json?client_id=" + soundCloud.client_id;
 
 
-    $.ajax({
-        type: "GET",
-        dataType: "jsonp",
-        url: url,
-        error: function () {
-            console.log("error");
-        },
-        success: function (data) {
-            var audios = [];
+    SC.get("/playlists/" + getSCPlaylistId() + "/tracks", function(tracks){
 
-            data.tracks.reverse();
+        var audios = [];
 
-            $(data.tracks).each(function () {
-                var audio = {};
+        tracks.reverse();
 
-                audio.id = this.id;
-                audio.title = this.title;
-                audio.subTitle = $.format.date(new Date(this.created_at), "dd MMMM yyyy");
-                audio.image_url = this.artwork_url;
-                audio.isImage = false;
-                audio.tags = this.tag_list;
-                audio.description = this.description;
+        $(tracks).each(function () {
+            var audio = {};
 
-                if (audio.image_url) {
-                    audio.isImage = true;
-                }
+            audio.id = this.id;
+            audio.title = this.title;
+            audio.subTitle = $.format.date(new Date(this.created_at), "dd MMMM yyyy");
+            audio.image_url = this.artwork_url;
+            audio.isImage = false;
+            audio.tags = this.tag_list;
+            audio.description = this.description;
+
+            if (audio.image_url) {
+                audio.isImage = true;
+            }
 
 
-                audios.push(audio);
-            });
+            audios.push(audio);
+        });
 
-            printSelectList($("#soundCloudSearch"), audios, input_id);
+        printSelectList($("#soundCloudSearch"), audios, input_id);
 
-            setSoundCloudCList(audios);
+        setSoundCloudCList(audios);
 
-        }
     });
 }
 

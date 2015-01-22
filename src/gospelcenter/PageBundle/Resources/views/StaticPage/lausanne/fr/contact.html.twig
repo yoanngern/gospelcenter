@@ -5,11 +5,12 @@
     <section id="map" class="map_full">
         <iframe src="http://map.gospel-center.com"></iframe>
         <article>
-            <h1>Gospel Center Lausanne</h1>
+            <h1>{{ center.location.name }}</h1>
 
-            <p>Avenue de Provence 4<br/>
-                1007 Lausanne<br/>
-                Suisse</p>
+            <p>{{ center.location.address1 }}<br/>
+                {% if center.location.address2|length %}{{ center.location.address2 }}<br/>{% endif %}
+                {{ center.location.postalCode }} {{ center.location.city }}<br/>
+                {{ center.location.country }}</p>
 
             <p>+41 (0)848 123 777</p>
             <a href="mailto:info@gc-lausanne.org">info@gc-lausanne.org</a>

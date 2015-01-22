@@ -19,11 +19,12 @@
                 h1 {
                     text-transform: uppercase;
                     font-family: $font-black;
-                    padding: 18px 8px 10px 8px;
+                    padding: 8px 8px 0px 8px;
                     font-size: 2em;
                     border: 3px solid $grayDarkGC;
                     display: inline-block;
                     margin-bottom: 20px;
+                    line-height: 37px;
                 }
 
                 p {
@@ -53,6 +54,7 @@
                     h1 {
                         font-size: 1.9em;
                         padding: 14px 6px 8px 6px;
+                        line-height: 28px;
                     }
 
                     p {
@@ -80,6 +82,7 @@
                         margin-bottom: 10px;
                         padding: 12px 6px 8px 6px;
                         border-width: 3px;
+                        line-height: 22px;
                     }
 
                     p {

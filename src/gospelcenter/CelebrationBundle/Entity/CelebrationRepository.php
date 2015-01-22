@@ -16,7 +16,7 @@ class CelebrationRepository extends EntityRepository
     public function findAllByCenter(Center $center)
     {
         $qb = $this->createQueryBuilder('cel');
-        
+
         $qb->addSelect('s');
         $qb->addSelect('p');
         $qb->addSelect('v');
@@ -24,7 +24,7 @@ class CelebrationRepository extends EntityRepository
         $qb->addSelect('m');
         $qb->addSelect('vi');
         $qb->addSelect('d');
-        
+
         $qb->join('cel.center', 'c');
         $qb->join('cel.date', 'd');
         $qb->leftJoin('cel.speakers', 's');
@@ -33,164 +33,182 @@ class CelebrationRepository extends EntityRepository
         $qb->leftJoin('p.visitor', 'vi');
         $qb->leftJoin('cel.video', 'v');
         $qb->leftJoin('cel.audio', 'a');
-            
+
         $qb->where('c.ref = :center')
             ->setParameter('center', $center->getRef());
-        
+
         $qb->addOrderBy('d.start', 'DESC');
-        
+
         return $qb->getQuery()->getResult();
     }
-    
+
     public function findNext(\gospelcenter\CenterBundle\Entity\Center $center, $nb)
     {
-        $qb = $this->createQueryBuilder('cel');
-        
-        $qb->join('cel.center', 'c');
-        $qb->join('cel.date', 'd');
-            
-        $qb->where('c.ref = :center')
-            ->setParameter('center', $center->getRef());
-            
-        $qb->andWhere('d.start > :now')
-            ->setParameter('now', new \Datetime());
-        
-        $qb->orderBy('d.start', 'ASC');
-        
-        if($nb > 0)
-        {
-            $qb->setMaxResults($nb);
+
+        $query = $this->getEntityManager()
+            ->createQuery(
+                '
+                SELECT cel
+                FROM gospelcenterCelebrationBundle:Celebration cel
+                JOIN cel.center c
+                JOIN cel.date d
+                LEFT JOIN cel.speakers s
+                JOIN s.person p
+                LEFT JOIN p.image i
+                WHERE c.ref = :center
+                AND d.start > :now
+                ORDER BY d.start ASC'
+            )->setParameters(
+                array(
+                    'center' => $center->getRef(),
+                    'now' =>  new \Datetime()
+                )
+            );
+
+        if($nb > 0) {
+            $query->setMaxResults($nb);
         }
-        
-        return $qb->getQuery()->getResult();
+
+        try {
+            return $query->getResult();
+        } catch (\Doctrine\ORM\NoResultException $e) {
+            return null;
+        }
     }
-    
+
     public function findLast(\gospelcenter\CenterBundle\Entity\Center $center, $nb)
     {
         $qb = $this->createQueryBuilder('cel');
-        
+
         $qb->join('cel.center', 'c');
         $qb->join('cel.video', 'v');
         $qb->join('cel.date', 'd');
-            
+
         $qb->where('c.ref = :center')
             ->setParameter('center', $center->getRef());
-            
+
         $qb->andWhere('d.start < :now')
             ->setParameter('now', new \Datetime());
-        
+
         $qb->orderBy('d.start', 'DESC');
-        
-        if($nb > 0)
-        {
+
+        if ($nb > 0) {
             $qb->setMaxResults($nb);
         }
-        
+
         return $qb->getQuery()->getResult();
     }
-    
+
     public function findLastVideo($nb)
     {
         $qb = $this->createQueryBuilder('cel');
-        
+
         $qb->join('cel.video', 'v');
         $qb->join('cel.date', 'd');
-            
+
         $qb->andWhere('cel.bestOf = 0');
         $qb->andWhere('d.start < :now')
             ->setParameter('now', new \Datetime());
-        
+
         $qb->orderBy('d.start', 'DESC');
-        
-        if($nb > 0)
-        {
+
+        if ($nb > 0) {
             $qb->setMaxResults($nb);
         }
-        
+
         return $qb->getQuery()->getResult();
     }
-    
+
     public function findStarVideo($nb)
     {
         $qb = $this->createQueryBuilder('cel');
-        
+
         $qb->join('cel.video', 'v');
         $qb->join('cel.date', 'd');
-        
+
         $qb->andWhere('cel.bestOf = 1');
         $qb->andWhere('d.start < :now')
             ->setParameter('now', new \Datetime());
-        
+
         $qb->orderBy('d.start', 'DESC');
-        
-        if($nb > 0)
-        {
+
+        if ($nb > 0) {
             $qb->setMaxResults($nb);
         }
-        
+
         return $qb->getQuery()->getResult();
     }
-    
+
     public function findAllBySpeakerWithMedia(\gospelcenter\CelebrationBundle\Entity\Speaker $speaker)
     {
         $qb = $this->createQueryBuilder('cel');
-        
+
         $qb->join('cel.center', 'c');
         $qb->join('cel.speakers', 's');
         $qb->join('s.person', 'p');
         $qb->join('cel.date', 'd');
         $qb->leftJoin('cel.video', 'v');
         $qb->leftJoin('cel.audio', 'a');
-            
+
         $qb->where('p.id = :speaker')
             ->setParameter('speaker', $speaker->getPerson()->getId());
-        
+
         $qb->addOrderBy('d.start', 'DESC');
-        
+
         return $qb->getQuery()->getResult();
     }
-    
+
     public function findAllWithVideo()
     {
         $qb = $this->createQueryBuilder('cel');
-        
+
         $qb->join('cel.video', 'v');
         $qb->join('cel.date', 'd');
-        
+
         $qb->addOrderBy('d.start', 'DESC');
-        
+
         return $qb->getQuery()->getResult();
     }
-    
-    
+
+
     public function findAllWithAudio()
     {
         $qb = $this->createQueryBuilder('cel');
-        
+
         $qb->join('cel.audio', 'a');
         $qb->join('cel.date', 'd');
-        
+
         $qb->addOrderBy('d.start', 'DESC');
-        
+
         return $qb->getQuery()->getResult();
     }
-    
-    public function findAllByCenterWithMedia(\gospelcenter\CenterBundle\Entity\Center $center)
+
+    public function findAllByCenterWithMedia(Center $center)
     {
-        $qb = $this->createQueryBuilder('cel');
-        
-        $qb->join('cel.center', 'c');
-        $qb->join('cel.speakers', 's');
-        $qb->join('s.person', 'p');
-        $qb->join('cel.date', 'd');
-        $qb->leftJoin('cel.video', 'v');
-        $qb->leftJoin('cel.audio', 'a');
-            
-        $qb->where('c.ref = :center')
-            ->setParameter('center', $center->getRef());
-        
-        $qb->addOrderBy('d.start', 'DESC');
-        
-        return $qb->getQuery()->getResult();
+        $query = $this->getEntityManager()
+            ->createQuery(
+                '
+                SELECT cel
+                FROM gospelcenterCelebrationBundle:Celebration cel
+                JOIN cel.center c
+                JOIN cel.speakers s
+                JOIN s.person p
+                JOIN cel.date d
+                LEFT JOIN cel.video v
+                LEFT JOIN cel.audio a
+                WHERE c.ref = :center
+                AND (v.id > 0 OR a.id > 0)
+                ORDER BY d.start DESC'
+            )->setParameters(
+                array(
+                    'center' => $center->getRef()
+                )
+            );
+
+        try {
+            return $query->getResult();
+        } catch (\Doctrine\ORM\NoResultException $e) {
+            return null;
+        }
     }
 }

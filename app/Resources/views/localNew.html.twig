@@ -3,6 +3,8 @@
 
 {% extends "::layoutNew.html.twig" %}
 
+{% block title %}{{ parent() }} {{ center.name }}{% endblock %}
+
 {% block classPage %}local{% endblock %}
 
 {% block header_logo %}

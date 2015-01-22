@@ -6,6 +6,7 @@
 
 {% block javascripts %}
     {{ parent() }}
+    <script type="text/javascript" src="{{ asset('js/processed/celebrations.min.js') }}"></script>
 {% endblock %}
 
 {% block title %}
@@ -33,20 +34,22 @@
                         <a class="speaker" data-link="{{ celebration.id }}" data-link-elem="celebrationInfo">
 
                             <div class="photo"
-                                    {% if celebration.image %}
-                                style="background-image: url('{{ asset(celebration.image.webPath)| imagine_filter('next_celebration_low') }}')"
-                                data-bg="{{ asset(celebration.image.webPath)| imagine_filter('next_celebration') }}"
-                                data-bg_2x="{{ asset(celebration.image.webPath)| imagine_filter('next_celebration_2x') }}"
-                                data-bg_tablet="{{ asset(celebration.image.webPath)| imagine_filter('next_celebration_tablet') }}"
-                                data-bg_tablet_2x="{{ asset(celebration.image.webPath)| imagine_filter('next_celebration_tablet_2x') }}"
-                                data-bg_mobile="{{ asset(celebration.image.webPath)| imagine_filter('next_celebration_mobile') }}"
-                                data-bg_mobile_2x="{{ asset(celebration.image.webPath)| imagine_filter('next_celebration_mobile_2x') }}"
+                                    {% if celebration.speakers[0].person.image %}
+
+                                    {% set image = celebration.speakers[0].person.image %}
+                                style="background-image: url('{{ asset(image.webPath)| imagine_filter('next_celebration_low') }}')"
+                                data-bg="{{ asset(image.webPath)| imagine_filter('next_celebration') }}"
+                                data-bg_2x="{{ asset(image.webPath)| imagine_filter('next_celebration_2x') }}"
+                                data-bg_tablet="{{ asset(image.webPath)| imagine_filter('next_celebration_tablet') }}"
+                                data-bg_tablet_2x="{{ asset(image.webPath)| imagine_filter('next_celebration_tablet_2x') }}"
+                                data-bg_mobile="{{ asset(image.webPath)| imagine_filter('next_celebration_mobile') }}"
+                                data-bg_mobile_2x="{{ asset(image.webPath)| imagine_filter('next_celebration_mobile_2x') }}"
                                     {% endif %}>
                                 <div class="hover"></div>
                             </div>
 
                             <h1>{{ celebration|speakers(app.request.locale) }}</h1>
-                            <time>{{ celebration.date.start|localizeddate('medium', 'none') }}</time>
+                            <time>{{ celebration.date|oneDate_short(app.request.locale) }}</time>
                         </a>
 
                     {% endfor %}
@@ -64,9 +67,8 @@
                         <section class="info">
                             <h1>{{ 'gc.generic.celebrationWith'|trans }} {{ celebration|speakers(app.request.locale) }}</h1>
 
-                            <span>{{ celebration.date.start|localizeddate('long', 'none') }}</span>
-                            <time>{{ celebration.date.start|localizeddate('none', 'short') }}
-                                - {{ celebration.date.end|localizeddate('none', 'short') }}</time>
+                            <span>{{ celebration.date|oneDate_short(app.request.locale) }}</span>
+                            <time>{{ celebration.date|times(app.request.locale) }}</time>
 
                             <a class="location" href="#map" data-link="moveTo">
                                 <div class="icon"></div>
@@ -137,7 +139,7 @@
                             </div>
                             <section class="details">
                                 <h1>{{ celebration|speakers(app.request.locale) }}</h1>
-                                <span>{{ celebration.date.start|localizeddate('medium', 'none') }}</span>
+                                <span>{{ celebration.date|oneDate(app.request.locale) }}</span>
                             </section>
                         </a>
 

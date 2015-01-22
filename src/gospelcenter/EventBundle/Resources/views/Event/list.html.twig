@@ -1,8 +1,6 @@
 {% extends "::localNew.html.twig" %}
 
-{% block title %}
-    {{ parent() }} - Events
-{% endblock %}
+{% block title %}{{ parent() }} - {{ 'gc.title.events'|trans }}{% endblock %}
 
 
 
@@ -37,7 +35,7 @@
                             <section class="detail">
                                 <h1>{{ event.title }}</h1>
                                 {% if event.dates|length %}
-                                    <time class="date">{{ event.dates[0].start|localizeddate('long', 'none') }}</time>
+                                    <time class="date">{{ event.dates[0]|dates(app.request.locale) }}</time>
                                 {% endif %}
                             </section>
                         </a>
@@ -70,10 +68,9 @@
                        class="date">
                         <section class="date">
                             <time class="day">{{ date|datesShort(app.request.locale) }}</time>
-                            <time class="date">{{ date.start|localizeddate('none', 'short') }}
-                                - {{ date.end|localizeddate('none', 'short') }}</time>
-                            <time class="day mobile">{{ date.start|localizeddate('short', 'none') }}</time>
-                            <time class="date mobile">{{ date.start|localizeddate('none', 'short') }}</time>
+                            <time class="date">{{ date|times(app.request.locale) }}</time>
+                            <time class="day mobile">{{ date|oneDate_mini(app.request.locale) }}</time>
+                            <time class="date mobile">{{ date|startTime(app.request.locale) }}</time>
                         </section>
                         <section class="title">
                             <div class="container">
@@ -93,10 +90,9 @@
                     <a href="{{ path('gospelcenterCelebrations_list', {'center': center.ref}) }}" class="date">
                         <section class="date">
                             <time class="day">{{ date|datesShort(app.request.locale) }}</time>
-                            <time class="date">{{ date.start|localizeddate('none', 'short') }}
-                                - {{ date.end|localizeddate('none', 'short') }}</time>
-                            <time class="day mobile">{{ date.start|localizeddate('short', 'none') }}</time>
-                            <time class="date mobile">{{ date.start|localizeddate('none', 'short') }}</time>
+                            <time class="date">{{ date|times(app.request.locale) }}</time>
+                            <time class="day mobile">{{ date|oneDate_mini(app.request.locale) }}</time>
+                            <time class="date mobile">{{ date|startTime(app.request.locale) }}</time>
                         </section>
                         <section class="title">
                             <div class="container">

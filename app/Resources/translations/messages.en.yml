@@ -20,6 +20,7 @@ gc:
         events: Events
         contact: Contact
         give: Support us
+        about: About
     generic:
         with: with
         and: " and "

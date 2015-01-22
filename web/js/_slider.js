@@ -1,10 +1,14 @@
+// @codekit-prepend "vendor/jquery.slides.js"
+
+
 $(document).ready(function () {
 
+    /*
     window.slideCounter = 0;
 
-    var sliderSec = $("section.slider");
+    $(document).on('click', 'section.slider div.arrow', function (event) {
 
-    $(sliderSec).on('click', 'div.arrow', function (event) {
+        console.log(event);
 
         var slider = $(this).parent();
         var side = $(this).attr("id");
@@ -14,13 +18,41 @@ $(document).ready(function () {
     });
 
 
-    $(sliderSec).on('click', 'li[data-slide]', function(event) {
+    $(document).on('click', 'section.slider li[data-slide]', function(event) {
 
         var slider = $(this).parent().parent().parent();
         var slide = $(this).attr("data-slide");
 
         slideDirect(slider, slide);
 
+    });
+    */
+
+    $(function() {
+        $('section.slider#1').slidesjs({
+            width: 960,
+            height: 380
+        });
+
+        $('section.slider#2').slidesjs({
+            width: 960,
+            height: 380
+        });
+
+        $('section.slider#3').slidesjs({
+            width: 960,
+            height: 380
+        });
+
+        $('section.slider#4').slidesjs({
+            width: 960,
+            height: 380
+        });
+
+        $('section.slider#5').slidesjs({
+            width: 960,
+            height: 380
+        });
     });
 
 });

@@ -28,7 +28,7 @@ $(document).ready(function () {
         }
 
 
-        if (!$(page).hasClass("simpleHeader") && !$(page).hasClass("admin") && !$(page).hasClass("home")) {
+        if (!$(page).hasClass("simpleHeader") && !$(page).hasClass("admin") && !$(page).hasClass("home") && !$(page).hasClass("youth")) {
             if (!bottom && (document.body.scrollHeight - window.innerHeight - 600) > 0) {
 
                 if (topPos > 440) {
