@@ -1,0 +1,195 @@
+{% set website = 'http://beta.gospel-center.com' %}
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name="viewport" content="width=device-width"/>
+    <style>
+
+        @font-face {
+            font-family: 'Radikal-Light';
+            src: url('{{ website }}/fonts/2B5662_0_0.eot');
+            src: url('{{ website }}/fonts/2B5662_0_0.eot?#iefix') format('embedded-opentype'),
+            url('{{ website }}/fonts/2B5662_0_0.woff') format('woff'),
+            url('{{ website }}/fonts/2B5662_0_0.ttf') format('truetype');
+        }
+
+        @font-face {
+            font-family: 'Radikal-Bold';
+            src: url('{{ website }}/fonts/2B5662_2_0.eot');
+            src: url('{{ website }}/fonts/2B5662_2_0.eot?#iefix') format('embedded-opentype'),
+            url('{{ website }}/fonts/2B5662_2_0.woff') format('woff'),
+            url('{{ website }}/fonts/2B5662_2_0.ttf') format('truetype');
+        }
+
+        #outlook a {
+            padding: 0;
+        }
+
+        body {
+            width: 100% !important;
+            min-width: 100%;
+            -webkit-text-size-adjust: 100%;
+            -ms-text-size-adjust: 100%;
+            margin: 0;
+            padding: 0;
+            font-family: 'Radikal-Light', sans-serif;
+            font-size: 16px;
+            color: #313131;
+        }
+
+        table.body {
+            max-width: 580px;
+            margin: 30px auto;
+        }
+
+        table {
+            table-layout: fixed;
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        table, tr, td {
+            max-width: 100%;
+
+        }
+
+        img {
+            max-width: 100%;
+        }
+
+        em {
+            font-style: normal;
+            font-family: 'Radikal-Bold', 'Radikal-Light', sans-serif;
+        }
+
+        h1 {
+            font-family: 'Radikal-Bold', 'Radikal-Light', sans-serif;
+            text-transform: uppercase;
+            font-size: 1.15em;
+        }
+
+        table.header {
+            margin-bottom: 30px;
+        }
+
+        td.logo img {
+            max-width: 180px;
+            width: 100%;
+        }
+
+        p {
+            white-space: normal;
+        }
+
+        td.left {
+            text-align: left;
+        }
+
+        td.right {
+            text-align: right;
+        }
+
+        a {
+            color: #878787;
+            text-decoration: none;
+        }
+
+        table.main {
+            margin-bottom: 20px;
+        }
+
+        tr.title {
+            border-bottom: 2px solid #89CEB7;
+            width: 100%;
+        }
+
+        tr.title td {
+            width: 100%;
+        }
+
+        tr.title h1 {
+            margin: 0;
+        }
+
+        table.info td {
+            vertical-align: top;
+        }
+
+        table.footer {
+            font-size: 0.75em;
+            text-transform: uppercase;
+        }
+
+        table.footer p {
+            margin: 5px 0;
+            line-height: 1.5em;
+        }
+
+        table.footer a {
+            color: #313131;
+        }
+
+        table.footer h1 {
+            font-size: 1.2em;
+            line-height: 1em;
+        }
+
+    </style>
+</head>
+<body>
+
+<table class="body">
+    <tr>
+        <td>
+            <table class="header">
+                <tr>
+                    <td class="logo">
+                        <img src="{{ asset(website ~ '/images/logo_gc_' ~ center.ref ~ '.svg') }}" alt=""/>
+                    </td>
+                </tr>
+            </table>
+            <table class="main">
+                <tr>
+                    <td>
+                        <h1>{{ title }}</h1>
+
+                        <p><em>Nom: </em>{{ name }}<br/>
+                            <em>E-mail: </em>{{ email }}</p>
+
+                        <p>{{ message|nl2br }}</p>
+                    </td>
+                </tr>
+            </table>
+            <table class="footer">
+                <tr class="title">
+                    <td>
+                        <h1>Gospel Center {{ center.name }}</h1>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <table class="info">
+                            <tr>
+                                <td class="left">
+                                    <p>{{ center.location.address1 }}<br/>
+                                        {{ center.location.postalCode }} {{ center.location.city }}</p>
+                                </td>
+                                <td class="right">
+                                    <p><a href="mailto:info@gc-{{ center.ref }}.org">info@gc-{{ center.ref }}.org</a><br/>
+                                        <a href="http://www.gc-{{ center.ref }}.org">www.gc-{{ center.ref }}.org</a></p>
+                                </td>
+                            </tr>
+                        </table>
+
+                    </td>
+
+                </tr>
+            </table>
+        </td>
+    </tr>
+</table>
+
+</body>
+</html>

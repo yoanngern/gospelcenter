@@ -1,1 +1,47 @@
-@font-face{font-family:'Radikal-Light';src:url("../fonts/2B5662_0_0.eot");src:url("../fonts/2B5662_0_0.eot?#iefix") format("embedded-opentype"),url("../fonts/2B5662_0_0.woff") format("woff"),url("../fonts/2B5662_0_0.ttf") format("truetype")}@font-face{font-family:'Radikal-Black';src:url("../fonts/2B5662_1_0.eot");src:url("../fonts/2B5662_1_0.eot?#iefix") format("embedded-opentype"),url("../fonts/2B5662_1_0.woff") format("woff"),url("../fonts/2B5662_1_0.ttf") format("truetype")}@font-face{font-family:'Radikal-Bold';src:url("../fonts/2B5662_2_0.eot");src:url("../fonts/2B5662_2_0.eot?#iefix") format("embedded-opentype"),url("../fonts/2B5662_2_0.woff") format("woff"),url("../fonts/2B5662_2_0.ttf") format("truetype")}@font-face{font-family:'Radikal';src:url("../fonts/2B5662_3_0.eot");src:url("../fonts/2B5662_3_0.eot?#iefix") format("embedded-opentype"),url("../fonts/2B5662_3_0.woff") format("woff"),url("../fonts/2B5662_3_0.ttf") format("truetype")}@font-face{font-family:'Radikal-UltraThin';src:url("../fonts/2B5662_4_0.eot");src:url("../fonts/2B5662_4_0.eot?#iefix") format("embedded-opentype"),url("../fonts/2B5662_4_0.woff") format("woff"),url("../fonts/2B5662_4_0.ttf") format("truetype")}#page.static h1{font-family:"Radikal-Bold","Radikal",sans-serif;text-align:center;font-size:1.2em;margin-top:50px;margin-bottom:10px;padding:0 3%}#page.static h2{font-family:"Radikal-Bold","Radikal",sans-serif;padding-left:2%;margin-top:9.2px}#page.static h2.slogan{text-align:center;padding:0 3%;font-family:"Radikal",sans-serif}#page.static article{padding:4.6px 3%}#page.static article h2{text-align:left}#page.static article.people img{height:92px;display:inline-block}#page.static article.people span{padding-top:36.8px;padding-left:2%;display:inline-block;vertical-align:top}
+@font-face {
+  font-family: 'Radikal-Light';
+  src: url("../fonts/2B5662_0_0.eot");
+  src: url("../fonts/2B5662_0_0.eot?#iefix") format("embedded-opentype"), url("../fonts/2B5662_0_0.woff") format("woff"), url("../fonts/2B5662_0_0.ttf") format("truetype"); }
+@font-face {
+  font-family: 'Radikal-Black';
+  src: url("../fonts/2B5662_1_0.eot");
+  src: url("../fonts/2B5662_1_0.eot?#iefix") format("embedded-opentype"), url("../fonts/2B5662_1_0.woff") format("woff"), url("../fonts/2B5662_1_0.ttf") format("truetype"); }
+@font-face {
+  font-family: 'Radikal-Bold';
+  src: url("../fonts/2B5662_2_0.eot");
+  src: url("../fonts/2B5662_2_0.eot?#iefix") format("embedded-opentype"), url("../fonts/2B5662_2_0.woff") format("woff"), url("../fonts/2B5662_2_0.ttf") format("truetype"); }
+@font-face {
+  font-family: 'Radikal';
+  src: url("../fonts/2B5662_3_0.eot");
+  src: url("../fonts/2B5662_3_0.eot?#iefix") format("embedded-opentype"), url("../fonts/2B5662_3_0.woff") format("woff"), url("../fonts/2B5662_3_0.ttf") format("truetype"); }
+@font-face {
+  font-family: 'Radikal-UltraThin';
+  src: url("../fonts/2B5662_4_0.eot");
+  src: url("../fonts/2B5662_4_0.eot?#iefix") format("embedded-opentype"), url("../fonts/2B5662_4_0.woff") format("woff"), url("../fonts/2B5662_4_0.ttf") format("truetype"); }
+#page.static h1 {
+  font-family: "Radikal-Bold", "Radikal", sans-serif;
+  text-align: center;
+  font-size: 1.2em;
+  margin-top: 50px;
+  margin-bottom: 10px;
+  padding: 0 3%; }
+#page.static h2 {
+  font-family: "Radikal-Bold", "Radikal", sans-serif;
+  padding-left: 2%;
+  margin-top: 9.2px; }
+  #page.static h2.slogan {
+    text-align: center;
+    padding: 0 3%;
+    font-family: "Radikal", sans-serif; }
+#page.static article {
+  padding: 4.6px 3%; }
+  #page.static article h2 {
+    text-align: left; }
+  #page.static article.people img {
+    height: 92px;
+    display: inline-block; }
+  #page.static article.people span {
+    padding-top: 36.8px;
+    padding-left: 2%;
+    display: inline-block;
+    vertical-align: top; }

@@ -23,16 +23,16 @@
     <section class="formGray">
         <h1>{{ 'gc.page.contact.writeMessage'|trans }}</h1>
 
-        <form>
+        <form action="" method="POST">
             <fieldset class="left width1_3">
-                <input placeholder="Nom">
-                <input placeholder="E-mail">
-                <input placeholder="Téléphone">
+                <input name="name" type="text" placeholder="Nom">
+                <input name="email" type="text" placeholder="E-mail">
+                <input name="phone" type="text" placeholder="Téléphone">
             </fieldset>
             <fieldset class="right width2_3">
-                <textarea placeholder="Message"></textarea>
+                <textarea name="message" placeholder="Message"></textarea>
             </fieldset>
-            <input type="submit" class="buttonLink"/>
+            <input type="submit" value="Envoyer" class="buttonLink"/>
         </form>
     </section>
 {% endblock %}

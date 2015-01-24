@@ -21,6 +21,18 @@ gospelcenterMusic:
 gospelcenterContact:
     path: /contact
     defaults: { _controller: gospelcenterPageBundle:Page:contact }
+    requirements:
+        _method:  GET
+
+gospelcenterContact_process:
+    path: /contact
+    defaults: { _controller: gospelcenterPageBundle:Contact:contact }
+    requirements:
+        _method:  POST
+
+gospelcenterContact_mail:
+    path: /contact_mail
+    defaults: { _controller: gospelcenterPageBundle:Contact:contactTest }
 
 gospelcenterGive:
     path: /give
