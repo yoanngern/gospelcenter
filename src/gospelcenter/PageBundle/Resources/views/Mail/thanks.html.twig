@@ -1,8 +1,17 @@
 {% extends "::localNew.html.twig" %}
 
 {% block body %}
-    <h1>Merci pour votre message</h1>
 
-    <a href="{{ path('gospelcenterPageGlobal_home') }}">Retourner à la home page</a>
+    <section class="default">
+        <h1 class="titlePage"><span>Merci</span></h1>
+
+        <h2 class="slogan">Merci d'avoir pris le temps de nous envoyer un message. Nous vous répondrons dans les
+            meilleurs délais.<br/>
+            <br/>
+            <a href="{{ path('gospelcenterPage_home', {'center': center.ref}) }}">Retourner à la page d'accueil</a>
+
+        </h2>
+    </section>
+
 
 {% endblock %}
