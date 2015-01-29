@@ -62,7 +62,6 @@ class LocationController extends Controller
         $location = $em->getRepository('gospelcenterLocationBundle:Location')->findOneJSON($location);
 
         $map["type"] = "FeatureCollection";
-        $map["features"] = [];
 
         $feature["type"] = "Feature";
         $feature["properties"]["name"] = $location["name"];
