@@ -80,6 +80,29 @@ class LocationType extends AbstractType
                     'required' => true,
                     'label' => false,
                 )
+            )->add(
+                'latitude',
+                'text',
+                array(
+                    'attr' => array(
+                        'placeholder' => 'gc.admin.location.latitude',
+                        'data-geo' => 'lat'
+                    ),
+                    'required' => false,
+                    'label' => false,
+                )
+            )
+            ->add(
+                'longitude',
+                'text',
+                array(
+                    'attr' => array(
+                        'placeholder' => 'gc.admin.location.longitude',
+                        'data-geo' => 'long'
+                    ),
+                    'required' => false,
+                    'label' => false,
+                )
             );
     }
 

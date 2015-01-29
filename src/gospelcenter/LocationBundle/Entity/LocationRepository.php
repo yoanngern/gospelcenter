@@ -74,4 +74,26 @@ class LocationRepository extends EntityRepository
         return $qb->getQuery()->getArrayResult();
         
     }
+
+    public function findOneJSON($location)
+    {
+
+        $query = $this->getEntityManager()
+            ->createQuery(
+                '
+                SELECT l.id, l.name, l.address1, l.address2, l.postalCode, l.country, l.latitude, l.longitude
+                FROM gospelcenterLocationBundle:Location l
+                WHERE l.id = :locationId'
+            )->setParameters(
+                array(
+                    'locationId' => $location
+                )
+            );
+
+        try {
+            return $query->getOneOrNullResult();
+        } catch (\Doctrine\ORM\NoResultException $e) {
+            return null;
+        }
+    }
 }

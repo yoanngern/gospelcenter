@@ -35,13 +35,25 @@ gospelcenterAPI_locations:
 
 
 ####
-#   /locations/{id}
+#   /locations/{id}.json
 #
   
 # GET - get speaker details
 gospelcenterAPI_locations_location:
     path:       /locations/{location}.json
     defaults:   { _controller: gospelcenterAPIBundle:Location:getLocation }
+    requirements:
+        _method:  GET
+        location: \d+
+
+####
+#   /locations/{id}.geojson
+#
+
+# GET - get speaker details
+gospelcenterAPI_locations_location:
+    path:       /locations/{location}.geojson
+    defaults:   { _controller: gospelcenterAPIBundle:Location:getLocationGeo }
     requirements:
         _method:  GET
         location: \d+

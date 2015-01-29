@@ -2,6 +2,7 @@
 @import "advanced/adminEvents";
 @import "advanced/adminCelebrations";
 @import "advanced/adminUnits";
+@import "advanced/adminLocations";
 
 form {
     border-bottom: 3px solid $greenGC;
@@ -195,6 +196,10 @@ form {
                 color: $grayGC;
             }
 
+        }
+
+        &.hide {
+            display: none;
         }
 
     }

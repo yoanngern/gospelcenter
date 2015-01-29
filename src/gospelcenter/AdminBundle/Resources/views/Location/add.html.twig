@@ -1,9 +1,15 @@
 {% extends "::adminLocalNew.html.twig" %}
 
-{% block classPage %}{{ parent() }} single{% endblock %}
+{% block classPage %}{{ parent() }} single locations{% endblock %}
 
 {% block title %}
     {{ parent() }} - Add a location
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDWMUyzR5ZVSUy8S2j3vhFPHvMudIMLkD0"></script>
+    <script type="text/javascript" src="{{ asset('js/processed/location.min.js') }}"></script>
 {% endblock %}
 
 {% block adminTitle %}<h1>Add a location</h1>{% endblock %}
@@ -17,25 +23,40 @@
     <form class="location" action="{{ path('gospelcenterAdmin_locations_add', {'center': center.ref}) }}"
           method="post" {{ form_enctype(form) }}>
 
-        {{ form_widget(form.name, {'attr': {'placeholder': 'Name'} }) }}
+        {{ form_widget(form.name) }}
         {{ form_errors(form.name) }}
 
-        {{ form_widget(form.address1, {'attr': {'placeholder': 'Address line 1'} }) }}
+        {{ form_widget(form.address1) }}
         {{ form_errors(form.address1) }}
 
-        {{ form_widget(form.address2, {'attr': {'placeholder': 'Address line 2'} }) }}
+        {{ form_widget(form.address2) }}
         {{ form_errors(form.address2) }}
 
         <fieldset class="double">
-            {{ form_widget(form.postalCode, {'attr': {'placeholder': 'Postal code'} }) }}
+            {{ form_widget(form.postalCode) }}
             {{ form_errors(form.postalCode) }}
 
-            {{ form_widget(form.city, {'attr': {'placeholder': 'City'} }) }}
+            {{ form_widget(form.city) }}
             {{ form_errors(form.city) }}
         </fieldset>
 
-        {{ form_widget(form.country, {'attr': {'placeholder': 'Country'} }) }}
+        {{ form_widget(form.country) }}
         {{ form_errors(form.country) }}
+
+        <div id="map-canvas" style="width: 100%; height: 300px;"></div>
+
+        <fieldset class="double hide">
+            {{ form_widget(form.latitude) }}
+            {{ form_errors(form.latitude) }}
+
+            {{ form_widget(form.longitude) }}
+            {{ form_errors(form.longitude) }}
+        </fieldset>
+
+        <div id="geo-data">
+            <div class="lat"></div>
+            <div class="long"></div>
+        </div>
 
         {{ form_rest(form) }}
 

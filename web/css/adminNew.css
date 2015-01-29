@@ -92,6 +92,16 @@ form.unit div.collection.accessesLevel {
       form.unit div.collection.accessesLevel > div div div:first-of-type {
         margin-right: 12px; }
 
+#page.admin.locations #map-canvas {
+  margin-top: 30px; }
+#page.admin.locations div#geo-data {
+  display: block;
+  margin-top: 10px; }
+  #page.admin.locations div#geo-data div {
+    display: inline-block;
+    margin-right: 20px;
+    font-size: 0.8em; }
+
 form {
   border-bottom: 3px solid #89CEB7;
   margin-top: 120px;
@@ -209,6 +219,8 @@ form {
         margin-left: -10px; }
     form fieldset.times > div {
       color: #878787; }
+    form fieldset.hide {
+      display: none; }
   form div.error_list {
     padding-top: 5px;
     color: #D91A15; }
