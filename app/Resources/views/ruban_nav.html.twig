@@ -2,25 +2,26 @@
 <nav>
 	<h1>Cities</h1>
 	<ul>
-		<li><a href="{{ path('gospelcenterPage_home', {'center': 'lausanne'}) }}">Lausanne</a></li>
-		<li><a href="{{ path('gospelcenterPage_home', {'center': 'montreux'}) }}">Montreux</a></li>
-		<li><a href="{{ path('gospelcenterPage_home', {'center': 'jura'}) }}">Jura</a></li>
-		<li><a href="{{ path('gospelcenterPage_home', {'center': 'annecy'}) }}">Annecy</a></li>
+		{% spaceless %}
+			{% include "::nav/centers.html.twig" %}
+		{% endspaceless %}
 	</ul>
 </nav>
 <nav>
 	<h1>Ministries</h1>
 	<ul>
 		<li><a href="{{ path('gospelcenterMedia') }}">Gospel Center TV</a></li>
-		<li><a href="">Gospel Diffusion</a></li>
+
 	</ul>
 </nav>
 <nav>
 	<h1>Partners</h1>
 	<ul>
-		<li><a target="_blank" href="http://www.laguerison.org/">AIMG</a></li>
-		<li><a target="_blank" href="http://www.ee-oron.ch/">Eglise évangélique d'Oron</a></li>
 		<li><a target="_blank" href="http://gospel-wave.org/">Gospel Wave</a></li>
+		<li><a target="_blank" href="http://gcj.ch/">Gospel Center Jura</a></li>
+		<li><a target="_blank" href="http://www.ee-oron.ch/">Eglise évangélique d'Oron</a></li>
+		<li><a target="_blank" href="http://www.laguerison.org/">AIMG</a></li>
+		<li><a target="_blank" href="http://www.gospel-diffusion.com">Gospel Diffusion</a></li>
 	</ul>
 </nav>
 <nav class="social">

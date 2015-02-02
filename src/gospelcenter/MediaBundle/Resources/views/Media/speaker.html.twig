@@ -38,6 +38,7 @@
                         </div>
                     </a>
                 {% else %}
+
                     <a href="{{ path('gospelcenterMedia_audio', {'audio': celebration.audio.id}) }}">
                         <div class="container">
                             {% if celebration.image %}
@@ -57,7 +58,7 @@
                             {% endif %}
                             <div class="hover">
                                 <div class="picto_play"></div>
-                                <span>Regarder la vidéo</span>
+                                <span>Ecouter</span>
                             </div>
                             <div class="details">
                                 {% if celebration.title != "" %}

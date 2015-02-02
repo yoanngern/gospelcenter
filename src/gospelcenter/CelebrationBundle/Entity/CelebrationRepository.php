@@ -141,21 +141,34 @@ class CelebrationRepository extends EntityRepository
 
     public function findAllBySpeakerWithMedia(\gospelcenter\CelebrationBundle\Entity\Speaker $speaker)
     {
-        $qb = $this->createQueryBuilder('cel');
+        $query = $this->getEntityManager()
+            ->createQuery(
+                '
+                SELECT cel
+                FROM gospelcenterCelebrationBundle:Celebration cel
+                JOIN cel.center c
+                JOIN cel.speakers s
+                JOIN s.person p
+                JOIN cel.date d
+                LEFT JOIN cel.video v
+                LEFT JOIN cel.audio a
+                WHERE p.id = :speaker
+                AND (
+                v.id IS NOT NULL
+                OR a.id IS NOT NULL
+                )
+                ORDER BY d.start DESC'
+            )->setParameters(
+                array(
+                    'speaker' => $speaker->getPerson()->getId()
+                )
+            );
 
-        $qb->join('cel.center', 'c');
-        $qb->join('cel.speakers', 's');
-        $qb->join('s.person', 'p');
-        $qb->join('cel.date', 'd');
-        $qb->leftJoin('cel.video', 'v');
-        $qb->leftJoin('cel.audio', 'a');
-
-        $qb->where('p.id = :speaker')
-            ->setParameter('speaker', $speaker->getPerson()->getId());
-
-        $qb->addOrderBy('d.start', 'DESC');
-
-        return $qb->getQuery()->getResult();
+        try {
+            return $query->getResult();
+        } catch (\Doctrine\ORM\NoResultException $e) {
+            return null;
+        }
     }
 
     public function findAllWithVideo()
