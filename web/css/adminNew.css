@@ -514,7 +514,7 @@ form {
     top: 64px;
     left: 0;
     background-color: #FDFDFC;
-    z-index: 100; }
+    z-index: 120; }
     #page.admin #container > header section.container {
       width: 100%;
       max-width: 960px;
