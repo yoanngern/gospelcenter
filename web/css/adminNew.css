@@ -259,7 +259,10 @@ form {
         form select[multiple="multiple"] option:active {
           background-color: #D91A15; }
     form select:focus {
-      outline: none; }
+      outline: none;
+      border: 2px solid #313131;
+      z-index: 100;
+      padding-left: 9px; }
   form input[type="submit"] {
     display: block;
     border: 2px solid #363331;

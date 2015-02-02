@@ -209,8 +209,6 @@ form {
         color: $redGC;
     }
 
-
-
     select {
         border: 1px solid $grayGC;
         line-height: 1.1em;
@@ -250,6 +248,9 @@ form {
 
         &:focus {
             outline: none;
+            border: 2px solid $blackGC;
+            z-index: 100;
+            padding-left: 9px;
         }
 
     }
