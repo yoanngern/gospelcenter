@@ -614,7 +614,8 @@ form {
     position: fixed;
     top: 164px;
     height: 40px;
-    background-color: #FDFDFC; }
+    background-color: #FDFDFC;
+    z-index: 100; }
     #page.admin #container div.tableHeaderBG .inner {
       background-color: #FDFDFC;
       border-bottom: 3px solid #89CEB7;
@@ -659,7 +660,8 @@ form {
         display: block;
         position: fixed;
         color: #363331;
-        padding-top: 4px; }
+        padding-top: 4px;
+        z-index: 110; }
     #page.admin #container table.main tbody tr {
       height: 56px;
       border-bottom: 1px solid #89CEB7;

@@ -200,6 +200,7 @@
             top: 164px;
             height: 40px;
             background-color: $whiteGC;
+            z-index: 100;
 
             .inner {
                 background-color: $whiteGC;
@@ -270,6 +271,7 @@
                             position: fixed;
                             color: $grayDarkGC;
                             padding-top: 4px;
+                            z-index: 110;
                         }
                     }
                 }
