@@ -98,7 +98,7 @@ function getSpeakerList(input_id) {
 
                 speaker.id = this.id;
                 speaker.title = this.firstname + " " + this.lastname;
-                speaker.subTitle = this.function;
+                speaker.subTitle = "";
                 speaker.image_url = this.image_url;
                 speaker.isImage = false;
 
