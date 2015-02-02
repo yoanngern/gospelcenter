@@ -12,6 +12,10 @@
 
 {% block title %}{{ parent() }} {{ center.name }}{% endblock %}
 
+{% block header_logo %}
+    <a id="logo" href="{{ path('gospelcenterPage_home', {'center': center.ref}) }}"></a>
+{% endblock %}
+
 {% block local_header %}
     <div class="gradient_top"></div>
     <div class="map_bg">
