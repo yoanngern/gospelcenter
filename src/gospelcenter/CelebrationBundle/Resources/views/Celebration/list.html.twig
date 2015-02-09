@@ -17,7 +17,7 @@
     <h1 class="titlePage"><span>{{ 'gc.title.celebrations'|trans }}</span></h1>
 
     <section class="allSunday">
-        <h2>All sunday evening at 6pm</h2>
+        <h2>{% if center.ref == 'lausanne' %}{{ 'gc.celebration.allSunday.lausanne'|trans }}{% elseif center.ref == 'annecy' %}{{ 'gc.celebration.allSunday.annecy'|trans }}{% elseif center.ref == 'montreux' %}{{ 'gc.celebration.allSunday.montreux'|trans }}{% endif %}</h2>
     </section>
 
     {% if nextCelebrations|length %}

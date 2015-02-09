@@ -5,3 +5,7 @@ gc:
         watchLast: Watch our previous celebrations
         more: More
         kidsProgram: A special program for kids age 0-12 is organized
+        allSunday:
+            lausanne: All sunday evening at 6pm
+            annecy: All sunday evening at 10:30 pm
+            montreux: All sunday evening at 10:30 pm
