@@ -285,6 +285,17 @@
 		"outputPathIsSetByUser": 0,
 		"processed": 0
 		},
+	"\/bundles\/gospelcenterpage\/images\/musique_lausanne.jpg": {
+		"fileType": 16384,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 1.11768e+06,
+		"inputAbbreviatedPath": "\/bundles\/gospelcenterpage\/images\/musique_lausanne.jpg",
+		"outputAbbreviatedPath": "\/bundles\/gospelcenterpage\/images\/musique_lausanne.jpg",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
 	"\/bundles\/gospelcenterpage\/images\/nextCelebrations.png": {
 		"fileType": 32768,
 		"ignore": 0,
@@ -3035,6 +3046,17 @@
 		"initialSize": 403123,
 		"inputAbbreviatedPath": "\/uploads\/images\/2014_09_18_16.jpeg",
 		"outputAbbreviatedPath": "\/uploads\/images\/2014_09_18_16.jpeg",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
+	"\/uploads\/images\/2014_09_18_17.jpeg": {
+		"fileType": 16384,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 177565,
+		"inputAbbreviatedPath": "\/uploads\/images\/2014_09_18_17.jpeg",
+		"outputAbbreviatedPath": "\/uploads\/images\/2014_09_18_17.jpeg",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"processed": 0
