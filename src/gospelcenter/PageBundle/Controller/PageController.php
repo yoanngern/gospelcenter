@@ -95,6 +95,8 @@ class PageController extends Controller
         $ads = $em->getRepository('gospelcenterArticleBundle:Ad')->findAllForHome($center);
         $dates = $em->getRepository('gospelcenterEventBundle:Event')->findAllForHome($center);
 
+        shuffle($ads);
+
         return $this->render(
             'gospelcenterPageBundle:Page:home.html.twig',
             array(

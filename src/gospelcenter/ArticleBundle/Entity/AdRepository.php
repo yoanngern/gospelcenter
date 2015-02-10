@@ -13,6 +13,7 @@ use Doctrine\ORM\EntityRepository;
 class AdRepository extends EntityRepository
 {
 
+
     public function findAllForHome(\gospelcenter\CenterBundle\Entity\Center $center)
     {
 
@@ -30,7 +31,7 @@ class AdRepository extends EntityRepository
                 array(
                     'center' => $center->getRef()
                 )
-            )->setMaxResults(3);
+            );
 
         try {
             return $query->getResult();
