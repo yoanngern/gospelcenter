@@ -27,325 +27,346 @@
 
 <section class="tab autoScroll">
 
-<nav class="sub_nav">
-    {% spaceless %}
-        <ul class="classic">
-            <li><a href="#about" class="current focus">{{ 'gc.page.about.nav.about'|trans }}</a></li>
-            <li><a href="#leadership">{{ 'gc.page.about.nav.leadership'|trans }}</a></li>
-            <li><a href="#staff">{{ 'gc.page.about.nav.staff'|trans }}</a></li>
-            <li><a href="#what-we-believe">{{ 'gc.page.about.nav.believe'|trans }}</a></li>
-            <li><a href="#music">{{ 'gc.page.about.nav.music'|trans }}</a></li>
-        </ul>
-    {% endspaceless %}
-</nav>
-
-<article class="tab blog-style active" id="about">
-
-    <h1>A place where miracles happen!</h1>
-
-    {% set aboutImg = 'bundles/gospelcenterpage/images/a-propos.jpg' %}
-
-    <img class="big"
-         src="{{ asset(aboutImg)| imagine_filter('blog_big_low') }}"
-         srcset="{{ asset(aboutImg)| imagine_filter('blog_big_low') }} 2x"
-         data-img="{{ asset(aboutImg)| imagine_filter('blog_big') }}"
-         data-img_2x="{{ asset(aboutImg)| imagine_filter('blog_big_2x') }}"
-         data-img_tablet="{{ asset(aboutImg)| imagine_filter('blog_big_tablet') }}"
-         data-img_tablet_2x="{{ asset(aboutImg)| imagine_filter('blog_big_tablet_2x') }}"
-         data-img_mobile="{{ asset(aboutImg)| imagine_filter('blog_big_mobile') }}"
-         data-img_mobile_2x="{{ asset(aboutImg)| imagine_filter('blog_big_mobile_2x') }}">
-
-
-    <h2 class="underline"><span>Qui</span></h2>
-
-    <p>Le Gospel Center Lausanne est membre du Réseau évangélique suisse (<a target="_blank"
-                                                                             href="http://www.evangelique.ch">RES</a>),
-        de la Fédération romande des Églises évangéliques
-        évangéliques (<a target="_blank" href="http://www.lafree.ch">FREE</a>) et dépend du mouvement <a target="_blank"
-                                                                                                         href="http://www.gospel-wave.org">Gospel
-            Wave.</a></p>
-
-    <h2 class="underline"><span>Comment</span></h2>
-
-    <p>Le Gospel Center a le désir de vivre l’Evangile de la façon la plus complète possible, y compris dans la
-        dimension de la guérison divine et du miraculeux.</p>
-
-    <p>Le Gospel Center a comme vision de communiquer avec des moyens modernes qui rejoignent les personnes dans leur
-        réalité. Les médias, l’audiovisuel, ainsi que les activités mises en place poursuivent ce but.</p>
-
-    <p>Nous sommes convaincus de l’importance de la diversité des façons de vivre la foi et de la richesse qu’apportent
-        les simples moments de vie partagés. Les célébrations du dimanche soir ne sont qu’une facette de la vie
-        chrétienne.</p>
-
-    <h2 class="underline"><span>Pourquoi</span></h2>
-
-    <p>Le Gospel Center existe dans le but de stimuler, développer et faire découvrir un mode de vie positif, pratique,
-        puissant, fondé sur Jésus au travers de la Bible. Nous croyons que la vie d’un chrétien ne s’arrête pas aux
-        dimanches ou aux programmes offerts par l’église mais se vit aussi le reste de la semaine dans des activités
-        diverses, dans nos lieux de vie respectifs et nos lieux de travail.</p>
-
-    <p>Le Gospel Center souhaite offrir un espace où la dimension de la communion fraternelle est un élément central. Un
-        espace où la foi de chacun peut grandir de manière saine et équilibrée, aussi bien dans la dimension du faire
-        que de l’être. Nous souhaitons voir Dieu agir au travers de miracles, de guérisons et de vies transformées.</p>
-
-    <h2 class="underline"><span>Structure</span></h2>
-
-    <p>Le Gospel Center fonctionne pour et par ses « bases », qui sont le regroupement de 4 à 7 personnes par région et
-        centres d’intérêt. Le but est de proposer un lieu de taille accessible sur le plan relationnel où il est
-        possible d’avancer régulièrement et de manière personnelle dans sa maturité spirituelle. Les ”bases” mettent
-        l’accent aussi bien sur les moments de vie partagés (sport, sorties, activités culturelles, etc.) que sur les
-        temps d’échange autour de la Bible. Le Gospel Center veut offrir la possibilité à chaque personne de s’investir
-        selon ses capacités, son temps et sa motivation dans la vie de sa ”base” et par prolongement dans ses diverses
-        activités, dont la célébration du dimanche soir.</p>
-
-    <h2 class="underline"><span>Finances</span></h2>
-
-    <p>Le Gospel Center Lausanne ne bénéficie d’aucun soutien de l’État. C’est une association à but non lucratif.
-        L’ensemble des frais de fonctionnement est assumé par l’engagement libre de chacun. Nos comptes sont approuvés
-        par l’Assemblée générale après vérification par une fiduciaire.</p>
-
-</article>
-
-<article class="tab default" id="leadership">
-
-    {% spaceless %}
-
-        <article class="people">
-            <img src="{{ asset('bundles/gospelcenterpage/images/leadership/lausanne/MarcGallay.jpg') }}"
-                 alt="Marc Gallay"/>
-            <section>
-                <h1>Marc Gallay</h1>
-
-                <p>Pasteur</p>
-
-                <p>Membre du conseil de direction</p>
-            </section>
-
-        </article>
-
-        <article class="people">
-            <img src="{{ asset('bundles/gospelcenterpage/images/leadership/lausanne/PatrickBigler.jpg') }}"
-                 alt="Patrick Bigler"/>
-            <section>
-                <h1>Patrick Bigler</h1>
-
-                <p>Membre du conseil de direction</p>
-            </section>
-        </article>
-
-        <article class="people">
-            <img src="{{ asset('bundles/gospelcenterpage/images/leadership/lausanne/AlixBingle.jpg') }}"
-                 alt="Alix Bingle"/>
-            <section>
-                <h1>Alix Bingle</h1>
-
-                <p>Membre du conseil de direction</p>
-            </section>
-        </article>
-
-        <article class="people">
-            <img src="{{ asset('bundles/gospelcenterpage/images/leadership/lausanne/YannickHeiniger.jpg') }}"
-                 alt="Yannick Heiniger"/>
-            <section>
-                <h1>Yannick Heiniger</h1>
-
-                <p>Membre du conseil de direction</p>
-            </section>
-        </article>
-
-        <article class="people">
-            <img src="{{ asset('bundles/gospelcenterpage/images/leadership/lausanne/MarcRapelli.jpg') }}"
-                 alt="Marc Rapelli"/>
-            <section>
-                <h1>Marc Rapelli</h1>
-
-                <p>Membre du conseil de direction</p>
-            </section>
-        </article>
-
-        <article class="people">
-            <img src="{{ asset('bundles/gospelcenterpage/images/leadership/lausanne/TimotheeRochat.jpg') }}"
-                 alt="Timothée Rochat"/>
-            <section>
-                <h1>Timothée Rochat</h1>
-
-                <p>Membre du conseil de direction</p>
-            </section>
-        </article>
-    {% endspaceless %}
-
-</article>
-
-<article class="tab default" id="staff">
-
-    <h2 class="slogan">Le staff du Gospel Center Lausanne est une équipe
-        dynamique qui désire effectuer un travail de qualité.</h2>
-
-    <article class="frame">
-        <h1>Coord. de l'équipe pastorale</h1>
-
-        <p>Marc Gallay</p>
-    </article>
-
-    <article class="frame">
-        <h1>Coord. des Bases</h1>
-
-        <p>Marc Gallay</p>
-
-        <a href="mailto:bases@gc-lausanne.org">bases@gc-lausanne.org</a>
-    </article>
-
-    <article class="frame">
-        <h1>Worship</h1>
-
-        <p>Marc Gallay</p>
-
-        <a href="mailto:worship@gc-lausanne.org">worship@gc-lausanne.org</a>
-    </article>
-
-    <article class="frame">
-        <h1>Technique</h1>
-
-        <p>David van der Maas</p>
-
-        <a href="mailto:...@gc-lausanne.org">...@gc-lausanne.org</a>
-    </article>
-
-    <article class="frame">
-        <h1>Responsable Enfance</h1>
-
-        <p>Fiona Bland</p>
-
-        <a href="mailto:gospelkids@gc-lausanne.org">gospelkids@gc-lausanne.org</a>
-    </article>
-
-    <article class="frame">
-        <h1>Gospel Minis (0-3 ans)</h1>
-
-        <a href="mailto:...@gc-lausanne.org">...@gc-lausanne.org</a>
-
-    </article>
-
-    <article class="frame">
-        <h1>Gospel Kids (4-7 ans)</h1>
-
-        <p>Francine Gerber</p>
-
-        <a href="mailto:...@gc-lausanne.org">...@gc-lausanne.org</a>
-    </article>
-
-    <article class="frame">
-        <h1>Gospel Teens (7-13 ans)</h1>
-
-        <p>Fiona Bland</p>
-
-        <a href="mailto:gospelkids@gc-lausanne.org">gospelkids@gc-lausanne.org</a>
-    </article>
-
-    <article class="frame">
-        <h1>Gospel Youth</h1>
-
-        <p>Fiona Bland</p>
-
-        <a href="mailto:...@gc-lausanne.org">...@gc-lausanne.org</a>
-    </article>
-
-    <article class="frame">
-        <h1>Accueil</h1>
-
-        <p>Vincent Spycher</p>
-
-        <p>Héloïse Denham</p>
-
-        <a href="mailto:...@gc-lausanne.org">...@gc-lausanne.org</a>
-    </article>
-
-    <article class="frame">
-        <h1>Resp. équipiers de prière</h1>
-
-        <p>Nathalie Pecorini</p>
-
-        <a href="mailto:...@gc-lausanne.org">...@gc-lausanne.org</a>
-    </article>
-
-    <article class="frame">
-        <h1>New christians</h1>
-
-        <p>David Klopfenstein</p>
-
-        <p>Laetitia Uwimbabazi</p>
-
-        <a href="mailto:...@gc-lausanne.org">...@gc-lausanne.org</a>
-    </article>
-
-</article>
-
-<article class="tab blog-style" id="what-we-believe">
-
-    <h1>Ce que nous croyons</h1>
-
-    {% set believeImg = 'bundles/gospelcenterpage/images/confession.jpg' %}
-
-    <img class="big"
-         src="{{ asset(believeImg)| imagine_filter('blog_big_low') }}"
-         srcset="{{ asset(believeImg)| imagine_filter('blog_big_low') }} 2x"
-         data-img="{{ asset(believeImg)| imagine_filter('blog_big') }}"
-         data-img_2x="{{ asset(believeImg)| imagine_filter('blog_big_2x') }}"
-         data-img_tablet="{{ asset(believeImg)| imagine_filter('blog_big_tablet') }}"
-         data-img_tablet_2x="{{ asset(believeImg)| imagine_filter('blog_big_tablet_2x') }}"
-         data-img_mobile="{{ asset(believeImg)| imagine_filter('blog_big_mobile') }}"
-         data-img_mobile_2x="{{ asset(believeImg)| imagine_filter('blog_big_mobile_2x') }}">
-
-    <p>Nous croyons que la Bible est inspirée par Dieu. La Parole de Dieu est la base unique de notre foi, de notre
-        doctrine et conduit nos actions.</p>
-
-    <p>Nous croyons au Dieu unique qui existe en trois identités distinctes : le Père, Son fils Jésus-Christ et le
-        Saint-Esprit.</p>
-
-    <p>Nous croyons que tous les hommes ont péché et sont séparés de la gloire de Dieu. Nous croyons au salut des
-        pécheurs par la grâce, au travers de la repentance et de la foi en l’œuvre parfaite et suffisante du sacrifice
-        de Jésus à la croix.</p>
-
-    <p>Nous croyons en l’Eglise, non en tant qu’institution humaine mais comme le rassemblement des croyants autour du
-        chef de celle-ci: Jésus-Christ.</p>
-
-</article>
-
-<article class="tab" id="music">
-
-    <h2 class="slogan">Le groupe désire encourager le corps de Christ par une
-        louange dynamique de qualité, positive et puissante.</h2>
-
-    <section class="slider" id="1">
-
-        {#
-        <div id="left" class="arrow"></div>
-        #}
-        <article id="1" class="slide"
-                 style="background-image: url('{{ asset('bundles/gospelcenterpage/images/gospel_center_band_rj_2013.jpg') }}')">
-            <section class="content">
-                <h1>Gospel Center Band</h1>
-
-                <p>Nous sommes aussi au service de différents partenaires, dont l’Association Internationale des
-                    Ministères de Guérison (AIMG), pour des cultes, des soirées d'évangélisations ou des soirées de
-                    guérisons. Le GCB désire créer une plateforme musicale pour que les chrétiens puissent louer leur
-                    Dieu librement, en s'attendant à voir sa présence être accompagnée par des signes et des
-                    miracles.</p>
-            </section>
-        </article>
-        {#
-        <div id="right" class="arrow"></div>
-
-
-        <nav id="slides">
-            <ul>
-                <li class="current" data-slide="1"></li>
+    <nav class="sub_nav">
+        {% spaceless %}
+            <ul class="classic">
+                <li><a href="#about" class="current focus">{{ 'gc.page.about.nav.about'|trans }}</a></li>
+                <li><a href="#leadership">{{ 'gc.page.about.nav.leadership'|trans }}</a></li>
+                <li><a href="#staff">{{ 'gc.page.about.nav.staff'|trans }}</a></li>
+                <li><a href="#what-we-believe">{{ 'gc.page.about.nav.believe'|trans }}</a></li>
+                <li><a href="#music">{{ 'gc.page.about.nav.music'|trans }}</a></li>
             </ul>
-        </nav>
-        #}
-    </section>
+        {% endspaceless %}
+    </nav>
 
-</article>
+    <article class="tab blog-style active" id="about">
+
+        <h1>A place where miracles happen!</h1>
+
+        {% set aboutImg = 'bundles/gospelcenterpage/images/a-propos.jpg' %}
+
+        <img class="big"
+             src="{{ asset(aboutImg)| imagine_filter('blog_big_low') }}"
+             srcset="{{ asset(aboutImg)| imagine_filter('blog_big_low') }} 2x"
+             data-img="{{ asset(aboutImg)| imagine_filter('blog_big') }}"
+             data-img_2x="{{ asset(aboutImg)| imagine_filter('blog_big_2x') }}"
+             data-img_tablet="{{ asset(aboutImg)| imagine_filter('blog_big_tablet') }}"
+             data-img_tablet_2x="{{ asset(aboutImg)| imagine_filter('blog_big_tablet_2x') }}"
+             data-img_mobile="{{ asset(aboutImg)| imagine_filter('blog_big_mobile') }}"
+             data-img_mobile_2x="{{ asset(aboutImg)| imagine_filter('blog_big_mobile_2x') }}">
+
+
+        <h2 class="underline"><span>Qui</span></h2>
+
+        <p>Le Gospel Center Lausanne est membre du Réseau évangélique suisse (<a target="_blank"
+                                                                                 href="http://www.evangelique.ch">RES</a>),
+            de la Fédération romande des Églises évangéliques
+            évangéliques (<a target="_blank" href="http://www.lafree.ch">FREE</a>) et dépend du mouvement <a
+                    target="_blank"
+                    href="http://www.gospel-wave.org">Gospel
+                Wave.</a></p>
+
+        <h2 class="underline"><span>Comment</span></h2>
+
+        <p>Le Gospel Center a le désir de vivre l’Evangile de la façon la plus complète possible, y compris dans la
+            dimension de la guérison divine et du miraculeux.</p>
+
+        <p>Le Gospel Center a comme vision de communiquer avec des moyens modernes qui rejoignent les personnes dans
+            leur
+            réalité. Les médias, l’audiovisuel, ainsi que les activités mises en place poursuivent ce but.</p>
+
+        <p>Nous sommes convaincus de l’importance de la diversité des façons de vivre la foi et de la richesse
+            qu’apportent
+            les simples moments de vie partagés. Les célébrations du dimanche soir ne sont qu’une facette de la vie
+            chrétienne.</p>
+
+        <h2 class="underline"><span>Pourquoi</span></h2>
+
+        <p>Le Gospel Center existe dans le but de stimuler, développer et faire découvrir un mode de vie positif,
+            pratique,
+            puissant, fondé sur Jésus au travers de la Bible. Nous croyons que la vie d’un chrétien ne s’arrête pas aux
+            dimanches ou aux programmes offerts par l’église mais se vit aussi le reste de la semaine dans des activités
+            diverses, dans nos lieux de vie respectifs et nos lieux de travail.</p>
+
+        <p>Le Gospel Center souhaite offrir un espace où la dimension de la communion fraternelle est un élément
+            central. Un
+            espace où la foi de chacun peut grandir de manière saine et équilibrée, aussi bien dans la dimension du
+            faire
+            que de l’être. Nous souhaitons voir Dieu agir au travers de miracles, de guérisons et de vies
+            transformées.</p>
+
+        <h2 class="underline"><span>Structure</span></h2>
+
+        <p>Le Gospel Center fonctionne pour et par ses « bases », qui sont le regroupement de 4 à 7 personnes par région
+            et
+            centres d’intérêt. Le but est de proposer un lieu de taille accessible sur le plan relationnel où il est
+            possible d’avancer régulièrement et de manière personnelle dans sa maturité spirituelle. Les ”bases” mettent
+            l’accent aussi bien sur les moments de vie partagés (sport, sorties, activités culturelles, etc.) que sur
+            les
+            temps d’échange autour de la Bible. Le Gospel Center veut offrir la possibilité à chaque personne de
+            s’investir
+            selon ses capacités, son temps et sa motivation dans la vie de sa ”base” et par prolongement dans ses
+            diverses
+            activités, dont la célébration du dimanche soir.</p>
+
+        <h2 class="underline"><span>Finances</span></h2>
+
+        <p>Le Gospel Center Lausanne ne bénéficie d’aucun soutien de l’État. C’est une association à but non lucratif.
+            L’ensemble des frais de fonctionnement est assumé par l’engagement libre de chacun. Nos comptes sont
+            approuvés
+            par l’Assemblée générale après vérification par une fiduciaire.</p>
+
+    </article>
+
+    <article class="tab default" id="leadership">
+
+        {% spaceless %}
+
+            <article class="people">
+                <img src="{{ asset('bundles/gospelcenterpage/images/leadership/lausanne/MarcGallay.jpg') }}"
+                     alt="Marc Gallay"/>
+                <section>
+                    <h1>Marc Gallay</h1>
+
+                    <p>Pastor</p>
+
+                    <p>Member of leadership team</p>
+                </section>
+
+            </article>
+
+            <article class="people">
+                <img src="{{ asset('bundles/gospelcenterpage/images/leadership/lausanne/PatrickBigler.jpg') }}"
+                     alt="Patrick Bigler"/>
+                <section>
+                    <h1>Patrick Bigler</h1>
+
+                    <p>Member of leadership team</p>
+                </section>
+            </article>
+
+            <article class="people">
+                <img src="{{ asset('bundles/gospelcenterpage/images/leadership/lausanne/AlixBingle.jpg') }}"
+                     alt="Alix Bingle"/>
+                <section>
+                    <h1>Alix Bingle</h1>
+
+                    <p>Member of leadership team</p>
+                </section>
+            </article>
+
+            <article class="people">
+                <img src="{{ asset('bundles/gospelcenterpage/images/leadership/lausanne/YannickHeiniger.jpg') }}"
+                     alt="Yannick Heiniger"/>
+                <section>
+                    <h1>Yannick Heiniger</h1>
+
+                    <p>Member of leadership team</p>
+                </section>
+            </article>
+
+            <article class="people">
+                <img src="{{ asset('bundles/gospelcenterpage/images/leadership/lausanne/MarcRapelli.jpg') }}"
+                     alt="Marc Rapelli"/>
+                <section>
+                    <h1>Marc Rapelli</h1>
+
+                    <p>Member of leadership team</p>
+                </section>
+            </article>
+
+            <article class="people">
+                <img src="{{ asset('bundles/gospelcenterpage/images/leadership/lausanne/TimotheeRochat.jpg') }}"
+                     alt="Timothée Rochat"/>
+                <section>
+                    <h1>Timothée Rochat</h1>
+
+                    <p>Member of leadership team</p>
+                </section>
+            </article>
+        {% endspaceless %}
+
+    </article>
+
+    <article class="tab default" id="staff">
+
+        <h2 class="slogan">Le staff du Gospel Center Lausanne est une équipe
+            dynamique qui désire effectuer un travail de qualité.</h2>
+
+        <article class="frame">
+            <h1>Coord. de l'équipe pastorale</h1>
+
+            <p>Marc Gallay</p>
+        </article>
+
+        <article class="frame">
+            <h1>Coord. des Bases</h1>
+
+            <p>Marc Gallay</p>
+
+            <a href="mailto:bases@gc-lausanne.org">bases@gc-lausanne.org</a>
+        </article>
+
+        <article class="frame">
+            <h1>Musique</h1>
+
+            <p>Gaël Dufour</p>
+
+            <a href="mailto:worship@gc-lausanne.org">worship@gc-lausanne.org</a>
+        </article>
+
+        <article class="frame">
+            <h1>Technique</h1>
+
+            <p>David van der Maas</p>
+
+            <a href="mailto:...@gc-lausanne.org">...@gc-lausanne.org</a>
+        </article>
+
+        <article class="frame">
+            <h1>Responsable Enfance et Jeunesse</h1>
+
+            <p>Fiona Bland</p>
+
+            <a href="mailto:gospelkids@gc-lausanne.org">gospelkids@gc-lausanne.org</a>
+        </article>
+
+        <article class="frame">
+            <h1>Gospel Minis (0-3 ans)</h1>
+
+            <a href="mailto:...@gc-lausanne.org">...@gc-lausanne.org</a>
+
+        </article>
+
+        <article class="frame">
+            <h1>Gospel Kids (4-7 ans)</h1>
+
+            <p>Francine Gerber</p>
+
+            <a href="mailto:...@gc-lausanne.org">...@gc-lausanne.org</a>
+        </article>
+
+        <article class="frame">
+            <h1>Gospel Teens (7-13 ans)</h1>
+
+            <p>Fiona Bland</p>
+
+            <a href="mailto:gospelkids@gc-lausanne.org">gospelkids@gc-lausanne.org</a>
+        </article>
+
+        <article class="frame">
+            <h1>Gospel Youth</h1>
+
+            <p>Fiona Bland</p>
+
+            <a href="mailto:...@gc-lausanne.org">...@gc-lausanne.org</a>
+        </article>
+
+        <article class="frame">
+            <h1>Accueil</h1>
+
+            <p>Vincent Spycher</p>
+
+            <p>Héloïse Denham</p>
+
+            <a href="mailto:...@gc-lausanne.org">...@gc-lausanne.org</a>
+        </article>
+
+        <article class="frame">
+            <h1>Resp. équipiers de prière</h1>
+
+            <p>Nathalie Pecorini</p>
+
+            <a href="mailto:...@gc-lausanne.org">...@gc-lausanne.org</a>
+        </article>
+
+        <article class="frame">
+            <h1>New christians</h1>
+
+            <p>David Klopfenstein</p>
+
+            <p>Laetitia Brunner</p>
+
+            <a href="mailto:...@gc-lausanne.org">...@gc-lausanne.org</a>
+        </article>
+
+    </article>
+
+    <article class="tab blog-style" id="what-we-believe">
+
+        <h1>What we believe</h1>
+
+        {% set believeImg = 'bundles/gospelcenterpage/images/confession.jpg' %}
+
+        <img class="big"
+             src="{{ asset(believeImg)| imagine_filter('blog_big_low') }}"
+             srcset="{{ asset(believeImg)| imagine_filter('blog_big_low') }} 2x"
+             data-img="{{ asset(believeImg)| imagine_filter('blog_big') }}"
+             data-img_2x="{{ asset(believeImg)| imagine_filter('blog_big_2x') }}"
+             data-img_tablet="{{ asset(believeImg)| imagine_filter('blog_big_tablet') }}"
+             data-img_tablet_2x="{{ asset(believeImg)| imagine_filter('blog_big_tablet_2x') }}"
+             data-img_mobile="{{ asset(believeImg)| imagine_filter('blog_big_mobile') }}"
+             data-img_mobile_2x="{{ asset(believeImg)| imagine_filter('blog_big_mobile_2x') }}">
+
+        <p>We believe that the Bible is inspired by God. The Word of God is the unique basis of our faith and doctrine
+            and carries out our actions.</p>
+
+        <p>We believe in the unique God who exists in three distinct identities: the Father, the Son Jesus-Christ and
+            his Holy-Spirit.</p>
+
+        <p>We believe that everyone has sinned and falls short of the glory of God. We believe that sinners are saved by
+            grace, through repentance and faith in the perfect and sufficient sacrifice of Jesus at the cross.</p>
+
+        <p>We believe in a Church, not as a human institution but as the gathering of believers around their chief:
+            Jesus-Christ.</p>
+
+    </article>
+
+    <article class="tab blog-style" id="music">
+
+        <h1>Une musique centrée sur Jésus</h1>
+
+        {% set believeImg = 'bundles/gospelcenterpage/images/confession.jpg' %}
+
+        <img class="big"
+             src="{{ asset(believeImg)| imagine_filter('blog_big_low') }}"
+             srcset="{{ asset(believeImg)| imagine_filter('blog_big_low') }} 2x"
+             data-img="{{ asset(believeImg)| imagine_filter('blog_big') }}"
+             data-img_2x="{{ asset(believeImg)| imagine_filter('blog_big_2x') }}"
+             data-img_tablet="{{ asset(believeImg)| imagine_filter('blog_big_tablet') }}"
+             data-img_tablet_2x="{{ asset(believeImg)| imagine_filter('blog_big_tablet_2x') }}"
+             data-img_mobile="{{ asset(believeImg)| imagine_filter('blog_big_mobile') }}"
+             data-img_mobile_2x="{{ asset(believeImg)| imagine_filter('blog_big_mobile_2x') }}">
+
+        <p>Nous croyons à l’importance et à la place centrale de la musique dans la vie de l’Eglise. La louange, dans un
+            style actuel et moderne, mais avant tout centrée sur Jésus, est donc naturellement une part essentielle de
+            nos célébrations.</p>
+
+        <p>Nous voulons permettre à chacun de rencontrer Dieu en le louant, et laisser Dieu se manifester en lui
+            laissant la place pour agir. Nous avons le désir de voir le ciel ouvert, les vies transformées et les
+            maladies guéries dans la présence tangible de Dieu. L’excellence, la consécration à Dieu, l’écoute du
+            Saint-Esprit et le service sont les valeurs que nous mettons au centre du secteur louange. Notre vision est
+            également de former des musiciens, chanteurs et techniciens au ministère de la louange, leur transmettre ce
+            que Dieu nous a donné depuis des années, et les équiper pour servir.</p>
+
+        <p>Nos différents groupes sont régulièrement invités à conduire la louange dans divers événements en Suisse et
+            en Europe. De nombreux musiciens servant au Gospel Center Lausanne jouent également dans divers groupes en
+            dehors de l’Eglise. Le Gospel Center Lausanne encourage les musiciens dans leurs dons où qu’ils aillent.
+            Nous voulons créer une plateforme où ils se sentent bien et peuvent se développer dans leur plein
+            potentiel.</p>
+
+        <p>Conduire la musique dans l’Eglise est notre plus grand privilège, nous croyons que de grandes choses sont
+            devant nous ! Le meilleur est à venir !</p>
+
+        <article class="frame">
+            <h1>Gaël Dufour</h1>
+
+            <p>Responsable louange</p>
+
+            <p><a href="mailto:worship@gc-lausanne.org">worship@gc-lausanne.org</a></p>
+        </article>
+
+    </article>
 
 
 </section>
