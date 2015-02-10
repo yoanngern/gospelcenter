@@ -1418,7 +1418,7 @@
 		"outputAbbreviatedPath": "\/js\/processed\/addCelebration.min.js",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 1,
-		"outputStyle": 0,
+		"outputStyle": 1,
 		"syntaxCheckerStyle": 0
 		},
 	"\/js\/addCelebrationNew.js": {
@@ -1429,7 +1429,7 @@
 		"outputAbbreviatedPath": "\/js\/processed\/addCelebrationNew.min.js",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 1,
-		"outputStyle": 0,
+		"outputStyle": 1,
 		"syntaxCheckerStyle": 0
 		},
 	"\/js\/addImage.js": {
@@ -1440,7 +1440,7 @@
 		"outputAbbreviatedPath": "\/js\/processed\/addImage.min.js",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 1,
-		"outputStyle": 0,
+		"outputStyle": 1,
 		"syntaxCheckerStyle": 0
 		},
 	"\/js\/addPage.js": {
@@ -1451,7 +1451,7 @@
 		"outputAbbreviatedPath": "\/js\/processed\/addPage.min.js",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 1,
-		"outputStyle": 0,
+		"outputStyle": 1,
 		"syntaxCheckerStyle": 0
 		},
 	"\/js\/addvideo.js": {
@@ -1462,7 +1462,7 @@
 		"outputAbbreviatedPath": "\/js\/processed\/addVideo.min.js",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 1,
-		"outputStyle": 0,
+		"outputStyle": 1,
 		"syntaxCheckerStyle": 0
 		},
 	"\/js\/advanced\/celebrations.js": {
@@ -1473,7 +1473,7 @@
 		"outputAbbreviatedPath": "\/js\/processed\/celebrations.min.js",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 1,
-		"outputStyle": 0,
+		"outputStyle": 1,
 		"syntaxCheckerStyle": 0
 		},
 	"\/js\/editImage.js": {
@@ -1484,7 +1484,7 @@
 		"outputAbbreviatedPath": "\/js\/processed\/editImage.min.js",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 1,
-		"outputStyle": 0,
+		"outputStyle": 1,
 		"syntaxCheckerStyle": 0
 		},
 	"\/js\/form.js": {
@@ -1495,7 +1495,7 @@
 		"outputAbbreviatedPath": "\/js\/processed\/form.min.js",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 1,
-		"outputStyle": 0,
+		"outputStyle": 1,
 		"syntaxCheckerStyle": 0
 		},
 	"\/js\/global.js": {
@@ -1506,7 +1506,7 @@
 		"outputAbbreviatedPath": "\/js\/processed\/global.min.js",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 1,
-		"outputStyle": 0,
+		"outputStyle": 1,
 		"syntaxCheckerStyle": 0
 		},
 	"\/js\/globalMobile.js": {
@@ -1517,7 +1517,7 @@
 		"outputAbbreviatedPath": "\/js\/processed\/globalMobile.min.js",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 1,
-		"outputStyle": 0,
+		"outputStyle": 1,
 		"syntaxCheckerStyle": 0
 		},
 	"\/js\/globalNew.js": {
@@ -1528,7 +1528,7 @@
 		"outputAbbreviatedPath": "\/js\/processed\/globalNew.min.js",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 1,
-		"outputStyle": 0,
+		"outputStyle": 1,
 		"syntaxCheckerStyle": 0
 		},
 	"\/js\/location.js": {
@@ -1539,7 +1539,7 @@
 		"outputAbbreviatedPath": "\/js\/processed\/location.min.js",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 1,
-		"outputStyle": 0,
+		"outputStyle": 1,
 		"syntaxCheckerStyle": 0
 		},
 	"\/js\/main.js": {
@@ -1550,7 +1550,7 @@
 		"outputAbbreviatedPath": "\/js\/processed\/main.min.js",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 1,
-		"outputStyle": 0,
+		"outputStyle": 1,
 		"syntaxCheckerStyle": 0
 		},
 	"\/js\/mainNew.js": {
@@ -1561,7 +1561,7 @@
 		"outputAbbreviatedPath": "\/js\/processed\/mainNew.min.js",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 1,
-		"outputStyle": 0,
+		"outputStyle": 1,
 		"syntaxCheckerStyle": 0
 		},
 	"\/js\/mobile.js": {
@@ -1572,7 +1572,7 @@
 		"outputAbbreviatedPath": "\/js\/processed\/mobile.min.js",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 1,
-		"outputStyle": 0,
+		"outputStyle": 1,
 		"syntaxCheckerStyle": 0
 		},
 	"\/js\/page.js": {
@@ -1583,7 +1583,7 @@
 		"outputAbbreviatedPath": "\/js\/processed\/page.min.js",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 1,
-		"outputStyle": 0,
+		"outputStyle": 1,
 		"syntaxCheckerStyle": 0
 		},
 	"\/js\/processed\/addCelebration.min.js": {
@@ -1792,7 +1792,7 @@
 		"outputAbbreviatedPath": "\/js\/processed\/tv.min.js",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 1,
-		"outputStyle": 0,
+		"outputStyle": 1,
 		"syntaxCheckerStyle": 0
 		},
 	"\/js\/tvMobile.js": {
@@ -1803,7 +1803,7 @@
 		"outputAbbreviatedPath": "\/js\/processed\/tvMobile.min.js",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 1,
-		"outputStyle": 0,
+		"outputStyle": 1,
 		"syntaxCheckerStyle": 0
 		},
 	"\/js\/vendor\/autoGrowInput.js": {
@@ -2131,7 +2131,7 @@
 		"outputAbbreviatedPath": "\/css\/admin.css",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
-		"outputStyle": 0,
+		"outputStyle": 3,
 		"shouldRunAutoprefixer": 0,
 		"shouldRunBless": 0,
 		"useLibsass": 0
@@ -2147,7 +2147,7 @@
 		"outputAbbreviatedPath": "\/css\/adminEvents.css",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
-		"outputStyle": 0,
+		"outputStyle": 3,
 		"shouldRunAutoprefixer": 0,
 		"shouldRunBless": 0,
 		"useLibsass": 0
@@ -2163,7 +2163,7 @@
 		"outputAbbreviatedPath": "\/css\/adminNew.css",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
-		"outputStyle": 0,
+		"outputStyle": 3,
 		"shouldRunAutoprefixer": 0,
 		"shouldRunBless": 0,
 		"useLibsass": 0
@@ -2451,7 +2451,7 @@
 		"outputAbbreviatedPath": "\/css\/error.css",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
-		"outputStyle": 0,
+		"outputStyle": 3,
 		"shouldRunAutoprefixer": 0,
 		"shouldRunBless": 0,
 		"useLibsass": 0
@@ -2467,7 +2467,7 @@
 		"outputAbbreviatedPath": "\/css\/event.css",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
-		"outputStyle": 0,
+		"outputStyle": 3,
 		"shouldRunAutoprefixer": 0,
 		"shouldRunBless": 0,
 		"useLibsass": 0
@@ -2483,7 +2483,7 @@
 		"outputAbbreviatedPath": "\/css\/events.css",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
-		"outputStyle": 0,
+		"outputStyle": 3,
 		"shouldRunAutoprefixer": 0,
 		"shouldRunBless": 0,
 		"useLibsass": 0
@@ -2515,7 +2515,7 @@
 		"outputAbbreviatedPath": "\/css\/form.css",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
-		"outputStyle": 0,
+		"outputStyle": 3,
 		"shouldRunAutoprefixer": 0,
 		"shouldRunBless": 0,
 		"useLibsass": 0
@@ -2547,7 +2547,7 @@
 		"outputAbbreviatedPath": "\/css\/global.css",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
-		"outputStyle": 0,
+		"outputStyle": 3,
 		"shouldRunAutoprefixer": 0,
 		"shouldRunBless": 0,
 		"useLibsass": 0
@@ -2563,7 +2563,7 @@
 		"outputAbbreviatedPath": "\/css\/globalNew.css",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
-		"outputStyle": 0,
+		"outputStyle": 3,
 		"shouldRunAutoprefixer": 0,
 		"shouldRunBless": 0,
 		"useLibsass": 0
@@ -2579,7 +2579,7 @@
 		"outputAbbreviatedPath": "\/css\/home.css",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
-		"outputStyle": 0,
+		"outputStyle": 3,
 		"shouldRunAutoprefixer": 0,
 		"shouldRunBless": 0,
 		"useLibsass": 0
@@ -2595,7 +2595,7 @@
 		"outputAbbreviatedPath": "\/css\/layout.css",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
-		"outputStyle": 0,
+		"outputStyle": 3,
 		"shouldRunAutoprefixer": 0,
 		"shouldRunBless": 0,
 		"useLibsass": 0
@@ -2611,7 +2611,7 @@
 		"outputAbbreviatedPath": "\/css\/layoutNew.css",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
-		"outputStyle": 0,
+		"outputStyle": 3,
 		"shouldRunAutoprefixer": 0,
 		"shouldRunBless": 0,
 		"useLibsass": 0
@@ -2627,7 +2627,7 @@
 		"outputAbbreviatedPath": "\/css\/mobile.css",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
-		"outputStyle": 0,
+		"outputStyle": 3,
 		"shouldRunAutoprefixer": 0,
 		"shouldRunBless": 0,
 		"useLibsass": 0
@@ -2643,7 +2643,7 @@
 		"outputAbbreviatedPath": "\/css\/mobileAdmin.css",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
-		"outputStyle": 0,
+		"outputStyle": 3,
 		"shouldRunAutoprefixer": 0,
 		"shouldRunBless": 0,
 		"useLibsass": 0
@@ -2691,7 +2691,7 @@
 		"outputAbbreviatedPath": "\/css\/page.css",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
-		"outputStyle": 0,
+		"outputStyle": 3,
 		"shouldRunAutoprefixer": 0,
 		"shouldRunBless": 0,
 		"useLibsass": 0
@@ -2755,7 +2755,7 @@
 		"outputAbbreviatedPath": "\/css\/static.css",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
-		"outputStyle": 0,
+		"outputStyle": 3,
 		"shouldRunAutoprefixer": 0,
 		"shouldRunBless": 0,
 		"useLibsass": 0
@@ -2787,7 +2787,7 @@
 		"outputAbbreviatedPath": "\/css\/tv.css",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
-		"outputStyle": 0,
+		"outputStyle": 3,
 		"shouldRunAutoprefixer": 0,
 		"shouldRunBless": 0,
 		"useLibsass": 0
@@ -3794,6 +3794,28 @@
 		"initialSize": 194497,
 		"inputAbbreviatedPath": "\/uploads\/images\/2014_12_30_78.jpeg",
 		"outputAbbreviatedPath": "\/uploads\/images\/2014_12_30_78.jpeg",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
+	"\/uploads\/images\/2015_02_10_79.jpeg": {
+		"fileType": 16384,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 180132,
+		"inputAbbreviatedPath": "\/uploads\/images\/2015_02_10_79.jpeg",
+		"outputAbbreviatedPath": "\/uploads\/images\/2015_02_10_79.jpeg",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
+	"\/uploads\/images\/2015_02_10_80.jpeg": {
+		"fileType": 16384,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 60725,
+		"inputAbbreviatedPath": "\/uploads\/images\/2015_02_10_80.jpeg",
+		"outputAbbreviatedPath": "\/uploads\/images\/2015_02_10_80.jpeg",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"processed": 0

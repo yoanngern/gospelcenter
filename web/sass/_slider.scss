@@ -196,12 +196,15 @@ section.slider {
             height: 360px;
         }
 
+        div.slidesjs-container,
+        div.slidesjs-control {
+            height: 340px !important;
+        }
 
         article.slide {
 
 
             section.content {
-                //max-width: 500px;
                 width: 65%;
 
                 h1 {
@@ -225,7 +228,7 @@ section.slider {
     @media only screen and (max-width: $mobileH) {
         margin-top: 30px;
 
-        div.arrow {
+        a.slidesjs-navigation {
             display: none;
         }
 
@@ -233,6 +236,11 @@ section.slider {
             height: 360px;
         }
 
+
+        div.slidesjs-container,
+        div.slidesjs-control {
+            height: 360px !important;
+        }
 
         article.slide {
 
