@@ -88,6 +88,9 @@ class LocationController extends Controller
         $callback = $request->get('callback');
 
         $response = new JsonResponse($map, 200, array('content-type' => 'application/json'));
+
+        $response->headers->set('Access-Control-Allow-Origin', '*');
+
         $response->setCallback($callback);
         return $response;
     }
