@@ -71,8 +71,9 @@ class LocationController extends Controller
         $feature["properties"]["postalCode"] = $location["postalCode"];
         $feature["properties"]["country"] = $location["country"];
         $feature["geometry"]["type"] = "Point";
-        $feature["geometry"]["coordinates"][] = $location["latitude"];;
-        $feature["geometry"]["coordinates"][] = $location["longitude"];;
+        $feature["geometry"]["coordinates"][] = $location["longitude"];
+        $feature["geometry"]["coordinates"][] = $location["latitude"];
+
 
         $map["features"][] = $feature;
 
