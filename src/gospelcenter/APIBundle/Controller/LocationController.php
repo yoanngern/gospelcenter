@@ -74,16 +74,7 @@ class LocationController extends Controller
         $feature["geometry"]["coordinates"][] = $location["longitude"];
         $feature["geometry"]["coordinates"][] = $location["latitude"];
 
-
         $map["features"][] = $feature;
-
-        /*
-        $response = new Response(json_encode($map));
-
-        $response->headers->set('Content-Type', 'application/json');
-
-        return $response;
-        */
 
         $request = $this->get('request');
         $callback = $request->get('callback');
