@@ -3,6 +3,7 @@
 namespace gospelcenter\APIBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Response;
 
 class LocationController extends Controller
@@ -15,7 +16,7 @@ class LocationController extends Controller
     public function getLocationsAction()
     {
         $em = $this->getDoctrine()->getManager();
-        $request = $this->get('request');
+        //$request = $this->get('request');
 
         //$centerId = $request->query->get('center');
         //$center = $em->getRepository('gospelcenterCenterBundle:Center')->findByRef($centerId);
@@ -75,10 +76,19 @@ class LocationController extends Controller
 
         $map["features"][] = $feature;
 
+        /*
         $response = new Response(json_encode($map));
 
         $response->headers->set('Content-Type', 'application/json');
 
+        return $response;
+        */
+
+        $request = $this->get('request');
+        $callback = $request->get('callback');
+
+        $response = new JsonResponse($map, 200, array('content-type' => 'application/json'));
+        $response->setCallback($callback);
         return $response;
     }
 }
