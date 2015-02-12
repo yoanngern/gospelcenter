@@ -4,6 +4,49 @@
     margin-top: 70px;
     padding-bottom: 50px;
 
+    .social {
+        background-color: $grayLightGC;
+        width: 100%;
+        height: 50px;
+        text-align: center;
+
+        a.icon {
+            display: inline-block;
+            height: 30px;
+            margin: 10px;
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+
+            &#facebook {
+                width: 30px;
+                background-image: url('../images/link_facebook.svg');
+
+                &:hover {
+                    background-image: url('../images/link_facebook_hover.svg');
+                }
+            }
+
+            &#gctv {
+                width: 64px;
+                background-image: url('../images/link_gctv.svg');
+
+                &:hover {
+                    background-image: url('../images/link_gctv_hover.svg');
+                }
+            }
+
+            &#youtube {
+                width: 70px;
+                background-image: url('../images/link_youtube.svg');
+
+                &:hover {
+                    background-image: url('../images/link_youtube_hover.svg');
+                }
+            }
+        }
+    }
+
     .container {
         margin: 0 auto;
         width: 100%;
