@@ -102,19 +102,27 @@
         <h2>{{ 'gc.celebration.desc'|trans }}</h2>
     </section>
 
-    <section id="map" class="map_full">
-        {% spaceless %}
-            <iframe src="http://map.gospel-center.com"></iframe>
-            <article>
-                <h1>Gare de Lausanne</h1>
+    {% if nextCelebrations|length %}
+        <section id="map" class="map_full">
+            {% spaceless %}
 
-                <p>Place de la Gare 11<br/>
-                    Salle des cantons<br/>
-                    1003 Lausanne<br/>
-                    Suisse</p>
-            </article>
-        {% endspaceless %}
-    </section>
+                {% set celebration_location = nextCelebrations[0].location %}
+
+                {% set map_url = "http://beta.gospel-center.com/api/locations/" ~ celebration_location.id ~ ".geojson" %}
+
+                <iframe src="http://map.gospel-center.com/poi.html?url={{ map_url|url_encode }}"></iframe>
+
+                <article>
+                    <h1>{{ celebration_location.name }}</h1>
+
+                    <p>{{ celebration_location.address1 }}<br/>
+                        {{ celebration_location.address2 }}<br/>
+                        {{ celebration_location.postalCode }} {{ celebration_location.city }}<br/>
+                        {{ celebration_location.country }}</p>
+                </article>
+            {% endspaceless %}
+        </section>
+    {% endif %}
 
     {% if lastCelebrations|length %}
         <section id="pastCelebrations" class="gray">
