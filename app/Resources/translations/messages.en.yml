@@ -32,3 +32,8 @@ gc:
         username: Username
         password: Password
         keepMe: Keep me logged in
+    ruban:
+        cities: Cities
+        ministries: Ministries
+        partners: Partners
+        social: Social

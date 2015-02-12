@@ -36,3 +36,8 @@ gc:
         username: Nom d'utilisateur
         password: Mot de passe
         keepMe: Rester connecté
+    ruban:
+        cities: Villes
+        ministries: Ministères
+        partners: Partenaires
+        social: Réseaux sociaux
