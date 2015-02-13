@@ -1,7 +1,8 @@
 {% extends "gospelcenterMediaBundle::layout.html.twig" %}
 
 {% block home_title %}
-    {% set homeImg = 'bundles/gospelcentermedia/images/media_home.jpg' %}
+
+    {% set homeImg = 'bundles/gospelcentermedia/images/media_home_' ~ random(['marc1', 'mark1', 'julien1', 'loic1', 'mica1', 'mica2']) ~ '.jpg' %}
     <section class="home_title"
              style="background-image: url('{{ asset(homeImg)| imagine_filter('media_home_low') }}')"
              data-bg="{{ asset(homeImg)| imagine_filter('media_home') }}"
