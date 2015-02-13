@@ -95,18 +95,19 @@ class LocationController extends Controller
      */
     public function getBasesGeoAction(Center $center)
     {
-        $map = $this->render('gospelcenterAPIBundle:Location:bases_' . $center->getRef() . '.json.twig');
 
-        //$request = $this->get('request');
-        //$callback = $request->get('callback');
+
+        $path = "bases_". $center->getRef() .".geojson";
+        $content = file_get_contents($path);
 
         $response = new Response();
-        $response->setContent($map);
+
         $response->headers->set('Content-Type', 'application/json');
 
         $response->headers->set('Access-Control-Allow-Origin', '*');
 
-        //$response->setCallback($callback);
+        $response->setContent($content);
+
         return $response;
     }
 }
