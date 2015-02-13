@@ -1,8 +1,13 @@
+{% extends "::localNew.html.twig" %}
+
+{% block title %}{{ parent() }} - {{ 'gc.title.contact'|trans }}{% endblock %}
+
 {% block body %}
 
     <h1 class="titlePage"><span>{{ 'gc.title.contact'|trans }}</span></h1>
 
     <section id="map" class="map_full">
+
         {% set map_url = "http://beta.gospel-center.com/api/locations/" ~ center.location.id ~ ".geojson" %}
 
         <iframe src="http://map.gospel-center.com/poi.html?url={{ map_url|url_encode }}"></iframe>
@@ -14,8 +19,15 @@
                 {{ center.location.postalCode }} {{ center.location.city }}<br/>
                 {{ center.location.country }}</p>
 
-            <p>+33 (0) 4 50 44 33 14</p>
-            <a href="mailto:info@gc-annecy.org">info@gc-annecy.org</a>
+            {% if center.ref == "lausanne" %}
+                <p>+41 (0)848 123 777</p>
+            {% elseif center.ref == "montreux" %}
+                <p>+41 (79) 159 81 09</p>
+            {% elseif center.ref == "annecy" %}
+                <p>+33 (0) 4 50 44 33 14</p>
+            {% endif %}
+
+            <a href="mailto:info@gc-{{ center.ref }}.org">info@gc-{{ center.ref }}.org</a>
 
             <p><a href="{{ path('gospelcenterPage_default', {'center': center.ref, 'page': 'give'}) }}"
                   class="buttonLink">{{ 'gc.nav.give'|trans }}</a></p>
@@ -25,16 +37,16 @@
     <section class="formGray">
         <h1>{{ 'gc.page.contact.writeMessage'|trans }}</h1>
 
-        <form>
+        <form action="" method="POST">
             <fieldset class="left width1_3">
-                <input placeholder="Nom">
-                <input placeholder="E-mail">
-                <input placeholder="Téléphone">
+                <input name="name" type="text" placeholder="{{ 'gc.form.name'|trans }}">
+                <input name="email" type="text" placeholder="{{ 'gc.form.e-mail'|trans }}">
+                <input name="phone" type="text" placeholder="{{ 'gc.form.phone'|trans }}">
             </fieldset>
             <fieldset class="right width2_3">
-                <textarea placeholder="Message"></textarea>
+                <textarea name="message" placeholder="{{ 'gc.form.message'|trans }}"></textarea>
             </fieldset>
-            <input type="submit" class="buttonLink"/>
+            <input type="submit" value="{{ 'gc.form.send'|trans }}" class="buttonLink"/>
         </form>
     </section>
 {% endblock %}

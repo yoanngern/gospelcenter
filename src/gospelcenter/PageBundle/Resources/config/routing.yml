@@ -38,6 +38,12 @@ gospelcenterGive:
     path: /give
     defaults: { _controller: gospelcenterPageBundle:Page:give }
 
+gospelcenterContact_process:
+    path: /bases
+    defaults: { _controller: gospelcenterPageBundle:Contact:bases }
+    requirements:
+        _method:  POST
+
 gospelcenterPage_default:
     path: /{page}
     defaults: { _controller: gospelcenterPageBundle:Page:index }

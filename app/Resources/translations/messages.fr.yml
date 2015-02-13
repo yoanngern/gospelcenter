@@ -41,3 +41,9 @@ gc:
         ministries: Ministères
         partners: Partenaires
         social: Réseaux sociaux
+    form:
+        name: Nom
+        e-mail: E-mail
+        phone: Téléphone
+        send: Envoyer
+        message: Message

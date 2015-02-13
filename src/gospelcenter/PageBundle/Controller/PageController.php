@@ -171,7 +171,7 @@ class PageController extends Controller
         $language = $_locale;
 
         return $this->render(
-            'gospelcenterPageBundle::staticPage.html.twig',
+            'gospelcenterPageBundle:Page:contact.html.twig',
             array(
                 'center' => $center,
                 'language' => $language,

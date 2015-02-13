@@ -19,7 +19,7 @@ gc:
         youth: Youth
         events: Events
         contact: Contact
-        give: "Support us"
+        give: Support us
         about: About
     generic:
         with: with
@@ -37,3 +37,9 @@ gc:
         ministries: Ministries
         partners: Partners
         social: Social
+    form:
+        name: Name
+        e-mail: E-mail
+        phone: Phone
+        send: Send
+        message: Message
