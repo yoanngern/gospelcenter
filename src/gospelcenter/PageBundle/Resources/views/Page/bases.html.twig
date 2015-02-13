@@ -1,7 +1,9 @@
 <h2 class="slogan findBase">{{ 'gc.page.bases.findBase'|trans }}</h2>
 
 <section id="map" class="map_full">
-    <iframe src="http://map.gospel-center.com"></iframe>
+    {% set map_url = "http://beta.gospel-center.com/bases_" ~ center.ref ~ ".geojson" %}
+
+    <iframe src="http://map.gospel-center.com/poi.html?url={{ map_url|url_encode }}"></iframe>
 </section>
 
 <section class="formGray">
