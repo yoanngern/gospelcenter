@@ -57,3 +57,9 @@ gospelcenterAPI_locations_location:
     requirements:
         _method:  GET
         location: \d+
+
+gospelcenterAPI_locations_bases:
+    path:       /bases/{center}.geojson
+    defaults:   { _controller: gospelcenterAPIBundle:Location:getBasesGeo }
+    requirements:
+        _method:  GET

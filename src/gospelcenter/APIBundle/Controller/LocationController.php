@@ -2,6 +2,7 @@
 
 namespace gospelcenter\APIBundle\Controller;
 
+use gospelcenter\CenterBundle\Entity\Center;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Response;
@@ -84,6 +85,28 @@ class LocationController extends Controller
         $response->headers->set('Access-Control-Allow-Origin', '*');
 
         $response->setCallback($callback);
+        return $response;
+    }
+
+
+    /**
+     * @param $center
+     * @return Response
+     */
+    public function getBasesGeoAction(Center $center)
+    {
+        $map = $this->render('gospelcenterAPIBundle:Location:bases_' . $center->getRef() . '.json.twig');
+
+        //$request = $this->get('request');
+        //$callback = $request->get('callback');
+
+        $response = new Response();
+        $response->setContent($map);
+        $response->headers->set('Content-Type', 'application/json');
+
+        $response->headers->set('Access-Control-Allow-Origin', '*');
+
+        //$response->setCallback($callback);
         return $response;
     }
 }
