@@ -295,13 +295,17 @@
                 display: inline-block;
                 vertical-align: top;
                 width: 960px;
-                margin: 0 auto;
+                margin: -10px auto 0;
                 height: 40px;
+                padding-top: 10px;
                 border-bottom: 1px solid rgba($grayGC, 0.5);
+                white-space: nowrap;
+                overflow-x: scroll;
 
                 li {
                     display: inline-block;
                     text-align: center;
+
 
                     a {
                         padding: 5px 7px 3px 7px;
@@ -462,8 +466,10 @@
 
             ul.nav {
                 border-bottom: none;
-                margin-top: 25px;
+                margin-top: 15px;
                 height: inherit;
+                padding-bottom: 10px;
+
 
                 li {
                     a {
