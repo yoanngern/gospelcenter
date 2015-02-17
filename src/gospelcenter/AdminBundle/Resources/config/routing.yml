@@ -3,6 +3,11 @@
 ##########################
 
 # Celebrations
+gospelcenterAdmin:
+    path:       /
+    defaults:   { _controller: gospelcenterCelebrationBundle:AdminCelebration:list }
+
+# Celebrations
 gospelcenterAdmin_celebrations:
     path:       /celebrations
     defaults:   { _controller: gospelcenterCelebrationBundle:AdminCelebration:list }
