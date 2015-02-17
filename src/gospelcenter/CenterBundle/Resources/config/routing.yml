@@ -16,52 +16,52 @@ gospelcenterImage:
 gospelcenterAdminGlobal:
     resource: "@gospelcenterAdminBundle/Resources/config/routingGlobal.yml"
     prefix:   /admin
-    host: "gospelcenter.local"
+    host: "beta.gospel-center.org"
 
 gospelcenterAdmin:
     resource: "@gospelcenterAdminBundle/Resources/config/routing.yml"
     prefix:   /admin
-    host: "{center}.gospelcenter.local"
+    host: "beta.gc-{center}.org"
     requirements:
         center: lausanne|annecy|montreux|jura
 
 gospelcenterEvents:
     resource: "@gospelcenterEventBundle/Resources/config/routing.yml"
     prefix:   /events
-    host: "{center}.gospelcenter.local"
+    host: "beta.gc-{center}.org"
     requirements:
         center: lausanne|annecy|montreux|jura
         
 gospelcenterAgenda:
     resource: "@gospelcenterEventBundle/Resources/config/routingAgenda.yml"
     prefix:   /agenda
-    host: "{center}.gospelcenter.local"
+    host: "beta.gc-{center}.org"
     requirements:
         center: lausanne|annecy|montreux|jura
         
 gospelcenterCelebrations:
     resource: "@gospelcenterCelebrationBundle/Resources/config/routing.yml"
     prefix:   /celebrations
-    host: "{center}.gospelcenter.local"
+    host: "beta.gc-{center}.org"
     requirements:
         center: lausanne|annecy|montreux|jura
 
 gospelcenterPage:
     resource: "@gospelcenterPageBundle/Resources/config/routing.yml"
     prefix:   /
-    host: "{center}.gospelcenter.local"
+    host: "beta.gc-{center}.org"
     requirements:
         center: lausanne|annecy|montreux|jura
         
 gospelcenterPageGlobal:
     resource: "@gospelcenterPageBundle/Resources/config/routingGlobal.yml"
     prefix:   /
-    host: "gospelcenter.local"
+    host: "beta.gospel-center.org"
 
 gospelcenterTV:
     resource: "@gospelcenterMediaBundle/Resources/config/routing.yml"
     prefix:   /
-    host: "tv.gospelcenter.local"
+    host: "beta.gospel-center.tv"
 
 ###########################   
 ########### DEV ###########
