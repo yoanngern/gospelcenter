@@ -62,13 +62,15 @@
                     <article class="dates">
                         <h1><span>{{ 'gc.event.dates'|trans }}</span></h1>
                         {% for date in event.dates %}
-                            <article>
+                            {% if date(date.end) > date()  %}
+                                <article>
 
 
-                                <h2>{{ date|dates(app.request.locale) }}</h2>
+                                    <h2>{{ date|dates(app.request.locale) }}</h2>
 
-                                <time>{{ date|times(app.request.locale) }}</time>
-                            </article>
+                                    <time>{{ date|times(app.request.locale) }}</time>
+                                </article>
+                            {% endif %}
                         {% endfor %}
                     </article>
 
