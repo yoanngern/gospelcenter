@@ -296,6 +296,17 @@
 		"outputPathIsSetByUser": 0,
 		"processed": 0
 		},
+	"\/bundles\/gospelcenterpage\/images\/leadership\/lausanne\/Jean-PhilippeBaertschi.jpg": {
+		"fileType": 16384,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 71805,
+		"inputAbbreviatedPath": "\/bundles\/gospelcenterpage\/images\/leadership\/lausanne\/Jean-PhilippeBaertschi.jpg",
+		"outputAbbreviatedPath": "\/bundles\/gospelcenterpage\/images\/leadership\/lausanne\/Jean-PhilippeBaertschi.jpg",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
 	"\/bundles\/gospelcenterpage\/images\/leadership\/lausanne\/MarcGallay.jpg": {
 		"fileType": 16384,
 		"ignore": 0,
@@ -314,6 +325,17 @@
 		"initialSize": 66842,
 		"inputAbbreviatedPath": "\/bundles\/gospelcenterpage\/images\/leadership\/lausanne\/MarcRapelli.jpg",
 		"outputAbbreviatedPath": "\/bundles\/gospelcenterpage\/images\/leadership\/lausanne\/MarcRapelli.jpg",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
+	"\/bundles\/gospelcenterpage\/images\/leadership\/lausanne\/TimotheeRochat.jpg": {
+		"fileType": 16384,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 61185,
+		"inputAbbreviatedPath": "\/bundles\/gospelcenterpage\/images\/leadership\/lausanne\/TimotheeRochat.jpg",
+		"outputAbbreviatedPath": "\/bundles\/gospelcenterpage\/images\/leadership\/lausanne\/TimotheeRochat.jpg",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"processed": 0
