@@ -53,10 +53,10 @@ gospelcenterPage:
     requirements:
         center: lausanne|annecy|montreux|jura
         
-#gospelcenterPageGlobal:
-#    resource: "@gospelcenterPageBundle/Resources/config/routingGlobal.yml"
-#    prefix:   /
-#    host: "beta.gospel-center.org"
+gospelcenterPageGlobal:
+    resource: "@gospelcenterPageBundle/Resources/config/routingGlobal.yml"
+    prefix:   /
+    host: "beta.gospel-center.org"
 
 gospelcenterTV:
     resource: "@gospelcenterMediaBundle/Resources/config/routing.yml"
