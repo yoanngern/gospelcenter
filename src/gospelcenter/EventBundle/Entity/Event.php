@@ -119,7 +119,6 @@ class Event
      * is covered by
      *
      * @ORM\ManyToOne(targetEntity="gospelcenter\ImageBundle\Entity\Image", inversedBy="eventsCover", cascade={"persist", "remove"})
-     * @ORM\JoinColumn(nullable=false)
      * @Assert\Valid()
      */
     private $cover;
@@ -129,7 +128,6 @@ class Event
      * is illustrated by
      *
      * @ORM\ManyToOne(targetEntity="gospelcenter\ImageBundle\Entity\Image", inversedBy="eventsPicture", cascade={"persist", "remove"})
-     * @ORM\JoinColumn(nullable=false)
      * @Assert\Valid()
      */
     private $picture;
