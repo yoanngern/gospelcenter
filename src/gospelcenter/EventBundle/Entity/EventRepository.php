@@ -120,7 +120,7 @@ class EventRepository extends EntityRepository
                 LEFT JOIN e.picture pic
                 LEFT JOIN e.cover cov
                 JOIN e.centers c
-                JOIN e.dates d
+                LEFT JOIN e.dates d
                 WHERE c.ref = :center AND (d.end >= :now OR d IS NULL)
                 ORDER BY d.start ASC'
             )->setParameters(
