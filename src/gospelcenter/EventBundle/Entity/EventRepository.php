@@ -52,7 +52,7 @@ class EventRepository extends EntityRepository
 
         $qb->join('e.centers', 'c')
             ->addSelect('c');
-        $qb->join('e.picture', 'p')
+        $qb->leftJoin('e.picture', 'p')
             ->addSelect('p');
 
         $qb->leftJoin('e.dates', 'd')
@@ -81,10 +81,10 @@ class EventRepository extends EntityRepository
         $qb->leftJoin('e.location', 'l')
             ->addSelect('l');
 
-        $qb->join('e.picture', 'pic')
+        $qb->leftJoin('e.picture', 'pic')
             ->addSelect('pic');
 
-        $qb->join('e.cover', 'cov')
+        $qb->leftJoin('e.cover', 'cov')
             ->addSelect('cov');
 
         $qb->leftJoin('e.dates', 'd')
@@ -117,8 +117,8 @@ class EventRepository extends EntityRepository
                 SELECT e, d, l
                 FROM gospelcenterEventBundle:Event e
                 LEFT JOIN e.location l
-                JOIN e.picture pic
-                JOIN e.cover cov
+                LEFT JOIN e.picture pic
+                LEFT JOIN e.cover cov
                 JOIN e.centers c
                 JOIN e.dates d
                 WHERE c.ref = :center AND (d.end >= :now OR d IS NULL)
@@ -154,10 +154,10 @@ class EventRepository extends EntityRepository
 
         $qb->leftJoin('e.location', 'l');
 
-        $qb->join('e.picture', 'pic');
+        $qb->leftJoin('e.picture', 'pic');
         $qb->leftJoin('pic.center', 'c2');
 
-        $qb->join('e.cover', 'cov');
+        $qb->leftJoin('e.cover', 'cov');
         $qb->leftJoin('cov.center', 'c3');
 
         $qb->leftJoin('e.dates', 'd');
@@ -212,10 +212,10 @@ class EventRepository extends EntityRepository
         $qb->leftJoin('e.location', 'l')
             ->addSelect('l');
 
-        $qb->join('e.picture', 'pic')
+        $qb->leftJoin('e.picture', 'pic')
             ->addSelect('pic');
 
-        $qb->join('e.cover', 'cov')
+        $qb->leftJoin('e.cover', 'cov')
             ->addSelect('cov');
 
         $qb->leftJoin('e.dates', 'd')
