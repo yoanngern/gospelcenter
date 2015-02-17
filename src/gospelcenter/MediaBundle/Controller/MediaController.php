@@ -110,7 +110,7 @@ class MediaController extends Controller
 
         $em = $this->getDoctrine()->getManager();
 
-        $celebrations = $em->getRepository('gospelcenterCelebrationBundle:Celebration')->findAllWithVideo();
+        $celebrations = $em->getRepository('gospelcenterCelebrationBundle:Celebration')->findAllWithVideo(1, 8);
 
         return $this->render(
             'gospelcenterMediaBundle:Media:videos.html.twig',

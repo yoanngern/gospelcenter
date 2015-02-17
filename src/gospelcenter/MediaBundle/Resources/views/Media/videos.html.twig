@@ -11,7 +11,7 @@
                         {% if celebration.image %}
                             {% set tvImg = celebration.image.webPath %}
                             <div class="image"
-                                 style="background-image: url('{{ asset(tvImg) }}')"
+                                 style="background-image: url('{{ asset(tvImg)| imagine_filter('tv_wall') }}')"
                                  data-bg="{{ asset(tvImg)| imagine_filter('tv_wall') }}"
                                  data-bg_2x="{{ asset(tvImg)| imagine_filter('tv_wall_2x') }}"
                                  data-bg_tablet="{{ asset(tvImg)| imagine_filter('tv_wall_tablet') }}"
@@ -38,7 +38,52 @@
                     </div>
                 </a>
             {% endfor %}
+
+            <a id="more" href="#more">
+                <div class="container">
+                    <div class="bg">
+                        <span>Charger plus de vidéos</span>
+                    </div>
+                </div>
+            </a>
+
             <div class="clear"></div>
         </section>
     {% endspaceless %}
+{% endblock %}
+
+{% block jsTemplating %}
+    {{ parent() }}
+    <script id="addVideo" type="text/x-handlebars-template">
+        {% raw %}
+
+        <a href="{{ link }}">
+            <div class="container">
+                {{#if has_image }}
+                <div class="image"
+                     style="background-image: url('{{ image }}')"
+                     data-bg="{{ image }}"
+                     data-bg_2x="{{ image_2x }}"
+                     data-bg_tablet="{{ image_tablet }}"
+                     data-bg_tablet_2x="{{ image_tablet_2x }}"
+                     data-bg_mobile="{{ image_mobile }}"
+                     data-bg_mobile_2x="{{ image_mobile_2x }}"
+                        ></div>
+                <div class="gradient"></div>
+                {{else}}
+                <div class="bg"></div>
+                {{/if}}
+                <div class="hover">
+                    <div class="picto_play"></div>
+                    <span>Regarder la vidéo</span>
+                </div>
+                <div class="details">
+                    <h1>{{ speakers }}</h1>
+                    <span>{{ title }}</span>
+                </div>
+            </div>
+        </a>
+
+        {% endraw %}
+    </script>
 {% endblock %}

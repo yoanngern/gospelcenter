@@ -25,6 +25,12 @@ class HelperExtension extends Twig_Extension
             return "";
         }
 
+        if ($locale == 'fr') {
+            $and = " et ";
+        } else {
+            $and = " and ";
+        }
+
         $speakers = $celebration->getSpeakers();
 
         foreach($speakers as $key => $speaker) {
@@ -34,7 +40,7 @@ class HelperExtension extends Twig_Extension
             if($key != 0 && $key != (sizeof($speakers) - 1)) {
                 $string .= ", ";
             } elseif($key != 0 && $key == (sizeof($speakers) - 1)) {
-                $string .= " and ";
+                $string .= $and;
             }
 
             $string .= $person->getFirstname() . " " . $person->getLastname();

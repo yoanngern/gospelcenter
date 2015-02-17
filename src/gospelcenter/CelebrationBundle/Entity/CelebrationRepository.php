@@ -171,7 +171,7 @@ class CelebrationRepository extends EntityRepository
         }
     }
 
-    public function findAllWithVideo()
+    public function findAllWithVideo($page, $nb)
     {
         $qb = $this->createQueryBuilder('cel');
 
@@ -180,7 +180,37 @@ class CelebrationRepository extends EntityRepository
 
         $qb->addOrderBy('d.start', 'DESC');
 
+        if ($nb > 0) {
+            $qb->setMaxResults($nb);
+        }
+
+        $qb->setFirstResult(($page-1)*$nb);
+
         return $qb->getQuery()->getResult();
+    }
+
+
+
+    public function findAllWithVideoJSON($page, $nb)
+    {
+
+        $query = $this->getEntityManager()
+            ->createQuery(
+                '
+                SELECT cel.id AS celebration_id, v.id AS video_id, i.id AS image_id,
+                FROM gospelcenterCelebrationBundle:Celebration cel
+                JOIN cel.video v
+                JOIN cel.date d
+                LEFT JOIN cel.image i
+                ORDER BY d.start DESC'
+            )->setFirstResult(($page-1)*$nb)
+            ->setMaxResults($nb);
+
+        try {
+            return $query->getArrayResult();
+        } catch (\Doctrine\ORM\NoResultException $e) {
+            return null;
+        }
     }
 
 

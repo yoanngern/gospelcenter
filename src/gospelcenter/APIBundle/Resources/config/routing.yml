@@ -38,7 +38,7 @@ gospelcenterAPI_locations:
 #   /locations/{id}.json
 #
   
-# GET - get speaker details
+# GET - get location details
 gospelcenterAPI_locations_location:
     path:       /locations/{location}.json
     defaults:   { _controller: gospelcenterAPIBundle:Location:getLocation }
@@ -46,11 +46,12 @@ gospelcenterAPI_locations_location:
         _method:  GET
         location: \d+
 
+
 ####
 #   /locations/{id}.geojson
 #
 
-# GET - get speaker details
+# GET - get location in Geo JSON
 gospelcenterAPI_locations_location:
     path:       /locations/{location}.geojson
     defaults:   { _controller: gospelcenterAPIBundle:Location:getLocationGeo }
@@ -58,8 +59,26 @@ gospelcenterAPI_locations_location:
         _method:  GET
         location: \d+
 
+
+####
+#   /bases/{id}.geojson
+#
+
+# GET - get locations of bases by center in Geo JSON
 gospelcenterAPI_locations_bases:
     path:       /bases/{center}.geojson
     defaults:   { _controller: gospelcenterAPIBundle:Location:getBasesGeo }
+    requirements:
+        _method:  GET
+
+
+####
+#   /videos.json
+#
+
+# GET - get location details
+gospelcenterAPI_locations_location:
+    path:       /videos.json
+    defaults:   { _controller: gospelcenterAPIBundle:Media:getVideos }
     requirements:
         _method:  GET

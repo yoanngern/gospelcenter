@@ -1,51 +1,56 @@
-// @codekit-prepend "vendor/jquery.timeago.js"
-
 $(document).ready( function() {
 	
-	resizeVideo();
-	
-	$(window).resize(function() {
-        resizeVideo();
-	});
-	
-	$(".duration").each( function() {
-    	dateRewrite(this);
-	});
-	
+    $("section.wall").on("click", 'a#more', function () {
+
+        if($(this).attr("data-page")) {
+            var page = parseInt($(this).attr("data-page"));
+        } else {
+            var page = 1;
+        }
+
+        moreVideos(page+1);
+    });
+
 });
 
-function resizeVideo() {
-    var windowH = $(window).height();
-    var sectionH = $(window).height() - $("footer").height() - 170;
-    
-    var videoH = 540;
-    var videoW = 960;
-    
-    if((sectionH * 1) >= 360 && (sectionH * 0.9) < 720) {
-        videoH = 0.85 * sectionH;
-    }
-    
-    if((sectionH * 0.9) > 720) {
-        videoH = 720;
-    }
-    
-    if((sectionH * 1) < 360) {
-        videoH = 360;
-    }
-    
-    videoW = 16/9 * videoH;
-    
-    $("section.video iframe").css("height", videoH);
-    $("section.video iframe").css("width", videoW);
-    $("section.video").css("width", videoW);
+
+function moreVideos(page) {
+
+    var url = "../api/videos.json";
+
+    $.ajax({
+        type: "GET",
+        url: url,
+        async: true,
+        jsonpCallback: 'callback',
+        contentType: "application/json",
+        dataType: 'json',
+        'timeout': 1000,
+        data: {
+            page: page,
+            nb: 8
+        },
+        error: function () {
+            console.log("error");
+        },
+        success: function (data) {
+            addVideos(data.celebrations);
+
+            $("a#more").attr("data-page", parseInt(data.page));
+
+        }
+    });
 }
 
-function dateRewrite(time) {
+function addVideos(celebrations) {
 
-    var now = Date.now();    
-    date = new Date($(time).attr("data-time"));
-    
-    date = $.timeago(date);
-    
-    $(time).text(date);
+    $(celebrations).each(function() {
+
+        var source = $("#addVideo").html();
+        var template = Handlebars.compile(source);
+        var html = template(this);
+
+        $("section.wall a#more").before(html);
+    });
+
 }
