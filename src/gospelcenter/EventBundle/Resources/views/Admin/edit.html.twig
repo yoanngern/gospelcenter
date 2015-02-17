@@ -4,6 +4,8 @@
 
 {% block javascripts %}
     {{ parent() }}
+
+    <script type="text/javascript" src="{{ asset('js/processed/addImage.min.js') }}"></script>
     <script type="text/javascript" src="{{ asset('js/processed/editImage.min.js') }}"></script>
     <script type="text/javascript" src="{{ asset('js/processed/addVideo.min.js') }}"></script>
 {% endblock %}
@@ -72,16 +74,22 @@
                 <h2>Picture</h2>
                 {{ form_widget(form.picture.file) }}
                 {{ form_errors(form.picture.file) }}
+
+                {% if event.picture %}
                 <div id="editImage" data-input="{{ form.picture.file.vars.id }}">
                     <img src="{{ asset(event.picture.webPath) }}" alt="{{ event.picture.alt }}"/>
                 </div>
+                {% endif %}
 
                 <h2>Cover</h2>
                 {{ form_widget(form.cover.file) }}
                 {{ form_errors(form.cover.file) }}
+
+                {% if event.cover %}
                 <div id="editImage" data-input="{{ form.cover.file.vars.id }}">
                     <img src="{{ asset(event.cover.webPath) }}" alt="{{ event.cover.alt }}"/>
                 </div>
+                {% endif %}
             </article>
 
             <article class="tab" id="links">
