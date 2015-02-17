@@ -293,9 +293,9 @@ class AdminPersonController extends Controller
         }
 
         if($person->getIsMember() && $person->getMember()) {
-            $member = $person->getMember();
-            $member->addCenter($center);
-            $em->persist($member);
+            //$member = $person->getMember();
+            //$member->addCenter($center);
+            //$em->persist($member);
         }
 
         if (!$person->getIsMember() && $person->getMember()) {
@@ -327,9 +327,9 @@ class AdminPersonController extends Controller
         }
 
         if($person->getIsVisitor() && $person->getVisitor()) {
-            $visitor = $person->getVisitor();
-            $visitor->addCenter($center);
-            $em->persist($visitor);
+            //$visitor = $person->getVisitor();
+            //$visitor->addCenter($center);
+            //$em->persist($visitor);
         }
 
         if (!$person->getIsVisitor() && $person->getVisitor()) {
