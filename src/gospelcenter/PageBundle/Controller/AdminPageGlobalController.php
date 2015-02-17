@@ -17,22 +17,6 @@ class AdminPageGlobalController extends Controller
     /**
      * @return Response
      */
-    public function redirectAction()
-    {
-        return $this->redirect(
-            $this->generateUrl(
-                'gospelcenterPage_home',
-                array(
-                    'center' => 'lausanne'
-                )
-            )
-        );
-    }
-
-
-    /**
-     * @return Response
-     */
     public function listAction()
     {
         $em = $this->getDoctrine()->getManager();

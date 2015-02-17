@@ -8,6 +8,21 @@ class PageGlobalController extends Controller
 {
 
     /**
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function redirectAction()
+    {
+        return $this->redirect(
+            $this->generateUrl(
+                'gospelcenterPage_home',
+                array(
+                    'center' => 'lausanne'
+                )
+            )
+        );
+    }
+
+    /**
      * @param $page
      * @param $template
      * @return \Symfony\Component\HttpFoundation\Response
