@@ -13,10 +13,10 @@ gospelcenterImage:
 ########## PROD ###########
 ###########################
 
-#gospelcenterAdminGlobal:
-#    resource: "@gospelcenterAdminBundle/Resources/config/routingGlobal.yml"
-#    prefix:   /admin
-#    host: "beta.gospel-center.org"
+gospelcenterAdminGlobal:
+    resource: "@gospelcenterAdminBundle/Resources/config/routingGlobal.yml"
+    prefix:   /admin
+    host: "beta.gospel-center.org"
 
 gospelcenterAdmin:
     resource: "@gospelcenterAdminBundle/Resources/config/routing.yml"
