@@ -38,7 +38,7 @@ gospelcenterGive:
     path: /give
     defaults: { _controller: gospelcenterPageBundle:Page:give }
 
-gospelcenterContact_process:
+gospelcenterBases_process:
     path: /bases
     defaults: { _controller: gospelcenterPageBundle:Contact:bases }
     requirements:
