@@ -68,6 +68,11 @@ div.clear {
     font-family: $font-light;
 }
 
+a > img{
+    border: 0;
+    outline: none;
+}
+
 a {
     color: $grayGC;
     text-decoration: none;

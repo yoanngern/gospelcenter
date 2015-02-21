@@ -2,11 +2,13 @@
 
     section.allSunday {
         width: 100%;
-        background-image: url('../../images/slide_allSunday.jpg');
-        background-color: $grayLightGC;
-        background-repeat: no-repeat;
-        background-position: center;
+        background: $grayLightGC url('../../images/slide_allSunday.jpg') no-repeat center center;
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
         background-size: cover;
+        //filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../../images/slide_allSunday.jpg', sizingMethod='scale');
+        //-ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../../images/slide_allSunday.jpg', sizingMethod='scale')";
         margin-top: 70px;
         margin-bottom: 70px;
         @include bannerResp(345px);

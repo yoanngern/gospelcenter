@@ -1,5 +1,7 @@
 // @codekit-prepend "vendor/jquery-1.10.2.js"
 // @codekit-prepend "vendor/jquery-dateFormat.js"
+// @codekit-prepend "vendor/jquery.svgmagic.js"
+// @codekit-prepend "vendor/jquery.corner.js"
 // @codekit-prepend "vendor/modernizr.js"
 // @codekit-prepend "_basic.js"
 // @codekit-append "vendor/handlebars-v1.3.0.js"
@@ -57,6 +59,18 @@ $(document).ready(function () {
         }
 
     }, 1000);
+
+    $('img').svgmagic();
+
+    $(".radius").each(function () {
+
+        var val = $(this).css("border-radius");
+
+        $(this).corner(val);
+
+    });
+
+
 
 });
 
