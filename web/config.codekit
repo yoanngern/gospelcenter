@@ -329,6 +329,17 @@
 		"outputPathIsSetByUser": 0,
 		"processed": 0
 		},
+	"\/bundles\/gospelcenterpage\/images\/leadership\/lausanne\/PatrickBigler.jpg": {
+		"fileType": 16384,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 64806,
+		"inputAbbreviatedPath": "\/bundles\/gospelcenterpage\/images\/leadership\/lausanne\/PatrickBigler.jpg",
+		"outputAbbreviatedPath": "\/bundles\/gospelcenterpage\/images\/leadership\/lausanne\/PatrickBigler.jpg",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
 	"\/bundles\/gospelcenterpage\/images\/leadership\/lausanne\/TimotheeRochat.jpg": {
 		"fileType": 16384,
 		"ignore": 0,
@@ -1247,72 +1258,6 @@
 		"outputPathIsSetByUser": 0,
 		"processed": 0
 		},
-	"\/images\/visuGCAnnecy.png": {
-		"fileType": 32768,
-		"ignore": 0,
-		"ignoreWasSetByUser": 0,
-		"initialSize": 109258,
-		"inputAbbreviatedPath": "\/images\/visuGCAnnecy.png",
-		"outputAbbreviatedPath": "\/images\/visuGCAnnecy.png",
-		"outputPathIsOutsideProject": 0,
-		"outputPathIsSetByUser": 0,
-		"processed": 0
-		},
-	"\/images\/visuGCAnnecy_2x.png": {
-		"fileType": 32768,
-		"ignore": 0,
-		"ignoreWasSetByUser": 0,
-		"initialSize": 281769,
-		"inputAbbreviatedPath": "\/images\/visuGCAnnecy_2x.png",
-		"outputAbbreviatedPath": "\/images\/visuGCAnnecy_2x.png",
-		"outputPathIsOutsideProject": 0,
-		"outputPathIsSetByUser": 0,
-		"processed": 0
-		},
-	"\/images\/visuGCJura.png": {
-		"fileType": 32768,
-		"ignore": 0,
-		"ignoreWasSetByUser": 0,
-		"initialSize": 108486,
-		"inputAbbreviatedPath": "\/images\/visuGCJura.png",
-		"outputAbbreviatedPath": "\/images\/visuGCJura.png",
-		"outputPathIsOutsideProject": 0,
-		"outputPathIsSetByUser": 0,
-		"processed": 0
-		},
-	"\/images\/visuGCJura_2x.png": {
-		"fileType": 32768,
-		"ignore": 0,
-		"ignoreWasSetByUser": 0,
-		"initialSize": 0,
-		"inputAbbreviatedPath": "\/images\/visuGCJura_2x.png",
-		"outputAbbreviatedPath": "\/images\/visuGCJura_2x.png",
-		"outputPathIsOutsideProject": 0,
-		"outputPathIsSetByUser": 0,
-		"processed": 0
-		},
-	"\/images\/visuGCLausanne.png": {
-		"fileType": 32768,
-		"ignore": 0,
-		"ignoreWasSetByUser": 0,
-		"initialSize": 110276,
-		"inputAbbreviatedPath": "\/images\/visuGCLausanne.png",
-		"outputAbbreviatedPath": "\/images\/visuGCLausanne.png",
-		"outputPathIsOutsideProject": 0,
-		"outputPathIsSetByUser": 0,
-		"processed": 0
-		},
-	"\/images\/visuGCLausanne_2x.png": {
-		"fileType": 32768,
-		"ignore": 0,
-		"ignoreWasSetByUser": 0,
-		"initialSize": 282935,
-		"inputAbbreviatedPath": "\/images\/visuGCLausanne_2x.png",
-		"outputAbbreviatedPath": "\/images\/visuGCLausanne_2x.png",
-		"outputPathIsOutsideProject": 0,
-		"outputPathIsSetByUser": 0,
-		"processed": 0
-		},
 	"\/images\/visuGCLausanneOLD.png": {
 		"fileType": 32768,
 		"ignore": 0,
@@ -1331,28 +1276,6 @@
 		"initialSize": 400790,
 		"inputAbbreviatedPath": "\/images\/visuGCLausannexLarge.png",
 		"outputAbbreviatedPath": "\/images\/visuGCLausannexLarge.png",
-		"outputPathIsOutsideProject": 0,
-		"outputPathIsSetByUser": 0,
-		"processed": 0
-		},
-	"\/images\/visuGCMontreux.png": {
-		"fileType": 32768,
-		"ignore": 0,
-		"ignoreWasSetByUser": 0,
-		"initialSize": 110431,
-		"inputAbbreviatedPath": "\/images\/visuGCMontreux.png",
-		"outputAbbreviatedPath": "\/images\/visuGCMontreux.png",
-		"outputPathIsOutsideProject": 0,
-		"outputPathIsSetByUser": 0,
-		"processed": 0
-		},
-	"\/images\/visuGCMontreux_2x.png": {
-		"fileType": 32768,
-		"ignore": 0,
-		"ignoreWasSetByUser": 0,
-		"initialSize": 0,
-		"inputAbbreviatedPath": "\/images\/visuGCMontreux_2x.png",
-		"outputAbbreviatedPath": "\/images\/visuGCMontreux_2x.png",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"processed": 0
