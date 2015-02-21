@@ -25,7 +25,7 @@
                         {% endif %}
                         <div class="hover">
                             <div class="picto_play"></div>
-                            <span>Regarder la vidéo</span>
+                            <span>Ecouter</span>
                         </div>
                         <div class="details">
                             <h1>{{ celebration|speakers(app.request.locale) }}</h1>
@@ -38,6 +38,15 @@
                     </div>
                 </a>
             {% endfor %}
+
+            <a id="more" href="#more" data-apiUrl="../api/audios.json">
+                <div class="container">
+                    <div class="bg">
+                        <span>Charger plus d'audios</span>
+                    </div>
+                </div>
+            </a>
+
             <div class="clear"></div>
         </section>
     {% endspaceless %}

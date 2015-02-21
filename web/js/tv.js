@@ -8,15 +8,17 @@ $(document).ready( function() {
             var page = 1;
         }
 
-        moreVideos(page+1);
+        var url = $(this).attr("data-apiUrl");
+
+        //var url = "../api/videos.json";
+
+        moreItems(page+1, url);
     });
 
 });
 
 
-function moreVideos(page) {
-
-    var url = "../api/videos.json";
+function moreItems(page, url) {
 
     $.ajax({
         type: "GET",
@@ -34,7 +36,7 @@ function moreVideos(page) {
             console.log("error");
         },
         success: function (data) {
-            addVideos(data.celebrations);
+            addToWall(data.items);
 
             $("a#more").attr("data-page", parseInt(data.page));
 
@@ -42,11 +44,11 @@ function moreVideos(page) {
     });
 }
 
-function addVideos(celebrations) {
+function addToWall(items) {
 
-    $(celebrations).each(function() {
+    $(items).each(function() {
 
-        var source = $("#addVideo").html();
+        var source = $("#addToWall").html();
         var template = Handlebars.compile(source);
         var html = template(this);
 

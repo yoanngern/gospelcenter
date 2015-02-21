@@ -133,7 +133,7 @@ class MediaController extends Controller
 
         $em = $this->getDoctrine()->getManager();
 
-        $celebrations = $em->getRepository('gospelcenterCelebrationBundle:Celebration')->findAllWithAudio();
+        $celebrations = $em->getRepository('gospelcenterCelebrationBundle:Celebration')->findAllWithAudio(1, 8);
 
         return $this->render(
             'gospelcenterMediaBundle:Media:audios.html.twig',
@@ -181,7 +181,7 @@ class MediaController extends Controller
         $em = $this->getDoctrine()->getManager();
 
         $celebrations = $em->getRepository('gospelcenterCelebrationBundle:Celebration')->findAllByCenterWithMedia(
-            $center
+            $center, 1, 8
         );
 
         return $this->render(

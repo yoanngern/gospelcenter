@@ -214,7 +214,7 @@ class CelebrationRepository extends EntityRepository
     }
 
 
-    public function findAllWithAudio()
+    public function findAllWithAudio($page, $nb)
     {
         $qb = $this->createQueryBuilder('cel');
 
@@ -223,10 +223,16 @@ class CelebrationRepository extends EntityRepository
 
         $qb->addOrderBy('d.start', 'DESC');
 
+        if ($nb > 0) {
+            $qb->setMaxResults($nb);
+        }
+
+        $qb->setFirstResult(($page-1)*$nb);
+
         return $qb->getQuery()->getResult();
     }
 
-    public function findAllByCenterWithMedia(Center $center)
+    public function findAllByCenterWithMedia(Center $center, $page, $nb)
     {
         $query = $this->getEntityManager()
             ->createQuery(
@@ -247,6 +253,12 @@ class CelebrationRepository extends EntityRepository
                     'center' => $center->getRef()
                 )
             );
+
+        if ($nb > 0) {
+            $query->setMaxResults($nb);
+        }
+
+        $query->setFirstResult(($page-1)*$nb);
 
         try {
             return $query->getResult();

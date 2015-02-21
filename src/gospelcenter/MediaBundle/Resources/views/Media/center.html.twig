@@ -3,7 +3,7 @@
 {% block body %}
     {% spaceless %}
         <section class="wall">
-            <h1>Nos Vidéos</h1>
+            <h1>Gospel Center {{ center.name }}</h1>
 
             {% for celebration in celebrations %}
                 {% if celebration.video %}
@@ -64,6 +64,15 @@
                     </a>
                 {% endif %}
             {% endfor %}
+
+            <a id="more" href="#more" data-apiUrl="../../api/center/{{ center.ref }}.json">
+                <div class="container">
+                    <div class="bg">
+                        <span>Charger plus de vidéos</span>
+                    </div>
+                </div>
+            </a>
+
             <div class="clear"></div>
         </section>
     {% endspaceless %}

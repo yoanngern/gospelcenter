@@ -77,8 +77,33 @@ gospelcenterAPI_locations_bases:
 #
 
 # GET - get location details
-gospelcenterAPI_locations_location:
+gospelcenterAPI_videos:
     path:       /videos.json
     defaults:   { _controller: gospelcenterAPIBundle:Media:getVideos }
     requirements:
         _method:  GET
+
+
+####
+#   /audios.json
+#
+
+# GET - get location details
+gospelcenterAPI_audios:
+    path:       /audios.json
+    defaults:   { _controller: gospelcenterAPIBundle:Media:getAudios }
+    requirements:
+        _method:  GET
+
+
+####
+#   /center/{center}.json
+#
+
+# GET - get location details
+gospelcenterAPI_center:
+    path:       /center/{center}.json
+    defaults:   { _controller: gospelcenterAPIBundle:Media:getCenter }
+    requirements:
+        _method:  GET
+        center: lausanne|annecy|montreux|jura
