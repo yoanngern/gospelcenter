@@ -52,7 +52,7 @@ gospelcenterAPI_locations_location:
 #
 
 # GET - get location in Geo JSON
-gospelcenterAPI_locations_location:
+gospelcenterAPI_locations_location_geo:
     path:       /locations/{location}.geojson
     defaults:   { _controller: gospelcenterAPIBundle:Location:getLocationGeo }
     requirements:

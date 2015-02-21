@@ -24,7 +24,7 @@ class DateRepository extends EntityRepository
                 LEFT JOIN cel.center c1
                 LEFT JOIN d.event e
                 LEFT JOIN e.centers c2
-                WHERE ( c1.ref = :center OR (c2.ref = :center AND e.status = 1))
+                WHERE ( (c1.ref = :center AND cel.status = 1) OR (c2.ref = :center AND e.status = 1))
                 AND d.end >= :now
                 ORDER BY d.start ASC'
             )->setParameters(array(
