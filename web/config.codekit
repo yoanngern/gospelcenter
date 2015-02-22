@@ -871,6 +871,17 @@
 		"outputPathIsSetByUser": 0,
 		"processed": 0
 		},
+	"\/images\/facebook.png": {
+		"fileType": 32768,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 656,
+		"inputAbbreviatedPath": "\/images\/facebook.png",
+		"outputAbbreviatedPath": "\/images\/facebook.png",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
 	"\/images\/favicon.png": {
 		"fileType": 32768,
 		"ignore": 0,
@@ -1102,6 +1113,17 @@
 		"outputPathIsSetByUser": 0,
 		"processed": 0
 		},
+	"\/images\/info.png": {
+		"fileType": 32768,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 2231,
+		"inputAbbreviatedPath": "\/images\/info.png",
+		"outputAbbreviatedPath": "\/images\/info.png",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
 	"\/images\/isMember_0.png": {
 		"fileType": 32768,
 		"ignore": 0,
@@ -1223,6 +1245,17 @@
 		"outputPathIsSetByUser": 0,
 		"processed": 0
 		},
+	"\/images\/link.png": {
+		"fileType": 32768,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 787,
+		"inputAbbreviatedPath": "\/images\/link.png",
+		"outputAbbreviatedPath": "\/images\/link.png",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
 	"\/images\/link_facebook.png": {
 		"fileType": 32768,
 		"ignore": 0,
@@ -1241,6 +1274,17 @@
 		"initialSize": 528,
 		"inputAbbreviatedPath": "\/images\/link_facebook_hover.png",
 		"outputAbbreviatedPath": "\/images\/link_facebook_hover.png",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
+	"\/images\/link_file.png": {
+		"fileType": 32768,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 309,
+		"inputAbbreviatedPath": "\/images\/link_file.png",
+		"outputAbbreviatedPath": "\/images\/link_file.png",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"processed": 0
@@ -1395,6 +1439,17 @@
 		"initialSize": 838,
 		"inputAbbreviatedPath": "\/images\/status_1_2x.png",
 		"outputAbbreviatedPath": "\/images\/status_1_2x.png",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
+	"\/images\/twitter.png": {
+		"fileType": 32768,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 768,
+		"inputAbbreviatedPath": "\/images\/twitter.png",
+		"outputAbbreviatedPath": "\/images\/twitter.png",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"processed": 0
@@ -1781,6 +1836,28 @@
 		"outputPathIsSetByUser": 1,
 		"outputStyle": 1,
 		"syntaxCheckerStyle": 0
+		},
+	"\/js\/grayscale\/functions.js": {
+		"fileType": 64,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/js\/grayscale\/functions.js",
+		"outputAbbreviatedPath": "\/js\/grayscale\/functions-min.js",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"outputStyle": 1,
+		"syntaxCheckerStyle": 1
+		},
+	"\/js\/grayscale\/grayscale.js": {
+		"fileType": 64,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/js\/grayscale\/grayscale.js",
+		"outputAbbreviatedPath": "\/js\/grayscale\/grayscale-min.js",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"outputStyle": 1,
+		"syntaxCheckerStyle": 1
 		},
 	"\/js\/location.js": {
 		"fileType": 64,
