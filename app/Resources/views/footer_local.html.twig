@@ -4,6 +4,8 @@
             <a target="_blank" id="facebook" class="icon" href="https://www.facebook.com/GCLausanne"></a>
             <a target="_blank" id="youtube" class="icon" href="https://www.youtube.com/channel/UC-xOsiKqDr_vx3Vl1GGycmg"></a>
             <a target="_blank" id="gctv" class="icon" href="{{ path('gospelcenterMedia_center', {'center': center.ref}) }}"></a>
+        {% elseif center.ref == "annecy" %}
+            <a target="_blank" id="facebook" class="icon" href="https://www.facebook.com/GCAnnecy"></a>
         {% else %}
         {% endif %}
     </section>

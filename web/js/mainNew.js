@@ -64,7 +64,7 @@ $(document).ready(function () {
 
     $(".radius").each(function () {
 
-        var val = $(this).css("border-radius");
+        var val = $(this).css("border-top-left-radius");
 
         $(this).corner(val);
 

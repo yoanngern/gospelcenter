@@ -11,6 +11,12 @@
     display: none;
     overflow: scroll;
     -webkit-overflow-scrolling: touch;
+    overflow: -moz-scrollbars-none;
+    -ms-overflow-style: none;
+
+    &::-webkit-scrollbar {
+        display: none;
+    }
 
     & > h1 {
         width: 100%;
@@ -131,10 +137,17 @@ nav.sub_nav {
     margin: 20px auto 10px;
     text-align: center;
     margin-bottom: 70px;
-    overflow: visible;
-    overflow-x: scroll;
+    overflow: hidden;
+
+    &::-webkit-scrollbar {
+        display: none;
+    }
 
     ul {
+        overflow: visible;
+        overflow-x: scroll;
+        overflow: -moz-scrollbars-none;
+        -ms-overflow-style: none;
 
         &.classic,
         &.complex {
@@ -145,7 +158,6 @@ nav.sub_nav {
             li {
                 display: inline-block;
                 margin-bottom: 2px;
-
 
                 &:last-of-type a {
                     margin-right: 0px;

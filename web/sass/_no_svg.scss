@@ -1,0 +1,58 @@
+html.no-svg {
+
+    #page > header nav.main #get_ruban {
+        background-image: url("../images/burger.png");
+    }
+
+    #page > header nav.top section.container #get_ruban {
+        background-image: url("../images/burger_black.png");
+    }
+
+    #page > header #get_param {
+        background-image: url("../images/get_param_black.png");
+    }
+
+    #page > header nav.main #get_param {
+        background-image: url("../images/get_param.png");
+    }
+
+    #page > footer .social a.icon#facebook {
+        background-image: url("../images/link_facebook.png");
+    }
+
+    #page > footer .social a.icon#facebook:hover {
+        background-image: url("../images/link_facebook_hover.png");
+    }
+
+    #page > footer .social a.icon#youtube {
+        background-image: url("../images/link_youtube.png");
+    }
+
+    #page > footer .social a.icon#youtube:hover {
+        background-image: url("../images/link_youtube_hover.png");
+    }
+
+    #page > footer .container nav.main div.lang-nav span {
+        background-image: url("../images/select_arrow_white.png");
+    }
+
+    #page.celebrations #speakers article.celebrationInfo .info a.location div.icon {
+        background-image: url("../images/where.png");
+    }
+
+    #page.celebrations #speakers article.celebrationInfo .info a.kids div.icon {
+        background-image: url("../images/kids.png");
+    }
+
+    div.playButton {
+        background-image: url("../images/playButton.png");
+    }
+
+    #page.celebrations #speakers article.default a.speaker div.photo .hover {
+        background-image: url("../images/info.png");
+    }
+
+    #page.events article.event section.left article.links a div.icon, #page.events article.event section.right article.links a div.icon {
+        background-image: url("../images/link.png");
+    }
+}
