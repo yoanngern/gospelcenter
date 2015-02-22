@@ -1839,7 +1839,7 @@
 		},
 	"\/js\/grayscale\/functions.js": {
 		"fileType": 64,
-		"ignore": 0,
+		"ignore": 1,
 		"ignoreWasSetByUser": 0,
 		"inputAbbreviatedPath": "\/js\/grayscale\/functions.js",
 		"outputAbbreviatedPath": "\/js\/grayscale\/functions-min.js",
@@ -1850,7 +1850,7 @@
 		},
 	"\/js\/grayscale\/grayscale.js": {
 		"fileType": 64,
-		"ignore": 0,
+		"ignore": 1,
 		"ignoreWasSetByUser": 0,
 		"inputAbbreviatedPath": "\/js\/grayscale\/grayscale.js",
 		"outputAbbreviatedPath": "\/js\/grayscale\/grayscale-min.js",
