@@ -30,6 +30,7 @@
         top: 0;
         z-index: 1;
         @include gradient4pt(rgba($whiteGC, 1), 0%, rgba($whiteGC, 95), 40%, rgba($whiteGC, 0.84), 56%, rgba($whiteGC, 0), 100%);
+        filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#FFFDFDFC, endColorstr=#00FDFDFC, GradientType=0);
     }
 
     nav.mobile {
@@ -44,6 +45,7 @@
         top: 390px;
         z-index: 1;
         @include gradient4pt(rgba($whiteGC, 0), 0%, rgba($whiteGC, 0.7), 56%, rgba($whiteGC, 1), 68%, rgba($whiteGC, 1), 100%);
+        filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#00FDFDFC, endColorstr=#FFFDFDFC, GradientType=0);
     }
 
     section.center {

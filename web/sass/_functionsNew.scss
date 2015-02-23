@@ -16,7 +16,6 @@
     background: -o-linear-gradient(top, $color1 $pos1, $color2 $pos2, $color3 $pos3, $color4 $pos4);
     background: -ms-linear-gradient(top, $color1 $pos1, $color2 $pos2, $color3 $pos3, $color4 $pos4);
     background: linear-gradient(to bottom, top, $color1 $pos1, $color2 $pos2, $color3 $pos3, $color4 $pos4);
-    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=$color1, endColorstr=$color4, GradientType=0);
 
 }
 

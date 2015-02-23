@@ -272,6 +272,7 @@
                 display: block;
                 top: 48px;
                 @include gradient4pt(rgba($whiteGC, 0.8), 0%, rgba($whiteGC, 0.8), 20%, rgba($whiteGC, 0.6), 56%, rgba($whiteGC, 0), 100%);
+                filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#8FFDFDFC, endColorstr=#00FDFDFC, GradientType=0);
             }
 
             div.map_bg {

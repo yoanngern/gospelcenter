@@ -101,6 +101,7 @@
             right: 0;
             z-index: 10;
             @include gradient4pt(rgba(#000, 0.1), 0%, rgba(#000, 0.1), 50%, rgba(#000, 0.56), 80%, rgba(#000, 0.76), 100%);
+            filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#00000000, endColorstr=#8F000000, GradientType=0);
             top: 0;
         }
 
