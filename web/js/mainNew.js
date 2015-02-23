@@ -67,18 +67,18 @@ $(document).ready(function () {
 
     $(".radius").each(function () {
 
-        if(window.navigator.appName == "Microsoft Internet Explorer") {
-            var val = $(this).css("border-top-width-radius");
+        var val = 0;
+
+        if ($(this).hasClass("round")) {
+            var width = $(this).css("width");
+            val = width / 2;
         } else {
-            var val = $(this).css("border-top-left-radius");
+            val = $(this).css("border-top-left-radius");
         }
 
-        console.log(val);
-
-        //$(this).corner(val);
+        $(this).corner(val);
 
     });
-
 
 
 });
