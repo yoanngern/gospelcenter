@@ -1,4 +1,5 @@
 // @codekit-prepend "grayscale/grayscale.js"
+// @codekit-prepend "grayscale/functions.js"
 
 $(document).ready( function() {
 	
