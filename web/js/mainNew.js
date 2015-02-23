@@ -67,9 +67,15 @@ $(document).ready(function () {
 
     $(".radius").each(function () {
 
-        var val = $(this).css("border-top-left-radius");
+        if(window.navigator.appName == "Microsoft Internet Explorer") {
+            var val = $(this).css("border-top-width-radius");
+        } else {
+            var val = $(this).css("border-top-left-radius");
+        }
 
-        $(this).corner(val);
+        console.log(val);
+
+        //$(this).corner(val);
 
     });
 
