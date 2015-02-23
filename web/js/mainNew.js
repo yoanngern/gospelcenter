@@ -71,10 +71,16 @@ $(document).ready(function () {
 
         if ($(this).hasClass("round")) {
             var width = $(this).css("width");
+            width = width.replace("px", "");
+            parseInt(width);
             val = width / 2;
+
+            val = val + "px";
         } else {
             val = $(this).css("border-top-left-radius");
         }
+
+        console.log(val);
 
         $(this).corner(val);
 
