@@ -30,6 +30,7 @@ function initInputFile(container) {
     var div = '<div class="edit">Change the image</div>';
 
     $(container).append(div);
+
 }
 
 
