@@ -1,0 +1,6 @@
+html.no-backgroundsize {
+    #page > header div.map_bg div.inner {
+        background-image: none;
+        background-color: $grayLightGC;
+    }
+}
