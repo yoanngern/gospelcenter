@@ -20,7 +20,7 @@
 
 {% block adminBody %}
 
-    <form class="unit" action="{{ path('gospelcenterAdmin_units_edit', {'center': center.ref, 'unit': unit.id}) }}"
+    <form novalidate class="unit" action="{{ path('gospelcenterAdmin_units_edit', {'center': center.ref, 'unit': unit.id}) }}"
           method="post" {{ form_enctype(form) }}>
 
         {{ form_widget(form.name) }}

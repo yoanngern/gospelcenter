@@ -25,7 +25,7 @@
 
 {% block adminBody %}
 
-    <form class="slide" action="{{ path('gospelcenterAdminGlobal_slides_edit', {'slide': slide.id}) }}" method="post" {{ form_enctype(form) }}>
+    <form novalidate class="slide" action="{{ path('gospelcenterAdminGlobal_slides_edit', {'slide': slide.id}) }}" method="post" {{ form_enctype(form) }}>
 
         {{ form_widget(form.image.file) }}
         {{ form_errors(form.image.file) }}

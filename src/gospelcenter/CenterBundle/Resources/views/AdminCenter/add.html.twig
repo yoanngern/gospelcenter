@@ -20,7 +20,7 @@
 
 {% block adminBody %}
 
-    <form class="center" action="{{ path('gospelcenterAdminGlobal_centers_add') }}" method="post" {{ form_enctype(form) }}>
+    <form novalidate class="center" action="{{ path('gospelcenterAdminGlobal_centers_add') }}" method="post" {{ form_enctype(form) }}>
 
         {{ form_widget(form.ref) }}
         {{ form_errors(form.ref) }}

@@ -20,7 +20,7 @@
 
 {% block adminBody %}
 
-    <form class="unit" action="{{ path('gospelcenterAdminGlobal_accesses_edit', {'access': access.id}) }}"
+    <form novalidate class="unit" action="{{ path('gospelcenterAdminGlobal_accesses_edit', {'access': access.id}) }}"
           method="post" {{ form_enctype(form) }}>
 
         {{ form_widget(form.service) }}

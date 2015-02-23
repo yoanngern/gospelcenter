@@ -14,7 +14,7 @@
 
 {% block adminBody %}
 
-    <form class="page" action="{{ path('gospelcenterAdminGlobal_pages_add') }}" method="post" {{ form_enctype(form) }}>
+    <form novalidate class="page" action="{{ path('gospelcenterAdminGlobal_pages_add') }}" method="post" {{ form_enctype(form) }}>
 
         {{ form_widget(form.ref) }}
         {{ form_errors(form.ref) }}

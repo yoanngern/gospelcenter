@@ -23,7 +23,7 @@
 
 {% block adminBody %}
 
-    <form class="person" action="{{ path('gospelcenterAdminGlobal_persons_edit', {'person': person.id}) }}"
+    <form novalidate class="person" action="{{ path('gospelcenterAdminGlobal_persons_edit', {'person': person.id}) }}"
           method="post" {{ form_enctype(form) }}>
 
 

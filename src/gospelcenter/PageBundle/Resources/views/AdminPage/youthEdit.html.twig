@@ -25,7 +25,7 @@
 
 {% block adminBody %}
 
-    <form class="page" action="{{ path('gospelcenterAdmin_youth_edit', {'center': center.ref, 'page': objPage.id}) }}"
+    <form novalidate class="page" action="{{ path('gospelcenterAdmin_youth_edit', {'center': center.ref, 'page': objPage.id}) }}"
           method="post" {{ form_enctype(form) }}>
 
         {{ form_widget(form.title, {'attr': {'placeholder': 'Title'} }) }}

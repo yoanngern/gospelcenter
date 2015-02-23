@@ -30,7 +30,7 @@
 
 {% block adminBody %}
 
-    <form class="event" action="{{ path('gospelcenterAdmin_events_edit', {'center': center.ref, 'event': event.id}) }}"
+    <form novalidate class="event" action="{{ path('gospelcenterAdmin_events_edit', {'center': center.ref, 'event': event.id}) }}"
           method="post" {{ form_enctype(form) }}>
 
         <section class="tab">

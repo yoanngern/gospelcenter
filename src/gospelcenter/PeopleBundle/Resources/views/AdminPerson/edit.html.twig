@@ -30,7 +30,7 @@
 {% block adminBody %}
     {% spaceless %}
 
-        <form class="person"
+        <form novalidate class="person"
               action="{{ path('gospelcenterAdmin_persons_edit', {'center': center.ref, 'person': person.id}) }}"
               method="post" {{ form_enctype(form) }}>
 

@@ -20,7 +20,7 @@
 
 {% block adminBody %}
 
-    <form class="location" action="{{ path('gospelcenterAdmin_locations_add', {'center': center.ref}) }}"
+    <form novalidate class="location" action="{{ path('gospelcenterAdmin_locations_add', {'center': center.ref}) }}"
           method="post" {{ form_enctype(form) }}>
 
         {{ form_widget(form.name) }}
