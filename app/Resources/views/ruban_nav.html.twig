@@ -1,34 +1,40 @@
 <h1>{# <a href="{{ path('gospelcenterPageGlobal_home') }}">#}Gospel Center{#</a>#}</h1>
 <nav>
-	<h1>{{ 'gc.ruban.cities'|trans }}</h1>
-	<ul>
-		{% spaceless %}
-			{% include "::nav/centers.html.twig" %}
-		{% endspaceless %}
-	</ul>
+    <h1>{{ 'gc.ruban.cities'|trans }}</h1>
+    <ul>
+        {% spaceless %}
+            {% include "::nav/centers.html.twig" %}
+        {% endspaceless %}
+    </ul>
+    {% if app.user %}
+        <h1>Beta</h1>
+        <ul>
+            <li><a href="{{ path('gospelcenterPage_home', {'center': 'montreux'}) }}">Montreux</a></li>
+        </ul>
+    {% endif %}
 </nav>
 <nav>
-	<h1>{{ 'gc.ruban.ministries'|trans }}</h1>
-	<ul>
-		<li><a href="{{ path('gospelcenterMedia') }}">Gospel Center TV</a></li>
+    <h1>{{ 'gc.ruban.ministries'|trans }}</h1>
+    <ul>
+        <li><a href="{{ path('gospelcenterMedia') }}">Gospel Center TV</a></li>
 
-	</ul>
+    </ul>
 </nav>
 <nav>
-	<h1>{{ 'gc.ruban.partners'|trans }}</h1>
-	<ul>
-		<li><a target="_blank" href="http://gospel-wave.org/">Gospel Wave</a></li>
-		{#<li><a target="_blank" href="http://gcj.ch/">Gospel Center Jura</a></li>#}
-		<li><a target="_blank" href="http://www.ee-oron.ch/">Eglise évangélique d'Oron</a></li>
-		<li><a target="_blank" href="http://www.laguerison.org/">AIMG</a></li>
-		<li><a target="_blank" href="http://www.gospel-diffusion.com">Gospel Diffusion</a></li>
-	</ul>
+    <h1>{{ 'gc.ruban.partners'|trans }}</h1>
+    <ul>
+        <li><a target="_blank" href="http://gospel-wave.org/">Gospel Wave</a></li>
+        {#<li><a target="_blank" href="http://gcj.ch/">Gospel Center Jura</a></li>#}
+        <li><a target="_blank" href="http://www.ee-oron.ch/">Eglise évangélique d'Oron</a></li>
+        <li><a target="_blank" href="http://www.laguerison.org/">AIMG</a></li>
+        <li><a target="_blank" href="http://www.gospel-diffusion.com">Gospel Diffusion</a></li>
+    </ul>
 </nav>
 <nav class="social">
     <h1>{{ 'gc.ruban.social'|trans }}</h1>
-	<ul>
-		<li><a href="">Facebook</a></li>
-		<li><a href="">Twitter</a></li>
-		<li><a href="">YouTube</a></li>
-	</ul>
+    <ul>
+        <li><a href="">Facebook</a></li>
+        <li><a href="">Twitter</a></li>
+        <li><a href="">YouTube</a></li>
+    </ul>
 </nav>

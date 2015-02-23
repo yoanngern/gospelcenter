@@ -1,17 +1,8 @@
 {% extends "::layoutNew.html.twig" %}
 
 {% block header_nav %}
-    <li class="home"><a href="/">Gospel Center</a></li>
-    <li>
-        <a href="/lausanne">Lausanne</a>
-    </li>
-    <li>
-        <a href="/montreux">Montreux</a>
-    </li>
-    <li>
-        <a href="/jura">Jura</a>
-    </li>
-    <li>
-        <a href="/annecy">Annecy</a>
-    </li>
+    {#<li class="home"><a href="/">Gospel Center</a></li>#}
+    {% spaceless %}
+        {% include "::nav/centers.html.twig" %}
+    {% endspaceless %}
 {% endblock %}

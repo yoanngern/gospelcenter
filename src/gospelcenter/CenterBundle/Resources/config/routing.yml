@@ -1,110 +1,169 @@
-###########################   
-########### API ###########
 ###########################
+########## PROD ###########
+###########################
+
 gospelcenterAPI:
     resource: "@gospelcenterAPIBundle/Resources/config/routing.yml"
     prefix:   /api
-
-gospelcenterImage:
-    resource: "@gospelcenterImageBundle/Resources/config/routing.yml"
-    prefix:   /image
-
-###########################   
-########## PROD ###########
-###########################
+    host: "gospel-center.org"
 
 gospelcenterAdminGlobal:
     resource: "@gospelcenterAdminBundle/Resources/config/routingGlobal.yml"
     prefix:   /admin
-    host: "beta.gospel-center.org"
+    host: "gospel-center.org"
 
 gospelcenterAdmin:
     resource: "@gospelcenterAdminBundle/Resources/config/routing.yml"
     prefix:   /admin
-    host: "beta.gc-{center}.org"
+    host: "gc-{center}.org"
     requirements:
         center: lausanne|annecy|montreux|jura
 
 gospelcenterEvents:
     resource: "@gospelcenterEventBundle/Resources/config/routing.yml"
     prefix:   /events
-    host: "beta.gc-{center}.org"
+    host: "gc-{center}.org"
     requirements:
         center: lausanne|annecy|montreux|jura
-        
+
 gospelcenterAgenda:
     resource: "@gospelcenterEventBundle/Resources/config/routingAgenda.yml"
     prefix:   /agenda
-    host: "beta.gc-{center}.org"
+    host: "gc-{center}.org"
     requirements:
         center: lausanne|annecy|montreux|jura
-        
+
 gospelcenterCelebrations:
     resource: "@gospelcenterCelebrationBundle/Resources/config/routing.yml"
     prefix:   /celebrations
-    host: "beta.gc-{center}.org"
+    host: "gc-{center}.org"
     requirements:
         center: lausanne|annecy|montreux|jura
 
 gospelcenterPage:
     resource: "@gospelcenterPageBundle/Resources/config/routing.yml"
     prefix:   /
-    host: "beta.gc-{center}.org"
+    host: "gc-{center}.org"
     requirements:
         center: lausanne|annecy|montreux|jura
-        
-gospelcenterPageGlobal:
-    resource: "@gospelcenterPageBundle/Resources/config/routingGlobal.yml"
-    prefix:   /
-    host: "beta.gospel-center.org"
 
 gospelcenterTV:
     resource: "@gospelcenterMediaBundle/Resources/config/routing.yml"
     prefix:   /
+    host: "gospel-center.tv"
+
+gospelcenterPageGlobal:
+    resource: "@gospelcenterPageBundle/Resources/config/routingGlobal.yml"
+    prefix:   /
+    host: "gospel-center.org"
+
+
+###########################   
+########## BETA ###########
+###########################
+
+gospelcenter_beta_API:
+    resource: "@gospelcenterAPIBundle/Resources/config/routing.yml"
+    prefix:   /api
+    host: "beta.gospel-center.org"
+
+gospelcenter_beta_AdminGlobal:
+    resource: "@gospelcenterAdminBundle/Resources/config/routingGlobal.yml"
+    prefix:   /admin
+    host: "beta.gospel-center.org"
+
+gospelcenter_beta_Admin:
+    resource: "@gospelcenterAdminBundle/Resources/config/routing.yml"
+    prefix:   /admin
+    host: "beta.gc-{center}.org"
+    requirements:
+        center: lausanne|annecy|montreux|jura
+
+gospelcenter_beta_Events:
+    resource: "@gospelcenterEventBundle/Resources/config/routing.yml"
+    prefix:   /events
+    host: "beta.gc-{center}.org"
+    requirements:
+        center: lausanne|annecy|montreux|jura
+        
+gospelcenter_beta_Agenda:
+    resource: "@gospelcenterEventBundle/Resources/config/routingAgenda.yml"
+    prefix:   /agenda
+    host: "beta.gc-{center}.org"
+    requirements:
+        center: lausanne|annecy|montreux|jura
+        
+gospelcenter_beta_Celebrations:
+    resource: "@gospelcenterCelebrationBundle/Resources/config/routing.yml"
+    prefix:   /celebrations
+    host: "beta.gc-{center}.org"
+    requirements:
+        center: lausanne|annecy|montreux|jura
+
+gospelcenter_beta_Page:
+    resource: "@gospelcenterPageBundle/Resources/config/routing.yml"
+    prefix:   /
+    host: "beta.gc-{center}.org"
+    requirements:
+        center: lausanne|annecy|montreux|jura
+
+gospelcenter_beta_TV:
+    resource: "@gospelcenterMediaBundle/Resources/config/routing.yml"
+    prefix:   /
     host: "beta.gospel-center.tv"
+
+gospelcenter_beta_PageGlobal:
+    resource: "@gospelcenterPageBundle/Resources/config/routingGlobal.yml"
+    prefix:   /
+    host: "beta.gospel-center.org"
+
 
 ###########################   
 ########### DEV ###########
 ###########################
 
-gospelcenterAdminGlobal_dev:
+gospelcenterAPI:
+    resource: "@gospelcenterAPIBundle/Resources/config/routing.yml"
+    prefix:   /api
+
+gospelcenter_dev_AdminGlobal:
     resource: "@gospelcenterAdminBundle/Resources/config/routingGlobal.yml"
     prefix:   /admin
 
-gospelcenterTV_dev:
-    resource: "@gospelcenterMediaBundle/Resources/config/routing.yml"
-    prefix:   /tv
-
-gospelcenterAdmin_dev:
+gospelcenter_dev_Admin:
     resource: "@gospelcenterAdminBundle/Resources/config/routing.yml"
     prefix:   /{center}/admin
     requirements:
         center: lausanne|annecy|montreux|jura
 
-gospelcenterEvents_dev:
+gospelcenter_dev_Events:
     resource: "@gospelcenterEventBundle/Resources/config/routing.yml"
     prefix:   /{center}/events
     requirements:
         center: lausanne|annecy|montreux|jura
 
-gospelcenterAgenda_dev:
+gospelcenter_dev_Agenda:
     resource: "@gospelcenterEventBundle/Resources/config/routingAgenda.yml"
     prefix:   /{center}/agenda
     requirements:
         center: lausanne|annecy|montreux|jura
 
-gospelcenterCelebrations_dev:
+gospelcenter_dev_Celebrations:
     resource: "@gospelcenterCelebrationBundle/Resources/config/routing.yml"
     prefix:   /{center}/celebrations
     requirements:
         center: lausanne|annecy|montreux|jura
 
-gospelcenterPage_dev:
+gospelcenter_dev_Page:
     resource: "@gospelcenterPageBundle/Resources/config/routing.yml"
     prefix:   /{center}/
     requirements:
         center: lausanne|annecy|montreux|jura
 
-gospelcenterPageGlobal_dev:
+gospelcenter_dev_TV:
+    resource: "@gospelcenterMediaBundle/Resources/config/routing.yml"
+    prefix:   /tv
+
+gospelcenter_dev_PageGlobal:
     resource: "@gospelcenterPageBundle/Resources/config/routingGlobal.yml"
     prefix:   /
