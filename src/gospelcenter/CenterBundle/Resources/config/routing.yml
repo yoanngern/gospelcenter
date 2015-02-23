@@ -5,7 +5,6 @@
 gospelcenterAPI:
     resource: "@gospelcenterAPIBundle/Resources/config/routing.yml"
     prefix:   /api
-    host: "gospel-center.org"
 
 gospelcenterAdminGlobal:
     resource: "@gospelcenterAdminBundle/Resources/config/routingGlobal.yml"
@@ -65,7 +64,6 @@ gospelcenterPageGlobal:
 gospelcenter_beta_API:
     resource: "@gospelcenterAPIBundle/Resources/config/routing.yml"
     prefix:   /api
-    host: "beta.gospel-center.org"
 
 gospelcenter_beta_AdminGlobal:
     resource: "@gospelcenterAdminBundle/Resources/config/routingGlobal.yml"
