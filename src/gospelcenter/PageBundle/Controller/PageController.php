@@ -21,6 +21,7 @@ class PageController extends Controller
 
         $em = $this->getDoctrine()->getManager();
 
+        /*
         if ($page == "youth") {
             $pages = $em->getRepository('gospelcenterPageBundle:Page')->findYouthPages($center, $page, $language);
 
@@ -44,6 +45,7 @@ class PageController extends Controller
                 );
             }
         }
+        */
 
         $aPage = $em->getRepository('gospelcenterPageBundle:Page')->findAPage($center, $page, $language);
 
@@ -112,7 +114,7 @@ class PageController extends Controller
      * @param Center $center
      * @param string $group
      * @return \Symfony\Component\HttpFoundation\Response
-     */
+     *
     public function youthAction(Center $center, $group = "minis")
     {
 
@@ -136,6 +138,31 @@ class PageController extends Controller
             )
         );
     }
+
+
+    /**
+     * @param Center $center
+     * @param $_locale
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function youthAction(Center $center, $_locale)
+    {
+
+        $language = $_locale;
+
+        return $this->render(
+            'gospelcenterPageBundle::staticPage.html.twig',
+            array(
+                'center' => $center,
+                'language' => $language,
+                'folder' => 'youth',
+                'template' => 'youth',
+                'page' => 'youth',
+                'customClass' => 'simple'
+            )
+        );
+    }
+
 
     /**
      * @param Center $center
