@@ -36,7 +36,9 @@ gc:
         cities: Cities
         ministries: Ministries
         partners: Partners
-        social: Social
+        social: Social networks
+        iahm: IAHM
+        eeo: Evangelical church of Oron
     form:
         name: Name
         e-mail: E-mail

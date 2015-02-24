@@ -41,6 +41,8 @@ gc:
         ministries: Ministères
         partners: Partenaires
         social: Réseaux sociaux
+        iahm: AIMG
+        eeo: Eglise évangélique d'Oron
     form:
         name: Nom
         e-mail: E-mail
