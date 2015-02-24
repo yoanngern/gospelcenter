@@ -401,6 +401,47 @@ liip_imagine:
                 thumbnail: { size: [1280, 888], mode: outbound, allow_upscale: true }
 
 
+        #####################
+        ###  slide_small  ###
+        #####################
+        slide_small_low:
+            quality: 60
+            filters:
+                thumbnail: { size: [1040, 500], mode: outbound, allow_upscale: true }
+
+        slide_small:
+            quality: 100
+            filters:
+                thumbnail: { size: [1040, 500], mode: outbound, allow_upscale: true }
+
+        slide_small_2x:
+            quality: 90
+            filters:
+                thumbnail: { size: [2080, 1000], mode: outbound, allow_upscale: true }
+
+        slide_small_tablet:
+            quality: 100
+            filters:
+                thumbnail: { size: [1040, 500], mode: outbound, allow_upscale: true }
+
+        slide_small_tablet_2x:
+            quality: 90
+            filters:
+                thumbnail: { size: [2080, 1000], mode: outbound, allow_upscale: true }
+
+        slide_small_mobile:
+            quality: 100
+            filters:
+                thumbnail: { size: [700, 444], mode: outbound, allow_upscale: true }
+                crop: { start: [0, 100], size: [640, 125] }
+
+        slide_small_mobile_2x:
+            quality: 90
+            filters:
+                thumbnail: { size: [1400, 888], mode: outbound, allow_upscale: true }
+                crop: { start: [0, 100], size: [1280, 300] }
+
+
         ####################
         ###  media_home  ###
         ####################
