@@ -190,18 +190,7 @@ gospelcenterAdmin_pages_delete:
     defaults:   { _controller: gospelcenterPageBundle:AdminPage:delete }
     requirements:
         page: \d+
-        
-# Youth
-gospelcenterAdmin_youth:
-    path:       /pages/youth
-    defaults:   { _controller: gospelcenterPageBundle:AdminPage:youth }
-    
-# Youth
-gospelcenterAdmin_youth_edit:
-    path:       /pages/youth/edit/{page}
-    defaults:   { _controller: gospelcenterPageBundle:AdminPage:youthEdit }
-    requirements:
-        page: \d+
+
 
 # Slides
 gospelcenterAdmin_slides:
