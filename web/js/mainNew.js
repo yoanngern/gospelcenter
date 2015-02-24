@@ -65,6 +65,17 @@ $(document).ready(function () {
 
     $('input, textarea').placeholder();
 
+    raduis();
+    $(window).on("customResize", function () {
+        raduis();
+    });
+
+
+
+});
+
+
+function raduis() {
     $(".radius").each(function () {
 
         var val = 0;
@@ -85,9 +96,7 @@ $(document).ready(function () {
         $(this).corner(val);
 
     });
-
-
-});
+}
 
 
 /**
