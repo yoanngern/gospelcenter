@@ -378,7 +378,7 @@ liip_imagine:
         slide_2x:
             quality: 90
             filters:
-                thumbnail: { size: [1040, 500], mode: outbound, allow_upscale: true }
+                thumbnail: { size: [2080, 1000], mode: outbound, allow_upscale: true }
 
         slide_tablet:
             quality: 100
@@ -388,7 +388,7 @@ liip_imagine:
         slide_tablet_2x:
             quality: 90
             filters:
-                thumbnail: { size: [1040, 500], mode: outbound, allow_upscale: true }
+                thumbnail: { size: [2080, 1000], mode: outbound, allow_upscale: true }
 
         slide_mobile:
             quality: 100
