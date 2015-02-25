@@ -21,32 +21,6 @@ class PageController extends Controller
 
         $em = $this->getDoctrine()->getManager();
 
-        /*
-        if ($page == "youth") {
-            $pages = $em->getRepository('gospelcenterPageBundle:Page')->findYouthPages($center, $page, $language);
-
-            if(sizeof($pages) == 0) {
-                $language = $default_language;
-                $pages = $em->getRepository('gospelcenterPageBundle:Page')->findYouthPages($center, $page, $language);
-            }
-
-            if(sizeof($pages) != 0) {
-
-                $page = $pages[0]->getAlias();
-
-                return $this->render(
-                    'gospelcenterPageBundle:Page:youth.html.twig',
-                    array(
-                        'center' => $center,
-                        'page' => 'youth',
-                        'pages' => $pages,
-                        'group' => $page
-                    )
-                );
-            }
-        }
-        */
-
         $aPage = $em->getRepository('gospelcenterPageBundle:Page')->findAPage($center, $page, $language);
 
         if (!$aPage) {
@@ -55,21 +29,7 @@ class PageController extends Controller
 
         if (!$aPage) {
 
-            $pages = $em->getRepository('gospelcenterPageBundle:Page')->findYouthPages($center, "youth", $language);
-
-            if(sizeof($pages) != 0) {
-                return $this->render(
-                    'gospelcenterPageBundle:Page:youth.html.twig',
-                    array(
-                        'center' => $center,
-                        'page' => 'youth',
-                        'pages' => $pages,
-                        'group' => $page
-                    )
-                );
-            } else {
-                throw $this->createNotFoundException('This page doesn\'t exist');
-            }
+            throw $this->createNotFoundException('This page doesn\'t exist');
 
 
         } else {
@@ -115,32 +75,32 @@ class PageController extends Controller
      * @param string $group
      * @return \Symfony\Component\HttpFoundation\Response
      *
-    public function youthAction(Center $center, $group = "minis")
-    {
-
-        $em = $this->getDoctrine()->getManager();
-
-        $pages = $em->getRepository('gospelcenterPageBundle:Page')->findYouthPages($center);
-
-        $page = $em->getRepository('gospelcenterPageBundle:Page')->findAYouthGroup($center, $group);
-
-        if (!$page) {
-            throw $this->createNotFoundException('This group doesn\'t exist');
-        }
-
-        return $this->render(
-            'gospelcenterPageBundle:Page:youth.html.twig',
-            array(
-                'center' => $center,
-                'page' => 'youth',
-                'pages' => $pages,
-                'group' => $page
-            )
-        );
-    }
-
-
-    /**
+     * public function youthAction(Center $center, $group = "minis")
+     * {
+     *
+     * $em = $this->getDoctrine()->getManager();
+     *
+     * $pages = $em->getRepository('gospelcenterPageBundle:Page')->findYouthPages($center);
+     *
+     * $page = $em->getRepository('gospelcenterPageBundle:Page')->findAYouthGroup($center, $group);
+     *
+     * if (!$page) {
+     * throw $this->createNotFoundException('This group doesn\'t exist');
+     * }
+     *
+     * return $this->render(
+     * 'gospelcenterPageBundle:Page:youth.html.twig',
+     * array(
+     * 'center' => $center,
+     * 'page' => 'youth',
+     * 'pages' => $pages,
+     * 'group' => $page
+     * )
+     * );
+     * }
+     *
+     *
+     * /**
      * @param Center $center
      * @param $_locale
      * @return \Symfony\Component\HttpFoundation\Response
