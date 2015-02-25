@@ -17,7 +17,7 @@
     {% block javascripts %}
 
         {% if center %}
-        {% if center.ref = "lausanne" %}
+        {% if center.ref == "lausanne" %}
         <script>
             (function (i, s, o, g, r, a, m) {
                 i['GoogleAnalyticsObject'] = r;
@@ -35,7 +35,7 @@
             ga('send', 'pageview');
 
         </script>
-        {% elseif center.ref = "annecy" %}
+        {% elseif center.ref == "annecy" %}
         <script>
             (function (i, s, o, g, r, a, m) {
                 i['GoogleAnalyticsObject'] = r;
@@ -54,7 +54,7 @@
 
         </script>
         {% endif %}
-        {% else if page = "tv" %}
+        {% else if page == "tv" %}
         <script>
             (function (i, s, o, g, r, a, m) {
                 i['GoogleAnalyticsObject'] = r;
