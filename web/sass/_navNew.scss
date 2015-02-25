@@ -9,14 +9,16 @@
     left: 0px;
     height: 100%;
     display: none;
-    overflow: scroll;
+    overflow: auto;
     -webkit-overflow-scrolling: touch;
-    overflow: -moz-scrollbars-none;
-    -ms-overflow-style: none;
+    //overflow: -moz-scrollbars-none;
+    //-ms-overflow-style: none;
 
+    /*
     &::-webkit-scrollbar {
         display: none;
     }
+    */
 
     & > h1 {
         width: 100%;
@@ -151,7 +153,7 @@ nav.sub_nav {
     */
 
     ul {
-        overflow-x: scroll;
+        overflow-x: auto;
         -webkit-overflow-scrolling: touch;
         margin: 0 auto;
         display: block;
