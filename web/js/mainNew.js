@@ -91,7 +91,6 @@ function raduis() {
             val = $(this).css("border-top-left-radius");
         }
 
-        console.log(val);
 
         $(this).corner(val);
 
@@ -136,14 +135,12 @@ function moveToAnchor(id) {
 
     var pos = $(elem).position();
 
-    console.log(elem);
 
     var headerElem = $("#page").find("> header");
 
     if ($("#page").hasClass("headerFixed")) {
         var pagePadTop = $("#page").css("padding-top");
 
-        console.log(pagePadTop);
 
         pagePadTop = pagePadTop.replace("px", "");
         pagePadTop = parseInt(pagePadTop);

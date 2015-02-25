@@ -25,8 +25,6 @@ function setCheckbox(icon) {
     
     var name = $(icon).attr("id");
     
-    console.log(name);
-    
 	if($(icon).hasClass('selected')) {
     	$(icon).removeClass('selected');
 	} else {

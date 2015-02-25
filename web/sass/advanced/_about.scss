@@ -118,8 +118,11 @@
                 display: inline-block;
                 vertical-align: top;
 
+
                 margin: 40px 0 0 40px;
-                padding-left: 10px;
+                padding-left: 8px;
+
+                border-left: 4px solid $greenGC;
 
                 h1 {
                     font-family: $font-bold;
@@ -141,10 +144,17 @@
 
         @media only screen and (max-width: $tabletH) {
             padding: 0 32px;
+
             
             article.people {
                 //width: 160px;
                 margin: 0 0 32px;
+
+                section {
+                    left: 160px;
+                    right: 32px;
+                    position: absolute;
+                }
             }
         }
 
@@ -166,6 +176,9 @@
                     display: block;
                     border: none;
                     margin: 5px 0 0;
+
+                    left: inherit;
+                    position: relative;
 
                     h1 {
                         border-left: 3px solid $greenGC;

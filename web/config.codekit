@@ -329,6 +329,39 @@
 		"outputPathIsSetByUser": 0,
 		"processed": 0
 		},
+	"\/bundles\/gospelcenterpage\/images\/leadership\/annecy\/dubi.jpg": {
+		"fileType": 16384,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 81053,
+		"inputAbbreviatedPath": "\/bundles\/gospelcenterpage\/images\/leadership\/annecy\/dubi.jpg",
+		"outputAbbreviatedPath": "\/bundles\/gospelcenterpage\/images\/leadership\/annecy\/dubi.jpg",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
+	"\/bundles\/gospelcenterpage\/images\/leadership\/annecy\/mussard.jpg": {
+		"fileType": 16384,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 78360,
+		"inputAbbreviatedPath": "\/bundles\/gospelcenterpage\/images\/leadership\/annecy\/mussard.jpg",
+		"outputAbbreviatedPath": "\/bundles\/gospelcenterpage\/images\/leadership\/annecy\/mussard.jpg",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
+	"\/bundles\/gospelcenterpage\/images\/leadership\/annecy\/potin.jpg": {
+		"fileType": 16384,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 71142,
+		"inputAbbreviatedPath": "\/bundles\/gospelcenterpage\/images\/leadership\/annecy\/potin.jpg",
+		"outputAbbreviatedPath": "\/bundles\/gospelcenterpage\/images\/leadership\/annecy\/potin.jpg",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
 	"\/bundles\/gospelcenterpage\/images\/leadership\/lausanne\/AlixBingle.jpg": {
 		"fileType": 16384,
 		"ignore": 0,

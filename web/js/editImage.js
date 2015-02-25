@@ -21,7 +21,6 @@ function initInputFile(container) {
 
     var id = $(container).attr("data-input");
 
-    console.log(id);
 
     var input = $("input[id="+ id +"]");
 

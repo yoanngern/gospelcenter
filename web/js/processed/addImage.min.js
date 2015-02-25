@@ -115,8 +115,6 @@ function handleFiles(files) {
         var reader = new FileReader();
         reader.onload = (function(aImg) { return function(e) { aImg.src = e.target.result; }; })(img);
         
-        console.log(img);
-        
         reader.readAsDataURL(file);
     }
 }

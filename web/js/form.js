@@ -172,8 +172,7 @@ function displayMultipleRelationFrom() {
  *
  */
 function addEntityForm(container) {
-    
-    console.log(container);
+
     
     var index = $(container).data("nbfield");
     
@@ -185,8 +184,6 @@ function addEntityForm(container) {
                                                   .replace(/__name__/g, index);
     
     var id = $(prototype).attr("id");
-    
-    console.log(index);
     
     // Add the Entity form
     $(container).append(prototype);

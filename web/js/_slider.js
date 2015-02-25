@@ -8,8 +8,6 @@ $(document).ready(function () {
 
     $(document).on('click', 'section.slider div.arrow', function (event) {
 
-        console.log(event);
-
         var slider = $(this).parent();
         var side = $(this).attr("id");
 
