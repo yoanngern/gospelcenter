@@ -1,6 +1,6 @@
 window.soundCloud = {
     'client_id': '1fa026842e083e9a1e2821fd1808b204',
-    'redirect_uri': 'http://beta.gospel-center.com',
+    'redirect_uri': 'http://gospel-center.org',
     'lausanne_id': '52004530',
     'montreux_id': '14516848',
     'jura_id': '',

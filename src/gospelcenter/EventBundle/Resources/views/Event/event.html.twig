@@ -94,7 +94,7 @@
 
             <section id="map" class="location map_full">
 
-                {% set map_url = "http://beta.gospel-center.org/api/locations/" ~ event.location.id ~ ".geojson" %}
+                {% set map_url = "http://gospel-center.org/api/locations/" ~ event.location.id ~ ".geojson" %}
 
                 <iframe src="http://map.gospel-center.com/poi.html?url={{ map_url|url_encode }}"></iframe>
                 <article>

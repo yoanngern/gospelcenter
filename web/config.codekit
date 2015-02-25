@@ -329,6 +329,17 @@
 		"outputPathIsSetByUser": 0,
 		"processed": 0
 		},
+	"\/bundles\/gospelcenterpage\/images\/leadership\/annecy\/dubi.jpg": {
+		"fileType": 16384,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 78659,
+		"inputAbbreviatedPath": "\/bundles\/gospelcenterpage\/images\/leadership\/annecy\/dubi.jpg",
+		"outputAbbreviatedPath": "\/bundles\/gospelcenterpage\/images\/leadership\/annecy\/dubi.jpg",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
 	"\/bundles\/gospelcenterpage\/images\/leadership\/annecy\/mussard.jpg": {
 		"fileType": 16384,
 		"ignore": 0,
@@ -1812,7 +1823,7 @@
 		"outputAbbreviatedPath": "\/js\/processed\/addCelebration.min.js",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 1,
-		"outputStyle": 0,
+		"outputStyle": 1,
 		"syntaxCheckerStyle": 0
 		},
 	"\/js\/addCelebrationNew.js": {
@@ -1823,7 +1834,7 @@
 		"outputAbbreviatedPath": "\/js\/processed\/addCelebrationNew.min.js",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 1,
-		"outputStyle": 0,
+		"outputStyle": 1,
 		"syntaxCheckerStyle": 0
 		},
 	"\/js\/addImage.js": {
@@ -1834,7 +1845,7 @@
 		"outputAbbreviatedPath": "\/js\/processed\/addImage.min.js",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 1,
-		"outputStyle": 0,
+		"outputStyle": 1,
 		"syntaxCheckerStyle": 0
 		},
 	"\/js\/addPage.js": {
@@ -1845,7 +1856,7 @@
 		"outputAbbreviatedPath": "\/js\/processed\/addPage.min.js",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 1,
-		"outputStyle": 0,
+		"outputStyle": 1,
 		"syntaxCheckerStyle": 0
 		},
 	"\/js\/addvideo.js": {
@@ -1856,7 +1867,7 @@
 		"outputAbbreviatedPath": "\/js\/processed\/addVideo.min.js",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 1,
-		"outputStyle": 0,
+		"outputStyle": 1,
 		"syntaxCheckerStyle": 0
 		},
 	"\/js\/advanced\/celebrations.js": {
@@ -1878,7 +1889,7 @@
 		"outputAbbreviatedPath": "\/js\/processed\/editImage.min.js",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 1,
-		"outputStyle": 0,
+		"outputStyle": 1,
 		"syntaxCheckerStyle": 0
 		},
 	"\/js\/form.js": {
@@ -1889,7 +1900,7 @@
 		"outputAbbreviatedPath": "\/js\/processed\/form.min.js",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 1,
-		"outputStyle": 0,
+		"outputStyle": 1,
 		"syntaxCheckerStyle": 0
 		},
 	"\/js\/global.js": {
@@ -1900,7 +1911,7 @@
 		"outputAbbreviatedPath": "\/js\/processed\/global.min.js",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 1,
-		"outputStyle": 0,
+		"outputStyle": 1,
 		"syntaxCheckerStyle": 0
 		},
 	"\/js\/globalMobile.js": {
@@ -1911,7 +1922,7 @@
 		"outputAbbreviatedPath": "\/js\/processed\/globalMobile.min.js",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 1,
-		"outputStyle": 0,
+		"outputStyle": 1,
 		"syntaxCheckerStyle": 0
 		},
 	"\/js\/globalNew.js": {
@@ -1922,7 +1933,7 @@
 		"outputAbbreviatedPath": "\/js\/processed\/globalNew.min.js",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 1,
-		"outputStyle": 0,
+		"outputStyle": 1,
 		"syntaxCheckerStyle": 0
 		},
 	"\/js\/grayscale\/functions.js": {
@@ -1955,7 +1966,7 @@
 		"outputAbbreviatedPath": "\/js\/processed\/location.min.js",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 1,
-		"outputStyle": 0,
+		"outputStyle": 1,
 		"syntaxCheckerStyle": 0
 		},
 	"\/js\/main.js": {
@@ -1966,7 +1977,7 @@
 		"outputAbbreviatedPath": "\/js\/processed\/main.min.js",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 1,
-		"outputStyle": 0,
+		"outputStyle": 1,
 		"syntaxCheckerStyle": 0
 		},
 	"\/js\/mainNew.js": {
@@ -1977,7 +1988,7 @@
 		"outputAbbreviatedPath": "\/js\/processed\/mainNew.min.js",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 1,
-		"outputStyle": 0,
+		"outputStyle": 1,
 		"syntaxCheckerStyle": 0
 		},
 	"\/js\/mobile.js": {
@@ -1988,7 +1999,7 @@
 		"outputAbbreviatedPath": "\/js\/processed\/mobile.min.js",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 1,
-		"outputStyle": 0,
+		"outputStyle": 1,
 		"syntaxCheckerStyle": 0
 		},
 	"\/js\/page.js": {
@@ -1999,7 +2010,7 @@
 		"outputAbbreviatedPath": "\/js\/processed\/page.min.js",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 1,
-		"outputStyle": 0,
+		"outputStyle": 1,
 		"syntaxCheckerStyle": 0
 		},
 	"\/js\/processed\/addCelebration.min.js": {
@@ -2208,7 +2219,7 @@
 		"outputAbbreviatedPath": "\/js\/processed\/tv.min.js",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 1,
-		"outputStyle": 0,
+		"outputStyle": 1,
 		"syntaxCheckerStyle": 0
 		},
 	"\/js\/tvMobile.js": {
@@ -2219,7 +2230,7 @@
 		"outputAbbreviatedPath": "\/js\/processed\/tvMobile.min.js",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 1,
-		"outputStyle": 0,
+		"outputStyle": 1,
 		"syntaxCheckerStyle": 0
 		},
 	"\/js\/vendor\/autoGrowInput.js": {
