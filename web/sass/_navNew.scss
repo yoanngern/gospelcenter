@@ -289,13 +289,14 @@ nav.sub_nav {
 
         text-align: left;
         margin-bottom: 40px;
+        overflow: visible;
 
         ul {
 
             &.classic,
             &.complex {
                 margin-left: 15px;
-                border-bottom: none;
+
                 border-left: 2px solid $grayDarkGC;
                 margin-top: 0px;
 
@@ -303,6 +304,7 @@ nav.sub_nav {
                     display: block;
                     line-height: 32px;
                     margin: 0 0 10px;
+                    border-bottom: none;
 
                     &:last-of-type {
                         margin-bottom: 0px;
@@ -315,6 +317,7 @@ nav.sub_nav {
                         font-size: 1.6em;
                         line-height: 32px;
                         display: block;
+                        padding-bottom: 0;
 
                         &.focus {
                             border-left: 2px solid $grayDarkGC;
