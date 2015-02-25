@@ -329,17 +329,6 @@
 		"outputPathIsSetByUser": 0,
 		"processed": 0
 		},
-	"\/bundles\/gospelcenterpage\/images\/leadership\/annecy\/dubi.jpg": {
-		"fileType": 16384,
-		"ignore": 0,
-		"ignoreWasSetByUser": 0,
-		"initialSize": 81053,
-		"inputAbbreviatedPath": "\/bundles\/gospelcenterpage\/images\/leadership\/annecy\/dubi.jpg",
-		"outputAbbreviatedPath": "\/bundles\/gospelcenterpage\/images\/leadership\/annecy\/dubi.jpg",
-		"outputPathIsOutsideProject": 0,
-		"outputPathIsSetByUser": 0,
-		"processed": 0
-		},
 	"\/bundles\/gospelcenterpage\/images\/leadership\/annecy\/mussard.jpg": {
 		"fileType": 16384,
 		"ignore": 0,

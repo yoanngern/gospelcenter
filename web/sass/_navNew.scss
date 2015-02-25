@@ -138,26 +138,33 @@ nav.sub_nav {
     text-align: center;
     margin-bottom: 70px;
     overflow: hidden;
+    max-width: 96%;
+    background-color: $whiteGC;
+    line-height: 2em;
+    width: auto;
+    position: relative;
 
+    /*
     &::-webkit-scrollbar {
         display: none;
     }
+    */
 
     ul {
-        overflow: visible;
         overflow-x: scroll;
-        overflow: -moz-scrollbars-none;
-        -ms-overflow-style: none;
+        -webkit-overflow-scrolling: touch;
+        margin: 0 auto;
+        display: block;
 
         &.classic,
         &.complex {
-            display: inline-block;
-            border-bottom: 2px solid $grayDarkGC;
+
             white-space: nowrap;
 
             li {
                 display: inline-block;
                 margin-bottom: 2px;
+                border-bottom: 2px solid $grayDarkGC;
 
                 &:last-of-type a {
                     margin-right: 0px;
@@ -169,6 +176,8 @@ nav.sub_nav {
                     line-height: 1.4em;
                     font-family: $font-light;
                     margin-right: 35px;
+                    display: block;
+                    padding-bottom: 5px;
 
                     &:hover {
                         text-decoration: none;
@@ -180,6 +189,7 @@ nav.sub_nav {
 
                     &.focus {
                         border-bottom: 5px solid $grayDarkGC;
+                        padding-bottom: 0;
                     }
                 }
 
@@ -233,11 +243,12 @@ nav.sub_nav {
         }
 
         &.complex {
-            border-bottom: none;
+
 
             li {
                 max-width: 200px;
                 vertical-align: top;
+                border-bottom: none;
 
                 a {
                     font-size: 1em;
