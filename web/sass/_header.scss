@@ -294,7 +294,7 @@
             }
 
             ul.nav {
-                display: inline-block;
+                display: block;
                 vertical-align: top;
                 width: 960px;
                 margin: -10px auto 0;
@@ -303,12 +303,13 @@
                 border-bottom: 1px solid rgba($grayGC, 0.5);
                 white-space: nowrap;
                 overflow-x: scroll;
-                -ms-overflow-style: none;
-                overflow: -moz-scrollbars-none;
+                -webkit-overflow-scrolling: touch;
 
+                /*
                 &::-webkit-scrollbar {
                     display: none;
                 }
+                */
 
                 li {
                     display: inline-block;
