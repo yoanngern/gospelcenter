@@ -120,6 +120,17 @@
 		"outputPathIsSetByUser": 0,
 		"processed": 0
 		},
+	"\/bundles\/gospelcentercelebration\/images\/allSunday.jpg": {
+		"fileType": 16384,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 1.3504e+06,
+		"inputAbbreviatedPath": "\/bundles\/gospelcentercelebration\/images\/allSunday.jpg",
+		"outputAbbreviatedPath": "\/bundles\/gospelcentercelebration\/images\/allSunday.jpg",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
 	"\/bundles\/gospelcentermedia\/images\/media_home_julien1.jpg": {
 		"fileType": 16384,
 		"ignore": 0,
@@ -190,7 +201,7 @@
 		"fileType": 16384,
 		"ignore": 0,
 		"ignoreWasSetByUser": 0,
-		"initialSize": 98182,
+		"initialSize": 1.22202e+06,
 		"inputAbbreviatedPath": "\/bundles\/gospelcenterpage\/images\/a-propos.jpg",
 		"outputAbbreviatedPath": "\/bundles\/gospelcenterpage\/images\/a-propos.jpg",
 		"outputPathIsOutsideProject": 0,
@@ -234,7 +245,7 @@
 		"fileType": 16384,
 		"ignore": 0,
 		"ignoreWasSetByUser": 0,
-		"initialSize": 142983,
+		"initialSize": 1.06675e+06,
 		"inputAbbreviatedPath": "\/bundles\/gospelcenterpage\/images\/confession.jpg",
 		"outputAbbreviatedPath": "\/bundles\/gospelcenterpage\/images\/confession.jpg",
 		"outputPathIsOutsideProject": 0,
@@ -263,6 +274,28 @@
 		"outputPathIsSetByUser": 0,
 		"processed": 0
 		},
+	"\/bundles\/gospelcenterpage\/images\/full-pack.jpg": {
+		"fileType": 16384,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 1.29788e+06,
+		"inputAbbreviatedPath": "\/bundles\/gospelcenterpage\/images\/full-pack.jpg",
+		"outputAbbreviatedPath": "\/bundles\/gospelcenterpage\/images\/full-pack.jpg",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
+	"\/bundles\/gospelcenterpage\/images\/gospel-youth.jpg": {
+		"fileType": 16384,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 1.399e+06,
+		"inputAbbreviatedPath": "\/bundles\/gospelcenterpage\/images\/gospel-youth.jpg",
+		"outputAbbreviatedPath": "\/bundles\/gospelcenterpage\/images\/gospel-youth.jpg",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
 	"\/bundles\/gospelcenterpage\/images\/gospel_center_band_rj_2013.jpg": {
 		"fileType": 16384,
 		"ignore": 0,
@@ -270,6 +303,17 @@
 		"initialSize": 42110,
 		"inputAbbreviatedPath": "\/bundles\/gospelcenterpage\/images\/gospel_center_band_rj_2013.jpg",
 		"outputAbbreviatedPath": "\/bundles\/gospelcenterpage\/images\/gospel_center_band_rj_2013.jpg",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
+	"\/bundles\/gospelcenterpage\/images\/kids.jpg": {
+		"fileType": 16384,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 1.28310e+06,
+		"inputAbbreviatedPath": "\/bundles\/gospelcenterpage\/images\/kids.jpg",
+		"outputAbbreviatedPath": "\/bundles\/gospelcenterpage\/images\/kids.jpg",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"processed": 0
@@ -373,11 +417,22 @@
 		"outputPathIsSetByUser": 0,
 		"processed": 0
 		},
+	"\/bundles\/gospelcenterpage\/images\/minis.jpg": {
+		"fileType": 16384,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 1.32324e+06,
+		"inputAbbreviatedPath": "\/bundles\/gospelcenterpage\/images\/minis.jpg",
+		"outputAbbreviatedPath": "\/bundles\/gospelcenterpage\/images\/minis.jpg",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
 	"\/bundles\/gospelcenterpage\/images\/musique_lausanne.jpg": {
 		"fileType": 16384,
 		"ignore": 0,
 		"ignoreWasSetByUser": 0,
-		"initialSize": 1.11768e+06,
+		"initialSize": 1.1172e+06,
 		"inputAbbreviatedPath": "\/bundles\/gospelcenterpage\/images\/musique_lausanne.jpg",
 		"outputAbbreviatedPath": "\/bundles\/gospelcenterpage\/images\/musique_lausanne.jpg",
 		"outputPathIsOutsideProject": 0,
@@ -446,6 +501,17 @@
 		"initialSize": 74166,
 		"inputAbbreviatedPath": "\/bundles\/gospelcenterpage\/images\/slide_allSunday.jpg",
 		"outputAbbreviatedPath": "\/bundles\/gospelcenterpage\/images\/slide_allSunday.jpg",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
+	"\/bundles\/gospelcenterpage\/images\/teens.jpg": {
+		"fileType": 16384,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 1.56416e+06,
+		"inputAbbreviatedPath": "\/bundles\/gospelcenterpage\/images\/teens.jpg",
+		"outputAbbreviatedPath": "\/bundles\/gospelcenterpage\/images\/teens.jpg",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"processed": 0
@@ -4631,6 +4697,17 @@
 		"outputPathIsSetByUser": 0,
 		"processed": 0
 		},
+	"\/uploads\/images\/2015_02_17_118.jpeg": {
+		"fileType": 16384,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 807349,
+		"inputAbbreviatedPath": "\/uploads\/images\/2015_02_17_118.jpeg",
+		"outputAbbreviatedPath": "\/uploads\/images\/2015_02_17_118.jpeg",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
 	"\/uploads\/images\/2015_02_17_118.png": {
 		"fileType": 32768,
 		"ignore": 0,
@@ -4638,6 +4715,17 @@
 		"initialSize": 53527,
 		"inputAbbreviatedPath": "\/uploads\/images\/2015_02_17_118.png",
 		"outputAbbreviatedPath": "\/uploads\/images\/2015_02_17_118.png",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
+	"\/uploads\/images\/2015_02_17_119.jpeg": {
+		"fileType": 16384,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 545396,
+		"inputAbbreviatedPath": "\/uploads\/images\/2015_02_17_119.jpeg",
+		"outputAbbreviatedPath": "\/uploads\/images\/2015_02_17_119.jpeg",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"processed": 0

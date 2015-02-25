@@ -30,11 +30,12 @@
         <li><a target="_blank" href="http://www.gospel-diffusion.com">Gospel Diffusion</a></li>
     </ul>
 </nav>
+
 <nav class="social">
     <h1>{{ 'gc.ruban.social'|trans }}</h1>
     <ul>
-        <li><a href="">Facebook</a></li>
-        <li><a href="">Twitter</a></li>
-        <li><a href="">YouTube</a></li>
+        {% spaceless %}
+            {% include "::nav/social.html.twig" %}
+        {% endspaceless %}
     </ul>
 </nav>

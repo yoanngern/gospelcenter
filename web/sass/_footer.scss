@@ -10,38 +10,50 @@
         height: 50px;
         text-align: center;
 
-        a.icon {
-            display: inline-block;
-            height: 30px;
-            margin: 10px;
-            background-size: contain;
-            background-repeat: no-repeat;
-            background-position: center;
+        ul {
+            li {
 
-            &#facebook {
-                width: 30px;
-                background-image: url('../images/link_facebook.svg');
+                display: inline-block;
+                vertical-align: top;
 
-                &:hover {
-                    background-image: url('../images/link_facebook_hover.svg');
-                }
-            }
+                a.icon {
+                    display: inline-block;
+                    height: 30px;
+                    margin: 10px;
+                    background-size: contain;
+                    background-repeat: no-repeat;
+                    background-position: center;
 
-            &#gctv {
-                width: 64px;
-                background-image: url('../images/link_gctv.svg');
+                    text-indent: 100%;
+                    white-space: nowrap;
+                    overflow: hidden;
 
-                &:hover {
-                    background-image: url('../images/link_gctv_hover.svg');
-                }
-            }
+                    &#facebook {
+                        width: 30px;
+                        background-image: url('../images/link_facebook.svg');
 
-            &#youtube {
-                width: 70px;
-                background-image: url('../images/link_youtube.svg');
+                        &:hover {
+                            background-image: url('../images/link_facebook_hover.svg');
+                        }
+                    }
 
-                &:hover {
-                    background-image: url('../images/link_youtube_hover.svg');
+                    &#gctv {
+                        width: 64px;
+                        background-image: url('../images/link_gctv.svg');
+
+                        &:hover {
+                            background-image: url('../images/link_gctv_hover.svg');
+                        }
+                    }
+
+                    &#youtube {
+                        width: 70px;
+                        background-image: url('../images/link_youtube.svg');
+
+                        &:hover {
+                            background-image: url('../images/link_youtube_hover.svg');
+                        }
+                    }
                 }
             }
         }
