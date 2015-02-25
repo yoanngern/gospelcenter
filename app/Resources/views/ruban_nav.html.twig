@@ -31,11 +31,14 @@
     </ul>
 </nav>
 
-<nav class="social">
-    <h1>{{ 'gc.ruban.social'|trans }}</h1>
-    <ul>
-        {% spaceless %}
-            {% include "::nav/social.html.twig" %}
-        {% endspaceless %}
-    </ul>
-</nav>
+{% if center %}
+    <nav class="social">
+        <h1>{{ 'gc.ruban.social'|trans }}</h1>
+        <ul>
+            {% spaceless %}
+                {% include "::nav/social.html.twig" %}
+            {% endspaceless %}
+        </ul>
+    </nav>
+
+{% endif %}
