@@ -1,8 +1,9 @@
 {% extends "gospelcenterMediaBundle::layout.html.twig" %}
 
 {% block meta %}
-    <meta property="og:title" content="{% if video.celebration.title %}{{ video.celebration.title }}{% else %}Celebration{% endif %}"/>
+    <meta property="og:title" content="{{ video.celebration|speakers(app.request.locale) }}"/>
     <meta property="og:image" content="{{ video.celebration.image.webPath| imagine_filter('facebook_share') }}"/>
+    <meta property="og:description" content="{% if video.celebration.title %}{{ video.celebration.title }}{% else %}Célébration du {{ video.celebration.date|oneDate(app.request.locale) }}{% endif %}"/>
     {{ parent() }}
 {% endblock %}
 
