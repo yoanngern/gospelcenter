@@ -3,7 +3,8 @@
 {% block meta %}
     <meta property="og:title" content="{{ video.celebration|speakers(app.request.locale) }}"/>
     <meta property="og:image" content="{{ video.celebration.image.webPath| imagine_filter('facebook_share') }}"/>
-    <meta property="og:description" content="{% if video.celebration.title %}{{ video.celebration.title }}{% else %}Célébration du {{ video.celebration.date|oneDate(app.request.locale) }}{% endif %}"/>
+    <meta property="og:description"
+          content="{% if video.celebration.title %}{{ video.celebration.title }}{% else %}Célébration du {{ video.celebration.date|oneDate(app.request.locale) }}{% endif %}"/>
     {{ parent() }}
 {% endblock %}
 
@@ -27,10 +28,26 @@
                         <p class="function">{{ speaker.person.function }}</p>
                     {% endfor %}
 
-                    <p class="desc">{{ video.celebration.description }}</p>
+                    {% if video.celebration.description != "" %}
+                        <p class="desc">{{ video.celebration.description }}</p>
+                    {% endif %}
+
+                    {% set url = "http://gospel-center.tv" ~ path(app.request.attributes.get('_route'), app.request.attributes.get('_route_params')) %}
+
+                    <section class="social">
+                        <ul>
+                            <li>
+                                <a id="facebook" target="_blank" class="icon"
+                                   href="https://www.facebook.com/sharer/sharer.php?u={{ url|url_encode }}">Facebook</a>
+                            </li>
+                        </ul>
+
+                    </section>
                 </section>
                 {% if videos|length %}
                     <section class="right">
+
+
                         <h2><span>Du même orateur</span></h2>
 
                         {% for video in videos %}
@@ -62,6 +79,7 @@
                             </a>
                         {% endfor %}
                         <div class="clear"></div>
+
                     </section>
                 {% endif %}
             {% endspaceless %}

@@ -527,6 +527,45 @@
                         letter-spacing: 1px;
                     }
 
+                    section.social {
+                        ul {
+
+                            li {
+                                display: inline-block;
+                                vertical-align: top;
+
+                                &:first-of-type {
+                                    a.icon {
+                                        margin-left: 0;
+                                    }
+                                }
+
+
+                                a.icon {
+                                    display: inline-block;
+                                    height: 30px;
+                                    margin: 10px;
+                                    background-size: contain;
+                                    background-repeat: no-repeat;
+                                    background-position: center;
+
+                                    text-indent: 100%;
+                                    white-space: nowrap;
+                                    overflow: hidden;
+
+                                    &#facebook {
+                                        width: 30px;
+                                        background-image: url('../images/link_facebook.svg');
+
+                                        &:hover {
+                                            background-image: url('../images/link_facebook_hover.svg');
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+
                     & > h3 {
                         text-transform: uppercase;
                         font-family: $font-bold;
@@ -669,7 +708,6 @@
 
                 a {
                     width: 20%;
-
 
                     div.container {
                         margin: 0 auto 30px;
@@ -822,7 +860,6 @@
             }
         }
 
-
         #container {
             section.wall {
                 margin-bottom: -1px;
@@ -916,7 +953,6 @@
         }
     }
 }
-
 
 @media only screen and (max-width: 350px) {
     #page {
