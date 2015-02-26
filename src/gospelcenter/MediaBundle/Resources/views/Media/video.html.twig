@@ -3,6 +3,7 @@
 {% block meta %}
     {{ parent() }}
     <meta property="og:title" content="{% if video.celebration.title %}{{ video.celebration.title }}{% else %}Celebration{% endif %}"/>
+    <meta property="og:image" content="{{ video.celebration.image.webPath| imagine_filter('tv_wall_2x') }}"/>
 {% endblock %}
 
 {% block body %}
