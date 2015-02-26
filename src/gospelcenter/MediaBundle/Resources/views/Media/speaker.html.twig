@@ -1,5 +1,11 @@
 {% extends "gospelcenterMediaBundle::layout.html.twig" %}
 
+{% block meta %}
+    {{ parent() }}
+    <meta property="og:title" content="Les célébrations avec {{ speaker.person.firstname }} {{ speaker.person.lastname }}"/>
+    <meta property="og:image" content="{{ speaker.person.image.webPath| imagine_filter('facebook_share') }}"/>
+{% endblock %}
+
 {% block body %}
     {% spaceless %}
         <section class="wall">
