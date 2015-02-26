@@ -2,6 +2,11 @@
 
 {% block title %}{{ parent() }} - {{ 'gc.title.contact'|trans }}{% endblock %}
 
+{% block meta %}
+    {{ parent() }}
+    <meta property="og:title" content="{{ 'gc.title.contact'|trans }}"/>
+{% endblock %}
+
 {% block body %}
 
     <h1 class="titlePage"><span>{{ 'gc.title.contact'|trans }}</span></h1>

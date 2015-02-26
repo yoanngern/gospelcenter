@@ -1,5 +1,10 @@
 {% extends "gospelcenterMediaBundle::layout.html.twig" %}
 
+{% block meta %}
+    {{ parent() }}
+    <meta property="og:title" content="{% if video.celebration.title %}{{ video.celebration.title }}{% else %}Celebration{% endif %}"/>
+{% endblock %}
+
 {% block body %}
     <section class="video">
         <section class="player">

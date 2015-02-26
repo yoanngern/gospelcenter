@@ -992,6 +992,28 @@
 		"outputPathIsSetByUser": 0,
 		"processed": 0
 		},
+	"\/images\/FBshare_annecy.jpg": {
+		"fileType": 16384,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 696308,
+		"inputAbbreviatedPath": "\/images\/FBshare_annecy.jpg",
+		"outputAbbreviatedPath": "\/images\/FBshare_annecy.jpg",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
+	"\/images\/FBshare_lausanne.jpg": {
+		"fileType": 16384,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 677551,
+		"inputAbbreviatedPath": "\/images\/FBshare_lausanne.jpg",
+		"outputAbbreviatedPath": "\/images\/FBshare_lausanne.jpg",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
 	"\/images\/get_nav.png": {
 		"fileType": 32768,
 		"ignore": 0,

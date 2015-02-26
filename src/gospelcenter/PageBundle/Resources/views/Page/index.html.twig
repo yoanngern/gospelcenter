@@ -4,6 +4,11 @@
     {{ parent() }} - {{ article.title }}
 {% endblock %}
 
+{% block meta %}
+    {{ parent() }}
+    <meta property="og:title" content="{{ article.title }}"/>
+{% endblock %}
+
 {% block body %}
     <h1 class="titlePage"><span>{{ article.title }}</span></h1>
     <h2 class="slogan">{{ article.slogan }}</h2>

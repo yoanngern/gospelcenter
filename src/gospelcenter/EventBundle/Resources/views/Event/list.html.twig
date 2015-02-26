@@ -2,7 +2,10 @@
 
 {% block title %}{{ parent() }} - {{ 'gc.title.events'|trans }}{% endblock %}
 
-
+{% block meta %}
+    {{ parent() }}
+    <meta property="og:title" content="{{ 'gc.title.events'|trans }}"/>
+{% endblock %}
 
 {% block body %}
 

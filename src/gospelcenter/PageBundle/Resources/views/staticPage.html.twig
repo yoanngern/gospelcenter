@@ -16,4 +16,9 @@
 
 {% set title = 'gc.title.' ~ template %}
 
+{% block meta %}
+    {{ parent() }}
+    <meta property="og:title" content="{{ title|trans }}"/>
+{% endblock %}
+
 {% block title %}{{ parent() }} - {{ title|trans }}{% endblock %}

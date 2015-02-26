@@ -8,6 +8,11 @@
 
 {% block title %}{{ parent() }} - {{ event.title }}{% endblock %}
 
+{% block meta %}
+    {{ parent() }}
+    <meta property="og:title" content="{{ event.title }}"/>
+{% endblock %}
+
 {% block local_header %}{% endblock %}
 {% block classPage %}{{ parent() }} simpleHeader{% endblock %}
 
