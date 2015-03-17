@@ -9,18 +9,18 @@
 {% block adminTitle %}<h1>Delete a page</h1>{% endblock %}
 
 {% block adminBack %}
-    <a class="back" href="{{ path('gospelcenterAdmin_pages', {'center': center.ref}) }}">Pages</a>
+    <a class="back" href="{{ path('gospelcenterAdmin_pages', {'center': center.ref, 'domain': center.domain}) }}">Pages</a>
 {% endblock %}
 
 {% block adminTools %}
-    <a href="{{ path('gospelcenterAdmin_pages', {'center': center.ref}) }}">Cancel</a>
+    <a href="{{ path('gospelcenterAdmin_pages', {'center': center.ref, 'domain': center.domain}) }}">Cancel</a>
 {% endblock %}
 
 
 {% block adminBody %}
 
     <form class="delete"
-          action="{{ path('gospelcenterAdmin_pages_delete', {'center': center.ref, 'page': objPage.id}) }}"
+          action="{{ path('gospelcenterAdmin_pages_delete', {'center': center.ref, 'domain': center.domain, 'page': objPage.id}) }}"
           method="post" {{ form_enctype(form) }}>
 
         <p>Are you sure you want to delete the page{% if objPage.slides|length %} and slides{% endif %}:</p>
@@ -41,7 +41,7 @@
 
         <input type="submit" class="buttonLink" value="Yes"/>
 
-        <a class="buttonLink" href="{{ path('gospelcenterAdmin_pages', {'center': center.ref}) }}">No</a>
+        <a class="buttonLink" href="{{ path('gospelcenterAdmin_pages', {'center': center.ref, 'domain': center.domain}) }}">No</a>
 
         {{ form_rest(form) }}
 

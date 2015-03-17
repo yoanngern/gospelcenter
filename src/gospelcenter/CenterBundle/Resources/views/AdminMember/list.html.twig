@@ -15,7 +15,7 @@
         <tbody>
         {% for member in members %}
 
-            {% set link = path('gospelcenterAdmin_persons_edit', {'person': member.person.id, 'center': center.ref}) %}
+            {% set link = path('gospelcenterAdmin_persons_edit', {'person': member.person.id, 'center': center.ref, 'domain': center.domain}) %}
 
             <tr>
                 <td class="em">

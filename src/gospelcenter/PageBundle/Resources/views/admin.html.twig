@@ -1,6 +1,6 @@
 {% extends "::adminLocalNew.html.twig" %}
 
 {% block adminSubNav %}
-    <li><a href="{{ path('gospelcenterAdmin_pages', {'center': center.ref}) }}" {% if tab == 'pages' %}class="current focus"{% endif %}>{{ 'gc.admin.nav.pages'|trans }}</a></li>
-    <li><a href="{{ path('gospelcenterAdmin_slides', {'center': center.ref}) }}" {% if tab == 'slides' %}class="current focus"{% endif %}>{{ 'gc.admin.nav.slides'|trans }}</a></li>
+    <li><a href="{{ path('gospelcenterAdmin_pages', {'center': center.ref, 'domain': center.domain}) }}" {% if tab == 'pages' %}class="current focus"{% endif %}>{{ 'gc.admin.nav.pages'|trans }}</a></li>
+    <li><a href="{{ path('gospelcenterAdmin_slides', {'center': center.ref, 'domain': center.domain}) }}" {% if tab == 'slides' %}class="current focus"{% endif %}>{{ 'gc.admin.nav.slides'|trans }}</a></li>
 {% endblock %}

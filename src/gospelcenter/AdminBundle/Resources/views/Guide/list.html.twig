@@ -28,7 +28,7 @@
 
         <p>Les célébrations sont misent en avant sur le site, c'est la raison pour laquelle il est primordiale que
             les célébrations soit en permanence à jour. Dans la rubrique <a target="_blank"
-                                                                            href="{{ path('gospelcenterAdmin_celebrations', {'center': center.ref}) }}">Célébrations</a>,
+                                                                            href="{{ path('gospelcenterAdmin_celebrations', {'center': center.ref, 'domain': center.domain}) }}">Célébrations</a>,
             vous pourrez créer, gérer et archiver vos célébrations. Cet outils n'est pas dédié uniquement à la
             publication sur le site mais il offre un outil de gestion de vos célébrations.</p>
 
@@ -36,7 +36,7 @@
 
         <p>Pour ce faire, rien de plus compliqué. Vous trouverez un lien d'ajout dans la partie supérieure de la
             rubrique <a target="_blank"
-                        href="{{ path('gospelcenterAdmin_celebrations', {'center': center.ref}) }}">Célébrations</a>.
+                        href="{{ path('gospelcenterAdmin_celebrations', {'center': center.ref, 'domain': center.domain}) }}">Célébrations</a>.
         </p>
 
         <p>Une fois que vous vous trouvez sur la page d'ajout, vous devez rentrer les informations (obligatoires)
@@ -110,13 +110,13 @@
         <h1>Gestion des events</h1>
 
         <p>Dans la rubrique <a target="_blank"
-                               href="{{ path('gospelcenterAdmin_events', {'center': center.ref}) }}">Events</a>,
+                               href="{{ path('gospelcenterAdmin_events', {'center': center.ref, 'domain': center.domain}) }}">Events</a>,
             vous pourrez gérer tous les événements de votre centre.</p>
 
         <h2 class="underline"><span>Créer un event</span></h2>
 
         <p>Afin de créer un événement, vous pouvez vous rendre dans la rubrique <a target="_blank"
-                                                                                   href="{{ path('gospelcenterAdmin_events', {'center': center.ref}) }}">Events</a>.
+                                                                                   href="{{ path('gospelcenterAdmin_events', {'center': center.ref, 'domain': center.domain}) }}">Events</a>.
             Vous trouverez ensuite un lien d'ajout dans la partie supérieure de la page.</p>
 
         <p>Une fois que vous vous trouvez sur la page d'ajout, vous devez rentrer les informations (obligatoires)
@@ -160,14 +160,14 @@
         <h1>Gestion des contacts</h1>
 
         <p>Dans la rubrique <a target="_blank"
-                               href="{{ path('gospelcenterAdmin_persons', {'center': center.ref}) }}">Contacts</a>,
+                               href="{{ path('gospelcenterAdmin_persons', {'center': center.ref, 'domain': center.domain}) }}">Contacts</a>,
             vous pourrez gérer tous les contacts de votre centre.</p>
 
         <h2 class="underline"><span>Créer un contact</span></h2>
 
         <p>Cette plateforme, vous propose une gestion de votre carnet d'adresses. Vous pourrez donc ajouter, à tout
             moment, un nouveau contact. Pour cela, vous pouvez vous rendre dans la rubrique <a target="_blank"
-                                                                                               href="{{ path('gospelcenterAdmin_persons', {'center': center.ref}) }}">Contacts</a>
+                                                                                               href="{{ path('gospelcenterAdmin_persons', {'center': center.ref, 'domain': center.domain}) }}">Contacts</a>
             et ajouter un nouveau contact à l'aide du lien d'ajout dans la partie supérieure droite.</p>
 
         <p>Afin de pouvoir ajouter le contact, vous devrez remplir les informations (obligatoires) suivantes :</p>
@@ -181,7 +181,7 @@
         <h2 class="underline"><span>Orateurs</span></h2>
 
         <p>Afin de créer une célébration, vous avez besoin d'orateurs. Dans la rubrique <a target="_blank"
-                                                                                           href="{{ path('gospelcenterAdmin_persons', {'center': center.ref}) }}">Contacts</a>,
+                                                                                           href="{{ path('gospelcenterAdmin_persons', {'center': center.ref, 'domain': center.domain}) }}">Contacts</a>,
             vous pourrez créer un contact et sélectionner le champ "est orateur". Grâce à cette valeur, le contact
             se retrouvera dans la liste des orateurs qui se trouve dans le formulaire d'ajout d'une célébration.</p>
 
@@ -210,7 +210,7 @@
         <h1>Gestion des pages</h1>
 
         <p>Dans la rubrique <a target="_blank"
-                               href="{{ path('gospelcenterAdmin_pages', {'center': center.ref}) }}">Pages</a>,
+                               href="{{ path('gospelcenterAdmin_pages', {'center': center.ref, 'domain': center.domain}) }}">Pages</a>,
             vous pourrez gérer certaines pages de votre centre.</p>
 
         <h2 class="underline"><span>Créer une page</span></h2>
@@ -239,13 +239,13 @@
         <h1>Gestion des slides</h1>
 
         <p>Dans la rubrique <a target="_blank"
-                               href="{{ path('gospelcenterAdmin_slides', {'center': center.ref}) }}">Slides</a>,
+                               href="{{ path('gospelcenterAdmin_slides', {'center': center.ref, 'domain': center.domain}) }}">Slides</a>,
             vous pourrez gérer les slides qui se trouve dans certaines pages.</p>
 
         <h2 class="underline"><span>Créer un slide</span></h2>
 
         <p>Chaque page (générée par la rubriques <a target="_blank"
-                                                    href="{{ path('gospelcenterAdmin_pages', {'center': center.ref}) }}">Pages</a>)
+                                                    href="{{ path('gospelcenterAdmin_pages', {'center': center.ref, 'domain': center.domain}) }}">Pages</a>)
             peut contenir une infinité de slides.</p>
 
         <p>Lorsque vous créez un slide, vous devez remplir les informations (obligatoires) suivantes :</p>
@@ -275,7 +275,7 @@
         <h1>Gestion des pubs</h1>
 
         <p>Dans la rubrique <a target="_blank"
-                               href="{{ path('gospelcenterAdmin_ads', {'center': center.ref}) }}">Pubs</a>,
+                               href="{{ path('gospelcenterAdmin_ads', {'center': center.ref, 'domain': center.domain}) }}">Pubs</a>,
             vous pourrez gérer les pubs qui se trouve .</p>
 
         <p>Si vous avez quelque chose à communiquer d'important, c'est ici que ça se passe. La Home page offre un espace
@@ -285,7 +285,7 @@
 
         <p>Vous trouverez un lien d'ajout dans la partie supérieure de la
             rubrique <a target="_blank"
-                        href="{{ path('gospelcenterAdmin_ads', {'center': center.ref}) }}">Pubs</a>.
+                        href="{{ path('gospelcenterAdmin_ads', {'center': center.ref, 'domain': center.domain}) }}">Pubs</a>.
         </p>
 
         <p>Lorsque vous créez une pub, vous devez remplir les informations (obligatoires) suivantes :</p>

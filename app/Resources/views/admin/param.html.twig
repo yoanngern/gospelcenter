@@ -12,14 +12,14 @@
         <ul>
 
             {% if admin %}
-                {% if local %}
+                {% if local and center %}
                     {% include "::admin/paramAdminLocal.html.twig" %}
                 {% else %}
                     {% include "::admin/paramAdminGlobal.html.twig" %}
                 {% endif %}
 
             {% else %}
-                {% if local %}
+                {% if local and center %}
                     {% include "::admin/paramLocal.html.twig" %}
                 {% else %}
                     {% include "::admin/paramGlobal.html.twig" %}

@@ -9,18 +9,18 @@
 {% block adminTitle %}<h1>Delete a location</h1>{% endblock %}
 
 {% block adminBack %}
-    <a class="back" href="{{ path('gospelcenterAdmin_locations', {'center': center.ref}) }}">Locations</a>
+    <a class="back" href="{{ path('gospelcenterAdmin_locations', {'center': center.ref, 'domain': center.domain}) }}">Locations</a>
 {% endblock %}
 
 {% block adminTools %}
-    <a href="{{ path('gospelcenterAdmin_locations', {'center': center.ref}) }}">Cancel</a>
+    <a href="{{ path('gospelcenterAdmin_locations', {'center': center.ref, 'domain': center.domain}) }}">Cancel</a>
 {% endblock %}
 
 
 {% block adminBody %}
 
     <form class="delete"
-          action="{{ path('gospelcenterAdmin_locations_delete', {'center': center.ref, 'location': location.id}) }}"
+          action="{{ path('gospelcenterAdmin_locations_delete', {'center': center.ref, 'domain': center.domain, 'location': location.id}) }}"
           method="post" {{ form_enctype(form) }}>
 
         <p>Are you sure you want to delete the location:</p>
@@ -39,7 +39,7 @@
         <input type="submit" class="buttonLink" value="Yes"/>
 
         <a class="buttonLink"
-           href="{{ path('gospelcenterAdmin_locations', {'center': center.ref}) }}">No</a>
+           href="{{ path('gospelcenterAdmin_locations', {'center': center.ref, 'domain': center.domain}) }}">No</a>
 
         {{ form_rest(form) }}
 

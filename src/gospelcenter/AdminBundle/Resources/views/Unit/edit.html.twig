@@ -9,18 +9,18 @@
 {% block adminTitle %}<h1>Edit a unit</h1>{% endblock %}
 
 {% block adminTools %}
-    <a href="{{ path('gospelcenterAdmin_units_delete', {'center': center.ref, 'unit': unit.id}) }}"
+    <a href="{{ path('gospelcenterAdmin_units_delete', {'center': center.ref, 'domain': center.domain, 'unit': unit.id}) }}"
        class="delete">Delete</a>
-    <a href="{{ path('gospelcenterAdmin_units', {'center': center.ref}) }}">Cancel</a>
+    <a href="{{ path('gospelcenterAdmin_units', {'center': center.ref, 'domain': center.domain}) }}">Cancel</a>
 {% endblock %}
 
 {% block adminBack %}
-    <a class="back" href="{{ path('gospelcenterAdmin_units', {'center': center.ref}) }}">Units</a>
+    <a class="back" href="{{ path('gospelcenterAdmin_units', {'center': center.ref, 'domain': center.domain}) }}">Units</a>
 {% endblock %}
 
 {% block adminBody %}
 
-    <form novalidate class="unit" action="{{ path('gospelcenterAdmin_units_edit', {'center': center.ref, 'unit': unit.id}) }}"
+    <form novalidate class="unit" action="{{ path('gospelcenterAdmin_units_edit', {'center': center.ref, 'domain': center.domain, 'unit': unit.id}) }}"
           method="post" {{ form_enctype(form) }}>
 
         {{ form_widget(form.name) }}

@@ -30,6 +30,13 @@ class Center
      * @Assert\NotBlank(message="Please enter a name.")
      */
     private $name;
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="online", type="boolean")
+     */
+    private $online;
     
     /**
      * @var \DateTime
@@ -240,6 +247,17 @@ class Center
     
         return $this;
     }
+
+    public function getDomain()
+    {
+        if($this->online) {
+            $domain = "org";
+        } else {
+            $domain = "gospel-center.org";
+        }
+
+        return $domain;
+    }
     
     /*************************************/
     /**** Getter setter auto generate ****/
@@ -290,6 +308,29 @@ class Center
     public function getName()
     {
         return $this->name;
+    }
+
+    /**
+     * Set online
+     *
+     * @param string $online
+     * @return Center
+     */
+    public function setOnline($online)
+    {
+        $this->online = $online;
+
+        return $this;
+    }
+
+    /**
+     * Get online
+     *
+     * @return string
+     */
+    public function getOnline()
+    {
+        return $this->online;
     }
 
     /**

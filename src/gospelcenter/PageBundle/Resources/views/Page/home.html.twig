@@ -13,7 +13,7 @@
 {% block title %}{{ parent() }} {{ center.name }}{% endblock %}
 
 {% block header_logo %}
-    <a id="logo" href="{{ path('gospelcenterPage_home', {'center': center.ref}) }}"></a>
+    <a id="logo" href="{{ path('gospelcenterPage_home', {'center': center.ref, 'domain': center.domain}) }}"></a>
 {% endblock %}
 
 {% block meta %}
@@ -48,7 +48,7 @@
         </section>
     </nav>
     <section class="center">
-        <a class="logo" href="{{ path('gospelcenterPage_home', {'center': center.ref}) }}">
+        <a class="logo" href="{{ path('gospelcenterPage_home', {'center': center.ref, 'domain': center.domain}) }}">
             {% if center.ref == 'lausanne' %}
                 <img src="{{ asset('images/visuGCLausanne.png') }}"
                      srcset="{{ asset('images/visuGCLausanne_2x.png') }} 2x">
@@ -129,7 +129,7 @@
 
                         {% set event = date.event %}
 
-                        <a href="{{ path('gospelcenterEvents_event', {'center': center.ref, 'event': event.id}) }}">
+                        <a href="{{ path('gospelcenterEvents_event', {'center': center.ref, 'domain': center.domain, 'event': event.id}) }}">
                             <div class="photo"
                                     {% if event.picture %}
                                 style="background-image: url('{{ event.picture.webPath| imagine_filter('media_list_low') }}')"
@@ -151,7 +151,7 @@
 
                     {% endfor %}
 
-                    <a class="more" href="{{ path('gospelcenterEvents_list', {'center': center.ref}) }}">
+                    <a class="more" href="{{ path('gospelcenterEvents_list', {'center': center.ref, 'domain': center.domain}) }}">
                         <div class="photo">
                             <span>{{ 'gc.page.home.moreEvents'|trans }}</span>
                         </div>

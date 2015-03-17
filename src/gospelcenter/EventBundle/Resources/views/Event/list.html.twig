@@ -19,7 +19,7 @@
 
                 {% spaceless %}
                     {% for event in events %}
-                        <a href="{{ path('gospelcenterEvents_event', {'event': event.id, 'center': center.ref}) }}"
+                        <a href="{{ path('gospelcenterEvents_event', {'event': event.id, 'center': center.ref, 'domain': center.domain}) }}"
                            class="events">
                             <section class="picture">
                                 {% if event.picture %}
@@ -67,7 +67,7 @@
 
                     {% set event = date.event %}
 
-                    <a href="{{ path('gospelcenterEvents_event', {'event': event.id, 'center': center.ref}) }}"
+                    <a href="{{ path('gospelcenterEvents_event', {'event': event.id, 'center': center.ref, 'domain': center.domain}) }}"
                        class="date">
                         <section class="date">
                             <time class="day">{{ date|datesShort(app.request.locale) }}</time>
@@ -90,7 +90,7 @@
 
                     {% set celebration = date.celebration %}
 
-                    <a href="{{ path('gospelcenterCelebrations_list', {'center': center.ref}) }}" class="date">
+                    <a href="{{ path('gospelcenterCelebrations_list', {'center': center.ref, 'domain': center.domain}) }}" class="date">
                         <section class="date">
                             <time class="day">{{ date|datesShort(app.request.locale) }}</time>
                             <time class="date">{{ date|times(app.request.locale) }}</time>

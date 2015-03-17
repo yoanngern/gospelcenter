@@ -9,18 +9,18 @@
 {% block adminTitle %}<h1>Delete an image</h1>{% endblock %}
 
 {% block adminBack %}
-    <a class="back" href="{{ path('gospelcenterAdmin_images', {'center': center.ref}) }}">Images</a>
+    <a class="back" href="{{ path('gospelcenterAdmin_images', {'center': center.ref, 'domain': center.domain}) }}">Images</a>
 {% endblock %}
 
 {% block adminTools %}
-    <a href="{{ path('gospelcenterAdmin_images', {'center': center.ref}) }}">Cancel</a>
+    <a href="{{ path('gospelcenterAdmin_images', {'center': center.ref, 'domain': center.domain}) }}">Cancel</a>
 {% endblock %}
 
 
 {% block adminBody %}
 
     <form class="delete"
-          action="{{ path('gospelcenterAdmin_images_delete', {'center': center.ref, 'image': image.id}) }}"
+          action="{{ path('gospelcenterAdmin_images_delete', {'center': center.ref, 'domain': center.domain, 'image': image.id}) }}"
           method="post" {{ form_enctype(form) }}>
 
         <p>Are you sure you want to delete the image:</p>
@@ -31,7 +31,7 @@
 
         <input type="submit" class="buttonLink" value="Yes"/>
 
-        <a class="buttonLink" href="{{ path('gospelcenterAdmin_images', {'center': center.ref}) }}">No</a>
+        <a class="buttonLink" href="{{ path('gospelcenterAdmin_images', {'center': center.ref, 'domain': center.domain}) }}">No</a>
 
         {{ form_rest(form) }}
 

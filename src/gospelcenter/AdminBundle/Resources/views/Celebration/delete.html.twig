@@ -9,18 +9,18 @@
 {% block adminTitle %}<h1>Delete a celebration</h1>{% endblock %}
 
 {% block adminBack %}
-    <a class="back" href="{{ path('gospelcenterAdmin_celebrations', {'center': center.ref}) }}">Celebrations</a>
+    <a class="back" href="{{ path('gospelcenterAdmin_celebrations', {'center': center.ref, 'domain': center.domain}) }}">Celebrations</a>
 {% endblock %}
 
 {% block adminTools %}
-    <a href="{{ path('gospelcenterAdmin_celebrations', {'center': center.ref}) }}">Cancel</a>
+    <a href="{{ path('gospelcenterAdmin_celebrations', {'center': center.ref, 'domain': center.domain}) }}">Cancel</a>
 {% endblock %}
 
 {% block adminBody %}
     <h1>Delete a celebration</h1>
 
     <form class="delete"
-          action="{{ path('gospelcenterAdmin_celebrations_delete', {'center': center.ref, 'celebration': celebration.id}) }}"
+          action="{{ path('gospelcenterAdmin_celebrations_delete', {'center': center.ref, 'domain': center.domain, 'celebration': celebration.id}) }}"
           method="post" {{ form_enctype(form) }}>
 
         <p>Are you sure you want to delete the celebration:</p>
@@ -32,7 +32,7 @@
 
         <input type="submit" class="buttonLink" value="Yes"/>
 
-        <a class="buttonLink" href="{{ path('gospelcenterAdmin_celebrations', {'center': center.ref}) }}">No</a>
+        <a class="buttonLink" href="{{ path('gospelcenterAdmin_celebrations', {'center': center.ref, 'domain': center.domain}) }}">No</a>
 
         {{ form_rest(form) }}
 

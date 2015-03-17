@@ -8,7 +8,7 @@
 {% block classPage %}local{% endblock %}
 
 {% block header_logo %}
-    <a id="logo" href="{{ path('gospelcenterPage_home', {'center': center.ref}) }}"></a>
+    <a id="logo" href="{{ path('gospelcenterPage_home', {'center': center.ref, 'domain': center.domain}) }}"></a>
 {% endblock %}
 
 {% block meta %}
@@ -41,7 +41,7 @@
         </section>
     </nav>
     <section class="center">
-        <a class="logo" href="{{ path('gospelcenterPage_home', {'center': center.ref}) }}">
+        <a class="logo" href="{{ path('gospelcenterPage_home', {'center': center.ref, 'domain': center.domain}) }}">
             {% if center.ref == 'lausanne' %}
                 <img src="{{ asset('images/LogoGCLausanne.svg') }}">
             {% elseif center.ref == 'montreux' %}

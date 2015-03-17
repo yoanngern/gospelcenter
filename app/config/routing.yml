@@ -24,5 +24,38 @@ fos_user_group:
 _liip_imagine:
     resource: "@LiipImagineBundle/Resources/config/routing.xml"
 
-gospelcenter_center:
-    resource: "@gospelcenterCenterBundle/Resources/config/routing.yml"
+#gospelcenter_center:
+#    resource: "@gospelcenterCenterBundle/Resources/config/routing.yml"
+
+gospelcenterAPI:
+    resource: "@gospelcenterAPIBundle/Resources/config/routing.yml"
+    prefix:   /api
+
+gospelcenterGlobal:
+    resource: "@gospelcenterCenterBundle/Resources/config/routing_global.yml"
+    host: "gospel-center.org"
+
+#gospelcenterLocal:
+#    resource: "@gospelcenterCenterBundle/Resources/config/routing_local.yml"
+#    host: "gc-{center}.org"
+#    requirements:
+#        center: lausanne|annecy|montreux|jura
+
+gospelcenterLocal:
+    resource: "@gospelcenterCenterBundle/Resources/config/routing_local.yml"
+    host:     "gc-{center}.{domain}"
+    requirements:
+        domain: org|gospel-center\.org
+        center: lausanne|annecy|montreux|jura
+    defaults:
+        domain: org
+
+#_gospelcenterLocalBeta:
+#    resource: "@gospelcenterCenterBundle/Resources/config/routing_local.yml"
+#    host: "beta.gospel-center.org/{center}"
+#    requirements:
+#        center: lausanne|annecy|montreux|jura
+
+gospelcenterTV:
+    resource: "@gospelcenterMediaBundle/Resources/config/routing.yml"
+    host: "gospel-center.tv"

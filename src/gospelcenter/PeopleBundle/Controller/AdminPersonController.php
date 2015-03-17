@@ -73,7 +73,7 @@ class AdminPersonController extends Controller
                 $previousUrl = $this->generateUrl(
                     'gospelcenterAdmin_persons',
                     array(
-                        'center' => $center->getRef()
+                        'center' => $center->getRef(), 'domain' => $center->getDomain()
                     )
                 );
             }
@@ -168,7 +168,7 @@ class AdminPersonController extends Controller
                 $previousUrl = $this->generateUrl(
                     'gospelcenterAdmin_persons',
                     array(
-                        'center' => $center->getRef()
+                        'center' => $center->getRef(), 'domain' => $center->getDomain()
                     )
                 );
             }
@@ -236,7 +236,7 @@ class AdminPersonController extends Controller
                     $this->generateUrl(
                         'gospelcenterAdmin_persons',
                         array(
-                            'center' => $center->getRef()
+                            'center' => $center->getRef(), 'domain' => $center->getDomain()
                         )
                     )
                 );

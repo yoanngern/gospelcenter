@@ -16,16 +16,16 @@
 
     <ul class="adminTitle">
         <li {% if tab == 'nextEvents' %}class="current"{% endif %}>
-            <a href="{{ path('gospelcenterAdmin_events', {'center': center.ref}) }}">{{ 'gc.admin.title.upcoming_events'|trans }}</a>
+            <a href="{{ path('gospelcenterAdmin_events', {'center': center.ref, 'domain': center.domain}) }}">{{ 'gc.admin.title.upcoming_events'|trans }}</a>
         </li>
         <li {% if tab == 'pastEvents' %}class="current"{% endif %}>
-            <a href="{{ path('gospelcenterAdmin_events_past', {'center': center.ref}) }}">{{ 'gc.admin.title.past_events'|trans }}</a>
+            <a href="{{ path('gospelcenterAdmin_events_past', {'center': center.ref, 'domain': center.domain}) }}">{{ 'gc.admin.title.past_events'|trans }}</a>
         </li>
     </ul>
 {% endblock %}
 
 {% block adminTools %}
-    <a href="{{ path('gospelcenterAdmin_events_add', {'center': center.ref}) }}" class="add">{{ 'gc.admin.events.add'|trans }}</a>
+    <a href="{{ path('gospelcenterAdmin_events_add', {'center': center.ref, 'domain': center.domain}) }}" class="add">{{ 'gc.admin.events.add'|trans }}</a>
 {% endblock %}
 
 {% block adminListBody %}
@@ -42,7 +42,7 @@
         <tbody>
         {% for event in events %}
 
-            {% set link = path('gospelcenterAdmin_events_edit', {'event': event.id, 'center': center.ref}) %}
+            {% set link = path('gospelcenterAdmin_events_edit', {'event': event.id, 'center': center.ref, 'domain': center.domain}) %}
 
             {% set date = "" %}
             {% set hours = "" %}

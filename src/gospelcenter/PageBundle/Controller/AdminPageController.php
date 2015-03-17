@@ -69,7 +69,7 @@ class AdminPageController extends Controller {
                 $this->get('session')->getFlashBag()->add('info', 'The page has been added.');
                 
                 return $this->redirect( $this->generateUrl('gospelcenterAdmin_pages', array(
-                    'center' => $center->getRef()
+                    'center' => $center->getRef(), 'domain' => $center->getDomain()
                 )));
             }
         }
@@ -112,7 +112,7 @@ class AdminPageController extends Controller {
                 $this->get('session')->getFlashBag()->add('info', 'The page has been edited.');
                 
                 return $this->redirect( $this->generateUrl('gospelcenterAdmin_pages', array(
-                    'center' => $center->getRef()
+                    'center' => $center->getRef(), 'domain' => $center->getDomain()
                 )));
             }
         }
@@ -153,7 +153,7 @@ class AdminPageController extends Controller {
                 $this->get('session')->getFlashBag()->add('info', 'Page deleted.');
         
                 return $this->redirect( $this->generateUrl('gospelcenterAdmin_pages', array(
-                    'center' => $center->getRef()
+                    'center' => $center->getRef(), 'domain' => $center->getDomain()
                 )));
             }
         }

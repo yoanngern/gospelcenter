@@ -14,12 +14,12 @@
 {% block adminTitle %}<h1>Add an image</h1>{% endblock %}
 
 {% block adminBack %}
-    <a class="back" href="{{ path('gospelcenterAdmin_images', {'center': center.ref}) }}">Images</a>
+    <a class="back" href="{{ path('gospelcenterAdmin_images', {'center': center.ref, 'domain': center.domain}) }}">Images</a>
 {% endblock %}
 
 {% block adminBody %}
 
-    <form novalidate class="image" action="{{ path('gospelcenterAdmin_images_add', {'center': center.ref}) }}" method="post" {{ form_enctype(form) }}>
+    <form novalidate class="image" action="{{ path('gospelcenterAdmin_images_add', {'center': center.ref, 'domain': center.domain}) }}" method="post" {{ form_enctype(form) }}>
 
         {{ form_widget(form.file) }}
         {{ form_errors(form.file) }}

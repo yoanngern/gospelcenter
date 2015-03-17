@@ -7,7 +7,7 @@
 
             {% if center.ref == "lausanne" %}
                 <li><a target="_blank" id="gctv" class="icon"
-                       href="{{ path('gospelcenterMedia_center', {'center': center.ref}) }}">Gospel Center TV</a></li>
+                       href="{{ path('gospelcenterMedia_center', {'center': center.ref, 'domain': center.domain}) }}">Gospel Center TV</a></li>
             {% endif %}
         </ul>
     </section>
@@ -26,7 +26,7 @@
                 {% spaceless %}
                     {% include "::nav/local.html.twig" %}
                     <li>
-                        <a href="{{ path('gospelcenterPage_default', {'center': center.ref, 'page': 'give'}) }}">{{ 'gc.nav.give'|trans }}</a>
+                        <a href="{{ path('gospelcenterPage_default', {'center': center.ref, 'domain': center.domain, 'page': 'give'}) }}">{{ 'gc.nav.give'|trans }}</a>
                     </li>
                 {% endspaceless %}
             </ul>

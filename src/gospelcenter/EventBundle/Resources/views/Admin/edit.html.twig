@@ -17,20 +17,20 @@
 {% block adminTitle %}<h1>{{ 'gc.admin.events.edit'|trans }}</h1>{% endblock %}
 
 {% block adminBack %}
-    <a class="back" href="{{ path('gospelcenterAdmin_events', {'center': center.ref}) }}">Events</a>
+    <a class="back" href="{{ path('gospelcenterAdmin_events', {'center': center.ref, 'domain': center.domain}) }}">Events</a>
 {% endblock %}
 
 {% block adminTools %}
-    <a href="{{ path('gospelcenterAdmin_events_delete', {'center': center.ref, 'event': event.id}) }}"
+    <a href="{{ path('gospelcenterAdmin_events_delete', {'center': center.ref, 'domain': center.domain, 'event': event.id}) }}"
        class="delete">Delete</a>
-    <a href="{{ path('gospelcenterAdmin_events', {'center': center.ref}) }}">Cancel</a>
+    <a href="{{ path('gospelcenterAdmin_events', {'center': center.ref, 'domain': center.domain}) }}">Cancel</a>
 {% endblock %}
 
 {% form_theme form 'gospelcenterDateBundle:Form:datetime.html.twig' %}
 
 {% block adminBody %}
 
-    <form novalidate class="event" action="{{ path('gospelcenterAdmin_events_edit', {'center': center.ref, 'event': event.id}) }}"
+    <form novalidate class="event" action="{{ path('gospelcenterAdmin_events_edit', {'center': center.ref, 'domain': center.domain, 'event': event.id}) }}"
           method="post" {{ form_enctype(form) }}>
 
         <section class="tab">

@@ -15,7 +15,7 @@
 {% block adminTitle %}<h1>{{ 'gc.admin.events.add'|trans }}</h1>{% endblock %}
 
 {% block adminBack %}
-    <a class="back" href="{{ path('gospelcenterAdmin_events', {'center': center.ref}) }}">Events</a>
+    <a class="back" href="{{ path('gospelcenterAdmin_events', {'center': center.ref, 'domain': center.domain}) }}">Events</a>
 {% endblock %}
 
 {% form_theme form 'gospelcenterDateBundle:Form:datetime.html.twig' %}
@@ -24,7 +24,7 @@
 
     {% spaceless %}
 
-        <form novalidate class="event" action="{{ path('gospelcenterAdmin_events_add', {'center': center.ref}) }}"
+        <form novalidate class="event" action="{{ path('gospelcenterAdmin_events_add', {'center': center.ref, 'domain': center.domain}) }}"
               method="post" {{ form_enctype(form) }}>
 
             <section class="tab">

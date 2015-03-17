@@ -8,7 +8,7 @@
 
 {% block param %}
     <li><a href="{{ path('fos_user_registration_register') }}">Register a user</a></li>
-    <li><a href="{{ path('gospelcenterPage_home', {'center': center.ref}) }}">Back to website</a></li>
+    <li><a href="{{ path('gospelcenterPage_home', {'center': center.ref, 'domain': center.domain, 'domain': center.domain}) }}">Back to website</a></li>
     <li class="line"></li>
     {{ parent() }}
 {% endblock %}
@@ -23,17 +23,17 @@
 {% block headerTitle %}GC{{ center.name }}{% endblock %}
 
 {% block footer %}
-    <li><a href="{{ path('gospelcenterAdmin_celebrations', {'center': center.ref}) }}"
+    <li><a href="{{ path('gospelcenterAdmin_celebrations', {'center': center.ref, 'domain': center.domain, 'domain': center.domain}) }}"
            {% if page == 'celebrations' %}class="current"{% endif %}>Celebrations</a></li>
-    <li><a href="{{ path('gospelcenterAdmin_persons', {'center': center.ref}) }}"
+    <li><a href="{{ path('gospelcenterAdmin_persons', {'center': center.ref, 'domain': center.domain, 'domain': center.domain}) }}"
            {% if page == 'people' %}class="current"{% endif %}>Contacts</a></li>
-    <li><a href="{{ path('gospelcenterAdmin_events', {'center': center.ref}) }}"
+    <li><a href="{{ path('gospelcenterAdmin_events', {'center': center.ref, 'domain': center.domain, 'domain': center.domain}) }}"
            {% if page == 'events' %}class="current"{% endif %}>Events</a></li>
-    <li><a href="{{ path('gospelcenterAdmin_pages', {'center': center.ref}) }}"
+    <li><a href="{{ path('gospelcenterAdmin_pages', {'center': center.ref, 'domain': center.domain, 'domain': center.domain}) }}"
            {% if page == 'pages' %}class="current"{% endif %}>Pages</a></li>
-    <li><a href="{{ path('gospelcenterAdmin_images', {'center': center.ref}) }}"
+    <li><a href="{{ path('gospelcenterAdmin_images', {'center': center.ref, 'domain': center.domain, 'domain': center.domain}) }}"
            {% if page == 'images' %}class="current"{% endif %}>Images</a></li>
-    <li><a href="{{ path('gospelcenterAdmin_locations', {'center': center.ref}) }}"
+    <li><a href="{{ path('gospelcenterAdmin_locations', {'center': center.ref, 'domain': center.domain, 'domain': center.domain}) }}"
            {% if page == 'locations' %}class="current"{% endif %}>Locations</a></li>
 {% endblock %}
 

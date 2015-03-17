@@ -5,14 +5,14 @@
 {% endblock %}
 
 {% block adminTools %}
-    <a href="{{ path('gospelcenterAdmin_persons_add', {'center': center.ref}) }}" class="add">Add a contact</a>
+    <a href="{{ path('gospelcenterAdmin_persons_add', {'center': center.ref, 'domain': center.domain}) }}" class="add">Add a contact</a>
 {% endblock %}
 
 {% block adminSubNav %}
-    <li><a href="{{ path('gospelcenterAdmin_persons', {'center': center.ref}) }}" {% if (tab == 'contacts') or (tab == 'contactsAll') %}class="current focus"{% endif %}>{{ 'gc.admin.nav.contacts'|trans }}</a></li>
-    <li><a href="{{ path('gospelcenterAdmin_speakers', {'center': center.ref}) }}" {% if (tab == 'speakers') or (tab == 'speakersAll') %}class="current focus"{% endif %}>{{ 'gc.admin.nav.speakers'|trans }}</a></li>
+    <li><a href="{{ path('gospelcenterAdmin_persons', {'center': center.ref, 'domain': center.domain}) }}" {% if (tab == 'contacts') or (tab == 'contactsAll') %}class="current focus"{% endif %}>{{ 'gc.admin.nav.contacts'|trans }}</a></li>
+    <li><a href="{{ path('gospelcenterAdmin_speakers', {'center': center.ref, 'domain': center.domain}) }}" {% if (tab == 'speakers') or (tab == 'speakersAll') %}class="current focus"{% endif %}>{{ 'gc.admin.nav.speakers'|trans }}</a></li>
     {#
-    <li><a href="{{ path('gospelcenterAdmin_members', {'center': center.ref}) }}" {% if tab == 'members' %}class="current focus"{% endif %}>Members</a></li>
-    <li><a href="{{ path('gospelcenterAdmin_visitors', {'center': center.ref}) }}" {% if tab == 'visitors' %}class="current focus"{% endif %}>Visitors</a></li>
+    <li><a href="{{ path('gospelcenterAdmin_members', {'center': center.ref, 'domain': center.domain}) }}" {% if tab == 'members' %}class="current focus"{% endif %}>Members</a></li>
+    <li><a href="{{ path('gospelcenterAdmin_visitors', {'center': center.ref, 'domain': center.domain}) }}" {% if tab == 'visitors' %}class="current focus"{% endif %}>Visitors</a></li>
     #}
 {% endblock %}

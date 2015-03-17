@@ -14,18 +14,18 @@
 {% block adminTitle %}<h1>Edit an image</h1>{% endblock %}
 
 {% block adminBack %}
-    <a class="back" href="{{ path('gospelcenterAdmin_images', {'center': center.ref}) }}">Images</a>
+    <a class="back" href="{{ path('gospelcenterAdmin_images', {'center': center.ref, 'domain': center.domain}) }}">Images</a>
 {% endblock %}
 
 {% block adminTools %}
-    <a href="{{ path('gospelcenterAdmin_images_delete', {'center': center.ref, 'image': image.id}) }}"
+    <a href="{{ path('gospelcenterAdmin_images_delete', {'center': center.ref, 'domain': center.domain, 'image': image.id}) }}"
        class="delete">Delete</a>
-    <a href="{{ path('gospelcenterAdmin_images', {'center': center.ref}) }}">Cancel</a>
+    <a href="{{ path('gospelcenterAdmin_images', {'center': center.ref, 'domain': center.domain}) }}">Cancel</a>
 {% endblock %}
 
 {% block adminBody %}
 
-    <form novalidate class="image" action="{{ path('gospelcenterAdmin_images_edit', {'center': center.ref, 'image': image.id}) }}" method="post" {{ form_enctype(form) }}>
+    <form novalidate class="image" action="{{ path('gospelcenterAdmin_images_edit', {'center': center.ref, 'domain': center.domain, 'image': image.id}) }}" method="post" {{ form_enctype(form) }}>
 
         {{ form_widget(form.file) }}
         {{ form_errors(form.file) }}

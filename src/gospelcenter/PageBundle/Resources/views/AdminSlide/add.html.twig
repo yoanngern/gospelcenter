@@ -14,12 +14,12 @@
 {% block adminTitle %}<h1>Add a slide</h1>{% endblock %}
 
 {% block adminBack %}
-    <a class="back" href="{{ path('gospelcenterAdmin_slides', {'center': center.ref}) }}">Slides</a>
+    <a class="back" href="{{ path('gospelcenterAdmin_slides', {'center': center.ref, 'domain': center.domain}) }}">Slides</a>
 {% endblock %}
 
 {% block adminBody %}
     
-    <form novalidate class="slide" action="{{ path('gospelcenterAdmin_slides_add', {'center': center.ref}) }}" method="post" {{ form_enctype(form) }}>
+    <form novalidate class="slide" action="{{ path('gospelcenterAdmin_slides_add', {'center': center.ref, 'domain': center.domain}) }}" method="post" {{ form_enctype(form) }}>
     	
     	{{ form_widget(form.image.file) }}
     	{{ form_errors(form.image.file) }}

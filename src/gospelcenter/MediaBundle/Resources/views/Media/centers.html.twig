@@ -7,7 +7,7 @@
 
             {% for center in centers %}
 
-                <a href="{{ path('gospelcenterMedia_center', {'center': center.ref}) }}">
+                <a href="{{ path('gospelcenterMedia_center', {'center': center.ref, 'domain': center.domain}) }}">
                     <div class="container">
                         {% if center.image %}
                             {% set tvImg = center.image.webPath %}

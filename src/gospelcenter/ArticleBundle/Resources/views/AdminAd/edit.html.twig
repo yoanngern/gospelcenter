@@ -15,18 +15,18 @@
 {% block adminTitle %}<h1>Edit an ad</h1>{% endblock %}
 
 {% block adminBack %}
-    <a class="back" href="{{ path('gospelcenterAdmin_ads', {'center': center.ref}) }}">Ads</a>
+    <a class="back" href="{{ path('gospelcenterAdmin_ads', {'center': center.ref, 'domain': center.domain}) }}">Ads</a>
 {% endblock %}
 
 {% block adminTools %}
-    <a href="{{ path('gospelcenterAdmin_ads_delete', {'center': center.ref, 'ad': ad.id}) }}"
+    <a href="{{ path('gospelcenterAdmin_ads_delete', {'center': center.ref, 'domain': center.domain, 'ad': ad.id}) }}"
        class="delete">Delete</a>
-    <a href="{{ path('gospelcenterAdmin_ads', {'center': center.ref}) }}">Cancel</a>
+    <a href="{{ path('gospelcenterAdmin_ads', {'center': center.ref, 'domain': center.domain}) }}">Cancel</a>
 {% endblock %}
 
 {% block adminBody %}
 
-    <form class="ad" novalidate action="{{ path('gospelcenterAdmin_ads_edit', {'center': center.ref, 'ad': ad.id}) }}"
+    <form class="ad" novalidate action="{{ path('gospelcenterAdmin_ads_edit', {'center': center.ref, 'domain': center.domain, 'ad': ad.id}) }}"
           method="post" {{ form_enctype(form) }}>
 
         {{ form_widget(form.status) }}

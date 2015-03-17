@@ -15,7 +15,7 @@
         <tbody>
         {% for visitor in visitors %}
 
-            {% set link = path('gospelcenterAdmin_persons_edit', {'person': visitor.person.id, 'center': center.ref}) %}
+            {% set link = path('gospelcenterAdmin_persons_edit', {'person': visitor.person.id, 'center': center.ref, 'domain': center.domain}) %}
 
             <tr>
                 <td class="em">

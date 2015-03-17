@@ -118,7 +118,7 @@ class UnitController extends Controller
                     $this->generateUrl(
                         'gospelcenterAdmin_units',
                         array(
-                            'center' => $center->getRef()
+                            'center' => $center->getRef(), 'domain' => $center->getDomain()
                         )
                     )
                 );
@@ -162,7 +162,7 @@ class UnitController extends Controller
                     $this->generateUrl(
                         'gospelcenterAdmin_units',
                         array(
-                            'center' => $center->getRef()
+                            'center' => $center->getRef(), 'domain' => $center->getDomain()
                         )
                     )
                 );

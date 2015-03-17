@@ -16,19 +16,19 @@
 {% endblock %}
 
 {% block adminTools %}
-    <a href="{{ path('gospelcenterAdmin_locations_delete', {'center': center.ref, 'location': location.id}) }}"
+    <a href="{{ path('gospelcenterAdmin_locations_delete', {'center': center.ref, 'domain': center.domain, 'location': location.id}) }}"
        class="delete">Delete</a>
-    <a href="{{ path('gospelcenterAdmin_locations', {'center': center.ref}) }}">Cancel</a>
+    <a href="{{ path('gospelcenterAdmin_locations', {'center': center.ref, 'domain': center.domain}) }}">Cancel</a>
 {% endblock %}
 
 {% block adminBack %}
-    <a class="back" href="{{ path('gospelcenterAdmin_locations', {'center': center.ref}) }}">Locations</a>
+    <a class="back" href="{{ path('gospelcenterAdmin_locations', {'center': center.ref, 'domain': center.domain}) }}">Locations</a>
 {% endblock %}
 
 {% block adminBody %}
 
     <form novalidate class="location"
-          action="{{ path('gospelcenterAdmin_locations_edit', {'center': center.ref, 'location': location.id}) }}"
+          action="{{ path('gospelcenterAdmin_locations_edit', {'center': center.ref, 'domain': center.domain, 'location': location.id}) }}"
           method="post" {{ form_enctype(form) }}>
 
         {{ form_widget(form.name) }}

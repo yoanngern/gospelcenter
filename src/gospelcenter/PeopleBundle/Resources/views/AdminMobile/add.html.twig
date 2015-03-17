@@ -8,13 +8,13 @@
     {{ parent() }}
 {% endblock %}
 
-{% block headerLeft%}<a id="back" class="left" href="{{ path('gospelcenterAdmin_persons', {'center': center.ref}) }}"></a>{% endblock %}
+{% block headerLeft%}<a id="back" class="left" href="{{ path('gospelcenterAdmin_persons', {'center': center.ref, 'domain': center.domain}) }}"></a>{% endblock %}
 {% block headerCenter %}Add a contact{% endblock %}
 {% block headerRight %}{% endblock %}
 
 {% block body %}
     
-    <form action="{{ path('gospelcenterAdmin_persons_add', {'center': center.ref}) }}" method="post" {{ form_enctype(form) }}>
+    <form action="{{ path('gospelcenterAdmin_persons_add', {'center': center.ref, 'domain': center.domain}) }}" method="post" {{ form_enctype(form) }}>
         
         {{ form_errors(form) }}
         

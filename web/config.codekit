@@ -274,13 +274,13 @@
 		"outputPathIsSetByUser": 0,
 		"processed": 0
 		},
-	"\/bundles\/gospelcenterpage\/images\/full-pack.jpg": {
+	"\/bundles\/gospelcenterpage\/images\/full-pack_old.jpg": {
 		"fileType": 16384,
 		"ignore": 0,
 		"ignoreWasSetByUser": 0,
 		"initialSize": 1.29788e+06,
-		"inputAbbreviatedPath": "\/bundles\/gospelcenterpage\/images\/full-pack.jpg",
-		"outputAbbreviatedPath": "\/bundles\/gospelcenterpage\/images\/full-pack.jpg",
+		"inputAbbreviatedPath": "\/bundles\/gospelcenterpage\/images\/full-pack_old.jpg",
+		"outputAbbreviatedPath": "\/bundles\/gospelcenterpage\/images\/full-pack_old.jpg",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"processed": 0
@@ -303,6 +303,17 @@
 		"initialSize": 42110,
 		"inputAbbreviatedPath": "\/bundles\/gospelcenterpage\/images\/gospel_center_band_rj_2013.jpg",
 		"outputAbbreviatedPath": "\/bundles\/gospelcenterpage\/images\/gospel_center_band_rj_2013.jpg",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
+	"\/bundles\/gospelcenterpage\/images\/GOSR-Laus_Site-Jeunesse_FullPack2.jpg": {
+		"fileType": 16384,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 1.11014e+06,
+		"inputAbbreviatedPath": "\/bundles\/gospelcenterpage\/images\/GOSR-Laus_Site-Jeunesse_FullPack2.jpg",
+		"outputAbbreviatedPath": "\/bundles\/gospelcenterpage\/images\/GOSR-Laus_Site-Jeunesse_FullPack2.jpg",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"processed": 0
@@ -999,6 +1010,17 @@
 		"initialSize": 696308,
 		"inputAbbreviatedPath": "\/images\/FBshare_annecy.jpg",
 		"outputAbbreviatedPath": "\/images\/FBshare_annecy.jpg",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
+	"\/images\/FBshare_celebrations.jpg": {
+		"fileType": 16384,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 80651,
+		"inputAbbreviatedPath": "\/images\/FBshare_celebrations.jpg",
+		"outputAbbreviatedPath": "\/images\/FBshare_celebrations.jpg",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"processed": 0

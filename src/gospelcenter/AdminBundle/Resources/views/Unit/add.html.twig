@@ -9,12 +9,12 @@
 {% block adminTitle %}<h1>Add a unit</h1>{% endblock %}
 
 {% block adminBack %}
-    <a class="back" href="{{ path('gospelcenterAdmin_units', {'center': center.ref}) }}">Units</a>
+    <a class="back" href="{{ path('gospelcenterAdmin_units', {'center': center.ref, 'domain': center.domain}) }}">Units</a>
 {% endblock %}
 
 {% block adminBody %}
 
-    <form novalidate class="unit" action="{{ path('gospelcenterAdmin_units_add', {'center': center.ref}) }}"
+    <form novalidate class="unit" action="{{ path('gospelcenterAdmin_units_add', {'center': center.ref, 'domain': center.domain}) }}"
           method="post" {{ form_enctype(form) }}>
 
         {{ form_widget(form.name) }}

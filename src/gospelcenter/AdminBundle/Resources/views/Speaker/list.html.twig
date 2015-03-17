@@ -13,10 +13,10 @@
     <ul class="adminTitle">
 
         <li {% if tab == 'speakers' %}class="current"{% endif %}>
-            <a href="{{ path('gospelcenterAdmin_speakers', {'center': center.ref}) }}">{{ center.name }}'s speakers</a>
+            <a href="{{ path('gospelcenterAdmin_speakers', {'center': center.ref, 'domain': center.domain}) }}">{{ center.name }}'s speakers</a>
         </li>
         <li {% if tab == 'speakersAll' %}class="current"{% endif %}>
-            <a href="{{ path('gospelcenterAdmin_speakers_all', {'center': center.ref}) }}">{{ 'gc.admin.title.all_speakers'|trans }}</a>
+            <a href="{{ path('gospelcenterAdmin_speakers_all', {'center': center.ref, 'domain': center.domain}) }}">{{ 'gc.admin.title.all_speakers'|trans }}</a>
         </li>
 
     </ul>
@@ -50,7 +50,7 @@
 
             {% endfor %}
 
-            {% set link = path('gospelcenterAdmin_persons_edit', {'person': speaker.person.id, 'center': center.ref}) %}
+            {% set link = path('gospelcenterAdmin_persons_edit', {'person': speaker.person.id, 'center': center.ref, 'domain': center.domain}) %}
 
             <tr>
                 <td class="em">

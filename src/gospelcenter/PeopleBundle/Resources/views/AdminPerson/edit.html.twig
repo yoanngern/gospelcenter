@@ -18,20 +18,20 @@
 {% block adminTitle %}<h1>Edit a contact</h1>{% endblock %}
 
 {% block adminBack %}
-    <a class="back" href="{{ path('gospelcenterAdmin_persons', {'center': center.ref}) }}">Contacts</a>
+    <a class="back" href="{{ path('gospelcenterAdmin_persons', {'center': center.ref, 'domain': center.domain}) }}">Contacts</a>
 {% endblock %}
 
 {% block adminTools %}
-    <a href="{{ path('gospelcenterAdmin_persons_delete', {'center': center.ref, 'person': person.id}) }}"
+    <a href="{{ path('gospelcenterAdmin_persons_delete', {'center': center.ref, 'domain': center.domain, 'person': person.id}) }}"
        class="delete">{{ 'gc.admin.generic.delete'|trans }}</a>
-    <a href="{{ path('gospelcenterAdmin_persons', {'center': center.ref}) }}">{{ 'gc.admin.generic.cancel'|trans }}</a>
+    <a href="{{ path('gospelcenterAdmin_persons', {'center': center.ref, 'domain': center.domain}) }}">{{ 'gc.admin.generic.cancel'|trans }}</a>
 {% endblock %}
 
 {% block adminBody %}
     {% spaceless %}
 
         <form novalidate class="person"
-              action="{{ path('gospelcenterAdmin_persons_edit', {'center': center.ref, 'person': person.id}) }}"
+              action="{{ path('gospelcenterAdmin_persons_edit', {'center': center.ref, 'domain': center.domain, 'person': person.id}) }}"
               method="post" {{ form_enctype(form) }}>
 
 
@@ -160,7 +160,7 @@
 
         <nav class="tools">
             <input type="submit" class="buttonLink" />
-            <a href="{{ path('gospelcenterAdmin_persons_delete', {'center': center.ref, 'person': person.id}) }}" class="buttonLink">Delete</a>
+            <a href="{{ path('gospelcenterAdmin_persons_delete', {'center': center.ref, 'domain': center.domain, 'person': person.id}) }}" class="buttonLink">Delete</a>
         </nav>
 
         {{ form_errors(form) }}

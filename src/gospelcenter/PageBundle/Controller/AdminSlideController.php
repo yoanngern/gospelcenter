@@ -73,7 +73,7 @@ class AdminSlideController extends Controller
                     $this->generateUrl(
                         'gospelcenterAdmin_slides',
                         array(
-                            'center' => $center->getRef()
+                            'center' => $center->getRef(), 'domain' => $center->getDomain()
                         )
                     )
                 );
@@ -121,7 +121,7 @@ class AdminSlideController extends Controller
                     $this->generateUrl(
                         'gospelcenterAdmin_slides',
                         array(
-                            'center' => $center->getRef()
+                            'center' => $center->getRef(), 'domain' => $center->getDomain()
                         )
                     )
                 );
@@ -169,7 +169,7 @@ class AdminSlideController extends Controller
                     $this->generateUrl(
                         'gospelcenterAdmin_slides',
                         array(
-                            'center' => $center->getRef()
+                            'center' => $center->getRef(), 'domain' => $center->getDomain()
                         )
                     )
                 );

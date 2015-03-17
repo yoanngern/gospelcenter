@@ -14,18 +14,18 @@
 {% block adminTitle %}<h1>Edit a page</h1>{% endblock %}
 
 {% block adminBack %}
-    <a class="back" href="{{ path('gospelcenterAdmin_pages', {'center': center.ref}) }}">Pages</a>
+    <a class="back" href="{{ path('gospelcenterAdmin_pages', {'center': center.ref, 'domain': center.domain}) }}">Pages</a>
 {% endblock %}
 
 {% block adminTools %}
-    <a href="{{ path('gospelcenterAdmin_pages_delete', {'center': center.ref, 'page': objPage.id}) }}"
+    <a href="{{ path('gospelcenterAdmin_pages_delete', {'center': center.ref, 'domain': center.domain, 'page': objPage.id}) }}"
        class="delete">Delete</a>
-    <a href="{{ path('gospelcenterAdmin_pages', {'center': center.ref}) }}">Cancel</a>
+    <a href="{{ path('gospelcenterAdmin_pages', {'center': center.ref, 'domain': center.domain}) }}">Cancel</a>
 {% endblock %}
 
 {% block adminBody %}
 
-    <form novalidate class="page" action="{{ path('gospelcenterAdmin_pages_edit', {'center': center.ref, 'page': objPage.id}) }}"
+    <form novalidate class="page" action="{{ path('gospelcenterAdmin_pages_edit', {'center': center.ref, 'domain': center.domain, 'page': objPage.id}) }}"
           method="post" {{ form_enctype(form) }}>
 
         {{ form_widget(form.ref) }}

@@ -94,7 +94,7 @@ class AdminController extends Controller
                 $this->get('session')->getFlashBag()->add('info', 'The image has been added.');
 
                 return $this->redirect($this->generateUrl('gospelcenterAdmin_images', array(
-                    'center' => $center->getRef()
+                    'center' => $center->getRef(), 'domain' => $center->getDomain()
                 )));
             }
         }
@@ -135,7 +135,7 @@ class AdminController extends Controller
                 $this->get('session')->getFlashBag()->add('info', 'The image has been edited.');
 
                 return $this->redirect($this->generateUrl('gospelcenterAdmin_images', array(
-                    'center' => $center->getRef()
+                    'center' => $center->getRef(), 'domain' => $center->getDomain()
                 )));
             }
         }
@@ -176,7 +176,7 @@ class AdminController extends Controller
                 $this->get('session')->getFlashBag()->add('info', 'Image deleted.');
 
                 return $this->redirect($this->generateUrl('gospelcenterAdmin_images', array(
-                    'center' => $center->getRef()
+                    'center' => $center->getRef(), 'domain' => $center->getDomain()
                 )));
             }
         }

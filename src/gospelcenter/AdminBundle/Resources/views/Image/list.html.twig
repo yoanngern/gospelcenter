@@ -17,17 +17,17 @@
     <ul class="adminTitle">
 
         <li {% if tab == 'images' %}class="current"{% endif %}>
-            <a href="{{ path('gospelcenterAdmin_images', {'center': center.ref}) }}">{{ 'gc.admin.title.center_images'|trans({'%center%': center.name}) }}</a>
+            <a href="{{ path('gospelcenterAdmin_images', {'center': center.ref, 'domain': center.domain}) }}">{{ 'gc.admin.title.center_images'|trans({'%center%': center.name}) }}</a>
         </li>
         <li {% if tab == 'imagesAll' %}class="current"{% endif %}>
-            <a href="{{ path('gospelcenterAdmin_images_all', {'center': center.ref}) }}">{{ 'gc.admin.title.all_images'|trans }}</a>
+            <a href="{{ path('gospelcenterAdmin_images_all', {'center': center.ref, 'domain': center.domain}) }}">{{ 'gc.admin.title.all_images'|trans }}</a>
         </li>
 
     </ul>
 {% endblock %}
 
 {% block adminTools %}
-    <a href="{{ path('gospelcenterAdmin_images_add', {'center': center.ref}) }}" class="add">Add an image</a>
+    <a href="{{ path('gospelcenterAdmin_images_add', {'center': center.ref, 'domain': center.domain}) }}" class="add">Add an image</a>
 {% endblock %}
 
 {% block adminListBody %}
@@ -42,7 +42,7 @@
         <tbody>
         {% for image in images %}
 
-            {% set link = path('gospelcenterAdmin_images_edit', {'image': image.id, 'center': center.ref}) %}
+            {% set link = path('gospelcenterAdmin_images_edit', {'image': image.id, 'center': center.ref, 'domain': center.domain}) %}
 
             <tr>
                 <td class="em">

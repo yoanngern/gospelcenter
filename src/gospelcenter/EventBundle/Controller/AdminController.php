@@ -109,7 +109,7 @@ class AdminController extends Controller
                     $this->generateUrl(
                         'gospelcenterAdmin_events',
                         array(
-                            'center' => $center->getRef()
+                            'center' => $center->getRef(), 'domain' => $center->getDomain()
                         )
                     )
                 );
@@ -166,7 +166,7 @@ class AdminController extends Controller
                     $this->generateUrl(
                         'gospelcenterAdmin_events',
                         array(
-                            'center' => $center->getRef()
+                            'center' => $center->getRef(), 'domain' => $center->getDomain()
                         )
                     )
                 );
@@ -215,7 +215,7 @@ class AdminController extends Controller
                     $this->generateUrl(
                         'gospelcenterAdmin_events',
                         array(
-                            'center' => $center->getRef()
+                            'center' => $center->getRef(), 'domain' => $center->getDomain()
                         )
                     )
                 );

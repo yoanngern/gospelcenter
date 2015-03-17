@@ -34,7 +34,7 @@
 
             <p><a href="mailto:info@gc-{{ center.ref }}.org">info@gc-{{ center.ref }}.org</a></p>
 
-            <p><a href="{{ path('gospelcenterPage_default', {'center': center.ref, 'page': 'give'}) }}"
+            <p><a href="{{ path('gospelcenterPage_default', {'center': center.ref, 'domain': center.domain, 'page': 'give'}) }}"
                   class="buttonLink">{{ 'gc.nav.give'|trans }}</a></p>
         </article>
     </section>

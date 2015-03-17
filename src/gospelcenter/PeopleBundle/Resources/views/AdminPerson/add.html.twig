@@ -15,13 +15,13 @@
 
 {% block adminBack %}
     <a class="back"
-       href="{{ path('gospelcenterAdmin_persons', {'center': center.ref}) }}">{{ 'gc.admin.title.contacts'|trans }}</a>
+       href="{{ path('gospelcenterAdmin_persons', {'center': center.ref, 'domain': center.domain}) }}">{{ 'gc.admin.title.contacts'|trans }}</a>
 {% endblock %}
 
 {% block adminBody %}
     {% spaceless %}
 
-        <form novalidate class="person" action="{{ path('gospelcenterAdmin_persons_add', {'center': center.ref}) }}"
+        <form novalidate class="person" action="{{ path('gospelcenterAdmin_persons_add', {'center': center.ref, 'domain': center.domain}) }}"
               method="post" {{ form_enctype(form) }}>
 
 

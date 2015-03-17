@@ -1,0 +1,7 @@
+gospelcenterAdminGlobal:
+    resource: "@gospelcenterAdminBundle/Resources/config/routingGlobal.yml"
+    prefix:   /admin
+
+gospelcenterPageGlobal:
+    resource: "@gospelcenterPageBundle/Resources/config/routingGlobal.yml"
+    prefix:   /

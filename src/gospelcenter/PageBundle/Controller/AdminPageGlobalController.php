@@ -115,7 +115,7 @@ class AdminPageGlobalController extends Controller
             $this->generateUrl(
                 'gospelcenterAdmin_locations',
                 array(
-                    'center' => $center->getRef()
+                    'center' => $center->getRef(), 'domain' => $center->getDomain()
                 )
             )
         );

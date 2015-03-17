@@ -9,17 +9,17 @@
 {% block adminTitle %}<h1>Delete an ad</h1>{% endblock %}
 
 {% block adminBack %}
-    <a class="back" href="{{ path('gospelcenterAdmin_ads', {'center': center.ref}) }}">Ads</a>
+    <a class="back" href="{{ path('gospelcenterAdmin_ads', {'center': center.ref, 'domain': center.domain}) }}">Ads</a>
 {% endblock %}
 
 {% block adminTools %}
-    <a href="{{ path('gospelcenterAdmin_ads', {'center': center.ref}) }}">Cancel</a>
+    <a href="{{ path('gospelcenterAdmin_ads', {'center': center.ref, 'domain': center.domain}) }}">Cancel</a>
 {% endblock %}
 
 {% block adminBody %}
 
     <form class="delete"
-          action="{{ path('gospelcenterAdmin_ads_delete', {'center': center.ref, 'ad': ad.id}) }}"
+          action="{{ path('gospelcenterAdmin_ads_delete', {'center': center.ref, 'domain': center.domain, 'ad': ad.id}) }}"
           method="post" {{ form_enctype(form) }}>
 
         <p>Are you sure you want to delete the ad:</p>
@@ -30,7 +30,7 @@
 
         <input type="submit" class="buttonLink" value="Yes"/>
 
-        <a class="buttonLink" href="{{ path('gospelcenterAdmin_ads', {'center': center.ref}) }}">No</a>
+        <a class="buttonLink" href="{{ path('gospelcenterAdmin_ads', {'center': center.ref, 'domain': center.domain}) }}">No</a>
 
         {{ form_rest(form) }}
 

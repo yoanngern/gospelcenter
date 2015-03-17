@@ -18,12 +18,12 @@
 {% block adminTitle %}<h1>{{ 'gc.admin.celebrations.add'|trans }}</h1>{% endblock %}
 
 {% block adminBack %}
-    <a class="back" href="{{ path('gospelcenterAdmin_celebrations', {'center': center.ref}) }}">{{ 'gc.admin.title.celebrations'|trans }}</a>
+    <a class="back" href="{{ path('gospelcenterAdmin_celebrations', {'center': center.ref, 'domain': center.domain}) }}">{{ 'gc.admin.title.celebrations'|trans }}</a>
 {% endblock %}
 
 {% block adminBody %}
     {% spaceless %}
-        <form novalidate class="celebration" action="{{ path('gospelcenterAdmin_celebrations_add', {'center': center.ref}) }}"
+        <form novalidate class="celebration" action="{{ path('gospelcenterAdmin_celebrations_add', {'center': center.ref, 'domain': center.domain}) }}"
               method="post" {{ form_enctype(form) }}>
 
             <section class="tab">

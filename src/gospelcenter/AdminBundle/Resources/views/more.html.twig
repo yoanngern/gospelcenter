@@ -1,11 +1,11 @@
 {% extends "::adminLocalNew.html.twig" %}
 
 {% block adminSubNav %}
-    <li><a href="{{ path('gospelcenterAdmin_locations', {'center': center.ref}) }}"
+    <li><a href="{{ path('gospelcenterAdmin_locations', {'center': center.ref, 'domain': center.domain}) }}"
            {% if tab == 'locations' %}class="current focus"{% endif %}>{{ 'gc.admin.nav.locations'|trans }}</a></li>
-    <li><a href="{{ path('gospelcenterAdmin_images', {'center': center.ref}) }}"
+    <li><a href="{{ path('gospelcenterAdmin_images', {'center': center.ref, 'domain': center.domain}) }}"
            {% if tab == 'images' or tab == 'imagesAll' %}class="current focus"{% endif %}>{{ 'gc.admin.nav.images'|trans }}</a></li>
-    <li><a href="{{ path('gospelcenterAdmin_units', {'center': center.ref}) }}"
+    <li><a href="{{ path('gospelcenterAdmin_units', {'center': center.ref, 'domain': center.domain}) }}"
            {% if tab == 'units' %}class="current focus"{% endif %}>{{ 'gc.admin.nav.units'|trans }}</a></li>
 
 {% endblock %}

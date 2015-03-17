@@ -49,7 +49,7 @@
                     <h1>Rejoignez-nous lors d'une célébration!</h1>
                     
                     {% for center in centers %}
-                        <a class="{% if not center.image %}empty{% endif %} resize16_9width" href="{{ path('gospelcenterPage_home', {'center': center.ref}) }}">
+                        <a class="{% if not center.image %}empty{% endif %} resize16_9width" href="{{ path('gospelcenterPage_home', {'center': center.ref, 'domain': center.domain}) }}">
                             {% if center.image %}
                                 <img src="{{ asset(center.image.webPath) }}" alt="{{ center.image.alt }}" />
                             {% endif %}

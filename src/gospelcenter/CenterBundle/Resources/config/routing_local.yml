@@ -1,0 +1,15 @@
+gospelcenterAdmin:
+    resource: "@gospelcenterAdminBundle/Resources/config/routing.yml"
+    prefix:   /admin
+
+gospelcenterEvents:
+    resource: "@gospelcenterEventBundle/Resources/config/routing.yml"
+    prefix:   /events
+
+gospelcenterCelebrations:
+    resource: "@gospelcenterCelebrationBundle/Resources/config/routing.yml"
+    prefix:   /celebrations
+
+gospelcenterPage:
+    resource: "@gospelcenterPageBundle/Resources/config/routing.yml"
+    prefix:   /

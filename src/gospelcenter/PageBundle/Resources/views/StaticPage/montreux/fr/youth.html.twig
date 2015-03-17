@@ -1,0 +1,194 @@
+<section class="tab autoScroll">
+
+    <nav class="sub_nav">
+        {% spaceless %}
+            <ul class="complex">
+                <li>
+                    <a href="#minis" class="current focus">
+                        <h1>Minis</h1>
+
+                        <h2>pré-scolaire</h2>
+                    </a>
+                </li>
+                <li>
+                    <a href="#kids">
+                        <h1>Kids</h1>
+
+                        <h2>4-7 ans</h2>
+                    </a>
+                </li>
+                <li>
+                    <a href="#teens">
+                        <h1>Teens</h1>
+
+                        <h2>7-13 ans</h2>
+                    </a>
+                </li>
+                <li>
+                    <a href="#full-pack">
+                        <h1>Full Pack</h1>
+
+                        <h2>0-12 ans</h2>
+                    </a>
+                </li>
+                <li>
+                    <a href="#youth">
+                        <h1>Gospel Youth</h1>
+
+                        <h2>13-20 ans</h2>
+                    </a>
+                </li>
+            </ul>
+        {% endspaceless %}
+    </nav>
+
+    <article class="tab blog-style active" id="minis">
+
+        <h1>Gospel Minis</h1>
+
+        {% set customImg = 'bundles/gospelcenterpage/images/minis.jpg' %}
+
+        <img class="big"
+             src="{{ asset(customImg)| imagine_filter('blog_big_low') }}"
+             srcset="{{ asset(customImg)| imagine_filter('blog_big_low') }} 2x"
+             data-img="{{ asset(customImg)| imagine_filter('blog_big') }}"
+             data-img_2x="{{ asset(customImg)| imagine_filter('blog_big_2x') }}"
+             data-img_tablet="{{ asset(customImg)| imagine_filter('blog_big_tablet') }}"
+             data-img_tablet_2x="{{ asset(customImg)| imagine_filter('blog_big_tablet_2x') }}"
+             data-img_mobile="{{ asset(customImg)| imagine_filter('blog_big_mobile') }}"
+             data-img_mobile_2x="{{ asset(customImg)| imagine_filter('blog_big_mobile_2x') }}">
+
+
+        <h2 class="underline"><span>Minicell'</span></h2>
+
+        <p>Programme d’éveil à la foi pour les tout-petits donné par une équipe d’animatrices motivées ! Chaque
+            dimanche, après la louange, un des parents accompagne son enfant dans le groupe et reste environ 15 minutes
+            pour vivre ce temps avec lui. Un moment ludique, chaleureux, qui encourage ces juniors à entrer dans une
+            relation tout en douceur avec Dieu ! Que ce soit au travers de petites chansons, de découvertes visuelles et
+            tactiles, le programme Minicell’ est un rendez-vous privilégié à ne pas manquer !</p>
+
+        <h2 class="underline"><span>Garderie</span></h2>
+
+        <p>La garderie prend le relais à la suite de l’activité Minicell !</p>
+
+        <p>Des jeux, des histoires, une collation … tout pour ravir les yeux et le cœur de ces tout-petits !</p>
+
+
+    </article>
+
+    <article class="tab blog-style" id="kids">
+
+        <h1>Gospel Kids</h1>
+
+        {% set customImg = 'bundles/gospelcenterpage/images/kids.jpg' %}
+
+        <img class="big"
+             src="{{ asset(customImg)| imagine_filter('blog_big_low') }}"
+             srcset="{{ asset(customImg)| imagine_filter('blog_big_low') }} 2x"
+             data-img="{{ asset(customImg)| imagine_filter('blog_big') }}"
+             data-img_2x="{{ asset(customImg)| imagine_filter('blog_big_2x') }}"
+             data-img_tablet="{{ asset(customImg)| imagine_filter('blog_big_tablet') }}"
+             data-img_tablet_2x="{{ asset(customImg)| imagine_filter('blog_big_tablet_2x') }}"
+             data-img_mobile="{{ asset(customImg)| imagine_filter('blog_big_mobile') }}"
+             data-img_mobile_2x="{{ asset(customImg)| imagine_filter('blog_big_mobile_2x') }}">
+
+
+        <p>Dieu n’est pas qu’une affaire d’adultes, bien au contraire ! Et c’est ce que chaque enfant pourra découvrir
+            chaque semaine !</p>
+
+        <p>Accompagnés par des responsables dynamiques, les enfants découvriront des histoires de la Bible
+            passionnantes, se feront des amis et pourront faire des jeux et des bricolages.</p>
+
+        <p>Parce que les enfants sont l'Eglise d'aujourd’hui!</p>
+
+    </article>
+
+    <article class="tab blog-style" id="teens">
+
+        <h1>Gospel Teens</h1>
+
+        {% set customImg = 'bundles/gospelcenterpage/images/teens.jpg' %}
+
+        <img class="big"
+             src="{{ asset(customImg)| imagine_filter('blog_big_low') }}"
+             srcset="{{ asset(customImg)| imagine_filter('blog_big_low') }} 2x"
+             data-img="{{ asset(customImg)| imagine_filter('blog_big') }}"
+             data-img_2x="{{ asset(customImg)| imagine_filter('blog_big_2x') }}"
+             data-img_tablet="{{ asset(customImg)| imagine_filter('blog_big_tablet') }}"
+             data-img_tablet_2x="{{ asset(customImg)| imagine_filter('blog_big_tablet_2x') }}"
+             data-img_mobile="{{ asset(customImg)| imagine_filter('blog_big_mobile') }}"
+             data-img_mobile_2x="{{ asset(customImg)| imagine_filter('blog_big_mobile_2x') }}">
+
+        <p>Les Teens, c’est l’endroit à ne pas manquer pour les jeunes de la 5ème à la 8ème Harmos. Expérimenter la
+            présence et la puissance de Dieu, vivre des moments de défis, connaître l’amour de Dieu et développer de
+            nouvelles amitiés sont des points clés pour cette équipe.</p>
+
+        <p>Tout nouveau tout chaud, les teens c’est aussi « Out of the Box ». Un concept innovant qui a lieu une fois
+            par mois. Out of the Box, c’est sortir de sa boîte et de sa zone de confort avec un orateur du Gospel Center
+            qui vient partager son cœur et challenger cette jeune génération.</p>
+
+    </article>
+
+    <article class="tab blog-style" id="full-pack">
+
+        <h1>Full Pack</h1>
+
+        {% set customImg = 'bundles/gospelcenterpage/images/full-pack_2.jpg' %}
+
+        <img class="big"
+             src="{{ asset(customImg)| imagine_filter('blog_big_low') }}"
+             srcset="{{ asset(customImg)| imagine_filter('blog_big_low') }} 2x"
+             data-img="{{ asset(customImg)| imagine_filter('blog_big') }}"
+             data-img_2x="{{ asset(customImg)| imagine_filter('blog_big_2x') }}"
+             data-img_tablet="{{ asset(customImg)| imagine_filter('blog_big_tablet') }}"
+             data-img_tablet_2x="{{ asset(customImg)| imagine_filter('blog_big_tablet_2x') }}"
+             data-img_mobile="{{ asset(customImg)| imagine_filter('blog_big_mobile') }}"
+             data-img_mobile_2x="{{ asset(customImg)| imagine_filter('blog_big_mobile_2x') }}">
+
+        <h2 class="underline"><span>Une célébration de A à Z</span></h2>
+
+        <p>LOUANGE, SKETCH, ANIMATION, COLLATION et pleins d'autres surprises encore !</p>
+
+        <p>Une équipe de jeunes motivés est à l’œuvre pour concocter un programme délirant qui motivera vos enfants et
+            les aidera à bien commencer la semaine!</p>
+
+        <p>Chaque dernier dimanche du mois à 18h00 (sauf exceptions).</p>
+
+    </article>
+
+
+    <article class="tab blog-style" id="youth">
+
+        <h1>Gospel Youth</h1>
+
+        {% set customImg = 'bundles/gospelcenterpage/images/gospel-youth.jpg' %}
+
+        <img class="big"
+             src="{{ asset(customImg)| imagine_filter('blog_big_low') }}"
+             srcset="{{ asset(customImg)| imagine_filter('blog_big_low') }} 2x"
+             data-img="{{ asset(customImg)| imagine_filter('blog_big') }}"
+             data-img_2x="{{ asset(customImg)| imagine_filter('blog_big_2x') }}"
+             data-img_tablet="{{ asset(customImg)| imagine_filter('blog_big_tablet') }}"
+             data-img_tablet_2x="{{ asset(customImg)| imagine_filter('blog_big_tablet_2x') }}"
+             data-img_mobile="{{ asset(customImg)| imagine_filter('blog_big_mobile') }}"
+             data-img_mobile_2x="{{ asset(customImg)| imagine_filter('blog_big_mobile_2x') }}">
+
+        <p>Reste connecté sur facebook et branché à ton whats’app pour être informé des soirées et events du Gospel
+            Youth ! Dès 13 ans, vendredi ou samedi, de 19h30 à 21h30, à Provence 4, au bowling ou au McDo, le Gospel
+            Youth fait peau neuve et n’attend plus que toi !</p>
+
+        <p>Du fun, des moments de partages, des délires, la présence de Dieu et de la bonne louange seront au menu de
+            ces folles soirées ! Notre rêve est de faire la différence dans ce monde en suivant l’exemple de Jésus,
+            c’est le tien aussi ? Alors connecte-toi !</p>
+
+        <article class="frame">
+            <h1>Plus d'infos</h1>
+
+            <p>sur notre page facebook</p>
+
+            <p><a href="https://facebook.com/gylausanne" target="_blank">facebook.com/GYLausanne</a></p>
+        </article>
+
+    </article>
+
+</section>

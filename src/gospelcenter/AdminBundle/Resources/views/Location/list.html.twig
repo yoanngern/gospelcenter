@@ -7,7 +7,7 @@
 {% block adminTitle %}<h1>{{ 'gc.admin.title.locations'|trans }}</h1>{% endblock %}
 
 {% block adminTools %}
-    <a href="{{ path('gospelcenterAdmin_locations_add', {'center': center.ref}) }}" class="add">Add a location</a>
+    <a href="{{ path('gospelcenterAdmin_locations_add', {'center': center.ref, 'domain': center.domain}) }}" class="add">Add a location</a>
 {% endblock %}
 
 {% block adminListBody %}
@@ -24,7 +24,7 @@
         <tbody>
         {% for location in locations %}
 
-            {% set link = path('gospelcenterAdmin_locations_edit', {'location': location.id, 'center': center.ref}) %}
+            {% set link = path('gospelcenterAdmin_locations_edit', {'location': location.id, 'center': center.ref, 'domain': center.domain}) %}
 
             <tr>
                 <td class="em">

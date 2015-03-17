@@ -7,7 +7,7 @@
 {% block adminTitle %}<h1>{{ 'gc.admin.title.celebrations'|trans }}</h1>{% endblock %}
 
 {% block adminTools %}
-    <a href="{{ path('gospelcenterAdmin_celebrations_add', {'center': center.ref}) }}" class="add">{{ 'gc.admin.title.add'|trans }}</a>
+    <a href="{{ path('gospelcenterAdmin_celebrations_add', {'center': center.ref, 'domain': center.domain}) }}" class="add">{{ 'gc.admin.title.add'|trans }}</a>
 {% endblock %}
 
 {% block adminListBody %}
@@ -22,7 +22,7 @@
         <tbody>
         {% for celebration in celebrations %}
 
-            {% set link = path('gospelcenterAdmin_celebrations_edit', {'celebration': celebration.id, 'center': center.ref}) %}
+            {% set link = path('gospelcenterAdmin_celebrations_edit', {'celebration': celebration.id, 'center': center.ref, 'domain': center.domain}) %}
 
             <tr {% if date(celebration.date.start) < date("now") %}class="old"
                 {% endif %}{% if date(celebration.date.start) < date("+6days") %}class="today"{% endif %}>

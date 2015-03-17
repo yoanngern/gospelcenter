@@ -68,7 +68,7 @@ class AdminAdController extends Controller {
                 $this->get('session')->getFlashBag()->add('info', 'The ad has been added.');
                 
                 return $this->redirect( $this->generateUrl('gospelcenterAdmin_ads', array(
-                    'center' => $center->getRef()
+                    'center' => $center->getRef(), 'domain' => $center->getDomain()
                 )));
             }
         }
@@ -112,7 +112,7 @@ class AdminAdController extends Controller {
                 $this->get('session')->getFlashBag()->add('info', 'The ad has been edited.');
                 
                 return $this->redirect( $this->generateUrl('gospelcenterAdmin_ads', array(
-                    'center' => $center->getRef()
+                    'center' => $center->getRef(), 'domain' => $center->getDomain()
                 )));
             }
         }
@@ -155,7 +155,7 @@ class AdminAdController extends Controller {
                     $this->generateUrl(
                         'gospelcenterAdmin_ads',
                         array(
-                            'center' => $center->getRef()
+                            'center' => $center->getRef(), 'domain' => $center->getDomain()
                         )
                     )
                 );

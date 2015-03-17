@@ -14,7 +14,7 @@
 {% endblock %}
 
 {% block header_logo %}
-    <a id="logo" href="{{ path('gospelcenterPage_home', {'center': center.ref}) }}"></a>
+    <a id="logo" href="{{ path('gospelcenterPage_home', {'center': center.ref, 'domain': center.domain}) }}"></a>
 {% endblock %}
 
 {% block body %}
@@ -33,9 +33,11 @@
         </section>
     </header>
 
-    <nav class="sub_nav">
+    <nav class="sub_nav followRubanNav">
         <ul class="classic">
+            {% spaceless %}
             {% block adminSubNav %}{% endblock %}
+            {% endspaceless %}
         </ul>
     </nav>
 

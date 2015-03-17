@@ -22,20 +22,20 @@
 {% block adminTitle %}<h1>{{ 'gc.admin.celebrations.edit'|trans }}</h1>{% endblock %}
 
 {% block adminBack %}
-    <a class="back" href="{{ path('gospelcenterAdmin_celebrations', {'center': center.ref}) }}">{{ 'gc.admin.title.celebrations'|trans }}</a>
+    <a class="back" href="{{ path('gospelcenterAdmin_celebrations', {'center': center.ref, 'domain': center.domain}) }}">{{ 'gc.admin.title.celebrations'|trans }}</a>
 {% endblock %}
 
 {% block adminTools %}
-    <a href="{{ path('gospelcenterAdmin_celebrations_delete', {'center': center.ref, 'celebration': celebration.id}) }}"
+    <a href="{{ path('gospelcenterAdmin_celebrations_delete', {'center': center.ref, 'domain': center.domain, 'celebration': celebration.id}) }}"
        class="delete">Delete</a>
-    <a href="{{ path('gospelcenterAdmin_celebrations', {'center': center.ref}) }}">{{ 'gc.admin.generic.cancel'|trans }}</a>
+    <a href="{{ path('gospelcenterAdmin_celebrations', {'center': center.ref, 'domain': center.domain}) }}">{{ 'gc.admin.generic.cancel'|trans }}</a>
 {% endblock %}
 
 {% block adminBody %}
 
     {% spaceless %}
         <form class="celebration" novalidate
-              action="{{ path('gospelcenterAdmin_celebrations_edit', {'center': center.ref, 'celebration': celebration.id}) }}"
+              action="{{ path('gospelcenterAdmin_celebrations_edit', {'center': center.ref, 'domain': center.domain, 'celebration': celebration.id}) }}"
               method="post" {{ form_enctype(form) }}>
 
             <section class="tab">

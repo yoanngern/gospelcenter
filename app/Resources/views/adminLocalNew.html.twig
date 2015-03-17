@@ -7,25 +7,25 @@
 {% set local = true %}
 
 {% block header_logo %}
-    <a id="logo" href="{{ path('gospelcenterPage_home', {'center': center.ref}) }}"></a>
+    <a id="logo" href="{{ path('gospelcenterPage_home', {'center': center.ref, 'domain': center.domain}) }}"></a>
 {% endblock %}
 
 {% block header_nav %}
-    <li><a href="{{ path('gospelcenterAdmin_celebrations', {'center': center.ref}) }}"
+    <li><a href="{{ path('gospelcenterAdmin_celebrations', {'center': center.ref, 'domain': center.domain, 'domain': center.domain}) }}"
            {% if page == 'celebrations' %}class="current focus"{% endif %}>{{ 'gc.admin.nav.celebrations'|trans }}</a></li>
-    <li><a href="{{ path('gospelcenterAdmin_persons', {'center': center.ref}) }}"
+    <li><a href="{{ path('gospelcenterAdmin_persons', {'center': center.ref, 'domain': center.domain, 'domain': center.domain}) }}"
            {% if page == 'people' %}class="current focus"{% endif %}>{{ 'gc.admin.nav.contacts'|trans }}</a></li>
-    <li><a href="{{ path('gospelcenterAdmin_events', {'center': center.ref}) }}"
+    <li><a href="{{ path('gospelcenterAdmin_events', {'center': center.ref, 'domain': center.domain, 'domain': center.domain}) }}"
            {% if page == 'events' %}class="current focus"{% endif %}>{{ 'gc.admin.nav.events'|trans }}</a></li>
-    <li><a href="{{ path('gospelcenterAdmin_pages', {'center': center.ref}) }}"
+    <li><a href="{{ path('gospelcenterAdmin_pages', {'center': center.ref, 'domain': center.domain, 'domain': center.domain}) }}"
            {% if page == 'pages' %}class="current focus"{% endif %}>{{ 'gc.admin.nav.pages'|trans }}</a></li>
 
-    <li><a href="{{ path('gospelcenterAdmin_ads', {'center': center.ref}) }}"
+    <li><a href="{{ path('gospelcenterAdmin_ads', {'center': center.ref, 'domain': center.domain, 'domain': center.domain}) }}"
            {% if page == 'ads' %}class="current focus"{% endif %}>{{ 'gc.admin.nav.ads'|trans }}</a></li>
 
-    <li><a href="{{ path('gospelcenterAdmin_locations', {'center': center.ref}) }}"
+    <li><a href="{{ path('gospelcenterAdmin_locations', {'center': center.ref, 'domain': center.domain, 'domain': center.domain}) }}"
            {% if page == 'options' %}class="current focus"{% endif %}>{{ 'gc.admin.nav.other'|trans }}</a></li>
 
-    <li><a href="{{ path('gospelcenterAdmin_guides', {'center': center.ref}) }}"
+    <li><a href="{{ path('gospelcenterAdmin_guides', {'center': center.ref, 'domain': center.domain, 'domain': center.domain}) }}"
            {% if page == 'guides' %}class="current focus"{% endif %}>{{ 'gc.admin.nav.guide'|trans }}</a></li>
 {% endblock %}

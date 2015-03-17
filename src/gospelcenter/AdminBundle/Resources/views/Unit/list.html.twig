@@ -7,7 +7,7 @@
 {% block adminTitle %}<h1>{{ 'gc.admin.title.units'|trans }}</h1>{% endblock %}
 
 {% block adminTools %}
-    <a href="{{ path('gospelcenterAdmin_units_add', {'center': center.ref}) }}" class="add">Add a unit</a>
+    <a href="{{ path('gospelcenterAdmin_units_add', {'center': center.ref, 'domain': center.domain}) }}" class="add">Add a unit</a>
 {% endblock %}
 
 {% block adminListBody %}
@@ -20,7 +20,7 @@
         <tbody>
         {% for unit in units %}
 
-            {% set link = path('gospelcenterAdmin_units_edit', {'unit': unit.id, 'center': center.ref}) %}
+            {% set link = path('gospelcenterAdmin_units_edit', {'unit': unit.id, 'center': center.ref, 'domain': center.domain}) %}
 
             <tr>
                 <td class="em">

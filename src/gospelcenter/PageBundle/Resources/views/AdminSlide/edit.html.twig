@@ -20,18 +20,18 @@
 {% block adminTitle %}<h1>Edit a slide</h1>{% endblock %}
 
 {% block adminBack %}
-    <a class="back" href="{{ path('gospelcenterAdmin_slides', {'center': center.ref}) }}">Slides</a>
+    <a class="back" href="{{ path('gospelcenterAdmin_slides', {'center': center.ref, 'domain': center.domain}) }}">Slides</a>
 {% endblock %}
 
 {% block adminTools %}
-    <a href="{{ path('gospelcenterAdmin_slides_delete', {'center': center.ref, 'slide': slide.id}) }}"
+    <a href="{{ path('gospelcenterAdmin_slides_delete', {'center': center.ref, 'domain': center.domain, 'slide': slide.id}) }}"
        class="delete">Delete</a>
-    <a href="{{ path('gospelcenterAdmin_slides', {'center': center.ref}) }}">Cancel</a>
+    <a href="{{ path('gospelcenterAdmin_slides', {'center': center.ref, 'domain': center.domain}) }}">Cancel</a>
 {% endblock %}
 
 {% block adminBody %}
     
-    <form novalidate class="slide" action="{{ path('gospelcenterAdmin_slides_edit', {'center': center.ref, 'slide': slide.id}) }}" method="post" {{ form_enctype(form) }}>
+    <form novalidate class="slide" action="{{ path('gospelcenterAdmin_slides_edit', {'center': center.ref, 'domain': center.domain, 'slide': slide.id}) }}" method="post" {{ form_enctype(form) }}>
     	
     	{{ form_widget(form.image.file) }}
         {{ form_errors(form.image.file) }}

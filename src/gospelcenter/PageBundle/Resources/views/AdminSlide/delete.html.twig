@@ -9,17 +9,17 @@
 {% block adminTitle %}<h1>Delete a slide</h1>{% endblock %}
 
 {% block adminBack %}
-    <a class="back" href="{{ path('gospelcenterAdmin_slides', {'center': center.ref}) }}">Slides</a>
+    <a class="back" href="{{ path('gospelcenterAdmin_slides', {'center': center.ref, 'domain': center.domain}) }}">Slides</a>
 {% endblock %}
 
 {% block adminTools %}
-    <a href="{{ path('gospelcenterAdmin_slides', {'center': center.ref}) }}">Cancel</a>
+    <a href="{{ path('gospelcenterAdmin_slides', {'center': center.ref, 'domain': center.domain}) }}">Cancel</a>
 {% endblock %}
 
 {% block adminBody %}
 
     <form class="delete"
-          action="{{ path('gospelcenterAdmin_slides_delete', {'center': center.ref, 'slide': slide.id}) }}"
+          action="{{ path('gospelcenterAdmin_slides_delete', {'center': center.ref, 'domain': center.domain, 'slide': slide.id}) }}"
           method="post" {{ form_enctype(form) }}>
 
         <p>Are you sure you want to delete the slide:</p>
@@ -31,7 +31,7 @@
 
         <input type="submit" class="buttonLink" value="Yes"/>
 
-        <a class="buttonLink" href="{{ path('gospelcenterAdmin_slides', {'center': center.ref}) }}">No</a>
+        <a class="buttonLink" href="{{ path('gospelcenterAdmin_slides', {'center': center.ref, 'domain': center.domain}) }}">No</a>
 
         {{ form_rest(form) }}
 

@@ -57,7 +57,7 @@ class ContactController extends Controller
             $this->generateUrl(
                 'gospelcenterContact',
                 array(
-                    'center' => $center->getRef()
+                    'center' => $center->getRef(), 'domain' => $center->getDomain()
                 )
             )
         );
@@ -112,7 +112,7 @@ class ContactController extends Controller
             $this->generateUrl(
                 'gospelcenterContact',
                 array(
-                    'center' => $center->getRef()
+                    'center' => $center->getRef(), 'domain' => $center->getDomain()
                 )
             )
         );

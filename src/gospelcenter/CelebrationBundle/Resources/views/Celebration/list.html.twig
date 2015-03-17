@@ -32,7 +32,7 @@
              data-bg_tablet_2x="{{ customImg| imagine_filter('slide_small_tablet_2x') }}"
              data-bg_mobile="{{ customImg| imagine_filter('slide_small_mobile') }}"
              data-bg_mobile_2x="{{ customImg| imagine_filter('slide_small_mobile_2x') }}">
-        <h2>{% if center.ref == 'lausanne' %}{{ 'gc.celebration.allSunday.lausanne'|trans|nl2br }}{% elseif center.ref == 'annecy' %}{{ 'gc.celebration.allSunday.annecy'|trans|nl2br }}{% elseif center.ref == 'montreux' %}{{ 'gc.celebration.allSunday.montreux'|trans|nl2br }}{% endif %}</h2>
+        <h2>{% if center.ref == 'lausanne' %}{{ 'gc.celebration.allSunday.lausanne'|trans|nl2br }}{% elseif center.ref == 'annecy' %}{{ 'gc.celebration.allSunday.annecy'|trans|nl2br }}{% elseif center.ref == 'montreux' %}{{ 'gc.celebration.allSunday.montreux'|trans|nl2br }}{% elseif center.ref == 'jura' %}{{ 'gc.celebration.allSunday.jura'|trans|nl2br }}{% endif %}</h2>
     </section>
 
     {% if nextCelebrations|length %}
@@ -94,7 +94,7 @@
 
                             {% if celebration.kidsProgram %}
                                 <a class="kids"
-                                   href="{{ path('gospelcenterPage_default', {'center': center.ref, 'page': 'youth'}) }}">
+                                   href="{{ path('gospelcenterPage_default', {'center': center.ref, 'domain': center.domain, 'page': 'youth'}) }}">
                                     <div class="icon"></div>
                                     <span>{{ 'gc.celebration.kidsProgram'|trans }}</span>
 
@@ -168,7 +168,7 @@
 
                     {% endfor %}
 
-                    <a class="more" href="{{ path('gospelcenterMedia_center', {'center': center.ref}) }}">
+                    <a class="more" href="{{ path('gospelcenterMedia_center', {'center': center.ref, 'domain': center.domain}) }}">
                         <div class="photo">
                             <span>{{ 'gc.celebration.more'|trans }}</span>
                         </div>
