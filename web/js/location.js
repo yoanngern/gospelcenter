@@ -11,6 +11,18 @@ $(document).ready(function () {
 
     });
 
+});
+
+
+function initialize() {
+
+    geocoder = new google.maps.Geocoder();
+    var latlng = new google.maps.LatLng(46.5701302, 6.82015709999996);
+    var mapOptions = {
+        zoom: 8,
+        center: latlng
+    }
+    map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions);
 
     if ($("#gospelcenter_locationbundle_location_latitude").val() !== "" &&
         $("#gospelcenter_locationbundle_location_longitude").val() !== "") {
@@ -29,18 +41,9 @@ $(document).ready(function () {
         codeAddress();
     }
 
-
-});
-
-
-function initialize() {
-    geocoder = new google.maps.Geocoder();
-    var latlng = new google.maps.LatLng(46.5701302, 6.82015709999996);
-    var mapOptions = {
-        zoom: 8,
-        center: latlng
-    }
-    map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions);
+    google.maps.event.addListener(marker, 'drag', function () {
+        setLatLng(marker.getPosition().k, marker.getPosition().D);
+    });
 }
 
 function codeAddress() {
@@ -49,6 +52,8 @@ function codeAddress() {
         + $("#gospelcenter_locationbundle_location_postalCode").val() + " "
         + $("#gospelcenter_locationbundle_location_city").val() + " "
         + $("#gospelcenter_locationbundle_location_country").val() + " ";
+
+
     geocoder.geocode({'address': address}, function (results, status) {
         if (status == google.maps.GeocoderStatus.OK) {
 
@@ -60,10 +65,6 @@ function codeAddress() {
                     map: map,
                     position: results[0].geometry.location,
                     draggable: true
-                });
-
-                google.maps.event.addListener(marker, 'drag', function () {
-                    setLatLng(marker.getPosition().k, marker.getPosition().D);
                 });
             }
 
