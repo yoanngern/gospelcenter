@@ -54,7 +54,6 @@ class AdminPersonController extends Controller
      */
     public function addAction(Center $center)
     {
-        $session = $this->get('session');
 
         $person = new Person($center);
 
@@ -67,16 +66,6 @@ class AdminPersonController extends Controller
         $request = $this->get('request');
 
         if ($request->getMethod() == 'POST') {
-            if ($session->get('previousUrl') != null) {
-                $previousUrl = $session->get('previousUrl');
-            } else {
-                $previousUrl = $this->generateUrl(
-                    'gospelcenterAdmin_persons',
-                    array(
-                        'center' => $center->getRef(), 'domain' => $center->getDomain()
-                    )
-                );
-            }
 
             $form->bind($request);
 
@@ -94,13 +83,18 @@ class AdminPersonController extends Controller
 
                 $this->get('session')->getFlashBag()->add('info', 'The contact has been added.');
 
-                return $this->redirect($previousUrl);
+
+                return $this->redirect(
+                    $this->generateUrl(
+                        'gospelcenterAdmin_persons',
+                        array(
+                            'center' => $center->getRef(),
+                            'domain' => $center->getDomain()
+                        )
+                    )
+                );
             }
         }
-
-        $previousUrl = $this->get('request')->server->get('HTTP_REFERER');
-
-        $session->set('previousUrl', $previousUrl);
 
         return $this->render(
             'gospelcenterPeopleBundle:AdminPerson:add.html.twig',
@@ -126,8 +120,6 @@ class AdminPersonController extends Controller
             throw new AccessDeniedException('Unauthorised access!');
         }
 
-        $session = $this->get('session');
-
         $em = $this->getDoctrine()->getManager();
 
         if ($person->getSpeaker() != null) {
@@ -136,8 +128,8 @@ class AdminPersonController extends Controller
 
         if ($person->getVisitor() != null) {
 
-            foreach($person->getVisitor()->getCenters() as $localCenter) {
-                if($localCenter->getRef() == $center->getRef()) {
+            foreach ($person->getVisitor()->getCenters() as $localCenter) {
+                if ($localCenter->getRef() == $center->getRef()) {
                     $person->setIsVisitor(true);
                 }
             }
@@ -145,8 +137,8 @@ class AdminPersonController extends Controller
 
         if ($person->getMember() != null) {
 
-            foreach($person->getMember()->getCenters() as $localCenter) {
-                if($localCenter->getRef() == $center->getRef()) {
+            foreach ($person->getMember()->getCenters() as $localCenter) {
+                if ($localCenter->getRef() == $center->getRef()) {
                     $person->setIsMember(true);
                 }
             }
@@ -162,17 +154,6 @@ class AdminPersonController extends Controller
 
         if ($request->getMethod() == 'POST') {
 
-            if ($session->get('previousUrl') != null) {
-                $previousUrl = $session->get('previousUrl');
-            } else {
-                $previousUrl = $this->generateUrl(
-                    'gospelcenterAdmin_persons',
-                    array(
-                        'center' => $center->getRef(), 'domain' => $center->getDomain()
-                    )
-                );
-            }
-
             $form->bind($request);
 
             if ($form->isValid()) {
@@ -186,13 +167,17 @@ class AdminPersonController extends Controller
 
                 $this->get('session')->getFlashBag()->add('info', 'The contact has been edited.');
 
-                return $this->redirect($previousUrl);
+                return $this->redirect(
+                    $this->generateUrl(
+                        'gospelcenterAdmin_persons',
+                        array(
+                            'center' => $center->getRef(),
+                            'domain' => $center->getDomain()
+                        )
+                    )
+                );
             }
         }
-
-        $previousUrl = $this->get('request')->server->get('HTTP_REFERER');
-
-        $session->set('previousUrl', $previousUrl);
 
         return $this->render(
             'gospelcenterPeopleBundle:AdminPerson:edit.html.twig',
@@ -236,7 +221,8 @@ class AdminPersonController extends Controller
                     $this->generateUrl(
                         'gospelcenterAdmin_persons',
                         array(
-                            'center' => $center->getRef(), 'domain' => $center->getDomain()
+                            'center' => $center->getRef(),
+                            'domain' => $center->getDomain()
                         )
                     )
                 );
@@ -292,7 +278,7 @@ class AdminPersonController extends Controller
             $em->persist($member);
         }
 
-        if($person->getIsMember() && $person->getMember()) {
+        if ($person->getIsMember() && $person->getMember()) {
             //$member = $person->getMember();
             //$member->addCenter($center);
             //$em->persist($member);
@@ -303,7 +289,7 @@ class AdminPersonController extends Controller
             $member->removeCenter($center);
             $em->persist($member);
 
-            if($member->getCenters()->count() == 0) {
+            if ($member->getCenters()->count() == 0) {
                 $em->remove($member);
             }
         }
@@ -326,7 +312,7 @@ class AdminPersonController extends Controller
             $em->persist($visitor);
         }
 
-        if($person->getIsVisitor() && $person->getVisitor()) {
+        if ($person->getIsVisitor() && $person->getVisitor()) {
             //$visitor = $person->getVisitor();
             //$visitor->addCenter($center);
             //$em->persist($visitor);
@@ -337,11 +323,10 @@ class AdminPersonController extends Controller
             $visitor->removeCenter($center);
             $em->persist($visitor);
 
-            if($visitor->getCenters()->count() == 0) {
+            if ($visitor->getCenters()->count() == 0) {
                 $em->remove($visitor);
             }
         }
-
 
 
     }
