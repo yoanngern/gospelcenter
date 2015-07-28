@@ -6,9 +6,15 @@ gc:
         more: More
         kidsProgram: A special program for kids age 0-12 is organized
         allSunday:
-            lausanne: Every sunday evening at 6pm
+            #lausanne: Every sunday evening at 6pm
+            lausanne: |
+                Summer break
+                July 12 to August 23
             annecy: |
                 Every sunday evening at 10:30 pm
                 and all last sunday of the month at 5 pm
+            annecy: |
+                Summer schedule
+                Every sunday evening at 6pm
             montreux: Every sunday evening at 10:30 pm
             jura: Every sunday evening at 6pm

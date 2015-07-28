@@ -359,6 +359,87 @@ body.rubanOpen #page.admin #container {
 
     @media only screen and (max-width: 1280px) {
         #container {
+
+            & > nav.sub_nav {
+                top: 90px;
+                position: fixed;
+                margin-left: 0px;
+                left: 0px;
+                margin-top: 0px;
+                margin-bottom: 0px;
+                width: 100%;
+
+                ul {
+                    overflow-x: auto;
+                    -webkit-overflow-scrolling: touch;
+                    margin: 0 auto;
+                    display: block;
+                    white-space: nowrap;
+                    border: 0;
+
+                    li {
+                        display: inline-block;
+                        margin-bottom: 2px;
+                        border-bottom: 2px solid $grayDarkGC;
+
+                        &:last-of-type a {
+                            margin-right: 0px;
+                        }
+
+                        a {
+                            color: $grayGC;
+                            font-size: 1.4em;
+                            line-height: 1.4em;
+                            font-family: $font-light;
+                            margin-right: 35px;
+                            display: block;
+                            padding-bottom: 5px;
+                            padding-left: 0;
+
+                            &:hover {
+                                text-decoration: none;
+                            }
+
+                            &.current {
+                                color: $grayDarkGC;
+                            }
+
+                            &.focus {
+                                border-bottom: 5px solid $grayDarkGC;
+                                padding-bottom: 0;
+                                border-left: 0;
+                                padding-left: 0;
+                            }
+                        }
+
+                    }
+                }
+            }
+
+            header {
+                padding-top: 70px;
+            }
+
+            div.tableHeaderBG {
+                top: 200px;
+            }
+
+            table.main {
+                margin-top: 140px;
+            }
+
+        }
+        &.single #container {
+            header {
+                padding-top: 30px;
+            }
+        }
+    }
+
+    @media only screen and (max-width: $tabletH) {
+
+        #container {
+
             nav.sub_nav {
                 top: 90px;
                 position: fixed;
@@ -413,55 +494,8 @@ body.rubanOpen #page.admin #container {
 
                     }
                 }
-
-                /*
-                ul {
-                    border-bottom: 2px solid $grayDarkGC;
-                    border-left: none;
-
-                    li {
-                        display: inline-block;
-                        margin-bottom: 0px;
-                        text-align: center;
-
-                        &:last-of-type {
-                            margin-bottom: 0px;
-                        }
-
-                        a {
-                            font-size: 1.2em;
-                            text-align: center;
-                            display: block;
-                            font-family: $font-regular;
-                            padding: 0px 5px;
-
-                            &.focus {
-                                border-bottom: 2px solid $grayDarkGC;
-                                border-left: none;
-                                padding: 0px 5px;
-                            }
-                        }
-                    }
-                }
-                */
             }
-
-            header {
-                padding-top: 70px;
-            }
-
-            div.tableHeaderBG {
-                top: 200px;
-            }
-
-            table.main {
-                margin-top: 140px;
-            }
-
         }
-    }
-
-    @media only screen and (max-width: $tabletH) {
 
         &.single #container {
             width: 610px;

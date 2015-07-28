@@ -147,28 +147,54 @@
                 {% spaceless %}
                     {% for celebration in lastCelebrations %}
 
-                        <a href="{{ path('gospelcenterMedia_video', {'video': celebration.video.id}) }}">
-                            <div class="photo"
-                                    {% if celebration.image %}
-                                style="background-image: url('{{ asset(celebration.image.webPath)| imagine_filter('media_list_low') }}')"
-                                data-bg="{{ asset(celebration.image.webPath)| imagine_filter('media_list') }}"
-                                data-bg_2x="{{ asset(celebration.image.webPath)| imagine_filter('media_list_2x') }}"
-                                data-bg_tablet="{{ asset(celebration.image.webPath)| imagine_filter('media_list_tablet') }}"
-                                data-bg_tablet_2x="{{ asset(celebration.image.webPath)| imagine_filter('media_list_tablet_2x') }}"
-                                data-bg_mobile="{{ asset(celebration.image.webPath)| imagine_filter('media_list_mobile') }}"
-                                data-bg_mobile_2x="{{ asset(celebration.image.webPath)| imagine_filter('media_list_mobile_2x') }}"
-                                    {% endif %}>
-                                <div class="playButton"></div>
-                            </div>
-                            <section class="details">
-                                <h1>{{ celebration|speakers(app.request.locale) }}</h1>
-                                <span>{{ celebration.date|oneDate(app.request.locale) }}</span>
-                            </section>
-                        </a>
+                        {% if celebration.video %}
+
+                            <a href="{{ path('gospelcenterMedia_video', {'video': celebration.video.id}) }}">
+                                <div class="photo"
+                                        {% if celebration.image %}
+                                    style="background-image: url('{{ asset(celebration.image.webPath)| imagine_filter('media_list_low') }}')"
+                                    data-bg="{{ asset(celebration.image.webPath)| imagine_filter('media_list') }}"
+                                    data-bg_2x="{{ asset(celebration.image.webPath)| imagine_filter('media_list_2x') }}"
+                                    data-bg_tablet="{{ asset(celebration.image.webPath)| imagine_filter('media_list_tablet') }}"
+                                    data-bg_tablet_2x="{{ asset(celebration.image.webPath)| imagine_filter('media_list_tablet_2x') }}"
+                                    data-bg_mobile="{{ asset(celebration.image.webPath)| imagine_filter('media_list_mobile') }}"
+                                    data-bg_mobile_2x="{{ asset(celebration.image.webPath)| imagine_filter('media_list_mobile_2x') }}"
+                                        {% endif %}>
+                                    <div class="playButton"></div>
+                                </div>
+                                <section class="details">
+                                    <h1>{{ celebration|speakers(app.request.locale) }}</h1>
+                                    <span>{{ celebration.date|oneDate(app.request.locale) }}</span>
+                                </section>
+                            </a>
+
+                        {% elseif celebration.audio %}
+
+                            <a href="{{ path('gospelcenterMedia_audio', {'audio': celebration.audio.id}) }}">
+                                <div class="photo"
+                                        {% if celebration.image %}
+                                    style="background-image: url('{{ asset(celebration.image.webPath)| imagine_filter('media_list_low') }}')"
+                                    data-bg="{{ asset(celebration.image.webPath)| imagine_filter('media_list') }}"
+                                    data-bg_2x="{{ asset(celebration.image.webPath)| imagine_filter('media_list_2x') }}"
+                                    data-bg_tablet="{{ asset(celebration.image.webPath)| imagine_filter('media_list_tablet') }}"
+                                    data-bg_tablet_2x="{{ asset(celebration.image.webPath)| imagine_filter('media_list_tablet_2x') }}"
+                                    data-bg_mobile="{{ asset(celebration.image.webPath)| imagine_filter('media_list_mobile') }}"
+                                    data-bg_mobile_2x="{{ asset(celebration.image.webPath)| imagine_filter('media_list_mobile_2x') }}"
+                                        {% endif %}>
+                                    <div class="playButton"></div>
+                                </div>
+                                <section class="details">
+                                    <h1>{{ celebration|speakers(app.request.locale) }}</h1>
+                                    <span>{{ celebration.date|oneDate(app.request.locale) }}</span>
+                                </section>
+                            </a>
+
+                        {% endif %}
 
                     {% endfor %}
 
-                    <a class="more" href="{{ path('gospelcenterMedia_center', {'center': center.ref, 'domain': center.domain}) }}">
+                    <a class="more"
+                       href="{{ path('gospelcenterMedia_center', {'center': center.ref, 'domain': center.domain}) }}">
                         <div class="photo">
                             <span>{{ 'gc.celebration.more'|trans }}</span>
                         </div>

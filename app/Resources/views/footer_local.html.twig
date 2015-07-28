@@ -5,7 +5,7 @@
                 {% include "::nav/social.html.twig" %}
             {% endspaceless %}
 
-            {% if center.ref == "lausanne" %}
+            {% if center.ref == ("lausanne" or "jura") %}
                 <li><a target="_blank" id="gctv" class="icon"
                        href="{{ path('gospelcenterMedia_center', {'center': center.ref, 'domain': center.domain}) }}">Gospel Center TV</a></li>
             {% endif %}

@@ -3,7 +3,7 @@ window.soundCloud = {
     'redirect_uri': 'http://gospel-center.org',
     'lausanne_id': '52004530',
     'montreux_id': '14516848',
-    'jura_id': '',
+    'jura_id': '119056878',
     'annecy_id': '54350620'
 };
 

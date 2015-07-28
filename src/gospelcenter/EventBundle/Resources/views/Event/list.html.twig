@@ -80,9 +80,13 @@
                                 <h1>{{ event.title }}</h1>
                             </div>
                         </section>
+
                         <section class="location">
-                            <span>{{ event.location.name }}</span>
+                            {% if event.location %}
+                                <span>{{ event.location.name }}</span>
+                            {% endif %}
                         </section>
+
                     </a>
                 {% endif %}
 
@@ -90,7 +94,8 @@
 
                     {% set celebration = date.celebration %}
 
-                    <a href="{{ path('gospelcenterCelebrations_list', {'center': center.ref, 'domain': center.domain}) }}" class="date">
+                    <a href="{{ path('gospelcenterCelebrations_list', {'center': center.ref, 'domain': center.domain}) }}"
+                       class="date">
                         <section class="date">
                             <time class="day">{{ date|datesShort(app.request.locale) }}</time>
                             <time class="date">{{ date|times(app.request.locale) }}</time>
@@ -99,11 +104,17 @@
                         </section>
                         <section class="title">
                             <div class="container">
-                                <h1> {{ 'gc.generic.celebrationWith'|trans }} {{ celebration|speakers(app.request.locale) }}</h1>
+                                {% if celebration.speakers|length %}
+                                    <h1> {{ 'gc.generic.celebrationWith'|trans }} {{ celebration|speakers(app.request.locale) }}</h1>
+                                {% else %}
+                                    <h1>{{ 'gc.generic.celebration'|trans }}</h1>
+                                {% endif %}
                             </div>
                         </section>
                         <section class="location">
-                            <span>{{ celebration.location.name }}</span>
+                            {% if celebration.location %}
+                                <span>{{ celebration.location.name }}</span>
+                            {% endif %}
                         </section>
                     </a>
                 {% endif %}

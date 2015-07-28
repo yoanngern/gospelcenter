@@ -42,9 +42,15 @@ class Person
      * @var string
      *
      * @ORM\Column(name="lastname", type="string", length=255)
-     * @Assert\NotBlank(message="Please enter a lastname.")
      */
     private $lastname;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="pseudo", type="string", length=255)
+     */
+    private $pseudo;
 
     /**
      * @var string
@@ -1047,5 +1053,28 @@ class Person
     public function getUser()
     {
         return $this->user;
+    }
+
+    /**
+     * Set pseudo
+     *
+     * @param string $pseudo
+     * @return Person
+     */
+    public function setPseudo($pseudo)
+    {
+        $this->pseudo = $pseudo;
+    
+        return $this;
+    }
+
+    /**
+     * Get pseudo
+     *
+     * @return string 
+     */
+    public function getPseudo()
+    {
+        return $this->pseudo;
     }
 }

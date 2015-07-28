@@ -331,37 +331,37 @@ liip_imagine:
         ##################
         ###  ads_home  ###
         ##################
-        ads_home_low:
+        links_home_low:
             quality: 60
             filters:
                 thumbnail: { size: [480, 250], mode: outbound, allow_upscale: true }
 
-        ads_home:
+        links_home:
             quality: 100
             filters:
                 thumbnail: { size: [480, 250], mode: outbound, allow_upscale: true }
 
-        ads_home_2x:
+        links_home_2x:
             quality: 90
             filters:
                 thumbnail: { size: [960, 500], mode: outbound, allow_upscale: true }
 
-        ads_home_tablet:
+        links_home_tablet:
             quality: 100
             filters:
                 thumbnail: { size: [480, 250], mode: outbound, allow_upscale: true }
 
-        ads_home_tablet_2x:
+        links_home_tablet_2x:
             quality: 90
             filters:
                 thumbnail: { size: [960, 500], mode: outbound, allow_upscale: true }
 
-        ads_home_mobile:
+        links_home_mobile:
             quality: 100
             filters:
                 thumbnail: { size: [640, 270], mode: outbound, allow_upscale: true }
 
-        ads_home_mobile_2x:
+        links_home_mobile_2x:
             quality: 90
             filters:
                 thumbnail: { size: [1280, 540], mode: outbound, allow_upscale: true }

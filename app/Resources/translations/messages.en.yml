@@ -25,6 +25,7 @@ gc:
         with: with
         and: " and "
         celebrationWith: Celebration with
+        celebration: Celebration
 
     security:
         login: Sign in

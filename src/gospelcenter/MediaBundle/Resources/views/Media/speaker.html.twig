@@ -1,16 +1,30 @@
 {% extends "gospelcenterMediaBundle::layout.html.twig" %}
 
 {% block meta %}
-    <meta property="og:title" content="{{ speaker.person.firstname }} {{ speaker.person.lastname }}"/>
+
+    {% if speaker.person.pseudo == "" %}
+        <meta property="og:title" content="{{ speaker.person.firstname }} {{ speaker.person.lastname }}"/>
+        <meta property="og:description"
+              content="Toutes les vidéos et audios de {{ speaker.person.firstname }} {{ speaker.person.lastname }} sur Gospel Center TV"/>
+    {% else %}
+        <meta property="og:title" content="{{ speaker.person.pseudo }}"/>
+        <meta property="og:description"
+              content="Toutes les vidéos et audios de {{ speaker.person.pseudo }} sur Gospel Center TV"/>
+    {% endif %}
     <meta property="og:image" content="{{ speaker.person.image.webPath| imagine_filter('facebook_share') }}"/>
-    <meta property="og:description" content="Toutes les vidéos et audios de {{ speaker.person.firstname }} {{ speaker.person.lastname }} sur Gospel Center TV"/>
+
     {{ parent() }}
 {% endblock %}
 
 {% block body %}
     {% spaceless %}
         <section class="wall">
-            <h1>Les célébrations avec {{ speaker.person.firstname }} {{ speaker.person.lastname }}</h1>
+
+            {% if speaker.person.pseudo == "" %}
+                <h1>Les célébrations avec {{ speaker.person.firstname }} {{ speaker.person.lastname }}</h1>
+            {% else %}
+                <h1>Les célébrations avec {{ speaker.person.pseudo }}</h1>
+            {% endif %}
 
             {% for celebration in celebrations %}
                 {% if celebration.video %}

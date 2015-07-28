@@ -19,7 +19,7 @@
 }
 
 @mixin adsMobileResp($resp) {
-    section.ads div.container {
+    section.links div.container {
 
         & > div {
             height: $resp;
@@ -101,7 +101,7 @@
         }
     }
 
-    section.ads {
+    section.links {
         margin: 50px auto 70px;
         width: 100%;
         max-width: 1440px;
@@ -345,7 +345,7 @@
             }
         }
 
-        section.ads {
+        section.links {
             padding: 0;
             margin-top: 0px;
             margin-bottom: 50px;

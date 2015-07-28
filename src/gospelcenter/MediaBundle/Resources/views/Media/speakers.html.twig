@@ -16,7 +16,13 @@
                             <div class="bg"></div>
                         {% endif %}
                         <div class="details">
-                            <h1>{{ speaker.person.firstname }} {{ speaker.person.lastname }}</h1>
+
+                            {% if speaker.person.pseudo == "" %}
+                                <h1>{{ speaker.person.firstname }} {{ speaker.person.lastname }}</h1>
+                            {% else %}
+                                <h1>{{ speaker.person.pseudo }}</h1>
+                            {% endif %}
+
                             <span>{{ speaker.person.function }}</span>
                         </div>
                     </div>

@@ -42,7 +42,16 @@ class PersonType extends AbstractType
                     'attr' => array(
                         'placeholder' => 'gc.admin.contacts.lastname',
                     ),
-                    'required' => true,
+                    'label' => false,
+                )
+            )
+            ->add(
+                'pseudo',
+                'text',
+                array(
+                    'attr' => array(
+                        'placeholder' => 'gc.admin.contacts.pseudo',
+                    ),
                     'label' => false,
                 )
             )

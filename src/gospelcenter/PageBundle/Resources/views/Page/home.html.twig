@@ -83,7 +83,7 @@
 {% block body %}
 
     {% if ads|length %}
-        <section class="ads">
+        <section class="links">
             {% spaceless %}
 
                 <div class="container">
@@ -94,13 +94,13 @@
                             <a {% if ad.url|isexternal(ad.url) %}target="_blank"{% endif %} href="{{ ad.url }}">
                                 <div
                                         {% if ad.image %}
-                                    style="background-image: url('{{ ad.image.webPath| imagine_filter('ads_home_low') }}')"
-                                    data-bg="{{ ad.image.webPath| imagine_filter('ads_home') }}"
-                                    data-bg_2x="{{ ad.image.webPath| imagine_filter('ads_home_2x') }}"
-                                    data-bg_tablet="{{ ad.image.webPath| imagine_filter('ads_home_tablet') }}"
-                                    data-bg_tablet_2x="{{ ad.image.webPath| imagine_filter('ads_home_tablet_2x') }}"
-                                    data-bg_mobile="{{ ad.image.webPath| imagine_filter('ads_home_mobile') }}"
-                                    data-bg_mobile_2x="{{ ad.image.webPath| imagine_filter('ads_home_mobile_2x') }}"
+                                    style="background-image: url('{{ ad.image.webPath| imagine_filter('links_home_low') }}')"
+                                    data-bg="{{ ad.image.webPath| imagine_filter('links_home') }}"
+                                    data-bg_2x="{{ ad.image.webPath| imagine_filter('links_home_2x') }}"
+                                    data-bg_tablet="{{ ad.image.webPath| imagine_filter('links_home_tablet') }}"
+                                    data-bg_tablet_2x="{{ ad.image.webPath| imagine_filter('links_home_tablet_2x') }}"
+                                    data-bg_mobile="{{ ad.image.webPath| imagine_filter('links_home_mobile') }}"
+                                    data-bg_mobile_2x="{{ ad.image.webPath| imagine_filter('links_home_mobile_2x') }}"
                                         {% endif %}>
 
                                     <h1>{{ ad.title }}</h1>

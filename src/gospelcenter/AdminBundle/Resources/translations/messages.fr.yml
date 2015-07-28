@@ -60,6 +60,7 @@ gc:
             edit: Modifier un contact
             firstname: Prénom
             lastname: Nom
+            pseudo: Pseudo (pour masquer prénom et nom)
             gender: Genre
             languages: Langues
             birth: Né le

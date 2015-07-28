@@ -33,7 +33,7 @@ class MediaController extends Controller
 
         $em = $this->getDoctrine()->getManager();
 
-        $celebrations = $em->getRepository('gospelcenterCelebrationBundle:Celebration')->findLastVideo(4);
+        $celebrations = $em->getRepository('gospelcenterCelebrationBundle:Celebration')->findAllLast(4);
 
         return $this->render(
             'gospelcenterMediaBundle:Media:home.html.twig',

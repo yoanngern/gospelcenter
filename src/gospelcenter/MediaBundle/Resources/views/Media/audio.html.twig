@@ -15,7 +15,11 @@
                     <time>{{ audio.celebration.date|oneDate(app.request.locale) }}</time>
 
                     {% for speaker in audio.celebration.speakers %}
-                        <h3>{{ speaker.person.firstname }} {{ speaker.person.lastname }}</h3>
+                        {% if speaker.person.pseudo == "" %}
+                            <h3>{{ speaker.person.firstname }} {{ speaker.person.lastname }}</h3>
+                        {% else %}
+                            <h3>{{ speaker.person.pseudo }}</h3>
+                        {% endif %}
                         <p class="function">{{ speaker.person.function }}</p>
                     {% endfor %}
 

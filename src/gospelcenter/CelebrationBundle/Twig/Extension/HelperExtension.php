@@ -43,7 +43,13 @@ class HelperExtension extends Twig_Extension
                 $string .= $and;
             }
 
-            $string .= $person->getFirstname() . " " . $person->getLastname();
+            if($person->getPseudo() == "") {
+                $string .= $person->getFirstname() . " " . $person->getLastname();
+            } else {
+                $string .= $person->getPseudo();
+            }
+
+
         }
 
         return $string;

@@ -61,7 +61,70 @@ class CelebrationRepository extends EntityRepository
             )->setParameters(
                 array(
                     'center' => $center->getRef(),
-                    'now' =>  new \Datetime()
+                    'now' => new \Datetime()
+                )
+            );
+
+        if ($nb > 0) {
+            $query->setMaxResults($nb);
+        }
+
+        try {
+            return $query->getResult();
+        } catch (\Doctrine\ORM\NoResultException $e) {
+            return null;
+        }
+    }
+
+    public function findAllLast($nb)
+    {
+        $query = $this->getEntityManager()
+            ->createQuery(
+                '
+                SELECT cel
+                FROM gospelcenterCelebrationBundle:Celebration cel
+                JOIN cel.date d
+                LEFT JOIN cel.video v
+                LEFT JOIN cel.audio a
+                JOIN cel.image i
+                WHERE (
+                v.id IS NOT NULL
+                OR a.id IS NOT NULL
+                )
+                ORDER BY d.start DESC'
+            );
+
+        if ($nb > 0) {
+            $query->setMaxResults($nb);
+        };
+
+        try {
+            return $query->getResult();
+        } catch (\Doctrine\ORM\NoResultException $e) {
+            return null;
+        }
+    }
+
+    public function findLast(\gospelcenter\CenterBundle\Entity\Center $center, $nb)
+    {
+        $query = $this->getEntityManager()
+            ->createQuery(
+                '
+                SELECT cel
+                FROM gospelcenterCelebrationBundle:Celebration cel
+                JOIN cel.center c
+                JOIN cel.date d
+                LEFT JOIN cel.video v
+                LEFT JOIN cel.audio a
+                WHERE c.ref = :center
+                AND (
+                v.id IS NOT NULL
+                OR a.id IS NOT NULL
+                )
+                ORDER BY d.start DESC'
+            )->setParameters(
+                array(
+                    'center' => $center->getRef()
                 )
             );
 
@@ -74,29 +137,6 @@ class CelebrationRepository extends EntityRepository
         } catch (\Doctrine\ORM\NoResultException $e) {
             return null;
         }
-    }
-
-    public function findLast(\gospelcenter\CenterBundle\Entity\Center $center, $nb)
-    {
-        $qb = $this->createQueryBuilder('cel');
-
-        $qb->join('cel.center', 'c');
-        $qb->join('cel.video', 'v');
-        $qb->join('cel.date', 'd');
-
-        $qb->where('c.ref = :center')
-            ->setParameter('center', $center->getRef());
-
-        $qb->andWhere('d.start < :now')
-            ->setParameter('now', new \Datetime());
-
-        $qb->orderBy('d.start', 'DESC');
-
-        if ($nb > 0) {
-            $qb->setMaxResults($nb);
-        }
-
-        return $qb->getQuery()->getResult();
     }
 
     public function findLastVideo($nb)
@@ -184,11 +224,10 @@ class CelebrationRepository extends EntityRepository
             $qb->setMaxResults($nb);
         }
 
-        $qb->setFirstResult(($page-1)*$nb);
+        $qb->setFirstResult(($page - 1) * $nb);
 
         return $qb->getQuery()->getResult();
     }
-
 
 
     public function findAllWithVideoJSON($page, $nb)
@@ -203,7 +242,7 @@ class CelebrationRepository extends EntityRepository
                 JOIN cel.date d
                 LEFT JOIN cel.image i
                 ORDER BY d.start DESC'
-            )->setFirstResult(($page-1)*$nb)
+            )->setFirstResult(($page - 1) * $nb)
             ->setMaxResults($nb);
 
         try {
@@ -227,7 +266,7 @@ class CelebrationRepository extends EntityRepository
             $qb->setMaxResults($nb);
         }
 
-        $qb->setFirstResult(($page-1)*$nb);
+        $qb->setFirstResult(($page - 1) * $nb);
 
         return $qb->getQuery()->getResult();
     }
@@ -258,7 +297,7 @@ class CelebrationRepository extends EntityRepository
             $query->setMaxResults($nb);
         }
 
-        $query->setFirstResult(($page-1)*$nb);
+        $query->setFirstResult(($page - 1) * $nb);
 
         try {
             return $query->getResult();
