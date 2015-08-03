@@ -1,0 +1,13 @@
+# This file is auto-generated during the composer install
+parameters:
+    database_driver: pdo_mysql
+    database_host: gospel-center.com
+    database_port: '3306'
+    database_name: gospelcenter_beta
+    database_user: gcenter
+    database_password: rPo3y95!
+    mailer_transport: gmail
+    mailer_user: web@gospel-center.org
+    mailer_password: E5On1fec1ka
+    locale: fr
+    secret: e5114acea47ac59b2b014aa150bdb18a00044fa1
