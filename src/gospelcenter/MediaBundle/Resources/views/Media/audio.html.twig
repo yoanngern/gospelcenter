@@ -1,5 +1,13 @@
 {% extends "gospelcenterMediaBundle::layout.html.twig" %}
 
+{% block meta %}
+    <meta property="og:title" content="{{ audio.celebration|speakers(app.request.locale) }}"/>
+    <meta property="og:image" content="{{ audio.celebration.image.webPath| imagine_filter('facebook_share') }}"/>
+    <meta property="og:description"
+          content="{% if audio.celebration.title %}{{ audio.celebration.title }}{% else %}Célébration du {{ audio.celebration.date|oneDate(app.request.locale) }}{% endif %}"/>
+    {{ parent() }}
+{% endblock %}
+
 {% block body %}
     <section class="audio">
         <section class="player">
@@ -23,7 +31,22 @@
                         <p class="function">{{ speaker.person.function }}</p>
                     {% endfor %}
 
-                    <p class="desc">{{ audio.celebration.description }}</p>
+                    {% if audio.celebration.description != "" %}
+                        <p class="desc">{{ audio.celebration.description }}</p>
+                    {% endif %}
+
+                    {% set url = "http://gospel-center.tv" ~ path(app.request.attributes.get('_route'), app.request.attributes.get('_route_params')) %}
+
+                    <section class="social">
+                        <ul>
+                            <li style="list-style: none;">
+                                <a id="facebook" target="_blank" class="icon"
+                                   href="https://www.facebook.com/sharer/sharer.php?u={{ url|url_encode }}">Facebook</a>
+                            </li>
+                        </ul>
+
+                    </section>
+
                 </section>
                 {% if audios|length %}
                     <section class="right">
