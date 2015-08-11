@@ -18,6 +18,11 @@
     <meta property="og:description" content="A PLACE WHERE MIRACLES HAPPEN!"/>
     <meta property="og:image" content="http://gc-{{ center.ref }}.org/images/FBshare_{{  center.ref }}.jpg"/>
     <meta property="og:type" content="website"/>
+
+    {% if center.ref == 'jura' %}
+        <link rel="alternate" type="application/rss+xml" href="http://feeds2.feedburner.com/GospelCenterJura" />
+    {% endif %}
+
 {% endblock %}
 
 {% block local_header %}
