@@ -55,7 +55,7 @@ class Person
     /**
      * @var string
      *
-     * @ORM\Column(name="gender", type="string", length=255)
+     * @ORM\Column(name="gender", type="string", length=255, nullable=true)
      */
     private $gender;
 
