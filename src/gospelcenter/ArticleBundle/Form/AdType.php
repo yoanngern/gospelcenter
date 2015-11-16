@@ -26,6 +26,15 @@ class AdType extends AbstractType
                 )
             )
 
+            ->add(
+                'showText',
+                'checkbox',
+                array(
+                    'required' => false,
+                    'attr' => array('placeholder' => 'Show text')
+                )
+            )
+
             ->add('title', 'text', array(
                 'attr' => array(
                     'placeholder' => 'Title'

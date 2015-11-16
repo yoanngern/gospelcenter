@@ -51,6 +51,8 @@ gc:
             kids_program: Programme pour les enfants
             location: Lieu
             choose_location: Choisissez un lieu
+            selectSpeakers: Sélectionnez un orateur
+            selectAudio: Sélectionnez un audio
             tab:
                 general: Général
                 preaching: Message
@@ -91,6 +93,8 @@ gc:
             postal_code: Code postale
             city: Ville
             country: Pays
+        pages:
+            title: Titre
         events:
             add: Créer un event
             edit: Modifier un event

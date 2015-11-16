@@ -13,6 +13,7 @@ gc:
                 staff: Staff
                 believe: What we believe
                 music: Music
+                coaching: Coaching
         bases:
             findBase: FIND A BASE NEAR YOU
             moreInfos: For more info, contact us

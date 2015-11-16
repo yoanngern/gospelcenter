@@ -32,8 +32,11 @@
 {% block adminBody %}
     
     <form novalidate class="slide" action="{{ path('gospelcenterAdmin_slides_edit', {'center': center.ref, 'domain': center.domain, 'slide': slide.id}) }}" method="post" {{ form_enctype(form) }}>
-    	
-    	{{ form_widget(form.image.file) }}
+
+        {{ form_widget(form.status) }}
+        {{ form_errors(form.status) }}
+
+        {{ form_widget(form.image.file) }}
         {{ form_errors(form.image.file) }}
         {% if slide.image %}
         	<div id="editImage" data-input="{{ form.image.file.vars.id }}">

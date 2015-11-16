@@ -23,6 +23,8 @@ class PageController extends Controller
 
         $aPage = $em->getRepository('gospelcenterPageBundle:Page')->findAPage($center, $page, $language);
 
+        $slides = $em->getRepository('gospelcenterPageBundle:Slide')->findActiveForPage($center, $page, $language);
+
         if (!$aPage) {
             $aPage = $em->getRepository('gospelcenterPageBundle:Page')->findAPage($center, $page, $default_language);
         }
@@ -38,6 +40,7 @@ class PageController extends Controller
                 array(
                     'center' => $center,
                     'page' => $aPage->getRef(),
+                    'slides' => $slides,
                     'language' => $language,
                     'article' => $aPage
                 )
@@ -50,9 +53,14 @@ class PageController extends Controller
      * @param Center $center
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function homeAction(Center $center)
+    public function homeAction(Center $center, $_locale)
     {
+        $default_language = "fr";
+        $language = $_locale;
+
         $em = $this->getDoctrine()->getManager();
+
+        $slides = $em->getRepository('gospelcenterPageBundle:Slide')->findActiveForPage($center, "home", $language);
 
         $ads = $em->getRepository('gospelcenterArticleBundle:Ad')->findAllForHome($center);
         $dates = $em->getRepository('gospelcenterEventBundle:Event')->findAllForHome($center);
@@ -65,6 +73,7 @@ class PageController extends Controller
                 'center' => $center,
                 'dates' => $dates,
                 'ads' => $ads,
+                'slides' => $slides,
                 'page' => 'home'
             )
         );

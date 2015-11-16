@@ -74,18 +74,6 @@
 <section id="page" class="{#headerFixed#} {{ page }} {% block classPage %}{% endblock %}">
     <header>
 
-        {% block local_header %}
-        {% endblock %}
-
-
-        {% for type in ['info', 'success', 'error'] %}
-            {% for message in app.session.flashbag.get(type) %}
-                <section id="message" class="{{ type }}">
-                    {{ message }}
-                </section>
-            {% endfor %}
-        {% endfor %}
-
         <nav class="main">
             <a id="get_ruban" href=""></a>
             {% block header_logo %}{% endblock %}
@@ -102,6 +90,20 @@
             {% endif %}
             <a id="get_nav" href=""></a>
         </nav>
+
+
+        {% block local_header %}
+        {% endblock %}
+
+
+        {% for type in ['info', 'success', 'error'] %}
+            {% for message in app.session.flashbag.get(type) %}
+                <section id="message" class="{{ type }}">
+                    {{ message }}
+                </section>
+            {% endfor %}
+        {% endfor %}
+
 
     </header>
     <section id="container" class="{{ page }}">

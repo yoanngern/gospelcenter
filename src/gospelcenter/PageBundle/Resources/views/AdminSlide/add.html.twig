@@ -20,7 +20,10 @@
 {% block adminBody %}
     
     <form novalidate class="slide" action="{{ path('gospelcenterAdmin_slides_add', {'center': center.ref, 'domain': center.domain}) }}" method="post" {{ form_enctype(form) }}>
-    	
+
+        {{ form_widget(form.status) }}
+        {{ form_errors(form.status) }}
+
     	{{ form_widget(form.image.file) }}
     	{{ form_errors(form.image.file) }}
     	

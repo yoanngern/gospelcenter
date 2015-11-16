@@ -24,6 +24,13 @@ class Slide
     private $id;
 
     /**
+     * @var boolean
+     *
+     * @ORM\Column(name="status", type="boolean")
+     */
+    private $status;
+
+    /**
      * @var string
      *
      * @ORM\Column(name="title", type="string", length=255)
@@ -101,6 +108,7 @@ class Slide
      */
     public function __construct()
     {
+        $this->status = true;
         $this->modifiedDate = new \Datetime();
         $this->createdDate = new \Datetime();
         $this->sort = 999;
@@ -350,5 +358,28 @@ class Slide
     public function getPage()
     {
         return $this->page;
+    }
+
+    /**
+     * Set status
+     *
+     * @param boolean $status
+     * @return Slide
+     */
+    public function setStatus($status)
+    {
+        $this->status = $status;
+    
+        return $this;
+    }
+
+    /**
+     * Get status
+     *
+     * @return boolean 
+     */
+    public function getStatus()
+    {
+        return $this->status;
     }
 }

@@ -143,11 +143,12 @@ section {
             .details {
                 margin: 5px 3px 0px 3px;
                 position: relative;
+                max-width: 300px;
 
                 h1 {
                     font-family: $font-bold;
                     font-size: 0.9em;
-                    line-height: 0.9em;
+                    line-height: 1.2em;
                     text-transform: uppercase;
                 }
 

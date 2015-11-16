@@ -16,6 +16,8 @@
     <a id="logo" href="{{ path('gospelcenterPage_home', {'center': center.ref, 'domain': center.domain}) }}"></a>
 {% endblock %}
 
+{% block classPage %}{{ parent() }}{% if slides|length %} simpleHeader{% endif %} {% endblock %}
+
 {% block meta %}
     {{ parent() }}
 
@@ -25,147 +27,202 @@
     <meta property="og:site_name" content="Gospel Center {{ center.name }}"/>
     <meta property="og:url" content="http://gc-{{ center.ref }}.org"/>
     <meta property="og:description" content="A PLACE WHERE MIRACLES HAPPEN!"/>
-    <meta property="og:image" content="http://gc-{{ center.ref }}.org/images/FBshare_{{  center.ref }}.jpg"/>
+    <meta property="og:image" content="http://gc-{{ center.ref }}.org/images/FBshare_{{ center.ref }}.jpg"/>
     <meta property="og:type" content="website"/>
 
     {% if center.ref == 'jura' %}
-        <link rel="alternate" type="application/rss+xml" href="http://feeds2.feedburner.com/GospelCenterJura" />
+        <link rel="alternate" type="application/rss+xml" href="http://feeds2.feedburner.com/GospelCenterJura"/>
     {% endif %}
 {% endblock %}
 
 {% block local_header %}
-    <div class="gradient_top"></div>
-    <div class="map_bg">
-        <div class="inner"></div>
-    </div>
-    <nav class="top">
-        <section class="container">
-            <a id="get_ruban" href=""></a>
-            <section class="right">
-                <ul class="nav">
-                   {#<li><a target="_blank"
-                           href="{{ path('gospelcenterPageGlobal_home') }}">{{ 'gc.nav.gcmovement'|trans }}</a></li>#}
-                    <li><a target="_blank" href="http://www.ministeres.org">{{ 'gc.nav.apostolicTeam'|trans }}</a></li>
-                </ul>
-                {% if app.user %}
-                    {% include "::admin/param.html.twig" %}
-                {% endif %}
-            </section>
 
-        </section>
-    </nav>
-    <section class="center">
-        <a class="logo" href="{{ path('gospelcenterPage_home', {'center': center.ref, 'domain': center.domain}) }}">
-            {% if center.ref == 'lausanne' %}
-                <img src="{{ asset('images/visuGCLausanne.png') }}"
-                     srcset="{{ asset('images/visuGCLausanne_2x.png') }} 2x">
-            {% elseif center.ref == 'montreux' %}
-                <img src="{{ asset('images/visuGCMontreux.png') }}"
-                     srcset="{{ asset('images/visuGCMontreux_2x.png') }} 2x">
-            {% elseif center.ref == 'jura' %}
-                <img src="{{ asset('images/visuGCJura.png') }}" srcset="{{ asset('images/visuGCJura_2x.png') }} 2x">
-            {% elseif center.ref == 'annecy' %}
-                <img src="{{ asset('images/visuGCAnnecy.png') }}" srcset="{{ asset('images/visuGCAnnecy_2x.png') }} 2x">
-            {% endif %}
-        </a>
-    </section>
-    <nav class="mobile">
-        <ul>
+    {% if slides|length %}
+
+        {% if slides|length == 1 %}
+            <section class="slider" id="one">
+        {% else %}
+            <section class="slider" id="auto">
+        {% endif %}
+
+
             {% spaceless %}
-                {% include "::nav/local.html.twig" %}
+                {% for slide in slides %}
+                    <article id="{{ loop.index }}" class="slide {% if loop.index == 1 %}current{% endif %}"
+
+                            {% if slide.image %}
+                        style="background-image: url('{{ slide.image.webPath| imagine_filter('slide_low') }}')"
+                        data-bg="{{ slide.image.webPath| imagine_filter('slide') }}"
+                        data-bg_2x="{{ slide.image.webPath| imagine_filter('slide_2x') }}"
+                        data-bg_tablet="{{ slide.image.webPath| imagine_filter('slide_tablet') }}"
+                        data-bg_tablet_2x="{{ slide.image.webPath| imagine_filter('slide_tablet_2x') }}"
+                        data-bg_mobile="{{ slide.image.webPath| imagine_filter('slide_mobile') }}"
+                        data-bg_mobile_2x="{{ slide.image.webPath| imagine_filter('slide_mobile_2x') }}"
+                            {% endif %}>
+
+                        <section class="content">
+                            <h1 class="titlePage"><span>{{ slide.title }}</span></h1>
+
+                            <p>{{ slide.text|nl2br }}</p>
+                        </section>
+
+                        {% if slide.link %}
+                            <div class="link">
+                                <a href="{{ slide.link }}"
+                                   target="_blank">{% if slide.labelLink %}{{ slide.labelLink }}{% else %}{{ slide.link }}{% endif %}</a>
+                            </div>
+                        {% endif %}
+                    </article>
+                {% endfor %}
             {% endspaceless %}
-        </ul>
-    </nav>
-    <div class="gradient_bottom"></div>
+        </section>
+
+    {% else %}
+        <div class="gradient_top"></div>
+        <div class="map_bg">
+            <div class="inner"></div>
+        </div>
+        <nav class="top">
+            <section class="container">
+                <a id="get_ruban" href=""></a>
+                <section class="right">
+                    <ul class="nav">
+                        {#<li><a target="_blank"
+                                href="{{ path('gospelcenterPageGlobal_home') }}">{{ 'gc.nav.gcmovement'|trans }}</a></li>#}
+                        {#<li><a target="_blank" href="http://www.ministeres.org">{{ 'gc.nav.apostolicTeam'|trans }}</a></li>#}
+                    </ul>
+                    {% if app.user %}
+                        {% include "::admin/param.html.twig" %}
+                    {% endif %}
+                </section>
+
+            </section>
+        </nav>
+        <section class="center">
+            <a class="logo"
+               href="{{ path('gospelcenterPage_home', {'center': center.ref, 'domain': center.domain}) }}">
+                {% if center.ref == 'lausanne' %}
+                    <img src="{{ asset('images/visuGCLausanne.png') }}"
+                         srcset="{{ asset('images/visuGCLausanne_2x.png') }} 2x">
+                {% elseif center.ref == 'montreux' %}
+                    <img src="{{ asset('images/visuGCMontreux.png') }}"
+                         srcset="{{ asset('images/visuGCMontreux_2x.png') }} 2x">
+                {% elseif center.ref == 'jura' %}
+                    <img src="{{ asset('images/visuGCJura.png') }}"
+                         srcset="{{ asset('images/visuGCJura_2x.png') }} 2x">
+                {% elseif center.ref == 'annecy' %}
+                    <img src="{{ asset('images/visuGCAnnecy.png') }}"
+                         srcset="{{ asset('images/visuGCAnnecy_2x.png') }} 2x">
+                {% endif %}
+            </a>
+        </section>
+        <nav class="mobile">
+            <ul>
+                {% spaceless %}
+                    {% include "::nav/local.html.twig" %}
+                {% endspaceless %}
+            </ul>
+        </nav>
+        <div class="gradient_bottom"></div>
+
+    {% endif %}
+
+
+
 {% endblock %}
 
-{% block header_nav %}
-    {% include "::nav/local.html.twig" %}
-{% endblock %}
+        {% block header_nav %}
+            {% include "::nav/local.html.twig" %}
+        {% endblock %}
 
-{% block footer %}
-    {% include "::footer_local.html.twig" %}
-{% endblock %}
+        {% block footer %}
+            {% include "::footer_local.html.twig" %}
+        {% endblock %}
 
-{% block body %}
+        {% block body %}
 
-    {% if ads|length %}
-        <section class="links">
-            {% spaceless %}
+            {% if ads|length %}
+                <section class="links">
+                    {% spaceless %}
 
-                <div class="container">
+                        <div class="container">
 
-                    {% for ad in ads|slice(0, 3) %}
+                            {% for ad in ads|slice(0, 3) %}
 
-                        <div>
-                            <a {% if ad.url|isexternal(ad.url) %}target="_blank"{% endif %} href="{{ ad.url }}">
-                                <div
-                                        {% if ad.image %}
-                                    style="background-image: url('{{ ad.image.webPath| imagine_filter('links_home_low') }}')"
-                                    data-bg="{{ ad.image.webPath| imagine_filter('links_home') }}"
-                                    data-bg_2x="{{ ad.image.webPath| imagine_filter('links_home_2x') }}"
-                                    data-bg_tablet="{{ ad.image.webPath| imagine_filter('links_home_tablet') }}"
-                                    data-bg_tablet_2x="{{ ad.image.webPath| imagine_filter('links_home_tablet_2x') }}"
-                                    data-bg_mobile="{{ ad.image.webPath| imagine_filter('links_home_mobile') }}"
-                                    data-bg_mobile_2x="{{ ad.image.webPath| imagine_filter('links_home_mobile_2x') }}"
-                                        {% endif %}>
+                                <div>
+                                    <a {% if ad.url|isexternal(ad.url) %}target="_blank"{% endif %} href="{{ ad.url }}">
+                                        <div
+                                                {% if ad.image %}
+                                            style="background-image: url('{{ ad.image.webPath| imagine_filter('links_home_low') }}')"
+                                            data-bg="{{ ad.image.webPath| imagine_filter('links_home') }}"
+                                            data-bg_2x="{{ ad.image.webPath| imagine_filter('links_home_2x') }}"
+                                            data-bg_tablet="{{ ad.image.webPath| imagine_filter('links_home_tablet') }}"
+                                            data-bg_tablet_2x="{{ ad.image.webPath| imagine_filter('links_home_tablet_2x') }}"
+                                            data-bg_mobile="{{ ad.image.webPath| imagine_filter('links_home_mobile') }}"
+                                            data-bg_mobile_2x="{{ ad.image.webPath| imagine_filter('links_home_mobile_2x') }}"
+                                                {% endif %}>
 
-                                    <h1>{{ ad.title }}</h1>
-                                    <span>{{ ad.subtitle }}</span>
+                                            {% if ad.showText %}
+
+                                                <h1>{{ ad.title }}</h1>
+                                                <span>{{ ad.subtitle }}</span>
+
+                                            {% endif %}
+                                        </div>
+                                    </a>
+                                </div>
+
+                            {% endfor %}
+
+                        </div>
+
+                    {% endspaceless %}
+
+                </section>
+            {% endif %}
+
+
+            {% if dates|length %}
+                <section id="nextEvents" class="gray">
+                    <h1>{{ 'gc.page.home.nextEvent'|trans }}</h1>
+
+                    <section class="mediaList" data-nb="{{ dates|length + 1 }}">
+                        {% spaceless %}
+                            {% for date in dates %}
+
+                                {% set event = date.event %}
+
+                                <a href="{{ path('gospelcenterEvents_event', {'center': center.ref, 'domain': center.domain, 'event': event.id}) }}">
+                                    <div class="photo"
+                                            {% if event.picture %}
+                                        style="background-image: url('{{ event.picture.webPath| imagine_filter('media_list_low') }}')"
+                                        data-bg="{{ event.picture.webPath| imagine_filter('media_list') }}"
+                                        data-bg_2x="{{ event.picture.webPath| imagine_filter('media_list_2x') }}"
+                                        data-bg_tablet="{{ event.picture.webPath| imagine_filter('media_list_tablet') }}"
+                                        data-bg_tablet_2x="{{ event.picture.webPath| imagine_filter('media_list_tablet_2x') }}"
+                                        data-bg_mobile="{{ event.picture.webPath| imagine_filter('media_list_mobile') }}"
+                                        data-bg_mobile_2x="{{ event.picture.webPath| imagine_filter('media_list_mobile_2x') }}"
+                                            {% endif %}>
+
+                                        {#<img src="{{ asset(event.picture.webPath) }}" alt="{{ event.title }}"/>#}
+                                    </div>
+                                    <section class="details">
+                                        <h1>{{ event.title }}</h1>
+                                        <span>{{ date|oneDate(app.request.locale) }}</span>
+                                    </section>
+                                </a>
+
+                            {% endfor %}
+
+                            <a class="more"
+                               href="{{ path('gospelcenterEvents_list', {'center': center.ref, 'domain': center.domain}) }}">
+                                <div class="photo">
+                                    <span>{{ 'gc.page.home.moreEvents'|trans }}</span>
                                 </div>
                             </a>
-                        </div>
+                        {% endspaceless %}
+                    </section>
+                </section>
+            {% endif %}
 
-                    {% endfor %}
-
-                </div>
-
-            {% endspaceless %}
-
-        </section>
-    {% endif %}
-
-
-    {% if dates|length %}
-        <section id="nextEvents" class="gray">
-            <h1>{{ 'gc.page.home.nextEvent'|trans }}</h1>
-
-            <section class="mediaList" data-nb="{{ dates|length + 1 }}">
-                {% spaceless %}
-                    {% for date in dates %}
-
-                        {% set event = date.event %}
-
-                        <a href="{{ path('gospelcenterEvents_event', {'center': center.ref, 'domain': center.domain, 'event': event.id}) }}">
-                            <div class="photo"
-                                    {% if event.picture %}
-                                style="background-image: url('{{ event.picture.webPath| imagine_filter('media_list_low') }}')"
-                                data-bg="{{ event.picture.webPath| imagine_filter('media_list') }}"
-                                data-bg_2x="{{ event.picture.webPath| imagine_filter('media_list_2x') }}"
-                                data-bg_tablet="{{ event.picture.webPath| imagine_filter('media_list_tablet') }}"
-                                data-bg_tablet_2x="{{ event.picture.webPath| imagine_filter('media_list_tablet_2x') }}"
-                                data-bg_mobile="{{ event.picture.webPath| imagine_filter('media_list_mobile') }}"
-                                data-bg_mobile_2x="{{ event.picture.webPath| imagine_filter('media_list_mobile_2x') }}"
-                                    {% endif %}>
-
-                                {#<img src="{{ asset(event.picture.webPath) }}" alt="{{ event.title }}"/>#}
-                            </div>
-                            <section class="details">
-                                <h1>{{ event.title }}</h1>
-                                <span>{{ date|oneDate(app.request.locale) }}</span>
-                            </section>
-                        </a>
-
-                    {% endfor %}
-
-                    <a class="more" href="{{ path('gospelcenterEvents_list', {'center': center.ref, 'domain': center.domain}) }}">
-                        <div class="photo">
-                            <span>{{ 'gc.page.home.moreEvents'|trans }}</span>
-                        </div>
-                    </a>
-                {% endspaceless %}
-            </section>
-        </section>
-    {% endif %}
-
-{% endblock %}
+        {% endblock %}

@@ -28,7 +28,8 @@ class PageType extends AbstractType
                 'choice',
                 array(
                     'choices' => array(
-                        'bases' => 'Bases'
+                        'bases' => 'Bases',
+                        'home' => 'Home'
                     ),
                     'multiple' => false,
                     'empty_value' => 'Select a menu'

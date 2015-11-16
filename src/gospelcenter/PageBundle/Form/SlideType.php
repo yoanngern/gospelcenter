@@ -26,6 +26,14 @@ class SlideType extends AbstractType
         $center = $this->center;
 
         $builder
+            ->add(
+                'status',
+                'checkbox',
+                array(
+                    'required' => false,
+                    'attr' => array('placeholder' => 'Status')
+                )
+            )
             ->add('title', 'text', array(
                     'attr' => array(
                         'placeholder' => 'Title',

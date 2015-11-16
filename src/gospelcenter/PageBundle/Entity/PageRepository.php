@@ -75,6 +75,7 @@ class PageRepository extends EntityRepository
         
         $qb->join('p.center', 'c');
         $qb->join('p.language', 'l');
+
         
         $qb->where('p.ref = :page')
             ->setParameter('page', $pageRef);

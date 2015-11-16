@@ -23,7 +23,7 @@
 {% block adminTools %}
     <a href="{{ path('gospelcenterAdmin_events_delete', {'center': center.ref, 'domain': center.domain, 'event': event.id}) }}"
        class="delete">Delete</a>
-    <a href="{{ path('gospelcenterAdmin_events', {'center': center.ref, 'domain': center.domain}) }}">Cancel</a>
+    <a href="{{ path('gospelcenterAdmin_events', {'center': center.ref, 'domain': center.domain}) }}">{{ 'gc.admin.generic.cancel'|trans }}</a>
 {% endblock %}
 
 {% form_theme form 'gospelcenterDateBundle:Form:datetime.html.twig' %}

@@ -209,6 +209,58 @@
                     }
                 }
             }
+
+            section.social {
+                display: inline;
+                text-align: center;
+
+                ul {
+                    margin-top: 20px;
+
+                    li {
+                        display: inline-block;
+                        vertical-align: top;
+
+                        &:first-of-type {
+                            a.icon {
+                                margin-left: 0;
+                            }
+                        }
+
+
+                        a.icon {
+                            display: inline-block;
+                            height: 30px;
+                            margin: 10px;
+                            background-size: contain;
+                            background-repeat: no-repeat;
+                            background-position: center;
+
+                            text-indent: 100%;
+                            white-space: nowrap;
+                            overflow: hidden;
+
+                            &#facebook {
+                                width: 30px;
+                                background-image: url('../images/link_facebook.svg');
+
+                                &:hover {
+                                    background-image: url('../images/link_facebook_hover.svg');
+                                }
+                            }
+
+                            &#twitter {
+                                width: 30px;
+                                background-image: url('../images/link_twitter.svg');
+
+                                &:hover {
+                                    background-image: url('../images/link_twitter_hover.svg');
+                                }
+                            }
+                        }
+                    }
+                }
+            }
         }
     }
 

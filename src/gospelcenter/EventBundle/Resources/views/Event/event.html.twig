@@ -9,8 +9,23 @@
 {% block title %}{{ parent() }} - {{ event.title }}{% endblock %}
 
 {% block meta %}
-    {{ parent() }}
-    <meta property="og:title" content="{{ event.title }}"/>
+
+    {% set desc = true %}
+
+    {% for date in event.dates %}
+
+        {% if date(date.end) > date() and desc %}
+            <meta name="Description" content="{{ date|oneDate(app.request.locale) }}">
+            {% set desc = false %}
+        {% endif %}
+    {% endfor %}
+
+    <meta property="og:title" content="GC{{ center.name }} - {{ event.title }}"/>
+    <meta property="og:site_name" content="Gospel Center {{ center.name }}"/>
+    <meta property="og:url" content="http://gc-{{ center.ref }}.org/events/event/{{ event.id }}"/>
+    <meta property="og:description" content="{{ event.introText }}"/>
+    <meta property="og:image" content="{{ event.picture.webPath| imagine_filter('event_picture_2x') }}"/>
+    <meta property="og:type" content="website"/>
 {% endblock %}
 
 {% block local_header %}{% endblock %}
@@ -67,7 +82,7 @@
                     <article class="dates">
                         <h1><span>{{ 'gc.event.dates'|trans }}</span></h1>
                         {% for date in event.dates %}
-                            {% if date(date.end) > date()  %}
+                            {% if date(date.end) > date() %}
                                 <article>
 
 
@@ -94,6 +109,25 @@
                             {% endfor %}
                         </article>
                     {% endif %}
+
+                    {% set url = "http://gc-" ~ center.ref ~ ".org" ~ path(app.request.attributes.get('_route'), app.request.attributes.get('_route_params')) %}
+
+                    {% set txt = "GC" ~ center.name ~ " - " ~ event.title %}
+
+                    <section class="social">
+                        <ul>
+                            <li style="list-style: none;">
+                                <a id="facebook" target="_blank" class="icon"
+                                   href="https://www.facebook.com/sharer/sharer.php?u={{ url|url_encode }}">Facebook</a>
+                            </li>
+
+                            <li style="list-style: none;">
+                                <a id="twitter" target="_blank" class="icon"
+                                   href="https://twitter.com/intent/tweet?url={{ url|url_encode }}&text={{ txt }}&original_referer={{ url|url_encode }}">Twitter</a>
+                            </li>
+                        </ul>
+
+                    </section>
                 </section>
             </section>
 

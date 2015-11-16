@@ -51,6 +51,34 @@ $(document).ready(function () {
             width: 960,
             height: 380
         });
+
+        $('section.slider#auto').slidesjs({
+            width: 960,
+            height: 380,
+            play: {
+                active: true,
+                effect: "slide",
+                interval: 7000,
+                auto: true,
+                swap: true,
+                pauseOnHover: false,
+                restartDelay: 2500
+            }
+        });
+
+        $('section.slider#one').slidesjs({
+            width: 960,
+            height: 380,
+            play: {
+                active: false
+            },
+            pagination: {
+                active: false
+            },
+            navigation: {
+                active: false
+            }
+        });
     });
 
 });

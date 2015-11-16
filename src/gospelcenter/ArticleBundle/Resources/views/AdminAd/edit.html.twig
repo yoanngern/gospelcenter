@@ -26,11 +26,17 @@
 
 {% block adminBody %}
 
-    <form class="ad" novalidate action="{{ path('gospelcenterAdmin_ads_edit', {'center': center.ref, 'domain': center.domain, 'ad': ad.id}) }}"
+    <form class="ad" novalidate
+          action="{{ path('gospelcenterAdmin_ads_edit', {'center': center.ref, 'domain': center.domain, 'ad': ad.id}) }}"
           method="post" {{ form_enctype(form) }}>
 
-        {{ form_widget(form.status) }}
-        {{ form_errors(form.status) }}
+        <fieldset class="inline">
+            {{ form_widget(form.status) }}
+            {{ form_errors(form.status) }}
+
+            {{ form_widget(form.showText) }}
+            {{ form_errors(form.showText) }}
+        </fieldset>
 
         {{ form_widget(form.title) }}
         {{ form_errors(form.title) }}

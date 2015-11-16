@@ -16,6 +16,7 @@
         <tr>
             <th data-sort="string" data-sort-default="desc">Title<span>Title<div class="arrow"></div></span></th>
             <th data-sort="string">Page<span>Page<div class="arrow"></div></span></th>
+            <th data-sort="string">Status<span>Status<div class="arrow"></div></span></th>
             <th data-sort="int">Modified date<span>Modified date<div class="arrow"></div></span></th>
         </tr>
         </thead>
@@ -33,6 +34,11 @@
                 <td data-sort-value="{{ ad.type }}">
                     <a href="{{ link }}">
                         <span>{{ ad.type }}</span>
+                    </a>
+                </td>
+                <td>
+                    <a href="{{ link }}">
+                        <span>{% if ad.status %}Actif{% endif %}</span>
                     </a>
                 </td>
                 <td data-sort-value="{{ ad.modifiedDate|date('Hi') }}{{ ad.modifiedDate|date('U') }}">

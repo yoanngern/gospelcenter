@@ -60,6 +60,13 @@ class Ad
     private $type;
 
     /**
+     * @var boolean
+     *
+     * @ORM\Column(name="showText", type="boolean")
+     */
+    private $showText;
+
+    /**
      * @var \DateTime
      *
      * @ORM\Column(name="createdDate", type="datetime")
@@ -99,6 +106,7 @@ class Ad
     public function __construct(\gospelcenter\CenterBundle\Entity\Center $center = null)
     {
         $this->status = true;
+        $this->showText = true;
         $this->createdDate = new \Datetime();
         $this->modifiedDate = new \Datetime();
 
@@ -280,6 +288,29 @@ class Ad
     public function getType()
     {
         return $this->type;
+    }
+
+    /**
+     * Set showText
+     *
+     * @param boolean $showText
+     * @return Ad
+     */
+    public function setShowText($showText)
+    {
+        $this->showText = $showText;
+
+        return $this;
+    }
+
+    /**
+     * Get showText
+     *
+     * @return boolean
+     */
+    public function getShowText()
+    {
+        return $this->showText;
     }
 
     /**

@@ -25,11 +25,59 @@ class SlideRepository extends EntityRepository
         
         $qb->where('c.ref = :center')
             ->setParameter('center', $center->getRef());
-            
+
         $qb->addOrderBy('p.title', 'ASC')
             ->addOrderBy('l.ref', 'ASC')
             ->addOrderBy('s.title', 'ASC');
         
+        return $qb->getQuery()->getResult();
+    }
+
+    public function findActiveForPage(\gospelcenter\CenterBundle\Entity\Center $center, $pageRef, $language)
+    {
+        $qb = $this->createQueryBuilder('s');
+
+        $qb->join('s.page', 'p');
+
+        $qb->join('p.center', 'c');
+        $qb->join('p.language', 'l');
+
+        $qb->where('p.ref = :page')
+            ->setParameter('page', $pageRef);
+
+        $qb->andWhere('c.ref = :center')
+            ->setParameter('center', $center->getRef());
+
+        $qb->andWhere('l.ref = :language')
+            ->setParameter('language', $language);
+
+        $qb->andWhere('s.status = true');
+
+        $qb->addOrderBy('s.sort', 'ASC');
+
+
+        return $qb->getQuery()->getResult();
+    }
+
+    public function findActiveByCenter(\gospelcenter\CenterBundle\Entity\Center $center)
+    {
+        $qb = $this->createQueryBuilder('s');
+
+        $qb->addSelect('p');
+
+        $qb->join('s.page', 'p');
+        $qb->join('p.language', 'l');
+        $qb->join('p.center', 'c');
+
+        $qb->where('c.ref = :center')
+            ->setParameter('center', $center->getRef());
+
+        $qb->andWhere('s.status = true');
+
+        $qb->addOrderBy('p.title', 'ASC')
+            ->addOrderBy('l.ref', 'ASC')
+            ->addOrderBy('s.title', 'ASC');
+
         return $qb->getQuery()->getResult();
     }
     

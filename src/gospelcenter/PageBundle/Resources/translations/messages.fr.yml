@@ -13,6 +13,7 @@ gc:
                 staff: Staff
                 believe: Confession de foi
                 music: Musique
+                coaching: Coaching
         bases:
             findBase: TROUVEZ UNE BASE PRÈS DE CHEZ VOUS
             moreInfos: Pour plus d'infos, contactez-nous

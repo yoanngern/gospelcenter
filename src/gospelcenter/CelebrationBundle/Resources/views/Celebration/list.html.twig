@@ -14,9 +14,13 @@
 {% endblock %}
 
 {% block meta %}
-    {{ parent() }}
+    <meta name="Description" content="A PLACE WHERE MIRACLES HAPPEN!">
     <meta property="og:title" content="{{ 'gc.title.celebrations'|trans }}"/>
+    <meta property="og:site_name" content="Gospel Center {{ center.name }}"/>
     <meta property="og:image" content="http://gc-{{ center.ref }}.org/images/FBshare_celebrations.jpg"/>
+    <meta property="og:url" content="http://gc-{{ center.ref }}.org/celebrations"/>
+    <meta property="og:description" content="A PLACE WHERE MIRACLES HAPPEN!"/>
+    <meta property="og:type" content="website"/>
 {% endblock %}
 
 {% block body %}
@@ -83,7 +87,7 @@
                             <h1>{{ 'gc.generic.celebrationWith'|trans }} {{ celebration|speakers(app.request.locale) }}</h1>
 
                             <span>{{ celebration.date|oneDate_short(app.request.locale) }}</span>
-                            <time>{{ celebration.date|times(app.request.locale) }}</time>
+                            <time>{{ celebration.date|startTime(app.request.locale) }}</time>
 
                             <a class="location" href="#map" data-link="moveTo">
                                 <div class="icon"></div>
@@ -101,6 +105,25 @@
                                     <div class="arrow"></div>
                                 </a>
                             {% endif %}
+
+                        </section>
+
+                        {% set url = "http://gc-" ~ center.ref ~ ".org" ~ path(app.request.attributes.get('_route'), app.request.attributes.get('_route_params')) %}
+
+                        {% set txt = 'gc.generic.celebrationWith'|trans ~ " " ~ celebration|speakers(app.request.locale) ~ " - " ~ celebration.date|oneDate_short(app.request.locale) ~ " (" ~ celebration.date|startTime(app.request.locale) ~ ")" %}
+
+                        <section class="social">
+                            <ul>
+                                <li style="list-style: none;">
+                                    <a id="facebook" target="_blank" class="icon"
+                                       href="https://www.facebook.com/sharer/sharer.php?u={{ url|url_encode }}">Facebook</a>
+                                </li>
+
+                                <li style="list-style: none;">
+                                    <a id="twitter" target="_blank" class="icon"
+                                       href="https://twitter.com/intent/tweet?url={{ url|url_encode }}&text={{ txt }}&original_referer={{ url|url_encode }}">Twitter</a>
+                                </li>
+                            </ul>
 
                         </section>
 
