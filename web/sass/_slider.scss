@@ -40,6 +40,11 @@ section.slider {
             .alphaImage {
                 position: absolute;
             }
+            
+            .content {
+                position: absolute;
+                max-width: none;
+            }
         }
     }
 

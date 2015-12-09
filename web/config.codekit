@@ -8425,6 +8425,17 @@
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"processed": 0
+		},
+	"\/uploads\/images\/2015_12_09_435.jpeg": {
+		"fileType": 16384,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 1.09895e+06,
+		"inputAbbreviatedPath": "\/uploads\/images\/2015_12_09_435.jpeg",
+		"outputAbbreviatedPath": "\/uploads\/images\/2015_12_09_435.jpeg",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
 		}
 	},
 "hooks": [
