@@ -1,6 +1,6 @@
 {
 "CodeKitInfo": "This is a CodeKit 2.x project configuration file. It is designed to sync project settings across multiple machines. MODIFYING THE CONTENTS OF THIS FILE IS A POOR LIFE DECISION. If you do so, you will likely cause CodeKit to crash. This file is not useful unless accompanied by the project that created it in CodeKit 2. This file is not backwards-compatible with CodeKit 1.x. For more information, see: http:\/\/incident57.com\/codekit",
-"creatorBuild": "19076",
+"creatorBuild": "19102",
 "files": {
 	"\/app.php": {
 		"fileType": 8192,
@@ -2035,6 +2035,17 @@
 		"outputStyle": 1,
 		"syntaxCheckerStyle": 0
 		},
+	"\/js\/addVideo-min.js": {
+		"fileType": 64,
+		"ignore": 1,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/js\/addVideo-min.js",
+		"outputAbbreviatedPath": "\/js\/addVideo-min-min.js",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"outputStyle": 1,
+		"syntaxCheckerStyle": 1
+		},
 	"\/js\/addVideo.js": {
 		"fileType": 64,
 		"ignore": 0,
@@ -2044,7 +2055,7 @@
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"outputStyle": 1,
-		"syntaxCheckerStyle": 1
+		"syntaxCheckerStyle": 0
 		},
 	"\/js\/advanced\/celebrations.js": {
 		"fileType": 64,
@@ -8326,6 +8337,94 @@
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"processed": 0
+		},
+	"\/uploads\/images\/2015_12_08_427.jpeg": {
+		"fileType": 16384,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 554927,
+		"inputAbbreviatedPath": "\/uploads\/images\/2015_12_08_427.jpeg",
+		"outputAbbreviatedPath": "\/uploads\/images\/2015_12_08_427.jpeg",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
+	"\/uploads\/images\/2015_12_08_428.png": {
+		"fileType": 32768,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 1.35933e+06,
+		"inputAbbreviatedPath": "\/uploads\/images\/2015_12_08_428.png",
+		"outputAbbreviatedPath": "\/uploads\/images\/2015_12_08_428.png",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
+	"\/uploads\/images\/2015_12_09_429.jpeg": {
+		"fileType": 16384,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 554927,
+		"inputAbbreviatedPath": "\/uploads\/images\/2015_12_09_429.jpeg",
+		"outputAbbreviatedPath": "\/uploads\/images\/2015_12_09_429.jpeg",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
+	"\/uploads\/images\/2015_12_09_430.png": {
+		"fileType": 32768,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 667816,
+		"inputAbbreviatedPath": "\/uploads\/images\/2015_12_09_430.png",
+		"outputAbbreviatedPath": "\/uploads\/images\/2015_12_09_430.png",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
+	"\/uploads\/images\/2015_12_09_431.jpeg": {
+		"fileType": 16384,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 554927,
+		"inputAbbreviatedPath": "\/uploads\/images\/2015_12_09_431.jpeg",
+		"outputAbbreviatedPath": "\/uploads\/images\/2015_12_09_431.jpeg",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
+	"\/uploads\/images\/2015_12_09_432.png": {
+		"fileType": 32768,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 768559,
+		"inputAbbreviatedPath": "\/uploads\/images\/2015_12_09_432.png",
+		"outputAbbreviatedPath": "\/uploads\/images\/2015_12_09_432.png",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
+	"\/uploads\/images\/2015_12_09_433.jpeg": {
+		"fileType": 16384,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 554927,
+		"inputAbbreviatedPath": "\/uploads\/images\/2015_12_09_433.jpeg",
+		"outputAbbreviatedPath": "\/uploads\/images\/2015_12_09_433.jpeg",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
+	"\/uploads\/images\/2015_12_09_434.png": {
+		"fileType": 32768,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 760194,
+		"inputAbbreviatedPath": "\/uploads\/images\/2015_12_09_434.png",
+		"outputAbbreviatedPath": "\/uploads\/images\/2015_12_09_434.png",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
 		}
 	},
 "hooks": [
@@ -8430,8 +8529,16 @@
 			"active": 0,
 			"flagValue": -1
 			},
+		"no_nested_string_interpolation": {
+			"active": 1,
+			"flagValue": -1
+			},
 		"no_plusplus": {
 			"active": 0,
+			"flagValue": -1
+			},
+		"no_private_function_fat_arrows": {
+			"active": 1,
 			"flagValue": -1
 			},
 		"no_stand_alone_at": {
@@ -8440,6 +8547,10 @@
 			},
 		"no_tabs": {
 			"active": 1,
+			"flagValue": -1
+			},
+		"no_this": {
+			"active": 0,
 			"flagValue": -1
 			},
 		"no_throwing_strings": {

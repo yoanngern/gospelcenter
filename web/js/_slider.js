@@ -56,32 +56,70 @@ $(document).ready(function () {
             width: 960,
             height: 380,
             play: {
-                active: true,
+                active: false,
                 effect: "slide",
-                interval: 7000,
+                interval: 5000,
                 auto: true,
                 swap: true,
                 pauseOnHover: false,
                 restartDelay: 2500
-            }
-        });
+            },
+            callback: {
+                loaded: function(number) {
+                    // Do something awesome!
+                    // Passes start slide number
 
-        $('section.slider#one').slidesjs({
-            width: 960,
-            height: 380,
-            play: {
-                active: false
-            },
-            pagination: {
-                active: false
-            },
-            navigation: {
-                active: false
+                    var template = $('article.slide#' + number).attr("data-template");
+
+                    console.log(number);
+                    console.log("template " + template);
+
+                    $("#page").removeClass("white")
+                        .removeClass("black")
+                        .addClass(template);
+                },
+                start: function(number) {
+                    // Do something awesome!
+                    // Passes slide number at start of animation
+
+
+                    var max = $('section.slider#auto article.slide').length;
+
+                    if(number < max) {
+                        number = number +1;
+                    } else {
+                        number = 1;
+                    }
+
+
+
+                },
+                complete: function(number) {
+                    // Do something awesome!
+                    // Passes slide number at end of animation
+
+                    console.log("complete "+number);
+
+                    var template = $('section.slider#auto article.slide#' + number).attr("data-template");
+
+                    console.log(number);
+                    console.log("template " + template);
+
+                    $("#page").removeClass("white")
+                        .removeClass("black")
+                        .addClass(template);
+                }
+
+
             }
         });
     });
 
+
+
 });
+
+
 
 
 /**

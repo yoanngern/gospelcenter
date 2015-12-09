@@ -48,7 +48,8 @@
 
             {% spaceless %}
                 {% for slide in slides %}
-                    <article id="{{ loop.index }}" class="slide {% if loop.index == 1 %}current{% endif %}"
+
+                    <article data-template="{{ slide.template }}" id="{{ loop.index }}" class="slide {% if loop.index == 1 %}current{% endif %}"
 
                             {% if slide.image %}
                         style="background-image: url('{{ slide.image.webPath| imagine_filter('slide_low') }}')"
@@ -60,11 +61,27 @@
                         data-bg_mobile_2x="{{ slide.image.webPath| imagine_filter('slide_mobile_2x') }}"
                             {% endif %}>
 
+
+                            {% if slide.alphaImage %}
+
+                            <div class="alphaImage"
+                            style="background-image: url('{{ slide.alphaImage.webPath| imagine_filter('alpha_image_low') }}')"
+                        data-bg="{{ slide.alphaImage.webPath| imagine_filter('alpha_image') }}"
+                        data-bg_2x="{{ slide.alphaImage.webPath| imagine_filter('alpha_image_2x') }}"
+                        data-bg_tablet="{{ slide.alphaImage.webPath| imagine_filter('alpha_image_tablet') }}"
+                        data-bg_tablet_2x="{{ slide.alphaImage.webPath| imagine_filter('alpha_image_tablet_2x') }}"
+                        data-bg_mobile="{{ slide.alphaImage.webPath| imagine_filter('alpha_image_mobile') }}"
+                        data-bg_mobile_2x="{{ slide.alphaImage.webPath| imagine_filter('alpha_image_mobile_2x') }}" ></div>
+                            {% endif %}
+
+
+                        {% if slide.showText %}
                         <section class="content">
                             <h1 class="titlePage"><span>{{ slide.title }}</span></h1>
 
                             <p>{{ slide.text|nl2br }}</p>
                         </section>
+                        {% endif %}
 
                         {% if slide.link %}
                             <div class="link">

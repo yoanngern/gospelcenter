@@ -164,7 +164,15 @@ class Image
      * @ORM\OneToMany(targetEntity="gospelcenter\PageBundle\Entity\Slide", mappedBy="image")
      * @Assert\Valid()
      */
-    private $slides;
+    private $slidesImage;
+
+    /**
+     * is used by
+     *
+     * @ORM\OneToMany(targetEntity="gospelcenter\PageBundle\Entity\Slide", mappedBy="alphaImage")
+     * @Assert\Valid()
+     */
+    private $slidesAlphaImage;
 
     /**
      * displays
@@ -183,7 +191,8 @@ class Image
         $this->modifiedDate = new \Datetime();
         $this->eventsPicture = new \Doctrine\Common\Collections\ArrayCollection();
         $this->eventsCover = new \Doctrine\Common\Collections\ArrayCollection();
-        $this->slides = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->slidesImage = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->slidesAlphaImage = new \Doctrine\Common\Collections\ArrayCollection();
         $this->persons = new \Doctrine\Common\Collections\ArrayCollection();
         $this->celebrations = new \Doctrine\Common\Collections\ArrayCollection();
         $this->articles = new \Doctrine\Common\Collections\ArrayCollection();
@@ -784,5 +793,71 @@ class Image
     public function getAds()
     {
         return $this->ads;
+    }
+
+    /**
+     * Add slidesImage
+     *
+     * @param \gospelcenter\PageBundle\Entity\Slide $slidesImage
+     * @return Image
+     */
+    public function addSlidesImage(\gospelcenter\PageBundle\Entity\Slide $slidesImage)
+    {
+        $this->slidesImage[] = $slidesImage;
+    
+        return $this;
+    }
+
+    /**
+     * Remove slidesImage
+     *
+     * @param \gospelcenter\PageBundle\Entity\Slide $slidesImage
+     */
+    public function removeSlidesImage(\gospelcenter\PageBundle\Entity\Slide $slidesImage)
+    {
+        $this->slidesImage->removeElement($slidesImage);
+    }
+
+    /**
+     * Get slidesImage
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getSlidesImage()
+    {
+        return $this->slidesImage;
+    }
+
+    /**
+     * Add slidesAlphaImage
+     *
+     * @param \gospelcenter\PageBundle\Entity\Slide $slidesAlphaImage
+     * @return Image
+     */
+    public function addSlidesAlphaImage(\gospelcenter\PageBundle\Entity\Slide $slidesAlphaImage)
+    {
+        $this->slidesAlphaImage[] = $slidesAlphaImage;
+    
+        return $this;
+    }
+
+    /**
+     * Remove slidesAlphaImage
+     *
+     * @param \gospelcenter\PageBundle\Entity\Slide $slidesAlphaImage
+     */
+    public function removeSlidesAlphaImage(\gospelcenter\PageBundle\Entity\Slide $slidesAlphaImage)
+    {
+        $this->slidesAlphaImage->removeElement($slidesAlphaImage);
+    }
+
+    /**
+     * Get slidesAlphaImage
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getSlidesAlphaImage()
+    {
+        return $this->slidesAlphaImage;
     }
 }

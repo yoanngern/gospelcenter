@@ -103,6 +103,68 @@
 
     &.simpleHeader {
 
+        @media only screen and (max-width: $mobileH) {
+            header section.slider {
+                padding-top: 0 !important;
+
+                article.slide .alphaImage {
+                    top: 0px;
+                }
+            }
+        }
+
+
+        &.black {
+
+            header {
+                height: inherit;
+
+                nav.main {
+                    top: 0;
+                    z-index: 1000;
+                    background-color: $grayDarkGC;
+                    height: 64px;
+
+                    ul.nav {
+                        height: auto;
+                    }
+                }
+
+                section.slider {
+                    padding-top: 0px;
+
+                    &:hover {
+                        .slidesjs-next {
+                            background-image: url('../../images/arrowRight_black.svg');
+                            opacity: 0.5;
+                        }
+
+                        .slidesjs-previous {
+                            background-image: url('../../images/arrowLeft_black.svg');
+                            opacity: 0.5;
+                        }
+                    }
+
+                    ul.slidesjs-pagination {
+                        li {
+
+                            a {
+                                color: transparent;
+                                border-color: $grayDarkGC;
+                                background-color: transparent;
+
+                                &.active {
+                                    background-color: $grayDarkGC;
+                                }
+                            }
+                        }
+
+                    }
+                }
+
+            }
+        }
+
         @media only screen and (max-width: $tabletH) {
             section.slider article.slide div.link {
                 bottom: 10%;
@@ -150,6 +212,8 @@
             margin: 0;
 
             article.slide {
+                text-align: center;
+
                 section.content {
 
                     text-align: center;
@@ -169,6 +233,20 @@
                     }
                 }
 
+                .alphaImage {
+                    //max-width: 1440px;
+                    margin: 0 auto;
+                    display: block;
+                    position: absolute;
+                    top: 64px;
+                    bottom: 20px;
+                    width: 100%;
+                    height: auto;
+                    background-position: center;
+                    background-repeat: no-repeat;
+                    background-size: contain;
+                }
+
                 div.link {
                     a {
                         font-size: 1.4em;
@@ -177,6 +255,15 @@
                         background-color: $whiteGC;
                         color: $blackGC;
                     }
+                }
+
+            }
+
+            .slidesjs-container {
+                max-height: 800px;
+
+                .slidesjs-control {
+                    max-height: 800px;
                 }
 
             }

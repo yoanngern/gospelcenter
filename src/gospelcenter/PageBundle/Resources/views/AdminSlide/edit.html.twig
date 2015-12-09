@@ -2,13 +2,13 @@
 
 {% block javascripts %}
     {{ parent() }}
-    
+
     {% if slide.image %}
         <script type="text/javascript" src="{{ asset('js/processed/editImage.min.js') }}"></script>
     {% else %}
         <script type="text/javascript" src="{{ asset('js/processed/addImage.min.js') }}"></script>
     {% endif %}
-    
+
 {% endblock %}
 
 {% block classPage %}{{ parent() }} single{% endblock %}
@@ -30,39 +30,57 @@
 {% endblock %}
 
 {% block adminBody %}
-    
-    <form novalidate class="slide" action="{{ path('gospelcenterAdmin_slides_edit', {'center': center.ref, 'domain': center.domain, 'slide': slide.id}) }}" method="post" {{ form_enctype(form) }}>
 
-        {{ form_widget(form.status) }}
-        {{ form_errors(form.status) }}
+    <form novalidate class="slide"
+          action="{{ path('gospelcenterAdmin_slides_edit', {'center': center.ref, 'domain': center.domain, 'slide': slide.id}) }}"
+          method="post" {{ form_enctype(form) }}>
+
+        <fieldset class="inline">
+            {{ form_widget(form.status) }}
+            {{ form_errors(form.status) }}
+
+            {{ form_widget(form.showText) }}
+            {{ form_errors(form.showText) }}
+        </fieldset>
 
         {{ form_widget(form.image.file) }}
         {{ form_errors(form.image.file) }}
         {% if slide.image %}
-        	<div id="editImage" data-input="{{ form.image.file.vars.id }}">
-        	    <img src="{{ asset(slide.image.webPath) }}" alt="{{ slide.image.alt }}" />
-        	</div>
+            <div id="editImage" data-input="{{ form.image.file.vars.id }}">
+                <img src="{{ asset(slide.image.webPath) }}" alt="{{ slide.image.alt }}"/>
+            </div>
         {% endif %}
-    	
+
+        {{ form_widget(form.alphaImage.file) }}
+        {{ form_errors(form.alphaImage.file) }}
+        {% if slide.alphaImage %}
+            <div id="editImage" data-input="{{ form.alphaImage.file.vars.id }}">
+                <img src="{{ asset(slide.alphaImage.webPath) }}" alt="{{ slide.alphaImage.alt }}"/>
+            </div>
+        {% endif %}
+
         {{ form_widget(form.title, {'attr': {'placeholder': 'Title'} }) }}
         {{ form_errors(form.title) }}
-        
+
         {{ form_widget(form.text, {'attr': {'placeholder': 'Text', 'class': 'elastic'} }) }}
         {{ form_errors(form.text) }}
-        
+
         {{ form_widget(form.link, {'attr': {'placeholder': 'Link'} }) }}
         {{ form_errors(form.link) }}
-        
+
         {{ form_widget(form.labelLink, {'attr': {'placeholder': 'Link label'} }) }}
         {{ form_errors(form.labelLink) }}
-        
+
+        {{ form_widget(form.template) }}
+        {{ form_errors(form.template) }}
+
         {{ form_widget(form.page) }}
         {{ form_errors(form.page) }}
-        
+
         {{ form_rest(form) }}
 
         <input type="submit" class="buttonLink" value="Save changes"/>
     </form>
-    
-    
+
+
 {% endblock %}

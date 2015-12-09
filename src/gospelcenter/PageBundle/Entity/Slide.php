@@ -23,6 +23,8 @@ class Slide
      */
     private $id;
 
+
+
     /**
      * @var boolean
      *
@@ -41,10 +43,17 @@ class Slide
     /**
      * @var string
      *
-     * @ORM\Column(name="text", type="text")
-     * @Assert\NotBlank()
+     * @ORM\Column(name="text", type="text", nullable=true)
      */
     private $text;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="template", type="string", length=255)
+     * @Assert\NotBlank(message="Please select a template.")
+     */
+    private $template;
     
     /**
      * @var string
@@ -59,7 +68,15 @@ class Slide
      * @ORM\Column(name="labelLink", type="string", length=255, nullable=true)
      */
     private $labelLink;
-    
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="showText", type="boolean")
+     */
+    private $showText;
+
+
     /**
      * @var integer
      *
@@ -92,6 +109,14 @@ class Slide
      * @Assert\Valid()
      */
     private $image;
+
+    /**
+     * uses
+     *
+     * @ORM\ManyToOne(targetEntity="gospelcenter\ImageBundle\Entity\Image", inversedBy="slides", cascade={"persist", "remove"})
+     * @Assert\Valid()
+     */
+    private $alphaImage;
     
     
     /**
@@ -109,6 +134,7 @@ class Slide
     public function __construct()
     {
         $this->status = true;
+        $this->showText = true;
         $this->modifiedDate = new \Datetime();
         $this->createdDate = new \Datetime();
         $this->sort = 999;
@@ -132,6 +158,27 @@ class Slide
             $image->addSlide($this);
         }
     
+        return $this;
+    }
+
+    /**
+     * Set alphaImage
+     *
+     * @param \gospelcenter\ImageBundle\Entity\Image $alphaImage
+     * @return Image
+     */
+    public function setAlphaImage(\gospelcenter\ImageBundle\Entity\Image $alphaImage = null)
+    {
+        $this->alphaImage = $alphaImage;
+
+        if($alphaImage != null) {
+            $title = $this->title;
+            $this->alphaImage->setTitle($title);
+            $this->alphaImage->setType('Slide');
+
+            $alphaImage->addSlide($this);
+        }
+
         return $this;
     }
     
@@ -381,5 +428,61 @@ class Slide
     public function getStatus()
     {
         return $this->status;
+    }
+
+    /**
+     * Set showText
+     *
+     * @param boolean $showText
+     * @return Slide
+     */
+    public function setShowText($showText)
+    {
+        $this->showText = $showText;
+    
+        return $this;
+    }
+
+    /**
+     * Get showText
+     *
+     * @return boolean 
+     */
+    public function getShowText()
+    {
+        return $this->showText;
+    }
+
+    /**
+     * Get alphaImage
+     *
+     * @return \gospelcenter\ImageBundle\Entity\Image 
+     */
+    public function getAlphaImage()
+    {
+        return $this->alphaImage;
+    }
+
+    /**
+     * Set template
+     *
+     * @param string $template
+     * @return Slide
+     */
+    public function setTemplate($template)
+    {
+        $this->template = $template;
+    
+        return $this;
+    }
+
+    /**
+     * Get template
+     *
+     * @return string 
+     */
+    public function getTemplate()
+    {
+        return $this->template;
     }
 }

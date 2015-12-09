@@ -110,7 +110,6 @@ liip_imagine:
               web_root: %kernel.root_dir%/../web
               cache_prefix: /cache
 
-
     loaders:
         default:
             filesystem:
@@ -404,6 +403,44 @@ liip_imagine:
             quality: 90
             filters:
                 thumbnail: { size: [1280, 888], mode: outbound, allow_upscale: true }
+
+        ####################
+        ###  alphaImage  ###
+        ####################
+        alpha_image_low:
+            quality: 60
+            filters:
+                thumbnail: { size: [850, 538], mode: outbound, allow_upscale: true }
+
+        alpha_image:
+            quality: 100
+            filters:
+                thumbnail: { size: [850, 538], mode: outbound, allow_upscale: true }
+
+        alpha_image_2x:
+            quality: 90
+            filters:
+                thumbnail: { size: [1700, 1076], mode: outbound, allow_upscale: true }
+
+        alpha_image_tablet:
+            quality: 100
+            filters:
+                thumbnail: { size: [850, 538], mode: outbound, allow_upscale: true }
+
+        alpha_image_tablet_2x:
+            quality: 90
+            filters:
+                thumbnail: { size: [850, 538], mode: outbound, allow_upscale: true }
+
+        alpha_image_mobile:
+            quality: 100
+            filters:
+                thumbnail: { size: [850, 538], mode: outbound, allow_upscale: true }
+
+        alpha_image_mobile_2x:
+            quality: 90
+            filters:
+                thumbnail: { size: [850, 538], mode: outbound, allow_upscale: true }
 
 
         #####################

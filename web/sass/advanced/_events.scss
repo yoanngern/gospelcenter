@@ -264,7 +264,6 @@
                             }
                         }
 
-
                         a.icon {
                             display: inline-block;
                             height: 30px;
@@ -407,9 +406,14 @@
             margin-top: 70px;
         }
 
+        @media only screen and (min-width: 1700px) {
+            header {
+                padding-bottom: 0;
+                height: 384px;
+            }
+        }
+
         @media only screen and (max-width: 960px) {
-
-
 
             section {
                 &.video {

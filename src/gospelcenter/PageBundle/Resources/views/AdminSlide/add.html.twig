@@ -21,11 +21,19 @@
     
     <form novalidate class="slide" action="{{ path('gospelcenterAdmin_slides_add', {'center': center.ref, 'domain': center.domain}) }}" method="post" {{ form_enctype(form) }}>
 
-        {{ form_widget(form.status) }}
-        {{ form_errors(form.status) }}
+        <fieldset class="inline">
+            {{ form_widget(form.status) }}
+            {{ form_errors(form.status) }}
+
+            {{ form_widget(form.showText) }}
+            {{ form_errors(form.showText) }}
+        </fieldset>
 
     	{{ form_widget(form.image.file) }}
     	{{ form_errors(form.image.file) }}
+
+        {{ form_widget(form.alphaImage.file) }}
+        {{ form_errors(form.alphaImage.file) }}
     	
         {{ form_widget(form.title) }}
         {{ form_errors(form.title) }}
@@ -38,6 +46,9 @@
         
         {{ form_widget(form.labelLink) }}
         {{ form_errors(form.labelLink) }}
+
+        {{ form_widget(form.template) }}
+        {{ form_errors(form.template) }}
         
         {{ form_widget(form.page) }}
         {{ form_errors(form.page) }}

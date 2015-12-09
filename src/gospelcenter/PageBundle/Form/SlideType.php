@@ -34,6 +34,14 @@ class SlideType extends AbstractType
                     'attr' => array('placeholder' => 'Status')
                 )
             )
+            ->add(
+                'showText',
+                'checkbox',
+                array(
+                    'required' => false,
+                    'attr' => array('placeholder' => 'Show text')
+                )
+            )
             ->add('title', 'text', array(
                     'attr' => array(
                         'placeholder' => 'Title',
@@ -45,9 +53,21 @@ class SlideType extends AbstractType
                     'attr' => array(
                         'placeholder' => 'Text',
                     ),
-                    'required' => true,
+                    'required' => false,
                     'label' => false,
                 ))
+            ->add(
+                'template',
+                'choice',
+                array(
+                    'choices' => array(
+                        'white' => 'White menu',
+                        'black' => 'Black menu'
+                    ),
+                    'multiple' => false,
+                    'empty_value' => 'Select a template'
+                )
+            )
             ->add('link', 'url', array(
                     'attr' => array(
                         'placeholder' => 'Link',
@@ -63,6 +83,7 @@ class SlideType extends AbstractType
                     'label' => false,
                 ))
             ->add('image', new ImageSimpleType(), array('required' => false))
+            ->add('alphaImage', new ImageSimpleType(), array('required' => false))
             ->add(
                 'page',
                 'entity',

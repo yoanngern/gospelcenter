@@ -22,10 +22,12 @@ class SlideSimpleType extends SlideType
         parent::buildForm($builder, $options);
 
         $builder->remove('status');
+        $builder->remove('showText');
         $builder->remove('title');
         $builder->remove('text');
         $builder->remove('link');
         $builder->remove('image');
+        $builder->remove('alphaImage');
         $builder->remove('link');
         $builder->remove('labelLink');
         $builder->remove('page');

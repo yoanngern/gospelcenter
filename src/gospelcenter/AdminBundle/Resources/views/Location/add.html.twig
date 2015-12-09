@@ -9,7 +9,8 @@
 {% block javascripts %}
     {{ parent() }}
     <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDWMUyzR5ZVSUy8S2j3vhFPHvMudIMLkD0"></script>
-    <script type="text/javascript" src="{{ asset('js/processed/location.min.js') }}"></script>
+    {#<script type="text/javascript" src="{{ asset('js/processed/location.min.js') }}"></script>#}
+    <script type="text/javascript" src="{{ asset('js/location.js') }}"></script>
 {% endblock %}
 
 {% block adminTitle %}<h1>Add a location</h1>{% endblock %}
