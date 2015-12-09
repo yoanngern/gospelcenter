@@ -52,6 +52,17 @@ $(document).ready(function () {
             height: 380
         });
 
+        $('section.slider#one').each( function(index, elem) {
+
+            var template = $('article.slide', elem).attr("data-template");
+
+            $("#page").removeClass("white")
+                .removeClass("black")
+                .addClass(template);
+
+        });
+
+
         $('section.slider#auto').slidesjs({
             width: 960,
             height: 380,

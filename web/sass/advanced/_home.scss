@@ -131,7 +131,7 @@
                 }
 
                 section.slider {
-                    padding-top: 0px;
+                    padding-top: 0;
 
                     &:hover {
                         .slidesjs-next {
@@ -142,6 +142,16 @@
                         .slidesjs-previous {
                             background-image: url('../../images/arrowLeft_black.svg');
                             opacity: 0.5;
+                        }
+                    }
+
+                    article.slide section.content {
+                        color: $grayDarkGC;
+
+                        h1 {
+                            span {
+                                border-color: $grayDarkGC;
+                            }
                         }
                     }
 
