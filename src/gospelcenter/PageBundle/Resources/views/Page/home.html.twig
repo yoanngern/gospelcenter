@@ -64,6 +64,8 @@
 
                             {% if slide.alphaImage %}
 
+                            {% if slide.link %}<a href="{{ slide.link }}">{% endif %}
+
                             <div class="alphaImage"
                             style="background-image: url('{{ slide.alphaImage.webPath| imagine_filter('alpha_image_low') }}')"
                         data-bg="{{ slide.alphaImage.webPath| imagine_filter('alpha_image') }}"
@@ -72,6 +74,9 @@
                         data-bg_tablet_2x="{{ slide.alphaImage.webPath| imagine_filter('alpha_image_tablet_2x') }}"
                         data-bg_mobile="{{ slide.alphaImage.webPath| imagine_filter('alpha_image_mobile') }}"
                         data-bg_mobile_2x="{{ slide.alphaImage.webPath| imagine_filter('alpha_image_mobile_2x') }}" ></div>
+
+                            {% if slide.link %}</a>{% endif %}
+
                             {% endif %}
 
 
@@ -81,13 +86,14 @@
 
                             <p>{{ slide.text|nl2br }}</p>
                         </section>
-                        {% endif %}
+
 
                         {% if slide.link %}
                             <div class="link">
                                 <a href="{{ slide.link }}"
                                    target="_blank">{% if slide.labelLink %}{{ slide.labelLink }}{% else %}{{ slide.link }}{% endif %}</a>
                             </div>
+                        {% endif %}
                         {% endif %}
                     </article>
                 {% endfor %}
