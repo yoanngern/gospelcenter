@@ -35,6 +35,7 @@ class Ad
      * @var string
      *
      * @ORM\Column(name="title", type="string", length=255)
+     * @Assert\NotBlank(message="Please enter a title.")
      */
     private $title;
 
@@ -49,6 +50,7 @@ class Ad
      * @var string
      *
      * @ORM\Column(name="url", type="string", length=255)
+     * @Assert\NotBlank(message="Please enter an URL.")
      */
     private $url;
 
@@ -96,6 +98,7 @@ class Ad
      * is displayed by
      *
      * @ORM\ManyToOne(targetEntity="gospelcenter\ImageBundle\Entity\Image", inversedBy="ads", cascade={"persist", "remove"})
+     * @Assert\Valid()
      */
     private $image;
 
