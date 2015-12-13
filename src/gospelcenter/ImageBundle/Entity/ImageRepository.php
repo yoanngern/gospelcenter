@@ -16,7 +16,7 @@ class ImageRepository extends EntityRepository
     {
         $qb = $this->createQueryBuilder('i');
 
-        $qb->addSelect('c6');
+        $qb->addSelect('c7');
 
         $qb->leftJoin('i.celebrations', 'cel');
         $qb->leftJoin('cel.center', 'c1');
@@ -25,17 +25,21 @@ class ImageRepository extends EntityRepository
         $qb->leftJoin('p1.member', 'm');
         $qb->leftJoin('m.centers', 'c2');
         
-        $qb->leftJoin('i.slides', 's');
-        $qb->leftJoin('s.page', 'p2');
+        $qb->leftJoin('i.slidesImage', 's1');
+        $qb->leftJoin('s1.page', 'p2');
         $qb->leftJoin('p2.center', 'c3');
+
+        $qb->leftJoin('i.slidesAlphaImage', 's2');
+        $qb->leftJoin('s2.page', 'p3');
+        $qb->leftJoin('p3.center', 'c4');
         
         $qb->leftJoin('i.eventsPicture', 'e1');
-        $qb->leftJoin('e1.centers', 'c4');
+        $qb->leftJoin('e1.centers', 'c5');
         
         $qb->leftJoin('i.eventsCover', 'e2');
-        $qb->leftJoin('e2.centers', 'c5');
+        $qb->leftJoin('e2.centers', 'c6');
 
-        $qb->leftJoin('i.center', 'c6');
+        $qb->leftJoin('i.center', 'c7');
         
         $qb->where('c1.ref = :center')
             ->setParameter('center', $center->getRef());
@@ -53,6 +57,9 @@ class ImageRepository extends EntityRepository
             ->setParameter('center', $center->getRef());
 
         $qb->orWhere('c6.ref = :center')
+            ->setParameter('center', $center->getRef());
+
+        $qb->orWhere('c7.ref = :center')
             ->setParameter('center', $center->getRef());
 
         $qb->orWhere('i.centerCreator = :center')

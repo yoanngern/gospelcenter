@@ -111,8 +111,7 @@ class Celebration
     /**
      * is situated by
      *
-     * @ORM\ManyToOne(targetEntity="gospelcenter\LocationBundle\Entity\Location", inversedBy="celebrations", cascade={"persist", "detach"})
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\ManyToOne(targetEntity="gospelcenter\LocationBundle\Entity\Location", inversedBy="celebrations", cascade={"merge", "detach"})
      * @Assert\Valid()
      */
     private $location;

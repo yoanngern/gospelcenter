@@ -154,7 +154,7 @@ class CelebrationType extends AbstractType
                         'placeholder' => 'gc.admin.celebrations.location',
                     ),
                     'class' => 'gospelcenterLocationBundle:Location',
-                    'required' => false,
+                    'required' => true,
                     'empty_value' => 'gc.admin.celebrations.choose_location',
                     'query_builder' => function (\gospelcenter\LocationBundle\Entity\LocationRepository $r) use (
                         $center

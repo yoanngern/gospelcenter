@@ -40,6 +40,7 @@ class AdType extends AbstractType
                     'placeholder' => 'Title'
                 ),
                 'label' => false,
+                'required' => true,
             ))
 
             ->add('subtitle', 'text', array(

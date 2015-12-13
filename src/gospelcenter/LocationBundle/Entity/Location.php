@@ -152,7 +152,8 @@ class Location
     /**
      * situates
      * 
-     * @ORM\OneToMany(targetEntity="gospelcenter\CelebrationBundle\Entity\Celebration", mappedBy="location", cascade={"persist", "remove"})
+     * @ORM\OneToMany(targetEntity="gospelcenter\CelebrationBundle\Entity\Celebration", mappedBy="location", cascade={"merge", "detach"})
+     * @Assert\Valid()
      */
     private $celebrations;
     
