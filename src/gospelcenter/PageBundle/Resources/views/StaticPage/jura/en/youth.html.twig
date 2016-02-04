@@ -35,121 +35,224 @@
         {% endspaceless %}
     </nav>
 
-    <article class="tab blog-style active" id="minis">
+    <article class="tab active" id="minis">
+        <article class="blog-style">
 
-        <h1>Gospel Minis</h1>
+            <h1>Gospel Minis</h1>
 
-        {% set customImg = 'bundles/gospelcenterpage/images/minis.jpg' %}
+            {% set customImg = 'bundles/gospelcenterpage/images/minis.jpg' %}
 
-        <img class="big"
-             src="{{ asset(customImg)| imagine_filter('blog_big_low') }}"
-             srcset="{{ asset(customImg)| imagine_filter('blog_big_low') }} 2x"
-             data-img="{{ asset(customImg)| imagine_filter('blog_big') }}"
-             data-img_2x="{{ asset(customImg)| imagine_filter('blog_big_2x') }}"
-             data-img_tablet="{{ asset(customImg)| imagine_filter('blog_big_tablet') }}"
-             data-img_tablet_2x="{{ asset(customImg)| imagine_filter('blog_big_tablet_2x') }}"
-             data-img_mobile="{{ asset(customImg)| imagine_filter('blog_big_mobile') }}"
-             data-img_mobile_2x="{{ asset(customImg)| imagine_filter('blog_big_mobile_2x') }}">
-
-
-        <h3>The English version will come soon.</h3>
-
-        <h2 class="underline"><span>Garderie</span></h2>
-
-        <p>Chaque dimanche après la louange, les enfants peuvent rejoindre la garderie où ils seront accueillis par une
-            monitrice motivée pour un moment d’éveil à la foi ludique et chaleureux qui encourage ces juniors à entrer
-            dans une relation tout en douceur avec Dieu.</p>
-
-        <p>Des petites chansons, des histoires, des jeux…tout pour ravir les yeux et le cœur de ces tout-petits !</p>
+            <img class="big"
+                 src="{{ asset(customImg)| imagine_filter('blog_big_low') }}"
+                 srcset="{{ asset(customImg)| imagine_filter('blog_big_low') }} 2x"
+                 data-img="{{ asset(customImg)| imagine_filter('blog_big') }}"
+                 data-img_2x="{{ asset(customImg)| imagine_filter('blog_big_2x') }}"
+                 data-img_tablet="{{ asset(customImg)| imagine_filter('blog_big_tablet') }}"
+                 data-img_tablet_2x="{{ asset(customImg)| imagine_filter('blog_big_tablet_2x') }}"
+                 data-img_mobile="{{ asset(customImg)| imagine_filter('blog_big_mobile') }}"
+                 data-img_mobile_2x="{{ asset(customImg)| imagine_filter('blog_big_mobile_2x') }}">
 
 
+            <h3>The English version will come soon.</h3>
+
+            <h2 class="underline"><span>Garderie</span></h2>
+
+            <p>Chaque dimanche après la louange, les enfants peuvent rejoindre la garderie où ils seront accueillis par
+                une
+                monitrice motivée pour un moment d’éveil à la foi ludique et chaleureux qui encourage ces juniors à
+                entrer
+                dans une relation tout en douceur avec Dieu.</p>
+
+            <p>Des petites chansons, des histoires, des jeux…tout pour ravir les yeux et le cœur de ces tout-petits
+                !</p>
+
+            {% if dates_minis|length %}
+
+                <h3>Next dates</h3>
+
+                <p></p>
+                <ul>
+
+                    {% for date in dates_minis %}
+
+                        <li>{{ date|datesShort(app.request.locale) }}</li>
+
+                    {% endfor %}
+
+                </ul>
+
+            {% endif %}
+
+        </article>
     </article>
 
-    <article class="tab blog-style" id="kids">
+    <article class="tab" id="kids">
+        <article class="blog-style">
 
-        <h1>Gospel Kids</h1>
+            <h1>Gospel Kids</h1>
 
-        {% set customImg = 'bundles/gospelcenterpage/images/kids.jpg' %}
+            {% set customImg = 'bundles/gospelcenterpage/images/kids.jpg' %}
 
-        <img class="big"
-             src="{{ asset(customImg)| imagine_filter('blog_big_low') }}"
-             srcset="{{ asset(customImg)| imagine_filter('blog_big_low') }} 2x"
-             data-img="{{ asset(customImg)| imagine_filter('blog_big') }}"
-             data-img_2x="{{ asset(customImg)| imagine_filter('blog_big_2x') }}"
-             data-img_tablet="{{ asset(customImg)| imagine_filter('blog_big_tablet') }}"
-             data-img_tablet_2x="{{ asset(customImg)| imagine_filter('blog_big_tablet_2x') }}"
-             data-img_mobile="{{ asset(customImg)| imagine_filter('blog_big_mobile') }}"
-             data-img_mobile_2x="{{ asset(customImg)| imagine_filter('blog_big_mobile_2x') }}">
+            <img class="big"
+                 src="{{ asset(customImg)| imagine_filter('blog_big_low') }}"
+                 srcset="{{ asset(customImg)| imagine_filter('blog_big_low') }} 2x"
+                 data-img="{{ asset(customImg)| imagine_filter('blog_big') }}"
+                 data-img_2x="{{ asset(customImg)| imagine_filter('blog_big_2x') }}"
+                 data-img_tablet="{{ asset(customImg)| imagine_filter('blog_big_tablet') }}"
+                 data-img_tablet_2x="{{ asset(customImg)| imagine_filter('blog_big_tablet_2x') }}"
+                 data-img_mobile="{{ asset(customImg)| imagine_filter('blog_big_mobile') }}"
+                 data-img_mobile_2x="{{ asset(customImg)| imagine_filter('blog_big_mobile_2x') }}">
 
 
-        <p>God is not for adults only, on the contrary! And that’s exactly what each child will find out every week!</p>
+            <p>God is not for adults only, on the contrary! And that’s exactly what each child will find out every
+                week!</p>
 
-        <p>Accompanied by dynamic leaders, those children will discover fascinating Bible stories, will make friends and
-            can play games and make crafts.</p>
+            <p>Accompanied by dynamic leaders, those children will discover fascinating Bible stories, will make friends
+                and
+                can play games and make crafts.</p>
 
-        <p>Because children are the Church of today!</p>
+            <p>Because children are the Church of today!</p>
 
+            {% if dates_kids|length %}
+
+                <h3>Next dates</h3>
+
+                <p></p>
+                <ul>
+
+                    {% for date in dates_kids %}
+
+                        <li>{{ date|datesShort(app.request.locale) }}</li>
+
+                    {% endfor %}
+
+                </ul>
+
+            {% endif %}
+
+        </article>
     </article>
 
-    <article class="tab blog-style" id="teens">
+    <article class="tab" id="teens">
+        <article class="blog-style">
 
-        <h1>Gospel Teens</h1>
+            <h1>Gospel Teens</h1>
 
-        {% set customImg = 'bundles/gospelcenterpage/images/teens.jpg' %}
+            {% set customImg = 'bundles/gospelcenterpage/images/teens.jpg' %}
 
-        <img class="big"
-             src="{{ asset(customImg)| imagine_filter('blog_big_low') }}"
-             srcset="{{ asset(customImg)| imagine_filter('blog_big_low') }} 2x"
-             data-img="{{ asset(customImg)| imagine_filter('blog_big') }}"
-             data-img_2x="{{ asset(customImg)| imagine_filter('blog_big_2x') }}"
-             data-img_tablet="{{ asset(customImg)| imagine_filter('blog_big_tablet') }}"
-             data-img_tablet_2x="{{ asset(customImg)| imagine_filter('blog_big_tablet_2x') }}"
-             data-img_mobile="{{ asset(customImg)| imagine_filter('blog_big_mobile') }}"
-             data-img_mobile_2x="{{ asset(customImg)| imagine_filter('blog_big_mobile_2x') }}">
+            <img class="big"
+                 src="{{ asset(customImg)| imagine_filter('blog_big_low') }}"
+                 srcset="{{ asset(customImg)| imagine_filter('blog_big_low') }} 2x"
+                 data-img="{{ asset(customImg)| imagine_filter('blog_big') }}"
+                 data-img_2x="{{ asset(customImg)| imagine_filter('blog_big_2x') }}"
+                 data-img_tablet="{{ asset(customImg)| imagine_filter('blog_big_tablet') }}"
+                 data-img_tablet_2x="{{ asset(customImg)| imagine_filter('blog_big_tablet_2x') }}"
+                 data-img_mobile="{{ asset(customImg)| imagine_filter('blog_big_mobile') }}"
+                 data-img_mobile_2x="{{ asset(customImg)| imagine_filter('blog_big_mobile_2x') }}">
 
-        <h3>The English version will come soon.</h3>
+            <h3>The English version will come soon.</h3>
 
-        <p>Les Teens, c’est l’endroit à ne pas manquer pour les jeunes de la 5ème à la 8ème Harmos. Expérimenter la
-            présence et la puissance de Dieu, vivre des moments de défis, connaître l’amour de Dieu et développer de
-            nouvelles amitiés sont des points clés pour cette équipe.</p>
+            <p>Les Teens, c’est l’endroit à ne pas manquer pour les jeunes de la 5ème à la 8ème Harmos. Expérimenter la
+                présence et la puissance de Dieu, vivre des moments de défis, connaître l’amour de Dieu et développer de
+                nouvelles amitiés sont des points clés pour cette équipe.</p>
 
+            {% if dates_teens|length %}
+
+                <h3>Next dates</h3>
+
+                <p></p>
+                <ul>
+
+                    {% for date in dates_teens %}
+
+                        <li>{{ date|datesShort(app.request.locale) }}</li>
+
+                    {% endfor %}
+
+                </ul>
+
+            {% endif %}
+
+        </article>
     </article>
 
 
-    <article class="tab blog-style" id="youth">
+    <article class="tab" id="youth">
+        <article class="blog-style">
 
-        <h1>Gospel Youth</h1>
+            <h1>Gospel Youth</h1>
 
-        {% set customImg = 'bundles/gospelcenterpage/images/gospel-youth.jpg' %}
+            {% set customImg = 'bundles/gospelcenterpage/images/gospel-youth.jpg' %}
 
-        <img class="big"
-             src="{{ asset(customImg)| imagine_filter('blog_big_low') }}"
-             srcset="{{ asset(customImg)| imagine_filter('blog_big_low') }} 2x"
-             data-img="{{ asset(customImg)| imagine_filter('blog_big') }}"
-             data-img_2x="{{ asset(customImg)| imagine_filter('blog_big_2x') }}"
-             data-img_tablet="{{ asset(customImg)| imagine_filter('blog_big_tablet') }}"
-             data-img_tablet_2x="{{ asset(customImg)| imagine_filter('blog_big_tablet_2x') }}"
-             data-img_mobile="{{ asset(customImg)| imagine_filter('blog_big_mobile') }}"
-             data-img_mobile_2x="{{ asset(customImg)| imagine_filter('blog_big_mobile_2x') }}">
+            <img class="big"
+                 src="{{ asset(customImg)| imagine_filter('blog_big_low') }}"
+                 srcset="{{ asset(customImg)| imagine_filter('blog_big_low') }} 2x"
+                 data-img="{{ asset(customImg)| imagine_filter('blog_big') }}"
+                 data-img_2x="{{ asset(customImg)| imagine_filter('blog_big_2x') }}"
+                 data-img_tablet="{{ asset(customImg)| imagine_filter('blog_big_tablet') }}"
+                 data-img_tablet_2x="{{ asset(customImg)| imagine_filter('blog_big_tablet_2x') }}"
+                 data-img_mobile="{{ asset(customImg)| imagine_filter('blog_big_mobile') }}"
+                 data-img_mobile_2x="{{ asset(customImg)| imagine_filter('blog_big_mobile_2x') }}">
 
-        <h3>The English version will come soon.</h3>
+            <h3>The English version will come soon.</h3>
 
-        <p>Reste connecté sur Facebook ou branché à ton whats’app pour être informé des soirées et Events du Gospel
-            Youth ! Dès 14 ans, le samedi de 20h00 à 21h30, au Gospel, au bowling ou au MacDo, le Gospel Youth n’attend
-            plus que toi !</p>
+            <p>Reste connecté sur Facebook ou branché à ton whats’app pour être informé des soirées et Events du Gospel
+                Youth ! Dès 14 ans, le samedi de 20h00 à 21h30, au Gospel, au bowling ou au MacDo, le Gospel Youth
+                n’attend
+                plus que toi !</p>
 
-        <p>Du fun, des moments de partages, des délires, la présence de Dieu et de la bonne louange seront au menu de
-            ces folles soirées ! Notre rêve est de faire la différence dans ce monde en suivant l’exemple de Jésus,
-            c’est le tien aussi ? Alors connecte-toi !</p>
+            <p>Du fun, des moments de partages, des délires, la présence de Dieu et de la bonne louange seront au menu
+                de
+                ces folles soirées ! Notre rêve est de faire la différence dans ce monde en suivant l’exemple de Jésus,
+                c’est le tien aussi ? Alors connecte-toi !</p>
 
-        <article class="frame">
-            <h1>Plus d'infos</h1>
+            <article class="frame">
+                <h1>Plus d'infos</h1>
 
-            <p>sur notre page facebook</p>
+                <p>sur notre page facebook</p>
 
-            <p><a href="https://www.facebook.com/pages/Gospel-Youth-Jura/590178811002457" target="_blank">facebook.com/GYJura</a></p>
+                <p><a href="https://www.facebook.com/pages/Gospel-Youth-Jura/590178811002457" target="_blank">facebook.com/GYJura</a>
+                </p>
+            </article>
         </article>
 
+        {% if dates_youth|length %}
+            <section class="gray" id="events">
+
+                <section class="default">
+
+                    <h3>Next dates</h3>
+
+                    {% for date in dates_youth %}
+
+                        <a href="{{ path('gospelcenterEvents_event', {'event': date.event.id, 'center': center.ref, 'domain': center.domain}) }}"
+                           class="events">
+                            <section class="picture">
+                                {% if date.event.picture %}
+                                    <img alt="{{ date.event.picture.alt }}"
+                                         src="{{ asset(date.event.picture.webPath)| imagine_filter('event_picture_low') }}"
+                                         srcset="{{ asset(date.event.picture.webPath)| imagine_filter('event_picture_low') }} 2x"
+                                         data-img="{{ asset(date.event.picture.webPath)| imagine_filter('event_picture') }}"
+                                         data-img_2x="{{ asset(date.event.picture.webPath)| imagine_filter('event_picture_2x') }}"
+                                         data-img_tablet="{{ asset(date.event.picture.webPath)| imagine_filter('event_picture_tablet') }}"
+                                         data-img_tablet_2x="{{ asset(date.event.picture.webPath)| imagine_filter('event_picture_tablet_2x') }}"
+                                         data-img_mobile="{{ asset(date.event.picture.webPath)| imagine_filter('event_picture_mobile') }}"
+                                         data-img_mobile_2x="{{ asset(date.event.picture.webPath)| imagine_filter('event_picture_mobile_2x') }}">
+
+                                {% endif %}
+                            </section>
+                            <section class="detail">
+                                <h1>{{ date.event.title }}</h1>
+                                <time class="date">{{ date|dates(app.request.locale) }}</time>
+                            </section>
+                        </a>
+                    {% endfor %}
+
+                </section>
+
+            </section>
+
+        {% endif %}
     </article>
 
 </section>

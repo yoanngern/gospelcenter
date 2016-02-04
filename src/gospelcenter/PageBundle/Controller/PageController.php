@@ -119,11 +119,26 @@ class PageController extends Controller
 
         $language = $_locale;
 
+        $em = $this->getDoctrine()->getManager();
+        $dates_minis = $em->getRepository('gospelcenterDateBundle:Date')->findNextEventByCategory($center, "minis");
+        $dates_kids = $em->getRepository('gospelcenterDateBundle:Date')->findNextEventByCategory($center, "kids");
+        $dates_heroes = $em->getRepository('gospelcenterDateBundle:Date')->findNextEventByCategory($center, "heroes");
+        $dates_teens = $em->getRepository('gospelcenterDateBundle:Date')->findNextEventByCategory($center, "teens");
+        $dates_fullPack = $em->getRepository('gospelcenterDateBundle:Date')->findNextEventByCategory($center, "fullPack");
+        $dates_youth = $em->getRepository('gospelcenterDateBundle:Date')->findNextEventByCategory($center, "youth");
+
+
         return $this->render(
             'gospelcenterPageBundle::staticPage.html.twig',
             array(
                 'center' => $center,
                 'language' => $language,
+                'dates_minis' => $dates_minis,
+                'dates_kids' => $dates_kids,
+                'dates_heroes' => $dates_heroes,
+                'dates_fullPack' => $dates_fullPack,
+                'dates_teens' => $dates_teens,
+                'dates_youth' => $dates_youth,
                 'folder' => 'youth',
                 'template' => 'youth',
                 'page' => 'youth',

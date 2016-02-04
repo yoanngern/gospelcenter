@@ -42,148 +42,270 @@
         {% endspaceless %}
     </nav>
 
-    <article class="tab blog-style active" id="minis">
+    <article class="tab active" id="minis">
+        <article class="blog-style">
 
-        <h1>Gospel Minis</h1>
+            <h1>Gospel Minis</h1>
 
-        {% set customImg = 'bundles/gospelcenterpage/images/minis.jpg' %}
+            {% set customImg = 'bundles/gospelcenterpage/images/minis.jpg' %}
 
-        <img class="big"
-             src="{{ asset(customImg)| imagine_filter('blog_big_low') }}"
-             srcset="{{ asset(customImg)| imagine_filter('blog_big_low') }} 2x"
-             data-img="{{ asset(customImg)| imagine_filter('blog_big') }}"
-             data-img_2x="{{ asset(customImg)| imagine_filter('blog_big_2x') }}"
-             data-img_tablet="{{ asset(customImg)| imagine_filter('blog_big_tablet') }}"
-             data-img_tablet_2x="{{ asset(customImg)| imagine_filter('blog_big_tablet_2x') }}"
-             data-img_mobile="{{ asset(customImg)| imagine_filter('blog_big_mobile') }}"
-             data-img_mobile_2x="{{ asset(customImg)| imagine_filter('blog_big_mobile_2x') }}">
-
-
-        <h2 class="underline"><span>Minicell'</span></h2>
-
-        <p>Programme d’éveil à la foi pour les touts petits donné par toute une équipe d’animatrices motivées ! Chaque
-            dimanche, après la louange, un des parents accompagne son enfant dans le groupe et reste environ 15mn pour
-            vivre ce temps avec lui. Un moment ludique, chaleureux, qui encourage ces juniors à entrer dans une relation
-            toute en douceur avec Dieu ! Que ce soit au travers de petites chansons, de découvertes visuelles et
-            tactiles, un rendez-vous privilégié à ne pas manquer !</p>
-
-        <h2 class="underline"><span>Garderie</span></h2>
-
-        <p>La garderie prend le relais à la suite de l’activité Minicell !</p>
-
-        <p>Des jeux, des histoires, une collation … tout pour ravir les yeux et le cœur de ces tout-petits !</p>
+            <img class="big"
+                 src="{{ asset(customImg)| imagine_filter('blog_big_low') }}"
+                 srcset="{{ asset(customImg)| imagine_filter('blog_big_low') }} 2x"
+                 data-img="{{ asset(customImg)| imagine_filter('blog_big') }}"
+                 data-img_2x="{{ asset(customImg)| imagine_filter('blog_big_2x') }}"
+                 data-img_tablet="{{ asset(customImg)| imagine_filter('blog_big_tablet') }}"
+                 data-img_tablet_2x="{{ asset(customImg)| imagine_filter('blog_big_tablet_2x') }}"
+                 data-img_mobile="{{ asset(customImg)| imagine_filter('blog_big_mobile') }}"
+                 data-img_mobile_2x="{{ asset(customImg)| imagine_filter('blog_big_mobile_2x') }}">
 
 
-    </article>
+            <h2 class="underline"><span>Minicell'</span></h2>
 
-    <article class="tab blog-style" id="kids">
+            <p>Programme d’éveil à la foi pour les touts petits donné par toute une équipe d’animatrices motivées !
+                Chaque
+                dimanche, après la louange, un des parents accompagne son enfant dans le groupe et reste environ 15mn
+                pour
+                vivre ce temps avec lui. Un moment ludique, chaleureux, qui encourage ces juniors à entrer dans une
+                relation
+                toute en douceur avec Dieu ! Que ce soit au travers de petites chansons, de découvertes visuelles et
+                tactiles, un rendez-vous privilégié à ne pas manquer !</p>
 
-        <h1>Gospel Kids</h1>
+            <h2 class="underline"><span>Garderie</span></h2>
 
-        {% set customImg = 'bundles/gospelcenterpage/images/kids.jpg' %}
+            <p>La garderie prend le relais à la suite de l’activité Minicell !</p>
 
-        <img class="big"
-             src="{{ asset(customImg)| imagine_filter('blog_big_low') }}"
-             srcset="{{ asset(customImg)| imagine_filter('blog_big_low') }} 2x"
-             data-img="{{ asset(customImg)| imagine_filter('blog_big') }}"
-             data-img_2x="{{ asset(customImg)| imagine_filter('blog_big_2x') }}"
-             data-img_tablet="{{ asset(customImg)| imagine_filter('blog_big_tablet') }}"
-             data-img_tablet_2x="{{ asset(customImg)| imagine_filter('blog_big_tablet_2x') }}"
-             data-img_mobile="{{ asset(customImg)| imagine_filter('blog_big_mobile') }}"
-             data-img_mobile_2x="{{ asset(customImg)| imagine_filter('blog_big_mobile_2x') }}">
+            <p>Des jeux, des histoires, une collation … tout pour ravir les yeux et le cœur de ces tout-petits !</p>
 
+            {% if dates_minis|length %}
 
-        <p>Dieu n’est pas qu’une affaire d’adultes, bien au contraire ! Et c’est ce que chaque enfant pourra découvrir
-            chaque semaine !</p>
+                <h3>Prochaines dates</h3>
 
-        <p>Accompagnés par des responsables dynamiques, ce sont des histoires de la Bible passionnantes qu’ils
-            découvriront, des bricolages, des jeux, des supers amitiés !</p>
+                <p></p>
+                <ul>
 
-        <p>Parce que les enfants sont l'église d'aujourd’hui!</p>
+                    {% for date in dates_minis %}
 
-    </article>
+                        <li>{{ date|datesShort(app.request.locale) }}</li>
 
-    <article class="tab blog-style" id="teens">
+                    {% endfor %}
 
-        <h1>Gospel Teens</h1>
+                </ul>
 
-        {% set customImg = 'bundles/gospelcenterpage/images/teens.jpg' %}
+            {% endif %}
 
-        <img class="big"
-             src="{{ asset(customImg)| imagine_filter('blog_big_low') }}"
-             srcset="{{ asset(customImg)| imagine_filter('blog_big_low') }} 2x"
-             data-img="{{ asset(customImg)| imagine_filter('blog_big') }}"
-             data-img_2x="{{ asset(customImg)| imagine_filter('blog_big_2x') }}"
-             data-img_tablet="{{ asset(customImg)| imagine_filter('blog_big_tablet') }}"
-             data-img_tablet_2x="{{ asset(customImg)| imagine_filter('blog_big_tablet_2x') }}"
-             data-img_mobile="{{ asset(customImg)| imagine_filter('blog_big_mobile') }}"
-             data-img_mobile_2x="{{ asset(customImg)| imagine_filter('blog_big_mobile_2x') }}">
-
-        <p>Nous désirons que chaque enfant entre la 5 et 8ème H expérimente la présence et la puissance de Dieu !</p>
-
-        <p>Comprendre l’amour de Dieu, l’autorité que nous avons en Lui et Sa vision pour notre vie sont des réalités à
-            découvrir au travers des messages, des temps de prière, des moments fun, des rires et des amitiés ! Si tu
-            aimes les défis, tu ne seras pas déçu(e) ! On se réjouit de te voir aux WARRIORS</p>
-
-    </article>
-
-    <article class="tab blog-style" id="full-pack">
-
-        <h1>Full Pack</h1>
-
-        {% set customImg = 'bundles/gospelcenterpage/images/full-pack.jpg' %}
-
-        <img class="big"
-             src="{{ asset(customImg)| imagine_filter('blog_big_low') }}"
-             srcset="{{ asset(customImg)| imagine_filter('blog_big_low') }} 2x"
-             data-img="{{ asset(customImg)| imagine_filter('blog_big') }}"
-             data-img_2x="{{ asset(customImg)| imagine_filter('blog_big_2x') }}"
-             data-img_tablet="{{ asset(customImg)| imagine_filter('blog_big_tablet') }}"
-             data-img_tablet_2x="{{ asset(customImg)| imagine_filter('blog_big_tablet_2x') }}"
-             data-img_mobile="{{ asset(customImg)| imagine_filter('blog_big_mobile') }}"
-             data-img_mobile_2x="{{ asset(customImg)| imagine_filter('blog_big_mobile_2x') }}">
-
-        <h2 class="underline"><span>Une célébration de A à Z</span></h2>
-
-        <p>LOUANGE * SKETCH * ANIMATION * COLLATION et pleins d'autres surprises encore !</p>
-
-        <p>Une équipe de jeunes motivés est à l’œuvre pour concocter un programme délirant qui fera sortir vos enfants
-            du lit sans souci !</p>
-
-        <p>Chaque dernier dimanche du mois à 18h00</p>
-
-    </article>
-
-
-    <article class="tab blog-style" id="youth">
-
-        <h1>Gospel Youth</h1>
-
-        {% set customImg = 'bundles/gospelcenterpage/images/gospel-youth.jpg' %}
-
-        <img class="big"
-             src="{{ asset(customImg)| imagine_filter('blog_big_low') }}"
-             srcset="{{ asset(customImg)| imagine_filter('blog_big_low') }} 2x"
-             data-img="{{ asset(customImg)| imagine_filter('blog_big') }}"
-             data-img_2x="{{ asset(customImg)| imagine_filter('blog_big_2x') }}"
-             data-img_tablet="{{ asset(customImg)| imagine_filter('blog_big_tablet') }}"
-             data-img_tablet_2x="{{ asset(customImg)| imagine_filter('blog_big_tablet_2x') }}"
-             data-img_mobile="{{ asset(customImg)| imagine_filter('blog_big_mobile') }}"
-             data-img_mobile_2x="{{ asset(customImg)| imagine_filter('blog_big_mobile_2x') }}">
-
-        <p>Le Gospel Youth Annecy c'est le groupe de jeunes du Gospel Center Annecy. On est des jeunes de 13 ans à 20
-            ans qui voulons découvrir des choses nouvelles et avancer dans notre relation avec Dieu.</p>
-
-        <p>On se retrouve périodiquement le samedi dans la journée ou les vendredi soirs à l'espace 34. Passionnés,
-            créatifs, et motivés, notre désir est de faire la différence dans ce monde en suivant l'exemple de
-            Jésus!</p>
-
-        <article class="frame">
-            <h1>Plus d'infos</h1>
-
-            <p><a href="https://www.facebook.com/GospelCenterAnnecyYouth" target="_blank">sur notre page facebook</a>
-            </p>
         </article>
+    </article>
+
+    <article class="tab" id="kids">
+        <article class="blog-style">
+
+            <h1>Gospel Kids</h1>
+
+            {% set customImg = 'bundles/gospelcenterpage/images/kids.jpg' %}
+
+            <img class="big"
+                 src="{{ asset(customImg)| imagine_filter('blog_big_low') }}"
+                 srcset="{{ asset(customImg)| imagine_filter('blog_big_low') }} 2x"
+                 data-img="{{ asset(customImg)| imagine_filter('blog_big') }}"
+                 data-img_2x="{{ asset(customImg)| imagine_filter('blog_big_2x') }}"
+                 data-img_tablet="{{ asset(customImg)| imagine_filter('blog_big_tablet') }}"
+                 data-img_tablet_2x="{{ asset(customImg)| imagine_filter('blog_big_tablet_2x') }}"
+                 data-img_mobile="{{ asset(customImg)| imagine_filter('blog_big_mobile') }}"
+                 data-img_mobile_2x="{{ asset(customImg)| imagine_filter('blog_big_mobile_2x') }}">
+
+
+            <p>Dieu n’est pas qu’une affaire d’adultes, bien au contraire ! Et c’est ce que chaque enfant pourra
+                découvrir
+                chaque semaine !</p>
+
+            <p>Accompagnés par des responsables dynamiques, ce sont des histoires de la Bible passionnantes qu’ils
+                découvriront, des bricolages, des jeux, des supers amitiés !</p>
+
+            <p>Parce que les enfants sont l'église d'aujourd’hui!</p>
+
+            {% if dates_kids|length %}
+
+                <h3>Prochaines dates</h3>
+
+                <p></p>
+                <ul>
+
+                    {% for date in dates_kids %}
+
+                        <li>{{ date|datesShort(app.request.locale) }}</li>
+
+                    {% endfor %}
+
+                </ul>
+
+            {% endif %}
+        </article>
+    </article>
+
+    <article class="tab" id="teens">
+        <article class="blog-style">
+
+            <h1>Gospel Teens</h1>
+
+            {% set customImg = 'bundles/gospelcenterpage/images/teens.jpg' %}
+
+            <img class="big"
+                 src="{{ asset(customImg)| imagine_filter('blog_big_low') }}"
+                 srcset="{{ asset(customImg)| imagine_filter('blog_big_low') }} 2x"
+                 data-img="{{ asset(customImg)| imagine_filter('blog_big') }}"
+                 data-img_2x="{{ asset(customImg)| imagine_filter('blog_big_2x') }}"
+                 data-img_tablet="{{ asset(customImg)| imagine_filter('blog_big_tablet') }}"
+                 data-img_tablet_2x="{{ asset(customImg)| imagine_filter('blog_big_tablet_2x') }}"
+                 data-img_mobile="{{ asset(customImg)| imagine_filter('blog_big_mobile') }}"
+                 data-img_mobile_2x="{{ asset(customImg)| imagine_filter('blog_big_mobile_2x') }}">
+
+            <p>Nous désirons que chaque enfant entre la 5 et 8ème H expérimente la présence et la puissance de Dieu
+                !</p>
+
+            <p>Comprendre l’amour de Dieu, l’autorité que nous avons en Lui et Sa vision pour notre vie sont des
+                réalités à
+                découvrir au travers des messages, des temps de prière, des moments fun, des rires et des amitiés ! Si
+                tu
+                aimes les défis, tu ne seras pas déçu(e) ! On se réjouit de te voir aux WARRIORS</p>
+
+            {% if dates_teens|length %}
+
+                <h3>Prochaines dates</h3>
+
+                <p></p>
+                <ul>
+
+                    {% for date in dates_teens %}
+
+                        <li>{{ date|datesShort(app.request.locale) }}</li>
+
+                    {% endfor %}
+
+                </ul>
+
+            {% endif %}
+        </article>
+    </article>
+
+    <article class="tab" id="full-pack">
+        <article class="blog-style">
+
+            <h1>Full Pack</h1>
+
+            {% set customImg = 'bundles/gospelcenterpage/images/full-pack.jpg' %}
+
+            <img class="big"
+                 src="{{ asset(customImg)| imagine_filter('blog_big_low') }}"
+                 srcset="{{ asset(customImg)| imagine_filter('blog_big_low') }} 2x"
+                 data-img="{{ asset(customImg)| imagine_filter('blog_big') }}"
+                 data-img_2x="{{ asset(customImg)| imagine_filter('blog_big_2x') }}"
+                 data-img_tablet="{{ asset(customImg)| imagine_filter('blog_big_tablet') }}"
+                 data-img_tablet_2x="{{ asset(customImg)| imagine_filter('blog_big_tablet_2x') }}"
+                 data-img_mobile="{{ asset(customImg)| imagine_filter('blog_big_mobile') }}"
+                 data-img_mobile_2x="{{ asset(customImg)| imagine_filter('blog_big_mobile_2x') }}">
+
+            <h2 class="underline"><span>Une célébration de A à Z</span></h2>
+
+            <p>LOUANGE * SKETCH * ANIMATION * COLLATION et pleins d'autres surprises encore !</p>
+
+            <p>Une équipe de jeunes motivés est à l’œuvre pour concocter un programme délirant qui fera sortir vos
+                enfants
+                du lit sans souci !</p>
+
+            <p>Le premier et le troisième dimanche du mois à 10h30</p>
+
+            {% if dates_fullPack|length %}
+
+                <h3>Prochaines dates</h3>
+
+                <p></p>
+                <ul>
+
+                    {% for date in dates_fullPack %}
+
+                        <li>{{ date|datesShort(app.request.locale) }}</li>
+
+                    {% endfor %}
+
+                </ul>
+
+            {% endif %}
+        </article>
+    </article>
+
+
+    <article class="tab" id="youth">
+        <article class="blog-style">
+
+            <h1>Gospel Youth</h1>
+
+            {% set customImg = 'bundles/gospelcenterpage/images/gospel-youth.jpg' %}
+
+            <img class="big"
+                 src="{{ asset(customImg)| imagine_filter('blog_big_low') }}"
+                 srcset="{{ asset(customImg)| imagine_filter('blog_big_low') }} 2x"
+                 data-img="{{ asset(customImg)| imagine_filter('blog_big') }}"
+                 data-img_2x="{{ asset(customImg)| imagine_filter('blog_big_2x') }}"
+                 data-img_tablet="{{ asset(customImg)| imagine_filter('blog_big_tablet') }}"
+                 data-img_tablet_2x="{{ asset(customImg)| imagine_filter('blog_big_tablet_2x') }}"
+                 data-img_mobile="{{ asset(customImg)| imagine_filter('blog_big_mobile') }}"
+                 data-img_mobile_2x="{{ asset(customImg)| imagine_filter('blog_big_mobile_2x') }}">
+
+            <p>Le Gospel Youth Annecy c'est le groupe de jeunes du Gospel Center Annecy. On est des jeunes de 13 ans à
+                20
+                ans qui voulons découvrir des choses nouvelles et avancer dans notre relation avec Dieu.</p>
+
+            <p>On se retrouve périodiquement le samedi dans la journée ou les vendredi soirs à l'espace 34. Passionnés,
+                créatifs, et motivés, notre désir est de faire la différence dans ce monde en suivant l'exemple de
+                Jésus!</p>
+
+            <article class="frame">
+                <h1>Plus d'infos</h1>
+
+                <p><a href="https://www.facebook.com/GospelCenterAnnecyYouth" target="_blank">sur notre page
+                        facebook</a>
+                </p>
+            </article>
+        </article>
+
+        {% if dates_youth|length %}
+            <section class="gray" id="events">
+
+                <section class="default">
+
+                    <h3>Prochaines dates</h3>
+
+                    {% for date in dates_youth %}
+
+                        <a href="{{ path('gospelcenterEvents_event', {'event': date.event.id, 'center': center.ref, 'domain': center.domain}) }}"
+                           class="events">
+                            <section class="picture">
+                                {% if date.event.picture %}
+                                    <img alt="{{ date.event.picture.alt }}"
+                                         src="{{ asset(date.event.picture.webPath)| imagine_filter('event_picture_low') }}"
+                                         srcset="{{ asset(date.event.picture.webPath)| imagine_filter('event_picture_low') }} 2x"
+                                         data-img="{{ asset(date.event.picture.webPath)| imagine_filter('event_picture') }}"
+                                         data-img_2x="{{ asset(date.event.picture.webPath)| imagine_filter('event_picture_2x') }}"
+                                         data-img_tablet="{{ asset(date.event.picture.webPath)| imagine_filter('event_picture_tablet') }}"
+                                         data-img_tablet_2x="{{ asset(date.event.picture.webPath)| imagine_filter('event_picture_tablet_2x') }}"
+                                         data-img_mobile="{{ asset(date.event.picture.webPath)| imagine_filter('event_picture_mobile') }}"
+                                         data-img_mobile_2x="{{ asset(date.event.picture.webPath)| imagine_filter('event_picture_mobile_2x') }}">
+
+                                {% endif %}
+                            </section>
+                            <section class="detail">
+                                <h1>{{ date.event.title }}</h1>
+                                <time class="date">{{ date|dates(app.request.locale) }}</time>
+                            </section>
+                        </a>
+                    {% endfor %}
+
+                </section>
+
+            </section>
+
+        {% endif %}
 
     </article>
 

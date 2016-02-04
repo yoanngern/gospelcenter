@@ -55,6 +55,13 @@ class Event
     private $status;
 
     /**
+     * @var string
+     *
+     * @ORM\Column(name="category", type="string", length=255)
+     */
+    private $category;
+
+    /**
      * @var \DateTime
      *
      * @ORM\Column(name="createdDate", type="datetime")
@@ -563,5 +570,28 @@ class Event
     public function getPicture()
     {
         return $this->picture;
+    }
+
+    /**
+     * Set category
+     *
+     * @param string $category
+     * @return Event
+     */
+    public function setCategory($category)
+    {
+        $this->category = $category;
+    
+        return $this;
+    }
+
+    /**
+     * Get category
+     *
+     * @return string 
+     */
+    public function getCategory()
+    {
+        return $this->category;
     }
 }

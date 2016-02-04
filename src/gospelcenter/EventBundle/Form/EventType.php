@@ -67,6 +67,22 @@ class EventType extends AbstractType
                 )
             )
             ->add(
+                'category',
+                'choice',
+                array(
+                    'choices' => array(
+                        'minis' => 'Gospel Minis',
+                        'kids' => 'Gospel Kids',
+                        'heroes' => 'Gospel Heroes',
+                        'fullPack' => 'Full Pack',
+                        'teens' => 'Gospel Teens',
+                        'youth' => 'Full Youth'
+                    ),
+                    'multiple' => false,
+                    'empty_value' => 'Select a category'
+                )
+            )
+            ->add(
                 'location',
                 'entity',
                 array(

@@ -71,6 +71,34 @@ class EventRepository extends EntityRepository
         return $qb->getQuery()->getResult();
     }
 
+    public function findUpcomingByCategory(\gospelcenter\CenterBundle\Entity\Center $center, $category)
+    {
+        $qb = $this->createQueryBuilder('e');
+
+        $qb->join('e.centers', 'c')
+            ->addSelect('c');
+        $qb->leftJoin('e.picture', 'p')
+            ->addSelect('p');
+
+        $qb->leftJoin('e.dates', 'd')
+            ->addSelect('d');
+
+        $qb->where('e.status = :status')
+            ->setParameter('status', '1');
+
+        $qb->andWhere('e.category = :category')
+            ->setParameter('category', $category);
+
+        $qb->andWhere('c.ref = :center')
+            ->setParameter('center', $center->getRef());
+
+        $qb = $this->nextEvents($qb);
+
+        $qb->orderBy('d.start', 'ASC');
+
+        return $qb->getQuery()->getResult();
+    }
+
     public function findAllByCenter(\gospelcenter\CenterBundle\Entity\Center $center, $nb, $start)
     {
         $qb = $this->createQueryBuilder('e');

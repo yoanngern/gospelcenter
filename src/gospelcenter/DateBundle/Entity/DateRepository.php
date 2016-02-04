@@ -39,4 +39,29 @@ class DateRepository extends EntityRepository
         }
     }
 
+    public function findNextEventByCategory(\gospelcenter\CenterBundle\Entity\Center $center, $category)
+    {
+
+        $query = $this->getEntityManager()
+            ->createQuery('
+                SELECT d
+                FROM gospelcenterDateBundle:Date d
+                LEFT JOIN d.event e
+                LEFT JOIN e.centers c
+                WHERE c.ref = :center AND e.status = 1 AND e.category = :category
+                AND d.end >= :now
+                ORDER BY d.start ASC'
+            )->setParameters(array(
+                'center' => $center->getRef(),
+                'now' => new \Datetime(),
+                'category' => $category
+            ));
+
+        try {
+            return $query->getResult();
+        } catch (\Doctrine\ORM\NoResultException $e) {
+            return null;
+        }
+    }
+
 }
