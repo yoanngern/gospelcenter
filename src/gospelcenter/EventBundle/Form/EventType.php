@@ -76,7 +76,7 @@ class EventType extends AbstractType
                         'heroes' => 'Gospel Heroes',
                         'fullPack' => 'Full Pack',
                         'teens' => 'Gospel Teens',
-                        'youth' => 'Full Youth'
+                        'youth' => 'Gospel Youth'
                     ),
                     'multiple' => false,
                     'empty_value' => 'Select a category'
