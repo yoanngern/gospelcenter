@@ -14,6 +14,7 @@ gc:
                 believe: Confession de foi
                 music: Musique
                 coaching: Coaching
+                therapy: Thérapie
         bases:
             findBase: TROUVEZ UNE BASE PRÈS DE CHEZ VOUS
             moreInfos: Pour plus d'infos, contactez-nous

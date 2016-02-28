@@ -14,6 +14,7 @@ gc:
                 believe: What we believe
                 music: Music
                 coaching: Coaching
+                therapy: Therapy
         bases:
             findBase: FIND A BASE NEAR YOU
             moreInfos: For more info, contact us

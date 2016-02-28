@@ -34,6 +34,7 @@
                 <li><a href="#leadership">{{ 'gc.page.about.nav.leadership'|trans }}</a></li>
                 <li><a href="#staff">{{ 'gc.page.about.nav.staff'|trans }}</a></li>
                 <li><a href="#coaching">{{ 'gc.page.about.nav.coaching'|trans }}</a></li>
+                <li><a href="#therapy">{{ 'gc.page.about.nav.therapy'|trans }}</a></li>
                 <li><a href="#what-we-believe">{{ 'gc.page.about.nav.believe'|trans }}</a></li>
             </ul>
         {% endspaceless %}
@@ -299,8 +300,10 @@
              data-img_mobile="{{ asset(coachingImg)| imagine_filter('blog_big_mobile') }}"
              data-img_mobile_2x="{{ asset(coachingImg)| imagine_filter('blog_big_mobile_2x') }}">
 
-        <p>Le coaching est un accompagnement personnalisé pour tous ceux qui recherchent un affermissement de leur foi en Dieu.</p>
-        <p>Vous voulez voir des résultats concrets et mesurables dans l’approfondissement de votre intimité avec Dieu, améliorer certains aspects de votre vie chrétienne et vous fixer des objectifs?</p>
+        <p>Le coaching est un accompagnement personnalisé pour tous ceux qui recherchent un affermissement de leur foi
+            en Dieu.</p>
+        <p>Vous voulez voir des résultats concrets et mesurables dans l’approfondissement de votre intimité avec Dieu,
+            améliorer certains aspects de votre vie chrétienne et vous fixer des objectifs?</p>
 
         <p>Contactez nous!</p>
 
@@ -308,6 +311,40 @@
             <h1>Pierre et Marie-Claude Crelier</h1>
 
             <p><a href="mailto:coaching@gc-jura.org">coaching@gc-jura.org</a></p>
+        </article>
+
+    </article>
+
+
+    <article class="tab blog-style" id="therapy">
+
+        <h1>Thérapie</h1>
+
+        {% set therapieImg = 'bundles/gospelcenterpage/images/jura_therapy.jpg' %}
+
+        <img class="big"
+             src="{{ asset(therapieImg)| imagine_filter('blog_big_low') }}"
+             srcset="{{ asset(therapieImg)| imagine_filter('blog_big_low') }} 2x"
+             data-img="{{ asset(therapieImg)| imagine_filter('blog_big') }}"
+             data-img_2x="{{ asset(therapieImg)| imagine_filter('blog_big_2x') }}"
+             data-img_tablet="{{ asset(therapieImg)| imagine_filter('blog_big_tablet') }}"
+             data-img_tablet_2x="{{ asset(therapieImg)| imagine_filter('blog_big_tablet_2x') }}"
+             data-img_mobile="{{ asset(therapieImg)| imagine_filter('blog_big_mobile') }}"
+             data-img_mobile_2x="{{ asset(therapieImg)| imagine_filter('blog_big_mobile_2x') }}">
+
+        <p>Formée en psychothérapie avec une spécialisation en victimologie, Lidia collabore depuis des nombreuses
+            années avec Le Centre Lavi - service d’aide aux victimes à Bienne.</p>
+
+        <p>Elle met à votre disposition une approche psychologique et spirituelle dans la relation d’aide, conseille
+            couples et familles, médiation familiale, victimes d’agression, d’abus sexuel, d’harcèlement ou d’accidents,
+            supervisions de groupe et individuelle.</p>
+
+        <article class="frame">
+            <h1>Lidia Zeller</h1>
+            <p>Thérapeute</p>
+            <p>+41 32 323 34 59</p>
+            <p>+41 78 736 21 43</p>
+            <p><a href="mailto:therapie@gc-jura.org">therapie@gc-jura.org</a></p>
         </article>
 
     </article>
