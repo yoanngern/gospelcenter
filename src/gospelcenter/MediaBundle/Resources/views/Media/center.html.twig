@@ -12,7 +12,7 @@
                             {% if celebration.image %}
                                 {% set tvImg = celebration.image.webPath %}
                                 <div class="image"
-                                     style="background-image: url('{{ asset(tvImg) }}')"
+                                     style="background-image: url('{{ asset(tvImg)| imagine_filter('tv_wall_low') }}')"
                                      data-bg="{{ asset(tvImg)| imagine_filter('tv_wall') }}"
                                      data-bg_2x="{{ asset(tvImg)| imagine_filter('tv_wall_2x') }}"
                                      data-bg_tablet="{{ asset(tvImg)| imagine_filter('tv_wall_tablet') }}"
@@ -40,7 +40,7 @@
                             {% if celebration.image %}
                                 {% set tvImg = celebration.image.webPath %}
                                 <div class="image"
-                                     style="background-image: url('{{ asset(tvImg) }}')"
+                                     style="background-image: url('{{ asset(tvImg)| imagine_filter('tv_wall_low') }}')"
                                      data-bg="{{ asset(tvImg)| imagine_filter('tv_wall') }}"
                                      data-bg_2x="{{ asset(tvImg)| imagine_filter('tv_wall_2x') }}"
                                      data-bg_tablet="{{ asset(tvImg)| imagine_filter('tv_wall_tablet') }}"
