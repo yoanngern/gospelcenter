@@ -51,6 +51,36 @@
                 {% if videos|length %}
                     <section class="right">
 
+                        {% if video.celebration.audio %}
+                            <h2><span>Également en audio</span></h2>
+                            <a class="single" href="{{ path('gospelcenterMedia_audio', {'audio': video.celebration.audio.id}) }}">
+                                <div class="container">
+                                    {% if video.celebration.image %}
+                                        {% set tvImg = video.celebration.image.webPath %}
+                                        <div class="image"
+                                             style="background-image: url('{{ asset(tvImg) }}')"
+                                             data-bg="{{ asset(tvImg)| imagine_filter('tv_wall') }}"
+                                             data-bg_2x="{{ asset(tvImg)| imagine_filter('tv_wall_2x') }}"
+                                             data-bg_tablet="{{ asset(tvImg)| imagine_filter('tv_wall_tablet') }}"
+                                             data-bg_tablet_2x="{{ asset(tvImg)| imagine_filter('tv_wall_tablet_2x') }}"
+                                             data-bg_mobile="{{ asset(tvImg)| imagine_filter('tv_wall_mobile') }}"
+                                             data-bg_mobile_2x="{{ asset(tvImg)| imagine_filter('tv_wall_mobile_2x') }}"
+                                        ></div>
+                                        <div class="gradient"></div>
+                                    {% else %}
+                                        <div class="bg"></div>
+                                    {% endif %}
+                                    <div class="hover">
+                                        <div class="picto_play"></div>
+                                        <span>Écouter</span>
+                                    </div>
+                                    <div class="details">
+                                        <span>{{ video.celebration.title }}</span>
+                                    </div>
+                                </div>
+                            </a>
+                        {% endif %}
+
 
                         <h2><span>Du même orateur</span></h2>
 

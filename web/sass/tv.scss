@@ -615,6 +615,9 @@
 
                     a {
                         @include itemWall(159px);
+                        &.single {
+                            float: none;
+                        }
                     }
 
                 }

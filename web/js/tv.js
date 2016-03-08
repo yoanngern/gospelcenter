@@ -22,6 +22,10 @@ $(document).ready( function() {
 
 function moreItems(page, url) {
 
+    console.log("test");
+    console.log(page);
+    console.log(url);
+
     $.ajax({
         type: "GET",
         url: url,

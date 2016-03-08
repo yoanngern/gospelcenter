@@ -124,41 +124,6 @@ function getSoundCloudCList(input_id) {
 
     var url = "https://api.soundcloud.com/playlists/" + getSCPlaylistId() + ".json?client_id=" + soundCloud.client_id;
 
-    /*
-     SC.get("/playlists/" + getSCPlaylistId() + "/tracks", {
-     q: "bruno"
-     }).then(function(tracks) {
-
-     var audios = [];
-
-     tracks.reverse();
-
-     $(tracks).each(function () {
-     var audio = {};
-
-     audio.id = this.id;
-     audio.title = this.title;
-     audio.subTitle = $.format.date(new Date(this.created_at), "dd MMMM yyyy");
-     audio.image_url = this.artwork_url;
-     audio.isImage = false;
-     audio.tags = this.tag_list;
-     audio.description = this.description;
-
-     if (audio.image_url) {
-     audio.isImage = true;
-     }
-
-
-     audios.push(audio);
-     });
-
-     printSelectList($("#soundCloudSearch"), audios, input_id);
-
-     setSoundCloudCList(audios);
-
-     });
-
-     */
 
     var page_size = 200;
 

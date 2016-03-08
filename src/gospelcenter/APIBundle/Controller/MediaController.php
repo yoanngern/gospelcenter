@@ -30,7 +30,6 @@ class MediaController extends Controller
         $twigSpeakers = $this->container->get('gospelcenter_celebration.speakers');
         $twigOneDate = $this->container->get('gospelcenter_date.dates');
 
-
         foreach ($celebrations as $celebration) {
 
             $customCelebration["id"] = $celebration->getId();
@@ -233,22 +232,42 @@ class MediaController extends Controller
         $twigSpeakers = $this->container->get('gospelcenter_celebration.speakers');
         $twigOneDate = $this->container->get('gospelcenter_date.dates');
 
-
         foreach ($celebrations as $celebration) {
+
+            //print($celebration->getId());
 
             $customCelebration["id"] = $celebration->getId();
 
-            $customCelebration["video_id"] = $celebration->getVideo()->getId();
+            if ($celebration->getVideo()) {
 
 
-            $customCelebration["link"] = $this->generateUrl(
-                'gospelcenterMedia_video',
-                array(
-                    'video' => $celebration->getVideo()->getId()
-                )
-            );
+                $customCelebration["video_id"] = $celebration->getVideo()->getId();
 
-            $customCelebration["action"] = "Regarder la vidéo";
+
+                $customCelebration["link"] = $this->generateUrl(
+                    'gospelcenterMedia_video',
+                    array(
+                        'video' => $celebration->getVideo()->getId()
+                    )
+                );
+
+                $customCelebration["action"] = "Regarder la vidéo";
+
+            } elseif ($celebration->getAudio()) {
+
+                $customCelebration["audio_id"] = $celebration->getAudio()->getId();
+
+
+                $customCelebration["link"] = $this->generateUrl(
+                    'gospelcenterMedia_audio',
+                    array(
+                        'audio' => $celebration->getAudio()->getId()
+                    )
+                );
+
+                $customCelebration["action"] = "Ecouter";
+
+            }
 
             if ($celebration->getTitle() != "") {
                 $customCelebration["subtitle"] = $celebration->getTitle();
@@ -297,6 +316,7 @@ class MediaController extends Controller
 
 
             $customCelebrations[] = $customCelebration;
+
 
         }
 
