@@ -27,6 +27,10 @@
     <h1 class="titlePage"><span>{{ 'gc.title.celebrations'|trans }}</span></h1>
 
     {% set customImg = 'bundles/gospelcentercelebration/images/allSunday.jpg' %}
+    {% if center.ref == "jura" %}
+        {% set customImg = 'bundles/gospelcentercelebration/images/allSunday_jura.jpg' %}
+    {% endif %}
+
 
     <section class="allSunday"
              style="background-image: url('{{ customImg| imagine_filter('slide_small_low') }}')"
