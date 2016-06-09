@@ -54,6 +54,15 @@
                             background-image: url('../images/link_youtube_hover.svg');
                         }
                     }
+
+                    &#instagram {
+                        width: 30px;
+                        background-image: url('../images/link_instagram.svg');
+
+                        &:hover {
+                            background-image: url('../images/link_instagram_hover.svg');
+                        }
+                    }
                 }
             }
         }

@@ -1652,6 +1652,28 @@
 		"outputPathIsSetByUser": 0,
 		"processed": 0
 		},
+	"\/images\/link_instagram.png": {
+		"fileType": 32768,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 1013,
+		"inputAbbreviatedPath": "\/images\/link_instagram.png",
+		"outputAbbreviatedPath": "\/images\/link_instagram.png",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
+	"\/images\/link_instagram_hover.png": {
+		"fileType": 32768,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 947,
+		"inputAbbreviatedPath": "\/images\/link_instagram_hover.png",
+		"outputAbbreviatedPath": "\/images\/link_instagram_hover.png",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
 	"\/images\/link_twitter.png": {
 		"fileType": 32768,
 		"ignore": 0,
