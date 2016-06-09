@@ -131,6 +131,17 @@
 		"outputPathIsSetByUser": 0,
 		"processed": 0
 		},
+	"\/bundles\/gospelcentercelebration\/images\/allSunday_jura.jpg": {
+		"fileType": 16384,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 540245,
+		"inputAbbreviatedPath": "\/bundles\/gospelcentercelebration\/images\/allSunday_jura.jpg",
+		"outputAbbreviatedPath": "\/bundles\/gospelcentercelebration\/images\/allSunday_jura.jpg",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
 	"\/bundles\/gospelcentermedia\/images\/media_home_julien1.jpg": {
 		"fileType": 16384,
 		"ignore": 0,
