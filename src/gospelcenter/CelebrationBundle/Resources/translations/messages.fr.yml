@@ -6,12 +6,12 @@ gc:
         more: Plus
         kidsProgram: Un programme spécial pour les 0 à 12 ans est organisé
         allSunday:
-            #lausanne: |
-            #    Chaque dimanche soir à 18h
-            #    au D! Club
             lausanne: |
-                Pause estivale
-                Reprise des célébrations le 21 août
+                Chaque dimanche soir à 18h
+                au D! Club
+            #lausanne: |
+            #    Pause estivale
+            #    Reprise des célébrations le 21 août
             annecy: |
                 Chaque dimanche matin à 10h30
                 et tous les derniers dimanche du mois à 17h

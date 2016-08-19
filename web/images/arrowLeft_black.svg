@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="36px" height="90px" viewBox="0 0 36 90" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+    <!-- Generator: Sketch 3.4.3 (16044) - http://www.bohemiancoding.com/sketch -->
+    <title>arrowLeft_black</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Icon" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" sketch:type="MSPage">
+        <g id="arrowLeft_black" sketch:type="MSArtboardGroup" fill="#363331">
+            <path d="M2.658,87.875 L34.205,45 L2.659,2.25 L2.659,0.245 L35.973,45.001 L2.659,89.755 L2.659,87.875 L2.658,87.875 Z" id="Shape" sketch:type="MSShapeGroup" transform="translate(19.158000, 45.245000) scale(-1, 1) translate(-19.158000, -45.245000) "></path>
+        </g>
+    </g>
+</svg>
