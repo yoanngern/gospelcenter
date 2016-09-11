@@ -150,7 +150,7 @@
 
                 {% set celebration_location = nextCelebrations[0].location %}
 
-                {% set map_url = "http://beta.gospel-center.org/api/locations/" ~ celebration_location.id ~ ".geojson" %}
+                {% set map_url = "http://gospel-center.com/api/locations/" ~ celebration_location.id ~ ".geojson" %}
 
                 <iframe src="http://map.gospel-center.com/poi.html?url={{ map_url|url_encode }}"></iframe>
 
