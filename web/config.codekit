@@ -670,6 +670,72 @@
 		"outputPathIsSetByUser": 0,
 		"processed": 0
 		},
+	"\/bundles\/gospelcenterpage\/images\/youth\/jura\/full-pack.jpg": {
+		"fileType": 16384,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 0,
+		"inputAbbreviatedPath": "\/bundles\/gospelcenterpage\/images\/youth\/jura\/full-pack.jpg",
+		"outputAbbreviatedPath": "\/bundles\/gospelcenterpage\/images\/youth\/jura\/full-pack.jpg",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
+	"\/bundles\/gospelcenterpage\/images\/youth\/jura\/gospel-youth.jpg": {
+		"fileType": 16384,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 1.33056e+06,
+		"inputAbbreviatedPath": "\/bundles\/gospelcenterpage\/images\/youth\/jura\/gospel-youth.jpg",
+		"outputAbbreviatedPath": "\/bundles\/gospelcenterpage\/images\/youth\/jura\/gospel-youth.jpg",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
+	"\/bundles\/gospelcenterpage\/images\/youth\/jura\/heroes.jpg": {
+		"fileType": 16384,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 664268,
+		"inputAbbreviatedPath": "\/bundles\/gospelcenterpage\/images\/youth\/jura\/heroes.jpg",
+		"outputAbbreviatedPath": "\/bundles\/gospelcenterpage\/images\/youth\/jura\/heroes.jpg",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
+	"\/bundles\/gospelcenterpage\/images\/youth\/jura\/kids.jpg": {
+		"fileType": 16384,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 958193,
+		"inputAbbreviatedPath": "\/bundles\/gospelcenterpage\/images\/youth\/jura\/kids.jpg",
+		"outputAbbreviatedPath": "\/bundles\/gospelcenterpage\/images\/youth\/jura\/kids.jpg",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
+	"\/bundles\/gospelcenterpage\/images\/youth\/jura\/minis.jpg": {
+		"fileType": 16384,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 413218,
+		"inputAbbreviatedPath": "\/bundles\/gospelcenterpage\/images\/youth\/jura\/minis.jpg",
+		"outputAbbreviatedPath": "\/bundles\/gospelcenterpage\/images\/youth\/jura\/minis.jpg",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
+	"\/bundles\/gospelcenterpage\/images\/youth\/jura\/teens.jpg": {
+		"fileType": 16384,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 884998,
+		"inputAbbreviatedPath": "\/bundles\/gospelcenterpage\/images\/youth\/jura\/teens.jpg",
+		"outputAbbreviatedPath": "\/bundles\/gospelcenterpage\/images\/youth\/jura\/teens.jpg",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
 	"\/bundles\/gospelcenterpage\/images\/youth\/lausanne\/full-pack.jpg": {
 		"fileType": 16384,
 		"ignore": 0,
