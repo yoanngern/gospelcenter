@@ -33,7 +33,7 @@ gospelcenterAPI:
 
 gospelcenterGlobal:
     resource: "@gospelcenterCenterBundle/Resources/config/routing_global.yml"
-    host: "gospel-center.org"
+    host: "gospel-center.com"
 
 #gospelcenterLocal:
 #    resource: "@gospelcenterCenterBundle/Resources/config/routing_local.yml"
@@ -46,7 +46,7 @@ gospelcenterLocal:
     host:     "gc-{center}.{domain}"
     requirements:
         domain: org|gospel-center\.org
-        center: lausanne|annecy|montreux|jura
+        center: lausanne|annecy|montreux|jura|beroche
     defaults:
         domain: org
 

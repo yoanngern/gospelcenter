@@ -187,6 +187,7 @@ class Center
     {
         $this->createdDate = new \Datetime();
         $this->modifiedDate = new \Datetime();
+	    $this->online = false;
         $this->events = new \Doctrine\Common\Collections\ArrayCollection();
         $this->celebrations = new \Doctrine\Common\Collections\ArrayCollection();
         $this->pages = new \Doctrine\Common\Collections\ArrayCollection();
@@ -210,6 +211,7 @@ class Center
     {
         $this->location = $location;
         $location->addCenter($this);
+
         
         if($location != null) {
             $name = "Gospel Center ". $this->name;

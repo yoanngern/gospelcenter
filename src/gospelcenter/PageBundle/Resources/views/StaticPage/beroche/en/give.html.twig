@@ -1,0 +1,68 @@
+{% block body %}
+
+    <h1 class="titlePage"><span>{{ 'gc.title.give'|trans }}</span></h1>
+    <h2 class="slogan">Le Gospel Center La Béroche est une association à but non lucratif, qui ne reçoit aucun soutien
+        financier de l’État.</h2>
+
+    <article class="tab blog-style">
+
+        <h1>Devenez des partenaires</h1>
+
+        {% set giveImg = 'bundles/gospelcenterpage/images/nous-soutenir.jpg' %}
+
+        <img class="big"
+             src="{{ asset(giveImg)| imagine_filter('blog_big_low') }}"
+             srcset="{{ asset(giveImg)| imagine_filter('blog_big_low') }} 2x"
+             data-img="{{ asset(giveImg)| imagine_filter('blog_big') }}"
+             data-img_2x="{{ asset(giveImg)| imagine_filter('blog_big_2x') }}"
+             data-img_tablet="{{ asset(giveImg)| imagine_filter('blog_big_tablet') }}"
+             data-img_tablet_2x="{{ asset(giveImg)| imagine_filter('blog_big_tablet_2x') }}"
+             data-img_mobile="{{ asset(giveImg)| imagine_filter('blog_big_mobile') }}"
+             data-img_mobile_2x="{{ asset(giveImg)| imagine_filter('blog_big_mobile_2x') }}">
+
+        <p>La Parole de Dieu nous encourage à devenir partenaire de l’œuvre de Dieu en donnant. Ce don peut se
+            manifester de différentes manières :</p>
+
+        <ul>
+            <li>donner du temps,</li>
+            <li>donner de ses talents</li>
+            <li>et aussi donner financièrement.</li>
+        </ul>
+
+        <p>L’ensemble des frais de fonctionnement et de développement est assuré par l’engagement libre de chacun. Nos
+            comptes sont approuvés par l’assemblée générale après vérification par une fiduciaire.</p>
+
+        <h3>La Bible déclare la chose suivante</h3>
+
+        <section class="bible">
+            <h1 class="verse">2 Corinthiens 9: 6-7</h1>
+            <blockquote>Celui qui sème peu moissonnera peu, et celui qui sème largement moissonnera largement. Que
+                chacun donne comme il l’a résolu en son cœur, sans tristesse ni contrainte ; car Dieu aime celui qui
+                donne avec joie. Et Dieu a le pouvoir de vous combler de toutes sortes de grâces, afin que, disposant
+                toujours, à tous égards, de tout le nécessaire, vous ayez encore en abondance pour toute œuvre bonne,
+                ainsi qu’il est écrit : Il a répandu ses bienfaits, il a donné aux pauvres ; sa justice demeure pour
+                toujours.
+            </blockquote>
+        </section>
+
+        <p>Basés sur cette promesse qui s’est avérée vraie dans de nombreuses circonstances, nous aimerions vous
+            encourager à vous impliquer au Gospel Center, sans quoi sa vision ne pourra pas être complètement réalisée.
+            Si vous êtes intéressés à participer aux différents projets du Gospel Center La Béroche notamment par un don
+            financier, vous pouvez le faire par virement postal.</p>
+
+        <article class="frame">
+            <h1>Nous soutenir</h1>
+
+            <p>IBAN : CH43 0900 0000 1452 7714 5</p>
+            <p>CCP : 14-527714-5</p>
+
+            <p>Gospel Center La Béroche</p>
+
+            <p>2024 St-Aubin-Sauges</p>
+
+            <p>Suisse.</p>
+        </article>
+
+
+    </article>
+{% endblock %}

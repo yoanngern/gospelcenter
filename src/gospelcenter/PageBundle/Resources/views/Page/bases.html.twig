@@ -1,10 +1,12 @@
 <h2 class="slogan findBase">{{ 'gc.page.bases.findBase'|trans }}</h2>
 
-<section id="map" class="map_full">
-    {% set map_url = "http://gospel-center.com/api/bases/" ~ center.ref ~ ".geojson" %}
+{% if center.ref != "beroche" %}
+    <section id="map" class="map_full">
+        {% set map_url = "http://gospel-center.com/api/bases/" ~ center.ref ~ ".geojson" %}
 
-    <iframe src="http://map.gospel-center.com/poi.html?url={{ map_url|url_encode }}"></iframe>
-</section>
+        <iframe src="http://map.gospel-center.com/poi.html?url={{ map_url|url_encode }}"></iframe>
+    </section>
+{% endif %}
 
 <section class="formGray">
     <h1>{{ 'gc.page.bases.moreInfos'|trans }}</h1>
@@ -21,3 +23,5 @@
         <input type="submit" value="{{ 'gc.form.send'|trans }}" class="buttonLink"/>
     </form>
 </section>
+
+
