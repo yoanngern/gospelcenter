@@ -1,6 +1,7 @@
-<h2 class="slogan findBase">{{ 'gc.page.bases.findBase'|trans }}</h2>
-
 {% if center.ref != "beroche" %}
+
+    <h2 class="slogan findBase">{{ 'gc.page.bases.findBase'|trans }}</h2>
+
     <section id="map" class="map_full">
         {% set map_url = "http://gospel-center.com/api/bases/" ~ center.ref ~ ".geojson" %}
 
