@@ -45,7 +45,7 @@ gospelcenterLocal:
     resource: "@gospelcenterCenterBundle/Resources/config/routing_local.yml"
     host:     "gc-{center}.{domain}"
     requirements:
-        domain: org|gospel-center\.org
+        domain: org|gospel-center\.com
         center: lausanne|annecy|montreux|jura|beroche
     defaults:
         domain: org
