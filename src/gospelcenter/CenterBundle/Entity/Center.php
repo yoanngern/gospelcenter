@@ -255,7 +255,7 @@ class Center
         if($this->online) {
             $domain = "org";
         } else {
-            $domain = "gospel-center.org";
+            $domain = "gospel-center.com";
         }
 
         return $domain;
