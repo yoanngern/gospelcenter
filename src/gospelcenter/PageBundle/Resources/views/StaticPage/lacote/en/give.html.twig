@@ -1,0 +1,65 @@
+{% block body %}
+
+    <h1 class="titlePage"><span>{{ 'gc.title.give'|trans }}</span></h1>
+    <h2 class="slogan">Gospel Center La Côte is a non-profit association, that receives no financial support from the
+        State.</h2>
+
+    <article class="tab blog-style">
+
+        <h1>Become partners</h1>
+
+        {% set giveImg = 'bundles/gospelcenterpage/images/nous-soutenir.jpg' %}
+
+        <img class="big"
+             src="{{ asset(giveImg)| imagine_filter('blog_big_low') }}"
+             srcset="{{ asset(giveImg)| imagine_filter('blog_big_low') }} 2x"
+             data-img="{{ asset(giveImg)| imagine_filter('blog_big') }}"
+             data-img_2x="{{ asset(giveImg)| imagine_filter('blog_big_2x') }}"
+             data-img_tablet="{{ asset(giveImg)| imagine_filter('blog_big_tablet') }}"
+             data-img_tablet_2x="{{ asset(giveImg)| imagine_filter('blog_big_tablet_2x') }}"
+             data-img_mobile="{{ asset(giveImg)| imagine_filter('blog_big_mobile') }}"
+             data-img_mobile_2x="{{ asset(giveImg)| imagine_filter('blog_big_mobile_2x') }}">
+
+        <p>The Word of God encourages us to be partners in the work of God by giving. This gift can manifest itself in
+            many ways:</p>
+
+        <ul>
+            <li>give time</li>
+            <li>give of your talents</li>
+            <li>or give financially</li>
+        </ul>
+
+        <p>All of the running and developing costs are covered by the free commitment of many. Our accounts are
+            approved by the General Assembly, after verification by a fiduciary.</p>
+
+        <h3>The Bible declares...</h3>
+
+        <section class="bible">
+            <h1 class="verse">2 Corinthians 9: 6-7</h1>
+            <blockquote>But this I say, He that sows sparingly shall reap also sparingly; and he that sows bountifully
+                shall reap also bountifully. Let each man do according as he hath purposed in his heart: not grudgingly,
+                or of necessity: for God loves a cheerful giver.
+            </blockquote>
+        </section>
+
+        <p>Based on this promise that proved right in many circumstances, we would like to encourage you to get involved
+            and invest in this work that announces the Kingdom of God. If you are interested in taking part in the
+            different projects of Gospel Center La Côte, in particular through a financial gift, you can do it through
+            postal order.</p>
+
+        <article class="frame">
+            <h1>Support us</h1>
+
+            <p>CCP: 17-637864-2</p>
+
+            <p>IBAN: CH70 0900 0000 1763 7864 2</p>
+
+            <p>Gospel Center Lausanne</p>
+
+            <p>1007 Lausanne</p>
+
+            <p>Switzerland.</p>
+        </article>
+
+    </article>
+{% endblock %}

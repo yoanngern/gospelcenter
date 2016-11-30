@@ -46,7 +46,7 @@ gospelcenterLocal:
     host:     "gc-{center}.{domain}"
     requirements:
         domain: org|gospel-center\.com
-        center: lausanne|annecy|montreux|jura|beroche
+        center: lausanne|annecy|montreux|jura|beroche|lacote
     defaults:
         domain: org
 

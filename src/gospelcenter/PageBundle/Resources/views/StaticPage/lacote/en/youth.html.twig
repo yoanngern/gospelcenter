@@ -1,0 +1,340 @@
+<section class="tab autoScroll">
+
+    <nav class="sub_nav">
+        {% spaceless %}
+            <ul class="complex">
+                <li>
+                    <a href="#minis" class="current focus">
+                        <h1>Minis</h1>
+
+                        <h2>0-3 ans</h2>
+                    </a>
+                </li>
+                <li>
+                    <a href="#kids">
+                        <h1>Kids</h1>
+
+                        <h2>4-7 ans</h2>
+                    </a>
+                </li>
+                <li>
+                    <a href="#heroes">
+                        <h1>Heroes</h1>
+
+                        <h2>7-12 ans</h2>
+                    </a>
+                </li>
+                <li>
+                    <a href="#full-pack">
+                        <h1>Full Pack</h1>
+
+                        <h2>0-12 ans</h2>
+                    </a>
+                </li>
+                <li>
+                    <a href="#teens">
+                        <h1>Teens</h1>
+
+                        <h2>12-15 ans</h2>
+                    </a>
+                </li>
+                <li>
+                    <a href="#youth">
+                        <h1>Youth</h1>
+
+                        <h2>15-24 ans</h2>
+                    </a>
+                </li>
+            </ul>
+        {% endspaceless %}
+    </nav>
+
+    <article class="tab active" id="minis">
+        <article class="blog-style">
+
+            <h1>Gospel Minis</h1>
+
+            {% set customImg = 'bundles/gospelcenterpage/images/youth/lacote/minis.jpg' %}
+
+            <img class="big"
+                 src="{{ asset(customImg)| imagine_filter('blog_big_low') }}"
+                 srcset="{{ asset(customImg)| imagine_filter('blog_big_low') }} 2x"
+                 data-img="{{ asset(customImg)| imagine_filter('blog_big') }}"
+                 data-img_2x="{{ asset(customImg)| imagine_filter('blog_big_2x') }}"
+                 data-img_tablet="{{ asset(customImg)| imagine_filter('blog_big_tablet') }}"
+                 data-img_tablet_2x="{{ asset(customImg)| imagine_filter('blog_big_tablet_2x') }}"
+                 data-img_mobile="{{ asset(customImg)| imagine_filter('blog_big_mobile') }}"
+                 data-img_mobile_2x="{{ asset(customImg)| imagine_filter('blog_big_mobile_2x') }}">
+
+
+            <p>Chaque dimanche après la louange, les enfants peuvent rejoindre la garderie où ils seront accueillis par
+                une monitrice motivée pour un moment d’éveil à la foi ludique et chaleureux qui encourage ces juniors à
+                entrer dans une relation tout en douceur avec Dieu.</p>
+            <p>Des petites chansons, des histoires, des jeux… tout pour ravir les yeux et le cœur de ces tout-petits
+                !</p>
+
+            {% if dates_minis|length %}
+
+                <h3>Prochaines dates</h3>
+
+                <p></p>
+                <ul>
+
+                    {% for date in dates_minis %}
+
+                        <li>{{ date|datesShort(app.request.locale) }}</li>
+
+                    {% endfor %}
+
+                </ul>
+
+            {% endif %}
+
+
+        </article>
+    </article>
+
+    <article class="tab" id="kids">
+        <article class="blog-style">
+
+            <h1>Gospel Kids</h1>
+
+            {% set customImg = 'bundles/gospelcenterpage/images/youth/lacote/kids.jpg' %}
+
+            <img class="big"
+                 src="{{ asset(customImg)| imagine_filter('blog_big_low') }}"
+                 srcset="{{ asset(customImg)| imagine_filter('blog_big_low') }} 2x"
+                 data-img="{{ asset(customImg)| imagine_filter('blog_big') }}"
+                 data-img_2x="{{ asset(customImg)| imagine_filter('blog_big_2x') }}"
+                 data-img_tablet="{{ asset(customImg)| imagine_filter('blog_big_tablet') }}"
+                 data-img_tablet_2x="{{ asset(customImg)| imagine_filter('blog_big_tablet_2x') }}"
+                 data-img_mobile="{{ asset(customImg)| imagine_filter('blog_big_mobile') }}"
+                 data-img_mobile_2x="{{ asset(customImg)| imagine_filter('blog_big_mobile_2x') }}">
+
+
+            <p>Dieu n’est pas qu’une affaire d’adultes, bien au contraire ! Et c’est ce que chaque enfant pourra
+                découvrir chaque semaine ! Accompagnés par des responsables dynamiques, les enfants découvriront des
+                histoires de la Bible passionnantes, se feront des amis et pourront faire des jeux et des bricolages.
+                Parce que les enfants sont l'Eglise d’aujourd’hui!</p>
+
+            {% if dates_kids|length %}
+
+                <h3>Prochaines dates</h3>
+
+                <p></p>
+                <ul>
+
+                    {% for date in dates_kids %}
+
+                        <li>{{ date|datesShort(app.request.locale) }}</li>
+
+                    {% endfor %}
+
+                </ul>
+
+            {% endif %}
+
+
+        </article>
+    </article>
+
+    <article class="tab" id="heroes">
+        <article class="blog-style">
+
+            <h1>Gospel Heroes</h1>
+
+            {% set customImg = 'bundles/gospelcenterpage/images/youth/lacote/heroes.jpg' %}
+
+            <img class="big"
+                 src="{{ asset(customImg)| imagine_filter('blog_big_low') }}"
+                 srcset="{{ asset(customImg)| imagine_filter('blog_big_low') }} 2x"
+                 data-img="{{ asset(customImg)| imagine_filter('blog_big') }}"
+                 data-img_2x="{{ asset(customImg)| imagine_filter('blog_big_2x') }}"
+                 data-img_tablet="{{ asset(customImg)| imagine_filter('blog_big_tablet') }}"
+                 data-img_tablet_2x="{{ asset(customImg)| imagine_filter('blog_big_tablet_2x') }}"
+                 data-img_mobile="{{ asset(customImg)| imagine_filter('blog_big_mobile') }}"
+                 data-img_mobile_2x="{{ asset(customImg)| imagine_filter('blog_big_mobile_2x') }}">
+
+            <p>Les Heroes, c’est l’endroit à ne pas manquer pour les jeunes de la 5ème à la 8ème. Expérimenter la
+                présence et la puissance de Dieu, vivre des moments de défis, connaître l’amour de Dieu et développer de
+                nouvelles amitiés sont des points clés pour cette équipe.</p>
+
+
+            {% if dates_heroes|length %}
+
+                <h3>Prochaines dates</h3>
+
+                <p></p>
+                <ul>
+
+                    {% for date in dates_heroes %}
+
+                        <li>{{ date|datesShort(app.request.locale) }}</li>
+
+                    {% endfor %}
+
+                </ul>
+
+            {% endif %}
+
+
+        </article>
+    </article>
+
+    <article class="tab" id="full-pack">
+        <article class="blog-style">
+
+            <h1>Full Pack</h1>
+
+            {% set customImg = 'bundles/gospelcenterpage/images/youth/lacote/full-pack.jpg' %}
+
+            <img class="big"
+                 src="{{ asset(customImg)| imagine_filter('blog_big_low') }}"
+                 srcset="{{ asset(customImg)| imagine_filter('blog_big_low') }} 2x"
+                 data-img="{{ asset(customImg)| imagine_filter('blog_big') }}"
+                 data-img_2x="{{ asset(customImg)| imagine_filter('blog_big_2x') }}"
+                 data-img_tablet="{{ asset(customImg)| imagine_filter('blog_big_tablet') }}"
+                 data-img_tablet_2x="{{ asset(customImg)| imagine_filter('blog_big_tablet_2x') }}"
+                 data-img_mobile="{{ asset(customImg)| imagine_filter('blog_big_mobile') }}"
+                 data-img_mobile_2x="{{ asset(customImg)| imagine_filter('blog_big_mobile_2x') }}">
+
+            <p>LOUANGE, SKETCH, ANIMATION, COLLATION et pleins d'autres surprises encore !</p>
+            <p>Une équipe de jeunes motivés est à l’œuvre pour concocter un programme délirant qui motivera vos enfants
+                et les aidera à bien commencer la semaine!</p>
+
+
+            {% if dates_fullPack|length %}
+
+                <h3>Prochaines dates</h3>
+
+                <p></p>
+                <ul>
+
+                    {% for date in dates_fullPack %}
+
+                        <li>{{ date|datesShort(app.request.locale) }}</li>
+
+                    {% endfor %}
+
+                </ul>
+
+            {% endif %}
+
+        </article>
+
+
+    </article>
+
+    <article class="tab" id="teens">
+        <article class="blog-style">
+
+            <h1>Gospel Teens</h1>
+
+            {% set customImg = 'bundles/gospelcenterpage/images/youth/lacote/teens.jpg' %}
+
+            <img class="big"
+                 src="{{ asset(customImg)| imagine_filter('blog_big_low') }}"
+                 srcset="{{ asset(customImg)| imagine_filter('blog_big_low') }} 2x"
+                 data-img="{{ asset(customImg)| imagine_filter('blog_big') }}"
+                 data-img_2x="{{ asset(customImg)| imagine_filter('blog_big_2x') }}"
+                 data-img_tablet="{{ asset(customImg)| imagine_filter('blog_big_tablet') }}"
+                 data-img_tablet_2x="{{ asset(customImg)| imagine_filter('blog_big_tablet_2x') }}"
+                 data-img_mobile="{{ asset(customImg)| imagine_filter('blog_big_mobile') }}"
+                 data-img_mobile_2x="{{ asset(customImg)| imagine_filter('blog_big_mobile_2x') }}">
+
+
+            <p>Gospel Teens, c’est là où il faut aller, si tu as entre 12 et 15 ans, 2 vendredis par mois, de 19h30 à
+                22h00, à Grens, pour vivre des choses folles avec tes potes et un super team de responsables ! Des jeux,
+                des snacks, des week-end, des messages percutants et actuels pour t’aider dans ta vie de tous les jours,
+                des temps en petits groupes pour aller plus loin et plein de belles surprises encore !</p>
+
+            {% if dates_teens|length %}
+
+                <h3>Prochaines dates</h3>
+
+                <p></p>
+                <ul>
+
+                    {% for date in dates_teens %}
+
+                        <li>{{ date|datesShort(app.request.locale) }}</li>
+
+                    {% endfor %}
+
+                </ul>
+
+            {% endif %}
+
+        </article>
+
+    </article>
+
+    <article class="tab" id="youth">
+        <article class="blog-style">
+
+            <h1>Gospel Youth</h1>
+
+            {% set customImg = 'bundles/gospelcenterpage/images/youth/lausanne/gospel-youth.jpg' %}
+
+            <img class="big"
+                 src="{{ asset(customImg)| imagine_filter('blog_big_low') }}"
+                 srcset="{{ asset(customImg)| imagine_filter('blog_big_low') }} 2x"
+                 data-img="{{ asset(customImg)| imagine_filter('blog_big') }}"
+                 data-img_2x="{{ asset(customImg)| imagine_filter('blog_big_2x') }}"
+                 data-img_tablet="{{ asset(customImg)| imagine_filter('blog_big_tablet') }}"
+                 data-img_tablet_2x="{{ asset(customImg)| imagine_filter('blog_big_tablet_2x') }}"
+                 data-img_mobile="{{ asset(customImg)| imagine_filter('blog_big_mobile') }}"
+                 data-img_mobile_2x="{{ asset(customImg)| imagine_filter('blog_big_mobile_2x') }}">
+
+            <h3>T’as entre 15 et 24 ans ?</h3>
+
+            <p>Tu rêves de soirées de délires et de temps extraordinaires dans la présence de
+                Dieu ? Tu fais bien ! Le Gospel Youth est encore en construction mais n’hésite pas à t’approcher de
+                Karen où du couple pastoral pour faire connaître ton intérêt et permettre à ces rencontres de voir le
+                jour !</p>
+
+
+        </article>
+
+
+        {% if dates_youth|length %}
+            <section class="gray" id="events">
+
+                <section class="default">
+
+                    <h3>Prochaines dates</h3>
+
+                    {% for date in dates_youth %}
+
+                        <a href="{{ path('gospelcenterEvents_event', {'event': date.event.id, 'center': center.ref, 'domain': center.domain}) }}"
+                           class="events">
+                            <section class="picture">
+                                {% if date.event.picture %}
+                                    <img alt="{{ date.event.picture.alt }}"
+                                         src="{{ asset(date.event.picture.webPath)| imagine_filter('event_picture_low') }}"
+                                         srcset="{{ asset(date.event.picture.webPath)| imagine_filter('event_picture_low') }} 2x"
+                                         data-img="{{ asset(date.event.picture.webPath)| imagine_filter('event_picture') }}"
+                                         data-img_2x="{{ asset(date.event.picture.webPath)| imagine_filter('event_picture_2x') }}"
+                                         data-img_tablet="{{ asset(date.event.picture.webPath)| imagine_filter('event_picture_tablet') }}"
+                                         data-img_tablet_2x="{{ asset(date.event.picture.webPath)| imagine_filter('event_picture_tablet_2x') }}"
+                                         data-img_mobile="{{ asset(date.event.picture.webPath)| imagine_filter('event_picture_mobile') }}"
+                                         data-img_mobile_2x="{{ asset(date.event.picture.webPath)| imagine_filter('event_picture_mobile_2x') }}">
+
+                                {% endif %}
+                            </section>
+                            <section class="detail">
+                                <h1>{{ date.event.title }}</h1>
+                                <time class="date">{{ date|dates(app.request.locale) }}</time>
+                            </section>
+                        </a>
+                    {% endfor %}
+
+                </section>
+
+            </section>
+
+        {% endif %}
+
+    </article>
+
+</section>
