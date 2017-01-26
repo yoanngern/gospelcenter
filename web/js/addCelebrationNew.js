@@ -4,7 +4,8 @@ window.soundCloud = {
     'lausanne_id': '52004530',
     'montreux_id': '14516848',
     'jura_id': '119056878',
-    'annecy_id': '54350620'
+    'annecy_id': '54350620',
+    'lacote_id': '294886710'
 };
 
 window.selectList = [{
@@ -64,6 +65,10 @@ function getSCPlaylistId() {
 
     if (center == 'annecy') {
         return soundCloud.annecy_id;
+    }
+
+    if (center == 'lacote') {
+        return soundCloud.lacote_id;
     }
 
 }
