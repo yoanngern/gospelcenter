@@ -126,7 +126,7 @@ class Location
     /**
      * hosts
      * 
-     * @ORM\OneToMany(targetEntity="gospelcenter\EventBundle\Entity\Event", mappedBy="location", cascade={"persist", "remove"})
+     * @ORM\OneToMany(targetEntity="gospelcenter\EventBundle\Entity\Event", mappedBy="location", cascade={"persist", "detach"})
      */
     private $events;
     

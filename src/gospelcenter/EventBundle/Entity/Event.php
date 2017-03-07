@@ -90,7 +90,7 @@ class Event
     /**
      * takes place at
      *
-     * @ORM\ManyToOne(targetEntity="gospelcenter\LocationBundle\Entity\Location", inversedBy="events", cascade={"persist", "remove"})
+     * @ORM\ManyToOne(targetEntity="gospelcenter\LocationBundle\Entity\Location", inversedBy="events", cascade={"persist", "detach"})
      * @Assert\Valid()
      */
     private $location;
