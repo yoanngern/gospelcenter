@@ -6,12 +6,12 @@ gc:
         more: More
         kidsProgram: A special program for kids age 0-12 is organized
         allSunday:
-            lausanne: |
-                Every sunday evening at 6pm
-                at D! Club
             #lausanne: |
-            #    Summer break
-            #    Resumption of celebrations August 21
+            #    Every sunday evening at 6pm
+            #    at D! Club
+            lausanne: |
+                Summer break
+                Resumption of celebrations August 20
             annecy: |
                 Every sunday morning at 10:30 am
                 and all last sunday of the month at 6 pm
